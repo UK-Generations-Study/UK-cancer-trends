@@ -1,0 +1,938 @@
+---
+title: "Position Paper"
+format: 
+  html:
+    toc: true
+    toc-depth: 5
+    grid:
+      sidebar-width: 300px
+      body-width: 2000px
+      margin-width: 300px
+      gutter-width: 1.5rem
+editor: visual
+---
+
+## Setup
+
+```{r, setup}
+knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/Position Paper/Data")
+
+```
+
+## Packages
+
+```{r}
+# lapply(paste0('package:', names(sessionInfo()$otherPkgs)), detach, character.only=TRUE, unload=TRUE)
+
+library(dplyr)
+library(readxl)
+library(tidyr)
+library(purrr)
+library(ggplot2)
+library(scales)
+library(RColorBrewer)
+```
+
+## Function - Main
+
+```{r}
+## Main function that grabs data depending on source and calls specific cleaning function,
+data_hub <- function(country, rf){
+  
+  # country <- "Wales"
+  # 
+  # rf <- "E_Cigarette"
+  
+  data <- list()
+  
+  sheets <- excel_sheets(paste0(rf, "_Data.xlsx"))
+  
+  spec_sheets <- sheets[grepl(sheets, pattern = country)]
+  
+  if(country == "England"){
+    for(sheet in spec_sheets){
+      nocol <- ncol(read_excel(paste0(rf, "_Data.xlsx"), sheet = sheet))
+      tempdata <- read_excel(paste0(rf, "_Data.xlsx"), sheet = sheet, col_types = c("text", rep("numeric", nocol-1)))
+      group <- gsub(x = sheet, pattern = "England_", replacement = "")
+      data[[paste0(rf, "-", country, "-", sheet)]] <- pull_HSE_data(data = tempdata, group = group)
+      data[[paste0(rf, "-", country, "-", sheet)]]$section <- rf
+    }
+  } else if(country == "Scotland"){
+    for(sheet in spec_sheets){
+      tempdata <- read_excel(paste0(rf, "_Data.xlsx"), sheet = sheet)
+      group <- gsub(x = sheet, pattern = "Scotland_", replacement = "")
+      data[[paste0(rf, "-", country, "-", sheet)]] <- pull_SHS_data(data = tempdata, group = group)
+          data[[paste0(rf, "-", country, "-", sheet)]]$section <- rf
+    }
+  } else if(country == "Wales"){
+    for(sheet in spec_sheets){
+      tempdata <- read_excel(paste0(rf, "_Data.xlsx"), sheet = sheet)
+      group <- gsub(x = sheet, pattern = "Wales_", replacement = "")
+      data[[paste0(rf, "-", country, "-", sheet)]] <- pull_NSW_data(data = tempdata, group = group)
+      data[[paste0(rf, "-", country, "-", sheet)]]$section <- rf
+
+    }
+  } else if(country == "NIreland" & rf != "Activity"){
+    for(sheet in spec_sheets){
+      tempdata <- read_excel(paste0(rf, "_Data.xlsx"), sheet = sheet)
+      group <- gsub(x = sheet, pattern = "NIreland_", replacement = "")
+      data[[paste0(rf, "-", country, "-", sheet)]] <- pull_HSNI_data(data = tempdata, group = group)
+      data[[paste0(rf, "-", country, "-", sheet)]]$variable <- get_variable_HSNI(rf)
+      data[[paste0(rf, "-", country, "-", sheet)]]$section <- rf
+    }
+    # Activity data formatted differently than other N. Ireland data so need different formatting.
+  } else if(country == "NIreland" & rf == "Activity"){
+    
+    tempdata <- read_excel(paste0(rf, "_Data.xlsx"), sheet = "NIreland_Men")
+    group <- "Men"
+    data[["Activity-NIreland-Men"]] <- pull_HSNI_data_alt(data = tempdata, group = "Men")
+    # data[["Activity-NIreland-Men"]]$variable <- get_variable_HSNI(rf)
+    data[["Activity-NIreland-Men"]]$section <- rf
+    
+    tempdata <- read_excel(paste0(rf, "_Data.xlsx"), sheet = "NIreland_Women")
+    group <- "Women"
+    data[["Activity-NIreland-Women"]] <- pull_HSNI_data_alt(data = tempdata, group = "Women")
+    # data[["Activity-NIreland-Women"]]$variable <- get_variable_HSNI(rf)
+    data[["Activity-NIreland-Women"]]$section <- rf
+
+    
+    tempdata <- read_excel(paste0(rf, "_Data.xlsx"), sheet = "NIreland_All")
+    group <- "All"
+    data[["Activity-NIreland-All"]] <- pull_HSNI_data(data = tempdata, group = "All")
+    data[["Activity-NIreland-All"]]$variable <- get_variable_HSNI(rf)
+    data[["Activity-NIreland-All"]]$section <- rf
+    
+  } else {
+    return(cat("ERROR"))
+  }
+  
+  return(data)
+}
+
+```
+
+## Function - England Health Survey
+
+```{r}
+
+pull_HSE_data <- function(data, group){
+  
+  # Edit for activity data format
+  if(is.na(data[2,2])){
+    data <- data[-1,]
+  }
+  
+  # Remove weighted bases - can alter to keep
+  if("Weighted bases" %in% data$...1){
+    data <- data[1:(which(data$`...1`=="Weighted bases")-1),]
+  } else if("Bases (weighted)" %in% data$...1){
+    data <- data[1:(which(data$`...1`=="Bases (weighted)")-1),]
+  }
+  
+  # Get cat columns
+  ranges <- data$...1[is.na(data[,2])]
+  rangesdif <- diff(which(is.na(data[,2])))
+  
+  if(max(rangesdif) != min(rangesdif)){
+    return(cat("ERROR: Inconsistent Data Format"))
+  }
+  
+  data <- data |>
+    mutate(age_group = rep(ranges, each = rangesdif[1])) |>
+    filter(!`...1` %in% ranges) |>
+    pivot_longer(cols = colnames(data)[2:ncol(data)]) |>
+    rename(year = name, variable = `...1`)
+  
+  data[["country"]] <- "England"
+  data[["group"]] <- group
+  
+  ## Smoking data for some reason is ordered oppositely, so made quick fix here.
+  ## Not ideal fix but will do for temporary purposes.
+  if("Current cigarette smoker" %in% data[["age_group"]] | "Currently uses e-cigarettes" %in% data[["age_group"]] ){
+    data <- data |>
+      rename(temp_age = variable, temp_var = age_group) |>
+      rename(age_group = temp_age, variable = temp_var)
+  }
+  
+  return(data)
+  
+}
+
+```
+
+## Function - Alt England Health Survey (Diabetes Data)
+
+```{r}
+
+pull_HSE_diabetes_data <- function(data, group){
+  
+  if("Weighted bases" %in% data$...1){
+    data <- data[1:(which(data$`...1`=="Weighted bases")-1),]
+  }
+  
+  colnames(data) <- c("age_group", colnames(data)[2:ncol(data)])
+  
+  data <- data[-c(1,2),]
+  
+  data <- data |>
+    pivot_longer(cols = colnames(data)[2:ncol(data)]) |>
+    rename(year = name)
+  
+  data[["country"]] <- "England"
+  data[["group"]] <- group
+  data[["variable"]] <- "% Diabetes"
+  
+  return(data)
+  
+}
+
+```
+
+## Function - Scottish Health Survey
+
+```{r}
+
+pull_SHS_data <- function(data, group){
+  
+  if(group == "Sex"){
+    data <- data |>
+      select(year = Year, country = Geographylevel, variable = Categories, 
+             group = Sex, value = Percent) |>
+      mutate(age_group = "16+")
+  } else if(group == "Age"){
+    data <- data |>
+      select(year = Year, country = Geographylevel, 
+             variable = Categories, value = Percent, age_group = Age) |>
+      mutate(group = "All adults")
+  }
+  
+  return(data)
+  
+}
+```
+
+## Function - National Survey for Wales
+
+```{r}
+
+pull_NSW_data <- function(data, group){
+
+  year_input <- group
+
+  # data <- read_excel("E_Cigarette_Data.xlsx", sheet = "Wales_2017_2018")
+  
+  data <- as.data.frame(t(as.matrix(data, dimnames = NULL)))
+  
+  rownames(data) <- NULL
+  
+  data[data=="."] <- NA
+  
+  data <- data |>
+    mutate(V2 = case_when(
+      is.na(V2) ~ V1,
+      TRUE ~ V2
+    ), V3 = case_when(
+      is.na(V3) ~ V2,
+      TRUE ~ V3
+    )) |>
+    select(-V1, -V2)
+  
+  colnames(data) <- c("age_group", data[2,2:ncol(data)])
+  
+  data <- data[-c(1,2),]
+  
+  
+  data <- data |>
+    mutate(group = rep(c("All", "Men", "Women"), each = 11),
+           year = year_input,
+           country = "Wales") |>
+    pivot_longer(cols = colnames(data)[2:ncol(data)]) |>
+    rename(variable = name)
+  
+  return(data)
+}
+```
+
+## Function - Health Survey Northern Ireland
+
+```{r}
+pull_HSNI_data <- function(data, group){
+  
+  # data <- read_excel("Activity_Data.xlsx", sheet = "NIreland_Men")
+
+  # group <- "Males"
+  
+  colnames(data)[1] <- "age_group"
+  
+  data <-  data |>
+    pivot_longer(cols = colnames(data)[2:ncol(data)]) |>
+    rename(year = name) |>
+    mutate(country = "N. Ireland",
+           group = {{group}})
+  
+  return(data)
+}
+
+pull_HSNI_data_alt <- function(data, group){
+  
+  # data <- read_excel("Activity_Data.xlsx", sheet = "NIreland_Men")
+
+  # group <- "Males"
+  
+  colnames(data)[1] <- "variable"
+  
+  data <-  data |>
+    pivot_longer(cols = colnames(data)[2:ncol(data)]) |>
+    rename(year = name) |>
+    mutate(country = "N. Ireland",
+           group = {{group}},
+           age_group = "19+") # Table specifies 19+ participants.
+  
+  return(data)
+}
+
+get_variable_HSNI <- function(rf){
+  section <- rf
+  variable <- case_when(
+    section == "BMI" ~ "Overweight",
+    section == "Alcohol" ~ "Drink",
+    section == "Smoking" ~ "Smoke",
+    section == "E_Cigarette" ~ "E-Cigarette Use",
+    section == "Activity" ~ "Meet Recommendations",
+    TRUE ~ "ERROR"
+  )
+}
+```
+
+## Grabbing First Round of Data
+
+Grabbing data where all sources are similar.
+
+```{r}
+risk_factors <- c("BMI", "Alcohol", "E_Cigarette", "Smoking", "Activity")
+countries <- c("England", "Scotland", "Wales", "NIreland")
+
+data <- data.frame(section = character(0), variable = character(0), country = character(0), year = numeric(0),
+                   group = character(0), age_group = character(0), value = numeric(0))
+
+for(rf in risk_factors){
+  for(country in countries){
+    new_data <- bind_rows(data_hub(country, rf))
+    data <- rbind(data, new_data)
+  }
+}
+
+
+```
+
+## Cleaning Data
+
+Cleaning some specific variables as well as cleaning variable names for variables needed in analysis.
+
+```{r}
+
+data2 <- data |>
+  mutate(year = case_when(
+    grepl(year, pattern = "\\/") ~ map_chr(strsplit(year, "/"), 1),
+    grepl(year, pattern = "\\_") ~ map_chr(strsplit(year, "_"), 1),
+    TRUE ~ year
+  ), year = as.numeric(year),
+  age_group = case_when(
+    age_group %in% c("All men", "All women", "All", "All adults", "Total") ~ "16+",
+    grepl(age_group, pattern = "Age ") ~ gsub(age_group, pattern = "Age ", replacement = ""),
+    grepl(age_group, pattern = " years") ~ gsub(age_group, pattern = " years", replacement = ""),
+    grepl(age_group, pattern = "All adults ") ~ gsub(age_group, pattern = "All adults ", replacement = ""),
+    grepl(age_group, pattern = "All aged ") ~ gsub(age_group, pattern = "All aged ", replacement = ""),
+    TRUE ~ age_group
+  ), age_group = case_when(
+    country == "N. Ireland" & section == "Alcohol" ~ gsub(age_group, pattern = "16", replacement = "18"),
+    country == "N. Ireland" & section == "Activity" ~ gsub(age_group, pattern = "16", replacement = "19"),
+    TRUE ~ age_group
+  ), variable = case_when(
+    country == "England" & section == "BMI" & variable == "Overweight including obese" & grepl(group, pattern = "Children") ~ "% Overweight",
+    country == "England" & section == "BMI" & variable == "Obese" & grepl(group, pattern = "Children") ~ "% Obese",
+    country == "England" & section == "BMI" & variable == "% overweight including obese" & !grepl(group, pattern = "Children") ~ "% Overweight",
+    country == "England" & section == "BMI" & variable == "% obese" & !grepl(group, pattern = "Children") ~ "% Obese",
+    country == "England" & section == "BMI" & variable == "% overweight" ~ "% overweight not obese",
+    country == "England" & section == "Alcohol" & variable == "% non drinker/did not drink in last 12 months" ~ "% Non-Drinker",
+    country == "England" & section == "Smoking" & variable == "Current cigarette smoker" ~ "% Current Smoker",
+    country == "England" & section == "E_Cigarette" & variable == "Currently uses e-cigarettes" ~ "% Current E-cigarette user",
+    country == "England" & section == "Activity" & variable %in% c("Meets aerobic guidelines", "Meets previous aerobic guidelines") ~ "% Meets guidelines", ## CHECK THIS IS APPROPRIATE
+    
+    country == "Scotland" & section == "BMI" & variable == "Overweight (including obesity)" ~ "% Overweight",
+    country == "Scotland" & section == "Alcohol" & variable == "Non-drinker" ~ "% Non-Drinker",
+    country == "Scotland" & section == "Smoking" & variable == "Current smoker" ~ "% Current Smoker",
+    country == "Scotland" & section == "E_Cigarette" & variable == "Currently using" ~ "% Current E-cigarette user",
+    country == "Scotland" & section == "Activity" & variable == "Meets recommendations" ~ "% Meets guidelines",
+    
+    country == "Wales" & section == "BMI" & variable == "BMI 25+ (overweight or obese)" ~ "% Overweight",
+    country == "Wales" & section == "BMI" & variable == "BMI 30+ (obese)" ~ "% Obese",
+    country == "Wales" & section == "Alcohol" & variable == "Average weekly alcohol consumption - none (may include some people who do sometimes drink)" ~ "% Non-Drinker",
+    country == "Wales" & section == "Smoking" & variable == "Smoker" ~ "% Current Smoker",
+    country == "Wales" & section == "E_Cigarette" & variable == "E-cigarette user" ~ "% Current E-cigarette user",
+    country == "Wales" & section == "Activity" & variable == "Active at least 150 minutes in previous week" ~ "% Meets guidelines",
+    
+    country == "N. Ireland" & section == "BMI" & variable == "Overweight" ~ "% Overweight",
+    country == "N. Ireland" & section == "Alcohol" & variable == "Drink" ~ "% Non-Drinker", # NOTE: This is not technically accurate but next code block rectifies.
+    country == "N. Ireland" & section == "Smoking" & variable == "Smoke" ~ "% Current Smoker",
+    country == "N. Ireland" & section == "E_Cigarette" & variable == "E-Cigarette Use" ~ "% Current E-cigarette user",
+    country == "N. Ireland" & section == "Activity" & variable == "Meet Recommendations" ~ "% Meets guidelines",
+    
+    TRUE ~ variable
+
+  ))
+
+data3 <-  data2 |>
+  mutate(value = as.numeric(value),
+         value = case_when(
+    country == "N. Ireland" & section == "Alcohol" & variable == "% Non-Drinker" ~ 1 - value,
+    TRUE ~ value
+  ), value = case_when(
+    country == "N. Ireland" ~ 100 * value,
+    TRUE ~ value
+  ))
+
+## Need to group England overweight values together.
+
+# england_overweight <- data3 |>
+#   filter(country == "England" & section == "BMI" & !grepl(group, pattern = "Children")) |>
+#   pivot_wider(names_from = variable, values_from = value) |>
+#   mutate(`% Overweight` = `% overweight including obese`) |>
+#   pivot_longer(cols = c(unique(data3$variable[data3$country == "England" & data3$section == "BMI" & !grepl(data3$group, pattern = "Children")]), "% Overweight")) |>
+#   rename(variable = name)
+
+# data4 <- data3 |>
+#   # filter(!(country == "England" & section == "BMI" & !grepl(group, pattern = "Children"))) |>
+#   mutate(variable = case_when(
+#     country == "England" & section == "BMI" & variable == "Overweight including obese" & grepl(group, pattern = "Children") ~ "% Overweight",
+#     country == "England" & section == "BMI" & variable == "% overweight including obese" & !grepl(group, pattern = "Children") ~ "% Overweight",
+#     TRUE ~ variable
+#   )) # |>
+  # rbind(england_overweight)
+
+data4 <- data3
+
+```
+
+## Overweight
+
+```{r}
+
+data4 |>
+  filter(variable == "% Overweight" & age_group == "16+" & grepl(group, pattern = "All")) |>
+  ggplot(aes(x = year, y = value, colour = country)) +
+  geom_line() +
+  geom_point() +
+  xlab("Year") +
+  ylab("% Overweight") +
+  ggtitle("% Overweight in Adults") +
+  labs(colour =  "Country") +
+  scale_x_continuous(breaks = pretty_breaks())
+
+```
+
+## Obese
+
+Obese data for England and Wales already in data. Need to download data for N. Ireland and Scotland.
+
+```{r}
+obese_data <- data4
+
+obese_sheets <- excel_sheets("BMI_Obese_Data.xlsx")
+
+scotland_sheets <- obese_sheets[grepl(obese_sheets, pattern = "Scotland")]
+
+for(sheet in scotland_sheets){
+  tempdata <- read_excel("BMI_Obese_Data.xlsx", sheet = sheet)
+  group <- gsub(x = sheet, pattern = "Scotland_", replacement = "")
+  tempdata <- pull_SHS_data(data = tempdata, group = group)
+  tempdata$section <- "BMI"
+  tempdata$variable <- ifelse(tempdata$variable == "Obesity", "% Obese", "% Non-Obese")
+  
+  
+  obese_data <- rbind(obese_data, tempdata)
+
+}
+
+nireland_sheets <- obese_sheets[grepl(obese_sheets, pattern = "NIreland")]
+
+for(sheet in nireland_sheets){
+  tempdata <- read_excel(paste0("BMI_Obese_Data.xlsx"), sheet = sheet)
+  group <- gsub(x = sheet, pattern = "NIreland_", replacement = "")
+  tempdata <- pull_HSNI_data(data = tempdata, group = group)
+  tempdata$variable <- "% Obese"
+  tempdata$section <- "BMI"
+  tempdata$value <- 100*tempdata$value
+  
+  obese_data <- rbind(obese_data, tempdata)
+}
+
+obese_data |>
+  filter(variable == "% Obese" & age_group %in% c("16+", "Total") & grepl(group, pattern = "All")) |>
+  mutate(year = case_when(
+  grepl(year, pattern = "\\/") ~ as.numeric(map_chr(strsplit(year, "/"), 1)),
+  TRUE ~ as.numeric(year)
+  )) |>
+  ggplot(aes(x = year, y = value, colour = country)) +
+  geom_line() +
+  geom_point() +
+  xlab("Year") +
+  ylab("% Obese") +
+  ggtitle("% Obese in Adults") +
+  labs(colour =  "Country") +
+  scale_x_continuous(breaks = pretty_breaks())
+
+
+```
+
+## Obese by Age - England
+
+```{r}
+# Need to use weightings from the data set to calculate % Obese for 25+ age range.
+weightings <- read_excel("BMI_Data.xlsx", sheet = "England_All")
+
+top_row <- which(weightings$...1 == "Weighted bases")
+weightings <-weightings[(top_row+1):nrow(weightings),]
+
+weightings <- as.data.frame(weightings)
+
+
+weightings <- weightings |>
+  filter(!...1 %in% c("All adults", "16-24 years"))
+
+for(i in 2:ncol(weightings)){
+  weightings[,i] <- weightings[,i]/sum(weightings[,i])
+}
+
+weightings <- as.data.frame(t(as.matrix(weightings)))
+
+weightings <- weightings |>
+  mutate(Year = rownames(weightings))
+
+rownames(weightings) <- NULL
+colnames(weightings) <- weightings[1,]
+weightings <- weightings[-1,]
+
+weightings <- weightings |>
+  rename(year = ...1) |>
+  sapply(as.numeric)
+
+adult_bmi_england <- data4 |>
+  filter(country == "England" & section == "BMI" & variable == "% Obese" & group == "All" & !grepl(age_group, pattern = "16")) |>
+  pivot_wider(names_from = age_group, values_from = value) |>
+  merge(weightings, by = "year") |>
+  mutate(`25+` = `25-34`*`25-34 years` + `35-44`*`35-44 years` + `45-54`*`45-54 years` + `55-64`*`55-64 years` + `65-74`*`65-74 years` + `75+`*`75+ years`) |>
+  select(year, variable, country, group, section, `25+`) |>
+  pivot_longer(cols = `25+`) |>
+  rename(age_group = name)
+
+age_bmi_england <- data4 |>
+  filter(country == "England" & section == "BMI" & variable == "% Obese" & group %in% c("All", "Children_All") & age_group %in% c("16-24", "2-15")) |>
+  rbind(adult_bmi_england) 
+
+ggplot(data = age_bmi_england, aes(x = year, y = value, colour = age_group)) +
+  geom_point() +
+  geom_line() +
+  xlab("Year") +
+  ylab("% Obese") +
+  ggtitle("% Obese in England") +
+  labs(colour =  "Age Group", caption = "*Obese for those aged >15 as BMI > 30\nObese for those aged <= 15 as at or above the 95th BMI percentile in the UK") +
+  scale_x_continuous(breaks = pretty_breaks())
+ 
+
+```
+
+## Alcohol
+
+```{r}
+
+data4 |>
+  filter(variable == "% Non-Drinker" & age_group %in% c("16+", "18+") & grepl(group, pattern = "All")) |>
+  mutate(value = 100- value) |>
+  ggplot(aes(x = year, y = value, colour = country)) +
+  geom_line() +
+  geom_point() +
+  xlab("Year") +
+  ylab("% Current Drinker") +
+  ggtitle("% Current Drinker in Adults*") +
+  labs(colour =  "Country", caption = "*Adult for England, Scotland and Wales defined as 16+, and for N. Ireland as 18+") +
+  scale_x_continuous(breaks = pretty_breaks())
+
+
+```
+
+## Alcohol - Guidelines
+
+Needed to get guidelines data for N. Ireland seperately, as well as combine variables for England data to get a Drinking over Guidelines value.
+
+```{r}
+
+guidelines_england <- data4 |>
+  filter(country == "England" & section == "Alcohol"& grepl(group, pattern = "All")) |>
+  pivot_wider(names_from = variable, values_from = value) |>
+  mutate(`% Over Guidelines` = 100 - (`% Non-Drinker` + `% up to 14 units per week`)) |>
+  pivot_longer(cols = c(unique(data4$variable[data4$country == "England" & data4$section == "Alcohol" & grepl(data4$group, pattern = "All")]), "% Over Guidelines")) |>
+  rename(variable = name)
+
+alcohol_data <- data4 |>
+  filter(!(country == "England" & section == "Alcohol"& grepl(group, pattern = "All"))) |>
+  rbind(guidelines_england) |>
+  mutate(variable = case_when(
+    country == "Scotland" & section == "Alcohol" & variable == "Hazardous/Harmful drinker" ~ "% Over Guidelines",
+    country == "Wales" & section == "Alcohol" & variable == "Average weekly alcohol consumption - above 14 units (over guidelines)" ~ "% Over Guidelines",
+    TRUE ~ variable
+  ))
+
+new_alcohol_sheets <- excel_sheets("Alcohol_Data_Alt.xlsx")
+for(sheet in new_alcohol_sheets){
+  tempdata <- read_excel(paste0("Alcohol_Data_Alt.xlsx"), sheet = sheet)
+  group <- gsub(x = sheet, pattern = "NIreland_", replacement = "")
+  tempdata <- pull_HSNI_data(data = tempdata, group = group)
+  tempdata$variable <- "% Over Guidelines"
+  tempdata$section <- "Alcohol"
+  tempdata$value <- 100*tempdata$value
+  
+  alcohol_data <- rbind(alcohol_data, tempdata)
+}
+
+alcohol_data |>
+  filter(variable == "% Over Guidelines" & group == "All" & age_group %in% c("16+", "Total")) |>
+  mutate(year = case_when(
+    grepl(year, pattern = "\\/") ~ map_chr(strsplit(year, "/"), 1),
+    TRUE ~ year
+  )) |>
+  ggplot(aes(x = as.numeric(year), y = value, colour = country)) +
+  geom_line() +
+  geom_point() +
+  xlab("Year") +
+  ylab("% Over Alcohol Guidelines") +
+  ggtitle("% Over Alcohol Guidelines in Adults") +
+  labs(colour =  "Country") +
+  scale_x_continuous(breaks = pretty_breaks())
+```
+
+## Smoking
+
+```{r}
+
+data4 |>
+  filter(variable == "% Current Smoker" & age_group == "16+" & grepl(group, pattern = "All")) |>
+  ggplot(aes(x = year, y = value, colour = country)) +
+  geom_line() +
+  geom_point() +
+  xlab("Year") +
+  ylab("% Current Smoker") +
+  ggtitle("% Current Smoker in Adults") +
+  labs(colour =  "Country") +
+  scale_x_continuous(breaks = pretty_breaks())
+
+
+data4 |>
+  filter(variable == "% Current Smoker" & age_group == "16+" & !grepl(group, pattern = "All")) |>
+  mutate(group = case_when(
+    group == "Male" ~ "Men",
+    group == "Female" ~ "Women",
+    TRUE ~ group
+  )) |>
+  ggplot(aes(x = year, y = value, colour = country, linetype = group)) +
+  geom_line() +
+  geom_point() +
+  xlab("Year") +
+  ylab("% Current Smoker") +
+  ggtitle("% Current Smoker in Adults") +
+  labs(colour =  "Country") +
+  scale_x_continuous(breaks = pretty_breaks())
+
+```
+
+## E-Cigarette
+
+```{r}
+
+data4 |>
+  filter(variable == "% Current E-cigarette user" & age_group == "16+" & grepl(group, pattern = "All")) |>
+  ggplot(aes(x = year, y = value, colour = country)) +
+  geom_line() +
+  geom_point() +
+  xlab("Year") +
+  ylab("% Current E-Cigarette Users") +
+  ggtitle("% Current E-Cigarette Users in Adults") +
+  labs(colour =  "Country") +
+  scale_x_continuous(breaks = pretty_breaks())
+
+cols <- brewer.pal(n = 8, name = "Greens")[5:8]
+
+data4 |>
+  filter(variable == "% Current E-cigarette user" & grepl(group, pattern = "All") & country == "England" & age_group != "16+") |>
+  mutate(age_start = as.numeric(substr(age_group, 1, 2)), 
+         age_end = ifelse(grepl(age_group, pattern = "\\+"), age_start, as.numeric(substr(age_group, 4, 5))),
+         age_use = 0.5*(age_start + age_end)) |>
+  ggplot(aes(x = age_use, y = value, colour = as.factor(year))) +
+  geom_line() +
+  geom_point() +
+  xlab("Age") +
+  ylab("% Current E-Cigarette Users") +
+  ggtitle("% Current E-Cigarette Users in the UK") +
+  labs(colour =  "Country") +
+  scale_x_continuous(breaks = pretty_breaks()) +
+  scale_color_manual(values = cols)
+```
+
+## Activity
+
+```{r}
+
+data4 |>
+  filter(variable == "% Meets guidelines" & age_group %in% c("16+") & grepl(group, pattern = "All") |
+           variable == "% Meets guidelines" & age_group %in% c("19+") & grepl(group, pattern = "All") & country == "N. Ireland") |>
+  ggplot(aes(x = year, y = value, colour = country)) +
+  geom_line() +
+  geom_point() +
+  xlab("Year") +
+  ylab("% Meets Activity Guidelines") +
+  ggtitle("% Meets Activity Guidelines in Adults*") +
+  labs(colour =  "Country", caption = "*Adult for England, Scotland and Wales defined as 16+, and for N. Ireland as 19+\nActivity guidelines are >150 mins Moderate Physical Activity") +
+  scale_x_continuous(breaks = pretty_breaks())
+
+
+```
+
+## Age First Birth Data
+
+For this variable and all further, no data is contained in the pre sorted data, so all sourced from new sources. As with before, these sources have been documented in the README file.
+
+```{r}
+
+afb_data <- read_excel("Age_First_Birth_Data.xlsx")[2:3,13:31]
+
+colnames(afb_data) <- afb_data[1,]
+afb_data <- afb_data[2,]
+
+afb_data |>
+  pivot_longer(cols = colnames(afb_data)) |>
+  mutate(Year = as.numeric(name), value = as.numeric(value)) |>
+  ggplot(aes(x = Year, y = value)) +
+  geom_line() +
+  geom_point() +
+  ylab("Average Age at First Birth") +
+  ggtitle("Average Age at First Birth in UK") +
+  scale_x_continuous(breaks = pretty_breaks())
+
+```
+
+## Parity Data
+
+Currently only have data for England and Wales. Trying to track down data for other countries.
+
+```{r}
+# 
+# read_excel("Parity_Data.xlsx") |>
+#   mutate(age = case_when(
+#     is.na(`Age exact years`) ~ 45,
+#     TRUE ~ `Age exact years`),
+#     year = age + `Year of birth of woman`,
+#     final_value = ifelse(is.na(`Age exact years`), 1, 0),
+#     `% Parous` = 100 - `0 (No children)`) |>
+#   filter(final_value == 1) |>
+#   ggplot(aes(x = year, y = `% Parous`)) +
+#   geom_line() +
+#   geom_point() +
+#   xlab("Year") +
+#   ylab("Parous (%)") +
+#   ggtitle("Parity in England and Wales") +
+#   scale_x_continuous(breaks = pretty_breaks())
+
+pop_data <- read_excel("Population_Data.xlsx") |>
+  filter(Sex == "Females", Age != "All Ages") |>
+  select(-Sex) 
+
+pop_data <- as.data.frame(t(as.matrix(pop_data))) 
+
+colnames(pop_data) <- pop_data[1,]
+pop_data$year <- rownames(pop_data)
+pop_data <- pop_data[-1,] |>
+  mutate(year = gsub(year, pattern = "Mid-", replacement = "")) |>
+  sapply(as.numeric)
+
+pop_data <- as.data.frame(pop_data) |>
+  filter(year>1970)
+
+for(i in 1:nrow(pop_data)){
+  pop_data[i,which(colnames(pop_data)!="year")] <- pop_data[i,which(colnames(pop_data)!="year")]/sum(pop_data[i,which(colnames(pop_data)!="year")])
+}
+
+pop_data <- pop_data |>
+  pivot_longer(cols = colnames(pop_data)[colnames(pop_data)!="year"])
+
+parity_data <- read_excel("Parity_Data.xlsx") |>
+  mutate(flag =  case_when(
+    is.na(`Age exact years`) ~ "Final",
+    TRUE ~ NA),
+    parous = 100 - `0 (No children)`,
+    YOB = as.numeric(`Year of birth of woman`),
+    age = as.numeric(`Age exact years`),
+    year = YOB + age)
+
+parity <- data.frame(year = integer(0), parity = integer(0))
+  
+for(y in 2010:2022){
+  tempdata <- as.data.frame(parity_data)
+  tempdata$finalage <- ifelse(parity_data$flag=="Final", y - tempdata$YOB, NA)
+  tempdata <- filter(tempdata, year == y|finalage>45)
+  tempdata$age <- ifelse(is.na(tempdata$age), tempdata$finalage, tempdata$age)
+  over90 <- mean(tempdata$parous[tempdata$age>89])
+  tempdata <- tempdata[tempdata$age<90,]
+  tempdata <- select(tempdata, age, parous)
+  tempdata[nrow(tempdata)+1,] <- c("90+", over90)
+  tempdata$parous <- as.numeric(tempdata$parous)
+  temppop <- pop_data[pop_data$year==y,]
+  df <- merge(tempdata, temppop, by.x = "age", by.y = "name")
+  df$relpar <- df$parous*df$value
+  parity[nrow(parity)+1,] <- c(y, sum(df$relpar))
+}
+
+ggplot(parity, aes(x = year, y = parity)) +
+  geom_point() +
+  geom_line() +
+  ylab("Parity (%)") +
+  ggtitle("Parity in England and Wales") +
+  scale_x_continuous(breaks = pretty_breaks())
+
+```
+
+## HRT Data
+
+```{r}
+
+read_excel("HRT_Data.xlsx") |>
+  mutate(Year = as.numeric(map_chr(strsplit(`Financial Year`, "/"), 1)), 
+         `% HRT` = as.numeric(`Patients per 1,000 Population`)) |>
+  filter(!is.na(`% HRT`)) |>
+  ggplot(aes(x = Year, y = `% HRT`)) +
+  geom_line() +
+  geom_point() +
+  xlab("Year") +
+  ylab("HRT (%)") +
+  ggtitle("HRT Usage in England") +
+  scale_x_continuous(breaks = pretty_breaks()) 
+
+
+```
+
+## Cancer Data
+
+```{r}
+
+cancer_sheets <- excel_sheets("Cancer_Data.xlsx")
+
+cancer_data <- integer(0)
+
+for(sheet in cancer_sheets){
+  cancer_data <- rbind(cancer_data, read_excel("Cancer_Data.xlsx", sheet = sheet))
+}
+
+cancer_data <- cancer_data |>
+  mutate(Sex = ifelse(Sex==1, "Male", "Female"),
+         IncMort = ifelse(Type == 0, "Incidence", "Mortality"))
+
+# cancer_data |>
+#   filter(Type == 0) |>
+#   ggplot(aes(x = Year, y = `ASR (World)`, colour = `Country label`, linetype = Sex)) +
+#   geom_line() + 
+#   geom_point() +
+#   ggtitle("Incidence Rates for Top 6 Cancers") +
+#   facet_wrap(~ `Cancer label`, nrow = 3, scales = "free")
+#   
+# cancer_data |>
+#   filter(Type == 1) |>
+#   ggplot(aes(x = Year, y = `ASR (World)`, colour = `Country label`, linetype = Sex)) +
+#   geom_line() + 
+#   geom_point() +
+#   ggtitle("Mortality Rates for Top 6 Cancers") +
+#   facet_wrap(~ `Cancer label`, nrow = 3, scales = "free")
+
+for(site in unique(cancer_data$`Cancer label`)){
+  tempdata <- cancer_data[cancer_data$`Cancer label`==site,]
+  minyear <- min(tempdata$Year)
+  maxyear <- max(tempdata$Year)
+  print(ggplot(data = tempdata, aes(x = Year, y = `ASR (World)`, colour = `Country label`, linetype = Sex)) +
+  geom_line() +
+  geom_point() +
+  xlim(minyear, maxyear) +
+  ggtitle(paste0("Cancer Rates for ", site)) +
+  labs(colour = "Country", linetype = "Sex") +
+  theme(legend.position="bottom",legend.box = "vertical") +
+  facet_wrap(~ IncMort, scales = "free_y", dir = "v"))
+
+}
+
+```
+
+## Diabetes Data
+
+```{r}
+
+diabetes_data <- integer(0)
+
+sheets <- excel_sheets("Diabetes_Data.xlsx")
+
+england_sheets <- sheets[grepl(sheets, pattern = "England")]
+
+for(sheet in england_sheets){
+
+  nocol <- ncol(read_excel("Diabetes_Data.xlsx", sheet = sheet))
+  tempdata <- read_excel("Diabetes_Data.xlsx", sheet = sheet, col_types = c("text", rep("numeric", nocol-1)))
+  group <- gsub(x = sheet, pattern = "England_", replacement = "")
+  tempdata <- pull_HSE_diabetes_data(data = tempdata, group = group)
+  tempdata$section <- "Diabetes"
+  diabetes_data <- rbind(diabetes_data, tempdata)
+        
+}
+
+scotland_sheets <- sheets[grepl(sheets, pattern = "Scotland")]
+
+
+for(sheet in scotland_sheets){
+  tempdata <- read_excel("Diabetes_Data.xlsx", sheet = sheet)
+  group <- gsub(x = sheet, pattern = "Scotland_", replacement = "")
+  tempdata <- pull_SHS_data(data = tempdata, group = group)
+  tempdata$section <- "Diabetes"
+  tempdata$variable = ifelse(tempdata$variable == "Yes", "% Diabetes", "% No Diabetes")
+  diabetes_data <- rbind(diabetes_data, tempdata)
+}
+
+tempdata <- read_excel("Diabetes_Data.xlsx", sheet = "NIreland") 
+
+tempdata <- tempdata |>
+  pivot_longer(cols = colnames(tempdata)[2:ncol(tempdata)]) |>
+  rename(year = name, section = `...1`) |>
+  mutate(value = value/10) |>
+  mutate(age_group = "17+", variable = "% Diabetes", group = "All", country = "N. Ireland")
+
+diabetes_data <- rbind(diabetes_data, tempdata)
+
+diabetes_data |>
+  mutate(year = case_when(
+    grepl(year, pattern = "\\/") ~ map_chr(strsplit(year, "/"), 1),
+    TRUE ~ year),
+    year = as.numeric(year),
+  age_group = case_when(
+    age_group %in% c("All men", "All women", "All", "All adults", "Total") ~ "16+",
+    grepl(age_group, pattern = "Age ") ~ gsub(age_group, pattern = "Age ", replacement = ""),
+    grepl(age_group, pattern = " years") ~ gsub(age_group, pattern = " years", replacement = ""),
+    grepl(age_group, pattern = "All adults ") ~ gsub(age_group, pattern = "All adults ", replacement = ""),
+    grepl(age_group, pattern = "All aged ") ~ gsub(age_group, pattern = "All aged ", replacement = ""),
+    TRUE ~ age_group
+  )) |>
+  filter(variable == "% Diabetes" & age_group %in% c("16+", "17+") & grepl(group, pattern = "All")) |>
+  ggplot(aes(x = year, y = value, colour = country)) +
+  geom_line() +
+  geom_point() +
+  xlab("Year") +
+  ylab("% Diabetes") +
+  ggtitle("% Diabetes in Adults") +
+  labs(colour =  "Country", caption = "*Adult for England and Scotland defined as aged >15, for N. Ireland defined as aged >16.") +
+  scale_x_continuous(breaks = pretty_breaks())
+
+
+```
