@@ -643,6 +643,23 @@ data4 |>
   labs(colour =  "Country") +
   scale_x_continuous(breaks = pretty_breaks())
 
+data4 |>
+  filter(variable == "% Current Smoker" & age_group == "16+" & !grepl(group, pattern = "All")) |>
+  mutate(group = case_when(
+    group == "Male" ~ "Men",
+    group == "Female" ~ "Women",
+    TRUE ~ group
+  )) |>
+  ggplot(aes(x = year, y = value, colour = country)) +
+  geom_line() +
+  geom_point() +
+  xlab("Year") +
+  ylab("% Current Smoker") +
+  ggtitle("% Current Smoker in Adults") +
+  labs(colour =  "Country") +
+  scale_x_continuous(breaks = pretty_breaks()) +
+  facet_wrap(~group, scales = "fixed", dir = "v")
+
 ```
 
 ## E-Cigarette
@@ -863,6 +880,21 @@ for(site in unique(cancer_data$`Cancer label`)){
   labs(colour = "Country", linetype = "Sex") +
   theme(legend.position="bottom",legend.box = "vertical") +
   facet_wrap(~ IncMort, scales = "free_y", dir = "v"))
+
+}
+
+for(site in unique(cancer_data$`Cancer label`)){
+  tempdata <- cancer_data[cancer_data$`Cancer label`==site,]
+  minyear <- min(tempdata$Year)
+  maxyear <- max(tempdata$Year)
+  print(ggplot(data = tempdata, aes(x = Year, y = `ASR (World)`, colour = `Country label`)) +
+  geom_line() +
+  geom_point() +
+  xlim(minyear, maxyear) +
+  ggtitle(paste0("Cancer Rates for ", site)) +
+  labs(colour = "Country") +
+  theme(legend.position="bottom",legend.box = "vertical") +
+  facet_grid(IncMort~ Sex))
 
 }
 
