@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Position Paper</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="Position Paper_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Position Paper_files/libs/quarto-html/quarto.js"></script>
+<script src="Position Paper_files/libs/quarto-html/popper.min.js"></script>
+<script src="Position Paper_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Position Paper_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Position Paper_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Position Paper_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Position Paper_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Position Paper_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Position Paper_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#packages" id="toc-packages" class="nav-link active" data-scroll-target="#packages">Packages</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
+  <li><a href="#function---main" id="toc-function---main" class="nav-link" data-scroll-target="#function---main">Function - Main</a></li>
+  <li><a href="#function---england-health-survey" id="toc-function---england-health-survey" class="nav-link" data-scroll-target="#function---england-health-survey">Function - England Health Survey</a></li>
+  <li><a href="#function---alt-england-health-survey-diabetes-data" id="toc-function---alt-england-health-survey-diabetes-data" class="nav-link" data-scroll-target="#function---alt-england-health-survey-diabetes-data">Function - Alt England Health Survey (Diabetes Data)</a></li>
+  <li><a href="#function---scottish-health-survey" id="toc-function---scottish-health-survey" class="nav-link" data-scroll-target="#function---scottish-health-survey">Function - Scottish Health Survey</a></li>
+  <li><a href="#function---national-survey-for-wales" id="toc-function---national-survey-for-wales" class="nav-link" data-scroll-target="#function---national-survey-for-wales">Function - National Survey for Wales</a></li>
+  <li><a href="#function---health-survey-northern-ireland" id="toc-function---health-survey-northern-ireland" class="nav-link" data-scroll-target="#function---health-survey-northern-ireland">Function - Health Survey Northern Ireland</a></li>
+  <li><a href="#grabbing-first-round-of-data" id="toc-grabbing-first-round-of-data" class="nav-link" data-scroll-target="#grabbing-first-round-of-data">Grabbing First Round of Data</a></li>
+  <li><a href="#cleaning-data" id="toc-cleaning-data" class="nav-link" data-scroll-target="#cleaning-data">Cleaning Data</a></li>
+  <li><a href="#overweight" id="toc-overweight" class="nav-link" data-scroll-target="#overweight">Overweight</a></li>
+  <li><a href="#obese" id="toc-obese" class="nav-link" data-scroll-target="#obese">Obese</a></li>
+  <li><a href="#obese-by-age---england" id="toc-obese-by-age---england" class="nav-link" data-scroll-target="#obese-by-age---england">Obese by Age - England</a></li>
+  <li><a href="#alcohol" id="toc-alcohol" class="nav-link" data-scroll-target="#alcohol">Alcohol</a></li>
+  <li><a href="#alcohol---guidelines" id="toc-alcohol---guidelines" class="nav-link" data-scroll-target="#alcohol---guidelines">Alcohol - Guidelines</a></li>
+  <li><a href="#smoking" id="toc-smoking" class="nav-link" data-scroll-target="#smoking">Smoking</a></li>
+  <li><a href="#e-cigarette" id="toc-e-cigarette" class="nav-link" data-scroll-target="#e-cigarette">E-Cigarette</a></li>
+  <li><a href="#activity" id="toc-activity" class="nav-link" data-scroll-target="#activity">Activity</a></li>
+  <li><a href="#age-first-birth-data" id="toc-age-first-birth-data" class="nav-link" data-scroll-target="#age-first-birth-data">Age First Birth Data</a></li>
+  <li><a href="#parity-data" id="toc-parity-data" class="nav-link" data-scroll-target="#parity-data">Parity Data</a></li>
+  <li><a href="#hrt-data" id="toc-hrt-data" class="nav-link" data-scroll-target="#hrt-data">HRT Data</a></li>
+  <li><a href="#cancer-data" id="toc-cancer-data" class="nav-link" data-scroll-target="#cancer-data">Cancer Data</a></li>
+  <li><a href="#diabetes-data" id="toc-diabetes-data" class="nav-link" data-scroll-target="#diabetes-data">Diabetes Data</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Position Paper</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="packages" class="level2">
+<h2 class="anchored" data-anchor-id="packages">Packages</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lapply(paste0('package:', names(sessionInfo()$otherPkgs)), detach, character.only=TRUE, unload=TRUE)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'scales'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:purrr':
+
+    discard</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_knit<span class="sc">$</span><span class="fu">set</span>(<span class="at">root.dir =</span> <span class="st">"C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/Position Paper/Data"</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="function---main" class="level2">
+<h2 class="anchored" data-anchor-id="function---main">Function - Main</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Main function that grabs data depending on source and calls specific cleaning function,</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>data_hub <span class="ot">&lt;-</span> <span class="cf">function</span>(country, rf){</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># country &lt;- "Wales"</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># </span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># rf &lt;- "E_Cigarette"</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  sheets <span class="ot">&lt;-</span> <span class="fu">excel_sheets</span>(<span class="fu">paste0</span>(rf, <span class="st">"_Data.xlsx"</span>))</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  spec_sheets <span class="ot">&lt;-</span> sheets[<span class="fu">grepl</span>(sheets, <span class="at">pattern =</span> country)]</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(country <span class="sc">==</span> <span class="st">"England"</span>){</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(sheet <span class="cf">in</span> spec_sheets){</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>      nocol <span class="ot">&lt;-</span> <span class="fu">ncol</span>(<span class="fu">read_excel</span>(<span class="fu">paste0</span>(rf, <span class="st">"_Data.xlsx"</span>), <span class="at">sheet =</span> sheet))</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>      tempdata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="fu">paste0</span>(rf, <span class="st">"_Data.xlsx"</span>), <span class="at">sheet =</span> sheet, <span class="at">col_types =</span> <span class="fu">c</span>(<span class="st">"text"</span>, <span class="fu">rep</span>(<span class="st">"numeric"</span>, nocol<span class="dv">-1</span>)))</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>      group <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="at">x =</span> sheet, <span class="at">pattern =</span> <span class="st">"England_"</span>, <span class="at">replacement =</span> <span class="st">""</span>)</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>      data[[<span class="fu">paste0</span>(rf, <span class="st">"-"</span>, country, <span class="st">"-"</span>, sheet)]] <span class="ot">&lt;-</span> <span class="fu">pull_HSE_data</span>(<span class="at">data =</span> tempdata, <span class="at">group =</span> group)</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>      data[[<span class="fu">paste0</span>(rf, <span class="st">"-"</span>, country, <span class="st">"-"</span>, sheet)]]<span class="sc">$</span>section <span class="ot">&lt;-</span> rf</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span>(country <span class="sc">==</span> <span class="st">"Scotland"</span>){</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(sheet <span class="cf">in</span> spec_sheets){</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>      tempdata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="fu">paste0</span>(rf, <span class="st">"_Data.xlsx"</span>), <span class="at">sheet =</span> sheet)</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>      group <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="at">x =</span> sheet, <span class="at">pattern =</span> <span class="st">"Scotland_"</span>, <span class="at">replacement =</span> <span class="st">""</span>)</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>      data[[<span class="fu">paste0</span>(rf, <span class="st">"-"</span>, country, <span class="st">"-"</span>, sheet)]] <span class="ot">&lt;-</span> <span class="fu">pull_SHS_data</span>(<span class="at">data =</span> tempdata, <span class="at">group =</span> group)</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>          data[[<span class="fu">paste0</span>(rf, <span class="st">"-"</span>, country, <span class="st">"-"</span>, sheet)]]<span class="sc">$</span>section <span class="ot">&lt;-</span> rf</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span>(country <span class="sc">==</span> <span class="st">"Wales"</span>){</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(sheet <span class="cf">in</span> spec_sheets){</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>      tempdata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="fu">paste0</span>(rf, <span class="st">"_Data.xlsx"</span>), <span class="at">sheet =</span> sheet)</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>      group <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="at">x =</span> sheet, <span class="at">pattern =</span> <span class="st">"Wales_"</span>, <span class="at">replacement =</span> <span class="st">""</span>)</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>      data[[<span class="fu">paste0</span>(rf, <span class="st">"-"</span>, country, <span class="st">"-"</span>, sheet)]] <span class="ot">&lt;-</span> <span class="fu">pull_NSW_data</span>(<span class="at">data =</span> tempdata, <span class="at">group =</span> group)</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>      data[[<span class="fu">paste0</span>(rf, <span class="st">"-"</span>, country, <span class="st">"-"</span>, sheet)]]<span class="sc">$</span>section <span class="ot">&lt;-</span> rf</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span>(country <span class="sc">==</span> <span class="st">"NIreland"</span> <span class="sc">&amp;</span> rf <span class="sc">!=</span> <span class="st">"Activity"</span>){</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(sheet <span class="cf">in</span> spec_sheets){</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>      tempdata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="fu">paste0</span>(rf, <span class="st">"_Data.xlsx"</span>), <span class="at">sheet =</span> sheet)</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>      group <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="at">x =</span> sheet, <span class="at">pattern =</span> <span class="st">"NIreland_"</span>, <span class="at">replacement =</span> <span class="st">""</span>)</span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>      data[[<span class="fu">paste0</span>(rf, <span class="st">"-"</span>, country, <span class="st">"-"</span>, sheet)]] <span class="ot">&lt;-</span> <span class="fu">pull_HSNI_data</span>(<span class="at">data =</span> tempdata, <span class="at">group =</span> group)</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>      data[[<span class="fu">paste0</span>(rf, <span class="st">"-"</span>, country, <span class="st">"-"</span>, sheet)]]<span class="sc">$</span>variable <span class="ot">&lt;-</span> <span class="fu">get_variable_HSNI</span>(rf)</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>      data[[<span class="fu">paste0</span>(rf, <span class="st">"-"</span>, country, <span class="st">"-"</span>, sheet)]]<span class="sc">$</span>section <span class="ot">&lt;-</span> rf</span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Activity data formatted differently than other N. Ireland data so need different formatting.</span></span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span>(country <span class="sc">==</span> <span class="st">"NIreland"</span> <span class="sc">&amp;</span> rf <span class="sc">==</span> <span class="st">"Activity"</span>){</span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>    tempdata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="fu">paste0</span>(rf, <span class="st">"_Data.xlsx"</span>), <span class="at">sheet =</span> <span class="st">"NIreland_Men"</span>)</span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>    group <span class="ot">&lt;-</span> <span class="st">"Men"</span></span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>    data[[<span class="st">"Activity-NIreland-Men"</span>]] <span class="ot">&lt;-</span> <span class="fu">pull_HSNI_data_alt</span>(<span class="at">data =</span> tempdata, <span class="at">group =</span> <span class="st">"Men"</span>)</span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a>    <span class="co"># data[["Activity-NIreland-Men"]]$variable &lt;- get_variable_HSNI(rf)</span></span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a>    data[[<span class="st">"Activity-NIreland-Men"</span>]]<span class="sc">$</span>section <span class="ot">&lt;-</span> rf</span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a>    tempdata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="fu">paste0</span>(rf, <span class="st">"_Data.xlsx"</span>), <span class="at">sheet =</span> <span class="st">"NIreland_Women"</span>)</span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>    group <span class="ot">&lt;-</span> <span class="st">"Women"</span></span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>    data[[<span class="st">"Activity-NIreland-Women"</span>]] <span class="ot">&lt;-</span> <span class="fu">pull_HSNI_data_alt</span>(<span class="at">data =</span> tempdata, <span class="at">group =</span> <span class="st">"Women"</span>)</span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a>    <span class="co"># data[["Activity-NIreland-Women"]]$variable &lt;- get_variable_HSNI(rf)</span></span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a>    data[[<span class="st">"Activity-NIreland-Women"</span>]]<span class="sc">$</span>section <span class="ot">&lt;-</span> rf</span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a>    tempdata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="fu">paste0</span>(rf, <span class="st">"_Data.xlsx"</span>), <span class="at">sheet =</span> <span class="st">"NIreland_All"</span>)</span>
+<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a>    group <span class="ot">&lt;-</span> <span class="st">"All"</span></span>
+<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a>    data[[<span class="st">"Activity-NIreland-All"</span>]] <span class="ot">&lt;-</span> <span class="fu">pull_HSNI_data</span>(<span class="at">data =</span> tempdata, <span class="at">group =</span> <span class="st">"All"</span>)</span>
+<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a>    data[[<span class="st">"Activity-NIreland-All"</span>]]<span class="sc">$</span>variable <span class="ot">&lt;-</span> <span class="fu">get_variable_HSNI</span>(rf)</span>
+<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a>    data[[<span class="st">"Activity-NIreland-All"</span>]]<span class="sc">$</span>section <span class="ot">&lt;-</span> rf</span>
+<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">cat</span>(<span class="st">"ERROR"</span>))</span>
+<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(data)</span>
+<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="function---england-health-survey" class="level2">
+<h2 class="anchored" data-anchor-id="function---england-health-survey">Function - England Health Survey</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pull_HSE_data <span class="ot">&lt;-</span> <span class="cf">function</span>(data, group){</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Edit for activity data format</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is.na</span>(data[<span class="dv">2</span>,<span class="dv">2</span>])){</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    data <span class="ot">&lt;-</span> data[<span class="sc">-</span><span class="dv">1</span>,]</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove weighted bases - can alter to keep</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="st">"Weighted bases"</span> <span class="sc">%in%</span> data<span class="sc">$</span>...<span class="dv">1</span>){</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    data <span class="ot">&lt;-</span> data[<span class="dv">1</span><span class="sc">:</span>(<span class="fu">which</span>(data<span class="sc">$</span><span class="st">`</span><span class="at">...1</span><span class="st">`</span><span class="sc">==</span><span class="st">"Weighted bases"</span>)<span class="sc">-</span><span class="dv">1</span>),]</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span>(<span class="st">"Bases (weighted)"</span> <span class="sc">%in%</span> data<span class="sc">$</span>...<span class="dv">1</span>){</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    data <span class="ot">&lt;-</span> data[<span class="dv">1</span><span class="sc">:</span>(<span class="fu">which</span>(data<span class="sc">$</span><span class="st">`</span><span class="at">...1</span><span class="st">`</span><span class="sc">==</span><span class="st">"Bases (weighted)"</span>)<span class="sc">-</span><span class="dv">1</span>),]</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get cat columns</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  ranges <span class="ot">&lt;-</span> data<span class="sc">$</span>...<span class="dv">1</span>[<span class="fu">is.na</span>(data[,<span class="dv">2</span>])]</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>  rangesdif <span class="ot">&lt;-</span> <span class="fu">diff</span>(<span class="fu">which</span>(<span class="fu">is.na</span>(data[,<span class="dv">2</span>])))</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">max</span>(rangesdif) <span class="sc">!=</span> <span class="fu">min</span>(rangesdif)){</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">cat</span>(<span class="st">"ERROR: Inconsistent Data Format"</span>))</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">age_group =</span> <span class="fu">rep</span>(ranges, <span class="at">each =</span> rangesdif[<span class="dv">1</span>])) <span class="sc">|&gt;</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="st">`</span><span class="at">...1</span><span class="st">`</span> <span class="sc">%in%</span> ranges) <span class="sc">|&gt;</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">colnames</span>(data)[<span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(data)]) <span class="sc">|&gt;</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">year =</span> name, <span class="at">variable =</span> <span class="st">`</span><span class="at">...1</span><span class="st">`</span>)</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>  data[[<span class="st">"country"</span>]] <span class="ot">&lt;-</span> <span class="st">"England"</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>  data[[<span class="st">"group"</span>]] <span class="ot">&lt;-</span> group</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Smoking data for some reason is ordered oppositely, so made quick fix here.</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Not ideal fix but will do for temporary purposes.</span></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="st">"Current cigarette smoker"</span> <span class="sc">%in%</span> data[[<span class="st">"age_group"</span>]] <span class="sc">|</span> <span class="st">"Currently uses e-cigarettes"</span> <span class="sc">%in%</span> data[[<span class="st">"age_group"</span>]] ){</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>    data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>      <span class="fu">rename</span>(<span class="at">temp_age =</span> variable, <span class="at">temp_var =</span> age_group) <span class="sc">|&gt;</span></span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>      <span class="fu">rename</span>(<span class="at">age_group =</span> temp_age, <span class="at">variable =</span> temp_var)</span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(data)</span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="function---alt-england-health-survey-diabetes-data" class="level2">
+<h2 class="anchored" data-anchor-id="function---alt-england-health-survey-diabetes-data">Function - Alt England Health Survey (Diabetes Data)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pull_HSE_diabetes_data <span class="ot">&lt;-</span> <span class="cf">function</span>(data, group){</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="st">"Weighted bases"</span> <span class="sc">%in%</span> data<span class="sc">$</span>...<span class="dv">1</span>){</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    data <span class="ot">&lt;-</span> data[<span class="dv">1</span><span class="sc">:</span>(<span class="fu">which</span>(data<span class="sc">$</span><span class="st">`</span><span class="at">...1</span><span class="st">`</span><span class="sc">==</span><span class="st">"Weighted bases"</span>)<span class="sc">-</span><span class="dv">1</span>),]</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(data) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"age_group"</span>, <span class="fu">colnames</span>(data)[<span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(data)])</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> data[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),]</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">colnames</span>(data)[<span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(data)]) <span class="sc">|&gt;</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">year =</span> name)</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  data[[<span class="st">"country"</span>]] <span class="ot">&lt;-</span> <span class="st">"England"</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  data[[<span class="st">"group"</span>]] <span class="ot">&lt;-</span> group</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  data[[<span class="st">"variable"</span>]] <span class="ot">&lt;-</span> <span class="st">"% Diabetes"</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(data)</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="function---scottish-health-survey" class="level2">
+<h2 class="anchored" data-anchor-id="function---scottish-health-survey">Function - Scottish Health Survey</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pull_SHS_data <span class="ot">&lt;-</span> <span class="cf">function</span>(data, group){</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(group <span class="sc">==</span> <span class="st">"Sex"</span>){</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(<span class="at">year =</span> Year, <span class="at">country =</span> Geographylevel, <span class="at">variable =</span> Categories, </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">group =</span> Sex, <span class="at">value =</span> Percent) <span class="sc">|&gt;</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">age_group =</span> <span class="st">"16+"</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span>(group <span class="sc">==</span> <span class="st">"Age"</span>){</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(<span class="at">year =</span> Year, <span class="at">country =</span> Geographylevel, </span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>             <span class="at">variable =</span> Categories, <span class="at">value =</span> Percent, <span class="at">age_group =</span> Age) <span class="sc">|&gt;</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">group =</span> <span class="st">"All adults"</span>)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(data)</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="function---national-survey-for-wales" class="level2">
+<h2 class="anchored" data-anchor-id="function---national-survey-for-wales">Function - National Survey for Wales</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pull_NSW_data <span class="ot">&lt;-</span> <span class="cf">function</span>(data, group){</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  year_input <span class="ot">&lt;-</span> group</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># data &lt;- read_excel("E_Cigarette_Data.xlsx", sheet = "Wales_2017_2018")</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">t</span>(<span class="fu">as.matrix</span>(data, <span class="at">dimnames =</span> <span class="cn">NULL</span>)))</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames</span>(data) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  data[data<span class="sc">==</span><span class="st">"."</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">V2 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">is.na</span>(V2) <span class="sc">~</span> V1,</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> V2</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    ), <span class="at">V3 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>      <span class="fu">is.na</span>(V3) <span class="sc">~</span> V2,</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> V3</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>    )) <span class="sc">|&gt;</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>V1, <span class="sc">-</span>V2)</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(data) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"age_group"</span>, data[<span class="dv">2</span>,<span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(data)])</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> data[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),]</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"All"</span>, <span class="st">"Men"</span>, <span class="st">"Women"</span>), <span class="at">each =</span> <span class="dv">11</span>),</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>           <span class="at">year =</span> year_input,</span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>           <span class="at">country =</span> <span class="st">"Wales"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">colnames</span>(data)[<span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(data)]) <span class="sc">|&gt;</span></span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">variable =</span> name)</span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(data)</span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="function---health-survey-northern-ireland" class="level2">
+<h2 class="anchored" data-anchor-id="function---health-survey-northern-ireland">Function - Health Survey Northern Ireland</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>pull_HSNI_data <span class="ot">&lt;-</span> <span class="cf">function</span>(data, group){</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># data &lt;- read_excel("Activity_Data.xlsx", sheet = "NIreland_Men")</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># group &lt;- "Males"</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(data)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"age_group"</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span>  data <span class="sc">|&gt;</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">colnames</span>(data)[<span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(data)]) <span class="sc">|&gt;</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">year =</span> name) <span class="sc">|&gt;</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">country =</span> <span class="st">"N. Ireland"</span>,</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> {{group}})</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(data)</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>pull_HSNI_data_alt <span class="ot">&lt;-</span> <span class="cf">function</span>(data, group){</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># data &lt;- read_excel("Activity_Data.xlsx", sheet = "NIreland_Men")</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># group &lt;- "Males"</span></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(data)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"variable"</span></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span>  data <span class="sc">|&gt;</span></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">colnames</span>(data)[<span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(data)]) <span class="sc">|&gt;</span></span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">year =</span> name) <span class="sc">|&gt;</span></span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">country =</span> <span class="st">"N. Ireland"</span>,</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>           <span class="at">group =</span> {{group}},</span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>           <span class="at">age_group =</span> <span class="st">"19+"</span>) <span class="co"># Table specifies 19+ participants.</span></span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(data)</span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>get_variable_HSNI <span class="ot">&lt;-</span> <span class="cf">function</span>(rf){</span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>  section <span class="ot">&lt;-</span> rf</span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a>  variable <span class="ot">&lt;-</span> <span class="fu">case_when</span>(</span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>    section <span class="sc">==</span> <span class="st">"BMI"</span> <span class="sc">~</span> <span class="st">"Overweight"</span>,</span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a>    section <span class="sc">==</span> <span class="st">"Alcohol"</span> <span class="sc">~</span> <span class="st">"Drink"</span>,</span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>    section <span class="sc">==</span> <span class="st">"Smoking"</span> <span class="sc">~</span> <span class="st">"Smoke"</span>,</span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a>    section <span class="sc">==</span> <span class="st">"E_Cigarette"</span> <span class="sc">~</span> <span class="st">"E-Cigarette Use"</span>,</span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a>    section <span class="sc">==</span> <span class="st">"Activity"</span> <span class="sc">~</span> <span class="st">"Meet Recommendations"</span>,</span>
+<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"ERROR"</span></span>
+<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="grabbing-first-round-of-data" class="level2">
+<h2 class="anchored" data-anchor-id="grabbing-first-round-of-data">Grabbing First Round of Data</h2>
+<p>Grabbing data where all sources are similar.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>risk_factors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"BMI"</span>, <span class="st">"Alcohol"</span>, <span class="st">"E_Cigarette"</span>, <span class="st">"Smoking"</span>, <span class="st">"Activity"</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>countries <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"England"</span>, <span class="st">"Scotland"</span>, <span class="st">"Wales"</span>, <span class="st">"NIreland"</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">section =</span> <span class="fu">character</span>(<span class="dv">0</span>), <span class="at">variable =</span> <span class="fu">character</span>(<span class="dv">0</span>), <span class="at">country =</span> <span class="fu">character</span>(<span class="dv">0</span>), <span class="at">year =</span> <span class="fu">numeric</span>(<span class="dv">0</span>),</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">group =</span> <span class="fu">character</span>(<span class="dv">0</span>), <span class="at">age_group =</span> <span class="fu">character</span>(<span class="dv">0</span>), <span class="at">value =</span> <span class="fu">numeric</span>(<span class="dv">0</span>))</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(rf <span class="cf">in</span> risk_factors){</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(country <span class="cf">in</span> countries){</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    new_data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(<span class="fu">data_hub</span>(country, rf))</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    data <span class="ot">&lt;-</span> <span class="fu">rbind</span>(data, new_data)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>New names:
+• `` -&gt; `...1`</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in C31 / R31C3: got '-'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in K31 / R31C11: got '-'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in C40 / R40C3: got '-'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in D40 / R40C4: got '-'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in J40 / R40C10: got '-'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in Q40 / R40C17: got '-'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in F49 / R49C6: got '-'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in H49 / R49C8: got '-'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in I58 / R58C9: got '-'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in L58 / R58C12: got '-'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in C62 / R62C3: got '-'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in F62 / R62C6: got '-'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in H62 / R62C8: got '-'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in N62 / R62C14: got '-'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+• `` -&gt; `...1`</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in E69 / R69C5: got '-'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in F69 / R69C6: got '-'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+New names:
+• `` -&gt; `...1`</code></pre>
+</div>
+</div>
+</section>
+<section id="cleaning-data" class="level2">
+<h2 class="anchored" data-anchor-id="cleaning-data">Cleaning Data</h2>
+<p>Cleaning some specific variables as well as cleaning variable names for variables needed in analysis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">case_when</span>(</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grepl</span>(year, <span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">/"</span>) <span class="sc">~</span> <span class="fu">map_chr</span>(<span class="fu">strsplit</span>(year, <span class="st">"/"</span>), <span class="dv">1</span>),</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grepl</span>(year, <span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">_"</span>) <span class="sc">~</span> <span class="fu">map_chr</span>(<span class="fu">strsplit</span>(year, <span class="st">"_"</span>), <span class="dv">1</span>),</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> year</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  ), <span class="at">year =</span> <span class="fu">as.numeric</span>(year),</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">age_group =</span> <span class="fu">case_when</span>(</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>    age_group <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"All men"</span>, <span class="st">"All women"</span>, <span class="st">"All"</span>, <span class="st">"All adults"</span>, <span class="st">"Total"</span>) <span class="sc">~</span> <span class="st">"16+"</span>,</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grepl</span>(age_group, <span class="at">pattern =</span> <span class="st">"Age "</span>) <span class="sc">~</span> <span class="fu">gsub</span>(age_group, <span class="at">pattern =</span> <span class="st">"Age "</span>, <span class="at">replacement =</span> <span class="st">""</span>),</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grepl</span>(age_group, <span class="at">pattern =</span> <span class="st">" years"</span>) <span class="sc">~</span> <span class="fu">gsub</span>(age_group, <span class="at">pattern =</span> <span class="st">" years"</span>, <span class="at">replacement =</span> <span class="st">""</span>),</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grepl</span>(age_group, <span class="at">pattern =</span> <span class="st">"All adults "</span>) <span class="sc">~</span> <span class="fu">gsub</span>(age_group, <span class="at">pattern =</span> <span class="st">"All adults "</span>, <span class="at">replacement =</span> <span class="st">""</span>),</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grepl</span>(age_group, <span class="at">pattern =</span> <span class="st">"All aged "</span>) <span class="sc">~</span> <span class="fu">gsub</span>(age_group, <span class="at">pattern =</span> <span class="st">"All aged "</span>, <span class="at">replacement =</span> <span class="st">""</span>),</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> age_group</span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>  ), <span class="at">age_group =</span> <span class="fu">case_when</span>(</span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"N. Ireland"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"Alcohol"</span> <span class="sc">~</span> <span class="fu">gsub</span>(age_group, <span class="at">pattern =</span> <span class="st">"16"</span>, <span class="at">replacement =</span> <span class="st">"18"</span>),</span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"N. Ireland"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"Activity"</span> <span class="sc">~</span> <span class="fu">gsub</span>(age_group, <span class="at">pattern =</span> <span class="st">"16"</span>, <span class="at">replacement =</span> <span class="st">"19"</span>),</span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> age_group</span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>  ), <span class="at">variable =</span> <span class="fu">case_when</span>(</span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"England"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"BMI"</span> <span class="sc">&amp;</span> variable <span class="sc">==</span> <span class="st">"Overweight including obese"</span> <span class="sc">&amp;</span> <span class="fu">grepl</span>(group, <span class="at">pattern =</span> <span class="st">"Children"</span>) <span class="sc">~</span> <span class="st">"% Overweight"</span>,</span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"England"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"BMI"</span> <span class="sc">&amp;</span> variable <span class="sc">==</span> <span class="st">"Obese"</span> <span class="sc">&amp;</span> <span class="fu">grepl</span>(group, <span class="at">pattern =</span> <span class="st">"Children"</span>) <span class="sc">~</span> <span class="st">"% Obese"</span>,</span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"England"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"BMI"</span> <span class="sc">&amp;</span> variable <span class="sc">==</span> <span class="st">"% overweight including obese"</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">grepl</span>(group, <span class="at">pattern =</span> <span class="st">"Children"</span>) <span class="sc">~</span> <span class="st">"% Overweight"</span>,</span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"England"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"BMI"</span> <span class="sc">&amp;</span> variable <span class="sc">==</span> <span class="st">"% obese"</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">grepl</span>(group, <span class="at">pattern =</span> <span class="st">"Children"</span>) <span class="sc">~</span> <span class="st">"% Obese"</span>,</span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"England"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"BMI"</span> <span class="sc">&amp;</span> variable <span class="sc">==</span> <span class="st">"% overweight"</span> <span class="sc">~</span> <span class="st">"% overweight not obese"</span>,</span>
+<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"England"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"Alcohol"</span> <span class="sc">&amp;</span> variable <span class="sc">==</span> <span class="st">"% non drinker/did not drink in last 12 months"</span> <span class="sc">~</span> <span class="st">"% Non-Drinker"</span>,</span>
+<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"England"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"Smoking"</span> <span class="sc">&amp;</span> variable <span class="sc">==</span> <span class="st">"Current cigarette smoker"</span> <span class="sc">~</span> <span class="st">"% Current Smoker"</span>,</span>
+<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"England"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"E_Cigarette"</span> <span class="sc">&amp;</span> variable <span class="sc">==</span> <span class="st">"Currently uses e-cigarettes"</span> <span class="sc">~</span> <span class="st">"% Current E-cigarette user"</span>,</span>
+<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"England"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"Activity"</span> <span class="sc">&amp;</span> variable <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Meets aerobic guidelines"</span>, <span class="st">"Meets previous aerobic guidelines"</span>) <span class="sc">~</span> <span class="st">"% Meets guidelines"</span>, <span class="do">## CHECK THIS IS APPROPRIATE</span></span>
+<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"Scotland"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"BMI"</span> <span class="sc">&amp;</span> variable <span class="sc">==</span> <span class="st">"Overweight (including obesity)"</span> <span class="sc">~</span> <span class="st">"% Overweight"</span>,</span>
+<span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"Scotland"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"Alcohol"</span> <span class="sc">&amp;</span> variable <span class="sc">==</span> <span class="st">"Non-drinker"</span> <span class="sc">~</span> <span class="st">"% Non-Drinker"</span>,</span>
+<span id="cb36-31"><a href="#cb36-31" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"Scotland"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"Smoking"</span> <span class="sc">&amp;</span> variable <span class="sc">==</span> <span class="st">"Current smoker"</span> <span class="sc">~</span> <span class="st">"% Current Smoker"</span>,</span>
+<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"Scotland"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"E_Cigarette"</span> <span class="sc">&amp;</span> variable <span class="sc">==</span> <span class="st">"Currently using"</span> <span class="sc">~</span> <span class="st">"% Current E-cigarette user"</span>,</span>
+<span id="cb36-33"><a href="#cb36-33" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"Scotland"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"Activity"</span> <span class="sc">&amp;</span> variable <span class="sc">==</span> <span class="st">"Meets recommendations"</span> <span class="sc">~</span> <span class="st">"% Meets guidelines"</span>,</span>
+<span id="cb36-34"><a href="#cb36-34" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb36-35"><a href="#cb36-35" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"Wales"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"BMI"</span> <span class="sc">&amp;</span> variable <span class="sc">==</span> <span class="st">"BMI 25+ (overweight or obese)"</span> <span class="sc">~</span> <span class="st">"% Overweight"</span>,</span>
+<span id="cb36-36"><a href="#cb36-36" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"Wales"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"BMI"</span> <span class="sc">&amp;</span> variable <span class="sc">==</span> <span class="st">"BMI 30+ (obese)"</span> <span class="sc">~</span> <span class="st">"% Obese"</span>,</span>
+<span id="cb36-37"><a href="#cb36-37" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"Wales"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"Alcohol"</span> <span class="sc">&amp;</span> variable <span class="sc">==</span> <span class="st">"Average weekly alcohol consumption - none (may include some people who do sometimes drink)"</span> <span class="sc">~</span> <span class="st">"% Non-Drinker"</span>,</span>
+<span id="cb36-38"><a href="#cb36-38" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"Wales"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"Smoking"</span> <span class="sc">&amp;</span> variable <span class="sc">==</span> <span class="st">"Smoker"</span> <span class="sc">~</span> <span class="st">"% Current Smoker"</span>,</span>
+<span id="cb36-39"><a href="#cb36-39" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"Wales"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"E_Cigarette"</span> <span class="sc">&amp;</span> variable <span class="sc">==</span> <span class="st">"E-cigarette user"</span> <span class="sc">~</span> <span class="st">"% Current E-cigarette user"</span>,</span>
+<span id="cb36-40"><a href="#cb36-40" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"Wales"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"Activity"</span> <span class="sc">&amp;</span> variable <span class="sc">==</span> <span class="st">"Active at least 150 minutes in previous week"</span> <span class="sc">~</span> <span class="st">"% Meets guidelines"</span>,</span>
+<span id="cb36-41"><a href="#cb36-41" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb36-42"><a href="#cb36-42" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"N. Ireland"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"BMI"</span> <span class="sc">&amp;</span> variable <span class="sc">==</span> <span class="st">"Overweight"</span> <span class="sc">~</span> <span class="st">"% Overweight"</span>,</span>
+<span id="cb36-43"><a href="#cb36-43" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"N. Ireland"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"Alcohol"</span> <span class="sc">&amp;</span> variable <span class="sc">==</span> <span class="st">"Drink"</span> <span class="sc">~</span> <span class="st">"% Non-Drinker"</span>, <span class="co"># </span><span class="al">NOTE</span><span class="co">: This is not technically accurate but next code block rectifies.</span></span>
+<span id="cb36-44"><a href="#cb36-44" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"N. Ireland"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"Smoking"</span> <span class="sc">&amp;</span> variable <span class="sc">==</span> <span class="st">"Smoke"</span> <span class="sc">~</span> <span class="st">"% Current Smoker"</span>,</span>
+<span id="cb36-45"><a href="#cb36-45" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"N. Ireland"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"E_Cigarette"</span> <span class="sc">&amp;</span> variable <span class="sc">==</span> <span class="st">"E-Cigarette Use"</span> <span class="sc">~</span> <span class="st">"% Current E-cigarette user"</span>,</span>
+<span id="cb36-46"><a href="#cb36-46" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"N. Ireland"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"Activity"</span> <span class="sc">&amp;</span> variable <span class="sc">==</span> <span class="st">"Meet Recommendations"</span> <span class="sc">~</span> <span class="st">"% Meets guidelines"</span>,</span>
+<span id="cb36-47"><a href="#cb36-47" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb36-48"><a href="#cb36-48" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> variable</span>
+<span id="cb36-49"><a href="#cb36-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-50"><a href="#cb36-50" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb36-51"><a href="#cb36-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-52"><a href="#cb36-52" aria-hidden="true" tabindex="-1"></a>data3 <span class="ot">&lt;-</span>  data2 <span class="sc">|&gt;</span></span>
+<span id="cb36-53"><a href="#cb36-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">as.numeric</span>(value),</span>
+<span id="cb36-54"><a href="#cb36-54" aria-hidden="true" tabindex="-1"></a>         <span class="at">value =</span> <span class="fu">case_when</span>(</span>
+<span id="cb36-55"><a href="#cb36-55" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"N. Ireland"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"Alcohol"</span> <span class="sc">&amp;</span> variable <span class="sc">==</span> <span class="st">"% Non-Drinker"</span> <span class="sc">~</span> <span class="dv">1</span> <span class="sc">-</span> value,</span>
+<span id="cb36-56"><a href="#cb36-56" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> value</span>
+<span id="cb36-57"><a href="#cb36-57" aria-hidden="true" tabindex="-1"></a>  ), <span class="at">value =</span> <span class="fu">case_when</span>(</span>
+<span id="cb36-58"><a href="#cb36-58" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"N. Ireland"</span> <span class="sc">~</span> <span class="dv">100</span> <span class="sc">*</span> value,</span>
+<span id="cb36-59"><a href="#cb36-59" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> value</span>
+<span id="cb36-60"><a href="#cb36-60" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb36-61"><a href="#cb36-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-62"><a href="#cb36-62" aria-hidden="true" tabindex="-1"></a><span class="do">## Need to group England overweight values together.</span></span>
+<span id="cb36-63"><a href="#cb36-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-64"><a href="#cb36-64" aria-hidden="true" tabindex="-1"></a><span class="co"># england_overweight &lt;- data3 |&gt;</span></span>
+<span id="cb36-65"><a href="#cb36-65" aria-hidden="true" tabindex="-1"></a><span class="co">#   filter(country == "England" &amp; section == "BMI" &amp; !grepl(group, pattern = "Children")) |&gt;</span></span>
+<span id="cb36-66"><a href="#cb36-66" aria-hidden="true" tabindex="-1"></a><span class="co">#   pivot_wider(names_from = variable, values_from = value) |&gt;</span></span>
+<span id="cb36-67"><a href="#cb36-67" aria-hidden="true" tabindex="-1"></a><span class="co">#   mutate(`% Overweight` = `% overweight including obese`) |&gt;</span></span>
+<span id="cb36-68"><a href="#cb36-68" aria-hidden="true" tabindex="-1"></a><span class="co">#   pivot_longer(cols = c(unique(data3$variable[data3$country == "England" &amp; data3$section == "BMI" &amp; !grepl(data3$group, pattern = "Children")]), "% Overweight")) |&gt;</span></span>
+<span id="cb36-69"><a href="#cb36-69" aria-hidden="true" tabindex="-1"></a><span class="co">#   rename(variable = name)</span></span>
+<span id="cb36-70"><a href="#cb36-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-71"><a href="#cb36-71" aria-hidden="true" tabindex="-1"></a><span class="co"># data4 &lt;- data3 |&gt;</span></span>
+<span id="cb36-72"><a href="#cb36-72" aria-hidden="true" tabindex="-1"></a><span class="co">#   # filter(!(country == "England" &amp; section == "BMI" &amp; !grepl(group, pattern = "Children"))) |&gt;</span></span>
+<span id="cb36-73"><a href="#cb36-73" aria-hidden="true" tabindex="-1"></a><span class="co">#   mutate(variable = case_when(</span></span>
+<span id="cb36-74"><a href="#cb36-74" aria-hidden="true" tabindex="-1"></a><span class="co">#     country == "England" &amp; section == "BMI" &amp; variable == "Overweight including obese" &amp; grepl(group, pattern = "Children") ~ "% Overweight",</span></span>
+<span id="cb36-75"><a href="#cb36-75" aria-hidden="true" tabindex="-1"></a><span class="co">#     country == "England" &amp; section == "BMI" &amp; variable == "% overweight including obese" &amp; !grepl(group, pattern = "Children") ~ "% Overweight",</span></span>
+<span id="cb36-76"><a href="#cb36-76" aria-hidden="true" tabindex="-1"></a><span class="co">#     TRUE ~ variable</span></span>
+<span id="cb36-77"><a href="#cb36-77" aria-hidden="true" tabindex="-1"></a><span class="co">#   )) # |&gt;</span></span>
+<span id="cb36-78"><a href="#cb36-78" aria-hidden="true" tabindex="-1"></a>  <span class="co"># rbind(england_overweight)</span></span>
+<span id="cb36-79"><a href="#cb36-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-80"><a href="#cb36-80" aria-hidden="true" tabindex="-1"></a>data4 <span class="ot">&lt;-</span> data3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="overweight" class="level2">
+<h2 class="anchored" data-anchor-id="overweight">Overweight</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>data4 <span class="sc">|&gt;</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(variable <span class="sc">==</span> <span class="st">"% Overweight"</span> <span class="sc">&amp;</span> age_group <span class="sc">==</span> <span class="st">"16+"</span> <span class="sc">&amp;</span> <span class="fu">grepl</span>(group, <span class="at">pattern =</span> <span class="st">"All"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> value, <span class="at">colour =</span> country)) <span class="sc">+</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Year"</span>) <span class="sc">+</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"% Overweight"</span>) <span class="sc">+</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"% Overweight in Adults"</span>) <span class="sc">+</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">colour =</span>  <span class="st">"Country"</span>) <span class="sc">+</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">pretty_breaks</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="obese" class="level2">
+<h2 class="anchored" data-anchor-id="obese">Obese</h2>
+<p>Obese data for England and Wales already in data. Need to download data for N. Ireland and Scotland.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>obese_data <span class="ot">&lt;-</span> data4</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>obese_sheets <span class="ot">&lt;-</span> <span class="fu">excel_sheets</span>(<span class="st">"BMI_Obese_Data.xlsx"</span>)</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>scotland_sheets <span class="ot">&lt;-</span> obese_sheets[<span class="fu">grepl</span>(obese_sheets, <span class="at">pattern =</span> <span class="st">"Scotland"</span>)]</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(sheet <span class="cf">in</span> scotland_sheets){</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>  tempdata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"BMI_Obese_Data.xlsx"</span>, <span class="at">sheet =</span> sheet)</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>  group <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="at">x =</span> sheet, <span class="at">pattern =</span> <span class="st">"Scotland_"</span>, <span class="at">replacement =</span> <span class="st">""</span>)</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>  tempdata <span class="ot">&lt;-</span> <span class="fu">pull_SHS_data</span>(<span class="at">data =</span> tempdata, <span class="at">group =</span> group)</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>  tempdata<span class="sc">$</span>section <span class="ot">&lt;-</span> <span class="st">"BMI"</span></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>  tempdata<span class="sc">$</span>variable <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(tempdata<span class="sc">$</span>variable <span class="sc">==</span> <span class="st">"Obesity"</span>, <span class="st">"% Obese"</span>, <span class="st">"% Non-Obese"</span>)</span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>  obese_data <span class="ot">&lt;-</span> <span class="fu">rbind</span>(obese_data, tempdata)</span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>nireland_sheets <span class="ot">&lt;-</span> obese_sheets[<span class="fu">grepl</span>(obese_sheets, <span class="at">pattern =</span> <span class="st">"NIreland"</span>)]</span>
+<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(sheet <span class="cf">in</span> nireland_sheets){</span>
+<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a>  tempdata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="fu">paste0</span>(<span class="st">"BMI_Obese_Data.xlsx"</span>), <span class="at">sheet =</span> sheet)</span>
+<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a>  group <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="at">x =</span> sheet, <span class="at">pattern =</span> <span class="st">"NIreland_"</span>, <span class="at">replacement =</span> <span class="st">""</span>)</span>
+<span id="cb38-24"><a href="#cb38-24" aria-hidden="true" tabindex="-1"></a>  tempdata <span class="ot">&lt;-</span> <span class="fu">pull_HSNI_data</span>(<span class="at">data =</span> tempdata, <span class="at">group =</span> group)</span>
+<span id="cb38-25"><a href="#cb38-25" aria-hidden="true" tabindex="-1"></a>  tempdata<span class="sc">$</span>variable <span class="ot">&lt;-</span> <span class="st">"% Obese"</span></span>
+<span id="cb38-26"><a href="#cb38-26" aria-hidden="true" tabindex="-1"></a>  tempdata<span class="sc">$</span>section <span class="ot">&lt;-</span> <span class="st">"BMI"</span></span>
+<span id="cb38-27"><a href="#cb38-27" aria-hidden="true" tabindex="-1"></a>  tempdata<span class="sc">$</span>value <span class="ot">&lt;-</span> <span class="dv">100</span><span class="sc">*</span>tempdata<span class="sc">$</span>value</span>
+<span id="cb38-28"><a href="#cb38-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb38-29"><a href="#cb38-29" aria-hidden="true" tabindex="-1"></a>  obese_data <span class="ot">&lt;-</span> <span class="fu">rbind</span>(obese_data, tempdata)</span>
+<span id="cb38-30"><a href="#cb38-30" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb38-31"><a href="#cb38-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-32"><a href="#cb38-32" aria-hidden="true" tabindex="-1"></a>obese_data <span class="sc">|&gt;</span></span>
+<span id="cb38-33"><a href="#cb38-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(variable <span class="sc">==</span> <span class="st">"% Obese"</span> <span class="sc">&amp;</span> age_group <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"16+"</span>, <span class="st">"Total"</span>) <span class="sc">&amp;</span> <span class="fu">grepl</span>(group, <span class="at">pattern =</span> <span class="st">"All"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb38-34"><a href="#cb38-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">case_when</span>(</span>
+<span id="cb38-35"><a href="#cb38-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">grepl</span>(year, <span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">/"</span>) <span class="sc">~</span> <span class="fu">as.numeric</span>(<span class="fu">map_chr</span>(<span class="fu">strsplit</span>(year, <span class="st">"/"</span>), <span class="dv">1</span>)),</span>
+<span id="cb38-36"><a href="#cb38-36" aria-hidden="true" tabindex="-1"></a>  <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.numeric</span>(year)</span>
+<span id="cb38-37"><a href="#cb38-37" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">|&gt;</span></span>
+<span id="cb38-38"><a href="#cb38-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> value, <span class="at">colour =</span> country)) <span class="sc">+</span></span>
+<span id="cb38-39"><a href="#cb38-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb38-40"><a href="#cb38-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb38-41"><a href="#cb38-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Year"</span>) <span class="sc">+</span></span>
+<span id="cb38-42"><a href="#cb38-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"% Obese"</span>) <span class="sc">+</span></span>
+<span id="cb38-43"><a href="#cb38-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"% Obese in Adults"</span>) <span class="sc">+</span></span>
+<span id="cb38-44"><a href="#cb38-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">colour =</span>  <span class="st">"Country"</span>) <span class="sc">+</span></span>
+<span id="cb38-45"><a href="#cb38-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">pretty_breaks</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `year = case_when(...)`.
+Caused by warning:
+! NAs introduced by coercion</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="obese-by-age---england" class="level2">
+<h2 class="anchored" data-anchor-id="obese-by-age---england">Obese by Age - England</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Need to use weightings from the data set to calculate % Obese for 25+ age range.</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>weightings <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"BMI_Data.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"England_All"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>New names:
+• `` -&gt; `...1`</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>top_row <span class="ot">&lt;-</span> <span class="fu">which</span>(weightings<span class="sc">$</span>...<span class="dv">1</span> <span class="sc">==</span> <span class="st">"Weighted bases"</span>)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>weightings <span class="ot">&lt;-</span>weightings[(top_row<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span><span class="fu">nrow</span>(weightings),]</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>weightings <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(weightings)</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>weightings <span class="ot">&lt;-</span> weightings <span class="sc">|&gt;</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>...<span class="dv">1</span> <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"All adults"</span>, <span class="st">"16-24 years"</span>))</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(weightings)){</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>  weightings[,i] <span class="ot">&lt;-</span> weightings[,i]<span class="sc">/</span><span class="fu">sum</span>(weightings[,i])</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>weightings <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">t</span>(<span class="fu">as.matrix</span>(weightings)))</span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>weightings <span class="ot">&lt;-</span> weightings <span class="sc">|&gt;</span></span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Year =</span> <span class="fu">rownames</span>(weightings))</span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(weightings) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(weightings) <span class="ot">&lt;-</span> weightings[<span class="dv">1</span>,]</span>
+<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a>weightings <span class="ot">&lt;-</span> weightings[<span class="sc">-</span><span class="dv">1</span>,]</span>
+<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a>weightings <span class="ot">&lt;-</span> weightings <span class="sc">|&gt;</span></span>
+<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">year =</span> ...<span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb42-25"><a href="#cb42-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sapply</span>(as.numeric)</span>
+<span id="cb42-26"><a href="#cb42-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-27"><a href="#cb42-27" aria-hidden="true" tabindex="-1"></a>adult_bmi_england <span class="ot">&lt;-</span> data4 <span class="sc">|&gt;</span></span>
+<span id="cb42-28"><a href="#cb42-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"England"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"BMI"</span> <span class="sc">&amp;</span> variable <span class="sc">==</span> <span class="st">"% Obese"</span> <span class="sc">&amp;</span> group <span class="sc">==</span> <span class="st">"All"</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">grepl</span>(age_group, <span class="at">pattern =</span> <span class="st">"16"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb42-29"><a href="#cb42-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> age_group, <span class="at">values_from =</span> value) <span class="sc">|&gt;</span></span>
+<span id="cb42-30"><a href="#cb42-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">merge</span>(weightings, <span class="at">by =</span> <span class="st">"year"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb42-31"><a href="#cb42-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">25+</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">25-34</span><span class="st">`</span><span class="sc">*</span><span class="st">`</span><span class="at">25-34 years</span><span class="st">`</span> <span class="sc">+</span> <span class="st">`</span><span class="at">35-44</span><span class="st">`</span><span class="sc">*</span><span class="st">`</span><span class="at">35-44 years</span><span class="st">`</span> <span class="sc">+</span> <span class="st">`</span><span class="at">45-54</span><span class="st">`</span><span class="sc">*</span><span class="st">`</span><span class="at">45-54 years</span><span class="st">`</span> <span class="sc">+</span> <span class="st">`</span><span class="at">55-64</span><span class="st">`</span><span class="sc">*</span><span class="st">`</span><span class="at">55-64 years</span><span class="st">`</span> <span class="sc">+</span> <span class="st">`</span><span class="at">65-74</span><span class="st">`</span><span class="sc">*</span><span class="st">`</span><span class="at">65-74 years</span><span class="st">`</span> <span class="sc">+</span> <span class="st">`</span><span class="at">75+</span><span class="st">`</span><span class="sc">*</span><span class="st">`</span><span class="at">75+ years</span><span class="st">`</span>) <span class="sc">|&gt;</span></span>
+<span id="cb42-32"><a href="#cb42-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, variable, country, group, section, <span class="st">`</span><span class="at">25+</span><span class="st">`</span>) <span class="sc">|&gt;</span></span>
+<span id="cb42-33"><a href="#cb42-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="st">`</span><span class="at">25+</span><span class="st">`</span>) <span class="sc">|&gt;</span></span>
+<span id="cb42-34"><a href="#cb42-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">age_group =</span> name)</span>
+<span id="cb42-35"><a href="#cb42-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-36"><a href="#cb42-36" aria-hidden="true" tabindex="-1"></a>age_bmi_england <span class="ot">&lt;-</span> data4 <span class="sc">|&gt;</span></span>
+<span id="cb42-37"><a href="#cb42-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"England"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"BMI"</span> <span class="sc">&amp;</span> variable <span class="sc">==</span> <span class="st">"% Obese"</span> <span class="sc">&amp;</span> group <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"All"</span>, <span class="st">"Children_All"</span>) <span class="sc">&amp;</span> age_group <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"16-24"</span>, <span class="st">"2-15"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb42-38"><a href="#cb42-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(adult_bmi_england) </span>
+<span id="cb42-39"><a href="#cb42-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-40"><a href="#cb42-40" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> age_bmi_england, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> value, <span class="at">colour =</span> age_group)) <span class="sc">+</span></span>
+<span id="cb42-41"><a href="#cb42-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb42-42"><a href="#cb42-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb42-43"><a href="#cb42-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Year"</span>) <span class="sc">+</span></span>
+<span id="cb42-44"><a href="#cb42-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"% Obese"</span>) <span class="sc">+</span></span>
+<span id="cb42-45"><a href="#cb42-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"% Obese in England"</span>) <span class="sc">+</span></span>
+<span id="cb42-46"><a href="#cb42-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">colour =</span>  <span class="st">"Age Group"</span>, <span class="at">caption =</span> <span class="st">"*Obese for those aged &gt;15 as BMI &gt; 30</span><span class="sc">\n</span><span class="st">Obese for those aged &lt;= 15 as at or above the 95th BMI percentile in the UK"</span>) <span class="sc">+</span></span>
+<span id="cb42-47"><a href="#cb42-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">pretty_breaks</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="alcohol" class="level2">
+<h2 class="anchored" data-anchor-id="alcohol">Alcohol</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>data4 <span class="sc">|&gt;</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(variable <span class="sc">==</span> <span class="st">"% Non-Drinker"</span> <span class="sc">&amp;</span> age_group <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"16+"</span>, <span class="st">"18+"</span>) <span class="sc">&amp;</span> <span class="fu">grepl</span>(group, <span class="at">pattern =</span> <span class="st">"All"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="dv">100</span><span class="sc">-</span> value) <span class="sc">|&gt;</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> value, <span class="at">colour =</span> country)) <span class="sc">+</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Year"</span>) <span class="sc">+</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"% Current Drinker"</span>) <span class="sc">+</span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"% Current Drinker in Adults*"</span>) <span class="sc">+</span></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">colour =</span>  <span class="st">"Country"</span>, <span class="at">caption =</span> <span class="st">"*Adult for England, Scotland and Wales defined as 16+, and for N. Ireland as 18+"</span>) <span class="sc">+</span></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">pretty_breaks</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="alcohol---guidelines" class="level2">
+<h2 class="anchored" data-anchor-id="alcohol---guidelines">Alcohol - Guidelines</h2>
+<p>Needed to get guidelines data for N. Ireland seperately, as well as combine variables for England data to get a Drinking over Guidelines value.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>guidelines_england <span class="ot">&lt;-</span> data4 <span class="sc">|&gt;</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"England"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"Alcohol"</span><span class="sc">&amp;</span> <span class="fu">grepl</span>(group, <span class="at">pattern =</span> <span class="st">"All"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> variable, <span class="at">values_from =</span> value) <span class="sc">|&gt;</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">% Over Guidelines</span><span class="st">`</span> <span class="ot">=</span> <span class="dv">100</span> <span class="sc">-</span> (<span class="st">`</span><span class="at">% Non-Drinker</span><span class="st">`</span> <span class="sc">+</span> <span class="st">`</span><span class="at">% up to 14 units per week</span><span class="st">`</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="fu">unique</span>(data4<span class="sc">$</span>variable[data4<span class="sc">$</span>country <span class="sc">==</span> <span class="st">"England"</span> <span class="sc">&amp;</span> data4<span class="sc">$</span>section <span class="sc">==</span> <span class="st">"Alcohol"</span> <span class="sc">&amp;</span> <span class="fu">grepl</span>(data4<span class="sc">$</span>group, <span class="at">pattern =</span> <span class="st">"All"</span>)]), <span class="st">"% Over Guidelines"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">variable =</span> name)</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>alcohol_data <span class="ot">&lt;-</span> data4 <span class="sc">|&gt;</span></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(country <span class="sc">==</span> <span class="st">"England"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"Alcohol"</span><span class="sc">&amp;</span> <span class="fu">grepl</span>(group, <span class="at">pattern =</span> <span class="st">"All"</span>))) <span class="sc">|&gt;</span></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(guidelines_england) <span class="sc">|&gt;</span></span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">variable =</span> <span class="fu">case_when</span>(</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"Scotland"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"Alcohol"</span> <span class="sc">&amp;</span> variable <span class="sc">==</span> <span class="st">"Hazardous/Harmful drinker"</span> <span class="sc">~</span> <span class="st">"% Over Guidelines"</span>,</span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>    country <span class="sc">==</span> <span class="st">"Wales"</span> <span class="sc">&amp;</span> section <span class="sc">==</span> <span class="st">"Alcohol"</span> <span class="sc">&amp;</span> variable <span class="sc">==</span> <span class="st">"Average weekly alcohol consumption - above 14 units (over guidelines)"</span> <span class="sc">~</span> <span class="st">"% Over Guidelines"</span>,</span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> variable</span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>new_alcohol_sheets <span class="ot">&lt;-</span> <span class="fu">excel_sheets</span>(<span class="st">"Alcohol_Data_Alt.xlsx"</span>)</span>
+<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(sheet <span class="cf">in</span> new_alcohol_sheets){</span>
+<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a>  tempdata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="fu">paste0</span>(<span class="st">"Alcohol_Data_Alt.xlsx"</span>), <span class="at">sheet =</span> sheet)</span>
+<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a>  group <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="at">x =</span> sheet, <span class="at">pattern =</span> <span class="st">"NIreland_"</span>, <span class="at">replacement =</span> <span class="st">""</span>)</span>
+<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a>  tempdata <span class="ot">&lt;-</span> <span class="fu">pull_HSNI_data</span>(<span class="at">data =</span> tempdata, <span class="at">group =</span> group)</span>
+<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a>  tempdata<span class="sc">$</span>variable <span class="ot">&lt;-</span> <span class="st">"% Over Guidelines"</span></span>
+<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a>  tempdata<span class="sc">$</span>section <span class="ot">&lt;-</span> <span class="st">"Alcohol"</span></span>
+<span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a>  tempdata<span class="sc">$</span>value <span class="ot">&lt;-</span> <span class="dv">100</span><span class="sc">*</span>tempdata<span class="sc">$</span>value</span>
+<span id="cb44-25"><a href="#cb44-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb44-26"><a href="#cb44-26" aria-hidden="true" tabindex="-1"></a>  alcohol_data <span class="ot">&lt;-</span> <span class="fu">rbind</span>(alcohol_data, tempdata)</span>
+<span id="cb44-27"><a href="#cb44-27" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb44-28"><a href="#cb44-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-29"><a href="#cb44-29" aria-hidden="true" tabindex="-1"></a>alcohol_data <span class="sc">|&gt;</span></span>
+<span id="cb44-30"><a href="#cb44-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(variable <span class="sc">==</span> <span class="st">"% Over Guidelines"</span> <span class="sc">&amp;</span> group <span class="sc">==</span> <span class="st">"All"</span> <span class="sc">&amp;</span> age_group <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"16+"</span>, <span class="st">"Total"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb44-31"><a href="#cb44-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">case_when</span>(</span>
+<span id="cb44-32"><a href="#cb44-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grepl</span>(year, <span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">/"</span>) <span class="sc">~</span> <span class="fu">map_chr</span>(<span class="fu">strsplit</span>(year, <span class="st">"/"</span>), <span class="dv">1</span>),</span>
+<span id="cb44-33"><a href="#cb44-33" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> year</span>
+<span id="cb44-34"><a href="#cb44-34" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">|&gt;</span></span>
+<span id="cb44-35"><a href="#cb44-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.numeric</span>(year), <span class="at">y =</span> value, <span class="at">colour =</span> country)) <span class="sc">+</span></span>
+<span id="cb44-36"><a href="#cb44-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb44-37"><a href="#cb44-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb44-38"><a href="#cb44-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Year"</span>) <span class="sc">+</span></span>
+<span id="cb44-39"><a href="#cb44-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"% Over Alcohol Guidelines"</span>) <span class="sc">+</span></span>
+<span id="cb44-40"><a href="#cb44-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"% Over Alcohol Guidelines in Adults"</span>) <span class="sc">+</span></span>
+<span id="cb44-41"><a href="#cb44-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">colour =</span>  <span class="st">"Country"</span>) <span class="sc">+</span></span>
+<span id="cb44-42"><a href="#cb44-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">pretty_breaks</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="smoking" class="level2">
+<h2 class="anchored" data-anchor-id="smoking">Smoking</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>data4 <span class="sc">|&gt;</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(variable <span class="sc">==</span> <span class="st">"% Current Smoker"</span> <span class="sc">&amp;</span> age_group <span class="sc">==</span> <span class="st">"16+"</span> <span class="sc">&amp;</span> <span class="fu">grepl</span>(group, <span class="at">pattern =</span> <span class="st">"All"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> value, <span class="at">colour =</span> country)) <span class="sc">+</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Year"</span>) <span class="sc">+</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"% Current Smoker"</span>) <span class="sc">+</span></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"% Current Smoker in Adults"</span>) <span class="sc">+</span></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">colour =</span>  <span class="st">"Country"</span>) <span class="sc">+</span></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">pretty_breaks</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>data4 <span class="sc">|&gt;</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(variable <span class="sc">==</span> <span class="st">"% Current Smoker"</span> <span class="sc">&amp;</span> age_group <span class="sc">==</span> <span class="st">"16+"</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">grepl</span>(group, <span class="at">pattern =</span> <span class="st">"All"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">case_when</span>(</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    group <span class="sc">==</span> <span class="st">"Male"</span> <span class="sc">~</span> <span class="st">"Men"</span>,</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    group <span class="sc">==</span> <span class="st">"Female"</span> <span class="sc">~</span> <span class="st">"Women"</span>,</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> group</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">|&gt;</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> value, <span class="at">colour =</span> country, <span class="at">linetype =</span> group)) <span class="sc">+</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Year"</span>) <span class="sc">+</span></span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"% Current Smoker"</span>) <span class="sc">+</span></span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"% Current Smoker in Adults"</span>) <span class="sc">+</span></span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">colour =</span>  <span class="st">"Country"</span>) <span class="sc">+</span></span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">pretty_breaks</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-15-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="e-cigarette" class="level2">
+<h2 class="anchored" data-anchor-id="e-cigarette">E-Cigarette</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>data4 <span class="sc">|&gt;</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(variable <span class="sc">==</span> <span class="st">"% Current E-cigarette user"</span> <span class="sc">&amp;</span> age_group <span class="sc">==</span> <span class="st">"16+"</span> <span class="sc">&amp;</span> <span class="fu">grepl</span>(group, <span class="at">pattern =</span> <span class="st">"All"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> value, <span class="at">colour =</span> country)) <span class="sc">+</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Year"</span>) <span class="sc">+</span></span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"% Current E-Cigarette Users"</span>) <span class="sc">+</span></span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"% Current E-Cigarette Users in Adults"</span>) <span class="sc">+</span></span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">colour =</span>  <span class="st">"Country"</span>) <span class="sc">+</span></span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">pretty_breaks</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">&lt;-</span> <span class="fu">brewer.pal</span>(<span class="at">n =</span> <span class="dv">8</span>, <span class="at">name =</span> <span class="st">"Greens"</span>)[<span class="dv">5</span><span class="sc">:</span><span class="dv">8</span>]</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>data4 <span class="sc">|&gt;</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(variable <span class="sc">==</span> <span class="st">"% Current E-cigarette user"</span> <span class="sc">&amp;</span> <span class="fu">grepl</span>(group, <span class="at">pattern =</span> <span class="st">"All"</span>) <span class="sc">&amp;</span> country <span class="sc">==</span> <span class="st">"England"</span> <span class="sc">&amp;</span> age_group <span class="sc">!=</span> <span class="st">"16+"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_start =</span> <span class="fu">as.numeric</span>(<span class="fu">substr</span>(age_group, <span class="dv">1</span>, <span class="dv">2</span>)), </span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">age_end =</span> <span class="fu">ifelse</span>(<span class="fu">grepl</span>(age_group, <span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">+"</span>), age_start, <span class="fu">as.numeric</span>(<span class="fu">substr</span>(age_group, <span class="dv">4</span>, <span class="dv">5</span>))),</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">age_use =</span> <span class="fl">0.5</span><span class="sc">*</span>(age_start <span class="sc">+</span> age_end)) <span class="sc">|&gt;</span></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age_use, <span class="at">y =</span> value, <span class="at">colour =</span> <span class="fu">as.factor</span>(year))) <span class="sc">+</span></span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Age"</span>) <span class="sc">+</span></span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"% Current E-Cigarette Users"</span>) <span class="sc">+</span></span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"% Current E-Cigarette Users in the UK"</span>) <span class="sc">+</span></span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">colour =</span>  <span class="st">"Country"</span>) <span class="sc">+</span></span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">pretty_breaks</span>()) <span class="sc">+</span></span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> cols)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-16-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="activity" class="level2">
+<h2 class="anchored" data-anchor-id="activity">Activity</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>data4 <span class="sc">|&gt;</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(variable <span class="sc">==</span> <span class="st">"% Meets guidelines"</span> <span class="sc">&amp;</span> age_group <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"16+"</span>) <span class="sc">&amp;</span> <span class="fu">grepl</span>(group, <span class="at">pattern =</span> <span class="st">"All"</span>) <span class="sc">|</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>           variable <span class="sc">==</span> <span class="st">"% Meets guidelines"</span> <span class="sc">&amp;</span> age_group <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"19+"</span>) <span class="sc">&amp;</span> <span class="fu">grepl</span>(group, <span class="at">pattern =</span> <span class="st">"All"</span>) <span class="sc">&amp;</span> country <span class="sc">==</span> <span class="st">"N. Ireland"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> value, <span class="at">colour =</span> country)) <span class="sc">+</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Year"</span>) <span class="sc">+</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"% Meets Activity Guidelines"</span>) <span class="sc">+</span></span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"% Meets Activity Guidelines in Adults*"</span>) <span class="sc">+</span></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">colour =</span>  <span class="st">"Country"</span>, <span class="at">caption =</span> <span class="st">"*Adult for England, Scotland and Wales defined as 16+, and for N. Ireland as 19+</span><span class="sc">\n</span><span class="st">Activity guidelines are &gt;150 mins Moderate Physical Activity"</span>) <span class="sc">+</span></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">pretty_breaks</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="age-first-birth-data" class="level2">
+<h2 class="anchored" data-anchor-id="age-first-birth-data">Age First Birth Data</h2>
+<p>For this variable and all further, no data is contained in the pre sorted data, so all sourced from new sources. As with before, these sources have been documented in the README file.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>afb_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"Age_First_Birth_Data.xlsx"</span>)[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">13</span><span class="sc">:</span><span class="dv">31</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>New names:
+• `` -&gt; `...2`
+• `` -&gt; `...3`
+• `` -&gt; `...4`
+• `` -&gt; `...5`
+• `` -&gt; `...6`
+• `` -&gt; `...7`
+• `` -&gt; `...8`
+• `` -&gt; `...9`
+• `` -&gt; `...10`
+• `` -&gt; `...11`
+• `` -&gt; `...12`
+• `` -&gt; `...13`
+• `` -&gt; `...14`
+• `` -&gt; `...15`
+• `` -&gt; `...16`
+• `` -&gt; `...17`
+• `` -&gt; `...18`
+• `` -&gt; `...19`
+• `` -&gt; `...20`
+• `` -&gt; `...21`
+• `` -&gt; `...22`
+• `` -&gt; `...23`
+• `` -&gt; `...24`
+• `` -&gt; `...25`
+• `` -&gt; `...26`
+• `` -&gt; `...27`
+• `` -&gt; `...28`
+• `` -&gt; `...29`
+• `` -&gt; `...30`
+• `` -&gt; `...31`
+• `` -&gt; `...32`
+• `` -&gt; `...33`
+• `` -&gt; `...34`
+• `` -&gt; `...35`
+• `` -&gt; `...36`</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(afb_data) <span class="ot">&lt;-</span> afb_data[<span class="dv">1</span>,]</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>afb_data <span class="ot">&lt;-</span> afb_data[<span class="dv">2</span>,]</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>afb_data <span class="sc">|&gt;</span></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">colnames</span>(afb_data)) <span class="sc">|&gt;</span></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Year =</span> <span class="fu">as.numeric</span>(name), <span class="at">value =</span> <span class="fu">as.numeric</span>(value)) <span class="sc">|&gt;</span></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> value)) <span class="sc">+</span></span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Average Age at First Birth"</span>) <span class="sc">+</span></span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Average Age at First Birth in UK"</span>) <span class="sc">+</span></span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">pretty_breaks</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="parity-data" class="level2">
+<h2 class="anchored" data-anchor-id="parity-data">Parity Data</h2>
+<p>Currently only have data for England and Wales. Trying to track down data for other countries.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="co"># read_excel("Parity_Data.xlsx") |&gt;</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   mutate(age = case_when(</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="co">#     is.na(`Age exact years`) ~ 45,</span></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="co">#     TRUE ~ `Age exact years`),</span></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="co">#     year = age + `Year of birth of woman`,</span></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="co">#     final_value = ifelse(is.na(`Age exact years`), 1, 0),</span></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a><span class="co">#     `% Parous` = 100 - `0 (No children)`) |&gt;</span></span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a><span class="co">#   filter(final_value == 1) |&gt;</span></span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a><span class="co">#   ggplot(aes(x = year, y = `% Parous`)) +</span></span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_line() +</span></span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_point() +</span></span>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a><span class="co">#   xlab("Year") +</span></span>
+<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a><span class="co">#   ylab("Parous (%)") +</span></span>
+<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a><span class="co">#   ggtitle("Parity in England and Wales") +</span></span>
+<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a><span class="co">#   scale_x_continuous(breaks = pretty_breaks())</span></span>
+<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a>pop_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"Population_Data.xlsx"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb53-19"><a href="#cb53-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Sex <span class="sc">==</span> <span class="st">"Females"</span>, Age <span class="sc">!=</span> <span class="st">"All Ages"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb53-20"><a href="#cb53-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Sex) </span>
+<span id="cb53-21"><a href="#cb53-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-22"><a href="#cb53-22" aria-hidden="true" tabindex="-1"></a>pop_data <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">t</span>(<span class="fu">as.matrix</span>(pop_data))) </span>
+<span id="cb53-23"><a href="#cb53-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-24"><a href="#cb53-24" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(pop_data) <span class="ot">&lt;-</span> pop_data[<span class="dv">1</span>,]</span>
+<span id="cb53-25"><a href="#cb53-25" aria-hidden="true" tabindex="-1"></a>pop_data<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">rownames</span>(pop_data)</span>
+<span id="cb53-26"><a href="#cb53-26" aria-hidden="true" tabindex="-1"></a>pop_data <span class="ot">&lt;-</span> pop_data[<span class="sc">-</span><span class="dv">1</span>,] <span class="sc">|&gt;</span></span>
+<span id="cb53-27"><a href="#cb53-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">gsub</span>(year, <span class="at">pattern =</span> <span class="st">"Mid-"</span>, <span class="at">replacement =</span> <span class="st">""</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb53-28"><a href="#cb53-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sapply</span>(as.numeric)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in lapply(X = X, FUN = FUN, ...): NAs introduced by coercion
+
+Warning in lapply(X = X, FUN = FUN, ...): NAs introduced by coercion
+
+Warning in lapply(X = X, FUN = FUN, ...): NAs introduced by coercion
+
+Warning in lapply(X = X, FUN = FUN, ...): NAs introduced by coercion
+
+Warning in lapply(X = X, FUN = FUN, ...): NAs introduced by coercion</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>pop_data <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(pop_data) <span class="sc">|&gt;</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year<span class="sc">&gt;</span><span class="dv">1970</span>)</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(pop_data)){</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>  pop_data[i,<span class="fu">which</span>(<span class="fu">colnames</span>(pop_data)<span class="sc">!=</span><span class="st">"year"</span>)] <span class="ot">&lt;-</span> pop_data[i,<span class="fu">which</span>(<span class="fu">colnames</span>(pop_data)<span class="sc">!=</span><span class="st">"year"</span>)]<span class="sc">/</span><span class="fu">sum</span>(pop_data[i,<span class="fu">which</span>(<span class="fu">colnames</span>(pop_data)<span class="sc">!=</span><span class="st">"year"</span>)])</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>pop_data <span class="ot">&lt;-</span> pop_data <span class="sc">|&gt;</span></span>
+<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">colnames</span>(pop_data)[<span class="fu">colnames</span>(pop_data)<span class="sc">!=</span><span class="st">"year"</span>])</span>
+<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a>parity_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"Parity_Data.xlsx"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">flag =</span>  <span class="fu">case_when</span>(</span>
+<span id="cb55-13"><a href="#cb55-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">is.na</span>(<span class="st">`</span><span class="at">Age exact years</span><span class="st">`</span>) <span class="sc">~</span> <span class="st">"Final"</span>,</span>
+<span id="cb55-14"><a href="#cb55-14" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA</span>),</span>
+<span id="cb55-15"><a href="#cb55-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">parous =</span> <span class="dv">100</span> <span class="sc">-</span> <span class="st">`</span><span class="at">0 (No children)</span><span class="st">`</span>,</span>
+<span id="cb55-16"><a href="#cb55-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">YOB =</span> <span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">Year of birth of woman</span><span class="st">`</span>),</span>
+<span id="cb55-17"><a href="#cb55-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">age =</span> <span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">Age exact years</span><span class="st">`</span>),</span>
+<span id="cb55-18"><a href="#cb55-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">year =</span> YOB <span class="sc">+</span> age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1861 / R1861C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1862 / R1862C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1863 / R1863C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1864 / R1864C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1865 / R1865C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1866 / R1866C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1867 / R1867C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1868 / R1868C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1869 / R1869C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1870 / R1870C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1871 / R1871C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1872 / R1872C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1873 / R1873C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1874 / R1874C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1875 / R1875C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1876 / R1876C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1877 / R1877C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1878 / R1878C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1879 / R1879C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1880 / R1880C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1881 / R1881C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1882 / R1882C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1883 / R1883C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1884 / R1884C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1885 / R1885C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1886 / R1886C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1887 / R1887C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1888 / R1888C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1889 / R1889C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1890 / R1890C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1891 / R1891C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1892 / R1892C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1893 / R1893C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1894 / R1894C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1895 / R1895C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1896 / R1896C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1897 / R1897C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1898 / R1898C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1899 / R1899C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1900 / R1900C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1901 / R1901C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1902 / R1902C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1903 / R1903C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1904 / R1904C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1905 / R1905C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1906 / R1906C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1907 / R1907C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1908 / R1908C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1909 / R1909C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1910 / R1910C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1911 / R1911C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1912 / R1912C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1913 / R1913C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1914 / R1914C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1915 / R1915C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1916 / R1916C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1917 / R1917C2: got 'Final'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in B1918 / R1918C2: got 'Final'</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a>parity <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">year =</span> <span class="fu">integer</span>(<span class="dv">0</span>), <span class="at">parity =</span> <span class="fu">integer</span>(<span class="dv">0</span>))</span>
+<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(y <span class="cf">in</span> <span class="dv">2010</span><span class="sc">:</span><span class="dv">2022</span>){</span>
+<span id="cb114-4"><a href="#cb114-4" aria-hidden="true" tabindex="-1"></a>  tempdata <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(parity_data)</span>
+<span id="cb114-5"><a href="#cb114-5" aria-hidden="true" tabindex="-1"></a>  tempdata<span class="sc">$</span>finalage <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(parity_data<span class="sc">$</span>flag<span class="sc">==</span><span class="st">"Final"</span>, y <span class="sc">-</span> tempdata<span class="sc">$</span>YOB, <span class="cn">NA</span>)</span>
+<span id="cb114-6"><a href="#cb114-6" aria-hidden="true" tabindex="-1"></a>  tempdata <span class="ot">&lt;-</span> <span class="fu">filter</span>(tempdata, year <span class="sc">==</span> y<span class="sc">|</span>finalage<span class="sc">&gt;</span><span class="dv">45</span>)</span>
+<span id="cb114-7"><a href="#cb114-7" aria-hidden="true" tabindex="-1"></a>  tempdata<span class="sc">$</span>age <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(tempdata<span class="sc">$</span>age), tempdata<span class="sc">$</span>finalage, tempdata<span class="sc">$</span>age)</span>
+<span id="cb114-8"><a href="#cb114-8" aria-hidden="true" tabindex="-1"></a>  over90 <span class="ot">&lt;-</span> <span class="fu">mean</span>(tempdata<span class="sc">$</span>parous[tempdata<span class="sc">$</span>age<span class="sc">&gt;</span><span class="dv">89</span>])</span>
+<span id="cb114-9"><a href="#cb114-9" aria-hidden="true" tabindex="-1"></a>  tempdata <span class="ot">&lt;-</span> tempdata[tempdata<span class="sc">$</span>age<span class="sc">&lt;</span><span class="dv">90</span>,]</span>
+<span id="cb114-10"><a href="#cb114-10" aria-hidden="true" tabindex="-1"></a>  tempdata <span class="ot">&lt;-</span> <span class="fu">select</span>(tempdata, age, parous)</span>
+<span id="cb114-11"><a href="#cb114-11" aria-hidden="true" tabindex="-1"></a>  tempdata[<span class="fu">nrow</span>(tempdata)<span class="sc">+</span><span class="dv">1</span>,] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"90+"</span>, over90)</span>
+<span id="cb114-12"><a href="#cb114-12" aria-hidden="true" tabindex="-1"></a>  tempdata<span class="sc">$</span>parous <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(tempdata<span class="sc">$</span>parous)</span>
+<span id="cb114-13"><a href="#cb114-13" aria-hidden="true" tabindex="-1"></a>  temppop <span class="ot">&lt;-</span> pop_data[pop_data<span class="sc">$</span>year<span class="sc">==</span>y,]</span>
+<span id="cb114-14"><a href="#cb114-14" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">merge</span>(tempdata, temppop, <span class="at">by.x =</span> <span class="st">"age"</span>, <span class="at">by.y =</span> <span class="st">"name"</span>)</span>
+<span id="cb114-15"><a href="#cb114-15" aria-hidden="true" tabindex="-1"></a>  df<span class="sc">$</span>relpar <span class="ot">&lt;-</span> df<span class="sc">$</span>parous<span class="sc">*</span>df<span class="sc">$</span>value</span>
+<span id="cb114-16"><a href="#cb114-16" aria-hidden="true" tabindex="-1"></a>  parity[<span class="fu">nrow</span>(parity)<span class="sc">+</span><span class="dv">1</span>,] <span class="ot">&lt;-</span> <span class="fu">c</span>(y, <span class="fu">sum</span>(df<span class="sc">$</span>relpar))</span>
+<span id="cb114-17"><a href="#cb114-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb114-18"><a href="#cb114-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb114-19"><a href="#cb114-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(parity, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> parity)) <span class="sc">+</span></span>
+<span id="cb114-20"><a href="#cb114-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb114-21"><a href="#cb114-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb114-22"><a href="#cb114-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Parity (%)"</span>) <span class="sc">+</span></span>
+<span id="cb114-23"><a href="#cb114-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Parity in England and Wales"</span>) <span class="sc">+</span></span>
+<span id="cb114-24"><a href="#cb114-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">pretty_breaks</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="hrt-data" class="level2">
+<h2 class="anchored" data-anchor-id="hrt-data">HRT Data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(<span class="st">"HRT_Data.xlsx"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Year =</span> <span class="fu">as.numeric</span>(<span class="fu">map_chr</span>(<span class="fu">strsplit</span>(<span class="st">`</span><span class="at">Financial Year</span><span class="st">`</span>, <span class="st">"/"</span>), <span class="dv">1</span>)), </span>
+<span id="cb115-3"><a href="#cb115-3" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">% HRT</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">Patients per 1,000 Population</span><span class="st">`</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb115-4"><a href="#cb115-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="st">`</span><span class="at">% HRT</span><span class="st">`</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb115-5"><a href="#cb115-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> <span class="st">`</span><span class="at">% HRT</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb115-6"><a href="#cb115-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb115-7"><a href="#cb115-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb115-8"><a href="#cb115-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Year"</span>) <span class="sc">+</span></span>
+<span id="cb115-9"><a href="#cb115-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"HRT (%)"</span>) <span class="sc">+</span></span>
+<span id="cb115-10"><a href="#cb115-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"HRT Usage in England"</span>) <span class="sc">+</span></span>
+<span id="cb115-11"><a href="#cb115-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">pretty_breaks</span>()) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="cancer-data" class="level2">
+<h2 class="anchored" data-anchor-id="cancer-data">Cancer Data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a>cancer_sheets <span class="ot">&lt;-</span> <span class="fu">excel_sheets</span>(<span class="st">"Cancer_Data.xlsx"</span>)</span>
+<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-3"><a href="#cb116-3" aria-hidden="true" tabindex="-1"></a>cancer_data <span class="ot">&lt;-</span> <span class="fu">integer</span>(<span class="dv">0</span>)</span>
+<span id="cb116-4"><a href="#cb116-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-5"><a href="#cb116-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(sheet <span class="cf">in</span> cancer_sheets){</span>
+<span id="cb116-6"><a href="#cb116-6" aria-hidden="true" tabindex="-1"></a>  cancer_data <span class="ot">&lt;-</span> <span class="fu">rbind</span>(cancer_data, <span class="fu">read_excel</span>(<span class="st">"Cancer_Data.xlsx"</span>, <span class="at">sheet =</span> sheet))</span>
+<span id="cb116-7"><a href="#cb116-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb116-8"><a href="#cb116-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-9"><a href="#cb116-9" aria-hidden="true" tabindex="-1"></a>cancer_data <span class="ot">&lt;-</span> cancer_data <span class="sc">|&gt;</span></span>
+<span id="cb116-10"><a href="#cb116-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Sex =</span> <span class="fu">ifelse</span>(Sex<span class="sc">==</span><span class="dv">1</span>, <span class="st">"Male"</span>, <span class="st">"Female"</span>),</span>
+<span id="cb116-11"><a href="#cb116-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">IncMort =</span> <span class="fu">ifelse</span>(Type <span class="sc">==</span> <span class="dv">0</span>, <span class="st">"Incidence"</span>, <span class="st">"Mortality"</span>))</span>
+<span id="cb116-12"><a href="#cb116-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-13"><a href="#cb116-13" aria-hidden="true" tabindex="-1"></a><span class="co"># cancer_data |&gt;</span></span>
+<span id="cb116-14"><a href="#cb116-14" aria-hidden="true" tabindex="-1"></a><span class="co">#   filter(Type == 0) |&gt;</span></span>
+<span id="cb116-15"><a href="#cb116-15" aria-hidden="true" tabindex="-1"></a><span class="co">#   ggplot(aes(x = Year, y = `ASR (World)`, colour = `Country label`, linetype = Sex)) +</span></span>
+<span id="cb116-16"><a href="#cb116-16" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_line() + </span></span>
+<span id="cb116-17"><a href="#cb116-17" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_point() +</span></span>
+<span id="cb116-18"><a href="#cb116-18" aria-hidden="true" tabindex="-1"></a><span class="co">#   ggtitle("Incidence Rates for Top 6 Cancers") +</span></span>
+<span id="cb116-19"><a href="#cb116-19" aria-hidden="true" tabindex="-1"></a><span class="co">#   facet_wrap(~ `Cancer label`, nrow = 3, scales = "free")</span></span>
+<span id="cb116-20"><a href="#cb116-20" aria-hidden="true" tabindex="-1"></a><span class="co">#   </span></span>
+<span id="cb116-21"><a href="#cb116-21" aria-hidden="true" tabindex="-1"></a><span class="co"># cancer_data |&gt;</span></span>
+<span id="cb116-22"><a href="#cb116-22" aria-hidden="true" tabindex="-1"></a><span class="co">#   filter(Type == 1) |&gt;</span></span>
+<span id="cb116-23"><a href="#cb116-23" aria-hidden="true" tabindex="-1"></a><span class="co">#   ggplot(aes(x = Year, y = `ASR (World)`, colour = `Country label`, linetype = Sex)) +</span></span>
+<span id="cb116-24"><a href="#cb116-24" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_line() + </span></span>
+<span id="cb116-25"><a href="#cb116-25" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_point() +</span></span>
+<span id="cb116-26"><a href="#cb116-26" aria-hidden="true" tabindex="-1"></a><span class="co">#   ggtitle("Mortality Rates for Top 6 Cancers") +</span></span>
+<span id="cb116-27"><a href="#cb116-27" aria-hidden="true" tabindex="-1"></a><span class="co">#   facet_wrap(~ `Cancer label`, nrow = 3, scales = "free")</span></span>
+<span id="cb116-28"><a href="#cb116-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-29"><a href="#cb116-29" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(site <span class="cf">in</span> <span class="fu">unique</span>(cancer_data<span class="sc">$</span><span class="st">`</span><span class="at">Cancer label</span><span class="st">`</span>)){</span>
+<span id="cb116-30"><a href="#cb116-30" aria-hidden="true" tabindex="-1"></a>  tempdata <span class="ot">&lt;-</span> cancer_data[cancer_data<span class="sc">$</span><span class="st">`</span><span class="at">Cancer label</span><span class="st">`</span><span class="sc">==</span>site,]</span>
+<span id="cb116-31"><a href="#cb116-31" aria-hidden="true" tabindex="-1"></a>  minyear <span class="ot">&lt;-</span> <span class="fu">min</span>(tempdata<span class="sc">$</span>Year)</span>
+<span id="cb116-32"><a href="#cb116-32" aria-hidden="true" tabindex="-1"></a>  maxyear <span class="ot">&lt;-</span> <span class="fu">max</span>(tempdata<span class="sc">$</span>Year)</span>
+<span id="cb116-33"><a href="#cb116-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">ggplot</span>(<span class="at">data =</span> tempdata, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> <span class="st">`</span><span class="at">ASR (World)</span><span class="st">`</span>, <span class="at">colour =</span> <span class="st">`</span><span class="at">Country label</span><span class="st">`</span>, <span class="at">linetype =</span> Sex)) <span class="sc">+</span></span>
+<span id="cb116-34"><a href="#cb116-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb116-35"><a href="#cb116-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb116-36"><a href="#cb116-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(minyear, maxyear) <span class="sc">+</span></span>
+<span id="cb116-37"><a href="#cb116-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="fu">paste0</span>(<span class="st">"Cancer Rates for "</span>, site)) <span class="sc">+</span></span>
+<span id="cb116-38"><a href="#cb116-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">colour =</span> <span class="st">"Country"</span>, <span class="at">linetype =</span> <span class="st">"Sex"</span>) <span class="sc">+</span></span>
+<span id="cb116-39"><a href="#cb116-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"bottom"</span>,<span class="at">legend.box =</span> <span class="st">"vertical"</span>) <span class="sc">+</span></span>
+<span id="cb116-40"><a href="#cb116-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> IncMort, <span class="at">scales =</span> <span class="st">"free_y"</span>, <span class="at">dir =</span> <span class="st">"v"</span>))</span>
+<span id="cb116-41"><a href="#cb116-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-42"><a href="#cb116-42" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-21-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-21-3.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-21-4.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-21-5.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-21-6.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="diabetes-data" class="level2">
+<h2 class="anchored" data-anchor-id="diabetes-data">Diabetes Data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a>diabetes_data <span class="ot">&lt;-</span> <span class="fu">integer</span>(<span class="dv">0</span>)</span>
+<span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-3"><a href="#cb117-3" aria-hidden="true" tabindex="-1"></a>sheets <span class="ot">&lt;-</span> <span class="fu">excel_sheets</span>(<span class="st">"Diabetes_Data.xlsx"</span>)</span>
+<span id="cb117-4"><a href="#cb117-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-5"><a href="#cb117-5" aria-hidden="true" tabindex="-1"></a>england_sheets <span class="ot">&lt;-</span> sheets[<span class="fu">grepl</span>(sheets, <span class="at">pattern =</span> <span class="st">"England"</span>)]</span>
+<span id="cb117-6"><a href="#cb117-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-7"><a href="#cb117-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(sheet <span class="cf">in</span> england_sheets){</span>
+<span id="cb117-8"><a href="#cb117-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-9"><a href="#cb117-9" aria-hidden="true" tabindex="-1"></a>  nocol <span class="ot">&lt;-</span> <span class="fu">ncol</span>(<span class="fu">read_excel</span>(<span class="st">"Diabetes_Data.xlsx"</span>, <span class="at">sheet =</span> sheet))</span>
+<span id="cb117-10"><a href="#cb117-10" aria-hidden="true" tabindex="-1"></a>  tempdata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"Diabetes_Data.xlsx"</span>, <span class="at">sheet =</span> sheet, <span class="at">col_types =</span> <span class="fu">c</span>(<span class="st">"text"</span>, <span class="fu">rep</span>(<span class="st">"numeric"</span>, nocol<span class="dv">-1</span>)))</span>
+<span id="cb117-11"><a href="#cb117-11" aria-hidden="true" tabindex="-1"></a>  group <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="at">x =</span> sheet, <span class="at">pattern =</span> <span class="st">"England_"</span>, <span class="at">replacement =</span> <span class="st">""</span>)</span>
+<span id="cb117-12"><a href="#cb117-12" aria-hidden="true" tabindex="-1"></a>  tempdata <span class="ot">&lt;-</span> <span class="fu">pull_HSE_diabetes_data</span>(<span class="at">data =</span> tempdata, <span class="at">group =</span> group)</span>
+<span id="cb117-13"><a href="#cb117-13" aria-hidden="true" tabindex="-1"></a>  tempdata<span class="sc">$</span>section <span class="ot">&lt;-</span> <span class="st">"Diabetes"</span></span>
+<span id="cb117-14"><a href="#cb117-14" aria-hidden="true" tabindex="-1"></a>  diabetes_data <span class="ot">&lt;-</span> <span class="fu">rbind</span>(diabetes_data, tempdata)</span>
+<span id="cb117-15"><a href="#cb117-15" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb117-16"><a href="#cb117-16" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>New names:
+• `` -&gt; `...1`</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expecting numeric in K3 / R3C11: got '-'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>New names:
+New names:
+New names:
+New names:
+New names:
+• `` -&gt; `...1`</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a>scotland_sheets <span class="ot">&lt;-</span> sheets[<span class="fu">grepl</span>(sheets, <span class="at">pattern =</span> <span class="st">"Scotland"</span>)]</span>
+<span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-3"><a href="#cb121-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-4"><a href="#cb121-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(sheet <span class="cf">in</span> scotland_sheets){</span>
+<span id="cb121-5"><a href="#cb121-5" aria-hidden="true" tabindex="-1"></a>  tempdata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"Diabetes_Data.xlsx"</span>, <span class="at">sheet =</span> sheet)</span>
+<span id="cb121-6"><a href="#cb121-6" aria-hidden="true" tabindex="-1"></a>  group <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="at">x =</span> sheet, <span class="at">pattern =</span> <span class="st">"Scotland_"</span>, <span class="at">replacement =</span> <span class="st">""</span>)</span>
+<span id="cb121-7"><a href="#cb121-7" aria-hidden="true" tabindex="-1"></a>  tempdata <span class="ot">&lt;-</span> <span class="fu">pull_SHS_data</span>(<span class="at">data =</span> tempdata, <span class="at">group =</span> group)</span>
+<span id="cb121-8"><a href="#cb121-8" aria-hidden="true" tabindex="-1"></a>  tempdata<span class="sc">$</span>section <span class="ot">&lt;-</span> <span class="st">"Diabetes"</span></span>
+<span id="cb121-9"><a href="#cb121-9" aria-hidden="true" tabindex="-1"></a>  tempdata<span class="sc">$</span>variable <span class="ot">=</span> <span class="fu">ifelse</span>(tempdata<span class="sc">$</span>variable <span class="sc">==</span> <span class="st">"Yes"</span>, <span class="st">"% Diabetes"</span>, <span class="st">"% No Diabetes"</span>)</span>
+<span id="cb121-10"><a href="#cb121-10" aria-hidden="true" tabindex="-1"></a>  diabetes_data <span class="ot">&lt;-</span> <span class="fu">rbind</span>(diabetes_data, tempdata)</span>
+<span id="cb121-11"><a href="#cb121-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb121-12"><a href="#cb121-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-13"><a href="#cb121-13" aria-hidden="true" tabindex="-1"></a>tempdata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"Diabetes_Data.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"NIreland"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>New names:
+• `` -&gt; `...1`</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a>tempdata <span class="ot">&lt;-</span> tempdata <span class="sc">|&gt;</span></span>
+<span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">colnames</span>(tempdata)[<span class="dv">2</span><span class="sc">:</span><span class="fu">ncol</span>(tempdata)]) <span class="sc">|&gt;</span></span>
+<span id="cb123-3"><a href="#cb123-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">year =</span> name, <span class="at">section =</span> <span class="st">`</span><span class="at">...1</span><span class="st">`</span>) <span class="sc">|&gt;</span></span>
+<span id="cb123-4"><a href="#cb123-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> value<span class="sc">/</span><span class="dv">10</span>) <span class="sc">|&gt;</span></span>
+<span id="cb123-5"><a href="#cb123-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_group =</span> <span class="st">"17+"</span>, <span class="at">variable =</span> <span class="st">"% Diabetes"</span>, <span class="at">group =</span> <span class="st">"All"</span>, <span class="at">country =</span> <span class="st">"N. Ireland"</span>)</span>
+<span id="cb123-6"><a href="#cb123-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-7"><a href="#cb123-7" aria-hidden="true" tabindex="-1"></a>diabetes_data <span class="ot">&lt;-</span> <span class="fu">rbind</span>(diabetes_data, tempdata)</span>
+<span id="cb123-8"><a href="#cb123-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-9"><a href="#cb123-9" aria-hidden="true" tabindex="-1"></a>diabetes_data <span class="sc">|&gt;</span></span>
+<span id="cb123-10"><a href="#cb123-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">case_when</span>(</span>
+<span id="cb123-11"><a href="#cb123-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grepl</span>(year, <span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">/"</span>) <span class="sc">~</span> <span class="fu">map_chr</span>(<span class="fu">strsplit</span>(year, <span class="st">"/"</span>), <span class="dv">1</span>),</span>
+<span id="cb123-12"><a href="#cb123-12" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> year),</span>
+<span id="cb123-13"><a href="#cb123-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">year =</span> <span class="fu">as.numeric</span>(year),</span>
+<span id="cb123-14"><a href="#cb123-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">age_group =</span> <span class="fu">case_when</span>(</span>
+<span id="cb123-15"><a href="#cb123-15" aria-hidden="true" tabindex="-1"></a>    age_group <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"All men"</span>, <span class="st">"All women"</span>, <span class="st">"All"</span>, <span class="st">"All adults"</span>, <span class="st">"Total"</span>) <span class="sc">~</span> <span class="st">"16+"</span>,</span>
+<span id="cb123-16"><a href="#cb123-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grepl</span>(age_group, <span class="at">pattern =</span> <span class="st">"Age "</span>) <span class="sc">~</span> <span class="fu">gsub</span>(age_group, <span class="at">pattern =</span> <span class="st">"Age "</span>, <span class="at">replacement =</span> <span class="st">""</span>),</span>
+<span id="cb123-17"><a href="#cb123-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grepl</span>(age_group, <span class="at">pattern =</span> <span class="st">" years"</span>) <span class="sc">~</span> <span class="fu">gsub</span>(age_group, <span class="at">pattern =</span> <span class="st">" years"</span>, <span class="at">replacement =</span> <span class="st">""</span>),</span>
+<span id="cb123-18"><a href="#cb123-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grepl</span>(age_group, <span class="at">pattern =</span> <span class="st">"All adults "</span>) <span class="sc">~</span> <span class="fu">gsub</span>(age_group, <span class="at">pattern =</span> <span class="st">"All adults "</span>, <span class="at">replacement =</span> <span class="st">""</span>),</span>
+<span id="cb123-19"><a href="#cb123-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grepl</span>(age_group, <span class="at">pattern =</span> <span class="st">"All aged "</span>) <span class="sc">~</span> <span class="fu">gsub</span>(age_group, <span class="at">pattern =</span> <span class="st">"All aged "</span>, <span class="at">replacement =</span> <span class="st">""</span>),</span>
+<span id="cb123-20"><a href="#cb123-20" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> age_group</span>
+<span id="cb123-21"><a href="#cb123-21" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">|&gt;</span></span>
+<span id="cb123-22"><a href="#cb123-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(variable <span class="sc">==</span> <span class="st">"% Diabetes"</span> <span class="sc">&amp;</span> age_group <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"16+"</span>, <span class="st">"17+"</span>) <span class="sc">&amp;</span> <span class="fu">grepl</span>(group, <span class="at">pattern =</span> <span class="st">"All"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb123-23"><a href="#cb123-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> value, <span class="at">colour =</span> country)) <span class="sc">+</span></span>
+<span id="cb123-24"><a href="#cb123-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb123-25"><a href="#cb123-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb123-26"><a href="#cb123-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Year"</span>) <span class="sc">+</span></span>
+<span id="cb123-27"><a href="#cb123-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"% Diabetes"</span>) <span class="sc">+</span></span>
+<span id="cb123-28"><a href="#cb123-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"% Diabetes in Adults"</span>) <span class="sc">+</span></span>
+<span id="cb123-29"><a href="#cb123-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">colour =</span>  <span class="st">"Country"</span>, <span class="at">caption =</span> <span class="st">"*Adult for England and Scotland defined as aged &gt;15, for N. Ireland defined as aged &gt;16."</span>) <span class="sc">+</span></span>
+<span id="cb123-30"><a href="#cb123-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">pretty_breaks</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

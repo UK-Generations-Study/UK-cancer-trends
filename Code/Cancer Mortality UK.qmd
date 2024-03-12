@@ -1,0 +1,44 @@
+---
+title: "Top Cancers UK"
+format: html
+editor: visual
+---
+
+## Packages
+
+```{r}
+library(readxl)
+library(gt)
+library(dplyr)
+```
+
+## Data
+
+```{r}
+mort_data <- read_xlsx("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/Position Paper/Data/UK_Mortality.xlsx")
+
+```
+
+## Data Manipulation
+
+Can see that top 6 cancer sites seems like a sensible choice. Top 6 cancer sites make up over 50% of the total mortalities, and the drop off from the 6th to the 7th is over 1% of mortalities.
+
+```{r}
+
+names(mort_data) <- mort_data[4,]
+mort_data <- mort_data[5:25,]
+mort_data$Female <- as.numeric(mort_data$Female)
+mort_data$Male <- as.numeric(mort_data$Male)
+mort_data$Cases <- mort_data$Female + mort_data$Male
+mort_data$CasePerc <- mort_data$Cases/sum(mort_data$Cases)
+
+mort_data <- mort_data |>
+  mutate(ToBottom = ifelse(`Cancer Site` %in% c("Other Sites", "Cancer of Unknown Primary (C77-C80)"), 1, 0)) |>
+  arrange(ToBottom, desc(CasePerc)) |>
+  select(-ToBottom) |>
+  mutate(runningPerc = cumsum(CasePerc)) |>
+  gt()
+
+mort_data
+
+```
