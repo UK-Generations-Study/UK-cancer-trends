@@ -12,13 +12,6 @@ format:
 editor: visual
 ---
 
-## Setup
-
-```{r, setup}
-knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/Position Paper/Data")
-
-```
-
 ## Packages
 
 ```{r}
@@ -31,6 +24,13 @@ library(purrr)
 library(ggplot2)
 library(scales)
 library(RColorBrewer)
+```
+
+## Setup
+
+```{r, setup}
+knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/Position Paper/Data")
+theme_set(theme_minimal())
 ```
 
 ## Function - Main
@@ -616,7 +616,7 @@ alcohol_data |>
 ```{r}
 
 data4 |>
-  filter(variable == "% Current Smoker" & age_group == "16+" & grepl(group, pattern = "All")) |>xeef
+  filter(variable == "% Current Smoker" & age_group == "16+" & grepl(group, pattern = "All")) |>
   ggplot(aes(x = year, y = value, colour = country)) +
   geom_line() +
   geom_point() +
