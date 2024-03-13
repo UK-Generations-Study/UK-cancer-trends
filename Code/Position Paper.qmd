@@ -894,20 +894,20 @@ cancer_data <- cancer_data |>
 #   ggtitle("Mortality Rates for Top 6 Cancers") +
 #   facet_wrap(~ `Cancer label`, nrow = 3, scales = "free")
 
-for(site in unique(cancer_data$`Cancer label`)){
-  tempdata <- cancer_data[cancer_data$`Cancer label`==site,]
-  minyear <- min(tempdata$Year)
-  maxyear <- max(tempdata$Year)
-  print(ggplot(data = tempdata, aes(x = Year, y = `ASR (World)`, colour = `Country label`, linetype = Sex)) +
-  geom_line() +
-  geom_point() +
-  xlim(minyear, maxyear) +
-  ggtitle(paste0("Cancer Rates for ", site)) +
-  labs(colour = "Country", linetype = "Sex") +
-  theme(legend.position="bottom",legend.box = "vertical") +
-  facet_wrap(~ IncMort, scales = "free_y", dir = "v"))
-
-}
+# for(site in unique(cancer_data$`Cancer label`)){
+#   tempdata <- cancer_data[cancer_data$`Cancer label`==site,]
+#   minyear <- min(tempdata$Year)
+#   maxyear <- max(tempdata$Year)
+#   print(ggplot(data = tempdata, aes(x = Year, y = `ASR (World)`, colour = `Country label`, linetype = Sex)) +
+#   geom_line() +
+#   geom_point() +
+#   xlim(minyear, maxyear) +
+#   ggtitle(paste0("Cancer Rates for ", site)) +
+#   labs(colour = "Country", linetype = "Sex") +
+#   theme(legend.position="bottom",legend.box = "vertical") +
+#   facet_wrap(~ IncMort, scales = "free_y", dir = "v"))
+# 
+# }
 
 for(site in unique(cancer_data$`Cancer label`)){
   tempdata <- cancer_data[cancer_data$`Cancer label`==site,]
@@ -920,7 +920,7 @@ for(site in unique(cancer_data$`Cancer label`)){
   ggtitle(paste0("Cancer Rates for ", site)) +
   labs(colour = "Country") +
   theme(legend.position="bottom",legend.box = "vertical") +
-  facet_grid(IncMort~ Sex))
+  facet_grid(IncMort~ Sex, scales = "free_y"))
 
 }
 
