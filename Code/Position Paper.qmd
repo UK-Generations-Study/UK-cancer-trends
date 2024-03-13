@@ -10,6 +10,8 @@ format:
       margin-width: 300px
       gutter-width: 1.5rem
 editor: visual
+execute:
+  warning: false
 ---
 
 ## Packages
@@ -627,6 +629,22 @@ data4 |>
   scale_x_continuous(breaks = pretty_breaks())
 
 
+# data4 |>
+#   filter(variable == "% Current Smoker" & age_group == "16+" & !grepl(group, pattern = "All")) |>
+#   mutate(group = case_when(
+#     group == "Male" ~ "Men",
+#     group == "Female" ~ "Women",
+#     TRUE ~ group
+#   )) |>
+#   ggplot(aes(x = year, y = value, colour = country, linetype = group)) +
+#   geom_line() +
+#   geom_point() +
+#   xlab("Year") +
+#   ylab("% Current Smoker") +
+#   ggtitle("% Current Smoker in Adults") +
+#   labs(colour =  "Country") +
+#   scale_x_continuous(breaks = pretty_breaks())
+
 data4 |>
   filter(variable == "% Current Smoker" & age_group == "16+" & !grepl(group, pattern = "All")) |>
   mutate(group = case_when(
@@ -634,14 +652,15 @@ data4 |>
     group == "Female" ~ "Women",
     TRUE ~ group
   )) |>
-  ggplot(aes(x = year, y = value, colour = country, linetype = group)) +
+  ggplot(aes(x = year, y = value, colour = country)) +
   geom_line() +
   geom_point() +
   xlab("Year") +
   ylab("% Current Smoker") +
   ggtitle("% Current Smoker in Adults") +
   labs(colour =  "Country") +
-  scale_x_continuous(breaks = pretty_breaks())
+  scale_x_continuous(breaks = pretty_breaks()) +
+  facet_wrap(~group, scales = "fixed", dir = "v")
 
 ```
 
@@ -741,6 +760,30 @@ Currently only have data for England and Wales. Trying to track down data for ot
 #   ylab("Parous (%)") +
 #   ggtitle("Parity in England and Wales") +
 #   scale_x_continuous(breaks = pretty_breaks())
+
+# Plotting parity for birth cohorts
+
+plot_data <- read_excel("Parity_Data.xlsx") |>
+  mutate(age = case_when(
+    is.na(`Age exact years`) ~ 46,
+    TRUE ~ `Age exact years`),
+    `% Parous` = 100 - `0 (No children)`) |>
+  group_by(`Year of birth of woman`) |>
+  arrange(desc(age)) |>
+  filter(row_number()==1) |>
+  ungroup()
+
+ggplot(plot_data, aes(x = `Year of birth of woman`, y = `% Parous`)) +
+  geom_line() +
+  geom_point() +
+  geom_vline(xintercept = max(plot_data$`Year of birth of woman`[plot_data$age==46])+0.5, linetype = "dashed", colour = "red") +
+  xlab("Year of Birth") +
+  labs(caption = "Dashed red line represents last full cohort (achieved age 46)")
+
+
+
+
+# Plotting total parity in England/Wales over time.
 
 pop_data <- read_excel("Population_Data.xlsx") |>
   filter(Sex == "Females", Age != "All Ages") |>
@@ -863,6 +906,21 @@ for(site in unique(cancer_data$`Cancer label`)){
   labs(colour = "Country", linetype = "Sex") +
   theme(legend.position="bottom",legend.box = "vertical") +
   facet_wrap(~ IncMort, scales = "free_y", dir = "v"))
+
+}
+
+for(site in unique(cancer_data$`Cancer label`)){
+  tempdata <- cancer_data[cancer_data$`Cancer label`==site,]
+  minyear <- min(tempdata$Year)
+  maxyear <- max(tempdata$Year)
+  print(ggplot(data = tempdata, aes(x = Year, y = `ASR (World)`, colour = `Country label`)) +
+  geom_line() +
+  geom_point() +
+  xlim(minyear, maxyear) +
+  ggtitle(paste0("Cancer Rates for ", site)) +
+  labs(colour = "Country") +
+  theme(legend.position="bottom",legend.box = "vertical") +
+  facet_grid(IncMort~ Sex))
 
 }
 
