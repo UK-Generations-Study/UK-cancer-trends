@@ -43,6 +43,9 @@ Activity
 - Wales Data sourced from source 1, Physical activity section. Year range taken as 2016/17 to 2019/20 as concerns about differing methodology from that point onwards.
 - N. Ireland Data sourced from source 1, Table "Physical Activity". Full years extracted as no change in methodology noted. Years removed where question not asked.
 
+Activity_Alt
+- England Data sourced from source 3. Table 1 contains categories for all people, Table 2 stratifies by sex and age and measures % Active.
+
 Age at First Birth
 - UK Data sourced from source 2 which contained UK wide data. Continuous year range selected.
 

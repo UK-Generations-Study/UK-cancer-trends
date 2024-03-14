@@ -31,7 +31,8 @@ library(RColorBrewer)
 ## Setup
 
 ```{r, setup}
-knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/Position Paper/Data")
+# knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/Position Paper/Data")
+knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data")
 theme_set(theme_minimal())
 ```
 
@@ -698,7 +699,7 @@ data4 |>
 ```
 
 ## Activity
-
+Added a new source for the activity that provides more years.
 ```{r}
 
 data4 |>
@@ -713,6 +714,38 @@ data4 |>
   labs(colour =  "Country", caption = "*Adult for England, Scotland and Wales defined as 16+, and for N. Ireland as 19+\nActivity guidelines are >150 mins Moderate Physical Activity") +
   scale_x_continuous(breaks = pretty_breaks())
 
+# Adding alternative data source for England
+
+activity_england <- read_excel("Activity_Alt_Data.xlsx")
+
+activity_england <- activity_england |>
+  rename(variable = ...1) |>
+  pivot_longer(cols = colnames(activity_england[2:ncol(activity_england)])) |>
+  rename(year = name) |>
+  mutate(year = gsub(year, pattern = "Nov ", replacement = "")) |>
+  mutate(year = as.numeric(paste0("20", substr(year, start = 1, stop = 2))),
+         value = 100*as.numeric(value),
+         variable = case_when(
+           variable == "Active: at least 150 minutes a week" ~ "% Meets guidelines",
+           TRUE ~ variable
+         ), age_group = "16+",
+         group = "All",
+         country = "England",
+         section = "Activity") |>
+  filter(variable == "% Meets guidelines")
+
+data4 |>
+  filter(variable == "% Meets guidelines" & age_group %in% c("16+") & grepl(group, pattern = "All") & country != "England" |
+           variable == "% Meets guidelines" & age_group %in% c("19+") & grepl(group, pattern = "All") & country == "N. Ireland") |>
+  rbind(activity_england) |>
+  ggplot(aes(x = year, y = value, colour = country)) +
+  geom_line() +
+  geom_point() +
+  xlab("Year") +
+  ylab("% Meets Activity Guidelines") +
+  ggtitle("% Meets Activity Guidelines in Adults*") +
+  labs(colour =  "Country", caption = "*Adult for England, Scotland and Wales defined as 16+, and for N. Ireland as 19+\nActivity guidelines are >150 mins Moderate Physical Activity") +
+  scale_x_continuous(breaks = pretty_breaks())
 
 ```
 
