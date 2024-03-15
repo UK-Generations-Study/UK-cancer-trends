@@ -36,6 +36,7 @@ E-Cigarettes
 - Scotland Data sourced from source 1, E-cigarette or vaping device section. Full years extracted as no change in methodology noted.
 - Wales Data sourced from source 1, Smoking and e-cigarette use section. Year range taken as 2016/17 to 2019/20 as concerns about differing methodology from that point onwards. Added dummy in the first column to maintain structure continuity.
 - N. Ireland Data sourced from source 1, Table "Electronic Cigarettes", Sub-tables Currently using electronic cigarettes by sex and age-group. Full years extracted as no change in methodology noted. Year 2020/21 removed from Men and Women as not enough data.
+- Great Britain Data sourced from https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/drugusealcoholandsmoking/datasets/ecigaretteuseingreatbritain, Table 1
 
 Activity
 - England Data sourced from source 1, Physical activity, Table 5. Years extracted were 2016-2019 due to concerns about comparing other years due to methodology.
@@ -65,3 +66,8 @@ Diabetes
 - England data sourced from source 1, Adult health, Table 3. Years extracted were 2003-2019 due to concerns about comparing other years due to methodology.
 - Scotland data sourced from source 1, Doctor diagnosed diabetes section. Should be noted that pregnant women were deducted from this count, which may not be the case for other sources.
 - N. Ireland data sourced from source 1.
+
+Screening
+- Breast data https://fingertips.phe.org.uk/search/screening#page/4/gid/1938132830/pat/159/par/K02000001/ati/15/are/E92000001/iid/91340/age/265/sex/2/cat/-1/ctp/-1/yrr/1/cid/4/tbm/1
+- Bowel data https://fingertips.phe.org.uk/search/screening#page/4/gid/1938133365/pat/159/par/K02000001/ati/15/are/E92000001/iid/92600/age/280/sex/4/cat/-1/ctp/-1/yrr/1/cid/4/tbm/1
+- Cerival data https://digital.nhs.uk/data-and-information/publications/statistical/cervical-screening-annual/england-2022-2023#resources, Table 1

@@ -817,6 +817,29 @@ data4 |>
   scale_color_manual(values = cols)
 ```
 
+## E-Cigarette - Great Britain
+More years available - but concerns about different questionnaire structure. Can discuss as they suggest summing variables may be approprirate.
+```{r}
+
+ecig_data <- read_excel("E_Cigarette_Data.xlsx", sheet = "Great_Britain_All")
+
+ecig_data <- ecig_data |>
+  pivot_longer(cols = colnames(ecig_data)[3:ncol(ecig_data)]) |>
+  pivot_wider(names_from = `Proportion of population aged 16 years and over by e-cigarette use [note 1]`, values_from = value) |>
+  mutate(`% User` = `Daily user (%)` + `Occasional user (%)`) |>
+  select(Year, name, `% User`) |>
+  separate(col = name, sep = " \r\naged \r\n", into = c("group", "age_group")) |>
+  mutate(Year = as.integer(Year))
+
+ecig_data |>
+  filter(group == "All persons", age_group == "16 and over") |>
+  ggplot(aes(x = Year, y = `% User`)) +
+  geom_line() +
+  geom_point() +
+  ylab("% Current E-Cigarette Users") +
+  ggtitle("% Current E-Cigarette Users in Great Britain")
+```
+
 ## Activity
 
 Added a new source for the activity that provides more years.
@@ -1163,4 +1186,47 @@ diabetes_data |>
   scale_x_continuous(breaks = pretty_breaks())
 
 
+```
+
+## Screening
+```{r}
+
+screening_data_breast <- read_excel("Screening_Data.xlsx", sheet = "England_Breast")
+
+screening_data_breast |>
+  mutate(Year = as.numeric(substr(`Time period`, start = 1, stop = 4))) |>
+  ggplot(aes(x = Year, y = Value)) +
+  geom_line() +
+  geom_point() +
+  xlab("Year") +
+  ylab("% Coverage") +
+  ggtitle("% Breast Screening Coverage in England") +
+  scale_x_continuous(breaks = pretty_breaks())
+
+screening_data_bowel <- read_excel("Screening_Data.xlsx", sheet = "England_Bowel")
+
+screening_data_bowel |>
+  mutate(Year = as.numeric(substr(`Time period`, start = 1, stop = 4))) |>
+  ggplot(aes(x = Year, y = Value)) +
+  geom_line() +
+  geom_point() +
+  xlab("Year") +
+  ylab("% Coverage") +
+  ggtitle("% Bowel Screening Coverage in England") +
+  scale_x_continuous(breaks = pretty_breaks())
+
+screening_data_cervix <- read_excel("Screening_Data.xlsx", sheet = "England_Cervix")
+
+screening_data_cervix |>
+  filter(...1 == "Coverage (25-64)") |>
+  select(-units) |>
+  pivot_longer(cols = colnames(screening_data_cervix)[substr(colnames(screening_data_cervix), start = 1, stop = 2) == "20"]) |>
+  mutate(Year = as.numeric(name)) |>
+  ggplot(aes(x = Year, y = value)) +
+  geom_line() +
+  geom_point() +
+  xlab("Year") +
+  ylab("% Coverage") +
+  ggtitle("% Cervix Screening Coverage in England") +
+  scale_x_continuous(breaks = pretty_breaks())
 ```
