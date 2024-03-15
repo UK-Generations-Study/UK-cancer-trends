@@ -31,7 +31,8 @@ library(RColorBrewer)
 ## Setup
 
 ```{r, setup}
-knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/Position Paper/Data")
+# knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/Position Paper/Data")
+knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data")
 theme_set(theme_minimal())
 ```
 
@@ -613,6 +614,69 @@ alcohol_data |>
   scale_x_continuous(breaks = pretty_breaks())
 ```
 
+## Alcohol - Guidelines by Age
+```{r}
+
+guidelines_england <- data4 |>
+  filter(country == "England" & section == "Alcohol"& grepl(group, pattern = "All")) |>
+  pivot_wider(names_from = variable, values_from = value) |>
+  mutate(`% Over Guidelines` = 100 - (`% Non-Drinker` + `% up to 14 units per week`)) |>
+  pivot_longer(cols = c(unique(data4$variable[data4$country == "England" & data4$section == "Alcohol" & grepl(data4$group, pattern = "All")]), "% Over Guidelines")) |>
+  rename(variable = name)
+
+# Need to use weightings from the data set to calculate % Obese for 25+ age range.
+weightings <- read_excel("Alcohol_Data.xlsx", sheet = "England_All")
+
+top_row <- which(weightings$...1 == "Weighted bases")
+weightings <-weightings[(top_row+1):nrow(weightings),]
+
+weightings <- as.data.frame(weightings)
+
+
+weightings <- weightings |>
+  filter(!...1 %in% c("All adults", "16-24 years"))
+
+for(i in 2:ncol(weightings)){
+  weightings[,i] <- weightings[,i]/sum(weightings[,i])
+}
+
+weightings <- as.data.frame(t(as.matrix(weightings)))
+
+weightings <- weightings |>
+  mutate(Year = rownames(weightings))
+
+rownames(weightings) <- NULL
+colnames(weightings) <- weightings[1,]
+weightings <- weightings[-1,]
+
+weightings <- weightings |>
+  rename(year = ...1) |>
+  sapply(as.numeric)
+
+adult_alcohol_england <- guidelines_england |>
+  filter(variable == "% Over Guidelines" & !grepl(age_group, pattern = "16")) |>
+  pivot_wider(names_from = age_group, values_from = value) |>
+  merge(weightings, by = "year") |>
+  mutate(`25+` = `25-34`*`25-34 years` + `35-44`*`35-44 years` + `45-54`*`45-54 years` + `55-64`*`55-64 years` + `65-74`*`65-74 years` + `75+`*`75+ years`) |>
+  select(year, variable, country, group, section, `25+`) |>
+  pivot_longer(cols = `25+`) |>
+  rename(age_group = name)
+
+age_alcohol_england <- guidelines_england |>
+  filter(variable == "% Over Guidelines" & age_group %in% c("16-24")) |>
+  rbind(adult_alcohol_england)
+
+ggplot(data = age_alcohol_england, aes(x = year, y = value, colour = age_group)) +
+  geom_point() +
+  geom_line() +
+  xlab("Year") +
+  ylab("% Over Guidelines") +
+  ggtitle("% Over Guidelines in England") +
+  labs(colour =  "Age Group") +
+  scale_x_continuous(breaks = pretty_breaks())
+
+```
+
 ## Smoking
 
 ```{r}
@@ -664,6 +728,62 @@ data4 |>
 
 ```
 
+## Smoking by Age
+```{r}
+
+weightings <- read_excel("Smoking_Data.xlsx", sheet = "England_All")
+
+top_row <- which(weightings$...1 == "Weighted bases")
+weightings <-weightings[(top_row+1):nrow(weightings),]
+
+weightings <- as.data.frame(weightings)
+
+
+weightings <- weightings |>
+  filter(!...1 %in% c("All adults", "16-24 years"))
+
+for(i in 2:ncol(weightings)){
+  weightings[,i] <- weightings[,i]/sum(weightings[,i])
+}
+
+weightings <- as.data.frame(t(as.matrix(weightings)))
+
+weightings <- weightings |>
+  mutate(Year = rownames(weightings))
+
+rownames(weightings) <- NULL
+colnames(weightings) <- weightings[1,]
+weightings <- weightings[-1,]
+
+weightings <- weightings |>
+  rename(year = ...1) |>
+  sapply(as.numeric)
+
+adult_smoking_england <- data4 |>
+  filter(variable == "% Current Smoker" & !grepl(age_group, pattern = "16") & country == "England" & group == "All") |>
+  pivot_wider(names_from = age_group, values_from = value) |>
+  merge(weightings, by = "year") |>
+  mutate(`25+` = `25-34`*`25-34 years` + `35-44`*`35-44 years` + `45-54`*`45-54 years` + `55-64`*`55-64 years` + `65-74`*`65-74 years` + `75+`*`75+ years`) |>
+  select(year, variable, country, group, section, `25+`) |>
+  pivot_longer(cols = `25+`) |>
+  rename(age_group = name)
+
+age_smoking_england <- data4 |>
+  filter(variable == "% Current Smoker" & country == "England" & group == "All" & age_group %in% c("16-24")) |>
+  rbind(adult_smoking_england)
+
+
+ggplot(data = age_smoking_england, aes(x = year, y = value, colour = age_group)) +
+  geom_point() +
+  geom_line() +
+  xlab("Year") +
+  ylab("% Current Smoker") +
+  ggtitle("% Current Smoker in England") +
+  labs(colour =  "Age Group") +
+  scale_x_continuous(breaks = pretty_breaks())
+
+```
+
 ## E-Cigarette
 
 ```{r}
@@ -697,7 +817,32 @@ data4 |>
   scale_color_manual(values = cols)
 ```
 
+## E-Cigarette - Great Britain
+More years available - but concerns about different questionnaire structure. Can discuss as they suggest summing variables may be approprirate.
+```{r}
+
+ecig_data <- read_excel("E_Cigarette_Data.xlsx", sheet = "Great_Britain_All")
+
+ecig_data <- ecig_data |>
+  pivot_longer(cols = colnames(ecig_data)[3:ncol(ecig_data)]) |>
+  pivot_wider(names_from = `Proportion of population aged 16 years and over by e-cigarette use [note 1]`, values_from = value) |>
+  mutate(`% User` = `Daily user (%)` + `Occasional user (%)`) |>
+  select(Year, name, `% User`) |>
+  separate(col = name, sep = " \r\naged \r\n", into = c("group", "age_group")) |>
+  mutate(Year = as.integer(Year))
+
+ecig_data |>
+  filter(group == "All persons", age_group == "16 and over") |>
+  ggplot(aes(x = Year, y = `% User`)) +
+  geom_line() +
+  geom_point() +
+  ylab("% Current E-Cigarette Users") +
+  ggtitle("% Current E-Cigarette Users in Great Britain")
+```
+
 ## Activity
+
+Added a new source for the activity that provides more years.
 
 ```{r}
 
@@ -713,6 +858,38 @@ data4 |>
   labs(colour =  "Country", caption = "*Adult for England, Scotland and Wales defined as 16+, and for N. Ireland as 19+\nActivity guidelines are >150 mins Moderate Physical Activity") +
   scale_x_continuous(breaks = pretty_breaks())
 
+# Adding alternative data source for England
+
+activity_england <- read_excel("Activity_Alt_Data.xlsx")
+
+activity_england <- activity_england |>
+  rename(variable = ...1) |>
+  pivot_longer(cols = colnames(activity_england[2:ncol(activity_england)])) |>
+  rename(year = name) |>
+  mutate(year = gsub(year, pattern = "Nov ", replacement = "")) |>
+  mutate(year = as.numeric(paste0("20", substr(year, start = 1, stop = 2))),
+         value = 100*as.numeric(value),
+         variable = case_when(
+           variable == "Active: at least 150 minutes a week" ~ "% Meets guidelines",
+           TRUE ~ variable
+         ), age_group = "16+",
+         group = "All",
+         country = "England",
+         section = "Activity") |>
+  filter(variable == "% Meets guidelines")
+
+data4 |>
+  filter(variable == "% Meets guidelines" & age_group %in% c("16+") & grepl(group, pattern = "All") & country != "England" |
+           variable == "% Meets guidelines" & age_group %in% c("19+") & grepl(group, pattern = "All") & country == "N. Ireland") |>
+  rbind(activity_england) |>
+  ggplot(aes(x = year, y = value, colour = country)) +
+  geom_line() +
+  geom_point() +
+  xlab("Year") +
+  ylab("% Meets Activity Guidelines") +
+  ggtitle("% Meets Activity Guidelines in Adults*") +
+  labs(colour =  "Country", caption = "*Adult for England, Scotland and Wales defined as 16+, and for N. Ireland as 19+\nActivity guidelines are >150 mins Moderate Physical Activity") +
+  scale_x_continuous(breaks = pretty_breaks())
 
 ```
 
@@ -763,7 +940,7 @@ Currently only have data for England and Wales. Trying to track down data for ot
 
 # Plotting parity for birth cohorts
 
-plot_data <- read_excel("Parity_Data.xlsx") |>
+plot_data <- read_excel("Parity_Data.xlsx", sheet = "England_Wales_Parity") |>
   mutate(age = case_when(
     is.na(`Age exact years`) ~ 46,
     TRUE ~ `Age exact years`),
@@ -807,7 +984,7 @@ for(i in 1:nrow(pop_data)){
 pop_data <- pop_data |>
   pivot_longer(cols = colnames(pop_data)[colnames(pop_data)!="year"])
 
-parity_data <- read_excel("Parity_Data.xlsx") |>
+parity_data <- read_excel("Parity_Data.xlsx", sheet = "England_Wales_Parity") |>
   mutate(flag =  case_when(
     is.na(`Age exact years`) ~ "Final",
     TRUE ~ NA),
@@ -840,6 +1017,22 @@ ggplot(parity, aes(x = year, y = parity)) +
   ylab("Parity (%)") +
   ggtitle("Parity in England and Wales") +
   scale_x_continuous(breaks = pretty_breaks())
+
+```
+
+## Fertility Rates
+
+```{r}
+
+fertility_data <- read_excel("Parity_Data.xlsx", sheet = "England_Wales_Fertility") 
+
+ggplot(fertility_data, aes(x = Year, y = `Live births per 1,000 women in age group\r\nAll ages`)) +
+  geom_point() +
+  geom_line() +
+  ylab("Fertility Rates per 1,000") +
+  ggtitle("Fertility in England and Wales") +
+  scale_x_continuous(breaks = pretty_breaks())
+
 
 ```
 
@@ -993,4 +1186,47 @@ diabetes_data |>
   scale_x_continuous(breaks = pretty_breaks())
 
 
+```
+
+## Screening
+```{r}
+
+screening_data_breast <- read_excel("Screening_Data.xlsx", sheet = "England_Breast")
+
+screening_data_breast |>
+  mutate(Year = as.numeric(substr(`Time period`, start = 1, stop = 4))) |>
+  ggplot(aes(x = Year, y = Value)) +
+  geom_line() +
+  geom_point() +
+  xlab("Year") +
+  ylab("% Coverage") +
+  ggtitle("% Breast Screening Coverage in England") +
+  scale_x_continuous(breaks = pretty_breaks())
+
+screening_data_bowel <- read_excel("Screening_Data.xlsx", sheet = "England_Bowel")
+
+screening_data_bowel |>
+  mutate(Year = as.numeric(substr(`Time period`, start = 1, stop = 4))) |>
+  ggplot(aes(x = Year, y = Value)) +
+  geom_line() +
+  geom_point() +
+  xlab("Year") +
+  ylab("% Coverage") +
+  ggtitle("% Bowel Screening Coverage in England") +
+  scale_x_continuous(breaks = pretty_breaks())
+
+screening_data_cervix <- read_excel("Screening_Data.xlsx", sheet = "England_Cervix")
+
+screening_data_cervix |>
+  filter(...1 == "Coverage (25-64)") |>
+  select(-units) |>
+  pivot_longer(cols = colnames(screening_data_cervix)[substr(colnames(screening_data_cervix), start = 1, stop = 2) == "20"]) |>
+  mutate(Year = as.numeric(name)) |>
+  ggplot(aes(x = Year, y = value)) +
+  geom_line() +
+  geom_point() +
+  xlab("Year") +
+  ylab("% Coverage") +
+  ggtitle("% Cervix Screening Coverage in England") +
+  scale_x_continuous(breaks = pretty_breaks())
 ```
