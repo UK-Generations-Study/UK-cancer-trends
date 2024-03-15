@@ -52,6 +52,9 @@ Age at First Birth
 Parity
 - England and Wales data sourced from source 1, Table 3.
 
+Fertility
+- England and Wales data sourced from source 3 for parity, Table 2.
+
 Population
 - England and Wales data sourced from https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/estimatesofthepopulationforenglandandwales, Table 9.
 
