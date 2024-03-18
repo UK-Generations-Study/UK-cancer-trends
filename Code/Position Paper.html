@@ -102,11 +102,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#e-cigarette---great-britain" id="toc-e-cigarette---great-britain" class="nav-link" data-scroll-target="#e-cigarette---great-britain">E-Cigarette - Great Britain</a></li>
   <li><a href="#activity" id="toc-activity" class="nav-link" data-scroll-target="#activity">Activity</a></li>
   <li><a href="#age-first-birth-data" id="toc-age-first-birth-data" class="nav-link" data-scroll-target="#age-first-birth-data">Age First Birth Data</a></li>
-  <li><a href="#parity-data" id="toc-parity-data" class="nav-link" data-scroll-target="#parity-data">Parity Data</a></li>
+  <li><a href="#parity" id="toc-parity" class="nav-link" data-scroll-target="#parity">Parity</a></li>
   <li><a href="#fertility-rates" id="toc-fertility-rates" class="nav-link" data-scroll-target="#fertility-rates">Fertility Rates</a></li>
-  <li><a href="#hrt-data" id="toc-hrt-data" class="nav-link" data-scroll-target="#hrt-data">HRT Data</a></li>
-  <li><a href="#cancer-data" id="toc-cancer-data" class="nav-link" data-scroll-target="#cancer-data">Cancer Data</a></li>
-  <li><a href="#diabetes-data" id="toc-diabetes-data" class="nav-link" data-scroll-target="#diabetes-data">Diabetes Data</a></li>
+  <li><a href="#hrt" id="toc-hrt" class="nav-link" data-scroll-target="#hrt">HRT</a></li>
+  <li><a href="#cancer" id="toc-cancer" class="nav-link" data-scroll-target="#cancer">Cancer</a></li>
+  <li><a href="#diabetes" id="toc-diabetes" class="nav-link" data-scroll-target="#diabetes">Diabetes</a></li>
   <li><a href="#screening" id="toc-screening" class="nav-link" data-scroll-target="#screening">Screening</a></li>
   </ul>
 </nav>
@@ -1086,8 +1086,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="parity-data" class="level2">
-<h2 class="anchored" data-anchor-id="parity-data">Parity Data</h2>
+<section id="parity" class="level2">
+<h2 class="anchored" data-anchor-id="parity">Parity</h2>
 <p>Currently only have data for England and Wales. Trying to track down data for other countries.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
@@ -1206,8 +1206,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="hrt-data" class="level2">
-<h2 class="anchored" data-anchor-id="hrt-data">HRT Data</h2>
+<section id="hrt" class="level2">
+<h2 class="anchored" data-anchor-id="hrt">HRT</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(<span class="st">"HRT_Data.xlsx"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Year =</span> <span class="fu">as.numeric</span>(<span class="fu">map_chr</span>(<span class="fu">strsplit</span>(<span class="st">`</span><span class="at">Financial Year</span><span class="st">`</span>, <span class="st">"/"</span>), <span class="dv">1</span>)), </span>
@@ -1225,8 +1225,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="cancer-data" class="level2">
-<h2 class="anchored" data-anchor-id="cancer-data">Cancer Data</h2>
+<section id="cancer" class="level2">
+<h2 class="anchored" data-anchor-id="cancer">Cancer</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>cancer_sheets <span class="ot">&lt;-</span> <span class="fu">excel_sheets</span>(<span class="st">"Cancer_Data.xlsx"</span>)</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1305,8 +1305,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="diabetes-data" class="level2">
-<h2 class="anchored" data-anchor-id="diabetes-data">Diabetes Data</h2>
+<section id="diabetes" class="level2">
+<h2 class="anchored" data-anchor-id="diabetes">Diabetes</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>diabetes_data <span class="ot">&lt;-</span> <span class="fu">integer</span>(<span class="dv">0</span>)</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
