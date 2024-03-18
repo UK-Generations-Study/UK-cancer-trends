@@ -16,6 +16,10 @@ BMI - Obesity
 - Scotland Data sourced from source 1, Obese section. Full years extracted as no change in methodology noted.
 - N. Ireland Data sourced from source 1, Health Survey NI Trend Tables, Table BMI - Adults, Sub-tables Obese. Full years extracted as no change in methodology noted.
 
+BMI - Children [An alternative children BMI source was desired]
+- England Data sourced from the National Child Measurement Programme, Table 2 https://digital.nhs.uk/data-and-information/publications/statistical/national-child-measurement-programme/2022-23-school-year#resources
+	- NOTE - Data from 2020 was noted as weighted due to a small sample size, but no indication of lack of ability to compare between years was given.
+
 Alcohol
 - England Data sourced from source 1, Adults' health-related behaviours, Table 15. Removed year 2021 due to differing methodology.
 - Scotland Data sourced from source 1, Alcohol consumption (guidelines) section. Full years extracted as no change in methodology noted.
