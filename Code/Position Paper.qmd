@@ -545,6 +545,54 @@ ggplot(data = age_bmi_england, aes(x = year, y = value, colour = age_group)) +
 
 ```
 
+## Childhood Obesity - NCMP
+```{r}
+
+reception_BMI_data <- read_excel("BMI_Data_Children.xlsx", sheet = "England_Reception")
+
+reception_BMI_data <- as.data.frame(t(as.matrix(reception_BMI_data)))
+
+colnames(reception_BMI_data) <- c("variable", "var2", "REMOVE", reception_BMI_data[1,4:ncol(reception_BMI_data)])
+reception_BMI_data <- reception_BMI_data |>
+  filter(row_number()>1 & row_number()<nrow(reception_BMI_data)) |>
+  mutate(variable = rep(reception_BMI_data$variable[!is.na(reception_BMI_data$variable)], each = 5)) |>
+  filter(var2 == "Prevalence") |>
+  select(-REMOVE, -var2, -Reception) |>
+  pivot_longer(cols = colnames(reception_BMI_data)[grepl(colnames(reception_BMI_data), pattern = "20")]) |>
+  mutate(year = as.numeric(substr(name, start = 1, stop = 4)),
+         age_group = "4-5")
+
+yr6_BMI_data <- read_excel("BMI_Data_Children.xlsx", sheet = "England_Year_6")
+
+yr6_BMI_data <- as.data.frame(t(as.matrix(yr6_BMI_data)))
+
+colnames(yr6_BMI_data) <- c("variable", "var2", "REMOVE", yr6_BMI_data[1,4:ncol(yr6_BMI_data)])
+yr6_BMI_data <- yr6_BMI_data |>
+  filter(row_number()>1 & row_number()<nrow(yr6_BMI_data)) |>
+  mutate(variable = rep(yr6_BMI_data$variable[!is.na(yr6_BMI_data$variable)], each = 5)) |>
+  filter(var2 == "Prevalence") |>
+  select(-REMOVE, -var2, -`Year 6`) |>
+  pivot_longer(cols = colnames(yr6_BMI_data)[grepl(colnames(yr6_BMI_data), pattern = "20")]) |>
+  mutate(year = as.numeric(substr(name, start = 1, stop = 4)),
+         age_group = "10-11")
+
+children_BMI_data <- rbind(reception_BMI_data, yr6_BMI_data)
+
+children_BMI_data |>
+  filter(variable == "Obesity (including severe obesity)") |>
+  mutate(value = as.numeric(value)) |>
+  ggplot(aes(x = year, y = value, colour = age_group)) +
+  geom_point() +
+  geom_line() +
+  xlab("Year") +
+  ylab("% Obese") +
+  ggtitle("% Obese in England  - Children") +
+  labs(colour =  "Age Group") +
+  scale_x_continuous(breaks = pretty_breaks())
+  
+
+```
+
 ## Alcohol
 
 ```{r}
@@ -615,6 +663,7 @@ alcohol_data |>
 ```
 
 ## Alcohol - Guidelines by Age
+
 ```{r}
 
 guidelines_england <- data4 |>
@@ -729,6 +778,7 @@ data4 |>
 ```
 
 ## Smoking by Age
+
 ```{r}
 
 weightings <- read_excel("Smoking_Data.xlsx", sheet = "England_All")
@@ -818,7 +868,9 @@ data4 |>
 ```
 
 ## E-Cigarette - Great Britain
+
 More years available - but concerns about different questionnaire structure. Can discuss as they suggest summing variables may be approprirate.
+
 ```{r}
 
 ecig_data <- read_excel("E_Cigarette_Data.xlsx", sheet = "Great_Britain_All")
@@ -916,7 +968,7 @@ afb_data |>
 
 ```
 
-## Parity Data
+## Parity
 
 Currently only have data for England and Wales. Trying to track down data for other countries.
 
@@ -1036,7 +1088,7 @@ ggplot(fertility_data, aes(x = Year, y = `Live births per 1,000 women in age gro
 
 ```
 
-## HRT Data
+## HRT
 
 ```{r}
 
@@ -1055,7 +1107,7 @@ read_excel("HRT_Data.xlsx") |>
 
 ```
 
-## Cancer Data
+## Cancer
 
 ```{r}
 
@@ -1119,7 +1171,7 @@ for(site in unique(cancer_data$`Cancer label`)){
 
 ```
 
-## Diabetes Data
+## Diabetes
 
 ```{r}
 
@@ -1189,6 +1241,7 @@ diabetes_data |>
 ```
 
 ## Screening
+
 ```{r}
 
 screening_data_breast <- read_excel("Screening_Data.xlsx", sheet = "England_Breast")
