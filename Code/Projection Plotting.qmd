@@ -1,0 +1,160 @@
+---
+title: "Cancer Projections"
+format: html
+editor: visual
+---
+
+## Setup
+```{r, setup}
+# knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/Position Paper/Data")
+knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data")
+theme_set(theme_minimal())
+```
+
+## Packages
+```{r}
+library(dplyr)
+library(readxl)
+```
+
+## Functions
+```{r}
+
+extract_joinpoint_splines <- function(data_jp){
+  
+  joins <- data_jp |>
+    filter(grepl(Flag, pattern = "Joinpoint")) |>
+    mutate(section = as.numeric(gsub(Flag, pattern = "Joinpoint ", replacement = "")))
+  
+  joins2 <- joins |>
+    mutate(section = section + 1)
+  
+  start_end <- data_jp |>
+    filter(row_number() %in% c(1, nrow(data_jp))) |>
+    arrange(Year) |>
+    mutate(section = case_when(
+      row_number() == 1 ~ 1,
+      row_number() == 2 ~ Joinpoints[1] + 1
+    )) |>
+    rbind(joins) |>
+    rbind(joins2) |>
+    select(Year, Model, section) |>
+    arrange(Year, section)
+  
+  
+
+  output_data <- data.frame()
+
+  # Adding in points to get to exponential curves
+  for(i in 1:(max(data_jp$Joinpoints)+1)){
+    
+    tempdata <- start_end[start_end$section == i,]
+
+    new_data <- data.frame(Year = seq(tempdata$Year[1], tempdata$Year[2], by = 0.1))
+    new_data$Model <- seq(log(tempdata$Model[1]), log(tempdata$Model[2]), by = (log(tempdata$Model[2]) - log(tempdata$Model[1]))/(nrow(new_data)-1))
+    new_data$Model <- exp(new_data$Model)
+    new_data$section <- i
+
+    output_data <- rbind(output_data, new_data)
+
+  }
+  
+  return(output_data)
+  
+}
+
+
+plot_joinpoint_output <- function(cancer, sex, data, data_jp, incmort, projection = FALSE, projection.yr = NA, projection.target = NA){
+  
+  # Filter both dataframes for the relevant data
+  data <- data |>
+    filter(`Cancer label` == cancer, Sex == sex)
+  data_jp <- data_jp |>
+    filter(Cancer.label == cancer, Sex == sex)
+  
+  jp_plot <- extract_joinpoint_splines(data_jp)
+  
+  sex_lab <- ifelse(sex == 2, "Women", "Men")
+  
+  proj_lab <- ifelse(projection, "Projections", "Trends")
+  
+  plot <- ggplot(data = data, aes(x = Year, y = `ASR (World)`)) +
+      geom_point() +
+      geom_line(data = jp_plot, aes(x = Year, y = Model, colour = factor(section))) +
+      scale_colour_discrete() +
+      guides(colour = F) +
+      # geom_point(data = jp_plot, aes(x = Year, y = Model, colour = section)) +
+      ggtitle(paste0(incmort, " ", proj_lab, " for ", cancer, " Cancer in ", sex_lab))
+  
+  if(projection){  
+    final <- data_jp |>
+      arrange(desc(Year)) |>
+      filter(row_number() == 1) |>
+      mutate(APC = as.numeric(gsub(APC, pattern = "\\*", replacement = "")),
+             APCnew = 1 + APC/100)
+    
+    # browser()
+
+    
+    proj_data <- data.frame(Year = seq(final$Year, projection.yr, by = 0.1))
+    proj_data$lograte <- seq(from = log(final$Model), by = log((final$APCnew)^(1/10)), length.out = nrow(proj_data))
+    proj_data$rate <- exp(proj_data$lograte)
+    
+    plot <- plot +
+      geom_line(data = proj_data, aes(x = Year, y = rate), colour = "red", linetype = "dashed")
+  }
+  
+  plot(plot)
+  
+}
+
+
+```
+
+## Cancer Incidence
+```{r}
+
+incidence_data <- read_excel("Cancer_Projection_Data.xlsx") |>
+  filter(Type == 0)
+
+incidence_jp <- read.delim("Cancer_Incidence_Joinpoint.txt", sep = "\t")
+
+cancers <- unique(incidence_data$`Cancer label`)
+sexes <- c(1,2)
+
+for(cancer in cancers){
+  for(sex in sexes){
+    if((cancer == "Prostate" & sex == 2) | 
+       (cancer == "Breast" & sex == 1)){
+      
+    } else {
+      plot_joinpoint_output(cancer, sex, incidence_data, incidence_jp, "Incidence", projection = T, projection.yr = 2040)
+    }
+  }
+}
+
+```
+
+## Cancer Mortality
+```{r}
+
+mortality_data <- read_excel("Cancer_Projection_Data.xlsx") |>
+  filter(Type == 1)
+
+mortality_jp <- read.delim("Cancer_Mortality_Joinpoint.txt", sep = "\t")
+
+cancers <- unique(mortality_data$`Cancer label`)
+sexes <- c(1,2)
+
+for(cancer in cancers){
+  for(sex in sexes){
+    if((cancer == "Prostate" & sex == 2) | 
+       (cancer == "Breast" & sex == 1)){
+      
+    } else {
+      plot_joinpoint_output(cancer, sex, mortality_data, mortality_jp, "Incidence")
+    }
+  }
+}
+
+```

@@ -1,0 +1,34 @@
+---
+title: "Cancer Projections Prep"
+format: html
+editor: visual
+---
+
+## Packages
+```{r}
+library(readxl)
+library(dplyr)
+
+```
+
+## Data
+```{r}
+setwd("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data")
+
+data <- read_excel("Cancer_Projection_Data.xlsx")
+
+inc_data <- data |>
+  filter(Type == 0) |>
+  select(Year, Sex, `ASR (World)`, `Cancer label`) |>
+  arrange(`Cancer label`, Sex, Year)
+
+write.csv(inc_data, "Cancer_Incident_Data.txt", row.names = F)
+
+mort_data <- data |>
+  filter(Type == 1) |>
+  select(Year, Sex, `ASR (World)`, `Cancer label`) |>
+  arrange(`Cancer label`, Sex, Year)
+
+write.csv(mort_data, "Cancer_Mortality_Data.txt", row.names = F)
+
+```
