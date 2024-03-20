@@ -546,6 +546,7 @@ ggplot(data = age_bmi_england, aes(x = year, y = value, colour = age_group)) +
 ```
 
 ## Childhood Obesity - NCMP
+
 ```{r}
 
 reception_BMI_data <- read_excel("BMI_Data_Children.xlsx", sheet = "England_Reception")
@@ -869,7 +870,7 @@ data4 |>
 
 ## E-Cigarette - Great Britain
 
-More years available - but concerns about different questionnaire structure. Can discuss as they suggest summing variables may be approprirate.
+More years available - but concerns about different questionnaire structure.
 
 ```{r}
 
@@ -881,15 +882,33 @@ ecig_data <- ecig_data |>
   mutate(`% User` = `Daily user (%)` + `Occasional user (%)`) |>
   select(Year, name, `% User`) |>
   separate(col = name, sep = " \r\naged \r\n", into = c("group", "age_group")) |>
-  mutate(Year = as.integer(Year))
+  mutate(Year = as.integer(Year), 
+         age_group = case_when(
+           grepl(age_group, pattern = " to ") ~ gsub(age_group, pattern = " to ", replacement = "-"),
+           grepl(age_group, pattern = " and over") ~ gsub(age_group, pattern = " and over", replacement = "+"),
+           TRUE ~ age_group
+         ))
 
 ecig_data |>
-  filter(group == "All persons", age_group == "16 and over") |>
+  filter(group == "All persons", age_group == "16+") |>
   ggplot(aes(x = Year, y = `% User`)) +
   geom_line() +
   geom_point() +
   ylab("% Current E-Cigarette Users") +
   ggtitle("% Current E-Cigarette Users in Great Britain")
+
+cols <- brewer.pal(n = 8, name = "Greens")[4:8]
+
+ecig_data |>
+  filter(!age_group %in% c("16+"), group == "All persons") |>
+  ggplot(aes(x = Year, y = `% User`, colour = age_group)) +
+  geom_line() +
+  geom_point() +
+  ylab("% Current E-Cigarette Users") +
+  ggtitle("% Current E-Cigarette Users in Great Britain") +
+  labs(colour = "Age Group") +
+  scale_color_manual(values = cols)
+
 ```
 
 ## Activity
