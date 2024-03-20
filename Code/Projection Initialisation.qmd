@@ -5,6 +5,7 @@ editor: visual
 ---
 
 ## Packages
+
 ```{r}
 library(readxl)
 library(dplyr)
@@ -12,6 +13,7 @@ library(dplyr)
 ```
 
 ## Data
+
 ```{r}
 setwd("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data")
 
@@ -30,5 +32,29 @@ mort_data <- data |>
   arrange(`Cancer label`, Sex, Year)
 
 write.csv(mort_data, "Cancer_Mortality_Data.txt", row.names = F)
+
+```
+
+## All Cancer Data
+```{r}
+
+setwd("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data")
+
+data <- read_excel("Cancer_Projection_Data_All.xlsx")
+
+inc_data <- data |>
+  filter(Type == 0) |>
+  select(Year, Sex, `ASR (World)`, `Cancer label`) |>
+  arrange(`Cancer label`, Sex, Year)
+
+write.csv(inc_data, "Cancer_Incident_Data_All.txt", row.names = F)
+
+mort_data <- data |>
+  filter(Type == 1) |>
+  select(Year, Sex, `ASR (World)`, `Cancer label`) |>
+  arrange(`Cancer label`, Sex, Year)
+
+write.csv(mort_data, "Cancer_Mortality_Data_All.txt", row.names = F)
+
 
 ```
