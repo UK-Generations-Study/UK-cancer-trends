@@ -33,6 +33,7 @@ library(RColorBrewer)
 ```{r, setup}
 # knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/Position Paper/Data")
 knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data")
+knitr::opts_chunk$set(echo = FALSE)
 theme_set(theme_minimal())
 ```
 
@@ -435,9 +436,6 @@ data4 |>
 ```
 
 ## Obese
-
-Obese data for England and Wales already in data. Need to download data for N. Ireland and Scotland.
-
 ```{r}
 obese_data <- data4
 
@@ -581,6 +579,7 @@ children_BMI_data <- rbind(reception_BMI_data, yr6_BMI_data)
 
 children_BMI_data |>
   filter(variable == "Obesity (including severe obesity)") |>
+  filter(year != 2020) |> # They noted 2020 as having a smaller sample and needing weighting so we have excluded it here.
   mutate(value = as.numeric(value)) |>
   ggplot(aes(x = year, y = value, colour = age_group)) +
   geom_point() +
@@ -895,7 +894,8 @@ ecig_data |>
   geom_line() +
   geom_point() +
   ylab("% Current E-Cigarette Users") +
-  ggtitle("% Current E-Cigarette Users in Great Britain")
+  ggtitle("% Current E-Cigarette Users in Great Britain") +
+  scale_x_continuous(breaks = pretty_breaks())
 
 cols <- brewer.pal(n = 8, name = "Greens")[4:8]
 
@@ -907,7 +907,8 @@ ecig_data |>
   ylab("% Current E-Cigarette Users") +
   ggtitle("% Current E-Cigarette Users in Great Britain") +
   labs(colour = "Age Group") +
-  scale_color_manual(values = cols)
+  scale_color_manual(values = cols) +
+  scale_x_continuous(breaks = pretty_breaks())
 
 ```
 

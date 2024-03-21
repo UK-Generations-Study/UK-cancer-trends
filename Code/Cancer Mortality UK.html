@@ -117,12 +117,18 @@ Attaching package: 'dplyr'</code></pre>
 
     intersect, setdiff, setequal, union</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="set-up" class="level2">
+<h2 class="anchored" data-anchor-id="set-up">Set Up</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">FALSE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="data" class="level2">
 <h2 class="anchored" data-anchor-id="data">Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mort_data <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/Position Paper/Data/UK_Mortality.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>New names:
 • `` -&gt; `...2`
@@ -134,44 +140,25 @@ Attaching package: 'dplyr'</code></pre>
 <h2 class="anchored" data-anchor-id="data-manipulation">Data Manipulation</h2>
 <p>Can see that top 6 cancer sites seems like a sensible choice. Top 6 cancer sites make up over 50% of the total mortalities, and the drop off from the 6th to the 7th is over 1% of mortalities.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(mort_data) <span class="ot">&lt;-</span> mort_data[<span class="dv">4</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: The `value` argument of `names&lt;-` must be a character vector as of tibble
-3.0.0.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mort_data <span class="ot">&lt;-</span> mort_data[<span class="dv">5</span><span class="sc">:</span><span class="dv">25</span>,]</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>mort_data<span class="sc">$</span>Female <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(mort_data<span class="sc">$</span>Female)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>mort_data<span class="sc">$</span>Male <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(mort_data<span class="sc">$</span>Male)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>mort_data<span class="sc">$</span>Cases <span class="ot">&lt;-</span> mort_data<span class="sc">$</span>Female <span class="sc">+</span> mort_data<span class="sc">$</span>Male</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>mort_data<span class="sc">$</span>CasePerc <span class="ot">&lt;-</span> mort_data<span class="sc">$</span>Cases<span class="sc">/</span><span class="fu">sum</span>(mort_data<span class="sc">$</span>Cases)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>mort_data <span class="ot">&lt;-</span> mort_data <span class="sc">|&gt;</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ToBottom =</span> <span class="fu">ifelse</span>(<span class="st">`</span><span class="at">Cancer Site</span><span class="st">`</span> <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Other Sites"</span>, <span class="st">"Cancer of Unknown Primary (C77-C80)"</span>), <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(ToBottom, <span class="fu">desc</span>(CasePerc)) <span class="sc">|&gt;</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>ToBottom) <span class="sc">|&gt;</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">runningPerc =</span> <span class="fu">cumsum</span>(CasePerc)) <span class="sc">|&gt;</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>mort_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div id="zmachcnqhg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zmachcnqhg table {
+<div id="uvggzdlyoi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#uvggzdlyoi table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#zmachcnqhg thead, #zmachcnqhg tbody, #zmachcnqhg tfoot, #zmachcnqhg tr, #zmachcnqhg td, #zmachcnqhg th {
+#uvggzdlyoi thead, #uvggzdlyoi tbody, #uvggzdlyoi tfoot, #uvggzdlyoi tr, #uvggzdlyoi td, #uvggzdlyoi th {
   border-style: none;
 }
 
-#zmachcnqhg p {
+#uvggzdlyoi p {
   margin: 0;
   padding: 0;
 }
 
-#zmachcnqhg .gt_table {
+#uvggzdlyoi .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -197,12 +184,12 @@ Attaching package: 'dplyr'</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#zmachcnqhg .gt_caption {
+#uvggzdlyoi .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#zmachcnqhg .gt_title {
+#uvggzdlyoi .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -214,7 +201,7 @@ Attaching package: 'dplyr'</code></pre>
   border-bottom-width: 0;
 }
 
-#zmachcnqhg .gt_subtitle {
+#uvggzdlyoi .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -226,7 +213,7 @@ Attaching package: 'dplyr'</code></pre>
   border-top-width: 0;
 }
 
-#zmachcnqhg .gt_heading {
+#uvggzdlyoi .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -238,13 +225,13 @@ Attaching package: 'dplyr'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#zmachcnqhg .gt_bottom_border {
+#uvggzdlyoi .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zmachcnqhg .gt_col_headings {
+#uvggzdlyoi .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -259,7 +246,7 @@ Attaching package: 'dplyr'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#zmachcnqhg .gt_col_heading {
+#uvggzdlyoi .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -279,7 +266,7 @@ Attaching package: 'dplyr'</code></pre>
   overflow-x: hidden;
 }
 
-#zmachcnqhg .gt_column_spanner_outer {
+#uvggzdlyoi .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -291,15 +278,15 @@ Attaching package: 'dplyr'</code></pre>
   padding-right: 4px;
 }
 
-#zmachcnqhg .gt_column_spanner_outer:first-child {
+#uvggzdlyoi .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zmachcnqhg .gt_column_spanner_outer:last-child {
+#uvggzdlyoi .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zmachcnqhg .gt_column_spanner {
+#uvggzdlyoi .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -311,11 +298,11 @@ Attaching package: 'dplyr'</code></pre>
   width: 100%;
 }
 
-#zmachcnqhg .gt_spanner_row {
+#uvggzdlyoi .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#zmachcnqhg .gt_group_heading {
+#uvggzdlyoi .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -341,7 +328,7 @@ Attaching package: 'dplyr'</code></pre>
   text-align: left;
 }
 
-#zmachcnqhg .gt_empty_group_heading {
+#uvggzdlyoi .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -356,15 +343,15 @@ Attaching package: 'dplyr'</code></pre>
   vertical-align: middle;
 }
 
-#zmachcnqhg .gt_from_md > :first-child {
+#uvggzdlyoi .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zmachcnqhg .gt_from_md > :last-child {
+#uvggzdlyoi .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zmachcnqhg .gt_row {
+#uvggzdlyoi .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -383,7 +370,7 @@ Attaching package: 'dplyr'</code></pre>
   overflow-x: hidden;
 }
 
-#zmachcnqhg .gt_stub {
+#uvggzdlyoi .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -396,7 +383,7 @@ Attaching package: 'dplyr'</code></pre>
   padding-right: 5px;
 }
 
-#zmachcnqhg .gt_stub_row_group {
+#uvggzdlyoi .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -410,15 +397,15 @@ Attaching package: 'dplyr'</code></pre>
   vertical-align: top;
 }
 
-#zmachcnqhg .gt_row_group_first td {
+#uvggzdlyoi .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#zmachcnqhg .gt_row_group_first th {
+#uvggzdlyoi .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#zmachcnqhg .gt_summary_row {
+#uvggzdlyoi .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -428,16 +415,16 @@ Attaching package: 'dplyr'</code></pre>
   padding-right: 5px;
 }
 
-#zmachcnqhg .gt_first_summary_row {
+#uvggzdlyoi .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#zmachcnqhg .gt_first_summary_row.thick {
+#uvggzdlyoi .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#zmachcnqhg .gt_last_summary_row {
+#uvggzdlyoi .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -447,7 +434,7 @@ Attaching package: 'dplyr'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#zmachcnqhg .gt_grand_summary_row {
+#uvggzdlyoi .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -457,7 +444,7 @@ Attaching package: 'dplyr'</code></pre>
   padding-right: 5px;
 }
 
-#zmachcnqhg .gt_first_grand_summary_row {
+#uvggzdlyoi .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -467,7 +454,7 @@ Attaching package: 'dplyr'</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#zmachcnqhg .gt_last_grand_summary_row_top {
+#uvggzdlyoi .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -477,11 +464,11 @@ Attaching package: 'dplyr'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#zmachcnqhg .gt_striped {
+#uvggzdlyoi .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zmachcnqhg .gt_table_body {
+#uvggzdlyoi .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -490,7 +477,7 @@ Attaching package: 'dplyr'</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#zmachcnqhg .gt_footnotes {
+#uvggzdlyoi .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -504,7 +491,7 @@ Attaching package: 'dplyr'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#zmachcnqhg .gt_footnote {
+#uvggzdlyoi .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -513,7 +500,7 @@ Attaching package: 'dplyr'</code></pre>
   padding-right: 5px;
 }
 
-#zmachcnqhg .gt_sourcenotes {
+#uvggzdlyoi .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -527,7 +514,7 @@ Attaching package: 'dplyr'</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#zmachcnqhg .gt_sourcenote {
+#uvggzdlyoi .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -535,63 +522,63 @@ Attaching package: 'dplyr'</code></pre>
   padding-right: 5px;
 }
 
-#zmachcnqhg .gt_left {
+#uvggzdlyoi .gt_left {
   text-align: left;
 }
 
-#zmachcnqhg .gt_center {
+#uvggzdlyoi .gt_center {
   text-align: center;
 }
 
-#zmachcnqhg .gt_right {
+#uvggzdlyoi .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zmachcnqhg .gt_font_normal {
+#uvggzdlyoi .gt_font_normal {
   font-weight: normal;
 }
 
-#zmachcnqhg .gt_font_bold {
+#uvggzdlyoi .gt_font_bold {
   font-weight: bold;
 }
 
-#zmachcnqhg .gt_font_italic {
+#uvggzdlyoi .gt_font_italic {
   font-style: italic;
 }
 
-#zmachcnqhg .gt_super {
+#uvggzdlyoi .gt_super {
   font-size: 65%;
 }
 
-#zmachcnqhg .gt_footnote_marks {
+#uvggzdlyoi .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#zmachcnqhg .gt_asterisk {
+#uvggzdlyoi .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#zmachcnqhg .gt_indent_1 {
+#uvggzdlyoi .gt_indent_1 {
   text-indent: 5px;
 }
 
-#zmachcnqhg .gt_indent_2 {
+#uvggzdlyoi .gt_indent_2 {
   text-indent: 10px;
 }
 
-#zmachcnqhg .gt_indent_3 {
+#uvggzdlyoi .gt_indent_3 {
   text-indent: 15px;
 }
 
-#zmachcnqhg .gt_indent_4 {
+#uvggzdlyoi .gt_indent_4 {
   text-indent: 20px;
 }
 
-#zmachcnqhg .gt_indent_5 {
+#uvggzdlyoi .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -599,141 +586,141 @@ Attaching package: 'dplyr'</code></pre>
   <thead>
     
     <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Cancer Site">Cancer Site</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Female">Female</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Male">Male</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Cases">Cases</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="CasePerc">CasePerc</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="runningPerc">runningPerc</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; text-align: center; font-weight: bold;" scope="col" id="Cancer Site">Cancer Site</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; text-align: center; font-weight: bold;" scope="col" id="Female">Female</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; text-align: center; font-weight: bold;" scope="col" id="Male">Male</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; text-align: center; font-weight: bold;" scope="col" id="Mortalities">Mortalities</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; text-align: center; font-weight: bold;" scope="col" id="Mortalities (%)">Mortalities (%)</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; text-align: center; font-weight: bold;" scope="col" id="Cumulative<br>Mortalities (%)">Cumulative<br>Mortalities (%)</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr><td headers="Cancer Site" class="gt_row gt_left">Lung (C33-C34)</td>
-<td headers="Female" class="gt_row gt_right">16140</td>
-<td headers="Male" class="gt_row gt_right">18631</td>
-<td headers="Cases" class="gt_row gt_right">34771</td>
-<td headers="CasePerc" class="gt_row gt_right">0.20687173</td>
-<td headers="runningPerc" class="gt_row gt_right">0.2068717</td></tr>
-    <tr><td headers="Cancer Site" class="gt_row gt_left">Bowel (C18-C20)</td>
-<td headers="Female" class="gt_row gt_right">7614</td>
-<td headers="Male" class="gt_row gt_right">9193</td>
-<td headers="Cases" class="gt_row gt_right">16807</td>
-<td headers="CasePerc" class="gt_row gt_right">0.09999405</td>
-<td headers="runningPerc" class="gt_row gt_right">0.3068658</td></tr>
-    <tr><td headers="Cancer Site" class="gt_row gt_left">Prostate (C61)</td>
-<td headers="Female" class="gt_row gt_right">0</td>
-<td headers="Male" class="gt_row gt_right">12039</td>
-<td headers="Cases" class="gt_row gt_right">12039</td>
-<td headers="CasePerc" class="gt_row gt_right">0.07162661</td>
-<td headers="runningPerc" class="gt_row gt_right">0.3784924</td></tr>
-    <tr><td headers="Cancer Site" class="gt_row gt_left">Breast (C50)</td>
-<td headers="Female" class="gt_row gt_right">11415</td>
-<td headers="Male" class="gt_row gt_right">85</td>
-<td headers="Cases" class="gt_row gt_right">11500</td>
-<td headers="CasePerc" class="gt_row gt_right">0.06841980</td>
-<td headers="runningPerc" class="gt_row gt_right">0.4469122</td></tr>
-    <tr><td headers="Cancer Site" class="gt_row gt_left">Pancreas (C25)</td>
-<td headers="Female" class="gt_row gt_right">4680</td>
-<td headers="Male" class="gt_row gt_right">4877</td>
-<td headers="Cases" class="gt_row gt_right">9557</td>
-<td headers="CasePerc" class="gt_row gt_right">0.05685983</td>
-<td headers="runningPerc" class="gt_row gt_right">0.5037720</td></tr>
-    <tr><td headers="Cancer Site" class="gt_row gt_left">Oesophagus (C15)</td>
-<td headers="Female" class="gt_row gt_right">2503</td>
-<td headers="Male" class="gt_row gt_right">5539</td>
-<td headers="Cases" class="gt_row gt_right">8042</td>
-<td headers="CasePerc" class="gt_row gt_right">0.04784626</td>
-<td headers="runningPerc" class="gt_row gt_right">0.5516183</td></tr>
-    <tr><td headers="Cancer Site" class="gt_row gt_left">Liver (C22)</td>
-<td headers="Female" class="gt_row gt_right">2272</td>
-<td headers="Male" class="gt_row gt_right">3557</td>
-<td headers="Cases" class="gt_row gt_right">5829</td>
-<td headers="CasePerc" class="gt_row gt_right">0.03467991</td>
-<td headers="runningPerc" class="gt_row gt_right">0.5862982</td></tr>
-    <tr><td headers="Cancer Site" class="gt_row gt_left">Bladder (C67)</td>
-<td headers="Female" class="gt_row gt_right">1763</td>
-<td headers="Male" class="gt_row gt_right">3792</td>
-<td headers="Cases" class="gt_row gt_right">5555</td>
-<td headers="CasePerc" class="gt_row gt_right">0.03304974</td>
-<td headers="runningPerc" class="gt_row gt_right">0.6193479</td></tr>
-    <tr><td headers="Cancer Site" class="gt_row gt_left">Brain, Other CNS &amp; Intracranial Tumours (C70-C72, C75.1-C75.3, D32-D33, D35.2-D35.4, D42-D43, D44.3-D44.5)</td>
-<td headers="Female" class="gt_row gt_right">2397</td>
-<td headers="Male" class="gt_row gt_right">3059</td>
-<td headers="Cases" class="gt_row gt_right">5456</td>
-<td headers="CasePerc" class="gt_row gt_right">0.03246073</td>
-<td headers="runningPerc" class="gt_row gt_right">0.6518087</td></tr>
-    <tr><td headers="Cancer Site" class="gt_row gt_left">Non-Hodgkin Lymphoma (C82-C86)</td>
-<td headers="Female" class="gt_row gt_right">2168</td>
-<td headers="Male" class="gt_row gt_right">2741</td>
-<td headers="Cases" class="gt_row gt_right">4909</td>
-<td headers="CasePerc" class="gt_row gt_right">0.02920633</td>
-<td headers="runningPerc" class="gt_row gt_right">0.6810150</td></tr>
-    <tr><td headers="Cancer Site" class="gt_row gt_left">Leukaemia (C91-C95)</td>
-<td headers="Female" class="gt_row gt_right">1970</td>
-<td headers="Male" class="gt_row gt_right">2860</td>
-<td headers="Cases" class="gt_row gt_right">4830</td>
-<td headers="CasePerc" class="gt_row gt_right">0.02873632</td>
-<td headers="runningPerc" class="gt_row gt_right">0.7097513</td></tr>
-    <tr><td headers="Cancer Site" class="gt_row gt_left">Kidney (C64-C66,C68)</td>
-<td headers="Female" class="gt_row gt_right">1772</td>
-<td headers="Male" class="gt_row gt_right">2937</td>
-<td headers="Cases" class="gt_row gt_right">4709</td>
-<td headers="CasePerc" class="gt_row gt_right">0.02801642</td>
-<td headers="runningPerc" class="gt_row gt_right">0.7377677</td></tr>
-    <tr><td headers="Cancer Site" class="gt_row gt_left">Stomach (C16)</td>
-<td headers="Female" class="gt_row gt_right">1541</td>
-<td headers="Male" class="gt_row gt_right">2676</td>
-<td headers="Cases" class="gt_row gt_right">4217</td>
-<td headers="CasePerc" class="gt_row gt_right">0.02508924</td>
-<td headers="runningPerc" class="gt_row gt_right">0.7628570</td></tr>
-    <tr><td headers="Cancer Site" class="gt_row gt_left">Head and Neck (C00-C14, C30-C32)</td>
-<td headers="Female" class="gt_row gt_right">1205</td>
-<td headers="Male" class="gt_row gt_right">2939</td>
-<td headers="Cases" class="gt_row gt_right">4144</td>
-<td headers="CasePerc" class="gt_row gt_right">0.02465493</td>
-<td headers="runningPerc" class="gt_row gt_right">0.7875119</td></tr>
-    <tr><td headers="Cancer Site" class="gt_row gt_left">Ovary (C56-C57.4)</td>
-<td headers="Female" class="gt_row gt_right">4142</td>
-<td headers="Male" class="gt_row gt_right">0</td>
-<td headers="Cases" class="gt_row gt_right">4142</td>
-<td headers="CasePerc" class="gt_row gt_right">0.02464303</td>
-<td headers="runningPerc" class="gt_row gt_right">0.8121549</td></tr>
-    <tr><td headers="Cancer Site" class="gt_row gt_left">Myeloma (C90)</td>
-<td headers="Female" class="gt_row gt_right">1361</td>
-<td headers="Male" class="gt_row gt_right">1736</td>
-<td headers="Cases" class="gt_row gt_right">3097</td>
-<td headers="CasePerc" class="gt_row gt_right">0.01842575</td>
-<td headers="runningPerc" class="gt_row gt_right">0.8305807</td></tr>
-    <tr><td headers="Cancer Site" class="gt_row gt_left">Uterus (C54-C55)</td>
-<td headers="Female" class="gt_row gt_right">2453</td>
-<td headers="Male" class="gt_row gt_right">0</td>
-<td headers="Cases" class="gt_row gt_right">2453</td>
-<td headers="CasePerc" class="gt_row gt_right">0.01459424</td>
-<td headers="runningPerc" class="gt_row gt_right">0.8451749</td></tr>
-    <tr><td headers="Cancer Site" class="gt_row gt_left">Mesothelioma (C45)</td>
-<td headers="Female" class="gt_row gt_right">406</td>
-<td headers="Male" class="gt_row gt_right">1988</td>
-<td headers="Cases" class="gt_row gt_right">2394</td>
-<td headers="CasePerc" class="gt_row gt_right">0.01424322</td>
-<td headers="runningPerc" class="gt_row gt_right">0.8594181</td></tr>
-    <tr><td headers="Cancer Site" class="gt_row gt_left">Melanoma Skin Cancer (C43)</td>
-<td headers="Female" class="gt_row gt_right">984</td>
-<td headers="Male" class="gt_row gt_right">1357</td>
-<td headers="Cases" class="gt_row gt_right">2341</td>
-<td headers="CasePerc" class="gt_row gt_right">0.01392789</td>
-<td headers="runningPerc" class="gt_row gt_right">0.8733460</td></tr>
+    <tr><td headers="Cancer Site" class="gt_row gt_left">Lung</td>
+<td headers="Female" class="gt_row gt_right" style="text-align: center;">16140</td>
+<td headers="Male" class="gt_row gt_right" style="text-align: center;">18631</td>
+<td headers="Mortalities" class="gt_row gt_right" style="text-align: center;">34771</td>
+<td headers="MortPerc" class="gt_row gt_right" style="text-align: center;">20.69</td>
+<td headers="runningPerc" class="gt_row gt_right" style="text-align: center;">20.69</td></tr>
+    <tr><td headers="Cancer Site" class="gt_row gt_left">Bowel</td>
+<td headers="Female" class="gt_row gt_right" style="text-align: center;">7614</td>
+<td headers="Male" class="gt_row gt_right" style="text-align: center;">9193</td>
+<td headers="Mortalities" class="gt_row gt_right" style="text-align: center;">16807</td>
+<td headers="MortPerc" class="gt_row gt_right" style="text-align: center;">10.00</td>
+<td headers="runningPerc" class="gt_row gt_right" style="text-align: center;">30.69</td></tr>
+    <tr><td headers="Cancer Site" class="gt_row gt_left">Prostate</td>
+<td headers="Female" class="gt_row gt_right" style="text-align: center;">0</td>
+<td headers="Male" class="gt_row gt_right" style="text-align: center;">12039</td>
+<td headers="Mortalities" class="gt_row gt_right" style="text-align: center;">12039</td>
+<td headers="MortPerc" class="gt_row gt_right" style="text-align: center;">7.16</td>
+<td headers="runningPerc" class="gt_row gt_right" style="text-align: center;">37.85</td></tr>
+    <tr><td headers="Cancer Site" class="gt_row gt_left">Breast</td>
+<td headers="Female" class="gt_row gt_right" style="text-align: center;">11415</td>
+<td headers="Male" class="gt_row gt_right" style="text-align: center;">85</td>
+<td headers="Mortalities" class="gt_row gt_right" style="text-align: center;">11500</td>
+<td headers="MortPerc" class="gt_row gt_right" style="text-align: center;">6.84</td>
+<td headers="runningPerc" class="gt_row gt_right" style="text-align: center;">44.69</td></tr>
+    <tr><td headers="Cancer Site" class="gt_row gt_left">Pancreas</td>
+<td headers="Female" class="gt_row gt_right" style="text-align: center;">4680</td>
+<td headers="Male" class="gt_row gt_right" style="text-align: center;">4877</td>
+<td headers="Mortalities" class="gt_row gt_right" style="text-align: center;">9557</td>
+<td headers="MortPerc" class="gt_row gt_right" style="text-align: center;">5.69</td>
+<td headers="runningPerc" class="gt_row gt_right" style="text-align: center;">50.38</td></tr>
+    <tr><td headers="Cancer Site" class="gt_row gt_left">Oesophagus</td>
+<td headers="Female" class="gt_row gt_right" style="text-align: center;">2503</td>
+<td headers="Male" class="gt_row gt_right" style="text-align: center;">5539</td>
+<td headers="Mortalities" class="gt_row gt_right" style="text-align: center;">8042</td>
+<td headers="MortPerc" class="gt_row gt_right" style="text-align: center;">4.78</td>
+<td headers="runningPerc" class="gt_row gt_right" style="text-align: center;">55.16</td></tr>
+    <tr><td headers="Cancer Site" class="gt_row gt_left">Liver</td>
+<td headers="Female" class="gt_row gt_right" style="text-align: center;">2272</td>
+<td headers="Male" class="gt_row gt_right" style="text-align: center;">3557</td>
+<td headers="Mortalities" class="gt_row gt_right" style="text-align: center;">5829</td>
+<td headers="MortPerc" class="gt_row gt_right" style="text-align: center;">3.47</td>
+<td headers="runningPerc" class="gt_row gt_right" style="text-align: center;">58.63</td></tr>
+    <tr><td headers="Cancer Site" class="gt_row gt_left">Bladder</td>
+<td headers="Female" class="gt_row gt_right" style="text-align: center;">1763</td>
+<td headers="Male" class="gt_row gt_right" style="text-align: center;">3792</td>
+<td headers="Mortalities" class="gt_row gt_right" style="text-align: center;">5555</td>
+<td headers="MortPerc" class="gt_row gt_right" style="text-align: center;">3.30</td>
+<td headers="runningPerc" class="gt_row gt_right" style="text-align: center;">61.93</td></tr>
+    <tr><td headers="Cancer Site" class="gt_row gt_left">Brain, Other CNS &amp; Intracranial Tumours</td>
+<td headers="Female" class="gt_row gt_right" style="text-align: center;">2397</td>
+<td headers="Male" class="gt_row gt_right" style="text-align: center;">3059</td>
+<td headers="Mortalities" class="gt_row gt_right" style="text-align: center;">5456</td>
+<td headers="MortPerc" class="gt_row gt_right" style="text-align: center;">3.25</td>
+<td headers="runningPerc" class="gt_row gt_right" style="text-align: center;">65.18</td></tr>
+    <tr><td headers="Cancer Site" class="gt_row gt_left">Non-Hodgkin Lymphoma</td>
+<td headers="Female" class="gt_row gt_right" style="text-align: center;">2168</td>
+<td headers="Male" class="gt_row gt_right" style="text-align: center;">2741</td>
+<td headers="Mortalities" class="gt_row gt_right" style="text-align: center;">4909</td>
+<td headers="MortPerc" class="gt_row gt_right" style="text-align: center;">2.92</td>
+<td headers="runningPerc" class="gt_row gt_right" style="text-align: center;">68.10</td></tr>
+    <tr><td headers="Cancer Site" class="gt_row gt_left">Leukaemia</td>
+<td headers="Female" class="gt_row gt_right" style="text-align: center;">1970</td>
+<td headers="Male" class="gt_row gt_right" style="text-align: center;">2860</td>
+<td headers="Mortalities" class="gt_row gt_right" style="text-align: center;">4830</td>
+<td headers="MortPerc" class="gt_row gt_right" style="text-align: center;">2.87</td>
+<td headers="runningPerc" class="gt_row gt_right" style="text-align: center;">70.98</td></tr>
+    <tr><td headers="Cancer Site" class="gt_row gt_left">Kidney</td>
+<td headers="Female" class="gt_row gt_right" style="text-align: center;">1772</td>
+<td headers="Male" class="gt_row gt_right" style="text-align: center;">2937</td>
+<td headers="Mortalities" class="gt_row gt_right" style="text-align: center;">4709</td>
+<td headers="MortPerc" class="gt_row gt_right" style="text-align: center;">2.80</td>
+<td headers="runningPerc" class="gt_row gt_right" style="text-align: center;">73.78</td></tr>
+    <tr><td headers="Cancer Site" class="gt_row gt_left">Stomach</td>
+<td headers="Female" class="gt_row gt_right" style="text-align: center;">1541</td>
+<td headers="Male" class="gt_row gt_right" style="text-align: center;">2676</td>
+<td headers="Mortalities" class="gt_row gt_right" style="text-align: center;">4217</td>
+<td headers="MortPerc" class="gt_row gt_right" style="text-align: center;">2.51</td>
+<td headers="runningPerc" class="gt_row gt_right" style="text-align: center;">76.29</td></tr>
+    <tr><td headers="Cancer Site" class="gt_row gt_left">Head and Neck</td>
+<td headers="Female" class="gt_row gt_right" style="text-align: center;">1205</td>
+<td headers="Male" class="gt_row gt_right" style="text-align: center;">2939</td>
+<td headers="Mortalities" class="gt_row gt_right" style="text-align: center;">4144</td>
+<td headers="MortPerc" class="gt_row gt_right" style="text-align: center;">2.47</td>
+<td headers="runningPerc" class="gt_row gt_right" style="text-align: center;">78.75</td></tr>
+    <tr><td headers="Cancer Site" class="gt_row gt_left">Ovary</td>
+<td headers="Female" class="gt_row gt_right" style="text-align: center;">4142</td>
+<td headers="Male" class="gt_row gt_right" style="text-align: center;">0</td>
+<td headers="Mortalities" class="gt_row gt_right" style="text-align: center;">4142</td>
+<td headers="MortPerc" class="gt_row gt_right" style="text-align: center;">2.46</td>
+<td headers="runningPerc" class="gt_row gt_right" style="text-align: center;">81.22</td></tr>
+    <tr><td headers="Cancer Site" class="gt_row gt_left">Myeloma</td>
+<td headers="Female" class="gt_row gt_right" style="text-align: center;">1361</td>
+<td headers="Male" class="gt_row gt_right" style="text-align: center;">1736</td>
+<td headers="Mortalities" class="gt_row gt_right" style="text-align: center;">3097</td>
+<td headers="MortPerc" class="gt_row gt_right" style="text-align: center;">1.84</td>
+<td headers="runningPerc" class="gt_row gt_right" style="text-align: center;">83.06</td></tr>
+    <tr><td headers="Cancer Site" class="gt_row gt_left">Uterus</td>
+<td headers="Female" class="gt_row gt_right" style="text-align: center;">2453</td>
+<td headers="Male" class="gt_row gt_right" style="text-align: center;">0</td>
+<td headers="Mortalities" class="gt_row gt_right" style="text-align: center;">2453</td>
+<td headers="MortPerc" class="gt_row gt_right" style="text-align: center;">1.46</td>
+<td headers="runningPerc" class="gt_row gt_right" style="text-align: center;">84.52</td></tr>
+    <tr><td headers="Cancer Site" class="gt_row gt_left">Mesothelioma</td>
+<td headers="Female" class="gt_row gt_right" style="text-align: center;">406</td>
+<td headers="Male" class="gt_row gt_right" style="text-align: center;">1988</td>
+<td headers="Mortalities" class="gt_row gt_right" style="text-align: center;">2394</td>
+<td headers="MortPerc" class="gt_row gt_right" style="text-align: center;">1.42</td>
+<td headers="runningPerc" class="gt_row gt_right" style="text-align: center;">85.94</td></tr>
+    <tr><td headers="Cancer Site" class="gt_row gt_left">Melanoma Skin Cancer</td>
+<td headers="Female" class="gt_row gt_right" style="text-align: center;">984</td>
+<td headers="Male" class="gt_row gt_right" style="text-align: center;">1357</td>
+<td headers="Mortalities" class="gt_row gt_right" style="text-align: center;">2341</td>
+<td headers="MortPerc" class="gt_row gt_right" style="text-align: center;">1.39</td>
+<td headers="runningPerc" class="gt_row gt_right" style="text-align: center;">87.33</td></tr>
     <tr><td headers="Cancer Site" class="gt_row gt_left">Other Sites</td>
-<td headers="Female" class="gt_row gt_right">6688</td>
-<td headers="Male" class="gt_row gt_right">5105</td>
-<td headers="Cases" class="gt_row gt_right">11793</td>
-<td headers="CasePerc" class="gt_row gt_right">0.07016302</td>
-<td headers="runningPerc" class="gt_row gt_right">0.9435090</td></tr>
-    <tr><td headers="Cancer Site" class="gt_row gt_left">Cancer of Unknown Primary (C77-C80)</td>
-<td headers="Female" class="gt_row gt_right">5035</td>
-<td headers="Male" class="gt_row gt_right">4460</td>
-<td headers="Cases" class="gt_row gt_right">9495</td>
-<td headers="CasePerc" class="gt_row gt_right">0.05649096</td>
-<td headers="runningPerc" class="gt_row gt_right">1.0000000</td></tr>
+<td headers="Female" class="gt_row gt_right" style="text-align: center;">6688</td>
+<td headers="Male" class="gt_row gt_right" style="text-align: center;">5105</td>
+<td headers="Mortalities" class="gt_row gt_right" style="text-align: center;">11793</td>
+<td headers="MortPerc" class="gt_row gt_right" style="text-align: center;">7.02</td>
+<td headers="runningPerc" class="gt_row gt_right" style="text-align: center;">94.35</td></tr>
+    <tr><td headers="Cancer Site" class="gt_row gt_left">Cancer of Unknown Primary</td>
+<td headers="Female" class="gt_row gt_right" style="text-align: center;">5035</td>
+<td headers="Male" class="gt_row gt_right" style="text-align: center;">4460</td>
+<td headers="Mortalities" class="gt_row gt_right" style="text-align: center;">9495</td>
+<td headers="MortPerc" class="gt_row gt_right" style="text-align: center;">5.65</td>
+<td headers="runningPerc" class="gt_row gt_right" style="text-align: center;">100.00</td></tr>
   </tbody>
   
   
