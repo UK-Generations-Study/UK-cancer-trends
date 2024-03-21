@@ -133,7 +133,8 @@ plot_joinpoint_output <- function(cancer, sex = 3, data, data_jp, incmort, start
     jp_plot_women <- extract_joinpoint_splines(data_jp_women) |>
       mutate(Sex = "Women")
     
-    jp_plot <- rbind(jp_plot_men, jp_plot_women)
+    jp_plot <- rbind(jp_plot_men, jp_plot_women) |>
+      filter(Year >= max(c(start.yr, min(Year)), na.rm = T))
     
     # Making variable for dynamic plot title generation
     projection <- !is.na(projection.yr)
@@ -322,7 +323,7 @@ sexes <- c(1,2)
 
 for(cancer in cancers){
   p1 <- plot_joinpoint_output(cancer, sex = 3, incidence_data, incidence_jp, "Incidence")
-  p2 <- plot_joinpoint_output(cancer, sex = 3, mortality_data, mortality_jp, "Mortality", projection.yr = 2040)
+  p2 <- plot_joinpoint_output(cancer, sex = 3, mortality_data, mortality_jp, "Mortality", projection.yr = 2040, start.yr = 2000)
   grid.arrange(p1, p2, nrow = 1, widths = c(4,4))
 }
 

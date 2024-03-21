@@ -436,6 +436,7 @@ data4 |>
 ```
 
 ## Obese
+
 ```{r}
 obese_data <- data4
 
@@ -849,14 +850,14 @@ data4 |>
   labs(colour =  "Country") +
   scale_x_continuous(breaks = pretty_breaks())
 
-cols <- brewer.pal(n = 8, name = "Greens")[5:8]
+cols <- colorRampPalette(brewer.pal(n = 8, name = "Greens")[4:8])(7)
 
 data4 |>
   filter(variable == "% Current E-cigarette user" & grepl(group, pattern = "All") & country == "England" & age_group != "16+") |>
   mutate(age_start = as.numeric(substr(age_group, 1, 2)), 
          age_end = ifelse(grepl(age_group, pattern = "\\+"), age_start, as.numeric(substr(age_group, 4, 5))),
          age_use = 0.5*(age_start + age_end)) |>
-  ggplot(aes(x = age_use, y = value, colour = as.factor(year))) +
+  ggplot(aes(x = year, y = value, colour = as.factor(age_group))) +
   geom_line() +
   geom_point() +
   xlab("Age") +
