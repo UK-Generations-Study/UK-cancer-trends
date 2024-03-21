@@ -27,6 +27,7 @@ library(scales)
 ```{r, setup}
 # knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/Position Paper/Data")
 knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data")
+knitr::opts_chunk$set(echo = FALSE)
 theme_set(theme_minimal())
 ```
 
@@ -113,7 +114,8 @@ plot_joinpoint_output <- function(cancer, sex = 3, data, data_jp, incmort, start
     
     # Filter both dataframes for the relevant data
     data <- data |>
-      filter(Year >= max(c(start.yr, min(Year)), na.rm = T))
+      filter(Year >= max(c(start.yr, min(Year)), na.rm = T)) |>
+      mutate(Sex = ifelse(Sex==1, "Men", "Women"))
     
     data_jp <- data_jp |>
       filter(Cancer.label == cancer)
@@ -139,15 +141,17 @@ plot_joinpoint_output <- function(cancer, sex = 3, data, data_jp, incmort, start
     
     # Initial plotting of trends
     plot <- ggplot() +
-        geom_line(data = jp_plot, aes(x = Year, y = Model, colour = factor(section, levels = unique(section)), linetype = Sex)) +
-        geom_point(data = data, aes(x = Year, y = `ASR (World)`, shape = factor(Sex))) +
-        # geom_line(data = jp_plot_men, aes(x = Year, y = Model, colour = factor(APC, levels = unique(APC), labels = round(unique(APC), digits = 2)))) +
-        # geom_line(data = jp_plot_women, aes(x = Year, y = Model, colour = factor(APC, levels = unique(APC), labels = round(unique(APC), digits = 2)), linetype = "dashed")) +
-        scale_colour_discrete() +
-        # guides(colour = "none") +
-        # geom_point(data = jp_plot, aes(x = Year, y = Model, colour = section)) +
-        ggtitle(paste0(incmort, " ", proj_lab, " for ", cancer, " Cancer")) +
-        scale_x_continuous(breaks = pretty_breaks())
+      geom_line(data = jp_plot, aes(x = Year, y = Model, colour = factor(section, levels = unique(section)), linetype = Sex)) +
+      geom_point(data = data, aes(x = Year, y = `ASR (World)`, shape = Sex)) +
+      # geom_line(data = jp_plot_men, aes(x = Year, y = Model, colour = factor(APC, levels = unique(APC), labels = round(unique(APC), digits = 2)))) +
+      # geom_line(data = jp_plot_women, aes(x = Year, y = Model, colour = factor(APC, levels = unique(APC), labels = round(unique(APC), digits = 2)), linetype = "dashed")) +
+      scale_colour_discrete() +
+      # guides(colour = "none") +
+      # geom_point(data = jp_plot, aes(x = Year, y = Model, colour = section)) +
+      ggtitle(paste0(incmort, " ", proj_lab, " for ", cancer, " Cancer")) +
+      scale_x_continuous(breaks = pretty_breaks()) +
+      ylab("ASR per 100,000")
+        
     
     report.APC = F
     
@@ -190,13 +194,15 @@ plot_joinpoint_output <- function(cancer, sex = 3, data, data_jp, incmort, start
     
     # Initial plotting of trends
     plot <- ggplot() +
-        geom_line(data = jp_plot, aes(x = Year, y = Model, colour = factor(APC, levels = unique(APC), labels = round(unique(APC), digits = 2)))) +
-        geom_point(data = data, aes(x = Year, y = `ASR (World)`)) +
-        scale_colour_discrete() +
-        # guides(colour = "none") +
-        # geom_point(data = jp_plot, aes(x = Year, y = Model, colour = section)) +
-        ggtitle(paste0(incmort, " ", proj_lab, " for ", cancer, " Cancer in ", sex_lab)) +
-        scale_x_continuous(breaks = pretty_breaks())
+      geom_line(data = jp_plot, aes(x = Year, y = Model, colour = factor(APC, levels = unique(APC), labels = round(unique(APC), digits = 2)))) +
+      geom_point(data = data, aes(x = Year, y = `ASR (World)`)) +
+      scale_colour_discrete() +
+      # guides(colour = "none") +
+      # geom_point(data = jp_plot, aes(x = Year, y = Model, colour = section)) +
+      ggtitle(paste0(incmort, " ", proj_lab, " for ", cancer, " Cancer in ", sex_lab)) +
+      scale_x_continuous(breaks = pretty_breaks()) +
+      ylab("ASR per 100,000")
+        
     
     # If projection is desired, impute data to that point.
     if(projection){
@@ -315,7 +321,7 @@ sexes <- c(1,2)
 # }
 
 for(cancer in cancers){
-  p1 <- plot_joinpoint_output(cancer, sex = 3, incidence_data, incidence_jp, "Incidence", projection.yr = 2040)
+  p1 <- plot_joinpoint_output(cancer, sex = 3, incidence_data, incidence_jp, "Incidence")
   p2 <- plot_joinpoint_output(cancer, sex = 3, mortality_data, mortality_jp, "Mortality", projection.yr = 2040)
   grid.arrange(p1, p2, nrow = 1, widths = c(4,4))
 }
