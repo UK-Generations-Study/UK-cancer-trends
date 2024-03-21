@@ -233,132 +233,133 @@ Attaching package: 'gridExtra'</code></pre>
 <span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb11-78"><a href="#cb11-78" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Filter both dataframes for the relevant data</span></span>
 <span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a>    data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
-<span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Year <span class="sc">&gt;=</span> <span class="fu">max</span>(<span class="fu">c</span>(start.yr, <span class="fu">min</span>(Year)), <span class="at">na.rm =</span> T))</span>
-<span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-82"><a href="#cb11-82" aria-hidden="true" tabindex="-1"></a>    data_jp <span class="ot">&lt;-</span> data_jp <span class="sc">|&gt;</span></span>
-<span id="cb11-83"><a href="#cb11-83" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Cancer.label <span class="sc">==</span> cancer)</span>
-<span id="cb11-84"><a href="#cb11-84" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-85"><a href="#cb11-85" aria-hidden="true" tabindex="-1"></a>    data_jp_men <span class="ot">&lt;-</span> data_jp <span class="sc">|&gt;</span></span>
-<span id="cb11-86"><a href="#cb11-86" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Sex <span class="sc">==</span> <span class="dv">1</span>)</span>
-<span id="cb11-87"><a href="#cb11-87" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-88"><a href="#cb11-88" aria-hidden="true" tabindex="-1"></a>    data_jp_women <span class="ot">&lt;-</span> data_jp <span class="sc">|&gt;</span></span>
-<span id="cb11-89"><a href="#cb11-89" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Sex <span class="sc">==</span> <span class="dv">2</span>) </span>
-<span id="cb11-90"><a href="#cb11-90" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-91"><a href="#cb11-91" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Call function to extract useful information from joinpoint data</span></span>
-<span id="cb11-92"><a href="#cb11-92" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-93"><a href="#cb11-93" aria-hidden="true" tabindex="-1"></a>    jp_plot_men <span class="ot">&lt;-</span> <span class="fu">extract_joinpoint_splines</span>(data_jp_men) <span class="sc">|&gt;</span></span>
-<span id="cb11-94"><a href="#cb11-94" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">Sex =</span> <span class="st">"Men"</span>)</span>
-<span id="cb11-95"><a href="#cb11-95" aria-hidden="true" tabindex="-1"></a>    jp_plot_women <span class="ot">&lt;-</span> <span class="fu">extract_joinpoint_splines</span>(data_jp_women) <span class="sc">|&gt;</span></span>
-<span id="cb11-96"><a href="#cb11-96" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">Sex =</span> <span class="st">"Women"</span>)</span>
-<span id="cb11-97"><a href="#cb11-97" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-98"><a href="#cb11-98" aria-hidden="true" tabindex="-1"></a>    jp_plot <span class="ot">&lt;-</span> <span class="fu">rbind</span>(jp_plot_men, jp_plot_women)</span>
-<span id="cb11-99"><a href="#cb11-99" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-100"><a href="#cb11-100" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Making variable for dynamic plot title generation</span></span>
-<span id="cb11-101"><a href="#cb11-101" aria-hidden="true" tabindex="-1"></a>    projection <span class="ot">&lt;-</span> <span class="sc">!</span><span class="fu">is.na</span>(projection.yr)</span>
-<span id="cb11-102"><a href="#cb11-102" aria-hidden="true" tabindex="-1"></a>    proj_lab <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(projection, <span class="st">"Projections"</span>, <span class="st">"Trends"</span>)</span>
-<span id="cb11-103"><a href="#cb11-103" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-104"><a href="#cb11-104" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initial plotting of trends</span></span>
-<span id="cb11-105"><a href="#cb11-105" aria-hidden="true" tabindex="-1"></a>    plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb11-106"><a href="#cb11-106" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_line</span>(<span class="at">data =</span> jp_plot, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Model, <span class="at">colour =</span> <span class="fu">factor</span>(section, <span class="at">levels =</span> <span class="fu">unique</span>(section)), <span class="at">linetype =</span> Sex)) <span class="sc">+</span></span>
-<span id="cb11-107"><a href="#cb11-107" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="at">data =</span> data, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> <span class="st">`</span><span class="at">ASR (World)</span><span class="st">`</span>, <span class="at">shape =</span> <span class="fu">factor</span>(Sex))) <span class="sc">+</span></span>
-<span id="cb11-108"><a href="#cb11-108" aria-hidden="true" tabindex="-1"></a>        <span class="co"># geom_line(data = jp_plot_men, aes(x = Year, y = Model, colour = factor(APC, levels = unique(APC), labels = round(unique(APC), digits = 2)))) +</span></span>
-<span id="cb11-109"><a href="#cb11-109" aria-hidden="true" tabindex="-1"></a>        <span class="co"># geom_line(data = jp_plot_women, aes(x = Year, y = Model, colour = factor(APC, levels = unique(APC), labels = round(unique(APC), digits = 2)), linetype = "dashed")) +</span></span>
-<span id="cb11-110"><a href="#cb11-110" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_colour_discrete</span>() <span class="sc">+</span></span>
-<span id="cb11-111"><a href="#cb11-111" aria-hidden="true" tabindex="-1"></a>        <span class="co"># guides(colour = "none") +</span></span>
-<span id="cb11-112"><a href="#cb11-112" aria-hidden="true" tabindex="-1"></a>        <span class="co"># geom_point(data = jp_plot, aes(x = Year, y = Model, colour = section)) +</span></span>
-<span id="cb11-113"><a href="#cb11-113" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggtitle</span>(<span class="fu">paste0</span>(incmort, <span class="st">" "</span>, proj_lab, <span class="st">" for "</span>, cancer, <span class="st">" Cancer"</span>)) <span class="sc">+</span></span>
-<span id="cb11-114"><a href="#cb11-114" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">pretty_breaks</span>())</span>
-<span id="cb11-115"><a href="#cb11-115" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-116"><a href="#cb11-116" aria-hidden="true" tabindex="-1"></a>    report.APC <span class="ot">=</span> F</span>
-<span id="cb11-117"><a href="#cb11-117" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-118"><a href="#cb11-118" aria-hidden="true" tabindex="-1"></a>      <span class="co"># If projection is desired, impute data to that point.</span></span>
-<span id="cb11-119"><a href="#cb11-119" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(projection){</span>
-<span id="cb11-120"><a href="#cb11-120" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb11-121"><a href="#cb11-121" aria-hidden="true" tabindex="-1"></a>      proj_data_men <span class="ot">&lt;-</span> <span class="fu">get_proj_data</span>(data[data<span class="sc">$</span>Sex<span class="sc">==</span><span class="dv">1</span>,], data_jp_men, projection.yr) <span class="sc">|&gt;</span></span>
-<span id="cb11-122"><a href="#cb11-122" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">Sex =</span> <span class="st">"Men"</span>)</span>
-<span id="cb11-123"><a href="#cb11-123" aria-hidden="true" tabindex="-1"></a>      proj_data_women <span class="ot">&lt;-</span> <span class="fu">get_proj_data</span>(data[data<span class="sc">$</span>Sex<span class="sc">==</span><span class="dv">2</span>,], data_jp_women, projection.yr) <span class="sc">|&gt;</span></span>
-<span id="cb11-124"><a href="#cb11-124" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">Sex =</span> <span class="st">"Women"</span>)</span>
-<span id="cb11-125"><a href="#cb11-125" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb11-126"><a href="#cb11-126" aria-hidden="true" tabindex="-1"></a>      proj_data <span class="ot">&lt;-</span> <span class="fu">rbind</span>(proj_data_men, proj_data_women)</span>
-<span id="cb11-127"><a href="#cb11-127" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb11-128"><a href="#cb11-128" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Plotting extrapolation</span></span>
-<span id="cb11-129"><a href="#cb11-129" aria-hidden="true" tabindex="-1"></a>      plot <span class="ot">&lt;-</span> plot <span class="sc">+</span></span>
-<span id="cb11-130"><a href="#cb11-130" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_line</span>(<span class="at">data =</span> proj_data, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> rate, <span class="at">linetype =</span> Sex))</span>
-<span id="cb11-131"><a href="#cb11-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-132"><a href="#cb11-132" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb11-133"><a href="#cb11-133" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-134"><a href="#cb11-134" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb11-135"><a href="#cb11-135" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb11-136"><a href="#cb11-136" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Filter both dataframes for the relevant data</span></span>
-<span id="cb11-137"><a href="#cb11-137" aria-hidden="true" tabindex="-1"></a>    data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
-<span id="cb11-138"><a href="#cb11-138" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Sex <span class="sc">==</span> sex) <span class="sc">|&gt;</span></span>
-<span id="cb11-139"><a href="#cb11-139" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Year <span class="sc">&gt;=</span> <span class="fu">max</span>(<span class="fu">c</span>(start.yr, <span class="fu">min</span>(Year)), <span class="at">na.rm =</span> T))</span>
-<span id="cb11-140"><a href="#cb11-140" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-141"><a href="#cb11-141" aria-hidden="true" tabindex="-1"></a>    data_jp <span class="ot">&lt;-</span> data_jp <span class="sc">|&gt;</span></span>
-<span id="cb11-142"><a href="#cb11-142" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Cancer.label <span class="sc">==</span> cancer, Sex <span class="sc">==</span> sex)</span>
-<span id="cb11-143"><a href="#cb11-143" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-144"><a href="#cb11-144" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Call function to extract useful information from joinpoint data</span></span>
-<span id="cb11-145"><a href="#cb11-145" aria-hidden="true" tabindex="-1"></a>    jp_plot <span class="ot">&lt;-</span> <span class="fu">extract_joinpoint_splines</span>(data_jp) <span class="sc">|&gt;</span></span>
-<span id="cb11-146"><a href="#cb11-146" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Year <span class="sc">&gt;=</span> <span class="fu">max</span>(<span class="fu">c</span>(start.yr, <span class="fu">min</span>(Year)), <span class="at">na.rm =</span> T))</span>
-<span id="cb11-147"><a href="#cb11-147" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-148"><a href="#cb11-148" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Recoding sex label for plot</span></span>
-<span id="cb11-149"><a href="#cb11-149" aria-hidden="true" tabindex="-1"></a>    sex_lab <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(sex <span class="sc">==</span> <span class="dv">2</span>, <span class="st">"Women"</span>, <span class="st">"Men"</span>)</span>
-<span id="cb11-150"><a href="#cb11-150" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-151"><a href="#cb11-151" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Making variable for dynamic plot title generation</span></span>
-<span id="cb11-152"><a href="#cb11-152" aria-hidden="true" tabindex="-1"></a>    projection <span class="ot">&lt;-</span> <span class="sc">!</span><span class="fu">is.na</span>(projection.yr)</span>
-<span id="cb11-153"><a href="#cb11-153" aria-hidden="true" tabindex="-1"></a>    proj_lab <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(projection, <span class="st">"Projections"</span>, <span class="st">"Trends"</span>)</span>
-<span id="cb11-154"><a href="#cb11-154" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-155"><a href="#cb11-155" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initial plotting of trends</span></span>
-<span id="cb11-156"><a href="#cb11-156" aria-hidden="true" tabindex="-1"></a>    plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb11-157"><a href="#cb11-157" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_line</span>(<span class="at">data =</span> jp_plot, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Model, <span class="at">colour =</span> <span class="fu">factor</span>(APC, <span class="at">levels =</span> <span class="fu">unique</span>(APC), <span class="at">labels =</span> <span class="fu">round</span>(<span class="fu">unique</span>(APC), <span class="at">digits =</span> <span class="dv">2</span>)))) <span class="sc">+</span></span>
-<span id="cb11-158"><a href="#cb11-158" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="at">data =</span> data, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> <span class="st">`</span><span class="at">ASR (World)</span><span class="st">`</span>)) <span class="sc">+</span></span>
-<span id="cb11-159"><a href="#cb11-159" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_colour_discrete</span>() <span class="sc">+</span></span>
-<span id="cb11-160"><a href="#cb11-160" aria-hidden="true" tabindex="-1"></a>        <span class="co"># guides(colour = "none") +</span></span>
-<span id="cb11-161"><a href="#cb11-161" aria-hidden="true" tabindex="-1"></a>        <span class="co"># geom_point(data = jp_plot, aes(x = Year, y = Model, colour = section)) +</span></span>
-<span id="cb11-162"><a href="#cb11-162" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggtitle</span>(<span class="fu">paste0</span>(incmort, <span class="st">" "</span>, proj_lab, <span class="st">" for "</span>, cancer, <span class="st">" Cancer in "</span>, sex_lab)) <span class="sc">+</span></span>
-<span id="cb11-163"><a href="#cb11-163" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">pretty_breaks</span>())</span>
-<span id="cb11-164"><a href="#cb11-164" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-165"><a href="#cb11-165" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If projection is desired, impute data to that point.</span></span>
-<span id="cb11-166"><a href="#cb11-166" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(projection){</span>
-<span id="cb11-167"><a href="#cb11-167" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb11-168"><a href="#cb11-168" aria-hidden="true" tabindex="-1"></a>      proj_data <span class="ot">&lt;-</span> <span class="fu">get_proj_data</span>(data, data_jp, projection.yr)</span>
-<span id="cb11-169"><a href="#cb11-169" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb11-170"><a href="#cb11-170" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Plotting extrapolation</span></span>
-<span id="cb11-171"><a href="#cb11-171" aria-hidden="true" tabindex="-1"></a>      plot <span class="ot">&lt;-</span> plot <span class="sc">+</span></span>
-<span id="cb11-172"><a href="#cb11-172" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_line</span>(<span class="at">data =</span> proj_data, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> rate), <span class="at">colour =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>)</span>
-<span id="cb11-173"><a href="#cb11-173" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-174"><a href="#cb11-174" aria-hidden="true" tabindex="-1"></a>      <span class="co"># If target is desired, plotting green box around the target</span></span>
-<span id="cb11-175"><a href="#cb11-175" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.na</span>(projection.target)){</span>
-<span id="cb11-176"><a href="#cb11-176" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb11-177"><a href="#cb11-177" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Getting final ASR data point to project from</span></span>
-<span id="cb11-178"><a href="#cb11-178" aria-hidden="true" tabindex="-1"></a>        final_ASR <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
-<span id="cb11-179"><a href="#cb11-179" aria-hidden="true" tabindex="-1"></a>          <span class="fu">arrange</span>(<span class="fu">desc</span>(Year)) <span class="sc">|&gt;</span></span>
-<span id="cb11-180"><a href="#cb11-180" aria-hidden="true" tabindex="-1"></a>          <span class="fu">filter</span>(<span class="fu">row_number</span>()<span class="sc">==</span><span class="dv">1</span>) <span class="sc">|&gt;</span></span>
-<span id="cb11-181"><a href="#cb11-181" aria-hidden="true" tabindex="-1"></a>          <span class="fu">pull</span>(<span class="st">`</span><span class="at">ASR (World)</span><span class="st">`</span>)</span>
-<span id="cb11-182"><a href="#cb11-182" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb11-183"><a href="#cb11-183" aria-hidden="true" tabindex="-1"></a>          <span class="co"># geom_hline(yintercept = final_data$`ASR (World)`*projection.target, colour = "forestgreen")</span></span>
-<span id="cb11-184"><a href="#cb11-184" aria-hidden="true" tabindex="-1"></a>        plot <span class="ot">&lt;-</span> plot <span class="sc">+</span> </span>
-<span id="cb11-185"><a href="#cb11-185" aria-hidden="true" tabindex="-1"></a>          <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="fu">max</span>(data<span class="sc">$</span>Year), <span class="at">xmax =</span> <span class="cn">Inf</span>,<span class="at">ymin =</span> <span class="sc">-</span><span class="cn">Inf</span>, </span>
-<span id="cb11-186"><a href="#cb11-186" aria-hidden="true" tabindex="-1"></a>                                <span class="at">ymax =</span> final_ASR<span class="sc">*</span>projection.target,</span>
-<span id="cb11-187"><a href="#cb11-187" aria-hidden="true" tabindex="-1"></a>                                <span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">fill =</span> <span class="st">"lightgreen"</span>) <span class="sc">+</span></span>
-<span id="cb11-188"><a href="#cb11-188" aria-hidden="true" tabindex="-1"></a>          <span class="fu">labs</span>(<span class="at">caption =</span> <span class="fu">paste0</span>(<span class="st">"Green box represents goal of a "</span>, <span class="dv">100</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>projection.target), <span class="st">"% reduction in mortality rate in the UK by "</span>, projection.yr))</span>
-<span id="cb11-189"><a href="#cb11-189" aria-hidden="true" tabindex="-1"></a>      }</span>
-<span id="cb11-190"><a href="#cb11-190" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb11-191"><a href="#cb11-191" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-192"><a href="#cb11-192" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb11-193"><a href="#cb11-193" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb11-194"><a href="#cb11-194" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If reported APC is desired, plot legend.</span></span>
-<span id="cb11-195"><a href="#cb11-195" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(report.APC){</span>
-<span id="cb11-196"><a href="#cb11-196" aria-hidden="true" tabindex="-1"></a>    plot <span class="ot">&lt;-</span> plot <span class="sc">+</span></span>
-<span id="cb11-197"><a href="#cb11-197" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">colour =</span> <span class="st">"APC (%)"</span>)</span>
-<span id="cb11-198"><a href="#cb11-198" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span>{</span>
-<span id="cb11-199"><a href="#cb11-199" aria-hidden="true" tabindex="-1"></a>    plot <span class="ot">&lt;-</span> plot <span class="sc">+</span></span>
-<span id="cb11-200"><a href="#cb11-200" aria-hidden="true" tabindex="-1"></a>      <span class="fu">guides</span>(<span class="at">colour =</span> <span class="st">"none"</span>)</span>
-<span id="cb11-201"><a href="#cb11-201" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb11-202"><a href="#cb11-202" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb11-203"><a href="#cb11-203" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(plot)</span>
-<span id="cb11-204"><a href="#cb11-204" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb11-205"><a href="#cb11-205" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Year <span class="sc">&gt;=</span> <span class="fu">max</span>(<span class="fu">c</span>(start.yr, <span class="fu">min</span>(Year)), <span class="at">na.rm =</span> T)) <span class="sc">|&gt;</span></span>
+<span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">Sex =</span> <span class="fu">ifelse</span>(Sex<span class="sc">==</span><span class="dv">1</span>, <span class="st">"Men"</span>, <span class="st">"Women"</span>))</span>
+<span id="cb11-82"><a href="#cb11-82" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-83"><a href="#cb11-83" aria-hidden="true" tabindex="-1"></a>    data_jp <span class="ot">&lt;-</span> data_jp <span class="sc">|&gt;</span></span>
+<span id="cb11-84"><a href="#cb11-84" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Cancer.label <span class="sc">==</span> cancer)</span>
+<span id="cb11-85"><a href="#cb11-85" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-86"><a href="#cb11-86" aria-hidden="true" tabindex="-1"></a>    data_jp_men <span class="ot">&lt;-</span> data_jp <span class="sc">|&gt;</span></span>
+<span id="cb11-87"><a href="#cb11-87" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Sex <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb11-88"><a href="#cb11-88" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-89"><a href="#cb11-89" aria-hidden="true" tabindex="-1"></a>    data_jp_women <span class="ot">&lt;-</span> data_jp <span class="sc">|&gt;</span></span>
+<span id="cb11-90"><a href="#cb11-90" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Sex <span class="sc">==</span> <span class="dv">2</span>) </span>
+<span id="cb11-91"><a href="#cb11-91" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-92"><a href="#cb11-92" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Call function to extract useful information from joinpoint data</span></span>
+<span id="cb11-93"><a href="#cb11-93" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-94"><a href="#cb11-94" aria-hidden="true" tabindex="-1"></a>    jp_plot_men <span class="ot">&lt;-</span> <span class="fu">extract_joinpoint_splines</span>(data_jp_men) <span class="sc">|&gt;</span></span>
+<span id="cb11-95"><a href="#cb11-95" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">Sex =</span> <span class="st">"Men"</span>)</span>
+<span id="cb11-96"><a href="#cb11-96" aria-hidden="true" tabindex="-1"></a>    jp_plot_women <span class="ot">&lt;-</span> <span class="fu">extract_joinpoint_splines</span>(data_jp_women) <span class="sc">|&gt;</span></span>
+<span id="cb11-97"><a href="#cb11-97" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">Sex =</span> <span class="st">"Women"</span>)</span>
+<span id="cb11-98"><a href="#cb11-98" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-99"><a href="#cb11-99" aria-hidden="true" tabindex="-1"></a>    jp_plot <span class="ot">&lt;-</span> <span class="fu">rbind</span>(jp_plot_men, jp_plot_women)</span>
+<span id="cb11-100"><a href="#cb11-100" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-101"><a href="#cb11-101" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Making variable for dynamic plot title generation</span></span>
+<span id="cb11-102"><a href="#cb11-102" aria-hidden="true" tabindex="-1"></a>    projection <span class="ot">&lt;-</span> <span class="sc">!</span><span class="fu">is.na</span>(projection.yr)</span>
+<span id="cb11-103"><a href="#cb11-103" aria-hidden="true" tabindex="-1"></a>    proj_lab <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(projection, <span class="st">"Projections"</span>, <span class="st">"Trends"</span>)</span>
+<span id="cb11-104"><a href="#cb11-104" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-105"><a href="#cb11-105" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initial plotting of trends</span></span>
+<span id="cb11-106"><a href="#cb11-106" aria-hidden="true" tabindex="-1"></a>    plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb11-107"><a href="#cb11-107" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_line</span>(<span class="at">data =</span> jp_plot, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Model, <span class="at">colour =</span> <span class="fu">factor</span>(section, <span class="at">levels =</span> <span class="fu">unique</span>(section)), <span class="at">linetype =</span> Sex)) <span class="sc">+</span></span>
+<span id="cb11-108"><a href="#cb11-108" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="at">data =</span> data, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> <span class="st">`</span><span class="at">ASR (World)</span><span class="st">`</span>, <span class="at">shape =</span> Sex)) <span class="sc">+</span></span>
+<span id="cb11-109"><a href="#cb11-109" aria-hidden="true" tabindex="-1"></a>        <span class="co"># geom_line(data = jp_plot_men, aes(x = Year, y = Model, colour = factor(APC, levels = unique(APC), labels = round(unique(APC), digits = 2)))) +</span></span>
+<span id="cb11-110"><a href="#cb11-110" aria-hidden="true" tabindex="-1"></a>        <span class="co"># geom_line(data = jp_plot_women, aes(x = Year, y = Model, colour = factor(APC, levels = unique(APC), labels = round(unique(APC), digits = 2)), linetype = "dashed")) +</span></span>
+<span id="cb11-111"><a href="#cb11-111" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_colour_discrete</span>() <span class="sc">+</span></span>
+<span id="cb11-112"><a href="#cb11-112" aria-hidden="true" tabindex="-1"></a>        <span class="co"># guides(colour = "none") +</span></span>
+<span id="cb11-113"><a href="#cb11-113" aria-hidden="true" tabindex="-1"></a>        <span class="co"># geom_point(data = jp_plot, aes(x = Year, y = Model, colour = section)) +</span></span>
+<span id="cb11-114"><a href="#cb11-114" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggtitle</span>(<span class="fu">paste0</span>(incmort, <span class="st">" "</span>, proj_lab, <span class="st">" for "</span>, cancer, <span class="st">" Cancer"</span>)) <span class="sc">+</span></span>
+<span id="cb11-115"><a href="#cb11-115" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">pretty_breaks</span>())</span>
+<span id="cb11-116"><a href="#cb11-116" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-117"><a href="#cb11-117" aria-hidden="true" tabindex="-1"></a>    report.APC <span class="ot">=</span> F</span>
+<span id="cb11-118"><a href="#cb11-118" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-119"><a href="#cb11-119" aria-hidden="true" tabindex="-1"></a>      <span class="co"># If projection is desired, impute data to that point.</span></span>
+<span id="cb11-120"><a href="#cb11-120" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(projection){</span>
+<span id="cb11-121"><a href="#cb11-121" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb11-122"><a href="#cb11-122" aria-hidden="true" tabindex="-1"></a>      proj_data_men <span class="ot">&lt;-</span> <span class="fu">get_proj_data</span>(data[data<span class="sc">$</span>Sex<span class="sc">==</span><span class="dv">1</span>,], data_jp_men, projection.yr) <span class="sc">|&gt;</span></span>
+<span id="cb11-123"><a href="#cb11-123" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">Sex =</span> <span class="st">"Men"</span>)</span>
+<span id="cb11-124"><a href="#cb11-124" aria-hidden="true" tabindex="-1"></a>      proj_data_women <span class="ot">&lt;-</span> <span class="fu">get_proj_data</span>(data[data<span class="sc">$</span>Sex<span class="sc">==</span><span class="dv">2</span>,], data_jp_women, projection.yr) <span class="sc">|&gt;</span></span>
+<span id="cb11-125"><a href="#cb11-125" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">Sex =</span> <span class="st">"Women"</span>)</span>
+<span id="cb11-126"><a href="#cb11-126" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb11-127"><a href="#cb11-127" aria-hidden="true" tabindex="-1"></a>      proj_data <span class="ot">&lt;-</span> <span class="fu">rbind</span>(proj_data_men, proj_data_women)</span>
+<span id="cb11-128"><a href="#cb11-128" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb11-129"><a href="#cb11-129" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Plotting extrapolation</span></span>
+<span id="cb11-130"><a href="#cb11-130" aria-hidden="true" tabindex="-1"></a>      plot <span class="ot">&lt;-</span> plot <span class="sc">+</span></span>
+<span id="cb11-131"><a href="#cb11-131" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_line</span>(<span class="at">data =</span> proj_data, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> rate, <span class="at">linetype =</span> Sex))</span>
+<span id="cb11-132"><a href="#cb11-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-133"><a href="#cb11-133" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb11-134"><a href="#cb11-134" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-135"><a href="#cb11-135" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb11-136"><a href="#cb11-136" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-137"><a href="#cb11-137" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Filter both dataframes for the relevant data</span></span>
+<span id="cb11-138"><a href="#cb11-138" aria-hidden="true" tabindex="-1"></a>    data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb11-139"><a href="#cb11-139" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Sex <span class="sc">==</span> sex) <span class="sc">|&gt;</span></span>
+<span id="cb11-140"><a href="#cb11-140" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Year <span class="sc">&gt;=</span> <span class="fu">max</span>(<span class="fu">c</span>(start.yr, <span class="fu">min</span>(Year)), <span class="at">na.rm =</span> T))</span>
+<span id="cb11-141"><a href="#cb11-141" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-142"><a href="#cb11-142" aria-hidden="true" tabindex="-1"></a>    data_jp <span class="ot">&lt;-</span> data_jp <span class="sc">|&gt;</span></span>
+<span id="cb11-143"><a href="#cb11-143" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Cancer.label <span class="sc">==</span> cancer, Sex <span class="sc">==</span> sex)</span>
+<span id="cb11-144"><a href="#cb11-144" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-145"><a href="#cb11-145" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Call function to extract useful information from joinpoint data</span></span>
+<span id="cb11-146"><a href="#cb11-146" aria-hidden="true" tabindex="-1"></a>    jp_plot <span class="ot">&lt;-</span> <span class="fu">extract_joinpoint_splines</span>(data_jp) <span class="sc">|&gt;</span></span>
+<span id="cb11-147"><a href="#cb11-147" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Year <span class="sc">&gt;=</span> <span class="fu">max</span>(<span class="fu">c</span>(start.yr, <span class="fu">min</span>(Year)), <span class="at">na.rm =</span> T))</span>
+<span id="cb11-148"><a href="#cb11-148" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-149"><a href="#cb11-149" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Recoding sex label for plot</span></span>
+<span id="cb11-150"><a href="#cb11-150" aria-hidden="true" tabindex="-1"></a>    sex_lab <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(sex <span class="sc">==</span> <span class="dv">2</span>, <span class="st">"Women"</span>, <span class="st">"Men"</span>)</span>
+<span id="cb11-151"><a href="#cb11-151" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-152"><a href="#cb11-152" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Making variable for dynamic plot title generation</span></span>
+<span id="cb11-153"><a href="#cb11-153" aria-hidden="true" tabindex="-1"></a>    projection <span class="ot">&lt;-</span> <span class="sc">!</span><span class="fu">is.na</span>(projection.yr)</span>
+<span id="cb11-154"><a href="#cb11-154" aria-hidden="true" tabindex="-1"></a>    proj_lab <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(projection, <span class="st">"Projections"</span>, <span class="st">"Trends"</span>)</span>
+<span id="cb11-155"><a href="#cb11-155" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-156"><a href="#cb11-156" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initial plotting of trends</span></span>
+<span id="cb11-157"><a href="#cb11-157" aria-hidden="true" tabindex="-1"></a>    plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb11-158"><a href="#cb11-158" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_line</span>(<span class="at">data =</span> jp_plot, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Model, <span class="at">colour =</span> <span class="fu">factor</span>(APC, <span class="at">levels =</span> <span class="fu">unique</span>(APC), <span class="at">labels =</span> <span class="fu">round</span>(<span class="fu">unique</span>(APC), <span class="at">digits =</span> <span class="dv">2</span>)))) <span class="sc">+</span></span>
+<span id="cb11-159"><a href="#cb11-159" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="at">data =</span> data, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> <span class="st">`</span><span class="at">ASR (World)</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb11-160"><a href="#cb11-160" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_colour_discrete</span>() <span class="sc">+</span></span>
+<span id="cb11-161"><a href="#cb11-161" aria-hidden="true" tabindex="-1"></a>        <span class="co"># guides(colour = "none") +</span></span>
+<span id="cb11-162"><a href="#cb11-162" aria-hidden="true" tabindex="-1"></a>        <span class="co"># geom_point(data = jp_plot, aes(x = Year, y = Model, colour = section)) +</span></span>
+<span id="cb11-163"><a href="#cb11-163" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggtitle</span>(<span class="fu">paste0</span>(incmort, <span class="st">" "</span>, proj_lab, <span class="st">" for "</span>, cancer, <span class="st">" Cancer in "</span>, sex_lab)) <span class="sc">+</span></span>
+<span id="cb11-164"><a href="#cb11-164" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">pretty_breaks</span>())</span>
+<span id="cb11-165"><a href="#cb11-165" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-166"><a href="#cb11-166" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If projection is desired, impute data to that point.</span></span>
+<span id="cb11-167"><a href="#cb11-167" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(projection){</span>
+<span id="cb11-168"><a href="#cb11-168" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb11-169"><a href="#cb11-169" aria-hidden="true" tabindex="-1"></a>      proj_data <span class="ot">&lt;-</span> <span class="fu">get_proj_data</span>(data, data_jp, projection.yr)</span>
+<span id="cb11-170"><a href="#cb11-170" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb11-171"><a href="#cb11-171" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Plotting extrapolation</span></span>
+<span id="cb11-172"><a href="#cb11-172" aria-hidden="true" tabindex="-1"></a>      plot <span class="ot">&lt;-</span> plot <span class="sc">+</span></span>
+<span id="cb11-173"><a href="#cb11-173" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_line</span>(<span class="at">data =</span> proj_data, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> rate), <span class="at">colour =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>)</span>
+<span id="cb11-174"><a href="#cb11-174" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-175"><a href="#cb11-175" aria-hidden="true" tabindex="-1"></a>      <span class="co"># If target is desired, plotting green box around the target</span></span>
+<span id="cb11-176"><a href="#cb11-176" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.na</span>(projection.target)){</span>
+<span id="cb11-177"><a href="#cb11-177" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb11-178"><a href="#cb11-178" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Getting final ASR data point to project from</span></span>
+<span id="cb11-179"><a href="#cb11-179" aria-hidden="true" tabindex="-1"></a>        final_ASR <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb11-180"><a href="#cb11-180" aria-hidden="true" tabindex="-1"></a>          <span class="fu">arrange</span>(<span class="fu">desc</span>(Year)) <span class="sc">|&gt;</span></span>
+<span id="cb11-181"><a href="#cb11-181" aria-hidden="true" tabindex="-1"></a>          <span class="fu">filter</span>(<span class="fu">row_number</span>()<span class="sc">==</span><span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb11-182"><a href="#cb11-182" aria-hidden="true" tabindex="-1"></a>          <span class="fu">pull</span>(<span class="st">`</span><span class="at">ASR (World)</span><span class="st">`</span>)</span>
+<span id="cb11-183"><a href="#cb11-183" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb11-184"><a href="#cb11-184" aria-hidden="true" tabindex="-1"></a>          <span class="co"># geom_hline(yintercept = final_data$`ASR (World)`*projection.target, colour = "forestgreen")</span></span>
+<span id="cb11-185"><a href="#cb11-185" aria-hidden="true" tabindex="-1"></a>        plot <span class="ot">&lt;-</span> plot <span class="sc">+</span> </span>
+<span id="cb11-186"><a href="#cb11-186" aria-hidden="true" tabindex="-1"></a>          <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="fu">max</span>(data<span class="sc">$</span>Year), <span class="at">xmax =</span> <span class="cn">Inf</span>,<span class="at">ymin =</span> <span class="sc">-</span><span class="cn">Inf</span>, </span>
+<span id="cb11-187"><a href="#cb11-187" aria-hidden="true" tabindex="-1"></a>                                <span class="at">ymax =</span> final_ASR<span class="sc">*</span>projection.target,</span>
+<span id="cb11-188"><a href="#cb11-188" aria-hidden="true" tabindex="-1"></a>                                <span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">fill =</span> <span class="st">"lightgreen"</span>) <span class="sc">+</span></span>
+<span id="cb11-189"><a href="#cb11-189" aria-hidden="true" tabindex="-1"></a>          <span class="fu">labs</span>(<span class="at">caption =</span> <span class="fu">paste0</span>(<span class="st">"Green box represents goal of a "</span>, <span class="dv">100</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>projection.target), <span class="st">"% reduction in mortality rate in the UK by "</span>, projection.yr))</span>
+<span id="cb11-190"><a href="#cb11-190" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb11-191"><a href="#cb11-191" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb11-192"><a href="#cb11-192" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-193"><a href="#cb11-193" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb11-194"><a href="#cb11-194" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-195"><a href="#cb11-195" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If reported APC is desired, plot legend.</span></span>
+<span id="cb11-196"><a href="#cb11-196" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(report.APC){</span>
+<span id="cb11-197"><a href="#cb11-197" aria-hidden="true" tabindex="-1"></a>    plot <span class="ot">&lt;-</span> plot <span class="sc">+</span></span>
+<span id="cb11-198"><a href="#cb11-198" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">colour =</span> <span class="st">"APC (%)"</span>)</span>
+<span id="cb11-199"><a href="#cb11-199" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span>{</span>
+<span id="cb11-200"><a href="#cb11-200" aria-hidden="true" tabindex="-1"></a>    plot <span class="ot">&lt;-</span> plot <span class="sc">+</span></span>
+<span id="cb11-201"><a href="#cb11-201" aria-hidden="true" tabindex="-1"></a>      <span class="fu">guides</span>(<span class="at">colour =</span> <span class="st">"none"</span>)</span>
+<span id="cb11-202"><a href="#cb11-202" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb11-203"><a href="#cb11-203" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-204"><a href="#cb11-204" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(plot)</span>
+<span id="cb11-205"><a href="#cb11-205" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-206"><a href="#cb11-206" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="cancer-incidencemortality" class="level2">

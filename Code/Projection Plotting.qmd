@@ -113,7 +113,8 @@ plot_joinpoint_output <- function(cancer, sex = 3, data, data_jp, incmort, start
     
     # Filter both dataframes for the relevant data
     data <- data |>
-      filter(Year >= max(c(start.yr, min(Year)), na.rm = T))
+      filter(Year >= max(c(start.yr, min(Year)), na.rm = T)) |>
+      mutate(Sex = ifelse(Sex==1, "Men", "Women"))
     
     data_jp <- data_jp |>
       filter(Cancer.label == cancer)
@@ -140,7 +141,7 @@ plot_joinpoint_output <- function(cancer, sex = 3, data, data_jp, incmort, start
     # Initial plotting of trends
     plot <- ggplot() +
         geom_line(data = jp_plot, aes(x = Year, y = Model, colour = factor(section, levels = unique(section)), linetype = Sex)) +
-        geom_point(data = data, aes(x = Year, y = `ASR (World)`, shape = factor(Sex))) +
+        geom_point(data = data, aes(x = Year, y = `ASR (World)`, shape = Sex)) +
         # geom_line(data = jp_plot_men, aes(x = Year, y = Model, colour = factor(APC, levels = unique(APC), labels = round(unique(APC), digits = 2)))) +
         # geom_line(data = jp_plot_women, aes(x = Year, y = Model, colour = factor(APC, levels = unique(APC), labels = round(unique(APC), digits = 2)), linetype = "dashed")) +
         scale_colour_discrete() +
