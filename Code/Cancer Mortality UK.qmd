@@ -10,6 +10,14 @@ editor: visual
 library(readxl)
 library(gt)
 library(dplyr)
+library(stringr)
+```
+
+## Set Up
+```{r}
+
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE)
+
 ```
 
 ## Data
@@ -29,15 +37,29 @@ names(mort_data) <- mort_data[4,]
 mort_data <- mort_data[5:25,]
 mort_data$Female <- as.numeric(mort_data$Female)
 mort_data$Male <- as.numeric(mort_data$Male)
-mort_data$Cases <- mort_data$Female + mort_data$Male
-mort_data$CasePerc <- mort_data$Cases/sum(mort_data$Cases)
+mort_data$Mortalities <- mort_data$Female + mort_data$Male
+mort_data$MortPerc <- mort_data$Mortalities/sum(mort_data$Mortalities)
 
 mort_data <- mort_data |>
   mutate(ToBottom = ifelse(`Cancer Site` %in% c("Other Sites", "Cancer of Unknown Primary (C77-C80)"), 1, 0)) |>
-  arrange(ToBottom, desc(CasePerc)) |>
+  arrange(ToBottom, desc(MortPerc)) |>
   select(-ToBottom) |>
-  mutate(runningPerc = cumsum(CasePerc)) |>
-  gt()
+  mutate(runningPerc = cumsum(MortPerc)) |>
+  mutate(MortPerc = round(100*MortPerc, digits = 2),
+         runningPerc = round(100*runningPerc, digits = 2),
+         `Cancer Site` = str_replace(`Cancer Site`, "\\s*\\(.*\\)", "")) |>
+  gt() |>
+  cols_label(MortPerc = "Mortalities (%)", runningPerc = html("Cumulative<br>Mortalities (%)")) |>
+  tab_style(
+        style = list(
+          cell_text(align = "center")),
+        locations = cells_body(
+          columns = c("Female", "Male", "Mortalities", "MortPerc", "runningPerc"))) |>
+  tab_style(
+      style = list(
+        cell_borders(sides = "bottom", weight = px(3)),
+        cell_text(weight = "bold", align = "center")),
+      locations = cells_column_labels(columns = everything())) 
 
 mort_data
 

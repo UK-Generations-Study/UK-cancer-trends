@@ -33,6 +33,7 @@ library(RColorBrewer)
 ```{r, setup}
 # knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/Position Paper/Data")
 knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data")
+knitr::opts_chunk$set(echo = FALSE)
 theme_set(theme_minimal())
 ```
 
@@ -435,9 +436,6 @@ data4 |>
 ```
 
 ## Obese
-
-Obese data for England and Wales already in data. Need to download data for N. Ireland and Scotland.
-
 ```{r}
 obese_data <- data4
 
