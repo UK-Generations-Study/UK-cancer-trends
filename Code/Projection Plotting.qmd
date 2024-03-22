@@ -225,10 +225,11 @@ plot_joinpoint_output <- function(cancer, sex = 3, data, data_jp, incmort, start
         
           # geom_hline(yintercept = final_data$`ASR (World)`*projection.target, colour = "forestgreen")
         plot <- plot + 
-          annotate("rect", xmin = max(data$Year), xmax = Inf,ymin = -Inf, 
-                                ymax = final_ASR*projection.target,
-                                alpha = 0.2, fill = "lightgreen") +
-          labs(caption = paste0("Green box represents goal of a ", 100*(1-projection.target), "% reduction in mortality rate in the UK by ", projection.yr))
+          # annotate("rect", xmin = max(data$Year), xmax = Inf,ymin = -Inf, 
+          #                       ymax = final_ASR*projection.target,
+          #                       alpha = 0.2, fill = "lightgreen") +
+          geom_hline(yintercept = final_ASR*projection.target, colour = "lightgreen") +
+          labs(caption = paste0("Green line represents goal of a ", 100*(1-projection.target), "% reduction in mortality rate in the UK by ", projection.yr))
       }
     }
     
@@ -250,8 +251,6 @@ plot_joinpoint_output <- function(cancer, sex = 3, data, data_jp, incmort, start
 ```
 
 ## Cancer Incidence/Mortality
-
-In these plots, the red dashed line represents
 
 ```{r, fig.width=20}
 
@@ -323,7 +322,7 @@ sexes <- c(1,2)
 
 for(cancer in cancers){
   p1 <- plot_joinpoint_output(cancer, sex = 3, incidence_data, incidence_jp, "Incidence")
-  p2 <- plot_joinpoint_output(cancer, sex = 3, mortality_data, mortality_jp, "Mortality", projection.yr = 2040, start.yr = 2000)
+  p2 <- plot_joinpoint_output(cancer, sex = 3, mortality_data, mortality_jp, "Mortality", projection.yr = 2040, start.yr = 1993, projection.target = 0.85)
   grid.arrange(p1, p2, nrow = 1, widths = c(4,4))
 }
 

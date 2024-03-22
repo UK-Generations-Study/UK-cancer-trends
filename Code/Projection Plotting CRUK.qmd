@@ -1,0 +1,284 @@
+---
+title: "Cancer Projections CRUK"
+format: 
+  html:
+    toc: true
+    toc-depth: 5
+    grid:
+      sidebar-width: 300px
+      body-width: 2000px
+      margin-width: 300px
+      gutter-width: 1.5rem
+editor: visual
+---
+
+## Packages
+
+```{r}
+library(dplyr)
+library(readxl)
+library(ggplot2)
+library(gridExtra)
+library(scales)
+library(stringr)
+library(tidyr)
+```
+
+## Setup
+
+```{r, setup}
+# knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/Position Paper/Data")
+knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data")
+knitr::opts_chunk$set(echo = FALSE)
+theme_set(theme_minimal())
+```
+
+## Functions
+
+```{r}
+
+extract_joinpoint_splines_CRUK <- function(data_jp){
+  
+  # Getting initial joins, as well as the APC (just before) the joins
+  joins <- data_jp |>
+    mutate(APC = case_when(!is.na(Flag) ~ lag(APC), TRUE ~ APC)) |>
+    filter(grepl(Flag, pattern = "Joinpoint")) |>
+    mutate(section = as.numeric(gsub(Flag, pattern = "Joinpoint ", replacement = "")))
+  
+  # Need a second set so we have full joins for both sides
+  joins2 <- joins |>
+    mutate(section = section + 1)
+  
+  # Getting start and end points and adding in joins from there
+  start_end <- data_jp |>
+    filter(row_number() %in% c(1, nrow(data_jp))) |>
+    arrange(Year) |>
+    mutate(section = case_when(
+      row_number() == 1 ~ 1,
+      row_number() == 2 ~ Joinpoints[1] + 1
+    )) |>
+    rbind(joins) |>
+    rbind(joins2) |>
+    mutate(APC = as.numeric(gsub(APC, pattern = "\\*", replacement = ""))) |>
+    select(Year, Model, section, APC) |>
+    arrange(Year, section)
+  
+  
+  output_data <- data.frame()
+
+  # Adding in points to get to exponential curves
+  for(i in 1:(max(data_jp$Joinpoints)+1)){
+    
+    tempdata <- start_end[start_end$section == i,]
+
+    new_data <- data.frame(Year = seq(tempdata$Year[1], tempdata$Year[2], by = 0.1))
+    new_data$Model <- seq(log(tempdata$Model[1]), log(tempdata$Model[2]), by = (log(tempdata$Model[2]) - log(tempdata$Model[1]))/(nrow(new_data)-1))
+    new_data$Model <- exp(new_data$Model)
+    new_data$section <- i
+    new_data$APC <- tempdata$APC[!is.na(tempdata$APC)][2]
+
+    output_data <- rbind(output_data, new_data)
+
+  }
+  
+  return(output_data)
+  
+}
+
+get_proj_data_CRUK <- function(data, data_jp, projection.yr){
+  
+ final <- data_jp |>
+    arrange(desc(Year)) |>
+    filter(row_number() == 1) |>
+    mutate(APC = as.numeric(gsub(APC, pattern = "\\*", replacement = "")),
+           APCnew = 1 + APC/100)
+  
+  proj_data <- data.frame(Year = seq(final$Year, projection.yr, by = 0.1))
+  proj_data$lograte <- seq(from = log(final$Model), by = log((final$APCnew)^(1/10)), length.out = nrow(proj_data))
+  proj_data$rate <- exp(proj_data$lograte)
+  
+  return(proj_data)
+    
+}
+
+
+plot_joinpoint_output_CRUK <- function(cancer, sex = "All", data, data_jp, incmort, start.yr = NA, projection.yr = NA, projection.target = NA, report.APC = FALSE, cruk_proj = NA){
+  
+  # browser()
+  
+  data <- data |> 
+    filter(Cancer.Type == cancer)
+  
+  # Filter both dataframes for the relevant data
+  data <- data |>
+    filter(Sex == sex) |>
+    filter(Year >= max(c(start.yr, min(Year)), na.rm = T))
+  
+  data_jp <- data_jp |>
+    filter(Cancer.Type == cancer, Sex == sex)
+  
+  # Call function to extract useful information from joinpoint data
+  jp_plot <- extract_joinpoint_splines_CRUK(data_jp) |>
+    filter(Year >= max(c(start.yr, min(Year)), na.rm = T))
+  
+  # Recoding sex label for plot
+  # sex_lab <- ifelse(sex == 2, "Women", "Men")
+  
+  # Making variable for dynamic plot title generation
+  projection <- !is.na(projection.yr)
+  proj_lab <- ifelse(projection, "Projections", "Trends")
+  
+  # Initial plotting of trends
+  plot <- ggplot() +
+    geom_line(data = jp_plot, aes(x = Year, y = Model, colour = factor(APC, levels = unique(APC), labels = round(unique(APC), digits = 2)))) +
+    geom_point(data = data, aes(x = Year, y = `ASR (Europe)`)) +
+    scale_colour_discrete() +
+    # guides(colour = "none") +
+    # geom_point(data = jp_plot, aes(x = Year, y = Model, colour = section)) +
+    ggtitle(paste0(incmort, " ", proj_lab, " for ", cancer, " Cancer in ", sex)) +
+    scale_x_continuous(breaks = pretty_breaks()) +
+    ylab("ASR per 100,000")
+      
+  
+  # If projection is desired, impute data to that point.
+  if(projection){
+    
+    proj_data <- get_proj_data_CRUK(data, data_jp, projection.yr)
+    
+    # Plotting extrapolation
+    plot <- plot +
+      geom_line(data = proj_data, aes(x = Year, y = rate), colour = "red", linetype = "dashed")
+  
+    # If target is desired, plotting green box around the target
+    if(!is.na(projection.target)){
+      
+      # Getting final ASR data point to project from
+      final_ASR <- data |>
+        arrange(desc(Year)) |>
+        filter(row_number()==1) |>
+        pull(`ASR (Europe)`)
+      
+        # geom_hline(yintercept = final_data$`ASR (Europe)`*projection.target, colour = "forestgreen")
+      plot <- plot + 
+        # annotate("rect", xmin = max(data$Year), xmax = Inf,ymin = -Inf, 
+        #                       ymax = final_ASR*projection.target,
+        #                       alpha = 0.2, fill = "lightgreen") +
+        geom_hline(yintercept = final_ASR*projection.target, colour = "lightgreen") +
+        labs(caption = paste0("Green line represents goal of a ", 100*(1-projection.target), "% reduction in mortality rate in the UK by ", projection.yr))
+    }
+  }
+  
+  if(length(cruk_proj)!=1){
+    cruk_proj <- cruk_proj |>
+      filter(Sex==sex, `Cancer Type` == cancer, Year <= projection.yr)
+
+    
+    plot <- plot +
+      geom_line(data = cruk_proj, aes(x = Year, y = `ASR (Europe)`), colour = "blue", linetype = "dashed") # +
+      # guides(override.aes = list(linetype = c("solid", "dashed", "dashed"),
+      #                            colour = c("black", "red", "blue")),
+      #        title = "Sources")
+    
+    report.APC = FALSE
+  }
+    
+  
+  # If reported APC is desired, plot legend.
+  if(report.APC){
+    plot <- plot +
+      labs(colour = "APC (%)")
+  } else {
+    plot <- plot +
+      guides(colour = "none")
+  }
+  
+  return(plot)
+  
+}
+
+```
+
+## Importing CRUK Projections
+```{r}
+
+cancers <- c("All Cancers Combined excluding Non-Melanoma Skin Cancer (C00-C97 (excl. C44))", "All Cancers Combined (C00-C97)", "Bowel Cancer (C18-C20)", "Breast Cancer (C50)", "Lung Cancer (C33-C34)", "Oesophageal Cancer (C15)",
+             "Pancreatic Cancer (C25)", "Prostate Cancer (C61)")
+
+proj_inc <- read_excel("Cancer_Projection_Data_CRUK.xlsx", sheet = "Incidence")
+
+proj_inc <- as.data.frame(proj_inc)
+
+proj_inc <- proj_inc[,proj_inc[1,]!="Average New Cases Per Year\r\n(observed to 2016-2018; projected from 2019-2021)"]
+proj_inc[1,4:6] <- c("All", "Women", "Men")
+colnames(proj_inc) <- proj_inc[1,]
+proj_inc <- proj_inc[-1,]
+
+proj_inc <- proj_inc |>
+  pivot_longer(cols = c("All", "Men", "Women")) |>
+  rename(Sex = name, `ASR (Europe)` = value) |>
+  mutate(Year = as.numeric(substr(Year, start = 1, stop = 4)) + 1,
+         `ASR (Europe)` = as.numeric(`ASR (Europe)`)) |>
+  filter(Year >= 2017, `Cancer Type` %in% cancers, !is.na(`ASR (Europe)`))
+
+
+proj_mort <- read_excel("Cancer_Projection_Data_CRUK.xlsx", sheet = "Mortality")
+
+proj_mort <- as.data.frame(proj_mort)
+
+proj_mort <- proj_mort[,proj_mort[1,]!="Average New Cases Per Year\r\n(observed to 2016-2018; projected from 2019-2021)"]
+proj_mort[1,4:6] <- c("All", "Women", "Men")
+colnames(proj_mort) <- proj_mort[1,]
+proj_mort <- proj_mort[-1,]
+
+proj_mort <- proj_mort |>
+  pivot_longer(cols = c("All", "Men", "Women")) |>
+  rename(Sex = name, `ASR (Europe)` = value) |>
+  mutate(Year = as.numeric(substr(Year, start = 1, stop = 4)) + 1,
+         `ASR (Europe)` = as.numeric(`ASR (Europe)`)) |>
+  filter(Year >= 2017, `Cancer Type` %in% cancers, !is.na(`ASR (Europe)`))
+
+
+
+```
+
+## Cancer Incidence/Mortality
+Red dashed line represents projection from continuing joinpoint segment, blue dashed line represents projection from CRUK.
+```{r, fig.width=20}
+
+data_inc <- read.csv("Cancer_Incident_Data_CRUK.txt") |>
+  rename(`ASR (Europe)` = ASR..Europe.) |>
+  mutate(Cancer.Type = str_replace(Cancer.Type, " .*", "")) |>
+  mutate(Sex = ifelse(Sex == "All", "All People", Sex))
+
+data_mort <- read.csv("Cancer_Mortality_Data_CRUK.txt") |>
+  rename(`ASR (Europe)` = ASR..Europe.) |>
+  mutate(Cancer.Type = str_replace(Cancer.Type, " .*", "")) |>
+  mutate(Sex = ifelse(Sex == "All", "All People", Sex))
+
+incidence_jp <- read.delim("Cancer_Incident_Joinpoint_CRUK.txt", sep = "\t") |>
+  mutate(Cancer.Type = str_replace(Cancer.Type, " .*", "")) |>
+  mutate(Sex = ifelse(Sex == "All", "All People", Sex))
+
+mortality_jp <- read.delim("Cancer_Mortality_Joinpoint_CRUK.txt", sep = "\t") |>
+  mutate(Cancer.Type = str_replace(Cancer.Type, " .*", "")) |>
+  mutate(Sex = ifelse(Sex == "All", "All People", Sex))
+
+proj_inc <- proj_inc |>
+  mutate(`Cancer Type` = str_replace(`Cancer Type`, " .*", "")) |>
+  mutate(Sex = ifelse(Sex == "All", "All People", Sex))
+
+proj_mort <- proj_mort |>
+  mutate(`Cancer Type` = str_replace(`Cancer Type`, " .*", "")) |>
+  mutate(Sex = ifelse(Sex == "All", "All People", Sex))
+
+
+cancers <- unique(data_inc$Cancer.Type)
+
+for(cancer in cancers){
+  p1 <- plot_joinpoint_output_CRUK(cancer = cancer, sex = "All People", data = data_inc, data_jp = incidence_jp, incmort = "Incidence")
+  p2 <- plot_joinpoint_output_CRUK(cancer = cancer, sex = "All People", data = data_mort, data_jp = mortality_jp, incmort = "Mortality",
+                                   projection.yr = 2040, projection.target = 0.85, cruk_proj = proj_mort, start.yr = 1993)
+  grid.arrange(p1, p2, nrow = 1, widths = c(4,4))
+}
+```
+
