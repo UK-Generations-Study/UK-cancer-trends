@@ -436,6 +436,7 @@ data4 |>
 ```
 
 ## Obese
+
 ```{r}
 obese_data <- data4
 
@@ -528,10 +529,10 @@ adult_bmi_england <- data4 |>
   rename(age_group = name)
 
 age_bmi_england <- data4 |>
-  filter(country == "England" & section == "BMI" & variable == "% Obese" & group %in% c("All", "Children_All") & age_group %in% c("16-24", "2-15")) |>
+  filter(country == "England" & section == "BMI" & variable == "% Obese" & group %in% c("All", "Children_All") & age_group %in% c("16-24", "2-10", "11-15")) |>
   rbind(adult_bmi_england) 
 
-ggplot(data = age_bmi_england, aes(x = year, y = value, colour = age_group)) +
+ggplot(data = age_bmi_england, aes(x = year, y = value, colour = factor(age_group, levels = c("2-10", "11-15", "16-24", "25+")))) +
   geom_point() +
   geom_line() +
   xlab("Year") +
@@ -849,14 +850,14 @@ data4 |>
   labs(colour =  "Country") +
   scale_x_continuous(breaks = pretty_breaks())
 
-cols <- brewer.pal(n = 8, name = "Greens")[5:8]
+cols <- colorRampPalette(brewer.pal(n = 8, name = "Greens")[4:8])(7)
 
 data4 |>
   filter(variable == "% Current E-cigarette user" & grepl(group, pattern = "All") & country == "England" & age_group != "16+") |>
   mutate(age_start = as.numeric(substr(age_group, 1, 2)), 
          age_end = ifelse(grepl(age_group, pattern = "\\+"), age_start, as.numeric(substr(age_group, 4, 5))),
          age_use = 0.5*(age_start + age_end)) |>
-  ggplot(aes(x = age_use, y = value, colour = as.factor(year))) +
+  ggplot(aes(x = year, y = value, colour = as.factor(age_group))) +
   geom_line() +
   geom_point() +
   xlab("Age") +
@@ -1096,7 +1097,8 @@ ggplot(parity, aes(x = year, y = parity)) +
 
 ```{r}
 
-fertility_data <- read_excel("Parity_Data.xlsx", sheet = "England_Wales_Fertility") 
+fertility_data <- read_excel("Parity_Data.xlsx", sheet = "England_Wales_Fertility") |>
+  filter(Year>1989)
 
 ggplot(fertility_data, aes(x = Year, y = `Live births per 1,000 women in age group\r\nAll ages`)) +
   geom_point() +
@@ -1176,7 +1178,8 @@ cancer_data <- cancer_data |>
 
 for(site in unique(cancer_data$`Cancer label`)){
   tempdata <- cancer_data[cancer_data$`Cancer label`==site,]
-  minyear <- min(tempdata$Year)
+  # minyear <- min(tempdata$Year)
+  minyear <- 1989
   maxyear <- max(tempdata$Year)
   print(ggplot(data = tempdata, aes(x = Year, y = `ASR (World)`, colour = `Country label`)) +
   geom_line() +
