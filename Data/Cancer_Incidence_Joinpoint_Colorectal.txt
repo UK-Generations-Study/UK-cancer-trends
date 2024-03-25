@@ -1,0 +1,85 @@
+"Sex"	"age_group"	"Cancer label"	"Year"	"ASR (World)"	"Model"	"Flag"	"APC"	"Joinpoints"	"Final Selected Model"
+1	"0-59"	Colorectum	1993	9.91	9.72	NA	0.0317	1	1
+1	"0-59"	Colorectum	1994	9.34	9.73	NA	0.0317	1	1
+1	"0-59"	Colorectum	1995	9.51	9.73	NA	0.0317	1	1
+1	"0-59"	Colorectum	1996	10.04	9.73	NA	0.0317	1	1
+1	"0-59"	Colorectum	1997	10.03	9.73	NA	0.0317	1	1
+1	"0-59"	Colorectum	1998	9.91	9.74	NA	0.0317	1	1
+1	"0-59"	Colorectum	1999	9.82	9.74	NA	0.0317	1	1
+1	"0-59"	Colorectum	2000	9.70	9.74	NA	0.0317	1	1
+1	"0-59"	Colorectum	2001	9.69	9.75	NA	0.0317	1	1
+1	"0-59"	Colorectum	2002	9.37	9.75	NA	0.0317	1	1
+1	"0-59"	Colorectum	2003	9.44	9.75	NA	0.0317	1	1
+1	"0-59"	Colorectum	2004	9.69	9.76	NA	0.0317	1	1
+1	"0-59"	Colorectum	2005	10.06	9.76	NA	0.0317	1	1
+1	"0-59"	Colorectum	2006	10.11	9.76	NA	0.0317	1	1
+1	"0-59"	Colorectum	2007	9.61	9.77	NA	0.0317	1	1
+1	"0-59"	Colorectum	2008	9.87	9.77	Joinpoint 1	NA	1	1
+1	"0-59"	Colorectum	2009	9.99	10.04	NA	2.7431*	1	1
+1	"0-59"	Colorectum	2010	9.98	10.31	NA	2.7431*	1	1
+1	"0-59"	Colorectum	2011	10.74	10.60	NA	2.7431*	1	1
+1	"0-59"	Colorectum	2012	11.20	10.89	NA	2.7431*	1	1
+1	"0-59"	Colorectum	2013	10.99	11.18	NA	2.7431*	1	1
+2	"0-59"	Colorectum	1993	7.72	7.59	NA	-0.2695	1	1
+2	"0-59"	Colorectum	1994	7.44	7.57	NA	-0.2695	1	1
+2	"0-59"	Colorectum	1995	7.17	7.55	NA	-0.2695	1	1
+2	"0-59"	Colorectum	1996	7.78	7.53	NA	-0.2695	1	1
+2	"0-59"	Colorectum	1997	7.39	7.51	NA	-0.2695	1	1
+2	"0-59"	Colorectum	1998	7.67	7.49	NA	-0.2695	1	1
+2	"0-59"	Colorectum	1999	7.63	7.47	NA	-0.2695	1	1
+2	"0-59"	Colorectum	2000	7.47	7.45	NA	-0.2695	1	1
+2	"0-59"	Colorectum	2001	7.67	7.43	NA	-0.2695	1	1
+2	"0-59"	Colorectum	2002	7.30	7.41	NA	-0.2695	1	1
+2	"0-59"	Colorectum	2003	7.27	7.39	NA	-0.2695	1	1
+2	"0-59"	Colorectum	2004	7.39	7.37	Joinpoint 1	NA	1	1
+2	"0-59"	Colorectum	2005	7.58	7.58	NA	2.8520*	1	1
+2	"0-59"	Colorectum	2006	7.83	7.80	NA	2.8520*	1	1
+2	"0-59"	Colorectum	2007	8.23	8.02	NA	2.8520*	1	1
+2	"0-59"	Colorectum	2008	8.10	8.25	NA	2.8520*	1	1
+2	"0-59"	Colorectum	2009	8.12	8.48	NA	2.8520*	1	1
+2	"0-59"	Colorectum	2010	8.40	8.72	NA	2.8520*	1	1
+2	"0-59"	Colorectum	2011	9.04	8.97	NA	2.8520*	1	1
+2	"0-59"	Colorectum	2012	9.68	9.23	NA	2.8520*	1	1
+2	"0-59"	Colorectum	2013	9.49	9.49	NA	2.8520*	1	1
+1	"60-85"	Colorectum	1993	250.28	245.66	NA	1.0463	3	3
+1	"60-85"	Colorectum	1994	246.60	248.23	NA	1.0463	3	3
+1	"60-85"	Colorectum	1995	242.98	250.82	NA	1.0463	3	3
+1	"60-85"	Colorectum	1996	256.74	253.45	NA	1.0463	3	3
+1	"60-85"	Colorectum	1997	256.77	256.10	NA	1.0463	3	3
+1	"60-85"	Colorectum	1998	261.40	258.78	Joinpoint 1	NA	3	3
+1	"60-85"	Colorectum	1999	256.40	257.53	NA	-0.4814	3	3
+1	"60-85"	Colorectum	2000	262.29	256.29	NA	-0.4814	3	3
+1	"60-85"	Colorectum	2001	250.73	255.06	NA	-0.4814	3	3
+1	"60-85"	Colorectum	2002	247.83	253.83	NA	-0.4814	3	3
+1	"60-85"	Colorectum	2003	252.40	252.61	NA	-0.4814	3	3
+1	"60-85"	Colorectum	2004	254.38	251.39	NA	-0.4814	3	3
+1	"60-85"	Colorectum	2005	251.55	250.18	Joinpoint 2	NA	3	3
+1	"60-85"	Colorectum	2006	254.38	255.59	NA	2.1614*	3	3
+1	"60-85"	Colorectum	2007	260.05	261.11	NA	2.1614*	3	3
+1	"60-85"	Colorectum	2008	271.50	266.76	NA	2.1614*	3	3
+1	"60-85"	Colorectum	2009	271.51	272.52	NA	2.1614*	3	3
+1	"60-85"	Colorectum	2010	274.46	278.41	Joinpoint 3	NA	3	3
+1	"60-85"	Colorectum	2011	270.28	268.74	NA	-3.4731*	3	3
+1	"60-85"	Colorectum	2012	263.70	259.41	NA	-3.4731*	3	3
+1	"60-85"	Colorectum	2013	247.21	250.40	NA	-3.4731*	3	3
+2	"60-85"	Colorectum	1993	158.31	157.28	NA	0.5945	3	3
+2	"60-85"	Colorectum	1994	159.42	158.21	NA	0.5945	3	3
+2	"60-85"	Colorectum	1995	156.06	159.15	NA	0.5945	3	3
+2	"60-85"	Colorectum	1996	160.85	160.10	NA	0.5945	3	3
+2	"60-85"	Colorectum	1997	158.88	161.05	NA	0.5945	3	3
+2	"60-85"	Colorectum	1998	163.33	162.01	Joinpoint 1	NA	3	3
+2	"60-85"	Colorectum	1999	160.62	159.86	NA	-1.3247*	3	3
+2	"60-85"	Colorectum	2000	159.76	157.75	NA	-1.3247*	3	3
+2	"60-85"	Colorectum	2001	154.17	155.66	NA	-1.3247*	3	3
+2	"60-85"	Colorectum	2002	152.64	153.59	NA	-1.3247*	3	3
+2	"60-85"	Colorectum	2003	150.32	151.56	Joinpoint 2	NA	3	3
+2	"60-85"	Colorectum	2004	155.51	153.84	NA	1.5016*	3	3
+2	"60-85"	Colorectum	2005	156.33	156.15	NA	1.5016*	3	3
+2	"60-85"	Colorectum	2006	156.83	158.49	NA	1.5016*	3	3
+2	"60-85"	Colorectum	2007	161.45	160.87	NA	1.5016*	3	3
+2	"60-85"	Colorectum	2008	165.10	163.29	NA	1.5016*	3	3
+2	"60-85"	Colorectum	2009	168.28	165.74	NA	1.5016*	3	3
+2	"60-85"	Colorectum	2010	167.49	168.23	NA	1.5016*	3	3
+2	"60-85"	Colorectum	2011	167.70	170.75	Joinpoint 3	NA	3	3
+2	"60-85"	Colorectum	2012	163.88	162.55	NA	-4.8022*	3	3
+2	"60-85"	Colorectum	2013	154.12	154.75	NA	-4.8022*	3	3

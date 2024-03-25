@@ -36,6 +36,7 @@ write.csv(mort_data, "Cancer_Mortality_Data.txt", row.names = F)
 ```
 
 ## All Cancer Data
+
 ```{r}
 
 setwd("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data")
@@ -56,5 +57,33 @@ mort_data <- data |>
 
 write.csv(mort_data, "Cancer_Mortality_Data_All.txt", row.names = F)
 
+
+```
+
+## Colorectal Cancer
+```{r}
+setwd("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data")
+
+data_young <- read_excel("Cancer_Projection_Data_Colorectal.xlsx", sheet = "UK_0_59") |>
+  mutate(age_group = "0-59")
+
+
+data_old <- read_excel("Cancer_Projection_Data_Colorectal.xlsx", sheet = "UK_60_85") |>
+  mutate(age_group = "60-85")
+
+data_inc <- rbind(data_young, data_old) |>
+  filter(Type == 0) |>
+  select(Year, Sex, `ASR (World)`, `Cancer label`, age_group) |>
+  arrange(age_group, `Cancer label`, Sex, Year)
+
+
+data_mort <- rbind(data_young, data_old) |>
+  filter(Type == 1) |>
+  select(Year, Sex, `ASR (World)`, `Cancer label`, age_group) |>
+  arrange(age_group, `Cancer label`, Sex, Year)
+
+
+write.csv(data_inc, "Cancer_Incidence_Data_Colorectal.txt", row.names = F)
+write.csv(data_mort, "Cancer_Mortality_Data_Colorectal.txt", row.names = F)
 
 ```
