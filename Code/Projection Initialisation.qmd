@@ -83,7 +83,7 @@ data_mort <- rbind(data_young, data_old) |>
   arrange(age_group, `Cancer label`, Sex, Year)
 
 
-write.csv(inc_data, "Cancer_Incidence_Data_Colorectal.txt", row.names = F)
-write.csv(mort_data, "Cancer_Mortality_Data_Colorectal.txt", row.names = F)
+write.csv(data_inc, "Cancer_Incidence_Data_Colorectal.txt", row.names = F)
+write.csv(data_mort, "Cancer_Mortality_Data_Colorectal.txt", row.names = F)
 
 ```
