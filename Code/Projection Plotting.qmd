@@ -425,3 +425,54 @@ plot_joinpoint_output(cancer = "Breast", data = mortality_data, data_jp = mortal
 
 
 ```
+## Colorectal Cancer by Age
+```{r}
+
+data_young <- read_excel("Cancer_Projection_Data_Colorectal.xlsx", sheet = "UK_0_59")
+data_old <- read_excel("Cancer_Projection_Data_Colorectal.xlsx", sheet = "UK_60_85")
+
+# Incidence data
+incidence_young <- data_young |>
+  filter(Type == 0)
+
+incidence_old <- data_old |>
+  filter(Type == 0)
+
+incidence_jp <- read.delim("Cancer_Incidence_Joinpoint_Colorectal.txt", sep = "\t")
+
+incidence_jp_young <- incidence_jp |>
+  filter(age_group == "0-59")
+
+incidence_jp_old <- incidence_jp |>
+  filter(age_group == "60-85")
+
+# Mortality data
+
+mortality_young <- data_young |>
+  filter(Type == 1)
+
+mortality_old <- data_old |>
+  filter(Type == 1)
+
+mortality_jp <- read.delim("Cancer_Mortality_Joinpoint_Colorectal.txt", sep = "\t")
+
+mortality_jp_young <- mortality_jp |>
+  filter(age_group == "0-59")
+
+mortality_jp_old <- mortality_jp |>
+  filter(age_group == "60-85")
+
+
+plot_joinpoint_output(cancer = "Colorectum", data = incidence_young, data_jp = incidence_jp_young, incmort = "Incidence") +
+  ggtitle("Incidence Trends for Colorectal Cancer for 0-59 Years Old")
+
+plot_joinpoint_output(cancer = "Colorectum", data = incidence_old, data_jp = incidence_jp_old, incmort = "Incidence") +
+  ggtitle("Incidence Trends for Colorectal Cancer for 60-85 Years Old")
+
+plot_joinpoint_output(cancer = "Colorectum", data = mortality_young, data_jp = mortality_jp_young, incmort = "Mortality", projection.yr = 2040, report.APC = T, projection.target = 0.85, start.yr = 1993) +
+  ggtitle("Mortality Projections for Colorectal Cancer for 0-59 Years Old")
+
+plot_joinpoint_output(cancer = "Colorectum", data = mortality_old, data_jp = mortality_jp_old, incmort = "Mortality", projection.yr = 2040, report.APC = T, projection.target = 0.85, start.yr = 1993) +
+  ggtitle("Mortality Projections for Colorectal Cancer for 60-85 Years Old")
+
+```
