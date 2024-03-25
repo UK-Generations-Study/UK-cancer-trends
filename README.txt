@@ -73,8 +73,9 @@ Diabetes
 
 Screening
 - Breast data https://fingertips.phe.org.uk/search/screening#page/4/gid/1938132830/pat/159/par/K02000001/ati/15/are/E92000001/iid/91340/age/265/sex/2/cat/-1/ctp/-1/yrr/1/cid/4/tbm/1
+	-Uptake data was used as coverage data was discontinuous. Could use coverage data up to 2021/22.
 - Bowel data https://fingertips.phe.org.uk/search/screening#page/4/gid/1938133365/pat/159/par/K02000001/ati/15/are/E92000001/iid/92600/age/280/sex/4/cat/-1/ctp/-1/yrr/1/cid/4/tbm/1
-- Cerival data https://digital.nhs.uk/data-and-information/publications/statistical/cervical-screening-annual/england-2022-2023#resources, Table 1
+- Cervical data https://digital.nhs.uk/data-and-information/publications/statistical/cervical-screening-annual/england-2022-2023#resources, Table 1
 
 Cancer_Projection_Data(_All)
 - UK wide data from Globocan

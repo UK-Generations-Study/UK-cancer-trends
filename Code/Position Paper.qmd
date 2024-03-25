@@ -1298,8 +1298,8 @@ screening_data_breast |>
   geom_line() +
   geom_point() +
   xlab("Year") +
-  ylab("% Coverage") +
-  ggtitle("% Breast Screening Coverage in England") +
+  ylab("% Uptake") +
+  ggtitle("% Breast Screening Uptake in England") +
   scale_x_continuous(breaks = pretty_breaks())
 
 screening_data_bowel <- read_excel("Screening_Data.xlsx", sheet = "England_Bowel")
