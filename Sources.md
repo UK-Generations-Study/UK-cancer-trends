@@ -39,5 +39,7 @@ This paper by Goodall et al. [(13)](https://www.ncbi.nlm.nih.gov/pmc/articles/PM
 
 ### Screening
 This paper by Clift et al. [(14)](https://www.nature.com/articles/s41416-022-01714-9) attempts to estimate the number of deaths caused by the decrease in screening rates during the COVID pandemic. Although the pandemic is no longer the driving force behind the low screening rates, the screening rates are still low. This paper could be referenced to show the kind of effects we would expect from the rates staying low.  
+  
 A paper by Choi et al. [(15)](https://www.mdpi.com/2076-0817/12/2/298) discusses the rate of cervical uptakes in the UK. It discusses this in the context of both cervical cancer and HPV, but would certainly still be useful if a point were to be made about general screening rates, even if cervical cancer is not one of the 6 we are focussing on.  
+  
 This paper by Mazidimoradi et al. [(16)](https://link.springer.com/article/10.1007/s12029-021-00679-x) looks at the changing in behaviour of colorectal screening rates over the course of the pandemic. It doesn't limit it's focus to the UK, but the UK is discussed amongst other countries. They look at the trends in both types of screening and overall screening rates in a variety of countries, and conclude that in many countries, the reduction of screening during the pandemic recovers to pre-pandemic rates. Interestingly, in our data, we don't see any reduction in bowel screening coverage during the pandemic, and that may be something to investigate further. 
