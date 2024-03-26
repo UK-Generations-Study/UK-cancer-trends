@@ -136,7 +136,7 @@ plot_joinpoint_output_CRUK <- function(cancer, sex = "All", data, data_jp, incmo
     # guides(colour = "none") +
     # geom_point(data = jp_plot, aes(x = Year, y = Model, colour = section)) +
     ggtitle(paste0(incmort, " ", proj_lab, " for ", cancer, " Cancer in ", sex)) +
-    scale_x_continuous(breaks = pretty_breaks()) +
+    # scale_x_continuous(breaks = pretty_breaks()) +
     ylab("ASR per 100,000")
       
   
@@ -179,7 +179,7 @@ plot_joinpoint_output_CRUK <- function(cancer, sex = "All", data, data_jp, incmo
       #                            colour = c("black", "red", "blue")),
       #        title = "Sources")
     
-    report.APC = FALSE
+    # report.APC = FALSE
   }
     
   
@@ -192,6 +192,15 @@ plot_joinpoint_output_CRUK <- function(cancer, sex = "All", data, data_jp, incmo
       guides(colour = "none")
   }
   
+  # Make more accurate x axis labels
+  xmin <- min(c(start.yr, min(data$Year)), na.rm = T)
+  xmax <- max(c(projection.yr, max(data$Year)), na.rm = T)
+  
+  breaks <- (xmin:xmax)[(xmin:xmax)%%5==0]
+  
+  plot <- plot +
+    scale_x_continuous(breaks = breaks, labels = function(x) paste0(x-1, "-", x+1))
+  
   return(plot)
   
 }
@@ -199,6 +208,7 @@ plot_joinpoint_output_CRUK <- function(cancer, sex = "All", data, data_jp, incmo
 ```
 
 ## Importing CRUK Projections
+
 ```{r}
 
 cancers <- c("All Cancers Combined excluding Non-Melanoma Skin Cancer (C00-C97 (excl. C44))", "All Cancers Combined (C00-C97)", "Bowel Cancer (C18-C20)", "Breast Cancer (C50)", "Lung Cancer (C33-C34)", "Oesophageal Cancer (C15)",
@@ -242,8 +252,10 @@ proj_mort <- proj_mort |>
 ```
 
 ## Cancer Incidence/Mortality
+
 Red dashed line represents projection from continuing joinpoint segment, blue dashed line represents projection from CRUK.
-```{r, fig.width=20}
+
+```{r, fig.width=20, warning=FALSE}
 
 data_inc <- read.csv("Cancer_Incident_Data_CRUK.txt") |>
   rename(`ASR (Europe)` = ASR..Europe.) |>
@@ -275,10 +287,9 @@ proj_mort <- proj_mort |>
 cancers <- unique(data_inc$Cancer.Type)
 
 for(cancer in cancers){
-  p1 <- plot_joinpoint_output_CRUK(cancer = cancer, sex = "All People", data = data_inc, data_jp = incidence_jp, incmort = "Incidence")
+  p1 <- plot_joinpoint_output_CRUK(cancer = cancer, sex = "All People", data = data_inc, data_jp = incidence_jp, incmort = "Incidence", report.APC = TRUE)
   p2 <- plot_joinpoint_output_CRUK(cancer = cancer, sex = "All People", data = data_mort, data_jp = mortality_jp, incmort = "Mortality",
-                                   projection.yr = 2040, projection.target = 0.85, cruk_proj = proj_mort, start.yr = 1993)
+                                   projection.yr = 2040, projection.target = 0.85, cruk_proj = proj_mort, start.yr = 1993, report.APC = TRUE)
   grid.arrange(p1, p2, nrow = 1, widths = c(4,4))
 }
 ```
-
