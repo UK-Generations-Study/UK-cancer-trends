@@ -339,10 +339,12 @@ Cleaning some specific variables as well as cleaning variable names for variable
 
 data2 <- data |>
   mutate(year = case_when(
+    # Choosing first year when there are two 2017/18, may chance depending on future approach.
     grepl(year, pattern = "\\/") ~ map_chr(strsplit(year, "/"), 1),
     grepl(year, pattern = "\\_") ~ map_chr(strsplit(year, "_"), 1),
     TRUE ~ year
-  ), year = as.numeric(year),
+  ), 
+  year = as.numeric(year),
   age_group = case_when(
     age_group %in% c("All men", "All women", "All", "All adults", "Total") ~ "16+",
     grepl(age_group, pattern = "Age ") ~ gsub(age_group, pattern = "Age ", replacement = ""),
@@ -351,10 +353,12 @@ data2 <- data |>
     grepl(age_group, pattern = "All aged ") ~ gsub(age_group, pattern = "All aged ", replacement = ""),
     TRUE ~ age_group
   ), age_group = case_when(
+    # Expections to all being 16+
     country == "N. Ireland" & section == "Alcohol" ~ gsub(age_group, pattern = "16", replacement = "18"),
     country == "N. Ireland" & section == "Activity" ~ gsub(age_group, pattern = "16", replacement = "19"),
     TRUE ~ age_group
   ), variable = case_when(
+    # Harmonising variable names. Only doing ones we are focussed on. Could always expand to a fully harmonised dataset.
     country == "England" & section == "BMI" & variable == "Overweight including obese" & grepl(group, pattern = "Children") ~ "% Overweight",
     country == "England" & section == "BMI" & variable == "Obese" & grepl(group, pattern = "Children") ~ "% Obese",
     country == "England" & section == "BMI" & variable == "% overweight including obese" & !grepl(group, pattern = "Children") ~ "% Overweight",
@@ -364,6 +368,7 @@ data2 <- data |>
     country == "England" & section == "Smoking" & variable == "Current cigarette smoker" ~ "% Current Smoker",
     country == "England" & section == "E_Cigarette" & variable == "Currently uses e-cigarettes" ~ "% Current E-cigarette user",
     country == "England" & section == "Activity" & variable %in% c("Meets aerobic guidelines", "Meets previous aerobic guidelines") ~ "% Meets guidelines", ## CHECK THIS IS APPROPRIATE
+    ## Will probably use the more dense activity dataset for England so this ceases to be an issue in that case.
     
     country == "Scotland" & section == "BMI" & variable == "Overweight (including obesity)" ~ "% Overweight",
     country == "Scotland" & section == "Alcohol" & variable == "Non-drinker" ~ "% Non-Drinker",
@@ -547,7 +552,7 @@ ggplot(data = age_bmi_england, aes(x = year, y = value, colour = factor(age_grou
 ```
 
 ## Childhood Obesity - NCMP
-
+Childhood obesity as measured by the National Child Measurement Program
 ```{r}
 
 reception_BMI_data <- read_excel("BMI_Data_Children.xlsx", sheet = "England_Reception")
@@ -865,8 +870,8 @@ data4 |>
   xlab("Age") +
   ylab("% Current E-Cigarette Users") +
   ggtitle("% Current E-Cigarette Users in the UK") +
-  labs(colour =  "Country") +
-  scale_x_continuous(breaks = pretty_breaks()) +
+  labs(colour =  "Age Group") +
+  scale_x_continuous(breaks = 2016:2019) +
   scale_color_manual(values = cols)
 ```
 
@@ -911,14 +916,14 @@ ecig_data |>
   ggtitle("% Current E-Cigarette Users in Great Britain") +
   labs(colour = "Age Group") +
   scale_color_manual(values = cols) +
-  scale_x_continuous(breaks = pretty_breaks())
+  scale_x_continuous(breaks = ecig_data$Year[ecig_data$Year%%1==0])
 
 ```
 
 ## Activity
 
 Added a new source for the activity that provides more years.
-
+The Welsh definition is slightly differently worded, check up on this.
 ```{r}
 
 data4 |>
@@ -1109,27 +1114,27 @@ ggplot(fertility_data, aes(x = Year, y = `Live births per 1,000 women in age gro
   ggtitle("Fertility in England and Wales") +
   scale_x_continuous(breaks = pretty_breaks())
 
-heatmap_fertility <- fertility_data[,!grepl(colnames(fertility_data), pattern = "Age of mother")]
-
-heatmap_fertility <- heatmap_fertility |>
-  pivot_longer(cols = colnames(heatmap_fertility)[-1]) |>
-  mutate(age_group = gsub(name, pattern = "Live births per 1,000 women in age group\r\n", replacement = "")) |>
-  filter(age_group != "All ages") |>
-  mutate(age_group = case_when(
-    grepl(age_group, pattern = "and over") ~ gsub(age_group, pattern = " and over", replacement = "+"),
-    grepl(age_group, pattern = "Under") ~ gsub(age_group, pattern = "Under ", replacement = "0 to "),
-    TRUE ~ age_group
-  ))
-  # group_by(age_group) |>
-  # mutate(value = (value - mean(value, na.rm = T))/sqrt(var(value, na.rm = T))) |>
-  # ungroup()
-
-ggplot(heatmap_fertility, aes(x = age_group, y = Year, fill = value)) +
-  geom_tile() +
-  paletteer::scale_fill_paletteer_c("viridis::plasma") +
-  labs(fill = "Fertility Rate") +
-  xlab("Age Group") +
-  theme(legend.position = "bottom")
+# heatmap_fertility <- fertility_data[,!grepl(colnames(fertility_data), pattern = "Age of mother")]
+# 
+# heatmap_fertility <- heatmap_fertility |>
+#   pivot_longer(cols = colnames(heatmap_fertility)[-1]) |>
+#   mutate(age_group = gsub(name, pattern = "Live births per 1,000 women in age group\r\n", replacement = "")) |>
+#   filter(age_group != "All ages") |>
+#   mutate(age_group = case_when(
+#     grepl(age_group, pattern = "and over") ~ gsub(age_group, pattern = " and over", replacement = "+"),
+#     grepl(age_group, pattern = "Under") ~ gsub(age_group, pattern = "Under ", replacement = "0 to "),
+#     TRUE ~ age_group
+#   ))
+#   # group_by(age_group) |>
+#   # mutate(value = (value - mean(value, na.rm = T))/sqrt(var(value, na.rm = T))) |>
+#   # ungroup()
+# 
+# ggplot(heatmap_fertility, aes(x = age_group, y = Year, fill = value)) +
+#   geom_tile() +
+#   paletteer::scale_fill_paletteer_c("viridis::plasma") +
+#   labs(fill = "Fertility Rate") +
+#   xlab("Age Group") +
+#   theme(legend.position = "bottom")
 
 
 ```
