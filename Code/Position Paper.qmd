@@ -27,6 +27,7 @@ library(ggplot2)
 library(scales)
 library(RColorBrewer)
 library(stringr)
+library(paletteer)
 ```
 
 ## Setup
@@ -1118,15 +1119,15 @@ heatmap_fertility <- heatmap_fertility |>
     grepl(age_group, pattern = "and over") ~ gsub(age_group, pattern = " and over", replacement = "+"),
     grepl(age_group, pattern = "Under") ~ gsub(age_group, pattern = "Under ", replacement = "0 to "),
     TRUE ~ age_group
-  )) |>
-  group_by(age_group) |>
-  mutate(value = (value - mean(value, na.rm = T))/sqrt(var(value, na.rm = T))) |>
-  ungroup()
+  ))
+  # group_by(age_group) |>
+  # mutate(value = (value - mean(value, na.rm = T))/sqrt(var(value, na.rm = T))) |>
+  # ungroup()
 
 ggplot(heatmap_fertility, aes(x = age_group, y = Year, fill = value)) +
   geom_tile() +
-  scale_fill_gradient(low = "white", high = "darkgreen") +
-  labs(fill = "Normalised Fertility Rate") +
+  paletteer::scale_fill_paletteer_c("viridis::plasma") +
+  labs(fill = "Fertility Rate") +
   xlab("Age Group") +
   theme(legend.position = "bottom")
 
