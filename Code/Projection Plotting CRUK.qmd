@@ -28,7 +28,7 @@ library(tidyr)
 
 ```{r, setup}
 # knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/Position Paper/Data")
-knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data")
+knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data/Cancer Trends")
 knitr::opts_chunk$set(echo = FALSE)
 theme_set(theme_minimal())
 ```
@@ -226,7 +226,7 @@ plot_joinpoint_output_CRUK <- function(cancer, sex = "All", data, data_jp, incmo
 cancers <- c("All Cancers Combined excluding Non-Melanoma Skin Cancer (C00-C97 (excl. C44))", "All Cancers Combined (C00-C97)", "Bowel Cancer (C18-C20)", "Breast Cancer (C50)", "Lung Cancer (C33-C34)", "Oesophageal Cancer (C15)",
              "Pancreatic Cancer (C25)", "Prostate Cancer (C61)")
 
-proj_inc <- read_excel("Cancer_Projection_Data_CRUK.xlsx", sheet = "Incidence")
+proj_inc <- read_excel("CRUK/Cancer_Projection_Data_CRUK.xlsx", sheet = "Incidence")
 
 proj_inc <- as.data.frame(proj_inc)
 
@@ -243,7 +243,7 @@ proj_inc <- proj_inc |>
   filter(Year >= 2017, `Cancer Type` %in% cancers, !is.na(`ASR (Europe)`))
 
 
-proj_mort <- read_excel("Cancer_Projection_Data_CRUK.xlsx", sheet = "Mortality")
+proj_mort <- read_excel("CRUK/Cancer_Projection_Data_CRUK.xlsx", sheet = "Mortality")
 
 proj_mort <- as.data.frame(proj_mort)
 
@@ -269,21 +269,21 @@ Red dashed line represents projection from continuing joinpoint segment, blue da
 
 ```{r, fig.width=20, warning=FALSE}
 
-data_inc <- read.csv("Cancer_Incident_Data_CRUK.txt") |>
+data_inc <- read.csv("CRUK/Cancer_Incidence_Data_CRUK.txt") |>
   rename(`ASR (Europe)` = ASR..Europe.) |>
   mutate(Cancer.Type = str_replace(Cancer.Type, " .*", "")) |>
   mutate(Sex = ifelse(Sex == "All", "All People", Sex))
 
-data_mort <- read.csv("Cancer_Mortality_Data_CRUK.txt") |>
+data_mort <- read.csv("CRUK/Cancer_Mortality_Data_CRUK.txt") |>
   rename(`ASR (Europe)` = ASR..Europe.) |>
   mutate(Cancer.Type = str_replace(Cancer.Type, " .*", "")) |>
   mutate(Sex = ifelse(Sex == "All", "All People", Sex))
 
-incidence_jp <- read.delim("Cancer_Incident_Joinpoint_CRUK.txt", sep = "\t") |>
+incidence_jp <- read.delim("CRUK/Cancer_Incidence_Joinpoint_CRUK.txt", sep = "\t") |>
   mutate(Cancer.Type = str_replace(Cancer.Type, " .*", "")) |>
   mutate(Sex = ifelse(Sex == "All", "All People", Sex))
 
-mortality_jp <- read.delim("Cancer_Mortality_Joinpoint_CRUK.txt", sep = "\t") |>
+mortality_jp <- read.delim("CRUK/Cancer_Mortality_Joinpoint_CRUK.txt", sep = "\t") |>
   mutate(Cancer.Type = str_replace(Cancer.Type, " .*", "")) |>
   mutate(Sex = ifelse(Sex == "All", "All People", Sex))
 
@@ -312,7 +312,7 @@ for(cancer in cancers){
 
 cancers <- c("Liver Cancer (C22)", "Bladder Cancer (C67)", "Brain, Other CNS and Intracranial Tumours (C70-C72, C75.1-C75.3, D32-D33, D35.2-D35.4, D42-D43, D44.3-D44.5)")
 
-proj_inc <- read_excel("Cancer_Projection_Data_CRUK.xlsx", sheet = "Incidence")
+proj_inc <- read_excel("CRUK/Cancer_Projection_Data_CRUK.xlsx", sheet = "Incidence")
 
 proj_inc <- as.data.frame(proj_inc)
 
@@ -329,7 +329,7 @@ proj_inc <- proj_inc |>
   filter(Year >= 2017, `Cancer Type` %in% cancers, !is.na(`ASR (Europe)`))
 
 
-proj_mort <- read_excel("Cancer_Projection_Data_CRUK.xlsx", sheet = "Mortality")
+proj_mort <- read_excel("CRUK/Cancer_Projection_Data_CRUK.xlsx", sheet = "Mortality")
 
 proj_mort <- as.data.frame(proj_mort)
 
@@ -349,28 +349,27 @@ proj_mort <- proj_mort |>
 
 ```
 
-
 ## Cancer Incidence/Mortality Extra
 
 Red dashed line represents projection from continuing joinpoint segment, blue dashed line represents projection from CRUK.
 
 ```{r, fig.width=20, warning=FALSE}
 
-data_inc <- read.csv("Cancer_Incidence_Data_CRUK_Extra.txt") |>
+data_inc <- read.csv("CRUK Extra/Cancer_Incidence_Data_CRUK_Extra.txt") |>
   rename(`ASR (Europe)` = ASR..Europe.) |>
   mutate(Cancer.Type = str_replace(Cancer.Type, " .*", "")) |>
   mutate(Sex = ifelse(Sex == "All", "All People", Sex))
 
-data_mort <- read.csv("Cancer_Mortality_Data_CRUK_Extra.txt") |>
+data_mort <- read.csv("CRUK Extra/Cancer_Mortality_Data_CRUK_Extra.txt") |>
   rename(`ASR (Europe)` = ASR..Europe.) |>
   mutate(Cancer.Type = str_replace(Cancer.Type, " .*", "")) |>
   mutate(Sex = ifelse(Sex == "All", "All People", Sex))
 
-incidence_jp <- read.delim("Cancer_Incidence_Joinpoint_CRUK_Extra.txt", sep = "\t") |>
+incidence_jp <- read.delim("CRUK Extra/Cancer_Incidence_Joinpoint_CRUK_Extra.txt", sep = "\t") |>
   mutate(Cancer.Type = str_replace(Cancer.Type, " .*", "")) |>
   mutate(Sex = ifelse(Sex == "All", "All People", Sex))
 
-mortality_jp <- read.delim("Cancer_Mortality_Joinpoint_CRUK_Extra.txt", sep = "\t") |>
+mortality_jp <- read.delim("CRUK Extra/Cancer_Mortality_Joinpoint_CRUK_Extra.txt", sep = "\t") |>
   mutate(Cancer.Type = str_replace(Cancer.Type, " .*", "")) |>
   mutate(Sex = ifelse(Sex == "All", "All People", Sex))
 

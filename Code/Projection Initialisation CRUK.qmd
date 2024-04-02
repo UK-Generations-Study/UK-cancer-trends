@@ -15,7 +15,7 @@ library(dplyr)
 ## Data
 
 ```{r}
-setwd("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data")
+setwd("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data/Cancer Trends/CRUK")
 
 cancers <- c("All Cancers Combined excluding Non-Melanoma Skin Cancer (C00-C97 (excl. C44))", "All Cancers Combined (C00-C97)", "Bowel Cancer (C18-C20)", "Breast Cancer (C50)", "Lung Cancer (C33-C34)", "Oesophageal Cancer (C15)",
              "Pancreatic Cancer (C25)", "Prostate Cancer (C61)")
@@ -37,7 +37,7 @@ inc_data <- inc_data |>
   filter(Year <= 2017, `Cancer Type` %in% cancers, !is.na(`ASR (Europe)`)) |>
   arrange(Sex, `Cancer Type`, Year)
 
-write.csv(inc_data, "Cancer_Incident_Data_CRUK.txt", row.names = F)
+write.csv(inc_data, "Cancer_Incidence_Data_CRUK.txt", row.names = F)
 
 mort_data <- read_excel("Cancer_Projection_Data_CRUK.xlsx", sheet = "Mortality")
 
@@ -62,11 +62,11 @@ write.csv(mort_data, "Cancer_Mortality_Data_CRUK.txt", row.names = F)
 ## Extra Cancers
 
 ```{r}
-setwd("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data")
+setwd("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data/Cancer Trends/CRUK Extra")
 
 cancers <- c("Liver Cancer (C22)", "Bladder Cancer (C67)", "Brain")
 
-inc_data <- read_excel("Cancer_Projection_Data_CRUK.xlsx", sheet = "Incidence")
+inc_data <- read_excel("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data/Cancer Trends/CRUK/Cancer_Projection_Data_CRUK.xlsx", sheet = "Incidence")
 
 inc_data <- as.data.frame(inc_data)
 
@@ -89,7 +89,7 @@ inc_data <- inc_data |>
 
 write.csv(inc_data, "Cancer_Incidence_Data_CRUK_Extra.txt", row.names = F)
 
-mort_data <- read_excel("Cancer_Projection_Data_CRUK.xlsx", sheet = "Mortality")
+mort_data <- read_excel("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data/Cancer Trends/CRUK/Cancer_Projection_Data_CRUK.xlsx", sheet = "Mortality")
 
 mort_data <- as.data.frame(mort_data)
 
