@@ -257,7 +257,7 @@ proj_mort <- proj_mort |>
   rename(Sex = name, `ASR (Europe)` = value) |>
   mutate(Year = as.numeric(substr(Year, start = 1, stop = 4)) + 1,
          `ASR (Europe)` = as.numeric(`ASR (Europe)`)) |>
-  filter(Year >= 2017, `Cancer Type` %in% cancers, !is.na(`ASR (Europe)`))
+  filter(Year >= 2018, `Cancer Type` %in% cancers, !is.na(`ASR (Europe)`))
 
 
 
@@ -343,7 +343,7 @@ proj_mort <- proj_mort |>
   rename(Sex = name, `ASR (Europe)` = value) |>
   mutate(Year = as.numeric(substr(Year, start = 1, stop = 4)) + 1,
          `ASR (Europe)` = as.numeric(`ASR (Europe)`)) |>
-  filter(Year >= 2017, `Cancer Type` %in% cancers, !is.na(`ASR (Europe)`))
+  filter(Year >= 2018, `Cancer Type` %in% cancers, !is.na(`ASR (Europe)`))
 
 
 
