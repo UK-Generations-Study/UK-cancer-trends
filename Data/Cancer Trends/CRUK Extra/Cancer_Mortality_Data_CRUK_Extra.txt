@@ -1,0 +1,379 @@
+"Year","Cancer Type","Geography","Sex","ASR (Europe)"
+1976,"Bladder Cancer (C67)","UK","All",11.7250801472852
+1977,"Bladder Cancer (C67)","UK","All",11.7569832943512
+1978,"Bladder Cancer (C67)","UK","All",11.7117541937923
+1979,"Bladder Cancer (C67)","UK","All",11.6893449071428
+1980,"Bladder Cancer (C67)","UK","All",11.67289170953
+1981,"Bladder Cancer (C67)","UK","All",11.5994503529088
+1982,"Bladder Cancer (C67)","UK","All",11.6076533736058
+1983,"Bladder Cancer (C67)","UK","All",11.7480071238435
+1984,"Bladder Cancer (C67)","UK","All",11.9247305295503
+1985,"Bladder Cancer (C67)","UK","All",12.0354635127228
+1986,"Bladder Cancer (C67)","UK","All",11.9331710336651
+1987,"Bladder Cancer (C67)","UK","All",11.9885799046865
+1988,"Bladder Cancer (C67)","UK","All",11.9942383795445
+1989,"Bladder Cancer (C67)","UK","All",12.1861919115232
+1990,"Bladder Cancer (C67)","UK","All",12.1881978545044
+1991,"Bladder Cancer (C67)","UK","All",12.3220147779876
+1992,"Bladder Cancer (C67)","UK","All",12.1244456368144
+1993,"Bladder Cancer (C67)","UK","All",11.9313661211506
+1994,"Bladder Cancer (C67)","UK","All",11.6844700151913
+1995,"Bladder Cancer (C67)","UK","All",11.4924828502089
+1996,"Bladder Cancer (C67)","UK","All",11.2725188040382
+1997,"Bladder Cancer (C67)","UK","All",10.9087356330821
+1998,"Bladder Cancer (C67)","UK","All",10.5878007116434
+1999,"Bladder Cancer (C67)","UK","All",10.3865646906569
+2000,"Bladder Cancer (C67)","UK","All",10.2869934128789
+2001,"Bladder Cancer (C67)","UK","All",10.2339321976003
+2002,"Bladder Cancer (C67)","UK","All",10.1549738691287
+2003,"Bladder Cancer (C67)","UK","All",9.96757733448754
+2004,"Bladder Cancer (C67)","UK","All",9.74731338489606
+2005,"Bladder Cancer (C67)","UK","All",9.53968519214533
+2006,"Bladder Cancer (C67)","UK","All",9.46566838391197
+2007,"Bladder Cancer (C67)","UK","All",9.50830324327639
+2008,"Bladder Cancer (C67)","UK","All",9.48537049229224
+2009,"Bladder Cancer (C67)","UK","All",9.3350233601143
+2010,"Bladder Cancer (C67)","UK","All",9.21887609243782
+2011,"Bladder Cancer (C67)","UK","All",9.18799570722488
+2012,"Bladder Cancer (C67)","UK","All",9.18137463423172
+2013,"Bladder Cancer (C67)","UK","All",9.1723172265294
+2014,"Bladder Cancer (C67)","UK","All",8.99033381115167
+2015,"Bladder Cancer (C67)","UK","All",8.93906880245664
+2016,"Bladder Cancer (C67)","UK","All",8.91446336488024
+2017,"Bladder Cancer (C67)","UK","All",8.87735125831136
+1976,"Brain","UK","All",6.54287913561399
+1977,"Brain","UK","All",6.75017349842236
+1978,"Brain","UK","All",6.8615599589
+1979,"Brain","UK","All",6.92010904137038
+1980,"Brain","UK","All",6.88967192329218
+1981,"Brain","UK","All",6.99384774650844
+1982,"Brain","UK","All",7.03442480205823
+1983,"Brain","UK","All",7.37184081020844
+1984,"Brain","UK","All",7.62249934121925
+1985,"Brain","UK","All",7.77453858416564
+1986,"Brain","UK","All",7.74342701865234
+1987,"Brain","UK","All",7.71802741134401
+1988,"Brain","UK","All",7.91692825430549
+1989,"Brain","UK","All",8.02778995107547
+1990,"Brain","UK","All",8.08302885741765
+1991,"Brain","UK","All",8.23277191883
+1992,"Brain","UK","All",8.28333325305219
+1993,"Brain","UK","All",8.36256405495018
+1994,"Brain","UK","All",8.34032251638036
+1995,"Brain","UK","All",8.40590215944923
+1996,"Brain","UK","All",8.50989386747782
+1997,"Brain","UK","All",8.5208722950839
+1998,"Brain","UK","All",8.51982317270785
+1999,"Brain","UK","All",8.56594361662404
+2000,"Brain","UK","All",8.76210960406096
+2001,"Brain","UK","All",8.88955036930962
+2002,"Brain","UK","All",8.95950469767142
+2003,"Brain","UK","All",8.85577136622973
+2004,"Brain","UK","All",8.80435367023281
+2005,"Brain","UK","All",8.74240464410668
+2006,"Brain","UK","All",8.75036265683322
+2007,"Brain","UK","All",8.73211724817284
+2008,"Brain","UK","All",8.72381821748247
+2009,"Brain","UK","All",8.69627170313743
+2010,"Brain","UK","All",8.71145506063753
+2011,"Brain","UK","All",8.80692393705
+2012,"Brain","UK","All",8.84282940933461
+2013,"Brain","UK","All",8.84503656330786
+2014,"Brain","UK","All",8.69408633603143
+2015,"Brain","UK","All",8.60574987511884
+2016,"Brain","UK","All",8.54973081096705
+2017,"Brain","UK","All",8.63446873183715
+1976,"Liver Cancer (C22)","UK","All",2.76084612592151
+1977,"Liver Cancer (C22)","UK","All",2.74500746251291
+1978,"Liver Cancer (C22)","UK","All",2.60242019756534
+1979,"Liver Cancer (C22)","UK","All",2.41886947536939
+1980,"Liver Cancer (C22)","UK","All",2.4627545717341
+1981,"Liver Cancer (C22)","UK","All",2.59207220133083
+1982,"Liver Cancer (C22)","UK","All",2.69188595684098
+1983,"Liver Cancer (C22)","UK","All",2.76658202402525
+1984,"Liver Cancer (C22)","UK","All",2.84416179065756
+1985,"Liver Cancer (C22)","UK","All",3.02306018109442
+1986,"Liver Cancer (C22)","UK","All",3.12089273165162
+1987,"Liver Cancer (C22)","UK","All",3.2898064644537
+1988,"Liver Cancer (C22)","UK","All",3.37900871911908
+1989,"Liver Cancer (C22)","UK","All",3.44799204544773
+1990,"Liver Cancer (C22)","UK","All",3.54601843483172
+1991,"Liver Cancer (C22)","UK","All",3.72343550619412
+1992,"Liver Cancer (C22)","UK","All",3.95780566624048
+1993,"Liver Cancer (C22)","UK","All",4.11693522995853
+1994,"Liver Cancer (C22)","UK","All",4.22462660266558
+1995,"Liver Cancer (C22)","UK","All",4.30688096634972
+1996,"Liver Cancer (C22)","UK","All",4.46556445989456
+1997,"Liver Cancer (C22)","UK","All",4.58882615970015
+1998,"Liver Cancer (C22)","UK","All",4.65827221832244
+1999,"Liver Cancer (C22)","UK","All",4.72122285112262
+2000,"Liver Cancer (C22)","UK","All",4.76956662464849
+2001,"Liver Cancer (C22)","UK","All",4.90420612239341
+2002,"Liver Cancer (C22)","UK","All",4.97140313384793
+2003,"Liver Cancer (C22)","UK","All",5.15935701619619
+2004,"Liver Cancer (C22)","UK","All",5.3447850176387
+2005,"Liver Cancer (C22)","UK","All",5.63606771029776
+2006,"Liver Cancer (C22)","UK","All",5.89667701124165
+2007,"Liver Cancer (C22)","UK","All",6.16433263998489
+2008,"Liver Cancer (C22)","UK","All",6.41470051408506
+2009,"Liver Cancer (C22)","UK","All",6.67668647138753
+2010,"Liver Cancer (C22)","UK","All",7.02326424138062
+2011,"Liver Cancer (C22)","UK","All",7.44946475663264
+2012,"Liver Cancer (C22)","UK","All",7.93547477934842
+2013,"Liver Cancer (C22)","UK","All",8.35135419531429
+2014,"Liver Cancer (C22)","UK","All",8.53990300242863
+2015,"Liver Cancer (C22)","UK","All",8.72608558263099
+2016,"Liver Cancer (C22)","UK","All",8.92764537592356
+2017,"Liver Cancer (C22)","UK","All",9.13263643309843
+1976,"Bladder Cancer (C67)","UK","Men",21.9082010557136
+1977,"Bladder Cancer (C67)","UK","Men",21.9058166595739
+1978,"Bladder Cancer (C67)","UK","Men",21.9727007636162
+1979,"Bladder Cancer (C67)","UK","Men",22.0419797626097
+1980,"Bladder Cancer (C67)","UK","Men",22.0158555807319
+1981,"Bladder Cancer (C67)","UK","Men",21.8662460056895
+1982,"Bladder Cancer (C67)","UK","Men",21.8062401924042
+1983,"Bladder Cancer (C67)","UK","Men",22.2843648023797
+1984,"Bladder Cancer (C67)","UK","Men",22.6255128857759
+1985,"Bladder Cancer (C67)","UK","Men",22.6751994587687
+1986,"Bladder Cancer (C67)","UK","Men",22.3039473059181
+1987,"Bladder Cancer (C67)","UK","Men",22.2936340476017
+1988,"Bladder Cancer (C67)","UK","Men",22.1854439178879
+1989,"Bladder Cancer (C67)","UK","Men",22.4396183790065
+1990,"Bladder Cancer (C67)","UK","Men",22.4528880552245
+1991,"Bladder Cancer (C67)","UK","Men",22.8288003150189
+1992,"Bladder Cancer (C67)","UK","Men",22.4411719685565
+1993,"Bladder Cancer (C67)","UK","Men",21.6778509216413
+1994,"Bladder Cancer (C67)","UK","Men",21.1129721611477
+1995,"Bladder Cancer (C67)","UK","Men",20.6669742703079
+1996,"Bladder Cancer (C67)","UK","Men",20.2283314204776
+1997,"Bladder Cancer (C67)","UK","Men",19.3921494784914
+1998,"Bladder Cancer (C67)","UK","Men",18.5661970196276
+1999,"Bladder Cancer (C67)","UK","Men",17.9777238071673
+2000,"Bladder Cancer (C67)","UK","Men",17.7657323160982
+2001,"Bladder Cancer (C67)","UK","Men",17.7089272626806
+2002,"Bladder Cancer (C67)","UK","Men",17.6332771565356
+2003,"Bladder Cancer (C67)","UK","Men",17.1330392755324
+2004,"Bladder Cancer (C67)","UK","Men",16.5417327441823
+2005,"Bladder Cancer (C67)","UK","Men",16.142931363651
+2006,"Bladder Cancer (C67)","UK","Men",15.9625811894115
+2007,"Bladder Cancer (C67)","UK","Men",16.0247372415824
+2008,"Bladder Cancer (C67)","UK","Men",15.9406433043528
+2009,"Bladder Cancer (C67)","UK","Men",15.734411867809
+2010,"Bladder Cancer (C67)","UK","Men",15.4714371166983
+2011,"Bladder Cancer (C67)","UK","Men",15.3406088564887
+2012,"Bladder Cancer (C67)","UK","Men",15.1848021470617
+2013,"Bladder Cancer (C67)","UK","Men",15.1353547223592
+2014,"Bladder Cancer (C67)","UK","Men",14.8246360806666
+2015,"Bladder Cancer (C67)","UK","Men",14.6903586419414
+2016,"Bladder Cancer (C67)","UK","Men",14.5915927702282
+2017,"Bladder Cancer (C67)","UK","Men",14.4274733420315
+1976,"Brain","UK","Men",7.77512233444287
+1977,"Brain","UK","Men",8.13638348113207
+1978,"Brain","UK","Men",8.22336510196327
+1979,"Brain","UK","Men",8.42507408107898
+1980,"Brain","UK","Men",8.26972268487655
+1981,"Brain","UK","Men",8.37387736410389
+1982,"Brain","UK","Men",8.38183606943731
+1983,"Brain","UK","Men",8.75679233531264
+1984,"Brain","UK","Men",9.12961311417633
+1985,"Brain","UK","Men",9.34416992808919
+1986,"Brain","UK","Men",9.39874934529506
+1987,"Brain","UK","Men",9.3347965056381
+1988,"Brain","UK","Men",9.5541552877033
+1989,"Brain","UK","Men",9.65175683667926
+1990,"Brain","UK","Men",9.72319576033222
+1991,"Brain","UK","Men",9.98337148394161
+1992,"Brain","UK","Men",10.0378352632048
+1993,"Brain","UK","Men",10.1318535984183
+1994,"Brain","UK","Men",9.98996895763262
+1995,"Brain","UK","Men",10.0546144210984
+1996,"Brain","UK","Men",10.2070043495122
+1997,"Brain","UK","Men",10.2867989071761
+1998,"Brain","UK","Men",10.3078296274081
+1999,"Brain","UK","Men",10.4052413018278
+2000,"Brain","UK","Men",10.6455961777191
+2001,"Brain","UK","Men",10.7278887687531
+2002,"Brain","UK","Men",10.7452815807849
+2003,"Brain","UK","Men",10.6843269974547
+2004,"Brain","UK","Men",10.7459025492169
+2005,"Brain","UK","Men",10.7064870209964
+2006,"Brain","UK","Men",10.6043533962615
+2007,"Brain","UK","Men",10.5446801582903
+2008,"Brain","UK","Men",10.4682253651239
+2009,"Brain","UK","Men",10.4553871848609
+2010,"Brain","UK","Men",10.3636120510524
+2011,"Brain","UK","Men",10.5655848121827
+2012,"Brain","UK","Men",10.588189936755
+2013,"Brain","UK","Men",10.6390012389262
+2014,"Brain","UK","Men",10.3921214687016
+2015,"Brain","UK","Men",10.2917136616308
+2016,"Brain","UK","Men",10.2455250880215
+2017,"Brain","UK","Men",10.3387857277723
+1976,"Liver Cancer (C22)","UK","Men",3.81991646315265
+1977,"Liver Cancer (C22)","UK","Men",3.8539023893735
+1978,"Liver Cancer (C22)","UK","Men",3.68460069666219
+1979,"Liver Cancer (C22)","UK","Men",3.41187788403521
+1980,"Liver Cancer (C22)","UK","Men",3.5235165668798
+1981,"Liver Cancer (C22)","UK","Men",3.68896404533107
+1982,"Liver Cancer (C22)","UK","Men",3.89750969757128
+1983,"Liver Cancer (C22)","UK","Men",3.942849678638
+1984,"Liver Cancer (C22)","UK","Men",4.02010062064129
+1985,"Liver Cancer (C22)","UK","Men",4.25780198759219
+1986,"Liver Cancer (C22)","UK","Men",4.39415505488967
+1987,"Liver Cancer (C22)","UK","Men",4.65794109383576
+1988,"Liver Cancer (C22)","UK","Men",4.75599072492597
+1989,"Liver Cancer (C22)","UK","Men",4.85312647445888
+1990,"Liver Cancer (C22)","UK","Men",4.93039616182488
+1991,"Liver Cancer (C22)","UK","Men",5.19551571040951
+1992,"Liver Cancer (C22)","UK","Men",5.42963168630534
+1993,"Liver Cancer (C22)","UK","Men",5.58350500713604
+1994,"Liver Cancer (C22)","UK","Men",5.69952331295878
+1995,"Liver Cancer (C22)","UK","Men",5.8316395061416
+1996,"Liver Cancer (C22)","UK","Men",6.07907435593049
+1997,"Liver Cancer (C22)","UK","Men",6.26025840562308
+1998,"Liver Cancer (C22)","UK","Men",6.37024736079418
+1999,"Liver Cancer (C22)","UK","Men",6.4843544468622
+2000,"Liver Cancer (C22)","UK","Men",6.49037332671671
+2001,"Liver Cancer (C22)","UK","Men",6.63618492038599
+2002,"Liver Cancer (C22)","UK","Men",6.79281827229788
+2003,"Liver Cancer (C22)","UK","Men",7.06183848826389
+2004,"Liver Cancer (C22)","UK","Men",7.34251933780783
+2005,"Liver Cancer (C22)","UK","Men",7.76716370551703
+2006,"Liver Cancer (C22)","UK","Men",8.166575690174
+2007,"Liver Cancer (C22)","UK","Men",8.52965571221731
+2008,"Liver Cancer (C22)","UK","Men",8.77657768902505
+2009,"Liver Cancer (C22)","UK","Men",9.05819551027522
+2010,"Liver Cancer (C22)","UK","Men",9.48609833063253
+2011,"Liver Cancer (C22)","UK","Men",9.96792465537397
+2012,"Liver Cancer (C22)","UK","Men",10.6506648969191
+2013,"Liver Cancer (C22)","UK","Men",11.2152322549519
+2014,"Liver Cancer (C22)","UK","Men",11.4855509826481
+2015,"Liver Cancer (C22)","UK","Men",11.7027923505257
+2016,"Liver Cancer (C22)","UK","Men",11.9835676032011
+2017,"Liver Cancer (C22)","UK","Men",12.387615251299
+1976,"Bladder Cancer (C67)","UK","Women",6.02041821675208
+1977,"Bladder Cancer (C67)","UK","Women",6.09132275384615
+1978,"Bladder Cancer (C67)","UK","Women",6.0613442373213
+1979,"Bladder Cancer (C67)","UK","Women",6.03911695376434
+1980,"Bladder Cancer (C67)","UK","Women",6.04021836320911
+1981,"Bladder Cancer (C67)","UK","Women",5.98962695672225
+1982,"Bladder Cancer (C67)","UK","Women",5.99606411383904
+1983,"Bladder Cancer (C67)","UK","Women",6.0188858088323
+1984,"Bladder Cancer (C67)","UK","Women",6.10979382209399
+1985,"Bladder Cancer (C67)","UK","Women",6.25434807915728
+1986,"Bladder Cancer (C67)","UK","Women",6.25565210236625
+1987,"Bladder Cancer (C67)","UK","Women",6.30316026649934
+1988,"Bladder Cancer (C67)","UK","Women",6.36210620024467
+1989,"Bladder Cancer (C67)","UK","Women",6.49904518233834
+1990,"Bladder Cancer (C67)","UK","Women",6.51526871440287
+1991,"Bladder Cancer (C67)","UK","Women",6.51400900469522
+1992,"Bladder Cancer (C67)","UK","Women",6.38443901337638
+1993,"Bladder Cancer (C67)","UK","Women",6.42903055022129
+1994,"Bladder Cancer (C67)","UK","Women",6.31499598792892
+1995,"Bladder Cancer (C67)","UK","Women",6.23150830291368
+1996,"Bladder Cancer (C67)","UK","Women",6.10777716225619
+1997,"Bladder Cancer (C67)","UK","Women",6.00790763466975
+1998,"Bladder Cancer (C67)","UK","Women",5.91669462702214
+1999,"Bladder Cancer (C67)","UK","Women",5.86345092905397
+2000,"Bladder Cancer (C67)","UK","Women",5.78890327509143
+2001,"Bladder Cancer (C67)","UK","Women",5.74969722623718
+2002,"Bladder Cancer (C67)","UK","Women",5.69354146841262
+2003,"Bladder Cancer (C67)","UK","Women",5.63356869371705
+2004,"Bladder Cancer (C67)","UK","Women",5.54586427238224
+2005,"Bladder Cancer (C67)","UK","Women",5.41988697957576
+2006,"Bladder Cancer (C67)","UK","Women",5.34548963384694
+2007,"Bladder Cancer (C67)","UK","Women",5.37179245028212
+2008,"Bladder Cancer (C67)","UK","Women",5.32475610010641
+2009,"Bladder Cancer (C67)","UK","Women",5.23073891366744
+2010,"Bladder Cancer (C67)","UK","Women",5.12270247295621
+2011,"Bladder Cancer (C67)","UK","Women",5.12279895463159
+2012,"Bladder Cancer (C67)","UK","Women",5.1780006347691
+2013,"Bladder Cancer (C67)","UK","Women",5.18527005497371
+2014,"Bladder Cancer (C67)","UK","Women",5.02799463083927
+2015,"Bladder Cancer (C67)","UK","Women",4.97428723475981
+2016,"Bladder Cancer (C67)","UK","Women",4.9380817166067
+2017,"Bladder Cancer (C67)","UK","Women",4.97509752822591
+1976,"Brain","UK","Women",5.52564872385989
+1977,"Brain","UK","Women",5.61748095721549
+1978,"Brain","UK","Women",5.72889894073585
+1979,"Brain","UK","Women",5.69112940530018
+1980,"Brain","UK","Women",5.7286686427627
+1981,"Brain","UK","Women",5.83532130782087
+1982,"Brain","UK","Women",5.89840694829454
+1983,"Brain","UK","Women",6.21340139944146
+1984,"Brain","UK","Women",6.38138802174253
+1985,"Brain","UK","Women",6.49011950696369
+1986,"Brain","UK","Women",6.40256722734162
+1987,"Brain","UK","Women",6.40809628577658
+1988,"Brain","UK","Women",6.58262881745721
+1989,"Brain","UK","Women",6.70822151614053
+1990,"Brain","UK","Women",6.73415019557572
+1991,"Brain","UK","Women",6.79087318366247
+1992,"Brain","UK","Women",6.84947203885695
+1993,"Brain","UK","Women",6.93420088323869
+1994,"Brain","UK","Women",7.0101473975033
+1995,"Brain","UK","Women",7.06942412529256
+1996,"Brain","UK","Women",7.12522037825433
+1997,"Brain","UK","Women",7.09716970640295
+1998,"Brain","UK","Women",7.05876578606406
+1999,"Brain","UK","Women",7.05650137485681
+2000,"Brain","UK","Women",7.20446443239318
+2001,"Brain","UK","Women",7.3633354140958
+2002,"Brain","UK","Women",7.46252465522115
+2003,"Brain","UK","Women",7.30714023460145
+2004,"Brain","UK","Women",7.17315789988783
+2005,"Brain","UK","Women",7.07223751016183
+2006,"Brain","UK","Women",7.17286475578203
+2007,"Brain","UK","Women",7.15170031082951
+2008,"Brain","UK","Women",7.19939801121337
+2009,"Brain","UK","Women",7.15609895592903
+2010,"Brain","UK","Women",7.27606947811515
+2011,"Brain","UK","Women",7.29465784765231
+2012,"Brain","UK","Women",7.33034505146619
+2013,"Brain","UK","Women",7.28032584585833
+2014,"Brain","UK","Women",7.19545310276694
+2015,"Brain","UK","Women",7.11464173967418
+2016,"Brain","UK","Women",7.04452856594143
+2017,"Brain","UK","Women",7.12743380143028
+1976,"Liver Cancer (C22)","UK","Women",2.00766541293683
+1977,"Liver Cancer (C22)","UK","Women",1.97306860205142
+1978,"Liver Cancer (C22)","UK","Women",1.84005574470229
+1979,"Liver Cancer (C22)","UK","Women",1.69958509680696
+1980,"Liver Cancer (C22)","UK","Women",1.71775086718594
+1981,"Liver Cancer (C22)","UK","Women",1.86313583103941
+1982,"Liver Cancer (C22)","UK","Women",1.91753487749686
+1983,"Liver Cancer (C22)","UK","Women",1.97856409920242
+1984,"Liver Cancer (C22)","UK","Women",2.0382157527866
+1985,"Liver Cancer (C22)","UK","Women",2.15883282256307
+1986,"Liver Cancer (C22)","UK","Women",2.25129441322375
+1987,"Liver Cancer (C22)","UK","Women",2.34062838868302
+1988,"Liver Cancer (C22)","UK","Women",2.43625669258016
+1989,"Liver Cancer (C22)","UK","Women",2.48359050931308
+1990,"Liver Cancer (C22)","UK","Women",2.58116669585218
+1991,"Liver Cancer (C22)","UK","Women",2.70419765501144
+1992,"Liver Cancer (C22)","UK","Women",2.90183731218802
+1993,"Liver Cancer (C22)","UK","Women",3.03735496396121
+1994,"Liver Cancer (C22)","UK","Women",3.11803635971962
+1995,"Liver Cancer (C22)","UK","Women",3.16544326678082
+1996,"Liver Cancer (C22)","UK","Women",3.27564311482262
+1997,"Liver Cancer (C22)","UK","Women",3.34987380381835
+1998,"Liver Cancer (C22)","UK","Women",3.39741217563755
+1999,"Liver Cancer (C22)","UK","Women",3.41978715690089
+2000,"Liver Cancer (C22)","UK","Women",3.49799125561571
+2001,"Liver Cancer (C22)","UK","Women",3.60537705825312
+2002,"Liver Cancer (C22)","UK","Women",3.59029914006369
+2003,"Liver Cancer (C22)","UK","Women",3.6810192949284
+2004,"Liver Cancer (C22)","UK","Women",3.77104383330575
+2005,"Liver Cancer (C22)","UK","Women",3.96315297452567
+2006,"Liver Cancer (C22)","UK","Women",4.12532688671917
+2007,"Liver Cancer (C22)","UK","Women",4.30576825999062
+2008,"Liver Cancer (C22)","UK","Women",4.53805530829938
+2009,"Liver Cancer (C22)","UK","Women",4.75932453068165
+2010,"Liver Cancer (C22)","UK","Women",5.05048152024937
+2011,"Liver Cancer (C22)","UK","Women",5.3990048302911
+2012,"Liver Cancer (C22)","UK","Women",5.70901287815424
+2013,"Liver Cancer (C22)","UK","Women",5.98909537910367
+2014,"Liver Cancer (C22)","UK","Women",6.10240370319148
+2015,"Liver Cancer (C22)","UK","Women",6.26788100253871
+2016,"Liver Cancer (C22)","UK","Women",6.3884302958527
+2017,"Liver Cancer (C22)","UK","Women",6.43539697485625

@@ -84,6 +84,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
   <li><a href="#importing-cruk-projections" id="toc-importing-cruk-projections" class="nav-link" data-scroll-target="#importing-cruk-projections">Importing CRUK Projections</a></li>
   <li><a href="#cancer-incidencemortality" id="toc-cancer-incidencemortality" class="nav-link" data-scroll-target="#cancer-incidencemortality">Cancer Incidence/Mortality</a></li>
+  <li><a href="#importing-cruk-projections-extra" id="toc-importing-cruk-projections-extra" class="nav-link" data-scroll-target="#importing-cruk-projections-extra">Importing CRUK Projections Extra</a></li>
+  <li><a href="#cancer-incidencemortality-extra" id="toc-cancer-incidencemortality-extra" class="nav-link" data-scroll-target="#cancer-incidencemortality-extra">Cancer Incidence/Mortality Extra</a></li>
   </ul>
 </nav>
 </div>
@@ -148,7 +150,7 @@ Attaching package: 'gridExtra'</code></pre>
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/Position Paper/Data")</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_knit<span class="sc">$</span><span class="fu">set</span>(<span class="at">root.dir =</span> <span class="st">"C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_knit<span class="sc">$</span><span class="fu">set</span>(<span class="at">root.dir =</span> <span class="st">"C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data/Cancer Trends"</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -195,6 +197,36 @@ New names:
 </div>
 <div class="cell-output-display">
 <p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-4-7.png" class="img-fluid" width="1920"></p>
+</div>
+</div>
+</section>
+<section id="importing-cruk-projections-extra" class="level2">
+<h2 class="anchored" data-anchor-id="importing-cruk-projections-extra">Importing CRUK Projections Extra</h2>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>New names:
+New names:
+• `` -&gt; `...1`
+• `` -&gt; `...2`
+• `` -&gt; `...3`
+• `` -&gt; `...5`
+• `` -&gt; `...7`
+• `` -&gt; `...9`</code></pre>
+</div>
+</div>
+</section>
+<section id="cancer-incidencemortality-extra" class="level2">
+<h2 class="anchored" data-anchor-id="cancer-incidencemortality-extra">Cancer Incidence/Mortality Extra</h2>
+<p>Red dashed line represents projection from continuing joinpoint segment, blue dashed line represents projection from CRUK.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="1920"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid" width="1920"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-6-3.png" class="img-fluid" width="1920"></p>
 </div>
 </div>
 </section>

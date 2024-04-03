@@ -26,7 +26,7 @@ library(scales)
 
 ```{r, setup}
 # knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/Position Paper/Data")
-knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data")
+knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data/Cancer Trends")
 knitr::opts_chunk$set(echo = FALSE)
 theme_set(theme_minimal())
 ```
@@ -100,7 +100,7 @@ get_proj_data <- function(data, data_jp, projection.yr){
 }
 
 
-plot_joinpoint_output <- function(cancer, sex = 3, data, data_jp, incmort, start.yr = NA, projection.yr = NA, projection.target = NA, report.APC = FALSE){
+plot_joinpoint_output <- function(cancer, sex = 3, data, data_jp, incmort, start.yr = NA, projection.yr = NA, projection.target = NA, report.APC = FALSE, moonshot.target = FALSE){
   
   data <- data |> 
     filter(`Cancer label` == cancer)
@@ -231,6 +231,19 @@ plot_joinpoint_output <- function(cancer, sex = 3, data, data_jp, incmort, start
           geom_hline(yintercept = final_ASR*projection.target, colour = "lightgreen") +
           labs(caption = paste0("Green line represents goal of a ", 100*(1-projection.target), "% reduction in mortality rate in the UK by ", projection.yr))
       }
+      
+      if(moonshot.target){
+        
+        final_ASR <- data |>
+          arrange(desc(Year)) |>
+          filter(row_number()==1) |>
+          pull(`ASR (World)`)
+        
+        plot <- plot +
+          geom_hline(yintercept = final_ASR*0.5, colour = "orange") +
+          labs(caption = paste0(plot$labels$caption, "\n Orange line represents goal of a 50% decrease in mortality in 25 years"))
+        
+      }
     }
     
   }
@@ -255,8 +268,8 @@ plot_joinpoint_output <- function(cancer, sex = 3, data, data_jp, incmort, start
 ```{r, fig.width=20}
 
 # Read in all data
-data <- read_excel("Cancer_Projection_Data.xlsx") |>
-  rbind(read_excel("Cancer_Projection_Data_All.xlsx")) |>
+data <- read_excel("Globocan/Cancer_Projection_Data.xlsx") |>
+  rbind(read_excel("Globocan All/Cancer_Projection_Data_All.xlsx")) |>
   mutate(`Cancer label` = case_when(
     `Cancer label` == "Colorectum" ~ "Colorectal",
     `Cancer label` == "Oesophagus" ~ "Oesophageal",
@@ -269,7 +282,7 @@ data <- read_excel("Cancer_Projection_Data.xlsx") |>
 incidence_data <- data |>
   filter(Type == 0)
 
-incidence_jp <- read.delim("Cancer_Incidence_Joinpoint.txt", sep = "\t") |>
+incidence_jp <- read.delim("Globocan/Cancer_Incidence_Joinpoint.txt", sep = "\t") |>
   mutate(Cancer.label = case_when(
     Cancer.label == "Colorectum" ~ "Colorectal",
     Cancer.label == "Oesophagus" ~ "Oesophageal",
@@ -277,7 +290,7 @@ incidence_jp <- read.delim("Cancer_Incidence_Joinpoint.txt", sep = "\t") |>
     TRUE ~ Cancer.label
   ))
 
-all_incidence_jp <- read.delim("Cancer_Incidence_Joinpoint_All.txt", sep = "\t") |>
+all_incidence_jp <- read.delim("Globocan All/Cancer_Incidence_Joinpoint_All.txt", sep = "\t") |>
   mutate(Cancer.label = "All")
 
 incidence_jp <- incidence_jp |>
@@ -287,7 +300,7 @@ incidence_jp <- incidence_jp |>
 mortality_data <- data |>
   filter(Type == 1)
 
-mortality_jp <- read.delim("Cancer_Mortality_Joinpoint.txt", sep = "\t") |>
+mortality_jp <- read.delim("Globocan/Cancer_Mortality_Joinpoint.txt", sep = "\t") |>
   mutate(Cancer.label = case_when(
     Cancer.label == "Colorectum" ~ "Colorectal",
     Cancer.label == "Oesophagus" ~ "Oesophageal",
@@ -295,7 +308,7 @@ mortality_jp <- read.delim("Cancer_Mortality_Joinpoint.txt", sep = "\t") |>
     TRUE ~ Cancer.label
   ))
 
-all_mortality_jp <- read.delim("Cancer_Mortality_Joinpoint_All.txt", sep = "\t") |>
+all_mortality_jp <- read.delim("Globocan All/Cancer_Mortality_Joinpoint_All.txt", sep = "\t") |>
   mutate(Cancer.label = "All")
 
 mortality_jp <- mortality_jp |>
@@ -421,15 +434,17 @@ plot_joinpoint_output(cancer = "Breast", data = incidence_data, data_jp = incide
 #   scale_x_continuous(breaks = pretty_breaks())
 
 
-plot_joinpoint_output(cancer = "Breast", data = mortality_data, data_jp = mortality_jp, incmort = "Mortality", projection.yr = 2040, report.APC = T, projection.target = 0.85, start.yr = 1993)
+plot_joinpoint_output(cancer = "Breast", data = mortality_data, data_jp = mortality_jp, incmort = "Mortality", projection.yr = 2040, report.APC = T, projection.target = 0.85, start.yr = 1993, moonshot.target = TRUE)
 
 
 ```
+
 ## Colorectal Cancer by Age
+
 ```{r}
 
-data_young <- read_excel("Cancer_Projection_Data_Colorectal.xlsx", sheet = "UK_0_59")
-data_old <- read_excel("Cancer_Projection_Data_Colorectal.xlsx", sheet = "UK_60_85")
+data_young <- read_excel("Globocan Colorectal/Cancer_Projection_Data_Colorectal.xlsx", sheet = "UK_0_59")
+data_old <- read_excel("Globocan Colorectal/Cancer_Projection_Data_Colorectal.xlsx", sheet = "UK_60_85")
 
 # Incidence data
 incidence_young <- data_young |>
@@ -438,7 +453,7 @@ incidence_young <- data_young |>
 incidence_old <- data_old |>
   filter(Type == 0)
 
-incidence_jp <- read.delim("Cancer_Incidence_Joinpoint_Colorectal.txt", sep = "\t")
+incidence_jp <- read.delim("Globocan Colorectal/Cancer_Incidence_Joinpoint_Colorectal.txt", sep = "\t")
 
 incidence_jp_young <- incidence_jp |>
   filter(age_group == "0-59")
@@ -454,7 +469,7 @@ mortality_young <- data_young |>
 mortality_old <- data_old |>
   filter(Type == 1)
 
-mortality_jp <- read.delim("Cancer_Mortality_Joinpoint_Colorectal.txt", sep = "\t")
+mortality_jp <- read.delim("Globocan Colorectal/Cancer_Mortality_Joinpoint_Colorectal.txt", sep = "\t")
 
 mortality_jp_young <- mortality_jp |>
   filter(age_group == "0-59")
@@ -474,5 +489,51 @@ plot_joinpoint_output(cancer = "Colorectum", data = mortality_young, data_jp = m
 
 plot_joinpoint_output(cancer = "Colorectum", data = mortality_old, data_jp = mortality_jp_old, incmort = "Mortality", projection.yr = 2040, report.APC = T, projection.target = 0.85, start.yr = 1993) +
   ggtitle("Mortality Projections for Colorectal Cancer for 60-85 Years Old")
+
+```
+
+## Extra Plots
+
+```{r, fig.width=20}
+
+# Read in all data
+data <- read_excel("Globocan Extra/Cancer_Projection_Data_Extra.xlsx")
+
+# Incidence data
+incidence_data <- data |>
+  filter(Type == 0)
+
+incidence_jp <- read.delim("Globocan Extra/Cancer_Incidence_Joinpoint_Extra.txt", sep = "\t")
+
+# Mortality data
+mortality_data <- data |>
+  filter(Type == 1)
+
+mortality_jp <- read.delim("Globocan Extra/Cancer_Mortality_Joinpoint_Extra.txt", sep = "\t")
+
+# Gettings cancers and sexes and looping over all.
+cancers <- unique(mortality_data$`Cancer label`)
+sexes <- c(1,2)
+
+# for(cancer in cancers){
+#   for(sex in sexes){
+#     if((cancer == "Prostate" & sex == 2) | 
+#        (cancer == "Breast" & sex == 1)){
+#       
+#     } else {
+#       p1 <- plot_joinpoint_output(cancer, sex, incidence_data, incidence_jp, "Incidence")
+#       # plots[[paste0(cancer, "|", sex, "|Incidence")]] <- plot_joinpoint_output(cancer, sex, incidence_data, incidence_jp, "Incidence")
+#       p2 <- plot_joinpoint_output(cancer, sex, mortality_data, mortality_jp, "Mortality", projection.yr = 2040, projection.target = 0.85)
+#       # plots[[paste0(cancer, "|", sex, "|Mortality")]] <- plot_joinpoint_output(cancer, sex, mortality_data, mortality_jp, "Mortality", projection.yr = 2035, projection.target = 0.91)
+#       grid.arrange(p1, p2, nrow = 1, widths = c(4,4))
+#     }
+#   }
+# }
+
+for(cancer in cancers){
+  p1 <- plot_joinpoint_output(cancer, sex = 3, incidence_data, incidence_jp, "Incidence")
+  p2 <- plot_joinpoint_output(cancer, sex = 3, mortality_data, mortality_jp, "Mortality", projection.yr = 2040, start.yr = 1993, projection.target = 0.85)
+  grid.arrange(p1, p2, nrow = 1, widths = c(4,4))
+}
 
 ```
