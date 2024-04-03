@@ -15,7 +15,7 @@ library(dplyr)
 ## Data
 
 ```{r}
-setwd("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data")
+setwd("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data/Cancer Trends/CRUK")
 
 cancers <- c("All Cancers Combined excluding Non-Melanoma Skin Cancer (C00-C97 (excl. C44))", "All Cancers Combined (C00-C97)", "Bowel Cancer (C18-C20)", "Breast Cancer (C50)", "Lung Cancer (C33-C34)", "Oesophageal Cancer (C15)",
              "Pancreatic Cancer (C25)", "Prostate Cancer (C61)")
@@ -37,7 +37,7 @@ inc_data <- inc_data |>
   filter(Year <= 2017, `Cancer Type` %in% cancers, !is.na(`ASR (Europe)`)) |>
   arrange(Sex, `Cancer Type`, Year)
 
-write.csv(inc_data, "Cancer_Incident_Data_CRUK.txt", row.names = F)
+write.csv(inc_data, "Cancer_Incidence_Data_CRUK.txt", row.names = F)
 
 mort_data <- read_excel("Cancer_Projection_Data_CRUK.xlsx", sheet = "Mortality")
 
@@ -57,5 +57,59 @@ mort_data <- mort_data |>
   arrange(Sex, `Cancer Type`, Year)
 
 write.csv(mort_data, "Cancer_Mortality_Data_CRUK.txt", row.names = F)
+
+```
+## Extra Cancers
+
+```{r}
+setwd("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data/Cancer Trends/CRUK Extra")
+
+cancers <- c("Liver Cancer (C22)", "Bladder Cancer (C67)", "Brain")
+
+inc_data <- read_excel("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data/Cancer Trends/CRUK/Cancer_Projection_Data_CRUK.xlsx", sheet = "Incidence")
+
+inc_data <- as.data.frame(inc_data)
+
+inc_data <- inc_data[,inc_data[1,]!="Average New Cases Per Year\r\n(observed to 2016-2018; projected from 2019-2021)"]
+inc_data[1,4:6] <- c("All", "Women", "Men")
+colnames(inc_data) <- inc_data[1,]
+inc_data <- inc_data[-1,]
+
+inc_data <- inc_data |>
+  pivot_longer(cols = c("All", "Men", "Women")) |>
+  rename(Sex = name, `ASR (Europe)` = value) |>
+  mutate(Year = as.numeric(substr(Year, start = 1, stop = 4)) + 1,
+         `ASR (Europe)` = as.numeric(`ASR (Europe)`)) |>
+  mutate(`Cancer Type` = case_when(
+    `Cancer Type` == "Brain, Other CNS and Intracranial Tumours (C70-C72, C75.1-C75.3, D32-D33, D35.2-D35.4, D42-D43, D44.3-D44.5)" ~ "Brain",
+    TRUE ~ `Cancer Type`
+  )) |>
+  filter(Year <= 2017, `Cancer Type` %in% cancers, !is.na(`ASR (Europe)`)) |>
+  arrange(Sex, `Cancer Type`, Year)
+
+write.csv(inc_data, "Cancer_Incidence_Data_CRUK_Extra.txt", row.names = F)
+
+mort_data <- read_excel("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data/Cancer Trends/CRUK/Cancer_Projection_Data_CRUK.xlsx", sheet = "Mortality")
+
+mort_data <- as.data.frame(mort_data)
+
+mort_data <- mort_data[,mort_data[1,]!="Average New Cases Per Year\r\n(observed to 2016-2018; projected from 2019-2021)"]
+mort_data[1,4:6] <- c("All", "Women", "Men")
+colnames(mort_data) <- mort_data[1,]
+mort_data <- mort_data[-1,]
+
+mort_data <- mort_data |>
+  pivot_longer(cols = c("All", "Men", "Women")) |>
+  rename(Sex = name, `ASR (Europe)` = value) |>
+  mutate(Year = as.numeric(substr(Year, start = 1, stop = 4)) + 1,
+         `ASR (Europe)` = as.numeric(`ASR (Europe)`)) |>
+  mutate(`Cancer Type` = case_when(
+    `Cancer Type` == "Brain, Other CNS and Intracranial Tumours (C70-C72, C75.1-C75.3, D32-D33, D35.2-D35.4, D42-D43, D44.3-D44.5)" ~ "Brain",
+    TRUE ~ `Cancer Type`
+  )) |>
+  filter(Year <= 2017, `Cancer Type` %in% cancers, !is.na(`ASR (Europe)`)) |>
+  arrange(Sex, `Cancer Type`, Year)
+
+write.csv(mort_data, "Cancer_Mortality_Data_CRUK_Extra.txt", row.names = F)
 
 ```
