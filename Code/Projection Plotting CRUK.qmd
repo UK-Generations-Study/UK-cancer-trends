@@ -220,9 +220,10 @@ plot_joinpoint_output_CRUK <- function(cancer, sex = "All", data, data_jp, incmo
 ```
 
 ## Alternative Plotting
+
 ```{r}
 
-plot_joinpoint_output_CRUK_alt <- function(cancer, sex = "All People", data, data_jp, incmort, start.yr = NA, projection.yr = NA, projection.target = NA, cruk_proj = NA, moonshot.target = FALSE){
+plot_joinpoint_output_CRUK_alt <- function(cancer, sex = "All People", data, data_jp, incmort, start.yr = NA, projection.yr = NA, projection.target = NA, cruk_proj = NA, moonshot.target = FALSE, report.APC = FALSE){
   
   # browser()
   
@@ -242,9 +243,6 @@ plot_joinpoint_output_CRUK_alt <- function(cancer, sex = "All People", data, dat
     filter(Year >= max(c(start.yr, min(Year)), na.rm = T)) |>
     mutate(Section = "JoinPoint")
   
-  # Recoding sex label for plot
-  # sex_lab <- ifelse(sex == 2, "Women", "Men")
-  
   # Making variable for dynamic plot title generation
   projection <- !is.na(projection.yr)
   proj_lab <- ifelse(projection, "Projections", "Trends")
@@ -252,17 +250,14 @@ plot_joinpoint_output_CRUK_alt <- function(cancer, sex = "All People", data, dat
   # Initial plotting of trends
   plot <- ggplot() +
     geom_line(data = jp_plot, aes(x = Year, y = Model, colour = Section, linetype = Section)) +
-    # scale_colour_manual(name = "Section", values = c("JoinPoint" = "darkgrey")) +
-    scale_colour_manual(name = "Section", values = c("JoinPoint" = "darkgrey", "JP Projection" = "red", "CRUK Projection" = "blue"),
+    scale_colour_manual(name = "Section", 
+                        values = c("JoinPoint" = "darkgrey", "JP Projection" = "red", "CRUK Projection" = "blue"),
                         breaks = c("JoinPoint", "JP Projection", "CRUK Projection")) +
-    scale_linetype_manual(name = "Section", values = c("JoinPoint" = "solid", "JP Projection" = "dashed", "CRUK Projection" = "dashed"),
-                        breaks = c("JoinPoint", "JP Projection", "CRUK Projection")) +
+    scale_linetype_manual(name = "Section", 
+                          values = c("JoinPoint" = "solid", "JP Projection" = "dashed", "CRUK Projection" = "dashed"),
+                          breaks = c("JoinPoint", "JP Projection", "CRUK Projection")) +
     geom_point(data = data, aes(x = Year, y = `ASR (Europe)`)) +
-    # scale_colour_discrete() +
-    # guides(colour = "none") +
-    # geom_point(data = jp_plot, aes(x = Year, y = Model, colour = section)) +
     ggtitle(paste0(incmort, " ", proj_lab, " for ", cancer, " Cancer in ", sex)) +
-    # scale_x_continuous(breaks = pretty_breaks()) +
     ylab("ASR per 100,000")
       
   
@@ -274,9 +269,7 @@ plot_joinpoint_output_CRUK_alt <- function(cancer, sex = "All People", data, dat
     
     # Plotting extrapolation
     plot <- plot +
-      geom_line(data = proj_data, aes(x = Year, y = rate, colour = Section, linetype = Section)) # +
-      # scale_colour_manual(name = "Section", values = c("JoinPoint" = "darkgrey", "JP Projection" = "red")) +
-      # scale_linetype_manual(name = "Section", values = c("JoinPoint" = "solid", "JP Projection" = "dashed"))
+      geom_line(data = proj_data, aes(x = Year, y = rate, colour = Section, linetype = Section))
   
     # If target is desired, plotting green box around the target
     if(!is.na(projection.target)){
@@ -287,15 +280,12 @@ plot_joinpoint_output_CRUK_alt <- function(cancer, sex = "All People", data, dat
         filter(row_number()==1) |>
         pull(`ASR (Europe)`)
       
-        # geom_hline(yintercept = final_data$`ASR (Europe)`*projection.target, colour = "forestgreen")
       plot <- plot + 
-        # annotate("rect", xmin = max(data$Year), xmax = Inf,ymin = -Inf, 
-        #                       ymax = final_ASR*projection.target,
-        #                       alpha = 0.2, fill = "lightgreen") +
         geom_hline(yintercept = final_ASR*projection.target, colour = "lightgreen") +
         labs(caption = paste0("Green line represents goal of a ", 100*(1-projection.target), "% reduction in mortality rate in the UK by ", projection.yr))
     }
     
+    # Plotting moonshot target of 50% reduction in 25 years
     if(moonshot.target){
       final_ASR <- data |>
         arrange(desc(Year)) |>
@@ -309,6 +299,7 @@ plot_joinpoint_output_CRUK_alt <- function(cancer, sex = "All People", data, dat
     }
   }
   
+  # Plotting CRUK projections if given
   if(length(cruk_proj)!=1){
     cruk_proj <- cruk_proj |>
       filter(Sex==sex, `Cancer Type` == cancer, Year <= projection.yr) |>
@@ -316,25 +307,54 @@ plot_joinpoint_output_CRUK_alt <- function(cancer, sex = "All People", data, dat
 
     
     plot <- plot +
-      geom_line(data = cruk_proj, aes(x = Year, y = `ASR (Europe)`, colour = Section, linetype = Section)) # +
-      # scale_colour_manual(name = "Section", values = c("JoinPoint" = "darkgrey", "JP Projection" = "red", "CRUK Projection" = "blue")) +
-      # scale_linetype_manual(name = "Section", values = c("JoinPoint" = "solid", "JP Projection" = "dashed", "CRUK Projection" = "dashed"))
-      # guides(override.aes = list(linetype = c("solid", "dashed", "dashed"),
-      #                            colour = c("black", "red", "blue")),
-      #        title = "Sources")
-    
-    # report.APC = FALSE
+      geom_line(data = cruk_proj, aes(x = Year, y = `ASR (Europe)`, colour = Section, linetype = Section))
   }
-    
   
-  # If reported APC is desired, plot legend.
-  # if(report.APC){
-  #   plot <- plot +
-  #     labs(colour = "APC (%)")
-  # } else {
-  #   plot <- plot +
-  #     guides(colour = "none")
-  # }
+  if(report.APC){
+    
+    # Adding dotted vertical lines
+    xints <- data_jp |>
+      filter(Year >= max(c(start.yr, min(Year)), na.rm = T)) |>
+      filter(is.na(APC)) |>
+      pull(Year)
+    
+    df_vlines <- data.frame(xintercept = xints)
+    
+    plot <- plot +
+      geom_vline(data = df_vlines, aes(xintercept = xintercept), color = "black", linetype = "dotted")
+    
+    # Adding segment labels
+    yint <- max(
+      max(data$`ASR (Europe)`),
+          ifelse(projection, max(proj_data$rate), -Inf),
+          ifelse(length(cruk_proj)!=1, max(cruk_proj$`ASR (Europe)`), -Inf))
+    
+    # raising labels above the current plot
+    yint <- yint*1.1
+    
+    xints_labs <- c(max(c(start.yr, min(data_jp$Year)), na.rm = T), xints, max(data$Year))
+    
+    xints_labs_moved <- xints_labs[1:(length(xints_labs)-1)] + diff(xints_labs)/2
+    
+    # Moving first and last if they are squished against the divide
+    if(diff(xints_labs)[1]==1){
+      xints_labs_moved[1] <- xints_labs_moved[1]-1
+    }
+    
+    if(diff(xints_labs)[length(xints_labs)-1]==1){
+      xints_labs_moved[length(xints_labs_moved)] <- xints_labs_moved[length(xints_labs_moved)] + 1
+    }
+    
+    # Finding first JP segment in plot
+    start_seg <- min(jp_plot$section)
+    labels <- seq(start_seg, by = 1, length.out = length(xints_labs_moved))
+    
+    plot_labs <- data.frame(x = xints_labs_moved, y = yint, label = labels)
+    
+    plot <- plot +
+      geom_text(data = plot_labs, aes(x = x, y = y, label = label))
+
+  }
   
   # Make more accurate x axis labels
   xmin <- min(c(start.yr, min(data$Year)), na.rm = T)
@@ -455,21 +475,25 @@ for(cancer in cancers){
 ```
 
 ## Alternative Plots
+
 ```{r, fig.width=20, warning=FALSE}
 
 for(cancer in cancers){
   if(cancer == "Breast"){
     p1 <- plot_joinpoint_output_CRUK_alt(cancer = cancer, sex = "Women", data = data_inc, data_jp = incidence_jp, incmort = "Incidence")
     p2 <- plot_joinpoint_output_CRUK_alt(cancer = cancer, sex = "Women", data = data_mort, data_jp = mortality_jp, incmort = "Mortality",
-                                     projection.yr = 2040, projection.target = 0.85, cruk_proj = proj_mort, start.yr = 1993, moonshot.target = TRUE)
+                                     projection.yr = 2040, projection.target = 0.85, cruk_proj = proj_mort, start.yr = 1993, moonshot.target = TRUE,
+                                     report.APC = TRUE)
   } else if(cancer == "Prostate"){
     p1 <- plot_joinpoint_output_CRUK_alt(cancer = cancer, sex = "Men", data = data_inc, data_jp = incidence_jp, incmort = "Incidence")
     p2 <- plot_joinpoint_output_CRUK_alt(cancer = cancer, sex = "Men", data = data_mort, data_jp = mortality_jp, incmort = "Mortality",
-                                     projection.yr = 2040, projection.target = 0.85, cruk_proj = proj_mort, start.yr = 1993, moonshot.target = TRUE)
+                                     projection.yr = 2040, projection.target = 0.85, cruk_proj = proj_mort, start.yr = 1993, moonshot.target = TRUE,
+                                     report.APC = TRUE)
   } else {
     p1 <- plot_joinpoint_output_CRUK_alt(cancer = cancer, data = data_inc, data_jp = incidence_jp, incmort = "Incidence")
     p2 <- plot_joinpoint_output_CRUK_alt(cancer = cancer, data = data_mort, data_jp = mortality_jp, incmort = "Mortality",
-                                     projection.yr = 2040, projection.target = 0.85, cruk_proj = proj_mort, start.yr = 1993, moonshot.target = TRUE)
+                                     projection.yr = 2040, projection.target = 0.85, cruk_proj = proj_mort, start.yr = 1993, moonshot.target = TRUE,
+                                     report.APC = TRUE)
   }
   grid.arrange(p1, p2, nrow = 1, widths = c(4,4))
 }
