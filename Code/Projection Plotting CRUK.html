@@ -81,11 +81,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#packages" id="toc-packages" class="nav-link active" data-scroll-target="#packages">Packages</a></li>
   <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
-  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
-  <li><a href="#alternative-plotting" id="toc-alternative-plotting" class="nav-link" data-scroll-target="#alternative-plotting">Alternative Plotting</a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
+  <ul>
+  <li><a href="#extracting-jp-splines" id="toc-extracting-jp-splines" class="nav-link" data-scroll-target="#extracting-jp-splines">Extracting JP Splines</a></li>
+  <li><a href="#grabbing-cruk-projection-data" id="toc-grabbing-cruk-projection-data" class="nav-link" data-scroll-target="#grabbing-cruk-projection-data">Grabbing CRUK Projection Data</a></li>
+  <li><a href="#plotting-jp-output" id="toc-plotting-jp-output" class="nav-link" data-scroll-target="#plotting-jp-output">Plotting JP Output</a></li>
+  <li><a href="#plotting-jp-output---alt" id="toc-plotting-jp-output---alt" class="nav-link" data-scroll-target="#plotting-jp-output---alt">Plotting JP Output - Alt</a></li>
+  <li><a href="#jp-gt-table" id="toc-jp-gt-table" class="nav-link" data-scroll-target="#jp-gt-table">JP GT Table</a></li>
+  </ul></li>
   <li><a href="#importing-cruk-projections" id="toc-importing-cruk-projections" class="nav-link" data-scroll-target="#importing-cruk-projections">Importing CRUK Projections</a></li>
   <li><a href="#cancer-incidencemortality" id="toc-cancer-incidencemortality" class="nav-link" data-scroll-target="#cancer-incidencemortality">Cancer Incidence/Mortality</a></li>
   <li><a href="#alternative-plots" id="toc-alternative-plots" class="nav-link" data-scroll-target="#alternative-plots">Alternative Plots</a></li>
+  <li><a href="#example-tables" id="toc-example-tables" class="nav-link" data-scroll-target="#example-tables">Example Tables</a></li>
   <li><a href="#importing-cruk-projections-extra" id="toc-importing-cruk-projections-extra" class="nav-link" data-scroll-target="#importing-cruk-projections-extra">Importing CRUK Projections Extra</a></li>
   <li><a href="#cancer-incidencemortality-extra" id="toc-cancer-incidencemortality-extra" class="nav-link" data-scroll-target="#cancer-incidencemortality-extra">Cancer Incidence/Mortality Extra</a></li>
   </ul>
@@ -145,23 +152,39 @@ Attaching package: 'gridExtra'</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'gt' was built under R version 4.3.2</code></pre>
+</div>
 </div>
 </section>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/Position Paper/Data")</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_knit<span class="sc">$</span><span class="fu">set</span>(<span class="at">root.dir =</span> <span class="st">"C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data/Cancer Trends"</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/Position Paper/Data")</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_knit<span class="sc">$</span><span class="fu">set</span>(<span class="at">root.dir =</span> <span class="st">"C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data/Cancer Trends"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="functions" class="level2">
 <h2 class="anchored" data-anchor-id="functions">Functions</h2>
+<section id="extracting-jp-splines" class="level3">
+<h3 class="anchored" data-anchor-id="extracting-jp-splines">Extracting JP Splines</h3>
 </section>
-<section id="alternative-plotting" class="level2">
-<h2 class="anchored" data-anchor-id="alternative-plotting">Alternative Plotting</h2>
+<section id="grabbing-cruk-projection-data" class="level3">
+<h3 class="anchored" data-anchor-id="grabbing-cruk-projection-data">Grabbing CRUK Projection Data</h3>
+</section>
+<section id="plotting-jp-output" class="level3">
+<h3 class="anchored" data-anchor-id="plotting-jp-output">Plotting JP Output</h3>
+</section>
+<section id="plotting-jp-output---alt" class="level3">
+<h3 class="anchored" data-anchor-id="plotting-jp-output---alt">Plotting JP Output - Alt</h3>
+</section>
+<section id="jp-gt-table" class="level3">
+<h3 class="anchored" data-anchor-id="jp-gt-table">JP GT Table</h3>
+</section>
 </section>
 <section id="importing-cruk-projections" class="level2">
 <h2 class="anchored" data-anchor-id="importing-cruk-projections">Importing CRUK Projections</h2>
@@ -183,51 +206,1035 @@ New names:
 <p>Red dashed line represents projection from continuing joinpoint segment, blue dashed line represents projection from CRUK.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="1920"></p>
+<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="1920"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid" width="1920"></p>
+<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid" width="1920"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-5-3.png" class="img-fluid" width="1920"></p>
+<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-8-3.png" class="img-fluid" width="1920"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-5-4.png" class="img-fluid" width="1920"></p>
+<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-8-4.png" class="img-fluid" width="1920"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-5-5.png" class="img-fluid" width="1920"></p>
+<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-8-5.png" class="img-fluid" width="1920"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-5-6.png" class="img-fluid" width="1920"></p>
+<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-8-6.png" class="img-fluid" width="1920"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-5-7.png" class="img-fluid" width="1920"></p>
+<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-8-7.png" class="img-fluid" width="1920"></p>
 </div>
 </div>
 </section>
 <section id="alternative-plots" class="level2">
 <h2 class="anchored" data-anchor-id="alternative-plots">Alternative Plots</h2>
+<p>Plotting alternative plots that allow for a legend for the projections, which is useful. These have the downside of not being as colourful as the colours can’t be used in conjunction with the projection legend currently. The numbers above the sections correspond to the JP segment - this could probably be made clearer. There is a seperate function to create a table presenting the JP segment outputs.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="1920"></p>
+<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="1920"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid" width="1920"></p>
+<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-9-2.png" class="img-fluid" width="1920"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-6-3.png" class="img-fluid" width="1920"></p>
+<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-9-3.png" class="img-fluid" width="1920"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-6-4.png" class="img-fluid" width="1920"></p>
+<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-9-4.png" class="img-fluid" width="1920"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-6-5.png" class="img-fluid" width="1920"></p>
+<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-9-5.png" class="img-fluid" width="1920"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-6-6.png" class="img-fluid" width="1920"></p>
+<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-9-6.png" class="img-fluid" width="1920"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-6-7.png" class="img-fluid" width="1920"></p>
+<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-9-7.png" class="img-fluid" width="1920"></p>
+</div>
+</div>
+</section>
+<section id="example-tables" class="level2">
+<h2 class="anchored" data-anchor-id="example-tables">Example Tables</h2>
+<div class="cell-output-display">
+
+<div id="oqoyurjpyr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#oqoyurjpyr table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#oqoyurjpyr thead, #oqoyurjpyr tbody, #oqoyurjpyr tfoot, #oqoyurjpyr tr, #oqoyurjpyr td, #oqoyurjpyr th {
+  border-style: none;
+}
+
+#oqoyurjpyr p {
+  margin: 0;
+  padding: 0;
+}
+
+#oqoyurjpyr .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#oqoyurjpyr .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#oqoyurjpyr .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#oqoyurjpyr .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#oqoyurjpyr .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#oqoyurjpyr .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#oqoyurjpyr .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#oqoyurjpyr .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#oqoyurjpyr .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#oqoyurjpyr .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#oqoyurjpyr .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#oqoyurjpyr .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#oqoyurjpyr .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#oqoyurjpyr .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#oqoyurjpyr .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#oqoyurjpyr .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#oqoyurjpyr .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#oqoyurjpyr .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#oqoyurjpyr .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#oqoyurjpyr .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#oqoyurjpyr .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#oqoyurjpyr .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#oqoyurjpyr .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#oqoyurjpyr .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#oqoyurjpyr .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#oqoyurjpyr .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#oqoyurjpyr .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#oqoyurjpyr .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#oqoyurjpyr .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#oqoyurjpyr .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#oqoyurjpyr .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#oqoyurjpyr .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#oqoyurjpyr .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#oqoyurjpyr .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#oqoyurjpyr .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#oqoyurjpyr .gt_left {
+  text-align: left;
+}
+
+#oqoyurjpyr .gt_center {
+  text-align: center;
+}
+
+#oqoyurjpyr .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#oqoyurjpyr .gt_font_normal {
+  font-weight: normal;
+}
+
+#oqoyurjpyr .gt_font_bold {
+  font-weight: bold;
+}
+
+#oqoyurjpyr .gt_font_italic {
+  font-style: italic;
+}
+
+#oqoyurjpyr .gt_super {
+  font-size: 65%;
+}
+
+#oqoyurjpyr .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#oqoyurjpyr .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#oqoyurjpyr .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#oqoyurjpyr .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#oqoyurjpyr .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#oqoyurjpyr .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#oqoyurjpyr .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="4" class="gt_heading gt_title gt_font_normal gt_bottom_border" style=""><strong>JoinPoint Analysis for Breast Cancer Incidence in Women</strong></td>
+    </tr>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="text-align: center; font-weight: bold; border-right-width: 2px; border-right-style: solid; border-right-color: lightgrey;" scope="col" id=""></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Start Year">Start Year</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="End Year">End Year</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="APC<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>">APC<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="Section" class="gt_row gt_left" style="text-align: center; font-weight: bold; border-right-width: 2px; border-right-style: solid; border-right-color: lightgrey;">Segment 1</td>
+<td headers="Start.Year" class="gt_row gt_right" style="text-align: center;">1994</td>
+<td headers="End.Year" class="gt_row gt_right" style="text-align: center;">1998</td>
+<td headers="APC" class="gt_row gt_right" style="text-align: center;">2.0217*</td></tr>
+    <tr><td headers="Section" class="gt_row gt_left" style="text-align: center; font-weight: bold; border-right-width: 2px; border-right-style: solid; border-right-color: lightgrey;">Segment 2</td>
+<td headers="Start.Year" class="gt_row gt_right" style="text-align: center;">1998</td>
+<td headers="End.Year" class="gt_row gt_right" style="text-align: center;">2004</td>
+<td headers="APC" class="gt_row gt_right" style="text-align: center;">1.2713*</td></tr>
+    <tr><td headers="Section" class="gt_row gt_left" style="text-align: center; font-weight: bold; border-right-width: 2px; border-right-style: solid; border-right-color: lightgrey;">Segment 3</td>
+<td headers="Start.Year" class="gt_row gt_right" style="text-align: center;">2004</td>
+<td headers="End.Year" class="gt_row gt_right" style="text-align: center;">2014</td>
+<td headers="APC" class="gt_row gt_right" style="text-align: center;">0.7111*</td></tr>
+    <tr><td headers="Section" class="gt_row gt_left" style="text-align: center; font-weight: bold; border-right-width: 2px; border-right-style: solid; border-right-color: lightgrey;">Segment 4</td>
+<td headers="Start.Year" class="gt_row gt_right" style="text-align: center;">2014</td>
+<td headers="End.Year" class="gt_row gt_right" style="text-align: center;">2017</td>
+<td headers="APC" class="gt_row gt_right" style="text-align: center;">-0.2628</td></tr>
+  </tbody>
+  
+  <tfoot class="gt_footnotes">
+    <tr>
+      <td class="gt_footnote" colspan="4"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> * Indicates an APC with p value &lt; .05</td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+</div>
+<div class="cell-output-display">
+
+<div id="yddwmqnjud" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yddwmqnjud table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#yddwmqnjud thead, #yddwmqnjud tbody, #yddwmqnjud tfoot, #yddwmqnjud tr, #yddwmqnjud td, #yddwmqnjud th {
+  border-style: none;
+}
+
+#yddwmqnjud p {
+  margin: 0;
+  padding: 0;
+}
+
+#yddwmqnjud .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#yddwmqnjud .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#yddwmqnjud .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#yddwmqnjud .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#yddwmqnjud .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#yddwmqnjud .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yddwmqnjud .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#yddwmqnjud .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#yddwmqnjud .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#yddwmqnjud .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#yddwmqnjud .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#yddwmqnjud .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#yddwmqnjud .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#yddwmqnjud .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#yddwmqnjud .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#yddwmqnjud .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#yddwmqnjud .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#yddwmqnjud .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#yddwmqnjud .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yddwmqnjud .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#yddwmqnjud .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#yddwmqnjud .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#yddwmqnjud .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yddwmqnjud .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#yddwmqnjud .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#yddwmqnjud .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yddwmqnjud .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yddwmqnjud .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#yddwmqnjud .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yddwmqnjud .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#yddwmqnjud .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yddwmqnjud .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#yddwmqnjud .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yddwmqnjud .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#yddwmqnjud .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yddwmqnjud .gt_left {
+  text-align: left;
+}
+
+#yddwmqnjud .gt_center {
+  text-align: center;
+}
+
+#yddwmqnjud .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#yddwmqnjud .gt_font_normal {
+  font-weight: normal;
+}
+
+#yddwmqnjud .gt_font_bold {
+  font-weight: bold;
+}
+
+#yddwmqnjud .gt_font_italic {
+  font-style: italic;
+}
+
+#yddwmqnjud .gt_super {
+  font-size: 65%;
+}
+
+#yddwmqnjud .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#yddwmqnjud .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#yddwmqnjud .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#yddwmqnjud .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#yddwmqnjud .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#yddwmqnjud .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#yddwmqnjud .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="4" class="gt_heading gt_title gt_font_normal gt_bottom_border" style=""><strong>JoinPoint Analysis for Breast Cancer Mortality in Women</strong></td>
+    </tr>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="text-align: center; font-weight: bold; border-right-width: 2px; border-right-style: solid; border-right-color: lightgrey;" scope="col" id=""></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Start Year">Start Year</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="End Year">End Year</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="APC<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>">APC<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="Section" class="gt_row gt_left" style="text-align: center; font-weight: bold; border-right-width: 2px; border-right-style: solid; border-right-color: lightgrey;">Segment 1</td>
+<td headers="Start.Year" class="gt_row gt_right" style="text-align: center;">1976</td>
+<td headers="End.Year" class="gt_row gt_right" style="text-align: center;">1982</td>
+<td headers="APC" class="gt_row gt_right" style="text-align: center;">0.6952*</td></tr>
+    <tr><td headers="Section" class="gt_row gt_left" style="text-align: center; font-weight: bold; border-right-width: 2px; border-right-style: solid; border-right-color: lightgrey;">Segment 2</td>
+<td headers="Start.Year" class="gt_row gt_right" style="text-align: center;">1982</td>
+<td headers="End.Year" class="gt_row gt_right" style="text-align: center;">1985</td>
+<td headers="APC" class="gt_row gt_right" style="text-align: center;">2.0459*</td></tr>
+    <tr><td headers="Section" class="gt_row gt_left" style="text-align: center; font-weight: bold; border-right-width: 2px; border-right-style: solid; border-right-color: lightgrey;">Segment 3</td>
+<td headers="Start.Year" class="gt_row gt_right" style="text-align: center;">1985</td>
+<td headers="End.Year" class="gt_row gt_right" style="text-align: center;">1988</td>
+<td headers="APC" class="gt_row gt_right" style="text-align: center;">0.1928</td></tr>
+    <tr><td headers="Section" class="gt_row gt_left" style="text-align: center; font-weight: bold; border-right-width: 2px; border-right-style: solid; border-right-color: lightgrey;">Segment 4</td>
+<td headers="Start.Year" class="gt_row gt_right" style="text-align: center;">1988</td>
+<td headers="End.Year" class="gt_row gt_right" style="text-align: center;">1991</td>
+<td headers="APC" class="gt_row gt_right" style="text-align: center;">-0.8790</td></tr>
+    <tr><td headers="Section" class="gt_row gt_left" style="text-align: center; font-weight: bold; border-right-width: 2px; border-right-style: solid; border-right-color: lightgrey;">Segment 5</td>
+<td headers="Start.Year" class="gt_row gt_right" style="text-align: center;">1991</td>
+<td headers="End.Year" class="gt_row gt_right" style="text-align: center;">1999</td>
+<td headers="APC" class="gt_row gt_right" style="text-align: center;">-2.7514*</td></tr>
+    <tr><td headers="Section" class="gt_row gt_left" style="text-align: center; font-weight: bold; border-right-width: 2px; border-right-style: solid; border-right-color: lightgrey;">Segment 6</td>
+<td headers="Start.Year" class="gt_row gt_right" style="text-align: center;">1999</td>
+<td headers="End.Year" class="gt_row gt_right" style="text-align: center;">2002</td>
+<td headers="APC" class="gt_row gt_right" style="text-align: center;">-1.0177</td></tr>
+    <tr><td headers="Section" class="gt_row gt_left" style="text-align: center; font-weight: bold; border-right-width: 2px; border-right-style: solid; border-right-color: lightgrey;">Segment 7</td>
+<td headers="Start.Year" class="gt_row gt_right" style="text-align: center;">2002</td>
+<td headers="End.Year" class="gt_row gt_right" style="text-align: center;">2015</td>
+<td headers="APC" class="gt_row gt_right" style="text-align: center;">-2.1225*</td></tr>
+    <tr><td headers="Section" class="gt_row gt_left" style="text-align: center; font-weight: bold; border-right-width: 2px; border-right-style: solid; border-right-color: lightgrey;">Segment 8</td>
+<td headers="Start.Year" class="gt_row gt_right" style="text-align: center;">2015</td>
+<td headers="End.Year" class="gt_row gt_right" style="text-align: center;">2017</td>
+<td headers="APC" class="gt_row gt_right" style="text-align: center;">-0.6004</td></tr>
+  </tbody>
+  
+  <tfoot class="gt_footnotes">
+    <tr>
+      <td class="gt_footnote" colspan="4"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> * Indicates an APC with p value &lt; .05</td>
+    </tr>
+  </tfoot>
+</table>
 </div>
 </div>
 </section>
@@ -251,13 +1258,13 @@ New names:
 <p>Red dashed line represents projection from continuing joinpoint segment, blue dashed line represents projection from CRUK.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="1920"></p>
+<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="1920"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid" width="1920"></p>
+<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-12-2.png" class="img-fluid" width="1920"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-8-3.png" class="img-fluid" width="1920"></p>
+<p><img src="Projection-Plotting-CRUK_files/figure-html/unnamed-chunk-12-3.png" class="img-fluid" width="1920"></p>
 </div>
 </div>
 </section>

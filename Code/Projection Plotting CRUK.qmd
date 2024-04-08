@@ -22,6 +22,7 @@ library(gridExtra)
 library(scales)
 library(stringr)
 library(tidyr)
+library(gt)
 ```
 
 ## Setup
@@ -35,6 +36,7 @@ theme_set(theme_minimal())
 
 ## Functions
 
+### Extracting JP Splines
 ```{r}
 
 extract_joinpoint_splines_CRUK <- function(data_jp){
@@ -84,7 +86,10 @@ extract_joinpoint_splines_CRUK <- function(data_jp){
   return(output_data)
   
 }
+```
 
+### Grabbing CRUK Projection Data
+```{r}
 get_proj_data_CRUK <- function(data, data_jp, projection.yr){
   
  final <- data_jp |>
@@ -100,8 +105,10 @@ get_proj_data_CRUK <- function(data, data_jp, projection.yr){
   return(proj_data)
     
 }
+```
 
-
+### Plotting JP Output
+```{r}
 plot_joinpoint_output_CRUK <- function(cancer, sex = "All", data, data_jp, incmort, start.yr = NA, projection.yr = NA, projection.target = NA, report.APC = FALSE, cruk_proj = NA, moonshot.target = FALSE){
   
   # browser()
@@ -219,7 +226,7 @@ plot_joinpoint_output_CRUK <- function(cancer, sex = "All", data, data_jp, incmo
 
 ```
 
-## Alternative Plotting
+### Plotting JP Output - Alt
 
 ```{r}
 
@@ -378,6 +385,118 @@ plot_joinpoint_output_CRUK_alt <- function(cancer, sex = "All People", data, dat
 
 ```
 
+### JP GT Table
+```{r}
+create_gt_jp_table <- function(jp_data, cancer, sex = "All People", incmort){
+  
+  # browser()
+  
+  jp_data <- jp_data |>
+    filter(Sex == sex, Cancer.Type == cancer) |>
+    arrange(Year)
+  
+  # This could potentially throw errors if an APC is repeated. This is very unlikely but there is an error output in case.
+  # In future should make the function proof of this error, even if it is unlikely. 
+  APCs <- unique(jp_data$APC)
+  APCs <- APCs[!is.na(APCs)]
+  
+  years_jp <- jp_data |>
+    filter(!is.na(Flag)) |>
+    pull(Year)
+  
+  start.year <- min(jp_data$Year)
+  
+  end.year <- max(jp_data$Year)
+  
+  if(length(APCs) != length(years_jp)+1){
+    stop("ERROR in Data")
+  }
+  
+  start.years <- c(start.year, years_jp)
+  end.years <- c(years_jp, end.year)
+  
+  output_df <- data.frame(`Start Year` = start.years, `End Year` = end.years, APC = APCs) |>
+    mutate(Section = paste0("Segment ", row_number())) |>
+    relocate(Section)
+  
+  output_gt <- output_df |>
+    gt() |>
+    
+    # Header Creation
+    tab_header(
+      title = md(paste0("**JoinPoint Analysis for ", cancer, " Cancer ", incmort, " in " , sex, "**"))
+    ) |>
+    
+    # Head Rows
+    tab_style(
+      style = list(
+        cell_text(weight = "bold", align = "center")
+      ),
+      locations = cells_column_labels(columns = everything())
+    ) |>
+    
+    # Body rows
+    tab_style(
+      style = list(
+        cell_text(align = "center")
+      ),
+      locations = cells_body(
+          columns = colnames(output_df)# [colnames(output_df)!="Section"]
+      )
+    ) |>
+    
+    tab_style(
+      style = list(
+        cell_text(weight = "bold")
+      ),
+      locations = cells_body(
+        columns = Section
+      )
+    ) |>
+    
+    # Adding vertical lines
+    tab_style(
+      style = list(
+        cell_borders(sides = "right", weight = px(2), color = "lightgrey")
+      ),
+      locations = cells_body(
+        column = Section
+      )
+    ) |>
+    
+    tab_style(
+      style = list(
+        cell_borders(sides = "right", weight = px(2), color = "lightgrey")
+      ),
+      locations = cells_column_labels(
+        column = Section
+      )
+    ) |>
+    
+    # Rename columns
+    cols_label(
+      Section = "",
+      Start.Year = "Start Year",
+      End.Year = "End Year"
+    ) |>
+    
+    # Add footer
+    tab_footnote(
+      footnote = "* Indicates an APC with p value < .05",
+      locations = cells_column_labels(
+        columns = APC
+      )
+    )
+  
+  return(output_gt)
+  
+  
+}
+
+
+
+```
+
 ## Importing CRUK Projections
 
 ```{r}
@@ -475,28 +594,36 @@ for(cancer in cancers){
 ```
 
 ## Alternative Plots
-
+Plotting alternative plots that allow for a legend for the projections, which is useful. These have the downside of not being as colourful as the colours can't be used in conjunction with the projection legend currently. The numbers above the sections correspond to the JP segment - this could probably be made clearer. There is a seperate function to create a table presenting the JP segment outputs.
 ```{r, fig.width=20, warning=FALSE}
 
 for(cancer in cancers){
   if(cancer == "Breast"){
-    p1 <- plot_joinpoint_output_CRUK_alt(cancer = cancer, sex = "Women", data = data_inc, data_jp = incidence_jp, incmort = "Incidence")
+    p1 <- plot_joinpoint_output_CRUK_alt(cancer = cancer, sex = "Women", data = data_inc, data_jp = incidence_jp, incmort = "Incidence", report.APC = TRUE)
     p2 <- plot_joinpoint_output_CRUK_alt(cancer = cancer, sex = "Women", data = data_mort, data_jp = mortality_jp, incmort = "Mortality",
                                      projection.yr = 2040, projection.target = 0.85, cruk_proj = proj_mort, start.yr = 1993, moonshot.target = TRUE,
                                      report.APC = TRUE)
   } else if(cancer == "Prostate"){
-    p1 <- plot_joinpoint_output_CRUK_alt(cancer = cancer, sex = "Men", data = data_inc, data_jp = incidence_jp, incmort = "Incidence")
+    p1 <- plot_joinpoint_output_CRUK_alt(cancer = cancer, sex = "Men", data = data_inc, data_jp = incidence_jp, incmort = "Incidence", report.APC = TRUE)
     p2 <- plot_joinpoint_output_CRUK_alt(cancer = cancer, sex = "Men", data = data_mort, data_jp = mortality_jp, incmort = "Mortality",
                                      projection.yr = 2040, projection.target = 0.85, cruk_proj = proj_mort, start.yr = 1993, moonshot.target = TRUE,
                                      report.APC = TRUE)
   } else {
-    p1 <- plot_joinpoint_output_CRUK_alt(cancer = cancer, data = data_inc, data_jp = incidence_jp, incmort = "Incidence")
+    p1 <- plot_joinpoint_output_CRUK_alt(cancer = cancer, data = data_inc, data_jp = incidence_jp, incmort = "Incidence", report.APC = TRUE)
     p2 <- plot_joinpoint_output_CRUK_alt(cancer = cancer, data = data_mort, data_jp = mortality_jp, incmort = "Mortality",
                                      projection.yr = 2040, projection.target = 0.85, cruk_proj = proj_mort, start.yr = 1993, moonshot.target = TRUE,
                                      report.APC = TRUE)
   }
   grid.arrange(p1, p2, nrow = 1, widths = c(4,4))
 }
+
+```
+
+## Example Tables
+```{r, results = "asis"}
+
+create_gt_jp_table(incidence_jp, cancer = "Breast", incmort = "Incidence", sex = "Women")
+create_gt_jp_table(mortality_jp, cancer = "Breast", incmort = "Mortality", sex = "Women")
 
 ```
 
