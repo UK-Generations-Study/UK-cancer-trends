@@ -92,7 +92,7 @@ write.csv(data_mort, "Cancer_Mortality_Data_Colorectal.txt", row.names = F)
 ## Extra Data
 
 ```{r}
-setwd("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data/Globocan Extra")
+setwd("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data/Cancer Trends/Globocan Extra")
 
 data <- read_excel("Cancer_Projection_Data_Extra.xlsx")
 
@@ -110,5 +110,32 @@ mort_data <- data |>
 
 write.csv(mort_data, "Cancer_Mortality_Data_Extra.txt", row.names = F)
 
+```
+
+## Split by Country
+```{r}
+setwd("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data/Cancer Trends/Globocan By Country")
+
+data_england_wales <- read_excel("Cancer_Projection_Data_England_Wales.xlsx")
+
+data_scotland <- read_excel("Cancer_Projection_Data_Scotland.xlsx")
+
+data_nireland <- read_excel("Cancer_Projection_Data_NIreland.xlsx")
+
+data <- data_england_wales |>
+  rbind(data_scotland) |>
+  rbind(data_nireland) |>
+  mutate(incmort = case_when(
+    Type == 0 ~ "Incidence",
+    Type == 1 ~ "Mortality",
+    TRUE ~ NA),
+    
+    `Country label` = gsub(`Country label`, pattern = "UK, ", replacement = "")) |>
+  
+  select(Year, Sex, `ASR (World)`, `Cancer label`, `Country label`, incmort) |>
+  
+  arrange(Sex, `Cancer label`, incmort, `Country label`, Year, `ASR (World)`)
+  
+write.csv(data, "Cancer_Joinpoint_Data_by_Country.txt", row.names = F)
 
 ```
