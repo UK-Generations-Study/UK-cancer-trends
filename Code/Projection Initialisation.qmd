@@ -113,18 +113,13 @@ write.csv(mort_data, "Cancer_Mortality_Data_Extra.txt", row.names = F)
 ```
 
 ## Split by Country
+
 ```{r}
 setwd("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data/Cancer Trends/Globocan By Country")
 
 data_england_wales <- read_excel("Cancer_Projection_Data_England_Wales.xlsx")
 
-data_scotland <- read_excel("Cancer_Projection_Data_Scotland.xlsx")
-
-data_nireland <- read_excel("Cancer_Projection_Data_NIreland.xlsx")
-
-data <- data_england_wales |>
-  rbind(data_scotland) |>
-  rbind(data_nireland) |>
+data_england_wales <- data_england_wales |>
   mutate(incmort = case_when(
     Type == 0 ~ "Incidence",
     Type == 1 ~ "Mortality",
@@ -132,10 +127,41 @@ data <- data_england_wales |>
     
     `Country label` = gsub(`Country label`, pattern = "UK, ", replacement = "")) |>
   
-  select(Year, Sex, `ASR (World)`, `Cancer label`, `Country label`, incmort) |>
+  select(Year, Sex, `ASR (World)`, `Cancer label`, incmort) |>
   
-  arrange(Sex, `Cancer label`, incmort, `Country label`, Year, `ASR (World)`)
+  arrange(Sex, `Cancer label`, incmort, Year, `ASR (World)`)
   
-write.csv(data, "Cancer_Joinpoint_Data_by_Country.txt", row.names = F)
+write.csv(data_england_wales, "England Wales/Cancer_Data_England_Wales.txt", row.names = F)
 
+data_scotland <- read_excel("Cancer_Projection_Data_Scotland.xlsx")
+
+data_scotland <- data_scotland |>
+  mutate(incmort = case_when(
+    Type == 0 ~ "Incidence",
+    Type == 1 ~ "Mortality",
+    TRUE ~ NA),
+    
+    `Country label` = gsub(`Country label`, pattern = "UK, ", replacement = "")) |>
+  
+  select(Year, Sex, `ASR (World)`, `Cancer label`, incmort) |>
+  
+  arrange(Sex, `Cancer label`, incmort, Year, `ASR (World)`)
+  
+write.csv(data_england_wales, "Scotland/Cancer_Data_Scotland.txt", row.names = F)
+
+data_nireland <- read_excel("Cancer_Projection_Data_NIreland.xlsx")
+
+data_nireland <- data_nireland |>
+  mutate(incmort = case_when(
+    Type == 0 ~ "Incidence",
+    Type == 1 ~ "Mortality",
+    TRUE ~ NA),
+    
+    `Country label` = gsub(`Country label`, pattern = "UK, ", replacement = "")) |>
+  
+  select(Year, Sex, `ASR (World)`, `Cancer label`, incmort) |>
+  
+  arrange(Sex, `Cancer label`, incmort, Year, `ASR (World)`)
+  
+write.csv(data_england_wales, "N Ireland/Cancer_Data_NIreland.txt", row.names = F)
 ```
