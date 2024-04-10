@@ -147,7 +147,7 @@ data_scotland <- data_scotland |>
   
   arrange(Sex, `Cancer label`, incmort, Year, `ASR (World)`)
   
-write.csv(data_england_wales, "Scotland/Cancer_Data_Scotland.txt", row.names = F)
+write.csv(data_scotland, "Scotland/Cancer_Data_Scotland.txt", row.names = F)
 
 data_nireland <- read_excel("Cancer_Projection_Data_NIreland.xlsx")
 
@@ -163,5 +163,5 @@ data_nireland <- data_nireland |>
   
   arrange(Sex, `Cancer label`, incmort, Year, `ASR (World)`)
   
-write.csv(data_england_wales, "N Ireland/Cancer_Data_NIreland.txt", row.names = F)
+write.csv(data_nireland, "N Ireland/Cancer_Data_NIreland.txt", row.names = F)
 ```
