@@ -1,5 +1,5 @@
 ---
-title: "Cancer Projections"
+title: "Cancer Projections Globocan"
 format: 
   html:
     toc: true
@@ -33,9 +33,12 @@ theme_set(theme_minimal())
 
 ## Functions
 
+### Extracting JP data
 ```{r}
 
 extract_joinpoint_splines <- function(data_jp){
+  
+  # browser()
   
   # Getting initial joins, as well as the APC (just before) the joins
   joins <- data_jp |>
@@ -82,7 +85,10 @@ extract_joinpoint_splines <- function(data_jp){
   return(output_data)
   
 }
+```
 
+### Projecting data forward
+```{r}
 get_proj_data <- function(data, data_jp, projection.yr){
   
  final <- data_jp |>
@@ -98,9 +104,14 @@ get_proj_data <- function(data, data_jp, projection.yr){
   return(proj_data)
     
 }
+```
 
+### Plotting function
 
+```{r}
 plot_joinpoint_output <- function(cancer, sex = 3, data, data_jp, incmort, start.yr = NA, projection.yr = NA, projection.target = NA, report.APC = FALSE, moonshot.target = FALSE){
+  
+  # browser()
   
   data <- data |> 
     filter(`Cancer label` == cancer)
@@ -261,6 +272,76 @@ plot_joinpoint_output <- function(cancer, sex = 3, data, data_jp, incmort, start
   
 }
 
+```
+
+### Meeting Targets Function
+```{r}
+# Maybe add something here for if the target is in a set amount of years?
+
+meet_targets <- function(targets, target.year, data_jp){
+  
+  if(length(targets) != length(target.year)){
+    stop("ERROR in input")
+  }
+  
+  for(cancer in unique(data_jp$Cancer.label)){
+    for(sex in unique(data_jp$Sex)){
+      
+      # Filter data to sex and cancer of interest
+      temp_data <- data_jp |>
+        filter(Cancer.label == cancer, Sex == sex)
+      
+      if(nrow(temp_data)>0){
+        
+        cat("\nCancer:", cancer, "\nSex:", sex, "\n")
+        
+        # Iterate over the targets to see if any of them are met
+        for(i in seq_along(targets)){
+        
+          cat("Target:", 100*(1-targets[i]), "% by", target.year[i], "\n")
+          
+          # Get final APC to extrapolate from
+          finalAPC <- temp_data |>
+            arrange(desc(Year)) |>
+            filter(row_number()==1) |>
+            pull(APC)
+          
+          finalAPC <- as.numeric(gsub(finalAPC, pattern = "\\*", replacement = ""))
+          
+          # Go from APC to percentage change mulitplier
+          finalAPC_num <- 1+finalAPC/100
+          
+          finalyear <- temp_data |>
+            arrange(desc(Year)) |>
+            filter(row_number()==1) |>
+            pull(Year)
+          
+          # Years left until target year
+          yearsremaining <- target.year[i]  - finalyear
+          
+          # Check if target is reached
+          if(finalAPC_num^yearsremaining<=targets[i]){
+            
+            yearachieved <- log(targets[i])/log(finalAPC_num) + finalyear
+            
+            cat(paste0("SUCCESS - Target achieved in ", floor(yearachieved), "\n"))
+            
+          } else {
+            
+            goalAPC <- targets[i]^(1/yearsremaining)
+            
+            goalAPC <- 100*(goalAPC-1)
+            
+            cat(paste0("FAILURE - Target not achieved. Need to decrease APC from ", finalAPC, " to ", goalAPC, "\n"))
+            
+          }
+        }
+      }
+    }
+  }
+}
+
+# meet_targets(targets = c(0.85), target.year = c(2040), data_jp = mortality_jp)
 ```
 
 ## Cancer Incidence/Mortality

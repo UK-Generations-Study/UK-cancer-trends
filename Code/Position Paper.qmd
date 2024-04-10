@@ -552,7 +552,9 @@ ggplot(data = age_bmi_england, aes(x = year, y = value, colour = factor(age_grou
 ```
 
 ## Childhood Obesity - NCMP
+
 Childhood obesity as measured by the National Child Measurement Program
+
 ```{r}
 
 reception_BMI_data <- read_excel("BMI_Data_Children.xlsx", sheet = "England_Reception")
@@ -922,8 +924,8 @@ ecig_data |>
 
 ## Activity
 
-Added a new source for the activity that provides more years.
-The Welsh definition is slightly differently worded, check up on this.
+Added a new source for the activity that provides more years. The Welsh definition is slightly differently worded, check up on this.
+
 ```{r}
 
 data4 |>
@@ -1158,7 +1160,7 @@ read_excel("HRT_Data.xlsx") |>
 
 ```
 
-## Cancer
+## Cancer -  Globocan Data
 
 ```{r}
 
