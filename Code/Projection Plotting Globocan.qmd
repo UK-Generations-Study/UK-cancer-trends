@@ -276,7 +276,6 @@ plot_joinpoint_output <- function(cancer, sex = 3, data, data_jp, incmort, start
 
 ### Meeting Targets Function
 ```{r}
-# Maybe add something here for if the target is in a set amount of years?
 
 meet_targets <- function(targets, target.year, data_jp){
   
@@ -340,6 +339,15 @@ meet_targets <- function(targets, target.year, data_jp){
     }
   }
 }
+
+# meet_targets_table <- function(targets, target.year, data_jp){
+#   
+#   output.table <- data.frame(Cancer = character(0), Sex = character(0), APC_Req = numeric(0), Pace = numeric(0), Year_Ach = numeric(0))
+#   
+#   for(cancer in unique)
+#   
+#   
+# }
 
 # meet_targets(targets = c(0.85), target.year = c(2040), data_jp = mortality_jp)
 ```
