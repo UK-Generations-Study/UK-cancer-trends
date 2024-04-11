@@ -1,1349 +1,1037 @@
-"Sex"	"incmort"	"Cancer label"	"Year"	"ASR (World)"	"Model"	"Flag"	"APC"	"Joinpoints"	"Final Selected Model"
-1	"Incidence"	All sites excl. non-melanoma skin cancer	1971	228.38	229.24	NA	0.7888*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	1972	228.55	231.05	NA	0.7888*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	1973	234.49	232.87	NA	0.7888*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	1974	238.46	234.71	NA	0.7888*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	1975	236.97	236.56	NA	0.7888*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	1976	235.80	238.43	NA	0.7888*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	1977	241.49	240.31	NA	0.7888*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	1978	239.81	242.20	NA	0.7888*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	1979	243.85	244.11	NA	0.7888*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	1980	247.42	246.04	NA	0.7888*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	1981	250.60	247.98	NA	0.7888*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	1982	249.76	249.94	NA	0.7888*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	1983	252.46	251.91	NA	0.7888*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	1984	249.86	253.90	NA	0.7888*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	1985	260.32	255.90	Joinpoint 1	NA	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	1986	253.21	256.80	NA	0.3512*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	1987	256.35	257.70	NA	0.3512*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	1988	262.49	258.60	NA	0.3512*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	1989	256.36	259.51	NA	0.3512*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	1990	259.26	260.42	NA	0.3512*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	1991	259.70	261.34	NA	0.3512*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	1992	265.11	262.26	NA	0.3512*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	1993	264.88	263.18	NA	0.3512*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	1994	267.23	264.10	NA	0.3512*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	1995	264.33	265.03	NA	0.3512*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	1996	262.72	265.96	NA	0.3512*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	1997	267.64	266.89	NA	0.3512*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	1998	265.11	267.83	NA	0.3512*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	1999	267.84	268.77	NA	0.3512*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	2000	273.10	269.72	NA	0.3512*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	2001	275.24	270.66	NA	0.3512*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	2002	270.47	271.61	NA	0.3512*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	2003	268.01	272.57	Joinpoint 2	NA	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	2004	276.76	275.01	NA	0.8956*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	2005	275.61	277.47	NA	0.8956*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	2006	281.64	279.96	NA	0.8956*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	2007	280.30	282.46	NA	0.8956*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	2008	282.91	284.99	NA	0.8956*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	2009	293.29	287.55	NA	0.8956*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	2010	291.75	290.12	NA	0.8956*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	2011	291.70	292.72	NA	0.8956*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	2012	294.08	295.34	NA	0.8956*	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	2013	298.12	297.99	Joinpoint 3	NA	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	2014	293.92	295.63	NA	-0.7906	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	2015	293.51	293.29	NA	-0.7906	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	2016	291.00	290.97	NA	-0.7906	3	3
-1	"Incidence"	All sites excl. non-melanoma skin cancer	2017	288.96	288.67	NA	-0.7906	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1950	161.18	164.22	NA	0.8011*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1951	166.16	165.54	NA	0.8011*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1952	167.19	166.87	NA	0.8011*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1953	167.73	168.20	NA	0.8011*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1954	170.60	169.55	NA	0.8011*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1955	171.73	170.91	NA	0.8011*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1956	173.01	172.28	NA	0.8011*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1957	174.22	173.66	NA	0.8011*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1958	175.48	175.05	NA	0.8011*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1959	177.40	176.45	NA	0.8011*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1960	178.45	177.87	NA	0.8011*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1961	179.21	179.29	NA	0.8011*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1962	181.11	180.73	NA	0.8011*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1963	181.78	182.17	NA	0.8011*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1964	182.55	183.63	NA	0.8011*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1965	184.18	185.10	NA	0.8011*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1966	186.45	186.59	NA	0.8011*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1967	187.14	188.08	NA	0.8011*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1968	189.73	189.59	NA	0.8011*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1969	190.48	191.11	Joinpoint 1	NA	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1970	190.32	190.58	NA	-0.2775*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1971	187.38	190.05	NA	-0.2775*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1972	189.54	189.52	NA	-0.2775*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1973	188.92	189.00	NA	-0.2775*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1974	189.60	188.47	NA	-0.2775*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1975	187.14	187.95	NA	-0.2775*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1976	190.05	187.43	NA	-0.2775*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1977	187.36	186.91	NA	-0.2775*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1978	188.47	186.39	NA	-0.2775*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1979	187.91	185.87	NA	-0.2775*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1980	186.20	185.35	NA	-0.2775*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1981	181.70	184.84	NA	-0.2775*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1982	180.45	184.33	NA	-0.2775*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1983	183.57	183.81	NA	-0.2775*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1984	187.31	183.30	NA	-0.2775*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1985	185.59	182.80	NA	-0.2775*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1986	182.31	182.29	NA	-0.2775*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1987	181.09	181.78	NA	-0.2775*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1988	182.21	181.28	NA	-0.2775*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1989	179.90	180.78	NA	-0.2775*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1990	178.26	180.27	NA	-0.2775*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1991	177.87	179.77	Joinpoint 2	NA	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1992	176.39	175.50	NA	-2.3766*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1993	170.72	171.33	NA	-2.3766*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1994	167.47	167.26	NA	-2.3766*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1995	164.29	163.28	NA	-2.3766*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1996	160.33	159.40	NA	-2.3766*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1997	155.05	155.61	Joinpoint 3	NA	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1998	154.94	153.29	NA	-1.4925*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	1999	149.68	151.00	NA	-1.4925*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	2000	145.79	148.75	NA	-1.4925*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	2001	147.51	146.53	NA	-1.4925*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	2002	146.62	144.34	NA	-1.4925*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	2003	143.13	142.19	NA	-1.4925*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	2004	139.86	140.07	NA	-1.4925*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	2005	136.58	137.98	NA	-1.4925*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	2006	135.99	135.92	NA	-1.4925*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	2007	133.55	133.89	NA	-1.4925*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	2008	131.55	131.89	NA	-1.4925*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	2009	129.51	129.92	NA	-1.4925*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	2010	126.95	127.98	NA	-1.4925*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	2011	125.71	126.07	NA	-1.4925*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	2012	124.59	124.19	NA	-1.4925*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	2013	122.38	122.34	NA	-1.4925*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	2014	120.75	120.51	NA	-1.4925*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	2015	118.89	118.71	NA	-1.4925*	3	3
-1	"Mortality"	All sites excl. non-melanoma skin cancer	2016	117.76	116.94	NA	-1.4925*	3	3
-1	"Incidence"	Colorectum	1971	28.12	28.27	NA	0.9666*	3	3
-1	"Incidence"	Colorectum	1972	27.85	28.54	NA	0.9666*	3	3
-1	"Incidence"	Colorectum	1973	29.24	28.82	NA	0.9666*	3	3
-1	"Incidence"	Colorectum	1974	29.27	29.10	NA	0.9666*	3	3
-1	"Incidence"	Colorectum	1975	29.50	29.38	NA	0.9666*	3	3
-1	"Incidence"	Colorectum	1976	29.27	29.66	NA	0.9666*	3	3
-1	"Incidence"	Colorectum	1977	29.86	29.95	NA	0.9666*	3	3
-1	"Incidence"	Colorectum	1978	29.36	30.24	NA	0.9666*	3	3
-1	"Incidence"	Colorectum	1979	30.67	30.53	NA	0.9666*	3	3
-1	"Incidence"	Colorectum	1980	31.10	30.83	NA	0.9666*	3	3
-1	"Incidence"	Colorectum	1981	31.79	31.12	NA	0.9666*	3	3
-1	"Incidence"	Colorectum	1982	31.68	31.42	NA	0.9666*	3	3
-1	"Incidence"	Colorectum	1983	32.43	31.73	NA	0.9666*	3	3
-1	"Incidence"	Colorectum	1984	32.08	32.03	NA	0.9666*	3	3
-1	"Incidence"	Colorectum	1985	32.95	32.34	NA	0.9666*	3	3
-1	"Incidence"	Colorectum	1986	31.72	32.66	NA	0.9666*	3	3
-1	"Incidence"	Colorectum	1987	32.77	32.97	NA	0.9666*	3	3
-1	"Incidence"	Colorectum	1988	33.63	33.29	NA	0.9666*	3	3
-1	"Incidence"	Colorectum	1989	33.78	33.61	NA	0.9666*	3	3
-1	"Incidence"	Colorectum	1990	34.17	33.94	NA	0.9666*	3	3
-1	"Incidence"	Colorectum	1991	33.95	34.27	NA	0.9666*	3	3
-1	"Incidence"	Colorectum	1992	35.42	34.60	NA	0.9666*	3	3
-1	"Incidence"	Colorectum	1993	35.56	34.93	NA	0.9666*	3	3
-1	"Incidence"	Colorectum	1994	34.64	35.27	NA	0.9666*	3	3
-1	"Incidence"	Colorectum	1995	34.37	35.61	NA	0.9666*	3	3
-1	"Incidence"	Colorectum	1996	36.11	35.95	NA	0.9666*	3	3
-1	"Incidence"	Colorectum	1997	36.42	36.30	NA	0.9666*	3	3
-1	"Incidence"	Colorectum	1998	36.86	36.65	NA	0.9666*	3	3
-1	"Incidence"	Colorectum	1999	36.32	37.01	Joinpoint 1	NA	3	3
-1	"Incidence"	Colorectum	2000	36.73	36.25	NA	-2.0526	3	3
-1	"Incidence"	Colorectum	2001	35.24	35.50	NA	-2.0526	3	3
-1	"Incidence"	Colorectum	2002	34.92	34.77	Joinpoint 2	NA	3	3
-1	"Incidence"	Colorectum	2003	35.25	35.23	NA	1.3031*	3	3
-1	"Incidence"	Colorectum	2004	35.93	35.69	NA	1.3031*	3	3
-1	"Incidence"	Colorectum	2005	35.95	36.15	NA	1.3031*	3	3
-1	"Incidence"	Colorectum	2006	36.51	36.62	NA	1.3031*	3	3
-1	"Incidence"	Colorectum	2007	36.41	37.10	NA	1.3031*	3	3
-1	"Incidence"	Colorectum	2008	37.95	37.58	NA	1.3031*	3	3
-1	"Incidence"	Colorectum	2009	38.11	38.07	NA	1.3031*	3	3
-1	"Incidence"	Colorectum	2010	38.36	38.57	Joinpoint 3	NA	3	3
-1	"Incidence"	Colorectum	2011	38.58	38.06	NA	-1.3212*	3	3
-1	"Incidence"	Colorectum	2012	38.51	37.56	NA	-1.3212*	3	3
-1	"Incidence"	Colorectum	2013	36.47	37.06	NA	-1.3212*	3	3
-1	"Incidence"	Colorectum	2014	35.73	36.57	NA	-1.3212*	3	3
-1	"Incidence"	Colorectum	2015	35.83	36.09	NA	-1.3212*	3	3
-1	"Incidence"	Colorectum	2016	36.30	35.61	NA	-1.3212*	3	3
-1	"Incidence"	Colorectum	2017	35.13	35.14	NA	-1.3212*	3	3
-1	"Mortality"	Colorectum	1955	24.65	24.34	NA	-1.7608*	4	4
-1	"Mortality"	Colorectum	1956	24.02	23.91	NA	-1.7608*	4	4
-1	"Mortality"	Colorectum	1957	23.47	23.49	NA	-1.7608*	4	4
-1	"Mortality"	Colorectum	1958	22.99	23.07	NA	-1.7608*	4	4
-1	"Mortality"	Colorectum	1959	22.34	22.67	NA	-1.7608*	4	4
-1	"Mortality"	Colorectum	1960	21.95	22.27	NA	-1.7608*	4	4
-1	"Mortality"	Colorectum	1961	21.76	21.88	NA	-1.7608*	4	4
-1	"Mortality"	Colorectum	1962	21.63	21.49	NA	-1.7608*	4	4
-1	"Mortality"	Colorectum	1963	21.19	21.11	NA	-1.7608*	4	4
-1	"Mortality"	Colorectum	1964	21.15	20.74	Joinpoint 1	NA	4	4
-1	"Mortality"	Colorectum	1965	20.71	21.02	NA	1.3341	4	4
-1	"Mortality"	Colorectum	1966	21.41	21.30	NA	1.3341	4	4
-1	"Mortality"	Colorectum	1967	21.50	21.58	NA	1.3341	4	4
-1	"Mortality"	Colorectum	1968	22.16	21.87	Joinpoint 2	NA	4	4
-1	"Mortality"	Colorectum	1969	21.75	21.78	NA	-0.4162*	4	4
-1	"Mortality"	Colorectum	1970	21.80	21.69	NA	-0.4162*	4	4
-1	"Mortality"	Colorectum	1971	21.39	21.60	NA	-0.4162*	4	4
-1	"Mortality"	Colorectum	1972	21.77	21.51	NA	-0.4162*	4	4
-1	"Mortality"	Colorectum	1973	21.48	21.42	NA	-0.4162*	4	4
-1	"Mortality"	Colorectum	1974	21.47	21.33	NA	-0.4162*	4	4
-1	"Mortality"	Colorectum	1975	21.16	21.24	NA	-0.4162*	4	4
-1	"Mortality"	Colorectum	1976	21.78	21.15	NA	-0.4162*	4	4
-1	"Mortality"	Colorectum	1977	21.09	21.06	NA	-0.4162*	4	4
-1	"Mortality"	Colorectum	1978	20.56	20.98	NA	-0.4162*	4	4
-1	"Mortality"	Colorectum	1979	21.10	20.89	NA	-0.4162*	4	4
-1	"Mortality"	Colorectum	1980	20.44	20.80	NA	-0.4162*	4	4
-1	"Mortality"	Colorectum	1981	20.10	20.72	NA	-0.4162*	4	4
-1	"Mortality"	Colorectum	1982	19.62	20.63	NA	-0.4162*	4	4
-1	"Mortality"	Colorectum	1983	20.22	20.54	NA	-0.4162*	4	4
-1	"Mortality"	Colorectum	1984	21.17	20.46	NA	-0.4162*	4	4
-1	"Mortality"	Colorectum	1985	20.57	20.37	NA	-0.4162*	4	4
-1	"Mortality"	Colorectum	1986	20.11	20.29	NA	-0.4162*	4	4
-1	"Mortality"	Colorectum	1987	20.09	20.20	NA	-0.4162*	4	4
-1	"Mortality"	Colorectum	1988	20.42	20.12	NA	-0.4162*	4	4
-1	"Mortality"	Colorectum	1989	20.41	20.04	NA	-0.4162*	4	4
-1	"Mortality"	Colorectum	1990	20.11	19.95	NA	-0.4162*	4	4
-1	"Mortality"	Colorectum	1991	19.98	19.87	NA	-0.4162*	4	4
-1	"Mortality"	Colorectum	1992	20.36	19.79	Joinpoint 3	NA	4	4
-1	"Mortality"	Colorectum	1993	18.92	19.21	NA	-2.8940*	4	4
-1	"Mortality"	Colorectum	1994	18.14	18.66	NA	-2.8940*	4	4
-1	"Mortality"	Colorectum	1995	18.13	18.12	NA	-2.8940*	4	4
-1	"Mortality"	Colorectum	1996	17.51	17.59	NA	-2.8940*	4	4
-1	"Mortality"	Colorectum	1997	17.15	17.08	NA	-2.8940*	4	4
-1	"Mortality"	Colorectum	1998	16.77	16.59	NA	-2.8940*	4	4
-1	"Mortality"	Colorectum	1999	15.97	16.11	Joinpoint 4	NA	4	4
-1	"Mortality"	Colorectum	2000	15.70	15.82	NA	-1.8100*	4	4
-1	"Mortality"	Colorectum	2001	15.57	15.53	NA	-1.8100*	4	4
-1	"Mortality"	Colorectum	2002	15.40	15.25	NA	-1.8100*	4	4
-1	"Mortality"	Colorectum	2003	15.00	14.97	NA	-1.8100*	4	4
-1	"Mortality"	Colorectum	2004	14.86	14.70	NA	-1.8100*	4	4
-1	"Mortality"	Colorectum	2005	14.48	14.44	NA	-1.8100*	4	4
-1	"Mortality"	Colorectum	2006	14.06	14.18	NA	-1.8100*	4	4
-1	"Mortality"	Colorectum	2007	13.81	13.92	NA	-1.8100*	4	4
-1	"Mortality"	Colorectum	2008	13.91	13.67	NA	-1.8100*	4	4
-1	"Mortality"	Colorectum	2009	13.34	13.42	NA	-1.8100*	4	4
-1	"Mortality"	Colorectum	2010	13.39	13.18	NA	-1.8100*	4	4
-1	"Mortality"	Colorectum	2011	12.70	12.94	NA	-1.8100*	4	4
-1	"Mortality"	Colorectum	2012	12.89	12.70	NA	-1.8100*	4	4
-1	"Mortality"	Colorectum	2013	12.31	12.47	NA	-1.8100*	4	4
-1	"Mortality"	Colorectum	2014	12.04	12.25	NA	-1.8100*	4	4
-1	"Mortality"	Colorectum	2015	12.04	12.03	NA	-1.8100*	4	4
-1	"Mortality"	Colorectum	2016	11.96	11.81	NA	-1.8100*	4	4
-1	"Incidence"	Lung	1971	75.31	75.82	NA	-0.2182	3	3
-1	"Incidence"	Lung	1972	73.99	75.66	NA	-0.2182	3	3
-1	"Incidence"	Lung	1973	76.15	75.49	NA	-0.2182	3	3
-1	"Incidence"	Lung	1974	76.62	75.33	NA	-0.2182	3	3
-1	"Incidence"	Lung	1975	75.13	75.16	NA	-0.2182	3	3
-1	"Incidence"	Lung	1976	74.97	75.00	NA	-0.2182	3	3
-1	"Incidence"	Lung	1977	76.19	74.83	NA	-0.2182	3	3
-1	"Incidence"	Lung	1978	74.27	74.67	NA	-0.2182	3	3
-1	"Incidence"	Lung	1979	75.31	74.51	NA	-0.2182	3	3
-1	"Incidence"	Lung	1980	74.11	74.35	NA	-0.2182	3	3
-1	"Incidence"	Lung	1981	73.72	74.18	NA	-0.2182	3	3
-1	"Incidence"	Lung	1982	72.91	74.02	Joinpoint 1	NA	3	3
-1	"Incidence"	Lung	1983	71.98	72.19	NA	-2.4753*	3	3
-1	"Incidence"	Lung	1984	68.93	70.40	NA	-2.4753*	3	3
-1	"Incidence"	Lung	1985	71.50	68.66	NA	-2.4753*	3	3
-1	"Incidence"	Lung	1986	66.53	66.96	NA	-2.4753*	3	3
-1	"Incidence"	Lung	1987	65.15	65.30	NA	-2.4753*	3	3
-1	"Incidence"	Lung	1988	64.62	63.69	NA	-2.4753*	3	3
-1	"Incidence"	Lung	1989	61.38	62.11	NA	-2.4753*	3	3
-1	"Incidence"	Lung	1990	60.50	60.57	NA	-2.4753*	3	3
-1	"Incidence"	Lung	1991	59.08	59.07	Joinpoint 2	NA	3	3
-1	"Incidence"	Lung	1992	58.55	57.07	NA	-3.3842*	3	3
-1	"Incidence"	Lung	1993	54.85	55.14	NA	-3.3842*	3	3
-1	"Incidence"	Lung	1994	53.90	53.28	NA	-3.3842*	3	3
-1	"Incidence"	Lung	1995	50.62	51.47	NA	-3.3842*	3	3
-1	"Incidence"	Lung	1996	48.11	49.73	NA	-3.3842*	3	3
-1	"Incidence"	Lung	1997	48.01	48.05	NA	-3.3842*	3	3
-1	"Incidence"	Lung	1998	45.78	46.42	NA	-3.3842*	3	3
-1	"Incidence"	Lung	1999	44.52	44.85	NA	-3.3842*	3	3
-1	"Incidence"	Lung	2000	44.12	43.33	NA	-3.3842*	3	3
-1	"Incidence"	Lung	2001	42.61	41.87	NA	-3.3842*	3	3
-1	"Incidence"	Lung	2002	40.53	40.45	Joinpoint 3	NA	3	3
-1	"Incidence"	Lung	2003	39.08	40.00	NA	-1.1087*	3	3
-1	"Incidence"	Lung	2004	39.74	39.56	NA	-1.1087*	3	3
-1	"Incidence"	Lung	2005	38.69	39.12	NA	-1.1087*	3	3
-1	"Incidence"	Lung	2006	39.45	38.69	NA	-1.1087*	3	3
-1	"Incidence"	Lung	2007	38.20	38.26	NA	-1.1087*	3	3
-1	"Incidence"	Lung	2008	37.95	37.83	NA	-1.1087*	3	3
-1	"Incidence"	Lung	2009	37.20	37.41	NA	-1.1087*	3	3
-1	"Incidence"	Lung	2010	37.08	37.00	NA	-1.1087*	3	3
-1	"Incidence"	Lung	2011	36.97	36.59	NA	-1.1087*	3	3
-1	"Incidence"	Lung	2012	37.12	36.18	NA	-1.1087*	3	3
-1	"Incidence"	Lung	2013	35.96	35.78	NA	-1.1087*	3	3
-1	"Incidence"	Lung	2014	35.38	35.38	NA	-1.1087*	3	3
-1	"Incidence"	Lung	2015	34.41	34.99	NA	-1.1087*	3	3
-1	"Incidence"	Lung	2016	34.76	34.60	NA	-1.1087*	3	3
-1	"Incidence"	Lung	2017	33.62	34.22	NA	-1.1087*	3	3
-1	"Mortality"	Lung	1950	38.65	38.88	NA	7.0618*	6	6
-1	"Mortality"	Lung	1951	42.03	41.62	NA	7.0618*	6	6
-1	"Mortality"	Lung	1952	44.61	44.56	NA	7.0618*	6	6
-1	"Mortality"	Lung	1953	47.34	47.71	NA	7.0618*	6	6
-1	"Mortality"	Lung	1954	50.85	51.08	Joinpoint 1	NA	6	6
-1	"Mortality"	Lung	1955	53.21	53.04	NA	3.8402*	6	6
-1	"Mortality"	Lung	1956	55.39	55.08	NA	3.8402*	6	6
-1	"Mortality"	Lung	1957	57.43	57.19	NA	3.8402*	6	6
-1	"Mortality"	Lung	1958	58.95	59.39	NA	3.8402*	6	6
-1	"Mortality"	Lung	1959	62.15	61.67	NA	3.8402*	6	6
-1	"Mortality"	Lung	1960	63.58	64.04	Joinpoint 2	NA	6	6
-1	"Mortality"	Lung	1961	64.72	65.15	NA	1.7361*	6	6
-1	"Mortality"	Lung	1962	66.56	66.28	NA	1.7361*	6	6
-1	"Mortality"	Lung	1963	67.49	67.43	NA	1.7361*	6	6
-1	"Mortality"	Lung	1964	68.72	68.60	NA	1.7361*	6	6
-1	"Mortality"	Lung	1965	70.17	69.79	NA	1.7361*	6	6
-1	"Mortality"	Lung	1966	70.86	71.00	NA	1.7361*	6	6
-1	"Mortality"	Lung	1967	72.64	72.24	NA	1.7361*	6	6
-1	"Mortality"	Lung	1968	72.97	73.49	NA	1.7361*	6	6
-1	"Mortality"	Lung	1969	74.51	74.77	Joinpoint 3	NA	6	6
-1	"Mortality"	Lung	1970	74.34	74.52	NA	-0.3307*	6	6
-1	"Mortality"	Lung	1971	73.40	74.27	NA	-0.3307*	6	6
-1	"Mortality"	Lung	1972	74.40	74.03	NA	-0.3307*	6	6
-1	"Mortality"	Lung	1973	74.24	73.78	NA	-0.3307*	6	6
-1	"Mortality"	Lung	1974	74.83	73.54	NA	-0.3307*	6	6
-1	"Mortality"	Lung	1975	72.72	73.29	NA	-0.3307*	6	6
-1	"Mortality"	Lung	1976	73.42	73.05	NA	-0.3307*	6	6
-1	"Mortality"	Lung	1977	72.85	72.81	NA	-0.3307*	6	6
-1	"Mortality"	Lung	1978	72.37	72.57	NA	-0.3307*	6	6
-1	"Mortality"	Lung	1979	72.02	72.33	Joinpoint 4	NA	6	6
-1	"Mortality"	Lung	1980	70.85	70.77	NA	-2.1586*	6	6
-1	"Mortality"	Lung	1981	67.55	69.24	NA	-2.1586*	6	6
-1	"Mortality"	Lung	1982	66.68	67.75	NA	-2.1586*	6	6
-1	"Mortality"	Lung	1983	67.38	66.28	NA	-2.1586*	6	6
-1	"Mortality"	Lung	1984	65.77	64.85	NA	-2.1586*	6	6
-1	"Mortality"	Lung	1985	64.87	63.45	NA	-2.1586*	6	6
-1	"Mortality"	Lung	1986	62.46	62.08	NA	-2.1586*	6	6
-1	"Mortality"	Lung	1987	60.35	60.74	NA	-2.1586*	6	6
-1	"Mortality"	Lung	1988	59.93	59.43	NA	-2.1586*	6	6
-1	"Mortality"	Lung	1989	57.11	58.15	NA	-2.1586*	6	6
-1	"Mortality"	Lung	1990	56.36	56.89	Joinpoint 5	NA	6	6
-1	"Mortality"	Lung	1991	54.99	54.59	NA	-4.0489*	6	6
-1	"Mortality"	Lung	1992	52.76	52.38	NA	-4.0489*	6	6
-1	"Mortality"	Lung	1993	49.89	50.26	NA	-4.0489*	6	6
-1	"Mortality"	Lung	1994	48.26	48.22	NA	-4.0489*	6	6
-1	"Mortality"	Lung	1995	46.27	46.27	NA	-4.0489*	6	6
-1	"Mortality"	Lung	1996	44.22	44.40	NA	-4.0489*	6	6
-1	"Mortality"	Lung	1997	41.90	42.60	NA	-4.0489*	6	6
-1	"Mortality"	Lung	1998	41.49	40.88	NA	-4.0489*	6	6
-1	"Mortality"	Lung	1999	39.27	39.22	NA	-4.0489*	6	6
-1	"Mortality"	Lung	2000	38.04	37.63	Joinpoint 6	NA	6	6
-1	"Mortality"	Lung	2001	36.84	36.75	NA	-2.3467*	6	6
-1	"Mortality"	Lung	2002	36.18	35.89	NA	-2.3467*	6	6
-1	"Mortality"	Lung	2003	34.52	35.05	NA	-2.3467*	6	6
-1	"Mortality"	Lung	2004	33.50	34.22	NA	-2.3467*	6	6
-1	"Mortality"	Lung	2005	32.93	33.42	NA	-2.3467*	6	6
-1	"Mortality"	Lung	2006	32.68	32.64	NA	-2.3467*	6	6
-1	"Mortality"	Lung	2007	31.93	31.87	NA	-2.3467*	6	6
-1	"Mortality"	Lung	2008	31.65	31.12	NA	-2.3467*	6	6
-1	"Mortality"	Lung	2009	30.74	30.39	NA	-2.3467*	6	6
-1	"Mortality"	Lung	2010	29.82	29.68	NA	-2.3467*	6	6
-1	"Mortality"	Lung	2011	29.18	28.98	NA	-2.3467*	6	6
-1	"Mortality"	Lung	2012	28.19	28.30	NA	-2.3467*	6	6
-1	"Mortality"	Lung	2013	27.74	27.64	NA	-2.3467*	6	6
-1	"Mortality"	Lung	2014	27.19	26.99	NA	-2.3467*	6	6
-1	"Mortality"	Lung	2015	25.97	26.36	NA	-2.3467*	6	6
-1	"Mortality"	Lung	2016	25.61	25.74	NA	-2.3467*	6	6
-1	"Incidence"	Oesophagus	1971	4.92	4.93	NA	3.3413*	5	5
-1	"Incidence"	Oesophagus	1972	5.15	5.10	NA	3.3413*	5	5
-1	"Incidence"	Oesophagus	1973	5.24	5.27	NA	3.3413*	5	5
-1	"Incidence"	Oesophagus	1974	5.43	5.45	NA	3.3413*	5	5
-1	"Incidence"	Oesophagus	1975	5.63	5.63	NA	3.3413*	5	5
-1	"Incidence"	Oesophagus	1976	5.85	5.82	Joinpoint 1	NA	5	5
-1	"Incidence"	Oesophagus	1977	5.58	5.74	NA	-1.3543	5	5
-1	"Incidence"	Oesophagus	1978	5.92	5.66	NA	-1.3543	5	5
-1	"Incidence"	Oesophagus	1979	5.33	5.58	Joinpoint 2	NA	5	5
-1	"Incidence"	Oesophagus	1980	5.84	5.75	NA	3.0526*	5	5
-1	"Incidence"	Oesophagus	1981	5.98	5.93	NA	3.0526*	5	5
-1	"Incidence"	Oesophagus	1982	6.18	6.11	NA	3.0526*	5	5
-1	"Incidence"	Oesophagus	1983	6.14	6.30	NA	3.0526*	5	5
-1	"Incidence"	Oesophagus	1984	6.45	6.49	NA	3.0526*	5	5
-1	"Incidence"	Oesophagus	1985	6.64	6.69	NA	3.0526*	5	5
-1	"Incidence"	Oesophagus	1986	6.89	6.89	NA	3.0526*	5	5
-1	"Incidence"	Oesophagus	1987	7.32	7.10	NA	3.0526*	5	5
-1	"Incidence"	Oesophagus	1988	7.61	7.32	NA	3.0526*	5	5
-1	"Incidence"	Oesophagus	1989	7.44	7.54	NA	3.0526*	5	5
-1	"Incidence"	Oesophagus	1990	7.78	7.77	NA	3.0526*	5	5
-1	"Incidence"	Oesophagus	1991	7.77	8.01	NA	3.0526*	5	5
-1	"Incidence"	Oesophagus	1992	8.29	8.25	NA	3.0526*	5	5
-1	"Incidence"	Oesophagus	1993	8.43	8.50	Joinpoint 3	NA	5	5
-1	"Incidence"	Oesophagus	1994	8.56	8.41	NA	-1.1010	5	5
-1	"Incidence"	Oesophagus	1995	8.13	8.32	NA	-1.1010	5	5
-1	"Incidence"	Oesophagus	1996	8.16	8.23	Joinpoint 4	NA	5	5
-1	"Incidence"	Oesophagus	1997	8.52	8.34	NA	1.3436*	5	5
-1	"Incidence"	Oesophagus	1998	8.30	8.45	NA	1.3436*	5	5
-1	"Incidence"	Oesophagus	1999	8.43	8.56	NA	1.3436*	5	5
-1	"Incidence"	Oesophagus	2000	8.75	8.68	NA	1.3436*	5	5
-1	"Incidence"	Oesophagus	2001	9.04	8.79	NA	1.3436*	5	5
-1	"Incidence"	Oesophagus	2002	9.10	8.91	NA	1.3436*	5	5
-1	"Incidence"	Oesophagus	2003	9.05	9.03	NA	1.3436*	5	5
-1	"Incidence"	Oesophagus	2004	9.08	9.15	NA	1.3436*	5	5
-1	"Incidence"	Oesophagus	2005	9.18	9.28	NA	1.3436*	5	5
-1	"Incidence"	Oesophagus	2006	9.22	9.40	NA	1.3436*	5	5
-1	"Incidence"	Oesophagus	2007	9.47	9.53	NA	1.3436*	5	5
-1	"Incidence"	Oesophagus	2008	9.76	9.66	Joinpoint 5	NA	5	5
-1	"Incidence"	Oesophagus	2009	9.55	9.64	NA	-0.1293	5	5
-1	"Incidence"	Oesophagus	2010	9.71	9.63	NA	-0.1293	5	5
-1	"Incidence"	Oesophagus	2011	9.54	9.62	NA	-0.1293	5	5
-1	"Incidence"	Oesophagus	2012	9.82	9.61	NA	-0.1293	5	5
-1	"Incidence"	Oesophagus	2013	9.55	9.59	NA	-0.1293	5	5
-1	"Incidence"	Oesophagus	2014	9.49	9.58	NA	-0.1293	5	5
-1	"Incidence"	Oesophagus	2015	9.70	9.57	NA	-0.1293	5	5
-1	"Incidence"	Oesophagus	2016	9.56	9.56	NA	-0.1293	5	5
-1	"Incidence"	Oesophagus	2017	9.44	9.54	NA	-0.1293	5	5
-1	"Mortality"	Oesophagus	1950	5.39	5.54	NA	-4.4541*	5	5
-1	"Mortality"	Oesophagus	1951	5.39	5.29	NA	-4.4541*	5	5
-1	"Mortality"	Oesophagus	1952	5.24	5.05	NA	-4.4541*	5	5
-1	"Mortality"	Oesophagus	1953	4.71	4.83	NA	-4.4541*	5	5
-1	"Mortality"	Oesophagus	1954	4.57	4.61	Joinpoint 1	NA	5	5
-1	"Mortality"	Oesophagus	1955	4.67	4.59	NA	-0.4978	5	5
-1	"Mortality"	Oesophagus	1956	4.73	4.57	NA	-0.4978	5	5
-1	"Mortality"	Oesophagus	1957	4.42	4.55	NA	-0.4978	5	5
-1	"Mortality"	Oesophagus	1958	4.37	4.52	NA	-0.4978	5	5
-1	"Mortality"	Oesophagus	1959	4.60	4.50	NA	-0.4978	5	5
-1	"Mortality"	Oesophagus	1960	4.28	4.48	NA	-0.4978	5	5
-1	"Mortality"	Oesophagus	1961	4.46	4.46	NA	-0.4978	5	5
-1	"Mortality"	Oesophagus	1962	4.58	4.43	NA	-0.4978	5	5
-1	"Mortality"	Oesophagus	1963	4.49	4.41	Joinpoint 2	NA	5	5
-1	"Mortality"	Oesophagus	1964	4.28	4.49	NA	1.7149*	5	5
-1	"Mortality"	Oesophagus	1965	4.50	4.56	NA	1.7149*	5	5
-1	"Mortality"	Oesophagus	1966	4.66	4.64	NA	1.7149*	5	5
-1	"Mortality"	Oesophagus	1967	4.73	4.72	NA	1.7149*	5	5
-1	"Mortality"	Oesophagus	1968	5.15	4.80	NA	1.7149*	5	5
-1	"Mortality"	Oesophagus	1969	4.73	4.89	NA	1.7149*	5	5
-1	"Mortality"	Oesophagus	1970	5.06	4.97	NA	1.7149*	5	5
-1	"Mortality"	Oesophagus	1971	5.04	5.05	NA	1.7149*	5	5
-1	"Mortality"	Oesophagus	1972	5.23	5.14	NA	1.7149*	5	5
-1	"Mortality"	Oesophagus	1973	5.15	5.23	NA	1.7149*	5	5
-1	"Mortality"	Oesophagus	1974	5.35	5.32	NA	1.7149*	5	5
-1	"Mortality"	Oesophagus	1975	5.34	5.41	NA	1.7149*	5	5
-1	"Mortality"	Oesophagus	1976	5.50	5.50	NA	1.7149*	5	5
-1	"Mortality"	Oesophagus	1977	5.56	5.60	NA	1.7149*	5	5
-1	"Mortality"	Oesophagus	1978	5.78	5.69	NA	1.7149*	5	5
-1	"Mortality"	Oesophagus	1979	5.63	5.79	NA	1.7149*	5	5
-1	"Mortality"	Oesophagus	1980	5.98	5.89	NA	1.7149*	5	5
-1	"Mortality"	Oesophagus	1981	5.92	5.99	Joinpoint 3	NA	5	5
-1	"Mortality"	Oesophagus	1982	6.09	6.16	NA	2.7410*	5	5
-1	"Mortality"	Oesophagus	1983	6.28	6.32	NA	2.7410*	5	5
-1	"Mortality"	Oesophagus	1984	6.33	6.50	NA	2.7410*	5	5
-1	"Mortality"	Oesophagus	1985	7.03	6.68	NA	2.7410*	5	5
-1	"Mortality"	Oesophagus	1986	6.71	6.86	NA	2.7410*	5	5
-1	"Mortality"	Oesophagus	1987	7.19	7.05	NA	2.7410*	5	5
-1	"Mortality"	Oesophagus	1988	7.44	7.24	NA	2.7410*	5	5
-1	"Mortality"	Oesophagus	1989	7.39	7.44	NA	2.7410*	5	5
-1	"Mortality"	Oesophagus	1990	7.80	7.64	NA	2.7410*	5	5
-1	"Mortality"	Oesophagus	1991	7.73	7.85	NA	2.7410*	5	5
-1	"Mortality"	Oesophagus	1992	7.98	8.07	NA	2.7410*	5	5
-1	"Mortality"	Oesophagus	1993	8.13	8.29	Joinpoint 4	NA	5	5
-1	"Mortality"	Oesophagus	1994	8.46	8.31	NA	0.2459	5	5
-1	"Mortality"	Oesophagus	1995	8.30	8.33	NA	0.2459	5	5
-1	"Mortality"	Oesophagus	1996	8.31	8.35	NA	0.2459	5	5
-1	"Mortality"	Oesophagus	1997	8.23	8.37	NA	0.2459	5	5
-1	"Mortality"	Oesophagus	1998	8.43	8.39	NA	0.2459	5	5
-1	"Mortality"	Oesophagus	1999	8.32	8.41	NA	0.2459	5	5
-1	"Mortality"	Oesophagus	2000	8.30	8.43	NA	0.2459	5	5
-1	"Mortality"	Oesophagus	2001	8.47	8.45	NA	0.2459	5	5
-1	"Mortality"	Oesophagus	2002	8.60	8.47	NA	0.2459	5	5
-1	"Mortality"	Oesophagus	2003	8.83	8.49	NA	0.2459	5	5
-1	"Mortality"	Oesophagus	2004	8.44	8.51	NA	0.2459	5	5
-1	"Mortality"	Oesophagus	2005	8.62	8.54	NA	0.2459	5	5
-1	"Mortality"	Oesophagus	2006	8.53	8.56	NA	0.2459	5	5
-1	"Mortality"	Oesophagus	2007	8.43	8.58	NA	0.2459	5	5
-1	"Mortality"	Oesophagus	2008	8.62	8.60	Joinpoint 5	NA	5	5
-1	"Mortality"	Oesophagus	2009	8.52	8.49	NA	-1.2386*	5	5
-1	"Mortality"	Oesophagus	2010	8.33	8.39	NA	-1.2386*	5	5
-1	"Mortality"	Oesophagus	2011	8.28	8.28	NA	-1.2386*	5	5
-1	"Mortality"	Oesophagus	2012	8.24	8.18	NA	-1.2386*	5	5
-1	"Mortality"	Oesophagus	2013	8.06	8.08	NA	-1.2386*	5	5
-1	"Mortality"	Oesophagus	2014	7.74	7.98	NA	-1.2386*	5	5
-1	"Mortality"	Oesophagus	2015	8.04	7.88	NA	-1.2386*	5	5
-1	"Mortality"	Oesophagus	2016	7.82	7.78	NA	-1.2386*	5	5
-1	"Incidence"	Pancreas	1971	7.69	7.50	NA	1.2307*	2	2
-1	"Incidence"	Pancreas	1972	7.43	7.59	NA	1.2307*	2	2
-1	"Incidence"	Pancreas	1973	7.59	7.68	NA	1.2307*	2	2
-1	"Incidence"	Pancreas	1974	7.96	7.78	NA	1.2307*	2	2
-1	"Incidence"	Pancreas	1975	7.92	7.87	NA	1.2307*	2	2
-1	"Incidence"	Pancreas	1976	7.78	7.97	NA	1.2307*	2	2
-1	"Incidence"	Pancreas	1977	7.82	8.07	NA	1.2307*	2	2
-1	"Incidence"	Pancreas	1978	8.19	8.17	NA	1.2307*	2	2
-1	"Incidence"	Pancreas	1979	8.53	8.27	Joinpoint 1	NA	2	2
-1	"Incidence"	Pancreas	1980	8.03	8.17	NA	-1.1976*	2	2
-1	"Incidence"	Pancreas	1981	8.07	8.07	NA	-1.1976*	2	2
-1	"Incidence"	Pancreas	1982	7.86	7.97	NA	-1.1976*	2	2
-1	"Incidence"	Pancreas	1983	7.93	7.88	NA	-1.1976*	2	2
-1	"Incidence"	Pancreas	1984	7.79	7.78	NA	-1.1976*	2	2
-1	"Incidence"	Pancreas	1985	7.83	7.69	NA	-1.1976*	2	2
-1	"Incidence"	Pancreas	1986	7.58	7.60	NA	-1.1976*	2	2
-1	"Incidence"	Pancreas	1987	7.49	7.51	NA	-1.1976*	2	2
-1	"Incidence"	Pancreas	1988	7.51	7.42	NA	-1.1976*	2	2
-1	"Incidence"	Pancreas	1989	7.17	7.33	NA	-1.1976*	2	2
-1	"Incidence"	Pancreas	1990	7.35	7.24	NA	-1.1976*	2	2
-1	"Incidence"	Pancreas	1991	7.37	7.15	NA	-1.1976*	2	2
-1	"Incidence"	Pancreas	1992	7.18	7.07	NA	-1.1976*	2	2
-1	"Incidence"	Pancreas	1993	7.04	6.98	NA	-1.1976*	2	2
-1	"Incidence"	Pancreas	1994	6.67	6.90	NA	-1.1976*	2	2
-1	"Incidence"	Pancreas	1995	6.65	6.82	NA	-1.1976*	2	2
-1	"Incidence"	Pancreas	1996	6.64	6.74	NA	-1.1976*	2	2
-1	"Incidence"	Pancreas	1997	6.83	6.65	NA	-1.1976*	2	2
-1	"Incidence"	Pancreas	1998	6.60	6.58	Joinpoint 2	NA	2	2
-1	"Incidence"	Pancreas	1999	6.77	6.63	NA	0.8097*	2	2
-1	"Incidence"	Pancreas	2000	6.88	6.68	NA	0.8097*	2	2
-1	"Incidence"	Pancreas	2001	6.69	6.74	NA	0.8097*	2	2
-1	"Incidence"	Pancreas	2002	6.67	6.79	NA	0.8097*	2	2
-1	"Incidence"	Pancreas	2003	6.67	6.85	NA	0.8097*	2	2
-1	"Incidence"	Pancreas	2004	6.82	6.90	NA	0.8097*	2	2
-1	"Incidence"	Pancreas	2005	6.86	6.96	NA	0.8097*	2	2
-1	"Incidence"	Pancreas	2006	7.05	7.01	NA	0.8097*	2	2
-1	"Incidence"	Pancreas	2007	6.87	7.07	NA	0.8097*	2	2
-1	"Incidence"	Pancreas	2008	7.22	7.13	NA	0.8097*	2	2
-1	"Incidence"	Pancreas	2009	7.28	7.18	NA	0.8097*	2	2
-1	"Incidence"	Pancreas	2010	7.22	7.24	NA	0.8097*	2	2
-1	"Incidence"	Pancreas	2011	7.18	7.30	NA	0.8097*	2	2
-1	"Incidence"	Pancreas	2012	7.40	7.36	NA	0.8097*	2	2
-1	"Incidence"	Pancreas	2013	7.61	7.42	NA	0.8097*	2	2
-1	"Incidence"	Pancreas	2014	7.44	7.48	NA	0.8097*	2	2
-1	"Incidence"	Pancreas	2015	7.47	7.54	NA	0.8097*	2	2
-1	"Incidence"	Pancreas	2016	7.60	7.60	NA	0.8097*	2	2
-1	"Incidence"	Pancreas	2017	7.78	7.66	NA	0.8097*	2	2
-1	"Mortality"	Pancreas	1955	6.46	6.37	NA	1.6460*	3	3
-1	"Mortality"	Pancreas	1956	6.40	6.48	NA	1.6460*	3	3
-1	"Mortality"	Pancreas	1957	6.51	6.59	NA	1.6460*	3	3
-1	"Mortality"	Pancreas	1958	6.75	6.69	NA	1.6460*	3	3
-1	"Mortality"	Pancreas	1959	7.05	6.80	NA	1.6460*	3	3
-1	"Mortality"	Pancreas	1960	6.92	6.92	NA	1.6460*	3	3
-1	"Mortality"	Pancreas	1961	6.90	7.03	NA	1.6460*	3	3
-1	"Mortality"	Pancreas	1962	6.85	7.15	NA	1.6460*	3	3
-1	"Mortality"	Pancreas	1963	7.25	7.26	NA	1.6460*	3	3
-1	"Mortality"	Pancreas	1964	7.58	7.38	NA	1.6460*	3	3
-1	"Mortality"	Pancreas	1965	7.50	7.50	NA	1.6460*	3	3
-1	"Mortality"	Pancreas	1966	7.71	7.63	NA	1.6460*	3	3
-1	"Mortality"	Pancreas	1967	7.59	7.75	NA	1.6460*	3	3
-1	"Mortality"	Pancreas	1968	8.01	7.88	NA	1.6460*	3	3
-1	"Mortality"	Pancreas	1969	8.14	8.01	Joinpoint 1	NA	3	3
-1	"Mortality"	Pancreas	1970	8.04	8.04	NA	0.3737	3	3
-1	"Mortality"	Pancreas	1971	8.13	8.07	NA	0.3737	3	3
-1	"Mortality"	Pancreas	1972	8.10	8.10	NA	0.3737	3	3
-1	"Mortality"	Pancreas	1973	8.00	8.13	NA	0.3737	3	3
-1	"Mortality"	Pancreas	1974	8.01	8.16	NA	0.3737	3	3
-1	"Mortality"	Pancreas	1975	8.37	8.19	NA	0.3737	3	3
-1	"Mortality"	Pancreas	1976	7.99	8.22	NA	0.3737	3	3
-1	"Mortality"	Pancreas	1977	8.10	8.25	NA	0.3737	3	3
-1	"Mortality"	Pancreas	1978	8.33	8.28	NA	0.3737	3	3
-1	"Mortality"	Pancreas	1979	8.51	8.31	Joinpoint 2	NA	3	3
-1	"Mortality"	Pancreas	1980	8.48	8.19	NA	-1.4767*	3	3
-1	"Mortality"	Pancreas	1981	7.89	8.07	NA	-1.4767*	3	3
-1	"Mortality"	Pancreas	1982	7.58	7.95	NA	-1.4767*	3	3
-1	"Mortality"	Pancreas	1983	7.77	7.83	NA	-1.4767*	3	3
-1	"Mortality"	Pancreas	1984	7.83	7.72	NA	-1.4767*	3	3
-1	"Mortality"	Pancreas	1985	7.74	7.60	NA	-1.4767*	3	3
-1	"Mortality"	Pancreas	1986	7.47	7.49	NA	-1.4767*	3	3
-1	"Mortality"	Pancreas	1987	7.51	7.38	NA	-1.4767*	3	3
-1	"Mortality"	Pancreas	1988	7.19	7.27	NA	-1.4767*	3	3
-1	"Mortality"	Pancreas	1989	7.22	7.17	NA	-1.4767*	3	3
-1	"Mortality"	Pancreas	1990	7.25	7.06	NA	-1.4767*	3	3
-1	"Mortality"	Pancreas	1991	7.02	6.96	NA	-1.4767*	3	3
-1	"Mortality"	Pancreas	1992	6.99	6.85	NA	-1.4767*	3	3
-1	"Mortality"	Pancreas	1993	6.77	6.75	NA	-1.4767*	3	3
-1	"Mortality"	Pancreas	1994	6.46	6.65	NA	-1.4767*	3	3
-1	"Mortality"	Pancreas	1995	6.44	6.55	NA	-1.4767*	3	3
-1	"Mortality"	Pancreas	1996	6.52	6.46	NA	-1.4767*	3	3
-1	"Mortality"	Pancreas	1997	6.35	6.36	NA	-1.4767*	3	3
-1	"Mortality"	Pancreas	1998	6.26	6.27	Joinpoint 3	NA	3	3
-1	"Mortality"	Pancreas	1999	6.27	6.29	NA	0.3276*	3	3
-1	"Mortality"	Pancreas	2000	6.54	6.31	NA	0.3276*	3	3
-1	"Mortality"	Pancreas	2001	6.20	6.33	NA	0.3276*	3	3
-1	"Mortality"	Pancreas	2002	6.29	6.35	NA	0.3276*	3	3
-1	"Mortality"	Pancreas	2003	6.47	6.37	NA	0.3276*	3	3
-1	"Mortality"	Pancreas	2004	6.19	6.39	NA	0.3276*	3	3
-1	"Mortality"	Pancreas	2005	6.26	6.41	NA	0.3276*	3	3
-1	"Mortality"	Pancreas	2006	6.54	6.43	NA	0.3276*	3	3
-1	"Mortality"	Pancreas	2007	6.54	6.45	NA	0.3276*	3	3
-1	"Mortality"	Pancreas	2008	6.46	6.48	NA	0.3276*	3	3
-1	"Mortality"	Pancreas	2009	6.52	6.50	NA	0.3276*	3	3
-1	"Mortality"	Pancreas	2010	6.34	6.52	NA	0.3276*	3	3
-1	"Mortality"	Pancreas	2011	6.73	6.54	NA	0.3276*	3	3
-1	"Mortality"	Pancreas	2012	6.62	6.56	NA	0.3276*	3	3
-1	"Mortality"	Pancreas	2013	6.49	6.58	NA	0.3276*	3	3
-1	"Mortality"	Pancreas	2014	6.59	6.60	NA	0.3276*	3	3
-1	"Mortality"	Pancreas	2015	6.48	6.63	NA	0.3276*	3	3
-1	"Mortality"	Pancreas	2016	6.84	6.65	NA	0.3276*	3	3
-1	"Incidence"	Prostate	1971	17.35	17.36	NA	2.7081*	5	5
-1	"Incidence"	Prostate	1972	17.62	17.83	NA	2.7081*	5	5
-1	"Incidence"	Prostate	1973	18.65	18.31	NA	2.7081*	5	5
-1	"Incidence"	Prostate	1974	19.48	18.81	NA	2.7081*	5	5
-1	"Incidence"	Prostate	1975	19.43	19.32	NA	2.7081*	5	5
-1	"Incidence"	Prostate	1976	19.77	19.84	NA	2.7081*	5	5
-1	"Incidence"	Prostate	1977	20.46	20.38	NA	2.7081*	5	5
-1	"Incidence"	Prostate	1978	19.85	20.93	NA	2.7081*	5	5
-1	"Incidence"	Prostate	1979	21.32	21.50	NA	2.7081*	5	5
-1	"Incidence"	Prostate	1980	22.27	22.08	NA	2.7081*	5	5
-1	"Incidence"	Prostate	1981	22.66	22.68	NA	2.7081*	5	5
-1	"Incidence"	Prostate	1982	23.31	23.29	NA	2.7081*	5	5
-1	"Incidence"	Prostate	1983	23.93	23.92	NA	2.7081*	5	5
-1	"Incidence"	Prostate	1984	24.04	24.57	NA	2.7081*	5	5
-1	"Incidence"	Prostate	1985	25.67	25.24	NA	2.7081*	5	5
-1	"Incidence"	Prostate	1986	25.95	25.92	NA	2.7081*	5	5
-1	"Incidence"	Prostate	1987	26.33	26.62	NA	2.7081*	5	5
-1	"Incidence"	Prostate	1988	27.83	27.34	NA	2.7081*	5	5
-1	"Incidence"	Prostate	1989	27.57	28.09	NA	2.7081*	5	5
-1	"Incidence"	Prostate	1990	28.64	28.85	NA	2.7081*	5	5
-1	"Incidence"	Prostate	1991	30.19	29.63	Joinpoint 1	NA	5	5
-1	"Incidence"	Prostate	1992	32.80	32.63	NA	10.1266*	5	5
-1	"Incidence"	Prostate	1993	35.98	35.93	NA	10.1266*	5	5
-1	"Incidence"	Prostate	1994	40.43	39.57	NA	10.1266*	5	5
-1	"Incidence"	Prostate	1995	42.81	43.58	Joinpoint 2	NA	5	5
-1	"Incidence"	Prostate	1996	43.78	43.69	NA	0.2534	5	5
-1	"Incidence"	Prostate	1997	43.60	43.80	NA	0.2534	5	5
-1	"Incidence"	Prostate	1998	44.42	43.91	Joinpoint 3	NA	5	5
-1	"Incidence"	Prostate	1999	48.64	49.00	NA	11.5939*	5	5
-1	"Incidence"	Prostate	2000	53.98	54.68	NA	11.5939*	5	5
-1	"Incidence"	Prostate	2001	61.58	61.02	Joinpoint 4	NA	5	5
-1	"Incidence"	Prostate	2002	61.61	62.14	NA	1.8285*	5	5
-1	"Incidence"	Prostate	2003	61.95	63.27	NA	1.8285*	5	5
-1	"Incidence"	Prostate	2004	67.32	64.43	NA	1.8285*	5	5
-1	"Incidence"	Prostate	2005	65.11	65.61	NA	1.8285*	5	5
-1	"Incidence"	Prostate	2006	67.62	66.81	NA	1.8285*	5	5
-1	"Incidence"	Prostate	2007	67.31	68.03	NA	1.8285*	5	5
-1	"Incidence"	Prostate	2008	66.55	69.27	NA	1.8285*	5	5
-1	"Incidence"	Prostate	2009	73.82	70.54	NA	1.8285*	5	5
-1	"Incidence"	Prostate	2010	72.65	71.83	NA	1.8285*	5	5
-1	"Incidence"	Prostate	2011	72.46	73.14	NA	1.8285*	5	5
-1	"Incidence"	Prostate	2012	72.88	74.48	NA	1.8285*	5	5
-1	"Incidence"	Prostate	2013	77.45	75.84	Joinpoint 5	NA	5	5
-1	"Incidence"	Prostate	2014	73.88	74.91	NA	-1.2338	5	5
-1	"Incidence"	Prostate	2015	73.91	73.98	NA	-1.2338	5	5
-1	"Incidence"	Prostate	2016	72.57	73.07	NA	-1.2338	5	5
-1	"Incidence"	Prostate	2017	72.83	72.17	NA	-1.2338	5	5
-1	"Mortality"	Prostate	1950	10.92	10.84	NA	0.8951*	5	5
-1	"Mortality"	Prostate	1951	10.86	10.93	NA	0.8951*	5	5
-1	"Mortality"	Prostate	1952	10.57	11.03	NA	0.8951*	5	5
-1	"Mortality"	Prostate	1953	10.97	11.13	NA	0.8951*	5	5
-1	"Mortality"	Prostate	1954	11.45	11.23	NA	0.8951*	5	5
-1	"Mortality"	Prostate	1955	11.31	11.33	NA	0.8951*	5	5
-1	"Mortality"	Prostate	1956	11.97	11.43	NA	0.8951*	5	5
-1	"Mortality"	Prostate	1957	11.49	11.53	NA	0.8951*	5	5
-1	"Mortality"	Prostate	1958	11.88	11.64	NA	0.8951*	5	5
-1	"Mortality"	Prostate	1959	11.80	11.74	NA	0.8951*	5	5
-1	"Mortality"	Prostate	1960	11.93	11.85	NA	0.8951*	5	5
-1	"Mortality"	Prostate	1961	11.76	11.95	NA	0.8951*	5	5
-1	"Mortality"	Prostate	1962	12.20	12.06	NA	0.8951*	5	5
-1	"Mortality"	Prostate	1963	12.19	12.17	NA	0.8951*	5	5
-1	"Mortality"	Prostate	1964	11.83	12.28	NA	0.8951*	5	5
-1	"Mortality"	Prostate	1965	12.57	12.39	Joinpoint 1	NA	5	5
-1	"Mortality"	Prostate	1966	12.20	12.27	NA	-0.9432	5	5
-1	"Mortality"	Prostate	1967	12.03	12.15	NA	-0.9432	5	5
-1	"Mortality"	Prostate	1968	12.03	12.04	NA	-0.9432	5	5
-1	"Mortality"	Prostate	1969	12.08	11.93	NA	-0.9432	5	5
-1	"Mortality"	Prostate	1970	11.71	11.81	NA	-0.9432	5	5
-1	"Mortality"	Prostate	1971	11.60	11.70	Joinpoint 2	NA	5	5
-1	"Mortality"	Prostate	1972	11.86	11.78	NA	0.6984*	5	5
-1	"Mortality"	Prostate	1973	11.92	11.87	NA	0.6984*	5	5
-1	"Mortality"	Prostate	1974	11.93	11.95	NA	0.6984*	5	5
-1	"Mortality"	Prostate	1975	11.96	12.03	NA	0.6984*	5	5
-1	"Mortality"	Prostate	1976	12.34	12.12	NA	0.6984*	5	5
-1	"Mortality"	Prostate	1977	12.15	12.20	NA	0.6984*	5	5
-1	"Mortality"	Prostate	1978	12.23	12.29	NA	0.6984*	5	5
-1	"Mortality"	Prostate	1979	12.37	12.37	NA	0.6984*	5	5
-1	"Mortality"	Prostate	1980	12.67	12.46	NA	0.6984*	5	5
-1	"Mortality"	Prostate	1981	12.47	12.55	NA	0.6984*	5	5
-1	"Mortality"	Prostate	1982	12.58	12.63	Joinpoint 3	NA	5	5
-1	"Mortality"	Prostate	1983	13.14	13.41	NA	6.1114*	5	5
-1	"Mortality"	Prostate	1984	14.56	14.22	NA	6.1114*	5	5
-1	"Mortality"	Prostate	1985	15.10	15.09	Joinpoint 4	NA	5	5
-1	"Mortality"	Prostate	1986	15.45	15.41	NA	2.1176*	5	5
-1	"Mortality"	Prostate	1987	15.49	15.74	NA	2.1176*	5	5
-1	"Mortality"	Prostate	1988	15.94	16.07	NA	2.1176*	5	5
-1	"Mortality"	Prostate	1989	16.54	16.41	NA	2.1176*	5	5
-1	"Mortality"	Prostate	1990	16.66	16.76	NA	2.1176*	5	5
-1	"Mortality"	Prostate	1991	17.52	17.12	NA	2.1176*	5	5
-1	"Mortality"	Prostate	1992	17.57	17.48	Joinpoint 5	NA	5	5
-1	"Mortality"	Prostate	1993	17.08	17.24	NA	-1.3705*	5	5
-1	"Mortality"	Prostate	1994	17.02	17.00	NA	-1.3705*	5	5
-1	"Mortality"	Prostate	1995	17.10	16.77	NA	-1.3705*	5	5
-1	"Mortality"	Prostate	1996	16.58	16.54	NA	-1.3705*	5	5
-1	"Mortality"	Prostate	1997	16.00	16.31	NA	-1.3705*	5	5
-1	"Mortality"	Prostate	1998	15.84	16.09	NA	-1.3705*	5	5
-1	"Mortality"	Prostate	1999	15.58	15.87	NA	-1.3705*	5	5
-1	"Mortality"	Prostate	2000	14.83	15.65	NA	-1.3705*	5	5
-1	"Mortality"	Prostate	2001	15.77	15.44	NA	-1.3705*	5	5
-1	"Mortality"	Prostate	2002	15.67	15.23	NA	-1.3705*	5	5
-1	"Mortality"	Prostate	2003	15.62	15.02	NA	-1.3705*	5	5
-1	"Mortality"	Prostate	2004	15.23	14.81	NA	-1.3705*	5	5
-1	"Mortality"	Prostate	2005	14.65	14.61	NA	-1.3705*	5	5
-1	"Mortality"	Prostate	2006	14.31	14.41	NA	-1.3705*	5	5
-1	"Mortality"	Prostate	2007	14.15	14.21	NA	-1.3705*	5	5
-1	"Mortality"	Prostate	2008	13.75	14.02	NA	-1.3705*	5	5
-1	"Mortality"	Prostate	2009	13.69	13.82	NA	-1.3705*	5	5
-1	"Mortality"	Prostate	2010	13.56	13.63	NA	-1.3705*	5	5
-1	"Mortality"	Prostate	2011	13.40	13.45	NA	-1.3705*	5	5
-1	"Mortality"	Prostate	2012	13.03	13.26	NA	-1.3705*	5	5
-1	"Mortality"	Prostate	2013	12.74	13.08	NA	-1.3705*	5	5
-1	"Mortality"	Prostate	2014	12.99	12.90	NA	-1.3705*	5	5
-1	"Mortality"	Prostate	2015	13.17	12.73	NA	-1.3705*	5	5
-1	"Mortality"	Prostate	2016	12.64	12.55	NA	-1.3705*	5	5
-2	"Incidence"	All sites excl. non-melanoma skin cancer	1971	174.79	175.52	NA	1.3560*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	1972	178.24	177.90	NA	1.3560*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	1973	181.31	180.32	NA	1.3560*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	1974	189.14	182.76	NA	1.3560*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	1975	186.34	185.24	NA	1.3560*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	1976	185.70	187.75	NA	1.3560*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	1977	189.09	190.30	NA	1.3560*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	1978	190.03	192.88	NA	1.3560*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	1979	191.69	195.49	NA	1.3560*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	1980	198.33	198.14	NA	1.3560*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	1981	201.77	200.83	NA	1.3560*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	1982	203.15	203.55	NA	1.3560*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	1983	204.37	206.31	NA	1.3560*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	1984	203.93	209.11	NA	1.3560*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	1985	217.34	211.95	NA	1.3560*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	1986	213.55	214.82	NA	1.3560*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	1987	218.17	217.73	NA	1.3560*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	1988	222.56	220.69	NA	1.3560*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	1989	224.72	223.68	NA	1.3560*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	1990	227.11	226.71	NA	1.3560*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	1991	230.75	229.78	Joinpoint 1	NA	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	1992	235.64	230.58	NA	0.3468*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	1993	230.16	231.38	NA	0.3468*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	1994	231.07	232.18	NA	0.3468*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	1995	227.89	232.99	NA	0.3468*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	1996	229.11	233.80	NA	0.3468*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	1997	236.71	234.61	NA	0.3468*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	1998	235.96	235.42	NA	0.3468*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	1999	240.72	236.24	NA	0.3468*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	2000	239.10	237.06	NA	0.3468*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	2001	240.04	237.88	NA	0.3468*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	2002	235.44	238.71	Joinpoint 2	NA	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	2003	241.36	241.21	NA	1.0477*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	2004	241.84	243.73	NA	1.0477*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	2005	246.16	246.29	NA	1.0477*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	2006	248.96	248.87	NA	1.0477*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	2007	249.29	251.47	NA	1.0477*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	2008	253.78	254.11	NA	1.0477*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	2009	258.97	256.77	NA	1.0477*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	2010	259.73	259.46	NA	1.0477*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	2011	261.93	262.18	NA	1.0477*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	2012	264.08	264.93	NA	1.0477*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	2013	267.60	267.70	NA	1.0477*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	2014	276.97	270.51	NA	1.0477*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	2015	275.41	273.34	NA	1.0477*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	2016	275.56	276.20	NA	1.0477*	2	2
-2	"Incidence"	All sites excl. non-melanoma skin cancer	2017	273.46	279.10	NA	1.0477*	2	2
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1950	120.38	118.92	NA	-0.4519*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1951	117.76	118.38	NA	-0.4519*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1952	118.13	117.85	NA	-0.4519*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1953	116.12	117.32	NA	-0.4519*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1954	116.48	116.79	NA	-0.4519*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1955	116.00	116.26	NA	-0.4519*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1956	115.99	115.73	NA	-0.4519*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1957	114.09	115.21	NA	-0.4519*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1958	116.08	114.69	NA	-0.4519*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1959	115.20	114.17	Joinpoint 1	NA	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1960	115.15	114.60	NA	0.3748*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1961	115.02	115.03	NA	0.3748*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1962	115.16	115.46	NA	0.3748*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1963	114.66	115.89	NA	0.3748*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1964	116.35	116.33	NA	0.3748*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1965	115.93	116.76	NA	0.3748*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1966	115.85	117.20	NA	0.3748*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1967	116.83	117.64	NA	0.3748*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1968	118.31	118.08	NA	0.3748*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1969	119.88	118.52	NA	0.3748*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1970	119.59	118.97	NA	0.3748*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1971	119.81	119.41	NA	0.3748*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1972	119.90	119.86	NA	0.3748*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1973	120.44	120.31	NA	0.3748*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1974	121.02	120.76	NA	0.3748*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1975	121.25	121.21	NA	0.3748*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1976	123.19	121.67	NA	0.3748*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1977	122.11	122.12	NA	0.3748*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1978	122.83	122.58	NA	0.3748*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1979	123.53	123.04	NA	0.3748*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1980	123.77	123.50	NA	0.3748*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1981	122.02	123.97	NA	0.3748*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1982	122.79	124.43	NA	0.3748*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1983	123.08	124.90	NA	0.3748*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1984	127.49	125.37	NA	0.3748*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1985	127.49	125.84	NA	0.3748*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1986	126.48	126.31	NA	0.3748*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1987	126.86	126.78	NA	0.3748*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1988	127.43	127.26	NA	0.3748*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1989	127.20	127.73	Joinpoint 2	NA	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1990	124.76	125.66	NA	-1.6194*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1991	123.34	123.63	NA	-1.6194*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1992	122.30	121.63	NA	-1.6194*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1993	119.39	119.66	NA	-1.6194*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1994	117.75	117.72	NA	-1.6194*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1995	116.08	115.81	NA	-1.6194*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1996	113.89	113.94	NA	-1.6194*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1997	111.97	112.09	NA	-1.6194*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1998	110.57	110.28	Joinpoint 3	NA	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	1999	108.75	109.02	NA	-1.1377*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	2000	106.84	107.78	NA	-1.1377*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	2001	107.41	106.56	NA	-1.1377*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	2002	106.22	105.34	NA	-1.1377*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	2003	104.07	104.15	NA	-1.1377*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	2004	102.42	102.96	NA	-1.1377*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	2005	101.64	101.79	NA	-1.1377*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	2006	100.25	100.63	NA	-1.1377*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	2007	100.20	99.49	NA	-1.1377*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	2008	98.98	98.35	NA	-1.1377*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	2009	96.30	97.24	NA	-1.1377*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	2010	95.41	96.13	NA	-1.1377*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	2011	95.11	95.04	NA	-1.1377*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	2012	94.91	93.95	NA	-1.1377*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	2013	92.69	92.88	NA	-1.1377*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	2014	91.47	91.83	NA	-1.1377*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	2015	90.26	90.78	NA	-1.1377*	3	3
-2	"Mortality"	All sites excl. non-melanoma skin cancer	2016	90.49	89.75	NA	-1.1377*	3	3
-2	"Incidence"	Breast	1971	48.84	51.21	NA	1.0045*	2	2
-2	"Incidence"	Breast	1972	52.10	51.72	NA	1.0045*	2	2
-2	"Incidence"	Breast	1973	52.98	52.24	NA	1.0045*	2	2
-2	"Incidence"	Breast	1974	56.12	52.77	NA	1.0045*	2	2
-2	"Incidence"	Breast	1975	53.47	53.30	NA	1.0045*	2	2
-2	"Incidence"	Breast	1976	52.02	53.83	NA	1.0045*	2	2
-2	"Incidence"	Breast	1977	53.87	54.37	NA	1.0045*	2	2
-2	"Incidence"	Breast	1978	55.38	54.92	NA	1.0045*	2	2
-2	"Incidence"	Breast	1979	54.37	55.47	NA	1.0045*	2	2
-2	"Incidence"	Breast	1980	57.09	56.03	NA	1.0045*	2	2
-2	"Incidence"	Breast	1981	56.81	56.59	NA	1.0045*	2	2
-2	"Incidence"	Breast	1982	58.20	57.16	NA	1.0045*	2	2
-2	"Incidence"	Breast	1983	57.47	57.73	NA	1.0045*	2	2
-2	"Incidence"	Breast	1984	57.24	58.31	Joinpoint 1	NA	2	2
-2	"Incidence"	Breast	1985	62.41	60.50	NA	3.7574*	2	2
-2	"Incidence"	Breast	1986	62.57	62.78	NA	3.7574*	2	2
-2	"Incidence"	Breast	1987	64.54	65.14	NA	3.7574*	2	2
-2	"Incidence"	Breast	1988	64.89	67.58	NA	3.7574*	2	2
-2	"Incidence"	Breast	1989	69.64	70.12	NA	3.7574*	2	2
-2	"Incidence"	Breast	1990	72.40	72.76	NA	3.7574*	2	2
-2	"Incidence"	Breast	1991	77.03	75.49	Joinpoint 2	NA	2	2
-2	"Incidence"	Breast	1992	77.81	76.15	NA	0.8732*	2	2
-2	"Incidence"	Breast	1993	74.73	76.82	NA	0.8732*	2	2
-2	"Incidence"	Breast	1994	75.74	77.49	NA	0.8732*	2	2
-2	"Incidence"	Breast	1995	76.24	78.16	NA	0.8732*	2	2
-2	"Incidence"	Breast	1996	77.17	78.85	NA	0.8732*	2	2
-2	"Incidence"	Breast	1997	81.18	79.53	NA	0.8732*	2	2
-2	"Incidence"	Breast	1998	81.75	80.23	NA	0.8732*	2	2
-2	"Incidence"	Breast	1999	84.01	80.93	NA	0.8732*	2	2
-2	"Incidence"	Breast	2000	82.79	81.64	NA	0.8732*	2	2
-2	"Incidence"	Breast	2001	82.99	82.35	NA	0.8732*	2	2
-2	"Incidence"	Breast	2002	82.65	83.07	NA	0.8732*	2	2
-2	"Incidence"	Breast	2003	86.39	83.79	NA	0.8732*	2	2
-2	"Incidence"	Breast	2004	86.36	84.52	NA	0.8732*	2	2
-2	"Incidence"	Breast	2005	87.13	85.26	NA	0.8732*	2	2
-2	"Incidence"	Breast	2006	85.89	86.01	NA	0.8732*	2	2
-2	"Incidence"	Breast	2007	84.93	86.76	NA	0.8732*	2	2
-2	"Incidence"	Breast	2008	86.96	87.52	NA	0.8732*	2	2
-2	"Incidence"	Breast	2009	86.91	88.28	NA	0.8732*	2	2
-2	"Incidence"	Breast	2010	88.05	89.05	NA	0.8732*	2	2
-2	"Incidence"	Breast	2011	87.28	89.83	NA	0.8732*	2	2
-2	"Incidence"	Breast	2012	87.72	90.61	NA	0.8732*	2	2
-2	"Incidence"	Breast	2013	90.24	91.40	NA	0.8732*	2	2
-2	"Incidence"	Breast	2014	95.97	92.20	NA	0.8732*	2	2
-2	"Incidence"	Breast	2015	94.73	93.01	NA	0.8732*	2	2
-2	"Incidence"	Breast	2016	94.36	93.82	NA	0.8732*	2	2
-2	"Incidence"	Breast	2017	93.42	94.64	NA	0.8732*	2	2
-2	"Mortality"	Breast	1950	23.63	23.61	NA	-0.0156	4	4
-2	"Mortality"	Breast	1951	23.50	23.61	NA	-0.0156	4	4
-2	"Mortality"	Breast	1952	23.88	23.60	NA	-0.0156	4	4
-2	"Mortality"	Breast	1953	23.33	23.60	NA	-0.0156	4	4
-2	"Mortality"	Breast	1954	23.61	23.60	NA	-0.0156	4	4
-2	"Mortality"	Breast	1955	23.68	23.59	NA	-0.0156	4	4
-2	"Mortality"	Breast	1956	23.59	23.59	NA	-0.0156	4	4
-2	"Mortality"	Breast	1957	23.33	23.58	NA	-0.0156	4	4
-2	"Mortality"	Breast	1958	24.12	23.58	NA	-0.0156	4	4
-2	"Mortality"	Breast	1959	23.26	23.58	NA	-0.0156	4	4
-2	"Mortality"	Breast	1960	23.79	23.57	Joinpoint 1	NA	4	4
-2	"Mortality"	Breast	1961	24.06	23.84	NA	1.1246*	4	4
-2	"Mortality"	Breast	1962	24.21	24.11	NA	1.1246*	4	4
-2	"Mortality"	Breast	1963	24.31	24.38	NA	1.1246*	4	4
-2	"Mortality"	Breast	1964	25.21	24.65	NA	1.1246*	4	4
-2	"Mortality"	Breast	1965	24.43	24.93	NA	1.1246*	4	4
-2	"Mortality"	Breast	1966	24.60	25.21	NA	1.1246*	4	4
-2	"Mortality"	Breast	1967	25.35	25.49	NA	1.1246*	4	4
-2	"Mortality"	Breast	1968	25.21	25.78	NA	1.1246*	4	4
-2	"Mortality"	Breast	1969	26.16	26.07	NA	1.1246*	4	4
-2	"Mortality"	Breast	1970	26.44	26.36	NA	1.1246*	4	4
-2	"Mortality"	Breast	1971	27.04	26.66	NA	1.1246*	4	4
-2	"Mortality"	Breast	1972	26.96	26.96	NA	1.1246*	4	4
-2	"Mortality"	Breast	1973	27.60	27.26	Joinpoint 2	NA	4	4
-2	"Mortality"	Breast	1974	26.95	27.40	NA	0.5145*	4	4
-2	"Mortality"	Breast	1975	27.84	27.54	NA	0.5145*	4	4
-2	"Mortality"	Breast	1976	27.82	27.69	NA	0.5145*	4	4
-2	"Mortality"	Breast	1977	27.79	27.83	NA	0.5145*	4	4
-2	"Mortality"	Breast	1978	27.96	27.97	NA	0.5145*	4	4
-2	"Mortality"	Breast	1979	28.05	28.12	NA	0.5145*	4	4
-2	"Mortality"	Breast	1980	28.24	28.26	NA	0.5145*	4	4
-2	"Mortality"	Breast	1981	28.44	28.41	NA	0.5145*	4	4
-2	"Mortality"	Breast	1982	28.38	28.55	NA	0.5145*	4	4
-2	"Mortality"	Breast	1983	28.49	28.70	NA	0.5145*	4	4
-2	"Mortality"	Breast	1984	29.33	28.85	NA	0.5145*	4	4
-2	"Mortality"	Breast	1985	29.29	28.99	NA	0.5145*	4	4
-2	"Mortality"	Breast	1986	29.54	29.14	NA	0.5145*	4	4
-2	"Mortality"	Breast	1987	29.32	29.29	NA	0.5145*	4	4
-2	"Mortality"	Breast	1988	29.12	29.44	NA	0.5145*	4	4
-2	"Mortality"	Breast	1989	29.32	29.60	Joinpoint 3	NA	4	4
-2	"Mortality"	Breast	1990	28.41	28.74	NA	-2.8828*	4	4
-2	"Mortality"	Breast	1991	27.85	27.91	NA	-2.8828*	4	4
-2	"Mortality"	Breast	1992	27.44	27.11	NA	-2.8828*	4	4
-2	"Mortality"	Breast	1993	26.21	26.33	NA	-2.8828*	4	4
-2	"Mortality"	Breast	1994	25.82	25.57	NA	-2.8828*	4	4
-2	"Mortality"	Breast	1995	25.07	24.83	NA	-2.8828*	4	4
-2	"Mortality"	Breast	1996	23.82	24.12	NA	-2.8828*	4	4
-2	"Mortality"	Breast	1997	23.30	23.42	NA	-2.8828*	4	4
-2	"Mortality"	Breast	1998	22.68	22.75	NA	-2.8828*	4	4
-2	"Mortality"	Breast	1999	21.98	22.09	Joinpoint 4	NA	4	4
-2	"Mortality"	Breast	2000	21.47	21.57	NA	-2.3415*	4	4
-2	"Mortality"	Breast	2001	21.18	21.07	NA	-2.3415*	4	4
-2	"Mortality"	Breast	2002	20.74	20.57	NA	-2.3415*	4	4
-2	"Mortality"	Breast	2003	20.13	20.09	NA	-2.3415*	4	4
-2	"Mortality"	Breast	2004	19.56	19.62	NA	-2.3415*	4	4
-2	"Mortality"	Breast	2005	19.28	19.16	NA	-2.3415*	4	4
-2	"Mortality"	Breast	2006	18.93	18.71	NA	-2.3415*	4	4
-2	"Mortality"	Breast	2007	18.38	18.28	NA	-2.3415*	4	4
-2	"Mortality"	Breast	2008	17.94	17.85	NA	-2.3415*	4	4
-2	"Mortality"	Breast	2009	17.35	17.43	NA	-2.3415*	4	4
-2	"Mortality"	Breast	2010	16.62	17.02	NA	-2.3415*	4	4
-2	"Mortality"	Breast	2011	16.62	16.62	NA	-2.3415*	4	4
-2	"Mortality"	Breast	2012	16.27	16.23	NA	-2.3415*	4	4
-2	"Mortality"	Breast	2013	15.75	15.85	NA	-2.3415*	4	4
-2	"Mortality"	Breast	2014	15.31	15.48	NA	-2.3415*	4	4
-2	"Mortality"	Breast	2015	15.12	15.12	NA	-2.3415*	4	4
-2	"Mortality"	Breast	2016	15.04	14.77	NA	-2.3415*	4	4
-2	"Incidence"	Colorectum	1971	21.82	22.15	NA	0.6336*	3	3
-2	"Incidence"	Colorectum	1972	22.17	22.29	NA	0.6336*	3	3
-2	"Incidence"	Colorectum	1973	22.57	22.43	NA	0.6336*	3	3
-2	"Incidence"	Colorectum	1974	22.81	22.57	NA	0.6336*	3	3
-2	"Incidence"	Colorectum	1975	23.34	22.71	NA	0.6336*	3	3
-2	"Incidence"	Colorectum	1976	22.93	22.86	NA	0.6336*	3	3
-2	"Incidence"	Colorectum	1977	22.69	23.00	NA	0.6336*	3	3
-2	"Incidence"	Colorectum	1978	23.29	23.15	NA	0.6336*	3	3
-2	"Incidence"	Colorectum	1979	22.66	23.29	NA	0.6336*	3	3
-2	"Incidence"	Colorectum	1980	23.09	23.44	NA	0.6336*	3	3
-2	"Incidence"	Colorectum	1981	24.07	23.59	NA	0.6336*	3	3
-2	"Incidence"	Colorectum	1982	23.86	23.74	NA	0.6336*	3	3
-2	"Incidence"	Colorectum	1983	24.06	23.89	Joinpoint 1	NA	3	3
-2	"Incidence"	Colorectum	1984	23.12	23.86	NA	-0.1223	3	3
-2	"Incidence"	Colorectum	1985	23.97	23.83	NA	-0.1223	3	3
-2	"Incidence"	Colorectum	1986	23.75	23.80	NA	-0.1223	3	3
-2	"Incidence"	Colorectum	1987	23.34	23.77	NA	-0.1223	3	3
-2	"Incidence"	Colorectum	1988	23.93	23.74	NA	-0.1223	3	3
-2	"Incidence"	Colorectum	1989	23.78	23.72	NA	-0.1223	3	3
-2	"Incidence"	Colorectum	1990	23.58	23.69	NA	-0.1223	3	3
-2	"Incidence"	Colorectum	1991	23.61	23.66	NA	-0.1223	3	3
-2	"Incidence"	Colorectum	1992	24.42	23.63	NA	-0.1223	3	3
-2	"Incidence"	Colorectum	1993	23.66	23.60	NA	-0.1223	3	3
-2	"Incidence"	Colorectum	1994	23.53	23.57	NA	-0.1223	3	3
-2	"Incidence"	Colorectum	1995	22.79	23.54	NA	-0.1223	3	3
-2	"Incidence"	Colorectum	1996	23.88	23.51	NA	-0.1223	3	3
-2	"Incidence"	Colorectum	1997	23.66	23.48	NA	-0.1223	3	3
-2	"Incidence"	Colorectum	1998	24.47	23.46	NA	-0.1223	3	3
-2	"Incidence"	Colorectum	1999	24.03	23.43	NA	-0.1223	3	3
-2	"Incidence"	Colorectum	2000	23.74	23.40	NA	-0.1223	3	3
-2	"Incidence"	Colorectum	2001	23.16	23.37	NA	-0.1223	3	3
-2	"Incidence"	Colorectum	2002	22.69	23.34	NA	-0.1223	3	3
-2	"Incidence"	Colorectum	2003	22.57	23.31	NA	-0.1223	3	3
-2	"Incidence"	Colorectum	2004	23.22	23.28	Joinpoint 2	NA	3	3
-2	"Incidence"	Colorectum	2005	23.67	23.65	NA	1.5894*	3	3
-2	"Incidence"	Colorectum	2006	23.83	24.03	NA	1.5894*	3	3
-2	"Incidence"	Colorectum	2007	24.61	24.41	NA	1.5894*	3	3
-2	"Incidence"	Colorectum	2008	24.85	24.80	NA	1.5894*	3	3
-2	"Incidence"	Colorectum	2009	25.30	25.19	NA	1.5894*	3	3
-2	"Incidence"	Colorectum	2010	25.42	25.59	NA	1.5894*	3	3
-2	"Incidence"	Colorectum	2011	26.03	26.00	Joinpoint 3	NA	3	3
-2	"Incidence"	Colorectum	2012	26.21	25.86	NA	-0.5555	3	3
-2	"Incidence"	Colorectum	2013	25.01	25.71	NA	-0.5555	3	3
-2	"Incidence"	Colorectum	2014	25.47	25.57	NA	-0.5555	3	3
-2	"Incidence"	Colorectum	2015	26.08	25.43	NA	-0.5555	3	3
-2	"Incidence"	Colorectum	2016	25.36	25.29	NA	-0.5555	3	3
-2	"Incidence"	Colorectum	2017	24.89	25.15	NA	-0.5555	3	3
-2	"Mortality"	Colorectum	1955	19.59	19.27	NA	-1.2846*	4	4
-2	"Mortality"	Colorectum	1956	19.12	19.02	NA	-1.2846*	4	4
-2	"Mortality"	Colorectum	1957	18.31	18.78	NA	-1.2846*	4	4
-2	"Mortality"	Colorectum	1958	18.55	18.54	NA	-1.2846*	4	4
-2	"Mortality"	Colorectum	1959	18.68	18.30	NA	-1.2846*	4	4
-2	"Mortality"	Colorectum	1960	17.88	18.06	NA	-1.2846*	4	4
-2	"Mortality"	Colorectum	1961	17.59	17.83	NA	-1.2846*	4	4
-2	"Mortality"	Colorectum	1962	17.49	17.60	NA	-1.2846*	4	4
-2	"Mortality"	Colorectum	1963	17.20	17.38	NA	-1.2846*	4	4
-2	"Mortality"	Colorectum	1964	17.30	17.15	NA	-1.2846*	4	4
-2	"Mortality"	Colorectum	1965	17.14	16.93	NA	-1.2846*	4	4
-2	"Mortality"	Colorectum	1966	16.56	16.72	Joinpoint 1	NA	4	4
-2	"Mortality"	Colorectum	1967	17.16	17.00	NA	1.7112	4	4
-2	"Mortality"	Colorectum	1968	17.55	17.29	NA	1.7112	4	4
-2	"Mortality"	Colorectum	1969	17.37	17.59	Joinpoint 2	NA	4	4
-2	"Mortality"	Colorectum	1970	17.17	17.38	NA	-1.2059*	4	4
-2	"Mortality"	Colorectum	1971	16.59	17.17	NA	-1.2059*	4	4
-2	"Mortality"	Colorectum	1972	16.96	16.96	NA	-1.2059*	4	4
-2	"Mortality"	Colorectum	1973	16.76	16.76	NA	-1.2059*	4	4
-2	"Mortality"	Colorectum	1974	16.82	16.55	NA	-1.2059*	4	4
-2	"Mortality"	Colorectum	1975	16.82	16.35	NA	-1.2059*	4	4
-2	"Mortality"	Colorectum	1976	16.86	16.16	NA	-1.2059*	4	4
-2	"Mortality"	Colorectum	1977	15.92	15.96	NA	-1.2059*	4	4
-2	"Mortality"	Colorectum	1978	15.74	15.77	NA	-1.2059*	4	4
-2	"Mortality"	Colorectum	1979	15.59	15.58	NA	-1.2059*	4	4
-2	"Mortality"	Colorectum	1980	15.53	15.39	NA	-1.2059*	4	4
-2	"Mortality"	Colorectum	1981	14.79	15.21	NA	-1.2059*	4	4
-2	"Mortality"	Colorectum	1982	14.12	15.02	NA	-1.2059*	4	4
-2	"Mortality"	Colorectum	1983	14.75	14.84	NA	-1.2059*	4	4
-2	"Mortality"	Colorectum	1984	14.81	14.66	NA	-1.2059*	4	4
-2	"Mortality"	Colorectum	1985	15.18	14.49	NA	-1.2059*	4	4
-2	"Mortality"	Colorectum	1986	14.23	14.31	NA	-1.2059*	4	4
-2	"Mortality"	Colorectum	1987	14.26	14.14	NA	-1.2059*	4	4
-2	"Mortality"	Colorectum	1988	14.16	13.97	NA	-1.2059*	4	4
-2	"Mortality"	Colorectum	1989	13.79	13.80	NA	-1.2059*	4	4
-2	"Mortality"	Colorectum	1990	13.55	13.63	NA	-1.2059*	4	4
-2	"Mortality"	Colorectum	1991	13.36	13.47	Joinpoint 3	NA	4	4
-2	"Mortality"	Colorectum	1992	13.30	12.98	NA	-3.5908*	4	4
-2	"Mortality"	Colorectum	1993	12.27	12.52	NA	-3.5908*	4	4
-2	"Mortality"	Colorectum	1994	11.99	12.07	NA	-3.5908*	4	4
-2	"Mortality"	Colorectum	1995	11.46	11.64	NA	-3.5908*	4	4
-2	"Mortality"	Colorectum	1996	11.11	11.22	NA	-3.5908*	4	4
-2	"Mortality"	Colorectum	1997	10.83	10.81	NA	-3.5908*	4	4
-2	"Mortality"	Colorectum	1998	10.36	10.43	NA	-3.5908*	4	4
-2	"Mortality"	Colorectum	1999	10.28	10.05	NA	-3.5908*	4	4
-2	"Mortality"	Colorectum	2000	9.64	9.69	NA	-3.5908*	4	4
-2	"Mortality"	Colorectum	2001	9.37	9.34	Joinpoint 4	NA	4	4
-2	"Mortality"	Colorectum	2002	9.28	9.23	NA	-1.2081*	4	4
-2	"Mortality"	Colorectum	2003	9.12	9.12	NA	-1.2081*	4	4
-2	"Mortality"	Colorectum	2004	9.04	9.01	NA	-1.2081*	4	4
-2	"Mortality"	Colorectum	2005	8.96	8.90	NA	-1.2081*	4	4
-2	"Mortality"	Colorectum	2006	8.83	8.79	NA	-1.2081*	4	4
-2	"Mortality"	Colorectum	2007	8.83	8.69	NA	-1.2081*	4	4
-2	"Mortality"	Colorectum	2008	8.75	8.58	NA	-1.2081*	4	4
-2	"Mortality"	Colorectum	2009	8.31	8.48	NA	-1.2081*	4	4
-2	"Mortality"	Colorectum	2010	8.11	8.38	NA	-1.2081*	4	4
-2	"Mortality"	Colorectum	2011	7.97	8.27	NA	-1.2081*	4	4
-2	"Mortality"	Colorectum	2012	8.27	8.17	NA	-1.2081*	4	4
-2	"Mortality"	Colorectum	2013	8.05	8.08	NA	-1.2081*	4	4
-2	"Mortality"	Colorectum	2014	7.75	7.98	NA	-1.2081*	4	4
-2	"Mortality"	Colorectum	2015	8.00	7.88	NA	-1.2081*	4	4
-2	"Mortality"	Colorectum	2016	8.10	7.79	NA	-1.2081*	4	4
-2	"Incidence"	Lung	1971	13.99	13.85	NA	3.6770*	4	4
-2	"Incidence"	Lung	1972	14.23	14.36	NA	3.6770*	4	4
-2	"Incidence"	Lung	1973	14.67	14.89	NA	3.6770*	4	4
-2	"Incidence"	Lung	1974	15.88	15.43	NA	3.6770*	4	4
-2	"Incidence"	Lung	1975	15.94	16.00	NA	3.6770*	4	4
-2	"Incidence"	Lung	1976	16.53	16.59	NA	3.6770*	4	4
-2	"Incidence"	Lung	1977	17.15	17.20	NA	3.6770*	4	4
-2	"Incidence"	Lung	1978	17.64	17.83	NA	3.6770*	4	4
-2	"Incidence"	Lung	1979	18.37	18.49	NA	3.6770*	4	4
-2	"Incidence"	Lung	1980	19.14	19.17	NA	3.6770*	4	4
-2	"Incidence"	Lung	1981	20.01	19.87	Joinpoint 1	NA	4	4
-2	"Incidence"	Lung	1982	20.32	20.28	NA	2.0738*	4	4
-2	"Incidence"	Lung	1983	20.65	20.70	NA	2.0738*	4	4
-2	"Incidence"	Lung	1984	20.95	21.13	NA	2.0738*	4	4
-2	"Incidence"	Lung	1985	22.40	21.57	NA	2.0738*	4	4
-2	"Incidence"	Lung	1986	21.88	22.02	NA	2.0738*	4	4
-2	"Incidence"	Lung	1987	22.34	22.48	NA	2.0738*	4	4
-2	"Incidence"	Lung	1988	23.27	22.94	Joinpoint 2	NA	4	4
-2	"Incidence"	Lung	1989	22.59	22.90	NA	-0.1953	4	4
-2	"Incidence"	Lung	1990	22.68	22.85	NA	-0.1953	4	4
-2	"Incidence"	Lung	1991	22.63	22.81	NA	-0.1953	4	4
-2	"Incidence"	Lung	1992	23.22	22.76	NA	-0.1953	4	4
-2	"Incidence"	Lung	1993	22.73	22.72	NA	-0.1953	4	4
-2	"Incidence"	Lung	1994	22.88	22.68	NA	-0.1953	4	4
-2	"Incidence"	Lung	1995	22.22	22.63	NA	-0.1953	4	4
-2	"Incidence"	Lung	1996	22.09	22.59	NA	-0.1953	4	4
-2	"Incidence"	Lung	1997	22.37	22.54	NA	-0.1953	4	4
-2	"Incidence"	Lung	1998	22.45	22.50	NA	-0.1953	4	4
-2	"Incidence"	Lung	1999	22.60	22.45	NA	-0.1953	4	4
-2	"Incidence"	Lung	2000	22.94	22.41	NA	-0.1953	4	4
-2	"Incidence"	Lung	2001	22.66	22.37	NA	-0.1953	4	4
-2	"Incidence"	Lung	2002	22.21	22.32	Joinpoint 3	NA	4	4
-2	"Incidence"	Lung	2003	22.58	22.75	NA	1.9112*	4	4
-2	"Incidence"	Lung	2004	22.79	23.18	NA	1.9112*	4	4
-2	"Incidence"	Lung	2005	23.67	23.63	NA	1.9112*	4	4
-2	"Incidence"	Lung	2006	24.31	24.08	NA	1.9112*	4	4
-2	"Incidence"	Lung	2007	24.55	24.54	NA	1.9112*	4	4
-2	"Incidence"	Lung	2008	25.17	25.01	NA	1.9112*	4	4
-2	"Incidence"	Lung	2009	25.68	25.49	NA	1.9112*	4	4
-2	"Incidence"	Lung	2010	25.80	25.97	NA	1.9112*	4	4
-2	"Incidence"	Lung	2011	26.36	26.47	NA	1.9112*	4	4
-2	"Incidence"	Lung	2012	27.16	26.98	Joinpoint 4	NA	4	4
-2	"Incidence"	Lung	2013	26.83	27.07	NA	0.3371	4	4
-2	"Incidence"	Lung	2014	27.11	27.16	NA	0.3371	4	4
-2	"Incidence"	Lung	2015	27.41	27.25	NA	0.3371	4	4
-2	"Incidence"	Lung	2016	27.13	27.34	NA	0.3371	4	4
-2	"Incidence"	Lung	2017	27.58	27.43	NA	0.3371	4	4
-2	"Mortality"	Lung	1950	5.86	5.85	NA	2.9434*	6	6
-2	"Mortality"	Lung	1951	6.01	6.02	NA	2.9434*	6	6
-2	"Mortality"	Lung	1952	6.34	6.20	NA	2.9434*	6	6
-2	"Mortality"	Lung	1953	6.30	6.38	NA	2.9434*	6	6
-2	"Mortality"	Lung	1954	6.52	6.57	NA	2.9434*	6	6
-2	"Mortality"	Lung	1955	6.72	6.76	NA	2.9434*	6	6
-2	"Mortality"	Lung	1956	6.95	6.96	NA	2.9434*	6	6
-2	"Mortality"	Lung	1957	7.14	7.16	NA	2.9434*	6	6
-2	"Mortality"	Lung	1958	7.36	7.38	NA	2.9434*	6	6
-2	"Mortality"	Lung	1959	7.57	7.59	Joinpoint 1	NA	6	6
-2	"Mortality"	Lung	1960	8.01	7.97	NA	5.0282*	6	6
-2	"Mortality"	Lung	1961	8.52	8.38	NA	5.0282*	6	6
-2	"Mortality"	Lung	1962	8.80	8.80	NA	5.0282*	6	6
-2	"Mortality"	Lung	1963	9.21	9.24	NA	5.0282*	6	6
-2	"Mortality"	Lung	1964	9.65	9.70	NA	5.0282*	6	6
-2	"Mortality"	Lung	1965	10.21	10.19	NA	5.0282*	6	6
-2	"Mortality"	Lung	1966	10.67	10.70	NA	5.0282*	6	6
-2	"Mortality"	Lung	1967	11.28	11.24	Joinpoint 2	NA	6	6
-2	"Mortality"	Lung	1968	11.68	11.64	NA	3.5615*	6	6
-2	"Mortality"	Lung	1969	11.98	12.06	NA	3.5615*	6	6
-2	"Mortality"	Lung	1970	12.36	12.49	NA	3.5615*	6	6
-2	"Mortality"	Lung	1971	12.91	12.93	NA	3.5615*	6	6
-2	"Mortality"	Lung	1972	13.44	13.39	NA	3.5615*	6	6
-2	"Mortality"	Lung	1973	13.79	13.87	NA	3.5615*	6	6
-2	"Mortality"	Lung	1974	14.69	14.36	NA	3.5615*	6	6
-2	"Mortality"	Lung	1975	15.02	14.87	NA	3.5615*	6	6
-2	"Mortality"	Lung	1976	15.32	15.40	NA	3.5615*	6	6
-2	"Mortality"	Lung	1977	15.87	15.95	NA	3.5615*	6	6
-2	"Mortality"	Lung	1978	16.30	16.52	Joinpoint 3	NA	6	6
-2	"Mortality"	Lung	1979	16.96	16.90	NA	2.2745*	6	6
-2	"Mortality"	Lung	1980	17.60	17.28	NA	2.2745*	6	6
-2	"Mortality"	Lung	1981	17.20	17.67	NA	2.2745*	6	6
-2	"Mortality"	Lung	1982	18.29	18.08	NA	2.2745*	6	6
-2	"Mortality"	Lung	1983	18.28	18.49	NA	2.2745*	6	6
-2	"Mortality"	Lung	1984	19.40	18.91	NA	2.2745*	6	6
-2	"Mortality"	Lung	1985	19.34	19.34	NA	2.2745*	6	6
-2	"Mortality"	Lung	1986	19.63	19.78	NA	2.2745*	6	6
-2	"Mortality"	Lung	1987	19.92	20.23	NA	2.2745*	6	6
-2	"Mortality"	Lung	1988	20.70	20.69	Joinpoint 4	NA	6	6
-2	"Mortality"	Lung	1989	20.55	20.54	NA	-0.7118*	6	6
-2	"Mortality"	Lung	1990	20.29	20.39	NA	-0.7118*	6	6
-2	"Mortality"	Lung	1991	20.44	20.25	NA	-0.7118*	6	6
-2	"Mortality"	Lung	1992	20.17	20.10	NA	-0.7118*	6	6
-2	"Mortality"	Lung	1993	19.93	19.96	NA	-0.7118*	6	6
-2	"Mortality"	Lung	1994	20.00	19.82	NA	-0.7118*	6	6
-2	"Mortality"	Lung	1995	19.76	19.68	NA	-0.7118*	6	6
-2	"Mortality"	Lung	1996	19.60	19.54	NA	-0.7118*	6	6
-2	"Mortality"	Lung	1997	18.99	19.40	NA	-0.7118*	6	6
-2	"Mortality"	Lung	1998	19.43	19.26	NA	-0.7118*	6	6
-2	"Mortality"	Lung	1999	19.22	19.12	NA	-0.7118*	6	6
-2	"Mortality"	Lung	2000	18.93	18.99	NA	-0.7118*	6	6
-2	"Mortality"	Lung	2001	18.77	18.85	NA	-0.7118*	6	6
-2	"Mortality"	Lung	2002	18.71	18.72	NA	-0.7118*	6	6
-2	"Mortality"	Lung	2003	18.69	18.59	Joinpoint 5	NA	6	6
-2	"Mortality"	Lung	2004	18.69	18.84	NA	1.3931*	6	6
-2	"Mortality"	Lung	2005	18.96	19.11	NA	1.3931*	6	6
-2	"Mortality"	Lung	2006	19.70	19.37	NA	1.3931*	6	6
-2	"Mortality"	Lung	2007	19.64	19.64	NA	1.3931*	6	6
-2	"Mortality"	Lung	2008	20.07	19.92	Joinpoint 6	NA	6	6
-2	"Mortality"	Lung	2009	19.50	19.77	NA	-0.7293*	6	6
-2	"Mortality"	Lung	2010	19.55	19.63	NA	-0.7293*	6	6
-2	"Mortality"	Lung	2011	19.45	19.48	NA	-0.7293*	6	6
-2	"Mortality"	Lung	2012	19.42	19.34	NA	-0.7293*	6	6
-2	"Mortality"	Lung	2013	19.14	19.20	NA	-0.7293*	6	6
-2	"Mortality"	Lung	2014	19.23	19.06	NA	-0.7293*	6	6
-2	"Mortality"	Lung	2015	19.05	18.92	NA	-0.7293*	6	6
-2	"Mortality"	Lung	2016	18.61	18.78	NA	-0.7293*	6	6
-2	"Incidence"	Oesophagus	1971	2.60	2.70	NA	1.3547*	1	1
-2	"Incidence"	Oesophagus	1972	2.66	2.74	NA	1.3547*	1	1
-2	"Incidence"	Oesophagus	1973	2.82	2.78	NA	1.3547*	1	1
-2	"Incidence"	Oesophagus	1974	2.84	2.81	NA	1.3547*	1	1
-2	"Incidence"	Oesophagus	1975	2.93	2.85	NA	1.3547*	1	1
-2	"Incidence"	Oesophagus	1976	2.91	2.89	NA	1.3547*	1	1
-2	"Incidence"	Oesophagus	1977	2.99	2.93	NA	1.3547*	1	1
-2	"Incidence"	Oesophagus	1978	3.11	2.97	NA	1.3547*	1	1
-2	"Incidence"	Oesophagus	1979	2.88	3.01	NA	1.3547*	1	1
-2	"Incidence"	Oesophagus	1980	2.99	3.05	NA	1.3547*	1	1
-2	"Incidence"	Oesophagus	1981	3.22	3.09	NA	1.3547*	1	1
-2	"Incidence"	Oesophagus	1982	3.17	3.13	NA	1.3547*	1	1
-2	"Incidence"	Oesophagus	1983	3.15	3.18	NA	1.3547*	1	1
-2	"Incidence"	Oesophagus	1984	3.29	3.22	NA	1.3547*	1	1
-2	"Incidence"	Oesophagus	1985	3.24	3.26	NA	1.3547*	1	1
-2	"Incidence"	Oesophagus	1986	3.22	3.31	NA	1.3547*	1	1
-2	"Incidence"	Oesophagus	1987	3.26	3.35	NA	1.3547*	1	1
-2	"Incidence"	Oesophagus	1988	3.31	3.40	NA	1.3547*	1	1
-2	"Incidence"	Oesophagus	1989	3.53	3.44	NA	1.3547*	1	1
-2	"Incidence"	Oesophagus	1990	3.45	3.49	NA	1.3547*	1	1
-2	"Incidence"	Oesophagus	1991	3.50	3.54	NA	1.3547*	1	1
-2	"Incidence"	Oesophagus	1992	3.65	3.59	NA	1.3547*	1	1
-2	"Incidence"	Oesophagus	1993	3.61	3.63	Joinpoint 1	NA	1	1
-2	"Incidence"	Oesophagus	1994	3.76	3.62	NA	-0.3437*	1	1
-2	"Incidence"	Oesophagus	1995	3.51	3.61	NA	-0.3437*	1	1
-2	"Incidence"	Oesophagus	1996	3.36	3.60	NA	-0.3437*	1	1
-2	"Incidence"	Oesophagus	1997	3.54	3.58	NA	-0.3437*	1	1
-2	"Incidence"	Oesophagus	1998	3.53	3.57	NA	-0.3437*	1	1
-2	"Incidence"	Oesophagus	1999	3.73	3.56	NA	-0.3437*	1	1
-2	"Incidence"	Oesophagus	2000	3.61	3.55	NA	-0.3437*	1	1
-2	"Incidence"	Oesophagus	2001	3.63	3.54	NA	-0.3437*	1	1
-2	"Incidence"	Oesophagus	2002	3.52	3.52	NA	-0.3437*	1	1
-2	"Incidence"	Oesophagus	2003	3.54	3.51	NA	-0.3437*	1	1
-2	"Incidence"	Oesophagus	2004	3.41	3.50	NA	-0.3437*	1	1
-2	"Incidence"	Oesophagus	2005	3.54	3.49	NA	-0.3437*	1	1
-2	"Incidence"	Oesophagus	2006	3.59	3.48	NA	-0.3437*	1	1
-2	"Incidence"	Oesophagus	2007	3.49	3.46	NA	-0.3437*	1	1
-2	"Incidence"	Oesophagus	2008	3.47	3.45	NA	-0.3437*	1	1
-2	"Incidence"	Oesophagus	2009	3.43	3.44	NA	-0.3437*	1	1
-2	"Incidence"	Oesophagus	2010	3.40	3.43	NA	-0.3437*	1	1
-2	"Incidence"	Oesophagus	2011	3.36	3.42	NA	-0.3437*	1	1
-2	"Incidence"	Oesophagus	2012	3.54	3.40	NA	-0.3437*	1	1
-2	"Incidence"	Oesophagus	2013	3.51	3.39	NA	-0.3437*	1	1
-2	"Incidence"	Oesophagus	2014	3.39	3.38	NA	-0.3437*	1	1
-2	"Incidence"	Oesophagus	2015	3.39	3.37	NA	-0.3437*	1	1
-2	"Incidence"	Oesophagus	2016	3.27	3.36	NA	-0.3437*	1	1
-2	"Incidence"	Oesophagus	2017	3.16	3.35	NA	-0.3437*	1	1
-2	"Mortality"	Oesophagus	1950	2.25	2.25	NA	0.1678	3	3
-2	"Mortality"	Oesophagus	1951	2.25	2.25	NA	0.1678	3	3
-2	"Mortality"	Oesophagus	1952	2.23	2.26	NA	0.1678	3	3
-2	"Mortality"	Oesophagus	1953	2.22	2.26	NA	0.1678	3	3
-2	"Mortality"	Oesophagus	1954	2.32	2.27	NA	0.1678	3	3
-2	"Mortality"	Oesophagus	1955	2.32	2.27	NA	0.1678	3	3
-2	"Mortality"	Oesophagus	1956	2.32	2.27	NA	0.1678	3	3
-2	"Mortality"	Oesophagus	1957	2.25	2.28	NA	0.1678	3	3
-2	"Mortality"	Oesophagus	1958	2.28	2.28	NA	0.1678	3	3
-2	"Mortality"	Oesophagus	1959	2.17	2.28	Joinpoint 1	NA	3	3
-2	"Mortality"	Oesophagus	1960	2.27	2.31	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1961	2.35	2.33	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1962	2.30	2.36	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1963	2.30	2.38	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1964	2.56	2.41	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1965	2.38	2.43	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1966	2.46	2.46	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1967	2.49	2.48	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1968	2.48	2.51	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1969	2.62	2.53	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1970	2.53	2.56	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1971	2.63	2.59	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1972	2.53	2.61	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1973	2.71	2.64	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1974	2.81	2.67	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1975	2.69	2.70	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1976	2.81	2.73	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1977	2.86	2.75	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1978	2.94	2.78	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1979	2.81	2.81	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1980	2.82	2.84	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1981	2.69	2.87	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1982	2.87	2.90	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1983	2.86	2.93	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1984	3.06	2.96	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1985	3.00	2.99	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1986	3.03	3.02	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1987	3.00	3.06	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1988	2.97	3.09	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1989	3.17	3.12	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1990	3.25	3.15	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1991	3.16	3.19	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1992	3.14	3.22	NA	1.0449*	3	3
-2	"Mortality"	Oesophagus	1993	3.25	3.25	Joinpoint 2	NA	3	3
-2	"Mortality"	Oesophagus	1994	3.18	3.24	NA	-0.3431	3	3
-2	"Mortality"	Oesophagus	1995	3.31	3.23	NA	-0.3431	3	3
-2	"Mortality"	Oesophagus	1996	3.25	3.22	NA	-0.3431	3	3
-2	"Mortality"	Oesophagus	1997	3.22	3.21	NA	-0.3431	3	3
-2	"Mortality"	Oesophagus	1998	3.06	3.20	NA	-0.3431	3	3
-2	"Mortality"	Oesophagus	1999	3.27	3.19	NA	-0.3431	3	3
-2	"Mortality"	Oesophagus	2000	3.19	3.18	NA	-0.3431	3	3
-2	"Mortality"	Oesophagus	2001	3.06	3.16	NA	-0.3431	3	3
-2	"Mortality"	Oesophagus	2002	3.22	3.15	Joinpoint 3	NA	3	3
-2	"Mortality"	Oesophagus	2003	3.11	3.11	NA	-1.4820*	3	3
-2	"Mortality"	Oesophagus	2004	3.02	3.06	NA	-1.4820*	3	3
-2	"Mortality"	Oesophagus	2005	2.99	3.02	NA	-1.4820*	3	3
-2	"Mortality"	Oesophagus	2006	3.07	2.97	NA	-1.4820*	3	3
-2	"Mortality"	Oesophagus	2007	2.98	2.93	NA	-1.4820*	3	3
-2	"Mortality"	Oesophagus	2008	2.95	2.88	NA	-1.4820*	3	3
-2	"Mortality"	Oesophagus	2009	2.83	2.84	NA	-1.4820*	3	3
-2	"Mortality"	Oesophagus	2010	2.75	2.80	NA	-1.4820*	3	3
-2	"Mortality"	Oesophagus	2011	2.64	2.76	NA	-1.4820*	3	3
-2	"Mortality"	Oesophagus	2012	2.69	2.72	NA	-1.4820*	3	3
-2	"Mortality"	Oesophagus	2013	2.67	2.68	NA	-1.4820*	3	3
-2	"Mortality"	Oesophagus	2014	2.67	2.64	NA	-1.4820*	3	3
-2	"Mortality"	Oesophagus	2015	2.59	2.60	NA	-1.4820*	3	3
-2	"Mortality"	Oesophagus	2016	2.60	2.56	NA	-1.4820*	3	3
-2	"Incidence"	Pancreas	1971	4.53	4.60	NA	0.8520*	2	2
-2	"Incidence"	Pancreas	1972	4.49	4.64	NA	0.8520*	2	2
-2	"Incidence"	Pancreas	1973	4.53	4.68	NA	0.8520*	2	2
-2	"Incidence"	Pancreas	1974	4.88	4.72	NA	0.8520*	2	2
-2	"Incidence"	Pancreas	1975	4.76	4.76	NA	0.8520*	2	2
-2	"Incidence"	Pancreas	1976	4.95	4.80	NA	0.8520*	2	2
-2	"Incidence"	Pancreas	1977	4.85	4.84	NA	0.8520*	2	2
-2	"Incidence"	Pancreas	1978	4.94	4.88	NA	0.8520*	2	2
-2	"Incidence"	Pancreas	1979	5.15	4.92	NA	0.8520*	2	2
-2	"Incidence"	Pancreas	1980	4.96	4.96	NA	0.8520*	2	2
-2	"Incidence"	Pancreas	1981	4.94	5.01	NA	0.8520*	2	2
-2	"Incidence"	Pancreas	1982	5.18	5.05	NA	0.8520*	2	2
-2	"Incidence"	Pancreas	1983	5.08	5.09	NA	0.8520*	2	2
-2	"Incidence"	Pancreas	1984	4.93	5.14	NA	0.8520*	2	2
-2	"Incidence"	Pancreas	1985	5.31	5.18	NA	0.8520*	2	2
-2	"Incidence"	Pancreas	1986	5.11	5.22	NA	0.8520*	2	2
-2	"Incidence"	Pancreas	1987	5.30	5.27	NA	0.8520*	2	2
-2	"Incidence"	Pancreas	1988	5.17	5.31	NA	0.8520*	2	2
-2	"Incidence"	Pancreas	1989	5.43	5.36	Joinpoint 1	NA	2	2
-2	"Incidence"	Pancreas	1990	5.20	5.29	NA	-1.3041*	2	2
-2	"Incidence"	Pancreas	1991	5.29	5.22	NA	-1.3041*	2	2
-2	"Incidence"	Pancreas	1992	5.09	5.15	NA	-1.3041*	2	2
-2	"Incidence"	Pancreas	1993	5.17	5.08	NA	-1.3041*	2	2
-2	"Incidence"	Pancreas	1994	5.12	5.02	NA	-1.3041*	2	2
-2	"Incidence"	Pancreas	1995	4.82	4.95	NA	-1.3041*	2	2
-2	"Incidence"	Pancreas	1996	4.85	4.89	NA	-1.3041*	2	2
-2	"Incidence"	Pancreas	1997	4.85	4.82	Joinpoint 2	NA	2	2
-2	"Incidence"	Pancreas	1998	4.60	4.88	NA	1.2109*	2	2
-2	"Incidence"	Pancreas	1999	5.21	4.94	NA	1.2109*	2	2
-2	"Incidence"	Pancreas	2000	5.09	5.00	NA	1.2109*	2	2
-2	"Incidence"	Pancreas	2001	4.95	5.06	NA	1.2109*	2	2
-2	"Incidence"	Pancreas	2002	4.95	5.12	NA	1.2109*	2	2
-2	"Incidence"	Pancreas	2003	5.00	5.19	NA	1.2109*	2	2
-2	"Incidence"	Pancreas	2004	5.30	5.25	NA	1.2109*	2	2
-2	"Incidence"	Pancreas	2005	5.46	5.31	NA	1.2109*	2	2
-2	"Incidence"	Pancreas	2006	5.56	5.38	NA	1.2109*	2	2
-2	"Incidence"	Pancreas	2007	5.44	5.44	NA	1.2109*	2	2
-2	"Incidence"	Pancreas	2008	5.54	5.51	NA	1.2109*	2	2
-2	"Incidence"	Pancreas	2009	5.72	5.57	NA	1.2109*	2	2
-2	"Incidence"	Pancreas	2010	5.66	5.64	NA	1.2109*	2	2
-2	"Incidence"	Pancreas	2011	5.87	5.71	NA	1.2109*	2	2
-2	"Incidence"	Pancreas	2012	5.91	5.78	NA	1.2109*	2	2
-2	"Incidence"	Pancreas	2013	5.97	5.85	NA	1.2109*	2	2
-2	"Incidence"	Pancreas	2014	5.87	5.92	NA	1.2109*	2	2
-2	"Incidence"	Pancreas	2015	5.90	5.99	NA	1.2109*	2	2
-2	"Incidence"	Pancreas	2016	5.74	6.06	NA	1.2109*	2	2
-2	"Incidence"	Pancreas	2017	6.08	6.14	NA	1.2109*	2	2
-2	"Mortality"	Pancreas	1955	4.07	4.00	NA	1.1583*	3	3
-2	"Mortality"	Pancreas	1956	3.81	4.05	NA	1.1583*	3	3
-2	"Mortality"	Pancreas	1957	4.12	4.09	NA	1.1583*	3	3
-2	"Mortality"	Pancreas	1958	4.12	4.14	NA	1.1583*	3	3
-2	"Mortality"	Pancreas	1959	4.29	4.19	NA	1.1583*	3	3
-2	"Mortality"	Pancreas	1960	4.25	4.24	NA	1.1583*	3	3
-2	"Mortality"	Pancreas	1961	4.29	4.29	NA	1.1583*	3	3
-2	"Mortality"	Pancreas	1962	4.47	4.34	NA	1.1583*	3	3
-2	"Mortality"	Pancreas	1963	4.36	4.39	NA	1.1583*	3	3
-2	"Mortality"	Pancreas	1964	4.31	4.44	NA	1.1583*	3	3
-2	"Mortality"	Pancreas	1965	4.49	4.49	NA	1.1583*	3	3
-2	"Mortality"	Pancreas	1966	4.65	4.54	NA	1.1583*	3	3
-2	"Mortality"	Pancreas	1967	4.71	4.59	NA	1.1583*	3	3
-2	"Mortality"	Pancreas	1968	4.73	4.65	NA	1.1583*	3	3
-2	"Mortality"	Pancreas	1969	4.69	4.70	NA	1.1583*	3	3
-2	"Mortality"	Pancreas	1970	4.76	4.76	NA	1.1583*	3	3
-2	"Mortality"	Pancreas	1971	4.75	4.81	NA	1.1583*	3	3
-2	"Mortality"	Pancreas	1972	4.76	4.87	NA	1.1583*	3	3
-2	"Mortality"	Pancreas	1973	4.89	4.92	NA	1.1583*	3	3
-2	"Mortality"	Pancreas	1974	5.08	4.98	Joinpoint 1	NA	3	3
-2	"Mortality"	Pancreas	1975	4.93	4.99	NA	0.1941	3	3
-2	"Mortality"	Pancreas	1976	5.15	5.00	NA	0.1941	3	3
-2	"Mortality"	Pancreas	1977	5.10	5.01	NA	0.1941	3	3
-2	"Mortality"	Pancreas	1978	4.93	5.02	NA	0.1941	3	3
-2	"Mortality"	Pancreas	1979	5.04	5.03	NA	0.1941	3	3
-2	"Mortality"	Pancreas	1980	5.08	5.04	NA	0.1941	3	3
-2	"Mortality"	Pancreas	1981	4.78	5.05	NA	0.1941	3	3
-2	"Mortality"	Pancreas	1982	4.93	5.06	NA	0.1941	3	3
-2	"Mortality"	Pancreas	1983	4.84	5.07	NA	0.1941	3	3
-2	"Mortality"	Pancreas	1984	5.18	5.08	NA	0.1941	3	3
-2	"Mortality"	Pancreas	1985	5.16	5.09	NA	0.1941	3	3
-2	"Mortality"	Pancreas	1986	5.19	5.10	NA	0.1941	3	3
-2	"Mortality"	Pancreas	1987	5.16	5.11	NA	0.1941	3	3
-2	"Mortality"	Pancreas	1988	5.13	5.12	NA	0.1941	3	3
-2	"Mortality"	Pancreas	1989	5.20	5.13	Joinpoint 2	NA	3	3
-2	"Mortality"	Pancreas	1990	5.19	5.06	NA	-1.2556*	3	3
-2	"Mortality"	Pancreas	1991	4.83	5.00	NA	-1.2556*	3	3
-2	"Mortality"	Pancreas	1992	4.94	4.94	NA	-1.2556*	3	3
-2	"Mortality"	Pancreas	1993	4.90	4.87	NA	-1.2556*	3	3
-2	"Mortality"	Pancreas	1994	4.78	4.81	NA	-1.2556*	3	3
-2	"Mortality"	Pancreas	1995	4.84	4.75	NA	-1.2556*	3	3
-2	"Mortality"	Pancreas	1996	4.65	4.69	NA	-1.2556*	3	3
-2	"Mortality"	Pancreas	1997	4.62	4.63	Joinpoint 3	NA	3	3
-2	"Mortality"	Pancreas	1998	4.49	4.66	NA	0.6016*	3	3
-2	"Mortality"	Pancreas	1999	4.79	4.69	NA	0.6016*	3	3
-2	"Mortality"	Pancreas	2000	4.80	4.72	NA	0.6016*	3	3
-2	"Mortality"	Pancreas	2001	4.70	4.75	NA	0.6016*	3	3
-2	"Mortality"	Pancreas	2002	4.77	4.77	NA	0.6016*	3	3
-2	"Mortality"	Pancreas	2003	4.60	4.80	NA	0.6016*	3	3
-2	"Mortality"	Pancreas	2004	4.83	4.83	NA	0.6016*	3	3
-2	"Mortality"	Pancreas	2005	5.01	4.86	NA	0.6016*	3	3
-2	"Mortality"	Pancreas	2006	4.83	4.89	NA	0.6016*	3	3
-2	"Mortality"	Pancreas	2007	5.08	4.92	NA	0.6016*	3	3
-2	"Mortality"	Pancreas	2008	5.07	4.95	NA	0.6016*	3	3
-2	"Mortality"	Pancreas	2009	5.10	4.98	NA	0.6016*	3	3
-2	"Mortality"	Pancreas	2010	4.99	5.01	NA	0.6016*	3	3
-2	"Mortality"	Pancreas	2011	5.09	5.04	NA	0.6016*	3	3
-2	"Mortality"	Pancreas	2012	5.28	5.07	NA	0.6016*	3	3
-2	"Mortality"	Pancreas	2013	4.97	5.10	NA	0.6016*	3	3
-2	"Mortality"	Pancreas	2014	5.06	5.13	NA	0.6016*	3	3
-2	"Mortality"	Pancreas	2015	5.13	5.16	NA	0.6016*	3	3
-2	"Mortality"	Pancreas	2016	5.02	5.19	NA	0.6016*	3	3
+"Cancer label"	"incmort"	"Sex"	"Year"	"ASR (World)"	"Model"	"Flag"	"APC"	"Joinpoints"	"Final Selected Model"
+All sites excl. non-melanoma skin cancer	"Incidence"	1	1993	306.87	302.50	NA	-2.0010*	2	2
+All sites excl. non-melanoma skin cancer	"Incidence"	1	1994	297.46	296.45	NA	-2.0010*	2	2
+All sites excl. non-melanoma skin cancer	"Incidence"	1	1995	284.57	290.52	NA	-2.0010*	2	2
+All sites excl. non-melanoma skin cancer	"Incidence"	1	1996	285.91	284.70	NA	-2.0010*	2	2
+All sites excl. non-melanoma skin cancer	"Incidence"	1	1997	272.79	279.01	NA	-2.0010*	2	2
+All sites excl. non-melanoma skin cancer	"Incidence"	1	1998	276.75	273.42	NA	-2.0010*	2	2
+All sites excl. non-melanoma skin cancer	"Incidence"	1	1999	265.94	267.95	Joinpoint 1	NA	2	2
+All sites excl. non-melanoma skin cancer	"Incidence"	1	2000	273.54	272.32	NA	1.6298*	2	2
+All sites excl. non-melanoma skin cancer	"Incidence"	1	2001	283.62	276.76	NA	1.6298*	2	2
+All sites excl. non-melanoma skin cancer	"Incidence"	1	2002	281.28	281.27	NA	1.6298*	2	2
+All sites excl. non-melanoma skin cancer	"Incidence"	1	2003	286.01	285.85	NA	1.6298*	2	2
+All sites excl. non-melanoma skin cancer	"Incidence"	1	2004	289.58	290.51	NA	1.6298*	2	2
+All sites excl. non-melanoma skin cancer	"Incidence"	1	2005	290.44	295.25	NA	1.6298*	2	2
+All sites excl. non-melanoma skin cancer	"Incidence"	1	2006	296.59	300.06	NA	1.6298*	2	2
+All sites excl. non-melanoma skin cancer	"Incidence"	1	2007	312.77	304.95	NA	1.6298*	2	2
+All sites excl. non-melanoma skin cancer	"Incidence"	1	2008	313.17	309.92	Joinpoint 2	NA	2	2
+All sites excl. non-melanoma skin cancer	"Incidence"	1	2009	307.05	308.39	NA	-0.4928	2	2
+All sites excl. non-melanoma skin cancer	"Incidence"	1	2010	294.65	306.87	NA	-0.4928	2	2
+All sites excl. non-melanoma skin cancer	"Incidence"	1	2011	311.51	305.36	NA	-0.4928	2	2
+All sites excl. non-melanoma skin cancer	"Incidence"	1	2012	307.68	303.85	NA	-0.4928	2	2
+All sites excl. non-melanoma skin cancer	"Incidence"	1	2013	300.89	302.36	NA	-0.4928	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1950	148.67	137.66	NA	0.8372*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1951	136.71	138.81	NA	0.8372*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1952	134.22	139.98	NA	0.8372*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1953	138.82	141.15	NA	0.8372*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1954	138.35	142.33	NA	0.8372*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1955	136.90	143.52	NA	0.8372*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1956	146.08	144.72	NA	0.8372*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1957	157.89	145.93	NA	0.8372*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1958	147.54	147.15	NA	0.8372*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1959	156.07	148.39	NA	0.8372*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1960	158.50	149.63	NA	0.8372*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1961	144.45	150.88	NA	0.8372*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1962	147.19	152.14	NA	0.8372*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1963	148.13	153.42	NA	0.8372*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1964	149.89	154.70	NA	0.8372*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1965	152.71	156.00	NA	0.8372*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1966	158.34	157.30	NA	0.8372*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1967	149.80	158.62	NA	0.8372*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1968	163.39	159.95	NA	0.8372*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1969	167.68	161.29	NA	0.8372*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1970	164.29	162.64	NA	0.8372*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1971	168.66	164.00	NA	0.8372*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1972	157.47	165.37	NA	0.8372*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1973	167.68	166.76	NA	0.8372*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1974	173.19	168.15	NA	0.8372*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1975	168.03	169.56	NA	0.8372*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1976	173.75	170.98	Joinpoint 1	NA	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1977	180.31	170.78	NA	-0.1196	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1978	175.33	170.57	NA	-0.1196	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1979	170.16	170.37	NA	-0.1196	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1980	169.55	170.16	NA	-0.1196	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1981	159.15	169.96	NA	-0.1196	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1982	158.42	169.76	NA	-0.1196	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1983	169.49	169.55	NA	-0.1196	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1984	175.57	169.35	NA	-0.1196	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1985	170.49	169.15	NA	-0.1196	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1986	164.78	168.95	NA	-0.1196	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1987	168.86	168.74	NA	-0.1196	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1988	165.89	168.54	NA	-0.1196	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1989	174.90	168.34	NA	-0.1196	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1990	167.29	168.14	NA	-0.1196	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1991	168.36	167.94	NA	-0.1196	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1992	169.26	167.74	Joinpoint 2	NA	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1993	169.34	165.74	NA	-1.1918*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1994	167.69	163.76	NA	-1.1918*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1995	161.56	161.81	NA	-1.1918*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1996	164.76	159.88	NA	-1.1918*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1997	156.79	157.98	NA	-1.1918*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1998	160.63	156.09	NA	-1.1918*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	1999	150.07	154.23	NA	-1.1918*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	2000	143.23	152.40	NA	-1.1918*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	2001	153.57	150.58	NA	-1.1918*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	2002	150.60	148.79	NA	-1.1918*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	2003	144.71	147.01	NA	-1.1918*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	2004	143.13	145.26	NA	-1.1918*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	2005	136.61	143.53	NA	-1.1918*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	2006	142.66	141.82	NA	-1.1918*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	2007	142.49	140.13	NA	-1.1918*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	2008	140.58	138.46	NA	-1.1918*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	2009	132.47	136.81	NA	-1.1918*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	2010	136.08	135.18	NA	-1.1918*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	2011	132.81	133.57	NA	-1.1918*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	2012	131.65	131.97	NA	-1.1918*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	2013	132.25	130.40	NA	-1.1918*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	2014	126.64	128.85	NA	-1.1918*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	2015	130.85	127.31	NA	-1.1918*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	1	2016	128.58	125.79	NA	-1.1918*	2	2
+Colorectum	"Incidence"	1	1993	44.16	44.98	NA	-2.0972	1	1
+Colorectum	"Incidence"	1	1994	43.85	44.04	NA	-2.0972	1	1
+Colorectum	"Incidence"	1	1995	43.43	43.11	NA	-2.0972	1	1
+Colorectum	"Incidence"	1	1996	44.97	42.21	NA	-2.0972	1	1
+Colorectum	"Incidence"	1	1997	38.79	41.32	NA	-2.0972	1	1
+Colorectum	"Incidence"	1	1998	42.01	40.46	NA	-2.0972	1	1
+Colorectum	"Incidence"	1	1999	38.02	39.61	Joinpoint 1	NA	1	1
+Colorectum	"Incidence"	1	2000	38.52	40.04	NA	1.0910*	1	1
+Colorectum	"Incidence"	1	2001	43.82	40.48	NA	1.0910*	1	1
+Colorectum	"Incidence"	1	2002	37.14	40.92	NA	1.0910*	1	1
+Colorectum	"Incidence"	1	2003	43.63	41.36	NA	1.0910*	1	1
+Colorectum	"Incidence"	1	2004	40.99	41.82	NA	1.0910*	1	1
+Colorectum	"Incidence"	1	2005	43.96	42.27	NA	1.0910*	1	1
+Colorectum	"Incidence"	1	2006	41.88	42.73	NA	1.0910*	1	1
+Colorectum	"Incidence"	1	2007	47.61	43.20	NA	1.0910*	1	1
+Colorectum	"Incidence"	1	2008	43.34	43.67	NA	1.0910*	1	1
+Colorectum	"Incidence"	1	2009	41.66	44.15	NA	1.0910*	1	1
+Colorectum	"Incidence"	1	2010	44.09	44.63	NA	1.0910*	1	1
+Colorectum	"Incidence"	1	2011	45.34	45.12	NA	1.0910*	1	1
+Colorectum	"Incidence"	1	2012	48.31	45.61	NA	1.0910*	1	1
+Colorectum	"Incidence"	1	2013	43.42	46.11	NA	1.0910*	1	1
+Colorectum	"Mortality"	1	1955	22.12	21.16	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1956	19.86	21.18	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1957	22.50	21.21	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1958	22.64	21.23	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1959	22.03	21.25	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1960	23.04	21.27	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1961	19.54	21.29	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1962	16.64	21.32	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1963	19.82	21.34	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1964	20.91	21.36	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1965	21.54	21.38	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1966	21.74	21.40	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1967	19.74	21.43	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1968	21.43	21.45	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1969	22.28	21.47	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1970	22.10	21.49	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1971	21.38	21.51	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1972	23.80	21.54	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1973	21.03	21.56	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1974	27.18	21.58	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1975	21.81	21.60	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1976	24.33	21.63	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1977	25.50	21.65	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1978	20.94	21.67	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1979	19.90	21.69	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1980	19.71	21.71	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1981	18.86	21.74	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1982	21.06	21.76	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1983	20.20	21.78	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1984	24.23	21.80	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1985	22.44	21.83	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1986	21.23	21.85	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1987	21.84	21.87	NA	0.1030	1	1
+Colorectum	"Mortality"	1	1988	22.58	21.89	Joinpoint 1	NA	1	1
+Colorectum	"Mortality"	1	1989	20.45	21.50	NA	-1.8151*	1	1
+Colorectum	"Mortality"	1	1990	21.00	21.11	NA	-1.8151*	1	1
+Colorectum	"Mortality"	1	1991	18.29	20.72	NA	-1.8151*	1	1
+Colorectum	"Mortality"	1	1992	20.85	20.35	NA	-1.8151*	1	1
+Colorectum	"Mortality"	1	1993	21.35	19.98	NA	-1.8151*	1	1
+Colorectum	"Mortality"	1	1994	19.74	19.62	NA	-1.8151*	1	1
+Colorectum	"Mortality"	1	1995	20.13	19.26	NA	-1.8151*	1	1
+Colorectum	"Mortality"	1	1996	18.79	18.91	NA	-1.8151*	1	1
+Colorectum	"Mortality"	1	1997	15.70	18.57	NA	-1.8151*	1	1
+Colorectum	"Mortality"	1	1998	20.10	18.23	NA	-1.8151*	1	1
+Colorectum	"Mortality"	1	1999	16.48	17.90	NA	-1.8151*	1	1
+Colorectum	"Mortality"	1	2000	16.25	17.57	NA	-1.8151*	1	1
+Colorectum	"Mortality"	1	2001	16.84	17.25	NA	-1.8151*	1	1
+Colorectum	"Mortality"	1	2002	15.91	16.94	NA	-1.8151*	1	1
+Colorectum	"Mortality"	1	2003	19.86	16.63	NA	-1.8151*	1	1
+Colorectum	"Mortality"	1	2004	17.61	16.33	NA	-1.8151*	1	1
+Colorectum	"Mortality"	1	2005	16.18	16.04	NA	-1.8151*	1	1
+Colorectum	"Mortality"	1	2006	15.94	15.74	NA	-1.8151*	1	1
+Colorectum	"Mortality"	1	2007	18.34	15.46	NA	-1.8151*	1	1
+Colorectum	"Mortality"	1	2008	16.13	15.18	NA	-1.8151*	1	1
+Colorectum	"Mortality"	1	2009	14.98	14.90	NA	-1.8151*	1	1
+Colorectum	"Mortality"	1	2010	15.37	14.63	NA	-1.8151*	1	1
+Colorectum	"Mortality"	1	2011	14.04	14.37	NA	-1.8151*	1	1
+Colorectum	"Mortality"	1	2012	14.15	14.11	NA	-1.8151*	1	1
+Colorectum	"Mortality"	1	2013	13.97	13.85	NA	-1.8151*	1	1
+Colorectum	"Mortality"	1	2014	11.87	13.60	NA	-1.8151*	1	1
+Colorectum	"Mortality"	1	2015	12.63	13.35	NA	-1.8151*	1	1
+Colorectum	"Mortality"	1	2016	12.49	13.11	NA	-1.8151*	1	1
+Lung	"Incidence"	1	1993	52.03	55.23	NA	-3.7178*	1	1
+Lung	"Incidence"	1	1994	59.02	53.18	NA	-3.7178*	1	1
+Lung	"Incidence"	1	1995	48.63	51.20	NA	-3.7178*	1	1
+Lung	"Incidence"	1	1996	48.42	49.30	NA	-3.7178*	1	1
+Lung	"Incidence"	1	1997	48.74	47.46	NA	-3.7178*	1	1
+Lung	"Incidence"	1	1998	47.75	45.70	NA	-3.7178*	1	1
+Lung	"Incidence"	1	1999	42.45	44.00	Joinpoint 1	NA	1	1
+Lung	"Incidence"	1	2000	43.78	43.83	NA	-0.3940	1	1
+Lung	"Incidence"	1	2001	46.43	43.65	NA	-0.3940	1	1
+Lung	"Incidence"	1	2002	40.72	43.48	NA	-0.3940	1	1
+Lung	"Incidence"	1	2003	41.64	43.31	NA	-0.3940	1	1
+Lung	"Incidence"	1	2004	44.25	43.14	NA	-0.3940	1	1
+Lung	"Incidence"	1	2005	42.08	42.97	NA	-0.3940	1	1
+Lung	"Incidence"	1	2006	42.16	42.80	NA	-0.3940	1	1
+Lung	"Incidence"	1	2007	43.01	42.63	NA	-0.3940	1	1
+Lung	"Incidence"	1	2008	44.75	42.46	NA	-0.3940	1	1
+Lung	"Incidence"	1	2009	42.23	42.30	NA	-0.3940	1	1
+Lung	"Incidence"	1	2010	42.06	42.13	NA	-0.3940	1	1
+Lung	"Incidence"	1	2011	42.53	41.96	NA	-0.3940	1	1
+Lung	"Incidence"	1	2012	40.63	41.80	NA	-0.3940	1	1
+Lung	"Incidence"	1	2013	41.75	41.63	NA	-0.3940	1	1
+Lung	"Mortality"	1	1950	21.05	19.69	NA	8.9494*	4	4
+Lung	"Mortality"	1	1951	20.79	21.45	NA	8.9494*	4	4
+Lung	"Mortality"	1	1952	22.11	23.37	NA	8.9494*	4	4
+Lung	"Mortality"	1	1953	25.03	25.47	NA	8.9494*	4	4
+Lung	"Mortality"	1	1954	27.86	27.75	NA	8.9494*	4	4
+Lung	"Mortality"	1	1955	30.95	30.23	NA	8.9494*	4	4
+Lung	"Mortality"	1	1956	34.21	32.93	Joinpoint 1	NA	4	4
+Lung	"Mortality"	1	1957	35.56	33.91	NA	2.9539*	4	4
+Lung	"Mortality"	1	1958	34.10	34.91	NA	2.9539*	4	4
+Lung	"Mortality"	1	1959	35.84	35.94	NA	2.9539*	4	4
+Lung	"Mortality"	1	1960	35.60	37.00	NA	2.9539*	4	4
+Lung	"Mortality"	1	1961	39.47	38.09	NA	2.9539*	4	4
+Lung	"Mortality"	1	1962	35.97	39.22	NA	2.9539*	4	4
+Lung	"Mortality"	1	1963	43.17	40.38	NA	2.9539*	4	4
+Lung	"Mortality"	1	1964	39.28	41.57	NA	2.9539*	4	4
+Lung	"Mortality"	1	1965	41.70	42.80	NA	2.9539*	4	4
+Lung	"Mortality"	1	1966	43.71	44.06	NA	2.9539*	4	4
+Lung	"Mortality"	1	1967	44.63	45.36	NA	2.9539*	4	4
+Lung	"Mortality"	1	1968	49.63	46.70	NA	2.9539*	4	4
+Lung	"Mortality"	1	1969	49.38	48.08	NA	2.9539*	4	4
+Lung	"Mortality"	1	1970	49.21	49.50	NA	2.9539*	4	4
+Lung	"Mortality"	1	1971	53.17	50.97	NA	2.9539*	4	4
+Lung	"Mortality"	1	1972	47.75	52.47	NA	2.9539*	4	4
+Lung	"Mortality"	1	1973	55.66	54.02	Joinpoint 2	NA	4	4
+Lung	"Mortality"	1	1974	52.42	54.07	NA	0.0856	4	4
+Lung	"Mortality"	1	1975	53.46	54.11	NA	0.0856	4	4
+Lung	"Mortality"	1	1976	55.25	54.16	NA	0.0856	4	4
+Lung	"Mortality"	1	1977	54.57	54.21	NA	0.0856	4	4
+Lung	"Mortality"	1	1978	56.28	54.25	NA	0.0856	4	4
+Lung	"Mortality"	1	1979	54.92	54.30	NA	0.0856	4	4
+Lung	"Mortality"	1	1980	55.56	54.35	NA	0.0856	4	4
+Lung	"Mortality"	1	1981	52.94	54.39	NA	0.0856	4	4
+Lung	"Mortality"	1	1982	52.96	54.44	NA	0.0856	4	4
+Lung	"Mortality"	1	1983	54.43	54.49	NA	0.0856	4	4
+Lung	"Mortality"	1	1984	58.33	54.53	NA	0.0856	4	4
+Lung	"Mortality"	1	1985	57.53	54.58	NA	0.0856	4	4
+Lung	"Mortality"	1	1986	52.80	54.63	NA	0.0856	4	4
+Lung	"Mortality"	1	1987	53.55	54.67	NA	0.0856	4	4
+Lung	"Mortality"	1	1988	51.13	54.72	NA	0.0856	4	4
+Lung	"Mortality"	1	1989	57.92	54.77	Joinpoint 3	NA	4	4
+Lung	"Mortality"	1	1990	49.59	53.00	NA	-3.2207*	4	4
+Lung	"Mortality"	1	1991	54.25	51.30	NA	-3.2207*	4	4
+Lung	"Mortality"	1	1992	47.38	49.64	NA	-3.2207*	4	4
+Lung	"Mortality"	1	1993	49.53	48.04	NA	-3.2207*	4	4
+Lung	"Mortality"	1	1994	46.71	46.50	NA	-3.2207*	4	4
+Lung	"Mortality"	1	1995	42.93	45.00	NA	-3.2207*	4	4
+Lung	"Mortality"	1	1996	46.00	43.55	NA	-3.2207*	4	4
+Lung	"Mortality"	1	1997	42.70	42.15	NA	-3.2207*	4	4
+Lung	"Mortality"	1	1998	39.48	40.79	Joinpoint 4	NA	4	4
+Lung	"Mortality"	1	1999	39.89	40.20	NA	-1.4483*	4	4
+Lung	"Mortality"	1	2000	38.10	39.62	NA	-1.4483*	4	4
+Lung	"Mortality"	1	2001	40.60	39.04	NA	-1.4483*	4	4
+Lung	"Mortality"	1	2002	38.75	38.48	NA	-1.4483*	4	4
+Lung	"Mortality"	1	2003	36.56	37.92	NA	-1.4483*	4	4
+Lung	"Mortality"	1	2004	36.45	37.37	NA	-1.4483*	4	4
+Lung	"Mortality"	1	2005	36.61	36.83	NA	-1.4483*	4	4
+Lung	"Mortality"	1	2006	37.77	36.30	NA	-1.4483*	4	4
+Lung	"Mortality"	1	2007	35.15	35.77	NA	-1.4483*	4	4
+Lung	"Mortality"	1	2008	38.36	35.25	NA	-1.4483*	4	4
+Lung	"Mortality"	1	2009	34.03	34.74	NA	-1.4483*	4	4
+Lung	"Mortality"	1	2010	35.08	34.24	NA	-1.4483*	4	4
+Lung	"Mortality"	1	2011	34.77	33.74	NA	-1.4483*	4	4
+Lung	"Mortality"	1	2012	32.78	33.25	NA	-1.4483*	4	4
+Lung	"Mortality"	1	2013	34.44	32.77	NA	-1.4483*	4	4
+Lung	"Mortality"	1	2014	30.37	32.30	NA	-1.4483*	4	4
+Lung	"Mortality"	1	2015	30.64	31.83	NA	-1.4483*	4	4
+Lung	"Mortality"	1	2016	31.29	31.37	NA	-1.4483*	4	4
+Oesophagus	"Incidence"	1	1993	8.35	8.17	NA	0.3434	0	0
+Oesophagus	"Incidence"	1	1994	9.36	8.20	NA	0.3434	0	0
+Oesophagus	"Incidence"	1	1995	9.61	8.23	NA	0.3434	0	0
+Oesophagus	"Incidence"	1	1996	6.84	8.26	NA	0.3434	0	0
+Oesophagus	"Incidence"	1	1997	9.19	8.29	NA	0.3434	0	0
+Oesophagus	"Incidence"	1	1998	9.21	8.32	NA	0.3434	0	0
+Oesophagus	"Incidence"	1	1999	8.17	8.34	NA	0.3434	0	0
+Oesophagus	"Incidence"	1	2000	6.04	8.37	NA	0.3434	0	0
+Oesophagus	"Incidence"	1	2001	8.54	8.40	NA	0.3434	0	0
+Oesophagus	"Incidence"	1	2002	6.90	8.43	NA	0.3434	0	0
+Oesophagus	"Incidence"	1	2003	7.60	8.46	NA	0.3434	0	0
+Oesophagus	"Incidence"	1	2004	8.62	8.49	NA	0.3434	0	0
+Oesophagus	"Incidence"	1	2005	8.91	8.52	NA	0.3434	0	0
+Oesophagus	"Incidence"	1	2006	9.03	8.55	NA	0.3434	0	0
+Oesophagus	"Incidence"	1	2007	9.52	8.58	NA	0.3434	0	0
+Oesophagus	"Incidence"	1	2008	9.74	8.61	NA	0.3434	0	0
+Oesophagus	"Incidence"	1	2009	8.51	8.63	NA	0.3434	0	0
+Oesophagus	"Incidence"	1	2010	8.46	8.66	NA	0.3434	0	0
+Oesophagus	"Incidence"	1	2011	8.16	8.69	NA	0.3434	0	0
+Oesophagus	"Incidence"	1	2012	9.05	8.72	NA	0.3434	0	0
+Oesophagus	"Incidence"	1	2013	9.07	8.75	NA	0.3434	0	0
+Oesophagus	"Mortality"	1	1950	5.67	5.00	NA	-4.0657*	2	2
+Oesophagus	"Mortality"	1	1951	5.63	4.80	NA	-4.0657*	2	2
+Oesophagus	"Mortality"	1	1952	3.75	4.60	NA	-4.0657*	2	2
+Oesophagus	"Mortality"	1	1953	4.13	4.42	NA	-4.0657*	2	2
+Oesophagus	"Mortality"	1	1954	4.15	4.24	NA	-4.0657*	2	2
+Oesophagus	"Mortality"	1	1955	3.62	4.06	NA	-4.0657*	2	2
+Oesophagus	"Mortality"	1	1956	3.25	3.90	NA	-4.0657*	2	2
+Oesophagus	"Mortality"	1	1957	4.84	3.74	NA	-4.0657*	2	2
+Oesophagus	"Mortality"	1	1958	3.40	3.59	NA	-4.0657*	2	2
+Oesophagus	"Mortality"	1	1959	4.08	3.44	NA	-4.0657*	2	2
+Oesophagus	"Mortality"	1	1960	3.14	3.30	Joinpoint 1	NA	2	2
+Oesophagus	"Mortality"	1	1961	3.72	3.38	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1962	2.79	3.45	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1963	3.63	3.53	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1964	3.66	3.61	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1965	4.68	3.69	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1966	3.98	3.78	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1967	4.26	3.86	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1968	5.20	3.95	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1969	3.98	4.04	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1970	3.29	4.13	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1971	4.45	4.23	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1972	3.72	4.32	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1973	4.84	4.42	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1974	4.38	4.52	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1975	4.57	4.62	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1976	4.29	4.73	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1977	3.61	4.84	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1978	5.29	4.95	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1979	5.14	5.06	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1980	4.79	5.17	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1981	4.71	5.29	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1982	6.03	5.41	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1983	5.29	5.53	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1984	5.84	5.66	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1985	5.05	5.79	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1986	6.58	5.92	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1987	4.49	6.05	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1988	6.85	6.19	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1989	6.81	6.33	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1990	5.87	6.48	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1991	6.20	6.62	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1992	7.29	6.77	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1993	7.15	6.93	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1994	8.05	7.08	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1995	6.55	7.25	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1996	8.34	7.41	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1997	8.12	7.58	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1998	8.26	7.75	NA	2.2704*	2	2
+Oesophagus	"Mortality"	1	1999	8.61	7.93	Joinpoint 2	NA	2	2
+Oesophagus	"Mortality"	1	2000	7.26	7.91	NA	-0.2251	2	2
+Oesophagus	"Mortality"	1	2001	7.65	7.89	NA	-0.2251	2	2
+Oesophagus	"Mortality"	1	2002	9.03	7.87	NA	-0.2251	2	2
+Oesophagus	"Mortality"	1	2003	8.08	7.85	NA	-0.2251	2	2
+Oesophagus	"Mortality"	1	2004	6.96	7.84	NA	-0.2251	2	2
+Oesophagus	"Mortality"	1	2005	8.38	7.82	NA	-0.2251	2	2
+Oesophagus	"Mortality"	1	2006	8.29	7.80	NA	-0.2251	2	2
+Oesophagus	"Mortality"	1	2007	7.42	7.78	NA	-0.2251	2	2
+Oesophagus	"Mortality"	1	2008	8.28	7.77	NA	-0.2251	2	2
+Oesophagus	"Mortality"	1	2009	9.00	7.75	NA	-0.2251	2	2
+Oesophagus	"Mortality"	1	2010	6.79	7.73	NA	-0.2251	2	2
+Oesophagus	"Mortality"	1	2011	6.20	7.71	NA	-0.2251	2	2
+Oesophagus	"Mortality"	1	2012	6.83	7.70	NA	-0.2251	2	2
+Oesophagus	"Mortality"	1	2013	7.53	7.68	NA	-0.2251	2	2
+Oesophagus	"Mortality"	1	2014	7.68	7.66	NA	-0.2251	2	2
+Oesophagus	"Mortality"	1	2015	7.46	7.65	NA	-0.2251	2	2
+Oesophagus	"Mortality"	1	2016	9.62	7.63	NA	-0.2251	2	2
+Pancreas	"Incidence"	1	1993	8.06	6.15	NA	0.7430	0	0
+Pancreas	"Incidence"	1	1994	5.75	6.19	NA	0.7430	0	0
+Pancreas	"Incidence"	1	1995	4.76	6.24	NA	0.7430	0	0
+Pancreas	"Incidence"	1	1996	7.75	6.29	NA	0.7430	0	0
+Pancreas	"Incidence"	1	1997	6.86	6.33	NA	0.7430	0	0
+Pancreas	"Incidence"	1	1998	6.30	6.38	NA	0.7430	0	0
+Pancreas	"Incidence"	1	1999	5.44	6.43	NA	0.7430	0	0
+Pancreas	"Incidence"	1	2000	5.16	6.48	NA	0.7430	0	0
+Pancreas	"Incidence"	1	2001	8.02	6.52	NA	0.7430	0	0
+Pancreas	"Incidence"	1	2002	6.37	6.57	NA	0.7430	0	0
+Pancreas	"Incidence"	1	2003	4.63	6.62	NA	0.7430	0	0
+Pancreas	"Incidence"	1	2004	6.18	6.67	NA	0.7430	0	0
+Pancreas	"Incidence"	1	2005	7.91	6.72	NA	0.7430	0	0
+Pancreas	"Incidence"	1	2006	8.03	6.77	NA	0.7430	0	0
+Pancreas	"Incidence"	1	2007	8.01	6.82	NA	0.7430	0	0
+Pancreas	"Incidence"	1	2008	7.53	6.87	NA	0.7430	0	0
+Pancreas	"Incidence"	1	2009	7.58	6.92	NA	0.7430	0	0
+Pancreas	"Incidence"	1	2010	5.96	6.97	NA	0.7430	0	0
+Pancreas	"Incidence"	1	2011	6.22	7.03	NA	0.7430	0	0
+Pancreas	"Incidence"	1	2012	7.76	7.08	NA	0.7430	0	0
+Pancreas	"Incidence"	1	2013	6.87	7.13	NA	0.7430	0	0
+Pancreas	"Mortality"	1	1955	5.25	5.79	NA	1.9901*	2	2
+Pancreas	"Mortality"	1	1956	5.54	5.90	NA	1.9901*	2	2
+Pancreas	"Mortality"	1	1957	7.61	6.02	NA	1.9901*	2	2
+Pancreas	"Mortality"	1	1958	5.90	6.14	NA	1.9901*	2	2
+Pancreas	"Mortality"	1	1959	7.69	6.26	NA	1.9901*	2	2
+Pancreas	"Mortality"	1	1960	5.54	6.39	NA	1.9901*	2	2
+Pancreas	"Mortality"	1	1961	7.20	6.52	NA	1.9901*	2	2
+Pancreas	"Mortality"	1	1962	6.90	6.65	NA	1.9901*	2	2
+Pancreas	"Mortality"	1	1963	5.35	6.78	NA	1.9901*	2	2
+Pancreas	"Mortality"	1	1964	7.34	6.91	NA	1.9901*	2	2
+Pancreas	"Mortality"	1	1965	8.52	7.05	NA	1.9901*	2	2
+Pancreas	"Mortality"	1	1966	6.79	7.19	NA	1.9901*	2	2
+Pancreas	"Mortality"	1	1967	5.52	7.33	NA	1.9901*	2	2
+Pancreas	"Mortality"	1	1968	7.64	7.48	NA	1.9901*	2	2
+Pancreas	"Mortality"	1	1969	7.51	7.63	NA	1.9901*	2	2
+Pancreas	"Mortality"	1	1970	9.01	7.78	NA	1.9901*	2	2
+Pancreas	"Mortality"	1	1971	7.94	7.94	NA	1.9901*	2	2
+Pancreas	"Mortality"	1	1972	8.23	8.09	NA	1.9901*	2	2
+Pancreas	"Mortality"	1	1973	5.80	8.25	NA	1.9901*	2	2
+Pancreas	"Mortality"	1	1974	8.62	8.42	NA	1.9901*	2	2
+Pancreas	"Mortality"	1	1975	9.46	8.59	NA	1.9901*	2	2
+Pancreas	"Mortality"	1	1976	9.17	8.76	NA	1.9901*	2	2
+Pancreas	"Mortality"	1	1977	8.34	8.93	NA	1.9901*	2	2
+Pancreas	"Mortality"	1	1978	10.77	9.11	Joinpoint 1	NA	2	2
+Pancreas	"Mortality"	1	1979	8.55	8.46	NA	-7.0741	2	2
+Pancreas	"Mortality"	1	1980	8.03	7.87	NA	-7.0741	2	2
+Pancreas	"Mortality"	1	1981	7.22	7.31	NA	-7.0741	2	2
+Pancreas	"Mortality"	1	1982	6.39	6.79	Joinpoint 2	NA	2	2
+Pancreas	"Mortality"	1	1983	7.07	6.79	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	1984	6.09	6.79	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	1985	7.57	6.78	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	1986	7.47	6.78	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	1987	5.56	6.77	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	1988	7.38	6.77	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	1989	7.01	6.77	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	1990	7.56	6.76	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	1991	7.63	6.76	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	1992	6.37	6.76	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	1993	6.34	6.75	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	1994	6.27	6.75	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	1995	5.91	6.75	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	1996	6.75	6.74	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	1997	6.77	6.74	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	1998	7.71	6.73	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	1999	6.49	6.73	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	2000	6.27	6.73	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	2001	6.87	6.72	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	2002	8.30	6.72	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	2003	5.40	6.72	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	2004	5.44	6.71	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	2005	6.72	6.71	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	2006	6.96	6.71	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	2007	8.26	6.70	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	2008	8.26	6.70	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	2009	7.50	6.69	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	2010	5.83	6.69	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	2011	5.76	6.69	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	2012	6.22	6.68	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	2013	7.08	6.68	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	2014	5.91	6.68	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	2015	6.43	6.67	NA	-0.0538	2	2
+Pancreas	"Mortality"	1	2016	7.67	6.67	NA	-0.0538	2	2
+Prostate	"Incidence"	1	1993	38.78	39.02	NA	-0.1775	2	2
+Prostate	"Incidence"	1	1994	39.45	38.95	NA	-0.1775	2	2
+Prostate	"Incidence"	1	1995	40.02	38.88	NA	-0.1775	2	2
+Prostate	"Incidence"	1	1996	37.17	38.81	NA	-0.1775	2	2
+Prostate	"Incidence"	1	1997	37.92	38.74	NA	-0.1775	2	2
+Prostate	"Incidence"	1	1998	39.09	38.67	Joinpoint 1	NA	2	2
+Prostate	"Incidence"	1	1999	39.70	41.59	NA	7.5558*	2	2
+Prostate	"Incidence"	1	2000	46.44	44.74	NA	7.5558*	2	2
+Prostate	"Incidence"	1	2001	45.33	48.12	NA	7.5558*	2	2
+Prostate	"Incidence"	1	2002	53.34	51.75	NA	7.5558*	2	2
+Prostate	"Incidence"	1	2003	61.39	55.66	NA	7.5558*	2	2
+Prostate	"Incidence"	1	2004	64.14	59.87	NA	7.5558*	2	2
+Prostate	"Incidence"	1	2005	62.54	64.39	NA	7.5558*	2	2
+Prostate	"Incidence"	1	2006	65.40	69.26	NA	7.5558*	2	2
+Prostate	"Incidence"	1	2007	71.13	74.49	Joinpoint 2	NA	2	2
+Prostate	"Incidence"	1	2008	72.88	73.11	NA	-1.8510	2	2
+Prostate	"Incidence"	1	2009	78.16	71.76	NA	-1.8510	2	2
+Prostate	"Incidence"	1	2010	64.77	70.43	NA	-1.8510	2	2
+Prostate	"Incidence"	1	2011	70.19	69.13	NA	-1.8510	2	2
+Prostate	"Incidence"	1	2012	70.12	67.85	NA	-1.8510	2	2
+Prostate	"Incidence"	1	2013	65.04	66.59	NA	-1.8510	2	2
+Prostate	"Mortality"	1	1950	8.31	8.46	NA	5.6734	2	2
+Prostate	"Mortality"	1	1951	10.00	8.94	NA	5.6734	2	2
+Prostate	"Mortality"	1	1952	8.76	9.45	NA	5.6734	2	2
+Prostate	"Mortality"	1	1953	9.34	9.98	NA	5.6734	2	2
+Prostate	"Mortality"	1	1954	10.51	10.55	NA	5.6734	2	2
+Prostate	"Mortality"	1	1955	11.53	11.15	Joinpoint 1	NA	2	2
+Prostate	"Mortality"	1	1956	10.58	11.23	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1957	13.57	11.31	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1958	11.27	11.39	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1959	11.80	11.47	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1960	13.42	11.55	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1961	9.76	11.64	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1962	12.68	11.72	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1963	12.01	11.80	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1964	11.41	11.89	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1965	13.89	11.98	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1966	12.60	12.06	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1967	9.35	12.15	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1968	12.45	12.24	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1969	12.70	12.32	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1970	13.29	12.41	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1971	12.77	12.50	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1972	11.31	12.59	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1973	10.46	12.68	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1974	15.11	12.77	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1975	13.59	12.87	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1976	11.94	12.96	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1977	14.88	13.05	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1978	14.14	13.15	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1979	13.40	13.24	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1980	12.52	13.34	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1981	10.86	13.43	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1982	12.66	13.53	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1983	12.52	13.63	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1984	13.87	13.72	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1985	13.79	13.82	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1986	11.10	13.92	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1987	13.69	14.02	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1988	13.94	14.12	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1989	13.50	14.23	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1990	16.08	14.33	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1991	14.26	14.43	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1992	16.15	14.54	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1993	13.90	14.64	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1994	16.21	14.75	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1995	16.16	14.85	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1996	16.23	14.96	NA	0.7202*	2	2
+Prostate	"Mortality"	1	1997	15.51	15.07	Joinpoint 2	NA	2	2
+Prostate	"Mortality"	1	1998	15.77	14.92	NA	-0.9394*	2	2
+Prostate	"Mortality"	1	1999	14.08	14.78	NA	-0.9394*	2	2
+Prostate	"Mortality"	1	2000	15.22	14.65	NA	-0.9394*	2	2
+Prostate	"Mortality"	1	2001	15.13	14.51	NA	-0.9394*	2	2
+Prostate	"Mortality"	1	2002	12.88	14.37	NA	-0.9394*	2	2
+Prostate	"Mortality"	1	2003	14.52	14.24	NA	-0.9394*	2	2
+Prostate	"Mortality"	1	2004	15.79	14.10	NA	-0.9394*	2	2
+Prostate	"Mortality"	1	2005	14.09	13.97	NA	-0.9394*	2	2
+Prostate	"Mortality"	1	2006	12.89	13.84	NA	-0.9394*	2	2
+Prostate	"Mortality"	1	2007	14.03	13.71	NA	-0.9394*	2	2
+Prostate	"Mortality"	1	2008	12.99	13.58	NA	-0.9394*	2	2
+Prostate	"Mortality"	1	2009	12.22	13.45	NA	-0.9394*	2	2
+Prostate	"Mortality"	1	2010	13.82	13.33	NA	-0.9394*	2	2
+Prostate	"Mortality"	1	2011	12.33	13.20	NA	-0.9394*	2	2
+Prostate	"Mortality"	1	2012	14.38	13.08	NA	-0.9394*	2	2
+Prostate	"Mortality"	1	2013	13.79	12.95	NA	-0.9394*	2	2
+Prostate	"Mortality"	1	2014	11.58	12.83	NA	-0.9394*	2	2
+Prostate	"Mortality"	1	2015	12.08	12.71	NA	-0.9394*	2	2
+Prostate	"Mortality"	1	2016	14.07	12.59	NA	-0.9394*	2	2
+All sites excl. non-melanoma skin cancer	"Incidence"	2	1993	247.91	245.18	NA	-0.2000	1	1
+All sites excl. non-melanoma skin cancer	"Incidence"	2	1994	241.90	244.69	NA	-0.2000	1	1
+All sites excl. non-melanoma skin cancer	"Incidence"	2	1995	242.97	244.20	NA	-0.2000	1	1
+All sites excl. non-melanoma skin cancer	"Incidence"	2	1996	243.90	243.71	NA	-0.2000	1	1
+All sites excl. non-melanoma skin cancer	"Incidence"	2	1997	241.99	243.22	NA	-0.2000	1	1
+All sites excl. non-melanoma skin cancer	"Incidence"	2	1998	245.14	242.73	NA	-0.2000	1	1
+All sites excl. non-melanoma skin cancer	"Incidence"	2	1999	240.18	242.25	NA	-0.2000	1	1
+All sites excl. non-melanoma skin cancer	"Incidence"	2	2000	248.04	241.76	NA	-0.2000	1	1
+All sites excl. non-melanoma skin cancer	"Incidence"	2	2001	234.95	241.28	Joinpoint 1	NA	1	1
+All sites excl. non-melanoma skin cancer	"Incidence"	2	2002	244.56	243.68	NA	0.9961*	1	1
+All sites excl. non-melanoma skin cancer	"Incidence"	2	2003	250.85	246.11	NA	0.9961*	1	1
+All sites excl. non-melanoma skin cancer	"Incidence"	2	2004	251.93	248.56	NA	0.9961*	1	1
+All sites excl. non-melanoma skin cancer	"Incidence"	2	2005	243.37	251.04	NA	0.9961*	1	1
+All sites excl. non-melanoma skin cancer	"Incidence"	2	2006	246.40	253.54	NA	0.9961*	1	1
+All sites excl. non-melanoma skin cancer	"Incidence"	2	2007	259.42	256.07	NA	0.9961*	1	1
+All sites excl. non-melanoma skin cancer	"Incidence"	2	2008	266.68	258.62	NA	0.9961*	1	1
+All sites excl. non-melanoma skin cancer	"Incidence"	2	2009	265.39	261.19	NA	0.9961*	1	1
+All sites excl. non-melanoma skin cancer	"Incidence"	2	2010	255.54	263.79	NA	0.9961*	1	1
+All sites excl. non-melanoma skin cancer	"Incidence"	2	2011	265.68	266.42	NA	0.9961*	1	1
+All sites excl. non-melanoma skin cancer	"Incidence"	2	2012	273.09	269.08	NA	0.9961*	1	1
+All sites excl. non-melanoma skin cancer	"Incidence"	2	2013	269.85	271.76	NA	0.9961*	1	1
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1950	128.31	120.47	NA	-0.6789*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1951	110.10	119.65	NA	-0.6789*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1952	114.46	118.84	NA	-0.6789*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1953	118.36	118.03	NA	-0.6789*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1954	114.17	117.23	NA	-0.6789*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1955	123.74	116.44	NA	-0.6789*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1956	117.29	115.65	NA	-0.6789*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1957	116.78	114.86	NA	-0.6789*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1958	117.22	114.08	NA	-0.6789*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1959	113.41	113.31	NA	-0.6789*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1960	116.83	112.54	NA	-0.6789*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1961	105.42	111.77	NA	-0.6789*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1962	105.82	111.01	Joinpoint 1	NA	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1963	107.77	111.44	NA	0.3834*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1964	108.20	111.87	NA	0.3834*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1965	114.16	112.30	NA	0.3834*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1966	112.08	112.73	NA	0.3834*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1967	105.85	113.16	NA	0.3834*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1968	118.79	113.59	NA	0.3834*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1969	119.68	114.03	NA	0.3834*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1970	118.05	114.47	NA	0.3834*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1971	114.87	114.90	NA	0.3834*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1972	113.77	115.34	NA	0.3834*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1973	122.31	115.79	NA	0.3834*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1974	112.22	116.23	NA	0.3834*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1975	120.87	116.68	NA	0.3834*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1976	117.66	117.12	NA	0.3834*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1977	127.35	117.57	NA	0.3834*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1978	119.87	118.02	NA	0.3834*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1979	117.00	118.48	NA	0.3834*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1980	120.32	118.93	NA	0.3834*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1981	119.91	119.39	NA	0.3834*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1982	119.34	119.84	NA	0.3834*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1983	114.82	120.30	NA	0.3834*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1984	119.19	120.76	NA	0.3834*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1985	117.39	121.23	NA	0.3834*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1986	117.76	121.69	Joinpoint 2	NA	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1987	120.23	120.65	NA	-0.8534*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1988	120.65	119.62	NA	-0.8534*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1989	117.19	118.60	NA	-0.8534*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1990	119.65	117.59	NA	-0.8534*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1991	118.18	116.59	NA	-0.8534*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1992	115.54	115.59	NA	-0.8534*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1993	120.95	114.61	NA	-0.8534*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1994	115.93	113.63	NA	-0.8534*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1995	110.51	112.66	NA	-0.8534*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1996	110.61	111.70	NA	-0.8534*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1997	110.32	110.74	NA	-0.8534*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1998	107.39	109.80	NA	-0.8534*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	1999	108.96	108.86	NA	-0.8534*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	2000	111.43	107.93	NA	-0.8534*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	2001	106.40	107.01	NA	-0.8534*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	2002	102.12	106.10	NA	-0.8534*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	2003	106.44	105.19	NA	-0.8534*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	2004	103.91	104.29	NA	-0.8534*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	2005	100.86	103.40	NA	-0.8534*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	2006	102.16	102.52	NA	-0.8534*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	2007	98.11	101.65	NA	-0.8534*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	2008	101.26	100.78	NA	-0.8534*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	2009	98.81	99.92	NA	-0.8534*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	2010	99.18	99.07	NA	-0.8534*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	2011	95.63	98.22	NA	-0.8534*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	2012	96.40	97.38	NA	-0.8534*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	2013	94.74	96.55	NA	-0.8534*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	2014	100.99	95.73	NA	-0.8534*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	2015	94.39	94.91	NA	-0.8534*	2	2
+All sites excl. non-melanoma skin cancer	"Mortality"	2	2016	99.09	94.10	NA	-0.8534*	2	2
+Breast	"Incidence"	2	1993	67.75	71.74	NA	0.8656*	0	0
+Breast	"Incidence"	2	1994	73.29	72.36	NA	0.8656*	0	0
+Breast	"Incidence"	2	1995	75.56	72.99	NA	0.8656*	0	0
+Breast	"Incidence"	2	1996	73.15	73.62	NA	0.8656*	0	0
+Breast	"Incidence"	2	1997	72.32	74.26	NA	0.8656*	0	0
+Breast	"Incidence"	2	1998	76.61	74.90	NA	0.8656*	0	0
+Breast	"Incidence"	2	1999	75.67	75.55	NA	0.8656*	0	0
+Breast	"Incidence"	2	2000	77.30	76.21	NA	0.8656*	0	0
+Breast	"Incidence"	2	2001	75.20	76.86	NA	0.8656*	0	0
+Breast	"Incidence"	2	2002	75.14	77.53	NA	0.8656*	0	0
+Breast	"Incidence"	2	2003	81.62	78.20	NA	0.8656*	0	0
+Breast	"Incidence"	2	2004	86.62	78.88	NA	0.8656*	0	0
+Breast	"Incidence"	2	2005	78.87	79.56	NA	0.8656*	0	0
+Breast	"Incidence"	2	2006	71.59	80.25	NA	0.8656*	0	0
+Breast	"Incidence"	2	2007	83.53	80.94	NA	0.8656*	0	0
+Breast	"Incidence"	2	2008	84.26	81.64	NA	0.8656*	0	0
+Breast	"Incidence"	2	2009	85.97	82.35	NA	0.8656*	0	0
+Breast	"Incidence"	2	2010	81.34	83.06	NA	0.8656*	0	0
+Breast	"Incidence"	2	2011	84.54	83.78	NA	0.8656*	0	0
+Breast	"Incidence"	2	2012	84.85	84.51	NA	0.8656*	0	0
+Breast	"Incidence"	2	2013	80.79	85.24	NA	0.8656*	0	0
+Breast	"Mortality"	2	1950	22.72	18.21	NA	1.1610*	1	1
+Breast	"Mortality"	2	1951	17.92	18.42	NA	1.1610*	1	1
+Breast	"Mortality"	2	1952	18.20	18.64	NA	1.1610*	1	1
+Breast	"Mortality"	2	1953	18.22	18.85	NA	1.1610*	1	1
+Breast	"Mortality"	2	1954	18.76	19.07	NA	1.1610*	1	1
+Breast	"Mortality"	2	1955	19.56	19.29	NA	1.1610*	1	1
+Breast	"Mortality"	2	1956	18.75	19.52	NA	1.1610*	1	1
+Breast	"Mortality"	2	1957	21.23	19.75	NA	1.1610*	1	1
+Breast	"Mortality"	2	1958	20.87	19.97	NA	1.1610*	1	1
+Breast	"Mortality"	2	1959	17.57	20.21	NA	1.1610*	1	1
+Breast	"Mortality"	2	1960	19.64	20.44	NA	1.1610*	1	1
+Breast	"Mortality"	2	1961	17.90	20.68	NA	1.1610*	1	1
+Breast	"Mortality"	2	1962	17.66	20.92	NA	1.1610*	1	1
+Breast	"Mortality"	2	1963	19.63	21.16	NA	1.1610*	1	1
+Breast	"Mortality"	2	1964	22.53	21.41	NA	1.1610*	1	1
+Breast	"Mortality"	2	1965	23.07	21.66	NA	1.1610*	1	1
+Breast	"Mortality"	2	1966	21.49	21.91	NA	1.1610*	1	1
+Breast	"Mortality"	2	1967	20.62	22.16	NA	1.1610*	1	1
+Breast	"Mortality"	2	1968	23.78	22.42	NA	1.1610*	1	1
+Breast	"Mortality"	2	1969	25.74	22.68	NA	1.1610*	1	1
+Breast	"Mortality"	2	1970	24.88	22.94	NA	1.1610*	1	1
+Breast	"Mortality"	2	1971	23.95	23.21	NA	1.1610*	1	1
+Breast	"Mortality"	2	1972	23.33	23.48	NA	1.1610*	1	1
+Breast	"Mortality"	2	1973	24.53	23.75	NA	1.1610*	1	1
+Breast	"Mortality"	2	1974	22.61	24.03	NA	1.1610*	1	1
+Breast	"Mortality"	2	1975	23.88	24.31	NA	1.1610*	1	1
+Breast	"Mortality"	2	1976	25.00	24.59	NA	1.1610*	1	1
+Breast	"Mortality"	2	1977	30.47	24.87	NA	1.1610*	1	1
+Breast	"Mortality"	2	1978	26.86	25.16	NA	1.1610*	1	1
+Breast	"Mortality"	2	1979	24.02	25.45	NA	1.1610*	1	1
+Breast	"Mortality"	2	1980	27.75	25.75	NA	1.1610*	1	1
+Breast	"Mortality"	2	1981	26.70	26.05	NA	1.1610*	1	1
+Breast	"Mortality"	2	1982	24.05	26.35	NA	1.1610*	1	1
+Breast	"Mortality"	2	1983	24.26	26.66	NA	1.1610*	1	1
+Breast	"Mortality"	2	1984	27.02	26.97	NA	1.1610*	1	1
+Breast	"Mortality"	2	1985	27.10	27.28	NA	1.1610*	1	1
+Breast	"Mortality"	2	1986	24.96	27.60	Joinpoint 1	NA	1	1
+Breast	"Mortality"	2	1987	27.04	27.06	NA	-1.9301*	1	1
+Breast	"Mortality"	2	1988	27.14	26.54	NA	-1.9301*	1	1
+Breast	"Mortality"	2	1989	24.56	26.03	NA	-1.9301*	1	1
+Breast	"Mortality"	2	1990	24.43	25.53	NA	-1.9301*	1	1
+Breast	"Mortality"	2	1991	27.60	25.03	NA	-1.9301*	1	1
+Breast	"Mortality"	2	1992	24.28	24.55	NA	-1.9301*	1	1
+Breast	"Mortality"	2	1993	27.19	24.08	NA	-1.9301*	1	1
+Breast	"Mortality"	2	1994	26.06	23.61	NA	-1.9301*	1	1
+Breast	"Mortality"	2	1995	25.46	23.16	NA	-1.9301*	1	1
+Breast	"Mortality"	2	1996	22.51	22.71	NA	-1.9301*	1	1
+Breast	"Mortality"	2	1997	19.13	22.27	NA	-1.9301*	1	1
+Breast	"Mortality"	2	1998	21.61	21.84	NA	-1.9301*	1	1
+Breast	"Mortality"	2	1999	20.60	21.42	NA	-1.9301*	1	1
+Breast	"Mortality"	2	2000	20.73	21.01	NA	-1.9301*	1	1
+Breast	"Mortality"	2	2001	21.29	20.60	NA	-1.9301*	1	1
+Breast	"Mortality"	2	2002	18.31	20.20	NA	-1.9301*	1	1
+Breast	"Mortality"	2	2003	18.26	19.81	NA	-1.9301*	1	1
+Breast	"Mortality"	2	2004	20.86	19.43	NA	-1.9301*	1	1
+Breast	"Mortality"	2	2005	18.50	19.06	NA	-1.9301*	1	1
+Breast	"Mortality"	2	2006	18.67	18.69	NA	-1.9301*	1	1
+Breast	"Mortality"	2	2007	17.87	18.33	NA	-1.9301*	1	1
+Breast	"Mortality"	2	2008	18.69	17.97	NA	-1.9301*	1	1
+Breast	"Mortality"	2	2009	18.14	17.63	NA	-1.9301*	1	1
+Breast	"Mortality"	2	2010	15.98	17.29	NA	-1.9301*	1	1
+Breast	"Mortality"	2	2011	18.30	16.95	NA	-1.9301*	1	1
+Breast	"Mortality"	2	2012	15.66	16.63	NA	-1.9301*	1	1
+Breast	"Mortality"	2	2013	16.66	16.30	NA	-1.9301*	1	1
+Breast	"Mortality"	2	2014	17.35	15.99	NA	-1.9301*	1	1
+Breast	"Mortality"	2	2015	15.59	15.68	NA	-1.9301*	1	1
+Breast	"Mortality"	2	2016	15.19	15.38	NA	-1.9301*	1	1
+Colorectum	"Incidence"	2	1993	29.64	29.88	NA	-1.0607*	1	1
+Colorectum	"Incidence"	2	1994	28.20	29.56	NA	-1.0607*	1	1
+Colorectum	"Incidence"	2	1995	31.57	29.25	NA	-1.0607*	1	1
+Colorectum	"Incidence"	2	1996	29.38	28.94	NA	-1.0607*	1	1
+Colorectum	"Incidence"	2	1997	27.59	28.63	NA	-1.0607*	1	1
+Colorectum	"Incidence"	2	1998	29.50	28.33	NA	-1.0607*	1	1
+Colorectum	"Incidence"	2	1999	27.59	28.03	NA	-1.0607*	1	1
+Colorectum	"Incidence"	2	2000	27.01	27.73	NA	-1.0607*	1	1
+Colorectum	"Incidence"	2	2001	26.82	27.44	NA	-1.0607*	1	1
+Colorectum	"Incidence"	2	2002	27.31	27.15	NA	-1.0607*	1	1
+Colorectum	"Incidence"	2	2003	26.24	26.86	NA	-1.0607*	1	1
+Colorectum	"Incidence"	2	2004	28.65	26.57	NA	-1.0607*	1	1
+Colorectum	"Incidence"	2	2005	24.30	26.29	Joinpoint 1	NA	1	1
+Colorectum	"Incidence"	2	2006	26.78	26.77	NA	1.8367*	1	1
+Colorectum	"Incidence"	2	2007	29.25	27.27	NA	1.8367*	1	1
+Colorectum	"Incidence"	2	2008	28.81	27.77	NA	1.8367*	1	1
+Colorectum	"Incidence"	2	2009	25.75	28.28	NA	1.8367*	1	1
+Colorectum	"Incidence"	2	2010	29.11	28.80	NA	1.8367*	1	1
+Colorectum	"Incidence"	2	2011	30.83	29.33	NA	1.8367*	1	1
+Colorectum	"Incidence"	2	2012	29.94	29.86	NA	1.8367*	1	1
+Colorectum	"Incidence"	2	2013	29.48	30.41	NA	1.8367*	1	1
+Colorectum	"Mortality"	2	1955	20.60	18.31	NA	0.1308	1	1
+Colorectum	"Mortality"	2	1956	18.59	18.33	NA	0.1308	1	1
+Colorectum	"Mortality"	2	1957	20.02	18.35	NA	0.1308	1	1
+Colorectum	"Mortality"	2	1958	17.36	18.38	NA	0.1308	1	1
+Colorectum	"Mortality"	2	1959	20.01	18.40	NA	0.1308	1	1
+Colorectum	"Mortality"	2	1960	19.46	18.43	NA	0.1308	1	1
+Colorectum	"Mortality"	2	1961	17.73	18.45	NA	0.1308	1	1
+Colorectum	"Mortality"	2	1962	15.45	18.48	NA	0.1308	1	1
+Colorectum	"Mortality"	2	1963	15.08	18.50	NA	0.1308	1	1
+Colorectum	"Mortality"	2	1964	17.60	18.52	NA	0.1308	1	1
+Colorectum	"Mortality"	2	1965	18.75	18.55	NA	0.1308	1	1
+Colorectum	"Mortality"	2	1966	18.03	18.57	NA	0.1308	1	1
+Colorectum	"Mortality"	2	1967	16.60	18.60	NA	0.1308	1	1
+Colorectum	"Mortality"	2	1968	22.56	18.62	NA	0.1308	1	1
+Colorectum	"Mortality"	2	1969	19.12	18.64	NA	0.1308	1	1
+Colorectum	"Mortality"	2	1970	19.00	18.67	NA	0.1308	1	1
+Colorectum	"Mortality"	2	1971	18.87	18.69	NA	0.1308	1	1
+Colorectum	"Mortality"	2	1972	17.92	18.72	NA	0.1308	1	1
+Colorectum	"Mortality"	2	1973	18.32	18.74	NA	0.1308	1	1
+Colorectum	"Mortality"	2	1974	20.76	18.77	NA	0.1308	1	1
+Colorectum	"Mortality"	2	1975	20.02	18.79	NA	0.1308	1	1
+Colorectum	"Mortality"	2	1976	19.39	18.82	Joinpoint 1	NA	1	1
+Colorectum	"Mortality"	2	1977	18.13	18.42	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	1978	17.64	18.04	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	1979	18.05	17.66	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	1980	16.64	17.29	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	1981	17.31	16.92	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	1982	17.40	16.57	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	1983	14.00	16.22	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	1984	15.41	15.88	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	1985	15.15	15.55	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	1986	15.89	15.22	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	1987	16.79	14.90	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	1988	15.02	14.59	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	1989	13.81	14.28	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	1990	14.48	13.98	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	1991	13.63	13.69	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	1992	14.74	13.40	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	1993	13.58	13.12	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	1994	13.06	12.85	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	1995	13.03	12.58	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	1996	11.84	12.31	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	1997	12.79	12.06	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	1998	11.06	11.80	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	1999	10.63	11.56	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	2000	11.81	11.31	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	2001	9.11	11.08	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	2002	9.29	10.84	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	2003	11.86	10.62	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	2004	10.58	10.39	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	2005	10.61	10.18	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	2006	8.79	9.96	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	2007	9.62	9.75	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	2008	9.68	9.55	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	2009	9.88	9.35	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	2010	8.55	9.15	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	2011	8.37	8.96	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	2012	8.27	8.77	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	2013	9.15	8.59	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	2014	9.19	8.41	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	2015	8.12	8.23	NA	-2.0974*	1	1
+Colorectum	"Mortality"	2	2016	9.31	8.06	NA	-2.0974*	1	1
+Lung	"Incidence"	2	1993	24.24	22.97	NA	-0.1192	1	1
+Lung	"Incidence"	2	1994	22.66	22.94	NA	-0.1192	1	1
+Lung	"Incidence"	2	1995	23.32	22.91	NA	-0.1192	1	1
+Lung	"Incidence"	2	1996	22.13	22.89	NA	-0.1192	1	1
+Lung	"Incidence"	2	1997	22.12	22.86	NA	-0.1192	1	1
+Lung	"Incidence"	2	1998	21.68	22.83	NA	-0.1192	1	1
+Lung	"Incidence"	2	1999	23.67	22.80	NA	-0.1192	1	1
+Lung	"Incidence"	2	2000	23.46	22.78	NA	-0.1192	1	1
+Lung	"Incidence"	2	2001	21.35	22.75	NA	-0.1192	1	1
+Lung	"Incidence"	2	2002	22.98	22.72	NA	-0.1192	1	1
+Lung	"Incidence"	2	2003	23.77	22.69	NA	-0.1192	1	1
+Lung	"Incidence"	2	2004	22.69	22.67	Joinpoint 1	NA	1	1
+Lung	"Incidence"	2	2005	24.02	23.25	NA	2.5725*	1	1
+Lung	"Incidence"	2	2006	22.80	23.85	NA	2.5725*	1	1
+Lung	"Incidence"	2	2007	26.04	24.46	NA	2.5725*	1	1
+Lung	"Incidence"	2	2008	24.04	25.09	NA	2.5725*	1	1
+Lung	"Incidence"	2	2009	26.91	25.74	NA	2.5725*	1	1
+Lung	"Incidence"	2	2010	23.94	26.40	NA	2.5725*	1	1
+Lung	"Incidence"	2	2011	26.12	27.08	NA	2.5725*	1	1
+Lung	"Incidence"	2	2012	29.52	27.78	NA	2.5725*	1	1
+Lung	"Incidence"	2	2013	29.04	28.49	NA	2.5725*	1	1
+Lung	"Mortality"	2	1950	3.42	3.91	NA	4.2594*	1	1
+Lung	"Mortality"	2	1951	3.38	4.07	NA	4.2594*	1	1
+Lung	"Mortality"	2	1952	4.52	4.25	NA	4.2594*	1	1
+Lung	"Mortality"	2	1953	5.01	4.43	NA	4.2594*	1	1
+Lung	"Mortality"	2	1954	5.80	4.62	NA	4.2594*	1	1
+Lung	"Mortality"	2	1955	4.04	4.81	NA	4.2594*	1	1
+Lung	"Mortality"	2	1956	7.75	5.02	NA	4.2594*	1	1
+Lung	"Mortality"	2	1957	4.88	5.23	NA	4.2594*	1	1
+Lung	"Mortality"	2	1958	5.28	5.45	NA	4.2594*	1	1
+Lung	"Mortality"	2	1959	7.21	5.69	NA	4.2594*	1	1
+Lung	"Mortality"	2	1960	5.98	5.93	NA	4.2594*	1	1
+Lung	"Mortality"	2	1961	4.56	6.18	NA	4.2594*	1	1
+Lung	"Mortality"	2	1962	6.39	6.44	NA	4.2594*	1	1
+Lung	"Mortality"	2	1963	6.07	6.72	NA	4.2594*	1	1
+Lung	"Mortality"	2	1964	6.77	7.00	NA	4.2594*	1	1
+Lung	"Mortality"	2	1965	5.99	7.30	NA	4.2594*	1	1
+Lung	"Mortality"	2	1966	7.00	7.61	NA	4.2594*	1	1
+Lung	"Mortality"	2	1967	7.64	7.94	NA	4.2594*	1	1
+Lung	"Mortality"	2	1968	8.79	8.28	NA	4.2594*	1	1
+Lung	"Mortality"	2	1969	9.45	8.63	NA	4.2594*	1	1
+Lung	"Mortality"	2	1970	8.44	9.00	NA	4.2594*	1	1
+Lung	"Mortality"	2	1971	9.59	9.38	NA	4.2594*	1	1
+Lung	"Mortality"	2	1972	10.37	9.78	NA	4.2594*	1	1
+Lung	"Mortality"	2	1973	10.15	10.19	NA	4.2594*	1	1
+Lung	"Mortality"	2	1974	9.73	10.63	NA	4.2594*	1	1
+Lung	"Mortality"	2	1975	12.06	11.08	NA	4.2594*	1	1
+Lung	"Mortality"	2	1976	12.63	11.55	NA	4.2594*	1	1
+Lung	"Mortality"	2	1977	13.23	12.05	NA	4.2594*	1	1
+Lung	"Mortality"	2	1978	11.47	12.56	NA	4.2594*	1	1
+Lung	"Mortality"	2	1979	14.00	13.09	NA	4.2594*	1	1
+Lung	"Mortality"	2	1980	13.15	13.65	NA	4.2594*	1	1
+Lung	"Mortality"	2	1981	15.06	14.23	NA	4.2594*	1	1
+Lung	"Mortality"	2	1982	15.45	14.84	NA	4.2594*	1	1
+Lung	"Mortality"	2	1983	13.69	15.47	NA	4.2594*	1	1
+Lung	"Mortality"	2	1984	17.34	16.13	Joinpoint 1	NA	1	1
+Lung	"Mortality"	2	1985	13.93	16.28	NA	0.9566*	1	1
+Lung	"Mortality"	2	1986	15.80	16.44	NA	0.9566*	1	1
+Lung	"Mortality"	2	1987	15.69	16.60	NA	0.9566*	1	1
+Lung	"Mortality"	2	1988	19.59	16.76	NA	0.9566*	1	1
+Lung	"Mortality"	2	1989	15.75	16.92	NA	0.9566*	1	1
+Lung	"Mortality"	2	1990	18.37	17.08	NA	0.9566*	1	1
+Lung	"Mortality"	2	1991	15.58	17.24	NA	0.9566*	1	1
+Lung	"Mortality"	2	1992	17.58	17.41	NA	0.9566*	1	1
+Lung	"Mortality"	2	1993	20.08	17.57	NA	0.9566*	1	1
+Lung	"Mortality"	2	1994	16.96	17.74	NA	0.9566*	1	1
+Lung	"Mortality"	2	1995	18.97	17.91	NA	0.9566*	1	1
+Lung	"Mortality"	2	1996	19.22	18.08	NA	0.9566*	1	1
+Lung	"Mortality"	2	1997	17.54	18.26	NA	0.9566*	1	1
+Lung	"Mortality"	2	1998	19.38	18.43	NA	0.9566*	1	1
+Lung	"Mortality"	2	1999	18.95	18.61	NA	0.9566*	1	1
+Lung	"Mortality"	2	2000	20.91	18.78	NA	0.9566*	1	1
+Lung	"Mortality"	2	2001	18.02	18.96	NA	0.9566*	1	1
+Lung	"Mortality"	2	2002	19.10	19.15	NA	0.9566*	1	1
+Lung	"Mortality"	2	2003	19.03	19.33	NA	0.9566*	1	1
+Lung	"Mortality"	2	2004	19.63	19.51	NA	0.9566*	1	1
+Lung	"Mortality"	2	2005	18.27	19.70	NA	0.9566*	1	1
+Lung	"Mortality"	2	2006	19.08	19.89	NA	0.9566*	1	1
+Lung	"Mortality"	2	2007	19.34	20.08	NA	0.9566*	1	1
+Lung	"Mortality"	2	2008	19.61	20.27	NA	0.9566*	1	1
+Lung	"Mortality"	2	2009	21.32	20.46	NA	0.9566*	1	1
+Lung	"Mortality"	2	2010	21.06	20.66	NA	0.9566*	1	1
+Lung	"Mortality"	2	2011	18.64	20.86	NA	0.9566*	1	1
+Lung	"Mortality"	2	2012	21.71	21.06	NA	0.9566*	1	1
+Lung	"Mortality"	2	2013	19.67	21.26	NA	0.9566*	1	1
+Lung	"Mortality"	2	2014	22.73	21.46	NA	0.9566*	1	1
+Lung	"Mortality"	2	2015	21.79	21.67	NA	0.9566*	1	1
+Lung	"Mortality"	2	2016	23.51	21.88	NA	0.9566*	1	1
+Oesophagus	"Incidence"	2	1993	3.42	3.32	NA	-0.2159	0	0
+Oesophagus	"Incidence"	2	1994	2.99	3.31	NA	-0.2159	0	0
+Oesophagus	"Incidence"	2	1995	3.32	3.30	NA	-0.2159	0	0
+Oesophagus	"Incidence"	2	1996	3.35	3.29	NA	-0.2159	0	0
+Oesophagus	"Incidence"	2	1997	3.97	3.29	NA	-0.2159	0	0
+Oesophagus	"Incidence"	2	1998	2.78	3.28	NA	-0.2159	0	0
+Oesophagus	"Incidence"	2	1999	3.70	3.27	NA	-0.2159	0	0
+Oesophagus	"Incidence"	2	2000	4.05	3.27	NA	-0.2159	0	0
+Oesophagus	"Incidence"	2	2001	3.46	3.26	NA	-0.2159	0	0
+Oesophagus	"Incidence"	2	2002	3.13	3.25	NA	-0.2159	0	0
+Oesophagus	"Incidence"	2	2003	2.99	3.25	NA	-0.2159	0	0
+Oesophagus	"Incidence"	2	2004	2.51	3.24	NA	-0.2159	0	0
+Oesophagus	"Incidence"	2	2005	2.52	3.23	NA	-0.2159	0	0
+Oesophagus	"Incidence"	2	2006	3.49	3.22	NA	-0.2159	0	0
+Oesophagus	"Incidence"	2	2007	3.80	3.22	NA	-0.2159	0	0
+Oesophagus	"Incidence"	2	2008	2.95	3.21	NA	-0.2159	0	0
+Oesophagus	"Incidence"	2	2009	2.72	3.20	NA	-0.2159	0	0
+Oesophagus	"Incidence"	2	2010	3.19	3.20	NA	-0.2159	0	0
+Oesophagus	"Incidence"	2	2011	3.05	3.19	NA	-0.2159	0	0
+Oesophagus	"Incidence"	2	2012	4.17	3.18	NA	-0.2159	0	0
+Oesophagus	"Incidence"	2	2013	3.26	3.18	NA	-0.2159	0	0
+Oesophagus	"Mortality"	2	1950	3.29	2.71	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1951	2.77	2.71	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1952	2.93	2.71	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1953	3.02	2.70	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1954	3.11	2.70	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1955	3.76	2.70	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1956	3.38	2.70	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1957	2.21	2.70	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1958	2.86	2.70	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1959	2.14	2.70	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1960	2.19	2.70	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1961	2.01	2.70	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1962	1.89	2.69	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1963	2.98	2.69	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1964	3.10	2.69	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1965	4.25	2.69	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1966	3.09	2.69	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1967	3.03	2.69	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1968	2.90	2.69	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1969	2.91	2.69	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1970	2.72	2.69	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1971	1.67	2.68	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1972	2.11	2.68	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1973	2.56	2.68	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1974	2.63	2.68	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1975	2.07	2.68	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1976	2.93	2.68	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1977	2.24	2.68	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1978	3.10	2.68	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1979	1.62	2.68	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1980	2.46	2.67	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1981	2.88	2.67	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1982	1.88	2.67	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1983	3.08	2.67	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1984	2.09	2.67	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1985	2.53	2.67	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1986	3.38	2.67	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1987	3.06	2.67	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1988	2.07	2.67	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1989	2.71	2.66	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1990	2.42	2.66	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1991	2.57	2.66	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1992	2.74	2.66	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1993	2.74	2.66	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1994	3.32	2.66	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1995	2.70	2.66	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1996	2.84	2.66	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1997	2.85	2.66	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1998	3.23	2.65	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	1999	3.33	2.65	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	2000	3.18	2.65	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	2001	3.41	2.65	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	2002	2.54	2.65	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	2003	2.66	2.65	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	2004	2.46	2.65	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	2005	2.62	2.65	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	2006	2.06	2.65	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	2007	2.76	2.64	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	2008	3.20	2.64	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	2009	2.77	2.64	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	2010	2.60	2.64	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	2011	2.63	2.64	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	2012	2.25	2.64	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	2013	2.56	2.64	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	2014	2.70	2.64	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	2015	2.50	2.64	NA	-0.0421	0	0
+Oesophagus	"Mortality"	2	2016	2.70	2.63	NA	-0.0421	0	0
+Pancreas	"Incidence"	2	1993	5.15	4.92	NA	-4.5118	1	1
+Pancreas	"Incidence"	2	1994	4.92	4.69	NA	-4.5118	1	1
+Pancreas	"Incidence"	2	1995	3.82	4.48	NA	-4.5118	1	1
+Pancreas	"Incidence"	2	1996	4.14	4.28	NA	-4.5118	1	1
+Pancreas	"Incidence"	2	1997	4.66	4.09	NA	-4.5118	1	1
+Pancreas	"Incidence"	2	1998	3.64	3.90	Joinpoint 1	NA	1	1
+Pancreas	"Incidence"	2	1999	3.19	4.02	NA	2.9563*	1	1
+Pancreas	"Incidence"	2	2000	5.23	4.14	NA	2.9563*	1	1
+Pancreas	"Incidence"	2	2001	3.97	4.26	NA	2.9563*	1	1
+Pancreas	"Incidence"	2	2002	4.84	4.38	NA	2.9563*	1	1
+Pancreas	"Incidence"	2	2003	5.23	4.51	NA	2.9563*	1	1
+Pancreas	"Incidence"	2	2004	4.77	4.65	NA	2.9563*	1	1
+Pancreas	"Incidence"	2	2005	4.00	4.79	NA	2.9563*	1	1
+Pancreas	"Incidence"	2	2006	5.36	4.93	NA	2.9563*	1	1
+Pancreas	"Incidence"	2	2007	4.59	5.07	NA	2.9563*	1	1
+Pancreas	"Incidence"	2	2008	5.85	5.22	NA	2.9563*	1	1
+Pancreas	"Incidence"	2	2009	5.36	5.38	NA	2.9563*	1	1
+Pancreas	"Incidence"	2	2010	5.03	5.54	NA	2.9563*	1	1
+Pancreas	"Incidence"	2	2011	5.66	5.70	NA	2.9563*	1	1
+Pancreas	"Incidence"	2	2012	5.93	5.87	NA	2.9563*	1	1
+Pancreas	"Incidence"	2	2013	6.10	6.04	NA	2.9563*	1	1
+Pancreas	"Mortality"	2	1955	4.10	3.84	NA	1.6285*	2	2
+Pancreas	"Mortality"	2	1956	3.46	3.90	NA	1.6285*	2	2
+Pancreas	"Mortality"	2	1957	3.93	3.97	NA	1.6285*	2	2
+Pancreas	"Mortality"	2	1958	4.40	4.03	NA	1.6285*	2	2
+Pancreas	"Mortality"	2	1959	4.68	4.10	NA	1.6285*	2	2
+Pancreas	"Mortality"	2	1960	3.68	4.16	NA	1.6285*	2	2
+Pancreas	"Mortality"	2	1961	5.60	4.23	NA	1.6285*	2	2
+Pancreas	"Mortality"	2	1962	3.99	4.30	NA	1.6285*	2	2
+Pancreas	"Mortality"	2	1963	4.39	4.37	NA	1.6285*	2	2
+Pancreas	"Mortality"	2	1964	3.14	4.44	NA	1.6285*	2	2
+Pancreas	"Mortality"	2	1965	4.73	4.51	NA	1.6285*	2	2
+Pancreas	"Mortality"	2	1966	4.96	4.59	NA	1.6285*	2	2
+Pancreas	"Mortality"	2	1967	4.18	4.66	NA	1.6285*	2	2
+Pancreas	"Mortality"	2	1968	4.36	4.74	NA	1.6285*	2	2
+Pancreas	"Mortality"	2	1969	4.26	4.81	NA	1.6285*	2	2
+Pancreas	"Mortality"	2	1970	4.77	4.89	NA	1.6285*	2	2
+Pancreas	"Mortality"	2	1971	6.60	4.97	NA	1.6285*	2	2
+Pancreas	"Mortality"	2	1972	4.89	5.05	NA	1.6285*	2	2
+Pancreas	"Mortality"	2	1973	5.99	5.14	NA	1.6285*	2	2
+Pancreas	"Mortality"	2	1974	5.13	5.22	NA	1.6285*	2	2
+Pancreas	"Mortality"	2	1975	5.11	5.30	NA	1.6285*	2	2
+Pancreas	"Mortality"	2	1976	5.13	5.39	NA	1.6285*	2	2
+Pancreas	"Mortality"	2	1977	5.69	5.48	NA	1.6285*	2	2
+Pancreas	"Mortality"	2	1978	5.33	5.57	NA	1.6285*	2	2
+Pancreas	"Mortality"	2	1979	5.65	5.66	NA	1.6285*	2	2
+Pancreas	"Mortality"	2	1980	5.69	5.75	Joinpoint 1	NA	2	2
+Pancreas	"Mortality"	2	1981	5.22	5.66	NA	-1.5365*	2	2
+Pancreas	"Mortality"	2	1982	5.56	5.58	NA	-1.5365*	2	2
+Pancreas	"Mortality"	2	1983	5.52	5.49	NA	-1.5365*	2	2
+Pancreas	"Mortality"	2	1984	5.33	5.41	NA	-1.5365*	2	2
+Pancreas	"Mortality"	2	1985	4.79	5.32	NA	-1.5365*	2	2
+Pancreas	"Mortality"	2	1986	4.68	5.24	NA	-1.5365*	2	2
+Pancreas	"Mortality"	2	1987	6.04	5.16	NA	-1.5365*	2	2
+Pancreas	"Mortality"	2	1988	5.40	5.08	NA	-1.5365*	2	2
+Pancreas	"Mortality"	2	1989	5.84	5.00	NA	-1.5365*	2	2
+Pancreas	"Mortality"	2	1990	5.69	4.93	NA	-1.5365*	2	2
+Pancreas	"Mortality"	2	1991	4.24	4.85	NA	-1.5365*	2	2
+Pancreas	"Mortality"	2	1992	5.51	4.78	NA	-1.5365*	2	2
+Pancreas	"Mortality"	2	1993	4.92	4.70	NA	-1.5365*	2	2
+Pancreas	"Mortality"	2	1994	4.99	4.63	NA	-1.5365*	2	2
+Pancreas	"Mortality"	2	1995	4.28	4.56	NA	-1.5365*	2	2
+Pancreas	"Mortality"	2	1996	4.12	4.49	NA	-1.5365*	2	2
+Pancreas	"Mortality"	2	1997	4.45	4.42	NA	-1.5365*	2	2
+Pancreas	"Mortality"	2	1998	3.64	4.35	Joinpoint 2	NA	2	2
+Pancreas	"Mortality"	2	1999	3.61	4.41	NA	1.2200*	2	2
+Pancreas	"Mortality"	2	2000	5.14	4.46	NA	1.2200*	2	2
+Pancreas	"Mortality"	2	2001	4.87	4.51	NA	1.2200*	2	2
+Pancreas	"Mortality"	2	2002	4.54	4.57	NA	1.2200*	2	2
+Pancreas	"Mortality"	2	2003	5.16	4.62	NA	1.2200*	2	2
+Pancreas	"Mortality"	2	2004	4.14	4.68	NA	1.2200*	2	2
+Pancreas	"Mortality"	2	2005	4.37	4.74	NA	1.2200*	2	2
+Pancreas	"Mortality"	2	2006	5.11	4.80	NA	1.2200*	2	2
+Pancreas	"Mortality"	2	2007	4.73	4.85	NA	1.2200*	2	2
+Pancreas	"Mortality"	2	2008	5.55	4.91	NA	1.2200*	2	2
+Pancreas	"Mortality"	2	2009	5.00	4.97	NA	1.2200*	2	2
+Pancreas	"Mortality"	2	2010	4.55	5.03	NA	1.2200*	2	2
+Pancreas	"Mortality"	2	2011	5.23	5.10	NA	1.2200*	2	2
+Pancreas	"Mortality"	2	2012	6.17	5.16	NA	1.2200*	2	2
+Pancreas	"Mortality"	2	2013	5.73	5.22	NA	1.2200*	2	2
+Pancreas	"Mortality"	2	2014	4.46	5.28	NA	1.2200*	2	2
+Pancreas	"Mortality"	2	2015	4.92	5.35	NA	1.2200*	2	2
+Pancreas	"Mortality"	2	2016	5.41	5.41	NA	1.2200*	2	2
