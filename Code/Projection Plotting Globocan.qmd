@@ -20,6 +20,7 @@ library(readxl)
 library(ggplot2)
 library(gridExtra)
 library(scales)
+library(gt)
 ```
 
 ## Setup
@@ -119,203 +120,7 @@ get_proj_data <- function(data, data_jp, projection.yr){
 ### Plotting function
 
 ```{r}
-plot_joinpoint_output <- function(cancer, sex = 3, data, data_jp, incmort, start.yr = NA, projection.yr = NA, projection.target = NA, report.APC = FALSE, moonshot.target = FALSE){
-  
-  browser()
-  
-  data <- data |> 
-    filter(`Cancer label` == cancer)
-  
-  if(sex == 3 & length(unique(data$Sex))<2){
-    sex <- unique(data$Sex)
-  }
-  
-  
-  if(sex==3){
-    
-    # Filter both dataframes for the relevant data
-    data <- data |>
-      filter(Year >= max(c(start.yr, min(Year)), na.rm = T)) |>
-      mutate(Sex = ifelse(Sex==1, "Men", "Women"))
-    
-    data_jp <- data_jp |>
-      filter(Cancer.label == cancer)
-    
-    data_jp_men <- data_jp |>
-      filter(Sex == 1)
-    
-    data_jp_women <- data_jp |>
-      filter(Sex == 2) 
-    
-    # Call function to extract useful information from joinpoint data
-    
-    jp_plot_men <- extract_joinpoint_splines(data_jp_men) |>
-      mutate(Sex = "Men")
-    jp_plot_women <- extract_joinpoint_splines(data_jp_women) |>
-      mutate(Sex = "Women")
-    
-    jp_plot <- rbind(jp_plot_men, jp_plot_women) |>
-      filter(Year >= max(c(start.yr, min(Year)), na.rm = T))
-    
-    # Making variable for dynamic plot title generation
-    projection <- !is.na(projection.yr)
-    proj_lab <- ifelse(projection, "Projections", "Trends")
-    
-    # Initial plotting of trends
-    plot <- ggplot() +
-      geom_line(data = jp_plot, aes(x = Year, y = Model, colour = factor(section, levels = unique(section)), linetype = Sex)) +
-      geom_point(data = data, aes(x = Year, y = `ASR (World)`, shape = Sex)) +
-      # geom_line(data = jp_plot_men, aes(x = Year, y = Model, colour = factor(APC, levels = unique(APC), labels = round(unique(APC), digits = 2)))) +
-      # geom_line(data = jp_plot_women, aes(x = Year, y = Model, colour = factor(APC, levels = unique(APC), labels = round(unique(APC), digits = 2)), linetype = "dashed")) +
-      scale_colour_discrete() +
-      # guides(colour = "none") +
-      # geom_point(data = jp_plot, aes(x = Year, y = Model, colour = section)) +
-      ggtitle(paste0(incmort, " ", proj_lab, " for ", cancer, " Cancer")) +
-      scale_x_continuous(breaks = pretty_breaks()) +
-      ylab("ASR per 100,000")
-        
-    
-    report.APC = F
-    
-      # If projection is desired, impute data to that point.
-    if(projection){
-      
-      proj_data_men <- get_proj_data(data[data$Sex==1,], data_jp_men, projection.yr) |>
-        mutate(Sex = "Men")
-      proj_data_women <- get_proj_data(data[data$Sex==2,], data_jp_women, projection.yr) |>
-        mutate(Sex = "Women")
-      
-      proj_data <- rbind(proj_data_men, proj_data_women)
-      
-      # Plotting extrapolation
-      plot <- plot +
-        geom_line(data = proj_data, aes(x = Year, y = rate, linetype = Sex))
-      
-      
-      if(!is.na(projection.target)){
-        
-        # Getting final ASR data point to project from
-        final_ASR_men <- data |>
-          filter(Sex == "Men") |>
-          arrange(desc(Year)) |>
-          filter(row_number()==1) |>
-          pull(`ASR (World)`)
-        
-        final_ASR_women <- data |>
-          filter(Sex == "Women") |>
-          arrange(desc(Year)) |>
-          filter(row_number()==1) |>
-          pull(`ASR (World)`)
-        
-          # geom_hline(yintercept = final_data$`ASR (World)`*projection.target, colour = "forestgreen")
-        plot <- plot + 
-          # annotate("rect", xmin = max(data$Year), xmax = Inf,ymin = -Inf, 
-          #                       ymax = final_ASR*projection.target,
-          #                       alpha = 0.2, fill = "lightgreen") +
-          geom_hline(yintercept = final_ASR_men*projection.target, colour = "lightgreen") +
-          geom_hline(yintercept = final_ASR_women*projection.target, colour = "lightgreen", linetype = "dashed") +
-          labs(caption = paste0("Green lines represents goals of ", 100*(1-projection.target), "% reduction in mortality rate in the UK by ", projection.yr))
-      }
-      
-
-    }
-    
-  } else {
-  
-    # Filter both dataframes for the relevant data
-    data <- data |>
-      filter(Sex == sex) |>
-      filter(Year >= max(c(start.yr, min(Year)), na.rm = T))
-    
-    data_jp <- data_jp |>
-      filter(Cancer.label == cancer, Sex == sex)
-    
-    # Call function to extract useful information from joinpoint data
-    jp_plot <- extract_joinpoint_splines(data_jp) |>
-      filter(Year >= max(c(start.yr, min(Year)), na.rm = T))
-    
-    # Recoding sex label for plot
-    sex_lab <- ifelse(sex == 2, "Women", "Men")
-    
-    # Making variable for dynamic plot title generation
-    projection <- !is.na(projection.yr)
-    proj_lab <- ifelse(projection, "Projections", "Trends")
-    
-    # Initial plotting of trends
-    plot <- ggplot() +
-      geom_line(data = jp_plot, aes(x = Year, y = Model, colour = factor(APC, levels = unique(APC), labels = round(unique(APC), digits = 2)))) +
-      geom_point(data = data, aes(x = Year, y = `ASR (World)`)) +
-      scale_colour_discrete() +
-      # guides(colour = "none") +
-      # geom_point(data = jp_plot, aes(x = Year, y = Model, colour = section)) +
-      ggtitle(paste0(incmort, " ", proj_lab, " for ", cancer, " Cancer in ", sex_lab)) +
-      scale_x_continuous(breaks = pretty_breaks()) +
-      ylab("ASR per 100,000")
-        
-    
-    # If projection is desired, impute data to that point.
-    if(projection){
-      
-      proj_data <- get_proj_data(data, data_jp, projection.yr)
-      
-      # Plotting extrapolation
-      plot <- plot +
-        geom_line(data = proj_data, aes(x = Year, y = rate), colour = "red", linetype = "dashed")
-    
-      # If target is desired, plotting green box around the target
-      if(!is.na(projection.target)){
-        
-        # Getting final ASR data point to project from
-        final_ASR <- data |>
-          arrange(desc(Year)) |>
-          filter(row_number()==1) |>
-          pull(`ASR (World)`)
-        
-          # geom_hline(yintercept = final_data$`ASR (World)`*projection.target, colour = "forestgreen")
-        plot <- plot + 
-          # annotate("rect", xmin = max(data$Year), xmax = Inf,ymin = -Inf, 
-          #                       ymax = final_ASR*projection.target,
-          #                       alpha = 0.2, fill = "lightgreen") +
-          geom_hline(yintercept = final_ASR*projection.target, colour = "lightgreen") +
-          labs(caption = paste0("Green line represents goal of a ", 100*(1-projection.target), "% reduction in mortality rate in the UK by ", projection.yr))
-      }
-      
-      if(moonshot.target){
-        
-        final_ASR <- data |>
-          arrange(desc(Year)) |>
-          filter(row_number()==1) |>
-          pull(`ASR (World)`)
-        
-        plot <- plot +
-          geom_hline(yintercept = final_ASR*0.5, colour = "orange") +
-          labs(caption = paste0(plot$labels$caption, "\n Orange line represents goal of a 50% decrease in mortality in 25 years"))
-        
-      }
-    }
-    
-  }
-  
-  # If reported APC is desired, plot legend.
-  if(report.APC){
-    plot <- plot +
-      labs(colour = "APC (%)")
-  } else{
-    plot <- plot +
-      guides(colour = "none")
-  }
-  
-  return(plot)
-  
-}
-
-```
-
-
-### Plotting function - Alt
-
-```{r}
-plot_joinpoint_output <- function(cancer, sex = 3, data, data_jp, incmort, start.yr = NA, projection.yr = NA, projection.target = NA, report.APC = FALSE, moonshot.target = FALSE){
+plot_joinpoint_output <- function(cancer, sex = 3, data, data_jp, incmort, start.yr = NA, projection.yr = NA, projection.target = NA, report.APC = FALSE){
   
   # browser()
   
@@ -428,28 +233,20 @@ plot_joinpoint_output <- function(cancer, sex = 3, data, data_jp, incmort, start
       
     }
     
+    if(!report.APC){
+      plot <- plot +
+        guides(colour = "none",
+               linetype = "none")
+      
+    }
+    
 
   }
-  
-  # If reported APC is desired, plot legend.
-  # if(report.APC){
-  #   plot <- plot +
-  #     labs(colour = "APC (%)")
-  # } else{
-  #   plot <- plot +
-  #     guides(colour = "none")
-  # }
   
   return(plot)
   
 }
 
-# cancer <- "Prostate"
-# data_jp <- mortality_jp
-# data <- mortality_data
-# incmort <- "Mortality"
-
-# plot_joinpoint_output("Prostate", sex = 3, data, data_jp, incmort, start.yr = NA, projection.yr = 2040, projection.target = 0.85, report.APC = FALSE, moonshot.target = FALSE)
 ```
 
 
@@ -521,16 +318,95 @@ meet_targets <- function(targets, target.year, data_jp){
   }
 }
 
-# meet_targets_table <- function(targets, target.year, data_jp){
-#   
-#   output.table <- data.frame(Cancer = character(0), Sex = character(0), APC_Req = numeric(0), Pace = numeric(0), Year_Ach = numeric(0))
-#   
-#   for(cancer in unique)
-#   
-#   
-# }
+meet_targets_table <- function(targets, target.year, data_jp){
 
-# meet_targets(targets = c(0.85), target.year = c(2040), data_jp = mortality_jp)
+  output.table <- data.frame(Cancer = character(0), Sex = character(0), APC_Req = character(0), Pace = character(0), Year_Ach = character(0))
+
+  for(cancer in unique(data_jp$Cancer.label)){
+    for(sex in unique(data_jp$Sex)){
+      
+      # Filter data to sex and cancer of interest
+      temp_data <- data_jp |>
+        filter(Cancer.label == cancer, Sex == sex)
+      
+      if(nrow(temp_data)>0){
+        
+        # Get final APC to extrapolate from
+        finalAPC <- temp_data |>
+          arrange(desc(Year)) |>
+          filter(row_number()==1) |>
+          pull(APC)
+        
+        finalAPC <- as.numeric(gsub(finalAPC, pattern = "\\*", replacement = ""))
+        
+        # Go from APC to percentage change mulitplier
+        finalAPC_num <- 1+finalAPC/100
+        
+        finalyear <- temp_data |>
+          arrange(desc(Year)) |>
+          filter(row_number()==1) |>
+          pull(Year)
+        
+        # Years left until target year
+        yearsremaining <- target.year  - finalyear
+        
+        yearachieved <- ifelse(finalAPC_num<1, floor(log(targets)/log(finalAPC_num)) + finalyear, "-")
+          
+        goalAPC <- targets^(1/yearsremaining)
+        
+        goalAPC <- 100*(goalAPC-1)
+        
+        new_row <- c(cancer, sex, round(goalAPC, digits = 3),  round(finalAPC, digits = 3),  yearachieved)
+
+      } else {
+        
+        new_row <- c(cancer, sex, "-", "-", "-")
+        
+      }
+      
+      output.table[nrow(output.table)+1,] <- new_row
+      
+    }
+  }
+  
+  output.table <- output.table |>
+    mutate(Sex = ifelse(Sex == 1, "Men", "Women")) |>
+    gt() |>
+    # Header Creation
+    tab_header(
+      title = md(paste0("**Globocan JoinPoint Target Analysis**")),
+      subtitle = "For a Goal of a 15% Reduction in Mortality by 2040"
+    ) |>
+    
+    # Head Rows
+    tab_style(
+      style = list(
+        cell_text(weight = "bold", align = "center")
+      ),
+      locations = cells_column_labels(columns = everything())
+    ) |>
+    
+    # Body rows
+    tab_style(
+      style = list(
+        cell_text(align = "center")
+      ),
+      locations = cells_body(
+          columns = everything()
+      )
+    ) |>
+    
+    # Rename columns
+    cols_label(
+      APC_Req = "APC Requried",
+      Pace = "Current APC",
+      Year_Ach = "Year Achieved"
+    )
+    
+  
+  return(output.table)
+
+}
 ```
 
 ## Cancer Incidence/Mortality
@@ -609,6 +485,11 @@ for(cancer in cancers){
   grid.arrange(p1, p2, nrow = 1, widths = c(4,4))
 }
 
+```
+
+## Meeting Targets Table
+```{r}
+meet_targets_table(targets = c(0.85), target.year = c(2040), data_jp = mortality_jp)
 ```
 
 ## Pretty Plots for Presentation - BC Incidence
@@ -704,7 +585,7 @@ plot_joinpoint_output(cancer = "Breast", data = incidence_data, data_jp = incide
 #   scale_x_continuous(breaks = pretty_breaks())
 
 
-plot_joinpoint_output(cancer = "Breast", data = mortality_data, data_jp = mortality_jp, incmort = "Mortality", projection.yr = 2040, report.APC = T, projection.target = 0.85, start.yr = 1993, moonshot.target = TRUE)
+plot_joinpoint_output(cancer = "Breast", data = mortality_data, data_jp = mortality_jp, incmort = "Mortality", projection.yr = 2040, report.APC = T, projection.target = 0.85, start.yr = 1993)
 
 
 ```
