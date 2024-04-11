@@ -1160,52 +1160,17 @@ read_excel("HRT_Data.xlsx") |>
 
 ```
 
-## Cancer -  Globocan Data
-
+## Cancer - Globocan Data
 ```{r}
+cancer_england_wales <- read_excel("Cancer Trends/Globocan By Country/Cancer_Projection_Data_England_Wales.xlsx")
+cancer_scotland <- read_excel("Cancer Trends/Globocan By Country/Cancer_Projection_Data_Scotland.xlsx")
+cancer_nireland <- read_excel("Cancer Trends/Globocan By Country/Cancer_Projection_Data_NIreland.xlsx")
 
-cancer_sheets <- excel_sheets("Cancer_Data.xlsx")
-
-cancer_data <- integer(0)
-
-for(sheet in cancer_sheets){
-  cancer_data <- rbind(cancer_data, read_excel("Cancer_Data.xlsx", sheet = sheet))
-}
-
-cancer_data <- cancer_data |>
+cancer_data <- cancer_england_wales |>
+  rbind(cancer_scotland) |>
+  rbind(cancer_nireland) |>
   mutate(Sex = ifelse(Sex==1, "Male", "Female"),
          IncMort = ifelse(Type == 0, "Incidence", "Mortality"))
-
-# cancer_data |>
-#   filter(Type == 0) |>
-#   ggplot(aes(x = Year, y = `ASR (World)`, colour = `Country label`, linetype = Sex)) +
-#   geom_line() + 
-#   geom_point() +
-#   ggtitle("Incidence Rates for Top 6 Cancers") +
-#   facet_wrap(~ `Cancer label`, nrow = 3, scales = "free")
-#   
-# cancer_data |>
-#   filter(Type == 1) |>
-#   ggplot(aes(x = Year, y = `ASR (World)`, colour = `Country label`, linetype = Sex)) +
-#   geom_line() + 
-#   geom_point() +
-#   ggtitle("Mortality Rates for Top 6 Cancers") +
-#   facet_wrap(~ `Cancer label`, nrow = 3, scales = "free")
-
-# for(site in unique(cancer_data$`Cancer label`)){
-#   tempdata <- cancer_data[cancer_data$`Cancer label`==site,]
-#   minyear <- min(tempdata$Year)
-#   maxyear <- max(tempdata$Year)
-#   print(ggplot(data = tempdata, aes(x = Year, y = `ASR (World)`, colour = `Country label`, linetype = Sex)) +
-#   geom_line() +
-#   geom_point() +
-#   xlim(minyear, maxyear) +
-#   ggtitle(paste0("Cancer Rates for ", site)) +
-#   labs(colour = "Country", linetype = "Sex") +
-#   theme(legend.position="bottom",legend.box = "vertical") +
-#   facet_wrap(~ IncMort, scales = "free_y", dir = "v"))
-# 
-# }
 
 for(site in unique(cancer_data$`Cancer label`)){
   tempdata <- cancer_data[cancer_data$`Cancer label`==site,]
