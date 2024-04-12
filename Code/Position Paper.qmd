@@ -818,23 +818,7 @@ data4 |>
   labs(colour =  "Country") +
   scale_x_continuous(breaks = pretty_breaks())
 
-
-# data4 |>
-#   filter(variable == "% Current Smoker" & age_group == "16+" & !grepl(group, pattern = "All")) |>
-#   mutate(group = case_when(
-#     group == "Male" ~ "Men",
-#     group == "Female" ~ "Women",
-#     TRUE ~ group
-#   )) |>
-#   ggplot(aes(x = year, y = value, colour = country, linetype = group)) +
-#   geom_line() +
-#   geom_point() +
-#   xlab("Year") +
-#   ylab("% Current Smoker") +
-#   ggtitle("% Current Smoker in Adults") +
-#   labs(colour =  "Country") +
-#   scale_x_continuous(breaks = pretty_breaks())
-
+# Plotting by sex
 data4 |>
   filter(variable == "% Current Smoker" & age_group == "16+" & !grepl(group, pattern = "All")) |>
   mutate(group = case_when(
@@ -857,7 +841,7 @@ data4 |>
 ## Smoking by Age
 
 ```{r}
-
+# Importing weightings
 weightings <- read_excel("Smoking_Data.xlsx", sheet = "England_All")
 
 top_row <- which(weightings$...1 == "Weighted bases")
@@ -865,10 +849,10 @@ weightings <-weightings[(top_row+1):nrow(weightings),]
 
 weightings <- as.data.frame(weightings)
 
-
 weightings <- weightings |>
   filter(!...1 %in% c("All adults", "16-24 years"))
 
+# Normalising weights for each year
 for(i in 2:ncol(weightings)){
   weightings[,i] <- weightings[,i]/sum(weightings[,i])
 }
@@ -886,20 +870,26 @@ weightings <- weightings |>
   rename(year = ...1) |>
   sapply(as.numeric)
 
+# Getting data and pivoting out age groups
 adult_smoking_england <- data4 |>
   filter(variable == "% Current Smoker" & !grepl(age_group, pattern = "16") & country == "England" & group == "All") |>
   pivot_wider(names_from = age_group, values_from = value) |>
+  
+  # Merging to get year specific weightings
   merge(weightings, by = "year") |>
+  
+  # Merging age groups >24 by using the weights
   mutate(`25+` = `25-34`*`25-34 years` + `35-44`*`35-44 years` + `45-54`*`45-54 years` + `55-64`*`55-64 years` + `65-74`*`65-74 years` + `75+`*`75+ years`) |>
   select(year, variable, country, group, section, `25+`) |>
   pivot_longer(cols = `25+`) |>
   rename(age_group = name)
 
+# Taking 16-24 age group and merging in the created 25+ variable
 age_smoking_england <- data4 |>
   filter(variable == "% Current Smoker" & country == "England" & group == "All" & age_group %in% c("16-24")) |>
   rbind(adult_smoking_england)
 
-
+# Plotting by age groups
 ggplot(data = age_smoking_england, aes(x = year, y = value, colour = age_group)) +
   geom_point() +
   geom_line() +
@@ -914,7 +904,7 @@ ggplot(data = age_smoking_england, aes(x = year, y = value, colour = age_group))
 ## E-Cigarette
 
 ```{r}
-
+# Plotting pre-cleaned data
 data4 |>
   filter(variable == "% Current E-cigarette user" & age_group == "16+" & grepl(group, pattern = "All")) |>
   ggplot(aes(x = year, y = value, colour = country)) +
@@ -926,8 +916,10 @@ data4 |>
   labs(colour =  "Country") +
   scale_x_continuous(breaks = pretty_breaks())
 
+# Initialising colours for plot
 cols <- colorRampPalette(brewer.pal(n = 8, name = "Greens")[4:8])(7)
 
+# Cleaning age group labels and plotting by age group
 data4 |>
   filter(variable == "% Current E-cigarette user" & grepl(group, pattern = "All") & country == "England" & age_group != "16+") |>
   mutate(age_start = as.numeric(substr(age_group, 1, 2)), 
@@ -950,8 +942,10 @@ More years available - but concerns about different questionnaire structure.
 
 ```{r}
 
+# Reading in UK wide data
 ecig_data <- read_excel("E_Cigarette_Data.xlsx", sheet = "Great_Britain_All")
 
+# Merging Daily and Occaisonal Users to one group then cleaning to make age group clearer
 ecig_data <- ecig_data |>
   pivot_longer(cols = colnames(ecig_data)[3:ncol(ecig_data)]) |>
   pivot_wider(names_from = `Proportion of population aged 16 years and over by e-cigarette use [note 1]`, values_from = value) |>
@@ -965,6 +959,7 @@ ecig_data <- ecig_data |>
            TRUE ~ age_group
          ))
 
+# Initial plot for all people
 ecig_data |>
   filter(group == "All persons", age_group == "16+") |>
   ggplot(aes(x = Year, y = `% User`)) +
@@ -974,8 +969,10 @@ ecig_data |>
   ggtitle("% Current E-Cigarette Users in Great Britain") +
   scale_x_continuous(breaks = pretty_breaks())
 
+# Initialising colours for next plot
 cols <- brewer.pal(n = 8, name = "Greens")[4:8]
 
+# Plotting by age group
 ecig_data |>
   filter(!age_group %in% c("16+"), group == "All persons") |>
   ggplot(aes(x = Year, y = `% User`, colour = age_group)) +
@@ -1009,6 +1006,7 @@ ecig_data |>
 Added a new source for the activity that provides more years. The Welsh definition is slightly differently worded, check up on this.
 
 ```{r}
+# Plotting pre-cleaned data for activity
 
 data4 |>
   filter(variable == "% Meets guidelines" & age_group %in% c("16+") & grepl(group, pattern = "All") |
@@ -1026,6 +1024,8 @@ data4 |>
 
 activity_england <- read_excel("Activity_Alt_Data.xlsx")
 
+# Cleaning data to conform to structure of data4
+
 activity_england <- activity_england |>
   rename(variable = ...1) |>
   pivot_longer(cols = colnames(activity_england[2:ncol(activity_england)])) |>
@@ -1041,6 +1041,8 @@ activity_england <- activity_england |>
          country = "England",
          section = "Activity") |>
   filter(variable == "% Meets guidelines")
+
+# Filtering out old source for England and adding the new source
 
 data4 |>
   filter(variable == "% Meets guidelines" & age_group %in% c("16+") & grepl(group, pattern = "All") & country != "England" |
@@ -1109,22 +1111,6 @@ afb_data |>
 Currently only have data for England and Wales. Trying to track down data for other countries.
 
 ```{r}
-# 
-# read_excel("Parity_Data.xlsx") |>
-#   mutate(age = case_when(
-#     is.na(`Age exact years`) ~ 45,
-#     TRUE ~ `Age exact years`),
-#     year = age + `Year of birth of woman`,
-#     final_value = ifelse(is.na(`Age exact years`), 1, 0),
-#     `% Parous` = 100 - `0 (No children)`) |>
-#   filter(final_value == 1) |>
-#   ggplot(aes(x = year, y = `% Parous`)) +
-#   geom_line() +
-#   geom_point() +
-#   xlab("Year") +
-#   ylab("Parous (%)") +
-#   ggtitle("Parity in England and Wales") +
-#   scale_x_continuous(breaks = pretty_breaks())
 
 # Plotting parity for birth cohorts
 
@@ -1144,8 +1130,6 @@ ggplot(plot_data, aes(x = `Year of birth of woman`, y = `% Parous`)) +
   geom_vline(xintercept = max(plot_data$`Year of birth of woman`[plot_data$age==46])+0.5, linetype = "dashed", colour = "red") +
   xlab("Year of Birth") +
   labs(caption = "Dashed red line represents last full cohort (achieved age 46)")
-
-
 
 
 # Plotting total parity in England/Wales over time.
@@ -1269,16 +1253,19 @@ read_excel("HRT_Data.xlsx") |>
 ## Cancer - Globocan Data
 
 ```{r}
+# Reading in data
 cancer_england_wales <- read_excel("Cancer Trends/Globocan By Country/Cancer_Projection_Data_England_Wales.xlsx")
 cancer_scotland <- read_excel("Cancer Trends/Globocan By Country/Cancer_Projection_Data_Scotland.xlsx")
 cancer_nireland <- read_excel("Cancer Trends/Globocan By Country/Cancer_Projection_Data_NIreland.xlsx")
 
+# Merging data and making sex and inc/mort variables clearer
 cancer_data <- cancer_england_wales |>
   rbind(cancer_scotland) |>
   rbind(cancer_nireland) |>
   mutate(Sex = ifelse(Sex==1, "Male", "Female"),
          IncMort = ifelse(Type == 0, "Incidence", "Mortality"))
 
+# Looping through sites and plotting cancer rates for that site
 for(site in unique(cancer_data$`Cancer label`)){
   tempdata <- cancer_data[cancer_data$`Cancer label`==site,]
   # minyear <- min(tempdata$Year)
@@ -1301,10 +1288,12 @@ for(site in unique(cancer_data$`Cancer label`)){
 
 ```{r}
 
+# Initialise data
 diabetes_data <- integer(0)
 
 sheets <- excel_sheets("Diabetes_Data.xlsx")
 
+# Go through England sheets and apply HSE specific function to clean the data
 england_sheets <- sheets[grepl(sheets, pattern = "England")]
 
 for(sheet in england_sheets){
@@ -1318,6 +1307,7 @@ for(sheet in england_sheets){
         
 }
 
+# Go through Scotland sheets and apply SHS specific cleaning function
 scotland_sheets <- sheets[grepl(sheets, pattern = "Scotland")]
 
 
@@ -1330,6 +1320,7 @@ for(sheet in scotland_sheets){
   diabetes_data <- rbind(diabetes_data, tempdata)
 }
 
+# Reading in and manually cleaning the N. Ireland data
 tempdata <- read_excel("Diabetes_Data.xlsx", sheet = "NIreland") 
 
 tempdata <- tempdata |>
@@ -1338,8 +1329,10 @@ tempdata <- tempdata |>
   mutate(value = value/10) |>
   mutate(age_group = "17+", variable = "% Diabetes", group = "All", country = "N. Ireland")
 
+# Merging all data together
 diabetes_data <- rbind(diabetes_data, tempdata)
 
+# Further cleaning and plotting
 diabetes_data |>
   mutate(year = case_when(
     grepl(year, pattern = "\\/") ~ map_chr(strsplit(year, "/"), 1),
@@ -1444,8 +1437,10 @@ screening_data_breast_england |>
 
 ```{r}
 
+# Reading in data
 screening_data_bowel_england <- read_excel("Screening_Data.xlsx", sheet = "England_Bowel_Coverage")
 
+# Mutating data and plotting
 screening_data_bowel_england |>
   mutate(Year = as.numeric(substr(`Time period`, start = 1, stop = 4))) |>
   ggplot(aes(x = Year, y = Value)) +
@@ -1456,15 +1451,19 @@ screening_data_bowel_england |>
   ggtitle("% Bowel Screening Coverage in England") +
   scale_x_continuous(breaks = pretty_breaks())
 
+# Reading in data
 screening_data_bowel_england <- read_excel("Screening_Data.xlsx", sheet = "England_Bowel_Uptake")
 
+# Mutating to simple columns
 screening_data_bowel_england <- screening_data_bowel_england |>
   mutate(year = as.numeric(substr(`Time period`, start = 1, stop = 4))) |>
   select(year, value = Value) |>
   mutate(country = "England")
 
+# Reading in data
 screening_data_bowel_scotland <- read_excel("Screening_Data.xlsx", sheet = "Scotland_Bowel_Uptake")
 
+# Matching columns of England data
 screening_data_bowel_scotland <- screening_data_bowel_scotland |>
   pivot_longer(cols = colnames(screening_data_bowel_scotland)[2:ncol(screening_data_bowel_scotland)]) |>
   filter(...1 == "All persons") |>
@@ -1472,6 +1471,7 @@ screening_data_bowel_scotland <- screening_data_bowel_scotland |>
   select(year, value) |>
   mutate(country = "Scotland")
 
+# Merging and plotting
 screening_data_bowel_england |>
   rbind(screening_data_bowel_scotland) |>
   ggplot(aes(x = year, y = value, colour = country)) +
