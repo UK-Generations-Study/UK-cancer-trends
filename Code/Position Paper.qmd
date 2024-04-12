@@ -172,13 +172,15 @@ pull_HSE_data <- function(data, group){
 
 pull_HSE_diabetes_data <- function(data, group){
   
+  # browser()
+  
   if("Weighted bases" %in% data$...1){
     data <- data[1:(which(data$`...1`=="Weighted bases")-1),]
   }
   
   colnames(data) <- c("age_group", colnames(data)[2:ncol(data)])
   
-  data <- data[-c(1,2),]
+  data <- data[-1,]
   
   data <- data |>
     pivot_longer(cols = colnames(data)[2:ncol(data)]) |>
@@ -304,7 +306,7 @@ get_variable_HSNI <- function(rf){
     section == "Alcohol" ~ "Drink",
     section == "Smoking" ~ "Smoke",
     section == "E_Cigarette" ~ "E-Cigarette Use",
-    section == "Activity" ~ "Meet Recommendations",
+    section == "Activity" ~ "Meets Recommendations",
     TRUE ~ "ERROR"
   )
 }
@@ -387,7 +389,7 @@ data2 <- data |>
     country == "N. Ireland" & section == "Alcohol" & variable == "Drink" ~ "% Non-Drinker", # NOTE: This is not technically accurate but next code block rectifies.
     country == "N. Ireland" & section == "Smoking" & variable == "Smoke" ~ "% Current Smoker",
     country == "N. Ireland" & section == "E_Cigarette" & variable == "E-Cigarette Use" ~ "% Current E-cigarette user",
-    country == "N. Ireland" & section == "Activity" & variable == "Meet Recommendations" ~ "% Meets guidelines",
+    country == "N. Ireland" & section == "Activity" & variable %in% c("Meets Recommendations", "Meets recommendations") ~ "% Meets guidelines",
     
     TRUE ~ variable
 
@@ -491,6 +493,31 @@ obese_data |>
   labs(colour =  "Country") +
   scale_x_continuous(breaks = pretty_breaks())
 
+
+```
+
+## Obese by Sex
+```{r}
+
+obese_data |>
+  filter(variable == "% Obese" & age_group %in% c("16+", "Total") & !grepl(group, pattern = "All")) |>
+  mutate(year = case_when(
+  grepl(year, pattern = "\\/") ~ as.numeric(map_chr(strsplit(year, "/"), 1)),
+  TRUE ~ as.numeric(year)
+  ), group = case_when(
+    group == "Male" ~ "Men",
+    group == "Female" ~ "Women",
+    TRUE ~ group
+  )) |>
+  ggplot(aes(x = year, y = value, colour = country)) +
+  geom_line() +
+  geom_point() +
+  xlab("Year") +
+  ylab("% Obese") +
+  ggtitle("% Obese in Adults") +
+  labs(colour =  "Country") +
+  scale_x_continuous(breaks = pretty_breaks()) +
+  facet_wrap(~group,scales = "fixed", dir = "v")
 
 ```
 
@@ -736,6 +763,44 @@ ggplot(data = age_alcohol_england, aes(x = year, y = value, colour = age_group))
 
 ```
 
+## Alcohol - Guidelines by Sex
+```{r}
+
+# First need to get over guidelines amount from England data by combining variables
+guidelines_england <- data4 |>
+  filter(country == "England" & section == "Alcohol"& !grepl(group, pattern = "All")) |>
+  pivot_wider(names_from = variable, values_from = value) |>
+  mutate(`% Over Guidelines` = 100 - (`% Non-Drinker` + `% up to 14 units per week (lower risk)`)) |>
+  pivot_longer(cols = c(unique(data4$variable[data4$country == "England" & data4$section == "Alcohol" & !grepl(data4$group, pattern = "All")]), "% Over Guidelines")) |>
+  rename(variable = name) |>
+  filter(variable == "% Over Guidelines")
+
+# Merge in the data not from England and make some adjustments to the data before plotting it
+alcohol_data |>
+  filter(country != "England" & variable == "% Over Guidelines" & !grepl(group, pattern = "All")) |>
+  mutate(group = case_when(
+    group == "Male" ~ "Men",
+    group == "Female" ~ "Women",
+    TRUE ~ group
+  ), year = case_when(
+  grepl(year, pattern = "\\/") ~ map_chr(strsplit(year, "/"), 1),
+    TRUE ~ year),
+  year = as.numeric(year)) |>
+  rbind(guidelines_england) |>
+  filter(age_group %in% c("Total", "16+")) |>
+  ggplot(aes(x = year, y = value, colour = country)) +
+  geom_line() +
+  geom_point() +
+  xlab("Year") +
+  ylab("% Drinking Over Guidelines") +
+  ggtitle("% Drinking Over Guidelines in Adults") +
+  labs(colour =  "Country",
+       caption = "*Adult is defined as 16+ in England, Scotland and Wales and 18+ in N. Ireland") +
+  scale_x_continuous(breaks = pretty_breaks()) +
+  facet_wrap(~group, scales = "fixed", dir = "v")
+
+```
+
 ## Smoking
 
 ```{r}
@@ -972,6 +1037,29 @@ data4 |>
   ggtitle("% Meets Activity Guidelines in Adults*") +
   labs(colour =  "Country", caption = "*Adult for England, Scotland and Wales defined as 16+, and for N. Ireland as 19+\nActivity guidelines are >150 mins Moderate Physical Activity") +
   scale_x_continuous(breaks = pretty_breaks())
+
+```
+
+## Activity by Sex
+```{r}
+data4 |>
+  filter(variable == "% Meets guidelines" & age_group %in% c("16+") & !grepl(group, pattern = "All") |
+           variable == "% Meets guidelines" & age_group %in% c("19+") & !grepl(group, pattern = "All") & country == "N. Ireland") |>
+  mutate(group = case_when(
+    group == "Male" ~ "Men",
+    group == "Female" ~ "Women",
+    TRUE ~ group
+  )) |>
+  ggplot(aes(x = year, y = value, colour = country)) +
+  geom_line() +
+  geom_point() +
+  xlab("Year") +
+  ylab("% Meets Activity Guidelines") +
+  ggtitle("% Meets Activity Guidelines in Adults*") +
+  labs(colour =  "Country", caption = "*Adult for England, Scotland and Wales defined as 16+, and for N. Ireland as 19+\nActivity guidelines are >150 mins Moderate Physical Activity") +
+  scale_x_continuous(breaks = pretty_breaks()) +
+  facet_wrap(~group, scales = "fixed", dir = "v")
+
 
 ```
 
@@ -1253,8 +1341,43 @@ diabetes_data |>
   xlab("Year") +
   ylab("% Diabetes") +
   ggtitle("% Diabetes in Adults") +
-  labs(colour =  "Country", caption = "*Adult for England and Scotland defined as aged >15, for N. Ireland defined as aged >16.") +
+  labs(colour =  "Country", caption = "*Adult for England and Scotland defined as aged 16+, for N. Ireland defined as aged 17+.") +
   scale_x_continuous(breaks = pretty_breaks())
+
+
+```
+
+## Diabetes by Sex
+```{r}
+diabetes_data |>
+  mutate(year = case_when(
+    grepl(year, pattern = "\\/") ~ map_chr(strsplit(year, "/"), 1),
+    TRUE ~ year),
+    year = as.numeric(year),
+  age_group = case_when(
+    age_group %in% c("All men", "All women", "All", "All adults", "Total") ~ "16+",
+    grepl(age_group, pattern = "Age ") ~ gsub(age_group, pattern = "Age ", replacement = ""),
+    grepl(age_group, pattern = " years") ~ gsub(age_group, pattern = " years", replacement = ""),
+    grepl(age_group, pattern = "All adults ") ~ gsub(age_group, pattern = "All adults ", replacement = ""),
+    grepl(age_group, pattern = "All aged ") ~ gsub(age_group, pattern = "All aged ", replacement = ""),
+    TRUE ~ age_group
+  )) |>
+  filter(variable == "% Diabetes" & age_group %in% c("16+", "17+") & !grepl(group, pattern = "All")) |>
+  mutate(group = case_when(
+    group == "Male" ~ "Men",
+    group == "Female" ~ "Women",
+    TRUE ~ group
+  )) |>
+  ggplot(aes(x = year, y = value, colour = country)) +
+  geom_line() +
+  geom_point() +
+  xlab("Year") +
+  ylab("% Diabetes") +
+  ggtitle("% Diabetes in Adults") +
+  labs(colour =  "Country", caption = "*Adult for England and Scotland defined as aged 16+") +
+  scale_x_continuous(breaks = pretty_breaks()) +
+  facet_wrap(~group, scales = "fixed", dir = "v")
+  
 
 
 ```
@@ -1263,7 +1386,7 @@ diabetes_data |>
 
 ```{r}
 
-screening_data_breast <- read_excel("Screening_Data.xlsx", sheet = "England_Breast")
+screening_data_breast <- read_excel("Screening_Data.xlsx", sheet = "England_Breast_Uptake")
 
 screening_data_breast |>
   mutate(Year = as.numeric(substr(`Time period`, start = 1, stop = 4))) |>
@@ -1275,7 +1398,7 @@ screening_data_breast |>
   ggtitle("% Breast Screening Uptake in England") +
   scale_x_continuous(breaks = pretty_breaks())
 
-screening_data_bowel <- read_excel("Screening_Data.xlsx", sheet = "England_Bowel")
+screening_data_bowel <- read_excel("Screening_Data.xlsx", sheet = "England_Bowel_Coverage")
 
 screening_data_bowel |>
   mutate(Year = as.numeric(substr(`Time period`, start = 1, stop = 4))) |>
@@ -1285,6 +1408,18 @@ screening_data_bowel |>
   xlab("Year") +
   ylab("% Coverage") +
   ggtitle("% Bowel Screening Coverage in England") +
+  scale_x_continuous(breaks = pretty_breaks())
+
+screening_data_bowel <- read_excel("Screening_Data.xlsx", sheet = "England_Bowel_Uptake")
+
+screening_data_bowel |>
+  mutate(Year = as.numeric(substr(`Time period`, start = 1, stop = 4))) |>
+  ggplot(aes(x = Year, y = Value)) +
+  geom_line() +
+  geom_point() +
+  xlab("Year") +
+  ylab("% Coverage") +
+  ggtitle("% Bowel Screening Uptake in England") +
   scale_x_continuous(breaks = pretty_breaks())
 
 screening_data_cervix <- read_excel("Screening_Data.xlsx", sheet = "England_Cervix")

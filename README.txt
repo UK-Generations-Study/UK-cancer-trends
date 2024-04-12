@@ -69,7 +69,7 @@ HRT
 Diabetes
 - England data sourced from source 1, Adult health, Table 3. Years extracted were 2003-2019 due to concerns about comparing other years due to methodology.
 - Scotland data sourced from source 1, Doctor diagnosed diabetes section. Should be noted that pregnant women were deducted from this count, which may not be the case for other sources.
-- N. Ireland data sourced from source 1.
+- N. Ireland data sourced from source 1. First year selected 2007/08 as changes to register definitions before then.
 
 Screening
 - Breast data https://fingertips.phe.org.uk/search/screening#page/4/gid/1938132830/pat/159/par/K02000001/ati/15/are/E92000001/iid/91340/age/265/sex/2/cat/-1/ctp/-1/yrr/1/cid/4/tbm/1
