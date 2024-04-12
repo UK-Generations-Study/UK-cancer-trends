@@ -497,6 +497,7 @@ obese_data |>
 ```
 
 ## Obese by Sex
+
 ```{r}
 
 obese_data |>
@@ -764,6 +765,7 @@ ggplot(data = age_alcohol_england, aes(x = year, y = value, colour = age_group))
 ```
 
 ## Alcohol - Guidelines by Sex
+
 ```{r}
 
 # First need to get over guidelines amount from England data by combining variables
@@ -936,7 +938,7 @@ data4 |>
   geom_point() +
   xlab("Age") +
   ylab("% Current E-Cigarette Users") +
-  ggtitle("% Current E-Cigarette Users in the UK") +
+  ggtitle("% Current E-Cigarette Users in England") +
   labs(colour =  "Age Group") +
   scale_x_continuous(breaks = 2016:2019) +
   scale_color_manual(values = cols)
@@ -983,6 +985,21 @@ ecig_data |>
   ggtitle("% Current E-Cigarette Users in Great Britain") +
   labs(colour = "Age Group") +
   scale_color_manual(values = cols) +
+  scale_x_continuous(breaks = ecig_data$Year[ecig_data$Year%%1==0])
+
+```
+
+## E-Cigarette - Great Britain by Sex
+```{r}
+
+ecig_data |>
+  filter(age_group %in% c("16+"), group != "All persons") |>
+  ggplot(aes(x = Year, y = `% User`, colour = group)) +
+  geom_line() +
+  geom_point() +
+  ylab("% Current E-Cigarette Users") +
+  ggtitle("% Current E-Cigarette Users in Great Britain") +
+  labs(colour = "Sex") +
   scale_x_continuous(breaks = ecig_data$Year[ecig_data$Year%%1==0])
 
 ```
@@ -1041,6 +1058,7 @@ data4 |>
 ```
 
 ## Activity by Sex
+
 ```{r}
 data4 |>
   filter(variable == "% Meets guidelines" & age_group %in% c("16+") & !grepl(group, pattern = "All") |
@@ -1249,6 +1267,7 @@ read_excel("HRT_Data.xlsx") |>
 ```
 
 ## Cancer - Globocan Data
+
 ```{r}
 cancer_england_wales <- read_excel("Cancer Trends/Globocan By Country/Cancer_Projection_Data_England_Wales.xlsx")
 cancer_scotland <- read_excel("Cancer Trends/Globocan By Country/Cancer_Projection_Data_Scotland.xlsx")
@@ -1348,6 +1367,7 @@ diabetes_data |>
 ```
 
 ## Diabetes by Sex
+
 ```{r}
 diabetes_data |>
   mutate(year = case_when(
@@ -1382,25 +1402,51 @@ diabetes_data |>
 
 ```
 
-## Screening
+## Screening - Breast
 
 ```{r}
+# Read in England data
+screening_data_breast_england <- read_excel("Screening_Data.xlsx", sheet = "England_Breast_Uptake")
 
-screening_data_breast <- read_excel("Screening_Data.xlsx", sheet = "England_Breast_Uptake")
+# Manipulate to useful structure
+screening_data_breast_england <- screening_data_breast_england |>
+  mutate(year = as.numeric(substr(`Time period`, start = 1, stop = 4))) |>
+  select(year, value = Value) |>
+  mutate(country = "England")
 
-screening_data_breast |>
-  mutate(Year = as.numeric(substr(`Time period`, start = 1, stop = 4))) |>
-  ggplot(aes(x = Year, y = Value)) +
+# Read in Scotland data
+screening_data_breast_scotland <- read_excel("Screening_Data.xlsx", sheet = "Scotland_Breast_Uptake")
+
+# Making structure match England data
+screening_data_breast_scotland <- screening_data_breast_scotland |>
+  pivot_longer(cols = colnames(screening_data_breast_scotland)[2:ncol(screening_data_breast_scotland)]) |>
+  filter(`Type of invitation1` == "All routine invitations1") |>
+  mutate(year = as.numeric(substr(name, start = 1, stop = 4))) |>
+  select(value, year) |>
+  mutate(country = "Scotland")
+
+# Plotting
+screening_data_breast_england |>
+  rbind(screening_data_breast_scotland) |>
+  ggplot(aes(x = year, y = value, colour = country)) +
   geom_line() +
   geom_point() +
   xlab("Year") +
   ylab("% Uptake") +
-  ggtitle("% Breast Screening Uptake in England") +
+  labs(colour = "Country") +
+  ggtitle("% Breast Screening Uptake") +
   scale_x_continuous(breaks = pretty_breaks())
 
-screening_data_bowel <- read_excel("Screening_Data.xlsx", sheet = "England_Bowel_Coverage")
 
-screening_data_bowel |>
+```
+
+## Screening - Bowel
+
+```{r}
+
+screening_data_bowel_england <- read_excel("Screening_Data.xlsx", sheet = "England_Bowel_Coverage")
+
+screening_data_bowel_england |>
   mutate(Year = as.numeric(substr(`Time period`, start = 1, stop = 4))) |>
   ggplot(aes(x = Year, y = Value)) +
   geom_line() +
@@ -1410,17 +1456,38 @@ screening_data_bowel |>
   ggtitle("% Bowel Screening Coverage in England") +
   scale_x_continuous(breaks = pretty_breaks())
 
-screening_data_bowel <- read_excel("Screening_Data.xlsx", sheet = "England_Bowel_Uptake")
+screening_data_bowel_england <- read_excel("Screening_Data.xlsx", sheet = "England_Bowel_Uptake")
 
-screening_data_bowel |>
-  mutate(Year = as.numeric(substr(`Time period`, start = 1, stop = 4))) |>
-  ggplot(aes(x = Year, y = Value)) +
+screening_data_bowel_england <- screening_data_bowel_england |>
+  mutate(year = as.numeric(substr(`Time period`, start = 1, stop = 4))) |>
+  select(year, value = Value) |>
+  mutate(country = "England")
+
+screening_data_bowel_scotland <- read_excel("Screening_Data.xlsx", sheet = "Scotland_Bowel_Uptake")
+
+screening_data_bowel_scotland <- screening_data_bowel_scotland |>
+  pivot_longer(cols = colnames(screening_data_bowel_scotland)[2:ncol(screening_data_bowel_scotland)]) |>
+  filter(...1 == "All persons") |>
+  mutate(year = as.numeric(substr(name, start = 1, stop = 4))) |>
+  select(year, value) |>
+  mutate(country = "Scotland")
+
+screening_data_bowel_england |>
+  rbind(screening_data_bowel_scotland) |>
+  ggplot(aes(x = year, y = value, colour = country)) +
   geom_line() +
   geom_point() +
   xlab("Year") +
-  ylab("% Coverage") +
-  ggtitle("% Bowel Screening Uptake in England") +
+  ylab("% Uptake") +
+  labs(colour = "Country") +
+  ggtitle("% Bowel Screening Uptake") +
   scale_x_continuous(breaks = pretty_breaks())
+
+```
+
+## Screening - Cervix
+
+```{r}
 
 screening_data_cervix <- read_excel("Screening_Data.xlsx", sheet = "England_Cervix")
 
