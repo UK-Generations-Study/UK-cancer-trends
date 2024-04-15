@@ -69,13 +69,17 @@ HRT
 Diabetes
 - England data sourced from source 1, Adult health, Table 3. Years extracted were 2003-2019 due to concerns about comparing other years due to methodology.
 - Scotland data sourced from source 1, Doctor diagnosed diabetes section. Should be noted that pregnant women were deducted from this count, which may not be the case for other sources.
-- N. Ireland data sourced from source 1.
+- N. Ireland data sourced from source 1. First year selected 2007/08 as changes to register definitions before then.
 
 Screening
-- Breast data https://fingertips.phe.org.uk/search/screening#page/4/gid/1938132830/pat/159/par/K02000001/ati/15/are/E92000001/iid/91340/age/265/sex/2/cat/-1/ctp/-1/yrr/1/cid/4/tbm/1
+- Breast data - England https://fingertips.phe.org.uk/search/screening#page/4/gid/1938132830/pat/159/par/K02000001/ati/15/are/E92000001/iid/91340/age/265/sex/2/cat/-1/ctp/-1/yrr/1/cid/4/tbm/1
 	-Uptake data was used as coverage data was discontinuous. Could use coverage data up to 2021/22.
-- Bowel data https://fingertips.phe.org.uk/search/screening#page/4/gid/1938133365/pat/159/par/K02000001/ati/15/are/E92000001/iid/92600/age/280/sex/4/cat/-1/ctp/-1/yrr/1/cid/4/tbm/1
-- Cervical data https://digital.nhs.uk/data-and-information/publications/statistical/cervical-screening-annual/england-2022-2023#resources, Table 1
+- Bowel data - England https://fingertips.phe.org.uk/search/screening#page/4/gid/1938133365/pat/159/par/K02000001/ati/15/are/E92000001/iid/92600/age/280/sex/4/cat/-1/ctp/-1/yrr/1/cid/4/tbm/1
+- Cervical data - England https://digital.nhs.uk/data-and-information/publications/statistical/cervical-screening-annual/england-2022-2023#resources, Table 1
+- Breast data - Scotland https://publichealthscotland.scot/publications/scottish-breast-screening-programme-statistics/scottish-breast-screening-programme-statistics-annual-update-to-31-march-2022, 
+	Uptake Invitations Table. Removed Year 2015/16 as reported incomplete.
+- Bowel data - Scotland https://publichealthscotland.scot/publications/scottish-bowel-screening-programme-statistics/scottish-bowel-screening-programme-statistics-for-the-period-of-invitations-from-may-2021-to-april-2023/,
+	Sheet KPI_1, Table 1.1.
 
 Cancer_Projection_Data(_All)
 - UK wide data from Globocan
