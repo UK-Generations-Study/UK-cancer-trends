@@ -51,6 +51,9 @@ Activity
 Activity_Alt
 - England Data sourced from source 3. Table 1 contains categories for all people, Table 2 stratifies by sex and age and measures % Active.
 
+Wales_Health_Survey
+- The Wales Health Survey predates the National Survey for Wales where much of the risk factor information for Wales has come from. This data was downloaded to supplement the NSW data, with the caveat that they may not be perfectly comparable. This will be made clear.
+
 Age at First Birth
 - UK Data sourced from source 2 which contained UK wide data. Continuous year range selected.
 
