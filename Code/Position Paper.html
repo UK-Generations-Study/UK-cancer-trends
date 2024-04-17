@@ -89,8 +89,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#function---health-survey-northern-ireland" id="toc-function---health-survey-northern-ireland" class="nav-link" data-scroll-target="#function---health-survey-northern-ireland">Function - Health Survey Northern Ireland</a></li>
   <li><a href="#grabbing-first-round-of-data" id="toc-grabbing-first-round-of-data" class="nav-link" data-scroll-target="#grabbing-first-round-of-data">Grabbing First Round of Data</a></li>
   <li><a href="#cleaning-data" id="toc-cleaning-data" class="nav-link" data-scroll-target="#cleaning-data">Cleaning Data</a></li>
+  <li><a href="#adding-wales-health-survey-data" id="toc-adding-wales-health-survey-data" class="nav-link" data-scroll-target="#adding-wales-health-survey-data">Adding Wales Health Survey Data</a></li>
   <li><a href="#overweight" id="toc-overweight" class="nav-link" data-scroll-target="#overweight">Overweight</a></li>
   <li><a href="#obese" id="toc-obese" class="nav-link" data-scroll-target="#obese">Obese</a></li>
+  <li><a href="#overweight-not-obese-by-sex" id="toc-overweight-not-obese-by-sex" class="nav-link" data-scroll-target="#overweight-not-obese-by-sex">Overweight not Obese by Sex</a></li>
   <li><a href="#obese-by-sex" id="toc-obese-by-sex" class="nav-link" data-scroll-target="#obese-by-sex">Obese by Sex</a></li>
   <li><a href="#obese-by-age---england" id="toc-obese-by-age---england" class="nav-link" data-scroll-target="#obese-by-age---england">Obese by Age - England</a></li>
   <li><a href="#childhood-obesity---ncmp" id="toc-childhood-obesity---ncmp" class="nav-link" data-scroll-target="#childhood-obesity---ncmp">Childhood Obesity - NCMP</a></li>
@@ -99,17 +101,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#alcohol---guidelines-by-age" id="toc-alcohol---guidelines-by-age" class="nav-link" data-scroll-target="#alcohol---guidelines-by-age">Alcohol - Guidelines by Age</a></li>
   <li><a href="#alcohol---guidelines-by-sex" id="toc-alcohol---guidelines-by-sex" class="nav-link" data-scroll-target="#alcohol---guidelines-by-sex">Alcohol - Guidelines by Sex</a></li>
   <li><a href="#smoking" id="toc-smoking" class="nav-link" data-scroll-target="#smoking">Smoking</a></li>
+  <li><a href="#smoking-by-sex" id="toc-smoking-by-sex" class="nav-link" data-scroll-target="#smoking-by-sex">Smoking by Sex</a></li>
   <li><a href="#smoking-by-age" id="toc-smoking-by-age" class="nav-link" data-scroll-target="#smoking-by-age">Smoking by Age</a></li>
   <li><a href="#e-cigarette" id="toc-e-cigarette" class="nav-link" data-scroll-target="#e-cigarette">E-Cigarette</a></li>
   <li><a href="#e-cigarette---great-britain" id="toc-e-cigarette---great-britain" class="nav-link" data-scroll-target="#e-cigarette---great-britain">E-Cigarette - Great Britain</a></li>
+  <li><a href="#e-cigarette-regular-user-great-britain-by-age" id="toc-e-cigarette-regular-user-great-britain-by-age" class="nav-link" data-scroll-target="#e-cigarette-regular-user-great-britain-by-age">E-Cigarette (Regular User) Great Britain by Age</a></li>
   <li><a href="#e-cigarette---great-britain-by-sex" id="toc-e-cigarette---great-britain-by-sex" class="nav-link" data-scroll-target="#e-cigarette---great-britain-by-sex">E-Cigarette - Great Britain by Sex</a></li>
   <li><a href="#activity" id="toc-activity" class="nav-link" data-scroll-target="#activity">Activity</a></li>
   <li><a href="#activity-by-sex" id="toc-activity-by-sex" class="nav-link" data-scroll-target="#activity-by-sex">Activity by Sex</a></li>
   <li><a href="#age-first-birth-data" id="toc-age-first-birth-data" class="nav-link" data-scroll-target="#age-first-birth-data">Age First Birth Data</a></li>
-  <li><a href="#parity" id="toc-parity" class="nav-link" data-scroll-target="#parity">Parity</a></li>
+  <li><a href="#parity-by-birth-cohort" id="toc-parity-by-birth-cohort" class="nav-link" data-scroll-target="#parity-by-birth-cohort">Parity by Birth Cohort</a></li>
+  <li><a href="#parity-by-year" id="toc-parity-by-year" class="nav-link" data-scroll-target="#parity-by-year">Parity by Year</a></li>
   <li><a href="#fertility-rates" id="toc-fertility-rates" class="nav-link" data-scroll-target="#fertility-rates">Fertility Rates</a></li>
   <li><a href="#hrt" id="toc-hrt" class="nav-link" data-scroll-target="#hrt">HRT</a></li>
   <li><a href="#cancer---globocan-data" id="toc-cancer---globocan-data" class="nav-link" data-scroll-target="#cancer---globocan-data">Cancer - Globocan Data</a></li>
+  <li><a href="#cancer---plotting-prostate-and-breast-together" id="toc-cancer---plotting-prostate-and-breast-together" class="nav-link" data-scroll-target="#cancer---plotting-prostate-and-breast-together">Cancer - Plotting Prostate and Breast together</a></li>
   <li><a href="#diabetes" id="toc-diabetes" class="nav-link" data-scroll-target="#diabetes">Diabetes</a></li>
   <li><a href="#diabetes-by-sex" id="toc-diabetes-by-sex" class="nav-link" data-scroll-target="#diabetes-by-sex">Diabetes by Sex</a></li>
   <li><a href="#screening---breast" id="toc-screening---breast" class="nav-link" data-scroll-target="#screening---breast">Screening - Breast</a></li>
@@ -189,11 +195,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="cleaning-data">Cleaning Data</h2>
 <p>Cleaning some specific variables as well as cleaning variable names for variables needed in analysis.</p>
 </section>
+<section id="adding-wales-health-survey-data" class="level2">
+<h2 class="anchored" data-anchor-id="adding-wales-health-survey-data">Adding Wales Health Survey Data</h2>
+<p>Can also add inactivity to this data if need be. Currently have it omitted as not requested for any graphs.</p>
+<p>have shifted year forwards for years e.g.&nbsp;2005/06 –&gt; 2006. This is not the same as for other Wales data, but continuity seemed more likely than a missing year.</p>
+</section>
 <section id="overweight" class="level2">
 <h2 class="anchored" data-anchor-id="overweight">Overweight</h2>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -201,7 +212,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="obese">Obese</h2>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="overweight-not-obese-by-sex" class="level2">
+<h2 class="anchored" data-anchor-id="overweight-not-obese-by-sex">Overweight not Obese by Sex</h2>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -209,7 +228,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="obese-by-sex">Obese by Sex</h2>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -217,7 +236,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="obese-by-age---england">Obese by Age - England</h2>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -226,7 +245,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Childhood obesity as measured by the National Child Measurement Program</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -234,7 +253,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="alcohol">Alcohol</h2>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -243,7 +262,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Needed to get guidelines data for N. Ireland seperately, as well as combine variables for England data to get a Drinking over Guidelines value.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -251,7 +270,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="alcohol---guidelines-by-age">Alcohol - Guidelines by Age</h2>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -259,7 +278,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="alcohol---guidelines-by-sex">Alcohol - Guidelines by Sex</h2>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -267,10 +286,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="smoking">Smoking</h2>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="672"></p>
 </div>
+</div>
+</section>
+<section id="smoking-by-sex" class="level2">
+<h2 class="anchored" data-anchor-id="smoking-by-sex">Smoking by Sex</h2>
+<div class="cell">
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-19-2.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -278,44 +302,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="smoking-by-age">Smoking by Age</h2>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
 <section id="e-cigarette" class="level2">
 <h2 class="anchored" data-anchor-id="e-cigarette">E-Cigarette</h2>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-21-2.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</section>
-<section id="e-cigarette---great-britain" class="level2">
-<h2 class="anchored" data-anchor-id="e-cigarette---great-britain">E-Cigarette - Great Britain</h2>
-<p>More years available - but concerns about different questionnaire structure.</p>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-22-2.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</section>
-<section id="e-cigarette---great-britain-by-sex" class="level2">
-<h2 class="anchored" data-anchor-id="e-cigarette---great-britain-by-sex">E-Cigarette - Great Britain by Sex</h2>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</section>
-<section id="activity" class="level2">
-<h2 class="anchored" data-anchor-id="activity">Activity</h2>
-<p>Added a new source for the activity that provides more years. The Welsh definition is slightly differently worded, check up on this.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="Position-Paper_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
@@ -325,11 +317,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="activity-by-sex" class="level2">
-<h2 class="anchored" data-anchor-id="activity-by-sex">Activity by Sex</h2>
+<section id="e-cigarette---great-britain" class="level2">
+<h2 class="anchored" data-anchor-id="e-cigarette---great-britain">E-Cigarette - Great Britain</h2>
+<p>More years available - but concerns about different questionnaire structure.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="Position-Paper_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-25-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="e-cigarette-regular-user-great-britain-by-age" class="level2">
+<h2 class="anchored" data-anchor-id="e-cigarette-regular-user-great-britain-by-age">E-Cigarette (Regular User) Great Britain by Age</h2>
+<p>Greys look quite hard to read here - maybe consider choosing a specific colour.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="e-cigarette---great-britain-by-sex" class="level2">
+<h2 class="anchored" data-anchor-id="e-cigarette---great-britain-by-sex">E-Cigarette - Great Britain by Sex</h2>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="activity" class="level2">
+<h2 class="anchored" data-anchor-id="activity">Activity</h2>
+<p>Added a new source for the activity that provides more years. The Welsh definition is slightly differently worded, check up on this.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-28-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="activity-by-sex" class="level2">
+<h2 class="anchored" data-anchor-id="activity-by-sex">Activity by Sex</h2>
+<p>Need to note here that activity for Wales is strictly 150mins whereas the other countries allow for the intensity of the exercise to vary the guidelines.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -338,19 +372,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>For this variable and all further, no data is contained in the pre sorted data, so all sourced from new sources. As with before, these sources have been documented in the README file.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
-<section id="parity" class="level2">
-<h2 class="anchored" data-anchor-id="parity">Parity</h2>
+<section id="parity-by-birth-cohort" class="level2">
+<h2 class="anchored" data-anchor-id="parity-by-birth-cohort">Parity by Birth Cohort</h2>
 <p>Currently only have data for England and Wales. Trying to track down data for other countries.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="672"></p>
 </div>
+</div>
+</section>
+<section id="parity-by-year" class="level2">
+<h2 class="anchored" data-anchor-id="parity-by-year">Parity by Year</h2>
+<div class="cell">
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-27-2.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -358,7 +397,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="fertility-rates">Fertility Rates</h2>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -366,7 +405,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="hrt">HRT</h2>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -374,25 +413,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="cancer---globocan-data">Cancer - Globocan Data</h2>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-30-2.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-35-2.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-30-3.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-35-3.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-30-4.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-35-4.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-30-5.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-35-5.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-30-6.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-35-6.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-30-7.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-35-7.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="cancer---plotting-prostate-and-breast-together" class="level2">
+<h2 class="anchored" data-anchor-id="cancer---plotting-prostate-and-breast-together">Cancer - Plotting Prostate and Breast together</h2>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -400,7 +447,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="diabetes">Diabetes</h2>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -408,7 +455,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="diabetes-by-sex">Diabetes by Sex</h2>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -416,7 +463,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="screening---breast">Screening - Breast</h2>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -424,10 +471,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="screening---bowel">Screening - Bowel</h2>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-40-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-34-2.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-40-2.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -435,7 +482,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="screening---breast-bowel-uptake">Screening - Breast + Bowel Uptake</h2>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-41-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -443,7 +490,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="screening---cervix">Screening - Cervix</h2>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
