@@ -369,9 +369,8 @@ data2 <- data |>
     country == "England" & section == "Alcohol" & variable == "% non drinker/did not drink in last 12 months" ~ "% Non-Drinker",
     country == "England" & section == "Smoking" & variable == "Current cigarette smoker" ~ "% Current Smoker",
     country == "England" & section == "E_Cigarette" & variable == "Currently uses e-cigarettes" ~ "% Current E-cigarette user",
-    country == "England" & section == "Activity" & variable %in% c("Meets aerobic guidelines", "Meets previous aerobic guidelines") ~ "% Meets guidelines", ## CHECK THIS IS APPROPRIATE
-    ## Will probably use the more dense activity dataset for England so this ceases to be an issue in that case.
-    
+    country == "England" & section == "Activity" & variable %in% c("Meets aerobic guidelines") ~ "% Meets guidelines",
+  
     country == "Scotland" & section == "BMI" & variable == "Overweight (including obesity)" ~ "% Overweight",
     country == "Scotland" & section == "Alcohol" & variable == "Non-drinker" ~ "% Non-Drinker",
     country == "Scotland" & section == "Smoking" & variable == "Current smoker" ~ "% Current Smoker",
