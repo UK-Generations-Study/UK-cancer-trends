@@ -394,6 +394,7 @@ data2 <- data |>
 
   ))
 
+# Need to recitfy Ireland Alcohol variable for Non-Drinkers and Ireland's data is 0-1 scale which is altered.
 data3 <-  data2 |>
   mutate(value = as.numeric(value),
          value = case_when(
@@ -427,9 +428,11 @@ data4 <- data3
 ```
 
 ## Adding Wales Health Survey Data
+
 Can also add inactivity to this data if need be. Currently have it omitted as not requested for any graphs.
 
-have shifted year forwards for years e.g. 2005/06 --> 2006. This is not the same as for other Wales data, but continuity seemed more likely than a missing year.
+have shifted year forwards for years e.g. 2005/06 --\> 2006. This is not the same as for other Wales data, but continuity seemed more likely than a missing year.
+
 ```{r}
 whs_data <- read_excel("Wales_Health_Survey_Data.xlsx")
 
@@ -562,6 +565,7 @@ plot_data |>
 ```
 
 ## Overweight not Obese by Sex
+
 ```{r, fig.height = 10, fig.width = 7}
 
 plot_data <- obese_data |>
@@ -606,19 +610,96 @@ ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK
 
 ```
 
+## Overweight not Obese by Age England
+
+```{r}
+
+plot_data <- obese_data |>
+  filter(section == "BMI", country == "England") |>
+  pivot_wider(names_from = variable, values_from = value) |>
+  mutate(
+    
+    `% Overweight not Obese` = case_when(
+      grepl(group, pattern = "Children") ~ Overweight,
+      TRUE ~ `% overweight not obese`)
+    
+  ) |>
+  filter(group %in% c("Children_All", "All"), age_group %in% c("2-10", "11-15", "16-24", "25-34", "35-44", "45-54", "55-64", "65-74", "75+")) |>
+  select(age_group, year, `% Overweight not Obese`)
+
+## Need to merge the age groups above 25 into one group
+weightings <- read_excel("BMI_Data.xlsx", sheet = "England_All")
+
+top_row <- which(weightings$...1 == "Weighted bases")
+weightings <-weightings[(top_row+1):nrow(weightings),]
+
+weightings <- as.data.frame(weightings)
+
+
+weightings <- weightings |>
+  filter(!...1 %in% c("All adults", "16-24 years"))
+
+for(i in 2:ncol(weightings)){
+  weightings[,i] <- weightings[,i]/sum(weightings[,i])
+}
+
+weightings <- as.data.frame(t(as.matrix(weightings)))
+
+weightings <- weightings |>
+  mutate(Year = rownames(weightings))
+
+rownames(weightings) <- NULL
+colnames(weightings) <- weightings[1,]
+weightings <- weightings[-1,]
+
+weightings <- weightings |>
+  rename(year = ...1) |>
+  sapply(as.numeric)
+
+adult_bmi_england <- plot_data |>
+  filter(age_group %in% c("25-34", "35-44", "45-54", "55-64", "65-74", "75+")) |>
+  pivot_wider(names_from = age_group, values_from = `% Overweight not Obese`) |>
+  merge(weightings, by = "year") |>
+  mutate(`25+` = `25-34`*`25-34 years` + `35-44`*`35-44 years` + `45-54`*`45-54 years` + `55-64`*`55-64 years` + `65-74`*`65-74 years` + `75+`*`75+ years`) |>
+  select(year, `25+`) |>
+  pivot_longer(cols = `25+`) |>
+  rename(age_group = name, `% Overweight not Obese` = value) 
+
+## Now merge in new 25+ data back into the plot_data and plot
+
+plot_data <- plot_data |>
+  filter(age_group %in% c("2-10", "11-15", "16-24")) |>
+  rbind(adult_bmi_england)
+
+plot_data |>
+  ggplot(aes(x = year, y = `% Overweight not Obese`, colour = factor(age_group, levels = c("2-10", "11-15", "16-24", "25+")))) +
+  geom_point() +
+  geom_line() +
+  xlab("Year") +
+  ylab("% Overweight not Obese") +
+  ggtitle("% Overweight not Obese in England") +
+  labs(colour =  "Age Group", caption = "*Overweight for those aged >15 as 25 < BMI < 30\nOverweight for those aged <= 15 as at or above the 85th BMI percentile\nbut below the 95th BMI percentile in the UK") +
+  scale_x_continuous(breaks = 2002:2022, limits = c(2002, 2022)) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
+        panel.grid.minor.x = element_blank())
+
+# Save plot
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Code/Position Paper Plots/Overweight_not_Obese_by_Age.png")
+
+```
+
 ## Obese by Sex
 
 ```{r, fig.height = 10, fig.width = 7}
 
+# Filter to necessary data
 plot_data <- obese_data |>
   filter(variable == "% Obese" & age_group %in% c("16+", "Total") & !grepl(group, pattern = "All"))
 
+# Normalise to one way of labelling sex
 plot_data |>
   mutate(
-    
-  # year = case_when(
-  #   grepl(year, pattern = "\\/") ~ as.numeric(map_chr(strsplit(year, "/"), 1)),
-  #   TRUE ~ as.numeric(year)), 
   
   group = case_when(
     group == "Male" ~ "Men",
@@ -633,8 +714,6 @@ plot_data |>
   ylab("% Obese") +
   ggtitle("% Obese in Adults") +
   labs(colour =  "Country") +
-  # xlim(lower = 2002, upper = 2022) +
-  # scale_x_continuous(breaks = 2002:2022) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
         panel.grid.minor.x = element_blank()) +
@@ -683,15 +762,18 @@ adult_bmi_england <- data4 |>
   filter(country == "England" & section == "BMI" & variable == "% Obese" & group == "All" & !grepl(age_group, pattern = "16")) |>
   pivot_wider(names_from = age_group, values_from = value) |>
   merge(weightings, by = "year") |>
+  # Vector multiply by the normalised weightings to get an accurate value for 25+ age group
   mutate(`25+` = `25-34`*`25-34 years` + `35-44`*`35-44 years` + `45-54`*`45-54 years` + `55-64`*`55-64 years` + `65-74`*`65-74 years` + `75+`*`75+ years`) |>
   select(year, variable, country, group, section, `25+`) |>
   pivot_longer(cols = `25+`) |>
   rename(age_group = name)
 
+# Isolate the unaffected age groups and merge back in the new age group
 age_bmi_england <- data4 |>
   filter(country == "England" & section == "BMI" & variable == "% Obese" & group %in% c("All", "Children_All") & age_group %in% c("16-24", "2-10", "11-15")) |>
   rbind(adult_bmi_england) 
 
+# Plot the data
 ggplot(data = age_bmi_england, aes(x = year, y = value, colour = factor(age_group, levels = c("2-10", "11-15", "16-24", "25+")))) +
   geom_point() +
   geom_line() +
@@ -699,10 +781,13 @@ ggplot(data = age_bmi_england, aes(x = year, y = value, colour = factor(age_grou
   ylab("% Obese") +
   ggtitle("% Obese in England") +
   labs(colour =  "Age Group", caption = "*Obese for those aged >15 as BMI > 30\nObese for those aged <= 15 as at or above the 95th BMI percentile in the UK") +
-  scale_x_continuous(breaks = min(plot_data$year):max(plot_data$year)) +
+  scale_x_continuous(breaks = 2002:2022, limits = c(2002, 2022)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
         panel.grid.minor.x = element_blank())
+
+# Save plot
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Code/Position Paper Plots/Obese_by_Age.png")
 
 ```
 
@@ -981,6 +1066,7 @@ plot_data |>
 ```
 
 ## Smoking by Sex
+
 ```{r, fig.height = 10, fig.width = 7}
 # Plotting by sex
 plot_data <- data4 |>
@@ -1184,8 +1270,11 @@ plot_data |>
         panel.grid.minor.x = element_blank())
 
 ```
+
 ## E-Cigarette (Regular User) Great Britain by Age
+
 Greys look quite hard to read here - maybe consider choosing a specific colour.
+
 ```{r}
 # Reading in UK wide data
 ecig_data <- read_excel("E_Cigarette_Data.xlsx", sheet = "Great_Britain_All")
@@ -1318,7 +1407,9 @@ plot_data |>
 ```
 
 ## Activity by Sex
+
 Need to note here that activity for Wales is strictly 150mins whereas the other countries allow for the intensity of the exercise to vary the guidelines.
+
 ```{r, fig.height = 10, fig.width = 7}
 plot_data <- data4 |>
   filter(variable == "% Meets guidelines" & age_group %in% c("16+") & !grepl(group, pattern = "All") |
@@ -1602,6 +1693,7 @@ for(site in unique(cancer_data$`Cancer label`)){
 ```
 
 ## Cancer - Plotting Prostate and Breast together
+
 ```{r}
 
 plot_data <- cancer_data |>
@@ -1857,6 +1949,7 @@ plot_data |>
 ```
 
 ## Screening - Breast + Bowel Uptake
+
 ```{r, fig.height = 10, fig.width = 7}
 
 bowel_screening_data <- screening_data_bowel_england |>
