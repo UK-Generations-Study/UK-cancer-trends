@@ -465,7 +465,7 @@ whs_data <- whs_data |>
       section == "E_Cigarette" ~ "% Current E-cigarette user",
       section == "BMI" & variable == "Overweight or obese (9)" ~ "% Overweight",
       section == "BMI" & variable == "Obese (10)" ~ "% Obese",
-      section == "Activity" & variable == "Exercise or physical activity done (new questions): Active for 150 minutes or more in the previous week (8)" ~ "% Meets Guidelines",
+      section == "Activity" & variable == "Exercise or physical activity done (new questions): Active for 150 minutes or more in the previous week (8)" ~ "% Meets guidelines",
       TRUE ~ NA),
     
     country = "Wales",
