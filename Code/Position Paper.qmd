@@ -139,6 +139,7 @@ pull_HSE_data <- function(data, group){
   ranges <- data$...1[is.na(data[,2])]
   rangesdif <- diff(which(is.na(data[,2])))
   
+  # All groups should have the same number of categories - if not we need to throw an error
   if(max(rangesdif) != min(rangesdif)){
     return(cat("ERROR: Inconsistent Data Format"))
   }
@@ -281,6 +282,7 @@ pull_HSNI_data <- function(data, group){
   return(data)
 }
 
+# Activity data is different, so need a slightly different function to take care of this special case
 pull_HSNI_data_alt <- function(data, group){
   
   # data <- read_excel("Activity_Data.xlsx", sheet = "NIreland_Men")
@@ -299,6 +301,8 @@ pull_HSNI_data_alt <- function(data, group){
   return(data)
 }
 
+# HSNI doesn't store variable information, so it must be inferred from the section.
+# For alcohol etc, drinking over guidelines is from an _alt dataset which is treated seperately. 
 get_variable_HSNI <- function(rf){
   section <- rf
   variable <- case_when(
@@ -323,6 +327,7 @@ countries <- c("England", "Scotland", "Wales", "NIreland")
 data <- data.frame(section = character(0), variable = character(0), country = character(0), year = numeric(0),
                    group = character(0), age_group = character(0), value = numeric(0))
 
+# Cycling through risk factors and countries, appending cleaned data from the sources to a main dataset.
 for(rf in risk_factors){
   for(country in countries){
     new_data <- bind_rows(data_hub(country, rf))
@@ -451,6 +456,7 @@ whs_data <- whs_data |>
     
     age_group = "16+",
     
+    # Choosing a section for the variables we want to export - not all are applicable
     section = case_when(
       variable == "Smoker (1)" ~ "Smoking",
       variable == "Currently use an e-cigarette (2)" ~ "E_Cigarette",
@@ -460,6 +466,7 @@ whs_data <- whs_data |>
       variable == "Exercise or physical activity done (new questions): Active for less than 30 minutes in the previous week (8)" ~ "Activity",
       TRUE ~ NA),
     
+    # Linking variables to pre established variable names
     variable = case_when(
       section == "Smoking" ~ "% Current Smoker",
       section == "E_Cigarette" ~ "% Current E-cigarette user",
@@ -470,12 +477,14 @@ whs_data <- whs_data |>
     
     country = "Wales",
     
+    # Choosing the later year for consistency with NSW data, which I believe is a continuation
     year = if_else(grepl(year, pattern = "\\/"), as.numeric(str_sub(year, start = 1, end = 4))+1, as.numeric(year))
     
     ) |>
   
   filter(!is.na(variable))
 
+# Adding the Wales data to the main dataset
 data4 <- data4 |>
   rbind(whs_data)
 
@@ -483,12 +492,14 @@ data4 <- data4 |>
 ```
 
 ## Overweight
-
+This plot contains data for Overweight + Obese data. The nomenclature can be inconsistent. In this markdown, I will write Overweight to mean above healthy weight, and will write overweight not obese to specify the specific BMI band for overweight.
 ```{r}
 
+# Filter for variable groups we want to plot
 plot_data <- data4 |>
   filter(variable == "% Overweight" & age_group == "16+" & grepl(group, pattern = "All"))
 
+# Plot segregated by country
 plot_data |>
   ggplot(aes(x = year, y = value, colour = country)) +
   geom_line() +
@@ -509,10 +520,12 @@ plot_data |>
 ```{r}
 obese_data <- data4
 
+# Scotland BMI data collected was on Overweight so need to adjust and add Obesity data from a seperate source
 obese_sheets <- excel_sheets("BMI_Obese_Data.xlsx")
 
 scotland_sheets <- obese_sheets[grepl(obese_sheets, pattern = "Scotland")]
 
+# Loop over sheets for age and sex and add both to total dataset used for this specific variable.
 for(sheet in scotland_sheets){
   tempdata <- read_excel("BMI_Obese_Data.xlsx", sheet = sheet)
   group <- gsub(x = sheet, pattern = "Scotland_", replacement = "")
@@ -524,9 +537,10 @@ for(sheet in scotland_sheets){
   obese_data <- rbind(obese_data, tempdata)
 
 }
-
+ # Similar to Scotland data, needed to extract specific information on Obesity for N. Ireland as initial data collected was only Overweight %
 nireland_sheets <- obese_sheets[grepl(obese_sheets, pattern = "NIreland")]
 
+# Loop over sheets for sexes and add both to total dataset used for this specific variable.
 for(sheet in nireland_sheets){
   tempdata <- read_excel(paste0("BMI_Obese_Data.xlsx"), sheet = sheet)
   group <- gsub(x = sheet, pattern = "NIreland_", replacement = "")
@@ -541,14 +555,11 @@ for(sheet in nireland_sheets){
   obese_data <- rbind(obese_data, tempdata)
 }
 
+# Filter data for specific variable and groups we want to plot and plotting
 plot_data <- obese_data |>
   filter(variable == "% Obese" & age_group %in% c("16+", "Total") & grepl(group, pattern = "All"))
 
 plot_data |>
-  # mutate(year = case_when(
-  # grepl(year, pattern = "\\/") ~ as.numeric(map_chr(strsplit(year, "/"), 1)),
-  # TRUE ~ as.numeric(year)
-  # )) |>
   ggplot(aes(x = year, y = value, colour = country)) +
   geom_line() +
   geom_point() +
@@ -568,6 +579,7 @@ plot_data |>
 
 ```{r, fig.height = 10, fig.width = 7}
 
+# Need to create variable for Overweight not Obese. 
 plot_data <- obese_data |>
   filter(section == "BMI") |>
   pivot_wider(names_from = variable, values_from = value) |>
@@ -580,6 +592,7 @@ plot_data <- obese_data |>
       country == "Wales" & year <=2015 ~ `% Overweight` - `% Obese`,
       country == "N. Ireland" ~ `% Overweight` - `% Obese`),
     
+    # Making sex naming consistent
     group = case_when(
       group == "Male" ~ "Men",
       group == "Female" ~ "Women",
@@ -588,6 +601,7 @@ plot_data <- obese_data |>
     ) |>
   filter(group %in% c("Men", "Women"), age_group == "16+")
 
+# Plotting, with a facet_wrap for sex
 plot_data |>
   ggplot(aes(x = year, y = `% Overweight not Obese`, colour = country)) +
   geom_point() +
@@ -605,8 +619,6 @@ plot_data |>
 # Save plot
 ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Code/Position Paper Plots/Overweight_not_Obese_by_Sex.png")
 
-# image_read("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Code/Position Paper Plots/Overweight_not_Obese_by_Sex.png")
-
 
 ```
 
@@ -614,6 +626,7 @@ ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK
 
 ```{r}
 
+# Similar to above, but only concerned with England so only need to adjust for differences in naming between children and adult datasets
 plot_data <- obese_data |>
   filter(section == "BMI", country == "England") |>
   pivot_wider(names_from = variable, values_from = value) |>
@@ -669,7 +682,8 @@ adult_bmi_england <- plot_data |>
 
 plot_data <- plot_data |>
   filter(age_group %in% c("2-10", "11-15", "16-24")) |>
-  rbind(adult_bmi_england)
+  rbind(adult_bmi_england) |>
+  filter(year != 2005) # NOTE: this year has an issue with the sampling weights so is ommitted at this step.
 
 plot_data |>
   ggplot(aes(x = year, y = `% Overweight not Obese`, colour = factor(age_group, levels = c("2-10", "11-15", "16-24", "25+")))) +
@@ -771,7 +785,8 @@ adult_bmi_england <- data4 |>
 # Isolate the unaffected age groups and merge back in the new age group
 age_bmi_england <- data4 |>
   filter(country == "England" & section == "BMI" & variable == "% Obese" & group %in% c("All", "Children_All") & age_group %in% c("16-24", "2-10", "11-15")) |>
-  rbind(adult_bmi_england) 
+  rbind(adult_bmi_england) |>
+  filter(year != 2005) # NOTE: this year has an issue with the sampling weights so is ommitted at this step.
 
 # Plot the data
 ggplot(data = age_bmi_england, aes(x = year, y = value, colour = factor(age_group, levels = c("2-10", "11-15", "16-24", "25+")))) +
