@@ -492,7 +492,9 @@ data4 <- data4 |>
 ```
 
 ## Overweight
+
 This plot contains data for Overweight + Obese data. The nomenclature can be inconsistent. In this markdown, I will write Overweight to mean above healthy weight, and will write overweight not obese to specify the specific BMI band for overweight.
+
 ```{r}
 
 # Filter for variable groups we want to plot
@@ -617,7 +619,7 @@ plot_data |>
   facet_wrap(~group,scales = "fixed", dir = "v")
   
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Code/Position Paper Plots/Overweight_not_Obese_by_Sex.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Overweight_not_Obese_by_Sex.png")
 
 
 ```
@@ -699,7 +701,7 @@ plot_data |>
         panel.grid.minor.x = element_blank())
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Code/Position Paper Plots/Overweight_not_Obese_by_Age.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Overweight_not_Obese_by_Age.png")
 
 ```
 
@@ -736,7 +738,7 @@ plot_data |>
 
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Code/Position Paper Plots/Obese_by_Sex.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Obese_by_Sex.png")
 
 ```
 
@@ -802,7 +804,7 @@ ggplot(data = age_bmi_england, aes(x = year, y = value, colour = factor(age_grou
         panel.grid.minor.x = element_blank())
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Code/Position Paper Plots/Obese_by_Age.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Obese_by_Age.png")
 
 ```
 
@@ -1055,7 +1057,7 @@ plot_data |>
   facet_wrap(~group, scales = "fixed", dir = "v")
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Code/Position Paper Plots/Alcohol_Over_Guidelines_by_Sex.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Alcohol_Over_Guidelines_by_Sex.png")
 
 ```
 
@@ -1107,7 +1109,7 @@ plot_data |>
   facet_wrap(~group, scales = "fixed", dir = "v")
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Code/Position Paper Plots/Smoking_by_Sex.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Smoking_by_Sex.png")
 
 ```
 
@@ -1329,7 +1331,7 @@ plot_data |>
         panel.grid.minor.x = element_blank())
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Code/Position Paper Plots/E_Cigarette_Usage_by_Age.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/E_Cigarette_Usage_by_Age.png")
 ```
 
 ## E-Cigarette - Great Britain by Sex
@@ -1450,7 +1452,7 @@ plot_data |>
   facet_wrap(~group, scales = "fixed", dir = "v")
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Code/Position Paper Plots/Activity_by_Sex.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Activity_by_Sex.png")
 
 ```
 
@@ -1481,7 +1483,7 @@ plot_data |>
         panel.grid.minor.x = element_blank())
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Code/Position Paper Plots/Age_at_First_Birth.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Age_at_First_Birth.png")
 
 ```
 
@@ -1585,7 +1587,7 @@ plot_data |>
         panel.grid.minor.x = element_blank())
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Code/Position Paper Plots/Parity_by_Year.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Parity_by_Year.png")
 
 ```
 
@@ -1659,7 +1661,7 @@ plot_data |>
 
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Code/Position Paper Plots/HRT_Usage.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/HRT_Usage.png")
 
 
 ```
@@ -1701,7 +1703,7 @@ for(site in unique(cancer_data$`Cancer label`)){
   scale_x_continuous(breaks = seq(minyear, maxyear, by = 2)))
   
   # Save plot
-  ggsave(paste0("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Code/Position Paper Plots/Cancer_", site, "_Rates.png"))
+  ggsave(paste0("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Cancer_", site, "_Rates.png"))
 
 }
 
@@ -1731,7 +1733,7 @@ plot_data |>
   scale_x_continuous(breaks = seq(1989, max(plot_data$Year), by = 2))
   
 # Save plot
-ggsave(paste0("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Code/Position Paper Plots/Cancer_Prostate_Breast_Rates.png"))
+ggsave(paste0("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Cancer_Prostate_Breast_Rates.png"))
 
 ```
 
@@ -1854,7 +1856,7 @@ plot_data |>
   facet_wrap(~group, scales = "fixed", dir = "v")
   
 # Save plot
-ggsave(paste0("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Code/Position Paper Plots/Diabetes_by_Sex.png"))
+ggsave(paste0("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Diabetes_by_Sex.png"))
 
 ```
 
@@ -1994,7 +1996,7 @@ plot_data |>
 
 
 # Save plot
-ggsave(paste0("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Code/Position Paper Plots/Screening_by_Location.png"))
+ggsave(paste0("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Screening_by_Location.png"))
 
 ```
 
