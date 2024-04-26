@@ -517,6 +517,72 @@ plot_data |>
 
 ```
 
+## Overweight (and Obese) by Age England
+```{r}
+
+# Need to use weightings from the data set to calculate % Obese for 25+ age range.
+weightings <- read_excel("BMI_Data.xlsx", sheet = "England_All")
+
+top_row <- which(weightings$...1 == "Weighted bases")
+weightings <-weightings[(top_row+1):nrow(weightings),]
+
+weightings <- as.data.frame(weightings)
+
+
+weightings <- weightings |>
+  filter(!...1 %in% c("All adults", "16-24 years"))
+
+for(i in 2:ncol(weightings)){
+  weightings[,i] <- weightings[,i]/sum(weightings[,i])
+}
+
+weightings <- as.data.frame(t(as.matrix(weightings)))
+
+weightings <- weightings |>
+  mutate(Year = rownames(weightings))
+
+rownames(weightings) <- NULL
+colnames(weightings) <- weightings[1,]
+weightings <- weightings[-1,]
+
+weightings <- weightings |>
+  rename(year = ...1) |>
+  sapply(as.numeric)
+
+adult_bmi_england <- data4 |>
+  filter(country == "England" & section == "BMI" & variable == "% Overweight" & group == "All" & !grepl(age_group, pattern = "16")) |>
+  pivot_wider(names_from = age_group, values_from = value) |>
+  merge(weightings, by = "year") |>
+  # Vector multiply by the normalised weightings to get an accurate value for 25+ age group
+  mutate(`25+` = `25-34`*`25-34 years` + `35-44`*`35-44 years` + `45-54`*`45-54 years` + `55-64`*`55-64 years` + `65-74`*`65-74 years` + `75+`*`75+ years`) |>
+  select(year, variable, country, group, section, `25+`) |>
+  pivot_longer(cols = `25+`) |>
+  rename(age_group = name) |>
+  filter(year != 2005) # NOTE: this year has an issue with the sampling weights so is ommitted at this step.
+
+# Isolate the unaffected age groups and merge back in the new age group
+age_bmi_england <- data4 |>
+  filter(country == "England" & section == "BMI" & variable == "% Overweight" & group %in% c("All", "Children_All") & age_group %in% c("16-24", "2-10", "11-15")) |>
+  rbind(adult_bmi_england)
+
+# Plot the data
+ggplot(data = age_bmi_england, aes(x = year, y = value, colour = factor(age_group, levels = c("2-10", "11-15", "16-24", "25+")))) +
+  geom_point() +
+  geom_line() +
+  xlab("Year") +
+  ylab("% Overweight or Obese") +
+  ggtitle("% Overweight or Obese in England") +
+  labs(colour =  "Age Group", caption = "*Overweight for those aged >15 as BMI > 25\nOverweight for those aged <= 15 as at or above the 85th BMI percentile in the UK") +
+  scale_x_continuous(breaks = 2002:2022, limits = c(2002, 2022)) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
+        panel.grid.minor.x = element_blank())
+
+# Save plot
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Overweight_or_Obese_by_Age.png")
+
+```
+
 ## Obese
 
 ```{r}
@@ -678,14 +744,14 @@ adult_bmi_england <- plot_data |>
   mutate(`25+` = `25-34`*`25-34 years` + `35-44`*`35-44 years` + `45-54`*`45-54 years` + `55-64`*`55-64 years` + `65-74`*`65-74 years` + `75+`*`75+ years`) |>
   select(year, `25+`) |>
   pivot_longer(cols = `25+`) |>
-  rename(age_group = name, `% Overweight not Obese` = value) 
+  rename(age_group = name, `% Overweight not Obese` = value)  |>
+  filter(year != 2005) # NOTE: this year has an issue with the sampling weights so is ommitted at this step.
 
 ## Now merge in new 25+ data back into the plot_data and plot
 
 plot_data <- plot_data |>
   filter(age_group %in% c("2-10", "11-15", "16-24")) |>
-  rbind(adult_bmi_england) |>
-  filter(year != 2005) # NOTE: this year has an issue with the sampling weights so is ommitted at this step.
+  rbind(adult_bmi_england)
 
 plot_data |>
   ggplot(aes(x = year, y = `% Overweight not Obese`, colour = factor(age_group, levels = c("2-10", "11-15", "16-24", "25+")))) +
@@ -782,13 +848,13 @@ adult_bmi_england <- data4 |>
   mutate(`25+` = `25-34`*`25-34 years` + `35-44`*`35-44 years` + `45-54`*`45-54 years` + `55-64`*`55-64 years` + `65-74`*`65-74 years` + `75+`*`75+ years`) |>
   select(year, variable, country, group, section, `25+`) |>
   pivot_longer(cols = `25+`) |>
-  rename(age_group = name)
+  rename(age_group = name) |>
+  filter(year != 2005) # NOTE: this year has an issue with the sampling weights so is ommitted at this step.
 
 # Isolate the unaffected age groups and merge back in the new age group
 age_bmi_england <- data4 |>
   filter(country == "England" & section == "BMI" & variable == "% Obese" & group %in% c("All", "Children_All") & age_group %in% c("16-24", "2-10", "11-15")) |>
-  rbind(adult_bmi_england) |>
-  filter(year != 2005) # NOTE: this year has an issue with the sampling weights so is ommitted at this step.
+  rbind(adult_bmi_england)
 
 # Plot the data
 ggplot(data = age_bmi_england, aes(x = year, y = value, colour = factor(age_group, levels = c("2-10", "11-15", "16-24", "25+")))) +
