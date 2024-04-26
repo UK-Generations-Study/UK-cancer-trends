@@ -366,6 +366,7 @@ data2 <- data |>
     TRUE ~ age_group
   ), variable = case_when(
     # Harmonising variable names. Only doing ones we are focussed on. Could always expand to a fully harmonised dataset.
+    # NOTE: as shown below, the naming of overweight/obesity variables can get confusing - when renaming manually, 'Overweight' refers to Overweight + Obese.
     country == "England" & section == "BMI" & variable == "Overweight including obese" & grepl(group, pattern = "Children") ~ "% Overweight",
     country == "England" & section == "BMI" & variable == "Obese" & grepl(group, pattern = "Children") ~ "% Obese",
     country == "England" & section == "BMI" & variable == "% overweight including obese" & !grepl(group, pattern = "Children") ~ "% Overweight",

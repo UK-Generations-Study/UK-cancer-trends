@@ -15,6 +15,7 @@ editor: visual
 ## Packages
 
 ```{r}
+library(tidyr)
 library(dplyr)
 library(readxl)
 library(ggplot2)
@@ -233,14 +234,15 @@ plot_joinpoint_output <- function(cancer, sex = 3, data, data_jp, incmort, start
       
     }
     
-    if(!report.APC){
-      plot <- plot +
-        guides(colour = "none",
-               linetype = "none")
-      
-    }
-    
 
+  }
+  
+  
+  if(!report.APC){
+    plot <- plot +
+      guides(colour = "none",
+             linetype = "none")
+    
   }
   
   return(plot)
@@ -248,8 +250,6 @@ plot_joinpoint_output <- function(cancer, sex = 3, data, data_jp, incmort, start
 }
 
 ```
-
-
 
 ### Meeting Targets Function
 
@@ -409,6 +409,133 @@ meet_targets_table <- function(targets, target.year, data_jp){
 }
 ```
 
+### APC Trend Table Function
+```{r}
+apc_table <- function(data_jp, title = NA){
+  # Initialise table
+  apc_table <- data.frame(Cancer = character(0), period_women = character(0), apc_women = character(0), period_men = character(0), apc_men = character(0))
+
+  # Relabel sex variable to be easier to understand
+  jp_table <- data_jp |>
+    mutate(Sex = if_else(Sex == 2, "Women", "Men"))
+
+  # Loop through cancer locations and sexes, adding to the table sequentially
+
+  for(cancer in unique(jp_table$Cancer.label)){
+
+    # Initialise row for output
+    output_row <- cancer
+
+    for(sex in unique(jp_table$Sex)){
+
+      # Filter data to data on sex and cancer of interest
+      spec_data <- filter(jp_table, Sex == sex & Cancer.label == cancer)
+
+      # If no data - output NA's, else calculate period of most recent APC and APC
+      if(nrow(spec_data)==0){
+        output_row <- append(output_row, rep(NA, 2))
+      } else {
+
+        # Arrange by year and take the last APC segment
+        spec_data <- arrange(spec_data, Year)
+
+        join_years <- spec_data$Year[is.na(spec_data$APC)]
+
+        # If joins, take the final segment, if not then leave the data alone
+        if(length(join_years)>0){
+          spec_data <- spec_data[spec_data$Year>=max(join_years),]
+        }
+
+        # Period
+        period <- paste0(min(spec_data$Year), "-", max(spec_data$Year))
+
+        # APC
+        apc <- unique(spec_data$APC)[!is.na(unique(spec_data$APC))]
+
+        if(length(apc)>1){
+          stop("ERROR: final join not detected")
+        }
+
+        # Make APC pretty
+        if(grepl(apc, pattern = "\\*")){
+          numeric_apc <- gsub(apc, pattern = "\\*", replacement = "")
+          numeric_apc <- round(as.numeric(numeric_apc), digits = 2)
+          apc <- paste0(numeric_apc, "%*")
+        } else {
+          apc <- paste0(round(as.numeric(apc), digits = 2), "%")
+        }
+
+
+        # create output row
+        output_row <- append(output_row, c(period, apc))
+
+      }
+
+    }
+
+    apc_table[nrow(apc_table)+1,] <- output_row
+
+  }
+
+
+  # Make table pretty for output
+  apc_table |>
+    # Make NA's pretty
+    mutate_all(~ replace_na(., "-")) |>
+    gt() |>
+
+    # Header Creation
+    tab_header(
+      title = md(paste0("**",ifelse(is.na(title), "", title),"**"))
+    ) |>
+
+    # Head Rows
+    tab_style(
+      style = list(
+        cell_text(weight = "bold", align = "center")
+      ),
+      locations = cells_column_labels(columns = everything())
+    ) |>
+
+    # Tab spanners for sex
+    tab_spanner(
+      label = "Women",
+      columns = ends_with("_women")
+    ) |>
+
+    tab_spanner(
+      label = "Men",
+      columns = ends_with("_men")
+    ) |>
+
+    # Body rows
+    tab_style(
+      style = list(
+        cell_text(align = "center")
+      ),
+      locations = cells_body(
+          columns = everything()
+      )
+    ) |>
+
+    # Rename columns
+    cols_label(
+      period_women = "Period",
+      period_men = "Period",
+      apc_women = "APC",
+      apc_men = "APC"
+    ) |>
+
+    # Add caption
+    tab_footnote("* Indicates an APC significantly different from 0")
+
+
+
+}
+
+
+```
+
 ## Cancer Incidence/Mortality
 
 ```{r, fig.width=20}
@@ -480,16 +607,27 @@ sexes <- c(1,2)
 # }
 
 for(cancer in cancers){
-  p1 <- plot_joinpoint_output(cancer, sex = 3, incidence_data, incidence_jp, "Incidence")
-  p2 <- plot_joinpoint_output(cancer, sex = 3, mortality_data, mortality_jp, "Mortality", projection.yr = 2040, start.yr = 1993, projection.target = 0.85)
+  p1 <- plot_joinpoint_output(cancer, sex = 3, incidence_data, incidence_jp, "Incidence", report.APC = T)
+  p2 <- plot_joinpoint_output(cancer, sex = 3, mortality_data, mortality_jp, "Mortality", projection.yr = 2040, start.yr = 1993, projection.target = 0.85, report.APC = T)
   grid.arrange(p1, p2, nrow = 1, widths = c(4,4))
 }
 
 ```
 
 ## Meeting Targets Table
+
 ```{r}
 meet_targets_table(targets = c(0.85), target.year = c(2040), data_jp = mortality_jp)
+```
+
+## APC Trends Table UK
+```{r}
+
+apc_table(incidence_jp, title = "Recent Trends for Cancer Incidence")
+
+apc_table(mortality_jp, title = "Recent Trends for Cancer Mortality")
+
+
 ```
 
 ## Pretty Plots for Presentation - BC Incidence
