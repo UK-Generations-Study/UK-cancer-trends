@@ -519,6 +519,7 @@ plot_data |>
 ```
 
 ## Overweight (and Obese) by Age England
+
 ```{r}
 
 # Need to use weightings from the data set to calculate % Obese for 25+ age range.
@@ -1751,9 +1752,9 @@ cancer_data <- cancer_england_wales |>
 # Looping through sites and plotting cancer rates for that site
 for(site in unique(cancer_data$`Cancer label`)){
   tempdata <- cancer_data[cancer_data$`Cancer label`==site,]
-  tempdata <- tempdata[tempdata$Year>=1989,]
+  tempdata <- tempdata[tempdata$Year>=1997,]
   # minyear <- min(tempdata$Year)
-  minyear <- 1989
+  minyear <- 1997
   maxyear <- max(tempdata$Year)
   print(ggplot(data = tempdata, aes(x = Year, y = `ASR (World)`, colour = `Country label`)) +
   geom_line() +
@@ -1767,7 +1768,7 @@ for(site in unique(cancer_data$`Cancer label`)){
         panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
         panel.grid.minor.x = element_blank()) +
   facet_grid(IncMort~ Sex, scales = "free_y") +
-  scale_x_continuous(breaks = seq(minyear, maxyear, by = 2)))
+  scale_x_continuous(breaks = seq(minyear+1, maxyear, by = 2)))
   
   # Save plot
   ggsave(paste0("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Cancer_", site, "_Rates.png"))
@@ -1782,7 +1783,7 @@ for(site in unique(cancer_data$`Cancer label`)){
 
 plot_data <- cancer_data |>
   filter(`Cancer label` %in% c("Prostate", "Breast")) |>
-  filter(Year >= 1989)
+  filter(Year >= 1997)
 
 plot_data |>
   ggplot(aes(x = Year, y = `ASR (World)`, colour = `Country label`)) +
@@ -1797,7 +1798,7 @@ plot_data |>
         panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
         panel.grid.minor.x = element_blank()) +
   facet_grid(IncMort~ `Cancer label`, scales = "free_y") +
-  scale_x_continuous(breaks = seq(1989, max(plot_data$Year), by = 2))
+  scale_x_continuous(breaks = seq(1998, max(plot_data$Year), by = 2))
   
 # Save plot
 ggsave(paste0("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Cancer_Prostate_Breast_Rates.png"))

@@ -410,6 +410,7 @@ meet_targets_table <- function(targets, target.year, data_jp){
 ```
 
 ### APC Trend Table Function
+
 ```{r}
 apc_table <- function(data_jp, title = NA){
   # Initialise table
@@ -621,6 +622,7 @@ meet_targets_table(targets = c(0.85), target.year = c(2040), data_jp = mortality
 ```
 
 ## APC Trends Table UK
+
 ```{r}
 
 apc_table(incidence_jp, title = "Recent Trends for Cancer Incidence")
