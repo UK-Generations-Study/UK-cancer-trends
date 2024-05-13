@@ -248,7 +248,7 @@ plot_joinpoint_output <- function(cancer, sex = 3, data, data_jp, incmort, start
   plot_breaks <- plot_breaks[plot_breaks%%2 == 1]
   
   plot <- plot +
-    scale_x_continuous(breaks = plot_breaks) +
+    scale_x_continuous(limits = c(min(plot_breaks),max(plot_breaks)), breaks = plot_breaks) +
     theme(axis.text.x = element_text(angle = 45, hjust = 1))
   
   
@@ -649,10 +649,11 @@ apc_barchart <- function(data_jp, title){
     ylab("APC") +
     scale_fill_discrete(name = "Sex") +
     geom_text(aes(label = ifelse(significant, "*", ""),
-            vjust = ifelse(apc>0, 0, 1.2)),
+                hjust = ifelse(apc>0, 0, 1.2)),
             position = position_dodge(width = 0.9),
             size = 6) + 
-  labs(caption = "* Indicates an APC significantly different from 0")
+  labs(caption = "* Indicates an APC significantly different from 0") +
+    coord_flip()
     
     
   
@@ -758,8 +759,6 @@ apc_table(mortality_jp, title = "Recent Trends for Cancer Mortality")
 
 
 ```
-
-
 
 ## Pretty Plots for Presentation - BC Incidence
 
@@ -961,7 +960,7 @@ for(cancer in cancers){
 ## England + Wales Total Cancer Plot
 
 ```{r, fig.width=20}
-data <- read_excel("Globocan By Country/Cancer_Projection_Data_England_Wales.xlsx") |>
+data <- read_excel("Globocan By Country Last 20/Cancer_Projection_Data_England_Wales.xlsx") |>
   mutate(`Cancer label` = case_when(
     `Cancer label` == "Colorectum" ~ "Colorectal",
     `Cancer label` == "Oesophagus" ~ "Oesophageal",
@@ -974,7 +973,7 @@ data <- read_excel("Globocan By Country/Cancer_Projection_Data_England_Wales.xls
 incidence_data <- data |>
   filter(Type == 0)
 
-incidence_jp <- read.delim("Globocan By Country/England Wales/Cancer_Joinpoint_England_Wales.txt", sep = "\t") |>
+incidence_jp <- read.delim("Globocan By Country Last 20/England Wales/Cancer_Joinpoint_England_Wales_Last_20.txt", sep = "\t") |>
   filter(incmort == "Incidence") |>
   mutate(Cancer.label = case_when(
     Cancer.label == "Colorectum" ~ "Colorectal",
@@ -988,7 +987,7 @@ incidence_jp <- read.delim("Globocan By Country/England Wales/Cancer_Joinpoint_E
 mortality_data <- data |>
   filter(Type == 1)
 
-mortality_jp <- read.delim("Globocan By Country/England Wales/Cancer_Joinpoint_England_Wales.txt", sep = "\t") |>
+mortality_jp <- read.delim("Globocan By Country Last 20/England Wales/Cancer_Joinpoint_England_Wales_Last_20.txt", sep = "\t") |>
   filter(incmort == "Mortality") |>
   mutate(Cancer.label = case_when(
     Cancer.label == "Colorectum" ~ "Colorectal",
@@ -998,23 +997,22 @@ mortality_jp <- read.delim("Globocan By Country/England Wales/Cancer_Joinpoint_E
     TRUE ~ Cancer.label
   ))
 
-cancers = "All"
+cancers = unique(data$`Cancer label`)
 
 for(cancer in cancers){
-  p1 <- plot_joinpoint_output(cancer, sex = 3, incidence_data, incidence_jp, "Incidence", start.yr = 1993) +
-    ggtitle("Incidence trends for All Cancers in England and Wales")
-  p2 <- plot_joinpoint_output(cancer, sex = 3, mortality_data, mortality_jp, "Mortality", projection.yr = 2040, start.yr = 1993) +
-    ggtitle("Mortality trends for All Cancers in England and Wales")
+  p1 <- plot_joinpoint_output(cancer, sex = 3, incidence_data, incidence_jp, "Incidence")
+  p2 <- plot_joinpoint_output(cancer, sex = 3, mortality_data, mortality_jp, "Mortality", projection.yr = 2040)
   grid.arrange(p1, p2, nrow = 1, widths = c(4,4))
 }
 
 ```
 
 ## APC Barchart
+
 ```{r}
 
-print(apc_barchart(incidence_jp, title = "Recent Trends for Cancer Incidence in England and Wales") + ylim(-2.5, 1.5))
+print(apc_barchart(incidence_jp, title = "Recent Trends for Cancer Incidence in England and Wales"))
 ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/eng_wales_all_cancer_inc_barchart.png")
-print(apc_barchart(mortality_jp, title = "Recent Trends for Cancer Mortality in England and Wales") + ylim(-2.5, 1.5))
+print(apc_barchart(mortality_jp, title = "Recent Trends for Cancer Mortality in England and Wales"))
 ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/eng_wales_all_cancer_mort_barchart.png")
 ```

@@ -1332,7 +1332,11 @@ plot_data |>
   scale_x_continuous(breaks = min(plot_data$Year):max(plot_data$Year)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank())
+        panel.grid.minor.x = element_blank()) +
+  ylim(5, 10)
+
+# Save plot
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/E_Cigarette_Usage_UK.png")
 
 # Initialising colours for next plot
 cols <- brewer.pal(n = 8, name = "Greys")[4:8]
@@ -1548,7 +1552,8 @@ plot_data |>
   scale_x_continuous(breaks = 2002:2022, limits = c(2002,2022)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank())
+        panel.grid.minor.x = element_blank()) +
+  ylim(25, 30)
 
 # Save plot
 ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Age_at_First_Birth.png")
@@ -1652,7 +1657,8 @@ plot_data |>
   scale_x_continuous(breaks = 2002:2022, limits = c(2002,2022)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank())
+        panel.grid.minor.x = element_blank()) +
+  ylim(55, 57)
 
 # Save plot
 ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Parity_by_Year.png")
@@ -1725,7 +1731,8 @@ plot_data |>
   scale_x_continuous(breaks = min(plot_data$Year):max(plot_data$Year)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank())
+        panel.grid.minor.x = element_blank()) +
+  ylim(20, 40)
 
 
 # Save plot
@@ -1966,8 +1973,11 @@ plot_data |>
   scale_x_continuous(breaks = min(plot_data$year):max(plot_data$year)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank())
+        panel.grid.minor.x = element_blank()) +
+  ylim(60,80)
 
+# Save plot
+ggsave(paste0("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Screening_Breast.png"))
 
 ```
 
