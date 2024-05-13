@@ -1013,8 +1013,8 @@ for(cancer in cancers){
 ## APC Barchart
 ```{r}
 
-print(apc_barchart(incidence_jp, title = "Recent Trends for Cancer Incidence in England and Wales"))
+print(apc_barchart(incidence_jp, title = "Recent Trends for Cancer Incidence in England and Wales") + ylim(-2.5, 1.5))
 ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/eng_wales_all_cancer_inc_barchart.png")
-print(apc_barchart(mortality_jp, title = "Recent Trends for Cancer Mortality in England and Wales"))
+print(apc_barchart(mortality_jp, title = "Recent Trends for Cancer Mortality in England and Wales") + ylim(-2.5, 1.5))
 ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/eng_wales_all_cancer_mort_barchart.png")
 ```
