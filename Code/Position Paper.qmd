@@ -366,6 +366,7 @@ data2 <- data |>
     TRUE ~ age_group
   ), variable = case_when(
     # Harmonising variable names. Only doing ones we are focussed on. Could always expand to a fully harmonised dataset.
+    # NOTE: as shown below, the naming of overweight/obesity variables can get confusing - when renaming manually, 'Overweight' refers to Overweight + Obese.
     country == "England" & section == "BMI" & variable == "Overweight including obese" & grepl(group, pattern = "Children") ~ "% Overweight",
     country == "England" & section == "BMI" & variable == "Obese" & grepl(group, pattern = "Children") ~ "% Obese",
     country == "England" & section == "BMI" & variable == "% overweight including obese" & !grepl(group, pattern = "Children") ~ "% Overweight",
@@ -514,6 +515,73 @@ plot_data |>
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
         panel.grid.minor.x = element_blank())
+
+```
+
+## Overweight (and Obese) by Age England
+
+```{r}
+
+# Need to use weightings from the data set to calculate % Obese for 25+ age range.
+weightings <- read_excel("BMI_Data.xlsx", sheet = "England_All")
+
+top_row <- which(weightings$...1 == "Weighted bases")
+weightings <-weightings[(top_row+1):nrow(weightings),]
+
+weightings <- as.data.frame(weightings)
+
+
+weightings <- weightings |>
+  filter(!...1 %in% c("All adults", "16-24 years"))
+
+for(i in 2:ncol(weightings)){
+  weightings[,i] <- weightings[,i]/sum(weightings[,i])
+}
+
+weightings <- as.data.frame(t(as.matrix(weightings)))
+
+weightings <- weightings |>
+  mutate(Year = rownames(weightings))
+
+rownames(weightings) <- NULL
+colnames(weightings) <- weightings[1,]
+weightings <- weightings[-1,]
+
+weightings <- weightings |>
+  rename(year = ...1) |>
+  sapply(as.numeric)
+
+adult_bmi_england <- data4 |>
+  filter(country == "England" & section == "BMI" & variable == "% Overweight" & group == "All" & !grepl(age_group, pattern = "16")) |>
+  pivot_wider(names_from = age_group, values_from = value) |>
+  merge(weightings, by = "year") |>
+  # Vector multiply by the normalised weightings to get an accurate value for 25+ age group
+  mutate(`25+` = `25-34`*`25-34 years` + `35-44`*`35-44 years` + `45-54`*`45-54 years` + `55-64`*`55-64 years` + `65-74`*`65-74 years` + `75+`*`75+ years`) |>
+  select(year, variable, country, group, section, `25+`) |>
+  pivot_longer(cols = `25+`) |>
+  rename(age_group = name) |>
+  filter(year != 2005) # NOTE: this year has an issue with the sampling weights so is ommitted at this step.
+
+# Isolate the unaffected age groups and merge back in the new age group
+age_bmi_england <- data4 |>
+  filter(country == "England" & section == "BMI" & variable == "% Overweight" & group %in% c("All", "Children_All") & age_group %in% c("16-24", "2-10", "11-15")) |>
+  rbind(adult_bmi_england)
+
+# Plot the data
+ggplot(data = age_bmi_england, aes(x = year, y = value, colour = factor(age_group, levels = c("2-10", "11-15", "16-24", "25+")))) +
+  geom_point() +
+  geom_line() +
+  xlab("Year") +
+  ylab("% Overweight or Obese") +
+  ggtitle("% Overweight or Obese in England") +
+  labs(colour =  "Age Group", caption = "*Overweight for those aged >15 as BMI > 25\nOverweight for those aged <= 15 as at or above the 85th BMI percentile in the UK") +
+  scale_x_continuous(breaks = 2002:2022, limits = c(2002, 2022)) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
+        panel.grid.minor.x = element_blank())
+
+# Save plot
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Overweight_or_Obese_by_Age.png")
 
 ```
 
@@ -678,14 +746,14 @@ adult_bmi_england <- plot_data |>
   mutate(`25+` = `25-34`*`25-34 years` + `35-44`*`35-44 years` + `45-54`*`45-54 years` + `55-64`*`55-64 years` + `65-74`*`65-74 years` + `75+`*`75+ years`) |>
   select(year, `25+`) |>
   pivot_longer(cols = `25+`) |>
-  rename(age_group = name, `% Overweight not Obese` = value) 
+  rename(age_group = name, `% Overweight not Obese` = value)  |>
+  filter(year != 2005) # NOTE: this year has an issue with the sampling weights so is ommitted at this step.
 
 ## Now merge in new 25+ data back into the plot_data and plot
 
 plot_data <- plot_data |>
   filter(age_group %in% c("2-10", "11-15", "16-24")) |>
-  rbind(adult_bmi_england) |>
-  filter(year != 2005) # NOTE: this year has an issue with the sampling weights so is ommitted at this step.
+  rbind(adult_bmi_england)
 
 plot_data |>
   ggplot(aes(x = year, y = `% Overweight not Obese`, colour = factor(age_group, levels = c("2-10", "11-15", "16-24", "25+")))) +
@@ -782,13 +850,13 @@ adult_bmi_england <- data4 |>
   mutate(`25+` = `25-34`*`25-34 years` + `35-44`*`35-44 years` + `45-54`*`45-54 years` + `55-64`*`55-64 years` + `65-74`*`65-74 years` + `75+`*`75+ years`) |>
   select(year, variable, country, group, section, `25+`) |>
   pivot_longer(cols = `25+`) |>
-  rename(age_group = name)
+  rename(age_group = name) |>
+  filter(year != 2005) # NOTE: this year has an issue with the sampling weights so is ommitted at this step.
 
 # Isolate the unaffected age groups and merge back in the new age group
 age_bmi_england <- data4 |>
   filter(country == "England" & section == "BMI" & variable == "% Obese" & group %in% c("All", "Children_All") & age_group %in% c("16-24", "2-10", "11-15")) |>
-  rbind(adult_bmi_england) |>
-  filter(year != 2005) # NOTE: this year has an issue with the sampling weights so is ommitted at this step.
+  rbind(adult_bmi_england)
 
 # Plot the data
 ggplot(data = age_bmi_england, aes(x = year, y = value, colour = factor(age_group, levels = c("2-10", "11-15", "16-24", "25+")))) +
@@ -1264,7 +1332,11 @@ plot_data |>
   scale_x_continuous(breaks = min(plot_data$Year):max(plot_data$Year)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank())
+        panel.grid.minor.x = element_blank()) +
+  ylim(5, 10)
+
+# Save plot
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/E_Cigarette_Usage_UK.png")
 
 # Initialising colours for next plot
 cols <- brewer.pal(n = 8, name = "Greys")[4:8]
@@ -1480,7 +1552,8 @@ plot_data |>
   scale_x_continuous(breaks = 2002:2022, limits = c(2002,2022)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank())
+        panel.grid.minor.x = element_blank()) +
+  ylim(25, 30)
 
 # Save plot
 ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Age_at_First_Birth.png")
@@ -1584,7 +1657,8 @@ plot_data |>
   scale_x_continuous(breaks = 2002:2022, limits = c(2002,2022)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank())
+        panel.grid.minor.x = element_blank()) +
+  ylim(55, 57)
 
 # Save plot
 ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Parity_by_Year.png")
@@ -1657,7 +1731,8 @@ plot_data |>
   scale_x_continuous(breaks = min(plot_data$Year):max(plot_data$Year)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank())
+        panel.grid.minor.x = element_blank()) +
+  ylim(20, 40)
 
 
 # Save plot
@@ -1684,9 +1759,9 @@ cancer_data <- cancer_england_wales |>
 # Looping through sites and plotting cancer rates for that site
 for(site in unique(cancer_data$`Cancer label`)){
   tempdata <- cancer_data[cancer_data$`Cancer label`==site,]
-  tempdata <- tempdata[tempdata$Year>=1989,]
+  tempdata <- tempdata[tempdata$Year>=1997,]
   # minyear <- min(tempdata$Year)
-  minyear <- 1989
+  minyear <- 1997
   maxyear <- max(tempdata$Year)
   print(ggplot(data = tempdata, aes(x = Year, y = `ASR (World)`, colour = `Country label`)) +
   geom_line() +
@@ -1700,7 +1775,7 @@ for(site in unique(cancer_data$`Cancer label`)){
         panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
         panel.grid.minor.x = element_blank()) +
   facet_grid(IncMort~ Sex, scales = "free_y") +
-  scale_x_continuous(breaks = seq(minyear, maxyear, by = 2)))
+  scale_x_continuous(breaks = seq(minyear+1, maxyear, by = 2)))
   
   # Save plot
   ggsave(paste0("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Cancer_", site, "_Rates.png"))
@@ -1715,7 +1790,7 @@ for(site in unique(cancer_data$`Cancer label`)){
 
 plot_data <- cancer_data |>
   filter(`Cancer label` %in% c("Prostate", "Breast")) |>
-  filter(Year >= 1989)
+  filter(Year >= 1997)
 
 plot_data |>
   ggplot(aes(x = Year, y = `ASR (World)`, colour = `Country label`)) +
@@ -1730,7 +1805,7 @@ plot_data |>
         panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
         panel.grid.minor.x = element_blank()) +
   facet_grid(IncMort~ `Cancer label`, scales = "free_y") +
-  scale_x_continuous(breaks = seq(1989, max(plot_data$Year), by = 2))
+  scale_x_continuous(breaks = seq(1998, max(plot_data$Year), by = 2))
   
 # Save plot
 ggsave(paste0("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Cancer_Prostate_Breast_Rates.png"))
@@ -1898,8 +1973,11 @@ plot_data |>
   scale_x_continuous(breaks = min(plot_data$year):max(plot_data$year)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank())
+        panel.grid.minor.x = element_blank()) +
+  ylim(60,80)
 
+# Save plot
+ggsave(paste0("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Screening_Breast.png"))
 
 ```
 

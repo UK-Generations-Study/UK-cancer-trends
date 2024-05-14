@@ -15,6 +15,7 @@ editor: visual
 ## Packages
 
 ```{r}
+library(tidyr)
 library(dplyr)
 library(readxl)
 library(ggplot2)
@@ -170,6 +171,9 @@ plot_joinpoint_output <- function(cancer, sex = 3, data, data_jp, incmort, start
   plot_lty <- jp_plot$lty
   names(plot_lty) <- jp_plot$APC
   
+  # Get breaks
+  plot_breaks <- min(jp_plot$Year):max(jp_plot$Year)
+  
   # Initial plotting of trends
   plot <- ggplot() +
     geom_line(data = jp_plot, aes(x = Year, y = Model, colour = APC, linetype = APC)) +
@@ -177,7 +181,8 @@ plot_joinpoint_output <- function(cancer, sex = 3, data, data_jp, incmort, start
     scale_linetype_manual(values = plot_lty, name = "APC") +
     geom_point(data = data, aes(x = Year, y = `ASR (World)`, shape = Sex)) +
     ggtitle(paste0(incmort, " ", proj_lab, " for ", cancer, " Cancer")) +
-    scale_x_continuous(breaks = pretty_breaks()) +
+    # scale_x_continuous(breaks = plot_breaks) +
+    # theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
     ylab("ASR per 100,000")
       
   
@@ -188,6 +193,9 @@ plot_joinpoint_output <- function(cancer, sex = 3, data, data_jp, incmort, start
       mutate(Sex = "Men")
     proj_data_women <- get_proj_data(data[data$Sex==2,], data_jp_women, projection.yr) |>
       mutate(Sex = "Women")
+    
+    # Adjusting breaks
+    plot_breaks <- min(plot_breaks):projection.yr
     
     # Plotting extrapolation
     plot <- plot +
@@ -233,14 +241,23 @@ plot_joinpoint_output <- function(cancer, sex = 3, data, data_jp, incmort, start
       
     }
     
-    if(!report.APC){
-      plot <- plot +
-        guides(colour = "none",
-               linetype = "none")
-      
-    }
-    
 
+  }
+  
+  # Getting plot_breaks and adding to plot
+  plot_breaks <- plot_breaks[plot_breaks%%2 == 1]
+  
+  plot <- plot +
+    scale_x_continuous(limits = c(min(plot_breaks),max(plot_breaks)), breaks = plot_breaks) +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  
+  
+  
+  if(!report.APC){
+    plot <- plot +
+      guides(colour = "none",
+             linetype = "none")
+    
   }
   
   return(plot)
@@ -248,8 +265,6 @@ plot_joinpoint_output <- function(cancer, sex = 3, data, data_jp, incmort, start
 }
 
 ```
-
-
 
 ### Meeting Targets Function
 
@@ -409,6 +424,247 @@ meet_targets_table <- function(targets, target.year, data_jp){
 }
 ```
 
+### APC Trend Table Function
+
+```{r}
+apc_table <- function(data_jp, title = NA){
+  # Initialise table
+  apc_table <- data.frame(Cancer = character(0), period_women = character(0), apc_women = character(0), period_men = character(0), apc_men = character(0))
+
+  # Relabel sex variable to be easier to understand
+  jp_table <- data_jp |>
+    mutate(Sex = if_else(Sex == 2, "Women", "Men"))
+
+  # Loop through cancer locations and sexes, adding to the table sequentially
+
+  for(cancer in unique(jp_table$Cancer.label)){
+
+    # Initialise row for output
+    output_row <- cancer
+
+    for(sex in unique(jp_table$Sex)){
+
+      # Filter data to data on sex and cancer of interest
+      spec_data <- filter(jp_table, Sex == sex & Cancer.label == cancer)
+
+      # If no data - output NA's, else calculate period of most recent APC and APC
+      if(nrow(spec_data)==0){
+        output_row <- append(output_row, rep(NA, 2))
+      } else {
+
+        # Arrange by year and take the last APC segment
+        spec_data <- arrange(spec_data, Year)
+
+        join_years <- spec_data$Year[is.na(spec_data$APC)]
+
+        # If joins, take the final segment, if not then leave the data alone
+        if(length(join_years)>0){
+          spec_data <- spec_data[spec_data$Year>=max(join_years),]
+        }
+
+        # Period
+        period <- paste0(min(spec_data$Year), "-", max(spec_data$Year))
+
+        # APC
+        apc <- unique(spec_data$APC)[!is.na(unique(spec_data$APC))]
+
+        if(length(apc)>1){
+          stop("ERROR: final join not detected")
+        }
+
+        # Make APC pretty
+        if(grepl(apc, pattern = "\\*")){
+          numeric_apc <- gsub(apc, pattern = "\\*", replacement = "")
+          numeric_apc <- round(as.numeric(numeric_apc), digits = 2)
+          apc <- paste0(numeric_apc, "%*")
+        } else {
+          apc <- paste0(round(as.numeric(apc), digits = 2), "%")
+        }
+
+
+        # create output row
+        output_row <- append(output_row, c(period, apc))
+
+      }
+
+    }
+
+    apc_table[nrow(apc_table)+1,] <- output_row
+
+  }
+
+
+  # Make table pretty for output
+  apc_table |>
+    # Make NA's pretty
+    mutate_all(~ replace_na(., "-")) |>
+    gt() |>
+
+    # Header Creation
+    tab_header(
+      title = md(paste0("**",ifelse(is.na(title), "", title),"**"))
+    ) |>
+
+    # Head Rows
+    tab_style(
+      style = list(
+        cell_text(weight = "bold", align = "center")
+      ),
+      locations = cells_column_labels(columns = everything())
+    ) |>
+
+    # Tab spanners for sex
+    tab_spanner(
+      label = "Women",
+      columns = ends_with("_women")
+    ) |>
+
+    tab_spanner(
+      label = "Men",
+      columns = ends_with("_men")
+    ) |>
+
+    # Body rows
+    tab_style(
+      style = list(
+        cell_text(align = "center")
+      ),
+      locations = cells_body(
+          columns = everything()
+      )
+    ) |>
+
+    # Rename columns
+    cols_label(
+      period_women = "Period",
+      period_men = "Period",
+      apc_women = "APC",
+      apc_men = "APC"
+    ) |>
+
+    # Add caption
+    tab_footnote("* Indicates an APC significantly different from 0")
+
+
+
+}
+
+
+```
+
+### APC Barchart Function
+
+```{r}
+apc_barchart <- function(data_jp, title){
+  # Initialise table
+  apc_table <- data.frame(Cancer = character(0), period_women = character(0), apc_women = character(0), period_men = character(0), apc_men = character(0))
+
+  # Relabel sex variable to be easier to understand
+  jp_table <- data_jp |>
+    mutate(Sex = if_else(Sex == 2, "Women", "Men"))
+
+  # Loop through cancer locations and sexes, adding to the table sequentially
+
+  for(cancer in unique(jp_table$Cancer.label)){
+
+    # Initialise row for output
+    output_row <- cancer
+
+    for(sex in c("Women", "Men")){
+
+      # Filter data to data on sex and cancer of interest
+      spec_data <- filter(jp_table, Sex == sex & Cancer.label == cancer)
+
+      # If no data - output NA's, else calculate period of most recent APC and APC
+      if(nrow(spec_data)==0){
+        output_row <- append(output_row, rep(NA, 2))
+      } else {
+
+        # Arrange by year and take the last APC segment
+        spec_data <- arrange(spec_data, Year)
+
+        join_years <- spec_data$Year[is.na(spec_data$APC)]
+
+        # If joins, take the final segment, if not then leave the data alone
+        if(length(join_years)>0){
+          spec_data <- spec_data[spec_data$Year>=max(join_years),]
+        }
+
+        # Period
+        period <- paste0(min(spec_data$Year), "-", max(spec_data$Year))
+
+        # APC
+        apc <- unique(spec_data$APC)[!is.na(unique(spec_data$APC))]
+
+        if(length(apc)>1){
+          stop("ERROR: final join not detected")
+        }
+
+        # Make APC pretty
+        if(grepl(apc, pattern = "\\*")){
+          numeric_apc <- gsub(apc, pattern = "\\*", replacement = "")
+          numeric_apc <- round(as.numeric(numeric_apc), digits = 2)
+          apc <- paste0(numeric_apc, "%*")
+        } else {
+          apc <- paste0(round(as.numeric(apc), digits = 2), "%")
+        }
+
+
+        # create output row
+        output_row <- append(output_row, c(period, apc))
+
+      }
+
+    }
+
+    apc_table[nrow(apc_table)+1,] <- output_row
+
+  }
+  
+  # browser()
+
+  # Manipulate table so it is ready for plotting
+  apc_table <- apc_table |> 
+    pivot_longer(cols = c(apc_women, apc_men)) |>
+    mutate(
+      
+      sex = gsub(name, pattern = "apc\\_", replacement = ""),
+      
+      sex = ifelse(sex == "men", "Men", "Women"),
+      
+      apc = gsub(value, pattern = "\\%", replacement = ""),
+      
+      significant = grepl(apc, pattern = "\\*"),
+      
+      apc = as.numeric(gsub(apc, pattern = "\\*", replacement = ""))
+      
+    )
+  
+  # Create plot
+  plot <- apc_table |>
+    ggplot(aes(x = Cancer, y = apc, fill = sex)) +
+    geom_bar(stat = "identity", position = position_dodge()) +
+    geom_hline(yintercept = 0) +
+    ggtitle(title) +
+    ylab("APC") +
+    scale_fill_discrete(name = "Sex") +
+    geom_text(aes(label = ifelse(significant, "*", ""),
+                hjust = ifelse(apc>0, 0, 1.2)),
+            position = position_dodge(width = 0.9),
+            size = 6) + 
+  labs(caption = "* Indicates an APC significantly different from 0") +
+    coord_flip()
+    
+    
+  
+
+  return(plot)
+
+}
+
+
+```
+
 ## Cancer Incidence/Mortality
 
 ```{r, fig.width=20}
@@ -480,16 +736,28 @@ sexes <- c(1,2)
 # }
 
 for(cancer in cancers){
-  p1 <- plot_joinpoint_output(cancer, sex = 3, incidence_data, incidence_jp, "Incidence")
-  p2 <- plot_joinpoint_output(cancer, sex = 3, mortality_data, mortality_jp, "Mortality", projection.yr = 2040, start.yr = 1993, projection.target = 0.85)
+  p1 <- plot_joinpoint_output(cancer, sex = 3, incidence_data, incidence_jp, "Incidence", report.APC = T)
+  p2 <- plot_joinpoint_output(cancer, sex = 3, mortality_data, mortality_jp, "Mortality", projection.yr = 2040, start.yr = 1993, projection.target = 0.85, report.APC = T)
   grid.arrange(p1, p2, nrow = 1, widths = c(4,4))
 }
 
 ```
 
 ## Meeting Targets Table
+
 ```{r}
 meet_targets_table(targets = c(0.85), target.year = c(2040), data_jp = mortality_jp)
+```
+
+## APC Trends Table UK
+
+```{r}
+
+apc_table(incidence_jp, title = "Recent Trends for Cancer Incidence")
+
+apc_table(mortality_jp, title = "Recent Trends for Cancer Mortality")
+
+
 ```
 
 ## Pretty Plots for Presentation - BC Incidence
@@ -687,4 +955,64 @@ for(cancer in cancers){
   grid.arrange(p1, p2, nrow = 1, widths = c(4,4))
 }
 
+```
+
+## England + Wales Total Cancer Plot
+
+```{r, fig.width=20}
+data <- read_excel("Globocan By Country Last 20/Cancer_Projection_Data_England_Wales.xlsx") |>
+  mutate(`Cancer label` = case_when(
+    `Cancer label` == "Colorectum" ~ "Colorectal",
+    `Cancer label` == "Oesophagus" ~ "Oesophageal",
+    `Cancer label` == "Pancreas" ~ "Pancreatic",
+    `Cancer label` == "All sites excl. non-melanoma skin cancer" ~ "All",
+    TRUE ~ `Cancer label`
+  ))
+
+# Incidence data
+incidence_data <- data |>
+  filter(Type == 0)
+
+incidence_jp <- read.delim("Globocan By Country Last 20/England Wales/Cancer_Joinpoint_England_Wales_Last_20.txt", sep = "\t") |>
+  filter(incmort == "Incidence") |>
+  mutate(Cancer.label = case_when(
+    Cancer.label == "Colorectum" ~ "Colorectal",
+    Cancer.label == "Oesophagus" ~ "Oesophageal",
+    Cancer.label == "Pancreas" ~ "Pancreatic",
+    Cancer.label == "All sites excl. non-melanoma skin cancer" ~ "All",
+    TRUE ~ Cancer.label
+  ))
+
+# Mortality data
+mortality_data <- data |>
+  filter(Type == 1)
+
+mortality_jp <- read.delim("Globocan By Country Last 20/England Wales/Cancer_Joinpoint_England_Wales_Last_20.txt", sep = "\t") |>
+  filter(incmort == "Mortality") |>
+  mutate(Cancer.label = case_when(
+    Cancer.label == "Colorectum" ~ "Colorectal",
+    Cancer.label == "Oesophagus" ~ "Oesophageal",
+    Cancer.label == "Pancreas" ~ "Pancreatic",
+    Cancer.label == "All sites excl. non-melanoma skin cancer" ~ "All",
+    TRUE ~ Cancer.label
+  ))
+
+cancers = unique(data$`Cancer label`)
+
+for(cancer in cancers){
+  p1 <- plot_joinpoint_output(cancer, sex = 3, incidence_data, incidence_jp, "Incidence")
+  p2 <- plot_joinpoint_output(cancer, sex = 3, mortality_data, mortality_jp, "Mortality", projection.yr = 2040)
+  grid.arrange(p1, p2, nrow = 1, widths = c(4,4))
+}
+
+```
+
+## APC Barchart
+
+```{r}
+
+print(apc_barchart(incidence_jp, title = "Recent Trends for Cancer Incidence in England and Wales"))
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/eng_wales_all_cancer_inc_barchart.png")
+print(apc_barchart(mortality_jp, title = "Recent Trends for Cancer Mortality in England and Wales"))
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/eng_wales_all_cancer_mort_barchart.png")
 ```
