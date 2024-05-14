@@ -165,3 +165,80 @@ data_nireland <- data_nireland |>
   
 write.csv(data_nireland, "N Ireland/Cancer_Data_NIreland.txt", row.names = F)
 ```
+
+## Data - by Country last 20 years
+```{r}
+setwd("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data/Cancer Trends/Globocan By Country Last 20")
+
+data_england_wales <- read_excel("Cancer_Projection_Data_England_Wales.xlsx")
+
+max_inc <- max(data_england_wales$Year[data_england_wales$Type == 0])
+max_mort <- max(data_england_wales$Year[data_england_wales$Type == 1])
+
+data_england_wales <- data_england_wales |>
+  mutate(incmort = case_when(
+    Type == 0 ~ "Incidence",
+    Type == 1 ~ "Mortality",
+    TRUE ~ NA),
+
+    `Country label` = gsub(`Country label`, pattern = "UK, ", replacement = "")) |>
+
+  select(Year, Sex, `ASR (World)`, `Cancer label`, incmort) |>
+
+  filter(case_when(
+    incmort == "Incidence" ~ Year >= max_inc - 20,
+    incmort == "Mortality" ~ Year >= max_mort - 20
+  )) |>
+
+  arrange(Sex, `Cancer label`, incmort, Year, `ASR (World)`)
+
+write.csv(data_england_wales, "England Wales/Cancer_Data_England_Wales_Last_20.txt", row.names = F)
+
+data_scotland <- read_excel("Cancer_Projection_Data_Scotland.xlsx")
+
+max_inc <- max(data_scotland$Year[data_scotland$Type == 0])
+max_mort <- max(data_scotland$Year[data_scotland$Type == 1])
+
+data_scotland <- data_scotland |>
+  mutate(incmort = case_when(
+    Type == 0 ~ "Incidence",
+    Type == 1 ~ "Mortality",
+    TRUE ~ NA),
+    
+    `Country label` = gsub(`Country label`, pattern = "UK, ", replacement = "")) |>
+  
+  select(Year, Sex, `ASR (World)`, `Cancer label`, incmort) |>
+  
+  filter(case_when(
+    incmort == "Incidence" ~ Year >= max_inc - 20,
+    incmort == "Mortality" ~ Year >= max_mort - 20
+  )) |>
+  
+  arrange(Sex, `Cancer label`, incmort, Year, `ASR (World)`)
+  
+write.csv(data_scotland, "Scotland/Cancer_Data_Scotland_Last_20.txt", row.names = F)
+
+data_nireland <- read_excel("Cancer_Projection_Data_NIreland.xlsx")
+
+max_inc <- max(data_nireland$Year[data_nireland$Type == 0])
+max_mort <- max(data_nireland$Year[data_nireland$Type == 1])
+
+data_nireland <- data_nireland |>
+  mutate(incmort = case_when(
+    Type == 0 ~ "Incidence",
+    Type == 1 ~ "Mortality",
+    TRUE ~ NA),
+    
+    `Country label` = gsub(`Country label`, pattern = "UK, ", replacement = "")) |>
+  
+  select(Year, Sex, `ASR (World)`, `Cancer label`, incmort) |>
+  
+  filter(case_when(
+    incmort == "Incidence" ~ Year >= max_inc - 20,
+    incmort == "Mortality" ~ Year >= max_mort - 20
+  )) |>
+  
+  arrange(Sex, `Cancer label`, incmort, Year, `ASR (World)`)
+  
+write.csv(data_nireland, "N Ireland/Cancer_Data_NIreland_Last_20.txt", row.names = F)
+```
