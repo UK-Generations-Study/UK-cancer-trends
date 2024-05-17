@@ -624,21 +624,34 @@ apc_barchart <- function(data_jp, title){
   # browser()
 
   # Manipulate table so it is ready for plotting
+  apc_table <- data.frame(Cancer = rep(apc_table$Cancer, 2), sex = rep(c("women", "men"), each = length(unique(apc_table$Cancer))), apc = c(apc_table$apc_women, apc_table$apc_men), period = c(apc_table$period_women, apc_table$period_men))
+  
   apc_table <- apc_table |> 
-    pivot_longer(cols = c(apc_women, apc_men)) |>
+    # pivot_longer(cols = c(apc_women, apc_men)) |>
     mutate(
       
-      sex = gsub(name, pattern = "apc\\_", replacement = ""),
+      # sex = gsub(name, pattern = "apc\\_", replacement = ""),
       
       sex = ifelse(sex == "men", "Men", "Women"),
       
-      apc = gsub(value, pattern = "\\%", replacement = ""),
+      apc = gsub(apc, pattern = "\\%", replacement = ""),
       
       significant = grepl(apc, pattern = "\\*"),
       
-      apc = as.numeric(gsub(apc, pattern = "\\*", replacement = ""))
+      apc = as.numeric(gsub(apc, pattern = "\\*", replacement = "")),
       
-    )
+      period = ifelse(is.na(period), NA, paste0("(", period, ")"))
+      
+    ) |>
+    # Reorder Cancer label so plot is nicer
+    arrange(desc(Cancer)) |>
+    mutate(Cancer = factor(Cancer, levels = unique(Cancer)))
+  
+  # Grab max apc so we can scale plot with period annotations
+  max_apc <- max(apc_table$apc, na.rm = T)
+  print(max_apc)
+  
+  
   
   # Create plot
   plot <- apc_table |>
@@ -652,7 +665,12 @@ apc_barchart <- function(data_jp, title){
                 hjust = ifelse(apc>0, 0, 1.2)),
             position = position_dodge(width = 0.9),
             size = 6) + 
-  labs(caption = "* Indicates an APC significantly different from 0") +
+     geom_text(aes(label = period,
+                    y = max_apc +1),
+              position = position_dodge(width = 0.9)) +
+  labs(caption = "* Indicates an APC significantly different from 0",
+       y = "Annual Percentage Change (APC)") +
+    ylim(NA, max_apc+2) +
     coord_flip()
     
     

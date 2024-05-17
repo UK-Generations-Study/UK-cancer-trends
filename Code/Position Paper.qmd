@@ -806,7 +806,7 @@ plot_data |>
 
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Obese_by_Sex.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Obese_by_Sex.png", width = 8, height = 9)
 
 ```
 
@@ -858,6 +858,10 @@ age_bmi_england <- data4 |>
   filter(country == "England" & section == "BMI" & variable == "% Obese" & group %in% c("All", "Children_All") & age_group %in% c("16-24", "2-10", "11-15")) |>
   rbind(adult_bmi_england)
 
+# For presentation: Only considering two youngest groups
+age_bmi_england <- age_bmi_england |>
+  filter(age_group %in% c("2-10", "11-15"))
+
 # Plot the data
 ggplot(data = age_bmi_england, aes(x = year, y = value, colour = factor(age_group, levels = c("2-10", "11-15", "16-24", "25+")))) +
   geom_point() +
@@ -866,13 +870,14 @@ ggplot(data = age_bmi_england, aes(x = year, y = value, colour = factor(age_grou
   ylab("% Obese") +
   ggtitle("% Obese in England") +
   labs(colour =  "Age Group", caption = "*Obese for those aged >15 as BMI > 30\nObese for those aged <= 15 as at or above the 95th BMI percentile in the UK") +
+  scale_color_brewer(palette="Set2") +
   scale_x_continuous(breaks = 2002:2022, limits = c(2002, 2022)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
         panel.grid.minor.x = element_blank())
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Obese_by_Age.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Obese_by_Age.png", width = 8, height = 4.5)
 
 ```
 
@@ -1177,7 +1182,7 @@ plot_data |>
   facet_wrap(~group, scales = "fixed", dir = "v")
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Smoking_by_Sex.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Smoking_by_Sex.png", width = 8, height = 9)
 
 ```
 
@@ -1336,7 +1341,7 @@ plot_data |>
   ylim(5, 10)
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/E_Cigarette_Usage_UK.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/E_Cigarette_Usage_UK.png", width = 8, height = 4.5)
 
 # Initialising colours for next plot
 cols <- brewer.pal(n = 8, name = "Greys")[4:8]
@@ -1556,7 +1561,7 @@ plot_data |>
   ylim(25, 30)
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Age_at_First_Birth.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Age_at_First_Birth.png", width = 8, height = 4.5)
 
 ```
 
@@ -1661,7 +1666,7 @@ plot_data |>
   ylim(55, 57)
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Parity_by_Year.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Parity_by_Year.png", width = 8, height = 4.5)
 
 ```
 
@@ -1736,7 +1741,7 @@ plot_data |>
 
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/HRT_Usage.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/HRT_Usage.png", width = 8, height = 4.5)
 
 
 ```
@@ -2040,6 +2045,9 @@ plot_data |>
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
         panel.grid.minor.x = element_blank())
+
+# Save plot
+ggsave(paste0("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Screening_Bowel.png"))
 
 ```
 
