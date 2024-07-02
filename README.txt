@@ -67,7 +67,7 @@ Population
 - England and Wales data sourced from https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/estimatesofthepopulationforenglandandwales, Table 9.
 
 HRT
-- England data sourced from source 2, Table "National_Population"
+- England data sourced from source 3, Table "National_Population"
 
 Diabetes
 - England data sourced from source 1, Adult health, Table 3. Years extracted were 2003-2019 due to concerns about comparing other years due to methodology.
@@ -83,6 +83,10 @@ Screening
 	Uptake Invitations Table. Removed Year 2015/16 as reported incomplete.
 - Bowel data - Scotland https://publichealthscotland.scot/publications/scottish-bowel-screening-programme-statistics/scottish-bowel-screening-programme-statistics-for-the-period-of-invitations-from-may-2021-to-april-2023/,
 	Sheet KPI_1, Table 1.1.
+- Breast data - Wales https://phw.nhs.wales/services-and-teams/screening/breast-screening/programme-reports/annual-statistical-reports/breast-test-wales-annual-statistical-report-2019-20/#:~:text=With%20the%20exception%20of%20financial,to%20screening%20in%202019%2D20. Graph 3.
+- Bowel data - Wales https://phw.nhs.wales/services-and-teams/screening/bowel-screening/programme-reports/annual-statistical-reports/bsw-annual-statistical-report-2019-20/. Table 1g
+- Breast data - N. Ireland https://cancerscreening.hscni.net/breast-screening/performance-standards/. Section Breast Screening Statistical Profile KC62 Returns.
+
 
 Cancer_Projection_Data(_All)
 - UK wide data from Globocan

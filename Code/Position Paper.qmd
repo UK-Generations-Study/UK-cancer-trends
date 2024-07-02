@@ -9,7 +9,8 @@ format:
       body-width: 2000px
       margin-width: 300px
       gutter-width: 1.5rem
-editor: visual
+editor: 
+  mode: source
 execute:
   warning: false
 ---
@@ -1341,7 +1342,7 @@ plot_data |>
   ylim(5, 10)
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/E_Cigarette_Usage_UK.png", width = 8, height = 4.5)
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/E_Cigarette_Usage_GB.png", width = 8, height = 4.5)
 
 # Initialising colours for next plot
 cols <- brewer.pal(n = 8, name = "Greys")[4:8]
@@ -1817,6 +1818,40 @@ ggsave(paste0("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Docum
 
 ```
 
+## Cancer Incidence - Globocan Data
+
+```{r}
+# Reading in data
+cancer_england_wales <- read_excel("Cancer Trends/Globocan By Country/Cancer_Projection_Data_England_Wales.xlsx")
+cancer_scotland <- read_excel("Cancer Trends/Globocan By Country/Cancer_Projection_Data_Scotland.xlsx")
+cancer_nireland <- read_excel("Cancer Trends/Globocan By Country/Cancer_Projection_Data_NIreland.xlsx")
+
+# Merging data and making sex and inc/mort variables clearer
+cancer_data <- cancer_england_wales |>
+  rbind(cancer_scotland) |>
+  rbind(cancer_nireland) |>
+  mutate(Sex = ifelse(Sex==1, "Male", "Female"),
+         IncMort = ifelse(Type == 0, "Incidence", "Mortality"),
+         `Cancer label` = ifelse(`Cancer label` == "All sites excl. non-melanoma skin cancer", "All Sites", `Cancer label`)) |>
+  filter(IncMort == "Incidence") |>
+  filter(Year >= 1997)
+
+
+ggplot(data = cancer_data, aes(x = Year, y = `ASR (World)`, colour = `Country label`)) +
+  geom_line() +
+  geom_point() +
+  ggtitle(paste0("Cancer Incidence Rates")) +
+  labs(colour = "Country") +
+  theme(legend.position="bottom",legend.box = "vertical") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
+        panel.grid.minor.x = element_blank()) +
+  facet_grid(`Cancer label` ~ Sex, scales = "free_y") +
+  scale_x_continuous(breaks = seq(1998, max(cancer_data$Year), by = 2))
+
+
+```
+
 ## Diabetes
 
 ```{r}
@@ -1963,9 +1998,27 @@ screening_data_breast_scotland <- screening_data_breast_scotland |>
   select(value, year) |>
   mutate(country = "Scotland")
 
+# Read in Wales data
+screening_data_breast_wales <- read_excel("Screening_Data.xlsx", sheet = "Wales_Breast_Uptake")
+
+# Match structure with England data
+screening_data_breast_wales <- screening_data_breast_wales |>
+  select(year = Year, value = Uptake) |>
+  mutate(country = "Wales")
+
+# Read in N. Ireland data
+screening_data_breast_nireland <- read_excel("Screening_Data.xlsx", sheet = "NIreland_Breast_Uptake")
+
+# Match structure with England data
+screening_data_breast_nireland <- screening_data_breast_nireland |>
+  select(year = Year, value = Uptake) |>
+  mutate(country = "N. Ireland")
+
 # Plotting
 plot_data <- screening_data_breast_england |>
-  rbind(screening_data_breast_scotland) 
+  rbind(screening_data_breast_scotland) |>
+  rbind(screening_data_breast_wales) |>
+  rbind(screening_data_breast_nireland)
 
 plot_data |>
   ggplot(aes(x = year, y = value, colour = country)) +
@@ -2009,7 +2062,7 @@ plot_data |>
         panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
         panel.grid.minor.x = element_blank())
 
-# Reading in data
+# Reading in data - England
 screening_data_bowel_england <- read_excel("Screening_Data.xlsx", sheet = "England_Bowel_Uptake")
 
 # Mutating to simple columns
@@ -2018,7 +2071,7 @@ screening_data_bowel_england <- screening_data_bowel_england |>
   select(year, value = Value) |>
   mutate(country = "England")
 
-# Reading in data
+# Reading in data - Scotland
 screening_data_bowel_scotland <- read_excel("Screening_Data.xlsx", sheet = "Scotland_Bowel_Uptake")
 
 # Matching columns of England data
@@ -2029,9 +2082,18 @@ screening_data_bowel_scotland <- screening_data_bowel_scotland |>
   select(year, value) |>
   mutate(country = "Scotland")
 
+# Reading in data - Wales
+screening_data_bowel_wales <- read_excel("Screening_Data.xlsx", sheet = "Wales_Bowel_Uptake")
+
+# Matching columns of England data
+screening_data_bowel_wales <- screening_data_bowel_wales |>
+  select(year = Year, value = Uptake) |>
+  mutate(country = "Wales")
+
 # Merging and plotting
 plot_data <- screening_data_bowel_england |>
-  rbind(screening_data_bowel_scotland) 
+  rbind(screening_data_bowel_scotland)|>
+  rbind(screening_data_bowel_wales)
 
 plot_data |>
   ggplot(aes(x = year, y = value, colour = country)) +
@@ -2056,11 +2118,14 @@ ggsave(paste0("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Docum
 ```{r, fig.height = 10, fig.width = 7}
 
 bowel_screening_data <- screening_data_bowel_england |>
-  rbind(screening_data_bowel_scotland) |>
+  rbind(screening_data_bowel_scotland)|>
+  rbind(screening_data_bowel_wales) |>
   mutate(Location = "Bowel")
 
 breast_screening_data <- screening_data_breast_england |>
   rbind(screening_data_breast_scotland) |>
+  rbind(screening_data_breast_wales) |>
+  rbind(screening_data_breast_nireland) |>
   mutate(Location = "Breast")
 
 plot_data <- bowel_screening_data |>
