@@ -85,8 +85,9 @@ Screening
 	Sheet KPI_1, Table 1.1.
 - Breast data - Wales https://phw.nhs.wales/services-and-teams/screening/breast-screening/programme-reports/annual-statistical-reports/breast-test-wales-annual-statistical-report-2019-20/#:~:text=With%20the%20exception%20of%20financial,to%20screening%20in%202019%2D20. Graph 3.
 - Bowel data - Wales https://phw.nhs.wales/services-and-teams/screening/bowel-screening/programme-reports/annual-statistical-reports/bsw-annual-statistical-report-2019-20/. Table 1g
+					 Additional years 2020-2021 provided from reports here https://phw.nhs.wales/services-and-teams/screening/bowel-screening/programme-reports/uptake-coverage-by-gp-cluster/
 - Breast data - N. Ireland https://cancerscreening.hscni.net/breast-screening/performance-standards/. Section Breast Screening Statistical Profile KC62 Returns.
-
+- Bowel data - N. Ireland https://www.publichealth.hscni.net/directorates/operations/communications-and-knowledge-management/communications/publications Using Sheet 15d from Director of Public Health Core Tables 2018 - 2022.
 
 Cancer_Projection_Data(_All)
 - UK wide data from Globocan
