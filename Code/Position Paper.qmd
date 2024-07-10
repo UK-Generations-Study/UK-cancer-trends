@@ -2566,7 +2566,8 @@ gt_data <- gt_data |>
           columns = x,
           rows = !!col == "↑"
         )
-      )
+      ) |>
+      tab_header("Recent Trends in Risk Factors")
     
   }
   
