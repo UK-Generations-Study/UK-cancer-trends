@@ -2197,384 +2197,59 @@ plot_data |>
 ```
 
 
-## Create dataframe for JoinPoint
+## Diet - Fibre Intake
 ```{r}
 
-# Create obesity % data for joinpoint
-obese_data_jp <- obese_data |>
-  filter(variable == "% Obese", age_group == "16+") |>
-  mutate(
-    group = case_when(
-      group == "Male" ~ "Men",
-      group == "Female" ~ "Women",
-      TRUE ~ group)
-  )
+# Read in data
+fibre_data <- read_excel("Diet_Data.xlsx", sheet = "UK_Fibre")
 
-# Create alcohol over guidelines % data for joinpoint
-alcohol_data_jp <- alcohol_data |>
-  rbind(guidelines_england) |> # Need to merge in data for england by sex
-  filter(variable == "% Over Guidelines"  & age_group %in% c("16+", "Total") & group != "All adults") |>
-  mutate(
-    
-    year = case_when(
-      grepl(year, pattern = "\\/") ~ map_chr(strsplit(year, "/"), 1),
-      TRUE ~ year),
-    
-    group = case_when(
-      group == "Male" ~ "Men",
-      group == "Female" ~ "Women",
-      TRUE ~ group)
-    
-    )
+# Clean data
+fibre_data <- fibre_data |>
+  filter(!is.na(`Fibre (g/day)4 5`)) |>
+  select(-`Statistical comparison`, -...8, -...9)
 
-# Create smoking % data for joinpoint
-smoking_data_jp <- data4 |>
-  filter(variable == "% Current Smoker" & age_group == "16+" & group != "All adults") |>
-  mutate(group = case_when(
-    group == "Male" ~ "Men",
-    group == "Female" ~ "Women",
-    TRUE ~ group
-  ))
+# Get groups from data
+fibre_data_groups <- fibre_data$`Fibre (g/day)4 5`[is.na(fibre_data$`NDNS RP survey years`)]
 
-# Create E-Cigarette data for joinpoint
-ecig_data_jp <- ecig_data |>
-  select(year = Year, group, age_group, value = `% User`) |>
-  filter(age_group == "16+") |>
-  mutate(
-    group = if_else(group == "All persons", "All", group),
-    
-    variable = "% Current User",
-    
-    country = "Great Britain",
-    
-    section = "E Cigarette"
-  )
+# Filter to variable of interest
+fibre_data <- fibre_data |>
+  filter(grepl(`Fibre (g/day)4 5`, pattern = "% meeting recommendation7")) 
 
-# Create activity data for joinpoint
-activity_data_jp <- data4 |>
-  filter((variable == "% Meets Guidelines" & age_group %in% c("16+") & group != "All adults") |
-           (variable == "% Meets Guidelines" & age_group %in% c("19+") & country == "N. Ireland")) |>
-  mutate(group = case_when(
-    group == "Male" ~ "Men",
-    group == "Female" ~ "Women",
-    TRUE ~ group
-  ))
+# Create column names
+colnames(fibre_data) <- c("variable", "2009", "2011", "2013", "2015", "2017")
 
-# Create age at first birth data for joinpoint
-afb_data_jp <- afb_data |>
-  pivot_longer(cols = colnames(afb_data)) |>
-  mutate(year = as.numeric(name), value = as.numeric(value)) |>
-  select(-name) |>
-  mutate(
-    
-    country = "UK",
-    
-    section = "Parity",
-    
-    variable = "Age at First Birth",
-    
-    group = "Women",
-    
-    age_group = "All"
-    
-  )
+# Add in groups
+fibre_data$group <- fibre_data_groups
 
-# Create parity data for joinpoint
-parity_data_jp <- parity |>
-  mutate(
-    
-    country = "England and Wales",
-    
-    group = "Women",
-    
-    age_group = "All",
-    
-    section = "Parity",
-    
-    variable = "% Parity"
-    
-  ) |>
-  rename(value = parity)
+# Pivot longer
+fibre_data <- fibre_data |>
+  pivot_longer(cols = c("2009", "2011", "2013", "2015", "2017")) |>
+  mutate(variable = "% Meeting Fibre Intake Recommendations") |>
+  mutate(sex = str_extract(group, "^[^ ]+"),
+         age_group = str_extract(group, "(?<= ).*")) |>
+  filter(age_group == "19-64 years") |>
+  mutate(sex = if_else(sex == "Adults", "All", sex),
+         year = as.numeric(name),
+         country = "UK",
+         value = as.numeric(value))
 
+# Create plot data
+plot_data <- fibre_data |>
+  filter(sex != "All")
 
-# Create HRT data for joinpoint
-hrt_data_jp <- hrt_data |>
-  mutate(year = as.numeric(map_chr(strsplit(`Financial Year`, "/"), 1)), 
-         value = as.numeric(`Patients per 1,000 Population`)/10) |>
-  filter(!is.na(value)) |>
-  select(year, value) |>
-  mutate(
-    
-    country = "England",
-    
-    group = "All", # Data doesn't specify
-    
-    age_group = "All",
-    
-    variable = "% HRT",
-    
-    section = "HRT"
-    
-  )
-
-
-# Create diabetes data for joinpoint
-diabetes_data_jp <- diabetes_data |>
-  mutate(age_group = if_else(age_group %in% c("All men", "All women", "All adults"), "16+", age_group)) |> # 16+ is correct for all adults as shown by minimum age group for England data being 16-24
-  filter(age_group == "16+") |>
-  mutate(group = case_when(
-    group == "Male" ~ "Men",
-    group == "Female" ~ "Women",
-    TRUE ~ group)
-  ) |>
-  filter(variable == "% Diabetes")
-
-
-# Create breast screening data for joinpoint
-breast_screening_data_jp <- breast_screening_data |>
-  select(-Location) |>
-  mutate(
-    
-    variable = "% Uptake",
-    
-    section = "Breast Screening",
-    
-    age_group = "Valid", # Could examine each one to find exact age groups - but purpose of this is how it varies, including due to age groups that are valid for the screening
-    
-    group = "Women"
-    
-  )
-
-
-# Create bowel screening data for joinpoint
-bowel_screening_data_jp <- bowel_screening_data |>
-  select(-Location) |>
-  mutate(
-    
-    variable = "% Uptake",
-    
-    section = "Bowel Screening",
-    
-    age_group = "Valid", # Could examine each one to find exact age groups - but purpose of this is how it varies, including due to age groups that are valid for the screening
-    
-    group = "All"
-    
-  )
-
-
-# Combine all variable sections together and create "section - variable" variable for uniqueness
-data_jp <- obese_data_jp |>
-  rbind(alcohol_data_jp) |>
-  rbind(smoking_data_jp) |>
-  rbind(ecig_data_jp) |>
-  rbind(activity_data_jp) |>
-  # rbind(afb_data_jp) |> # This should not be with the rest of the risk factors - this is not a percentage!
-  rbind(parity_data_jp) |>
-  rbind(hrt_data_jp) |>
-  rbind(diabetes_data_jp) |>
-  rbind(breast_screening_data_jp) |>
-  rbind(bowel_screening_data_jp) |>
-  mutate(
-    
-    `section - variable` = paste0(section, " - ", variable),
-    
-    year = as.numeric(year)
-    
-  ) |>
-  arrange(`section - variable`, country, group, age_group, year)
-
-
-# Write as .csv to be exported to joinpoint
-write.csv(data_jp, r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\UK-cancer-trends\Data\Risk_Factor_Data_Joinpoint.csv)")
-
-
-```
-
-## Plot joinpoint output
-```{r}
-
-data_jp_output <- read.delim(r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\UK-cancer-trends\Data\Risk_Factor_Data_Joinpoint_Output.txt)")
-
-
-# Prepare data for plotting
-plot_data <- data_jp_output |>
-  # filter(section...variable == var) |>
-  mutate(
-
-    # Create significant indicator
-    significant = grepl(APC, pattern = "\\*"),
-
-    # Remove * from APC and make numeric
-    APC = as.numeric(gsub(APC, pattern = "\\*", replacement = ""))
-
-  ) |>
-  group_by(section...variable, country, group) |>
-  arrange(desc(year)) |>
-  mutate(
-
-    row_number = row_number(),
-
-    first_na_row = min(row_number[is.na(APC)], max(row_number))
-
-  ) |>
-  filter(row_number <= first_na_row) |>
-  summarise(
-
-    year_range = paste0("(", min(year), ", ", max(year), ")"),
-
-    APC = APC[1],
-
-    significant = significant[1]
-
-  )
-  
-# Plot data
-plot <- ggplot(plot_data, aes(x = country, y = APC, fill = group)) +
-  scale_fill_manual(values = c("#D01556FF", "#EFDC60FF", "#7CCA89FF")) +
-  geom_bar(stat = "Identity", position = position_dodge(), colour = "black") +
-  xlab("Country") +
-  labs(fill = "Group") +
-  coord_flip() +
-  geom_hline(yintercept = 0) +
-  geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
-            colour = "black", fill = NA, inherit.aes = FALSE) +
-  facet_wrap( ~section...variable, scales = "free_y", shrink = T) +
-  geom_text(aes(label = ifelse(significant, "*", ""),
-              hjust = ifelse(APC>0, -0.1, 1.1)),
-          position = position_dodge(width = 0.9),
-          vjust = 0.8,
-          size = 6) +
-  theme(strip.text = element_text(face = "bold"))
-
-print(plot)
-      
-ggsave(plot, filename = r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\UK-cancer-trends\Position Paper Plots\Risk Factor APC.png)", height = 13, width = 22, bg = "white")
-  
-  
-
-
-
+# Plot figure
+ggplot(plot_data, aes(x = year, y = value, colour = sex)) +
+  geom_line() +
+  geom_point() +
+  xlab("Year") +
+  ylab("% Meeting Fibre Intake Recommendations") +
+  ggtitle("% Meeting Fibre Intake Recommendations in Adults in the UK") +
+  labs(colour =  "Sex", caption = "*Adult defined as aged 19-64") +
+  scale_x_continuous(breaks = 2002:2022, limits = c(2002, 2022)) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
+        panel.grid.minor.x = element_blank())
 
 ```
 
 
-## Creating gt table from joinpoint output
-```{r, results = "asis"}
-
-
-gt_data <- plot_data |>
-  group_by(section...variable, country) |>
-  filter(case_when(
-    "All" %in% group ~ group == "All",
-    TRUE ~ TRUE
-  )) |>
-  ungroup() |>
-  mutate(
-    
-    # Create variable to pass and create arrows in gt table
-    arrow_indicator = case_when(
-      significant & APC < 0 ~ -1,
-      significant & APC > 0 ~ 1,
-      TRUE ~ 0)
-    
-  )
-
-
-# Grab Great Britain rows and split into multiple
-gt_data_gb <- gt_data |>
-  filter(country == "Great Britain")
-
-for(x in c("England", "Scotland", "Wales")){
-  temp_data <- gt_data_gb |>
-    mutate(country = x)
-  
-  gt_data <- rbind(gt_data, temp_data)
-}
-
-# Grab England and Wales rows and split into multiple
-gt_data_england_and_wales <- gt_data |>
-  filter(country == "England and Wales")
-
-for(x in c("England", "Wales")){
-  temp_data <- gt_data_england_and_wales |>
-    mutate(country = x)
-  
-  gt_data <- rbind(gt_data, temp_data)
-}
-
-# Filter other countries out of gt data and pivot
-gt_data <- gt_data |>
-  filter(country %in% c("England", "Scotland", "Wales", "N. Ireland")) |>
-  mutate(arrow = case_when(
-    arrow_indicator == -1 ~ "↓",
-    arrow_indicator == 1 ~  "↑",
-    arrow_indicator == 0 ~ "-"
-  )) |>
-  pivot_wider(names_from = country, values_from = arrow, id_cols = section...variable) |>
-  mutate_all(~ ifelse(is.na(.), "", .)) |>
-  rename(Variable = `section...variable`)
-
-# Make into gt table
-gt_data <- gt_data |>
-  gt() |>
-  # Align column results to center
-  cols_align(
-    align = "center",
-    columns = c(England, `N. Ireland`, Scotland, Wales)
-  ) |>
-  # Make arrows etc bold
-  tab_style(
-    style = list(
-      cell_text(weight = "bold")
-    ),
-    locations = cells_column_labels(c(England, `N. Ireland`, Scotland, Wales))
-  ) |>
-  # Make column headers bold + center countries
-  tab_style(
-    style = list(
-      cell_text(align = "center")
-    ),
-    locations = cells_column_labels(c(England, `N. Ireland`, Scotland, Wales))
-   ) |>
-  tab_style(
-    style = list(
-      cell_text(weight = "bold")
-    ),
-    locations = cells_column_labels(everything())
-   )
-  
-  
-  for(x in c("England", "Scotland", "Wales", "N. Ireland")){
-    
-    col = sym(x)
-    
-    gt_data <- gt_data |>
-      tab_style(
-        style = list(
-          cell_text(color = "#D83800FF", weight = "bold")
-        ),
-        locations = cells_body(
-          columns = x,
-          rows = !!col == "↓"
-        )
-      ) |>
-      tab_style(
-        style = list(
-          cell_text(color = "#489838FF", weight = "bold")
-        ),
-        locations = cells_body(
-          columns = x,
-          rows = !!col == "↑"
-        )
-      ) |>
-      tab_header("Recent Trends in Risk Factors")
-    
-  }
-  
-  
-print(gt_data)
-
-gtsave(gt_data, filename = r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\UK-cancer-trends\Position Paper Tables\Risk_Factor_Trend.png)")
-
-
-```

@@ -89,6 +89,10 @@ Screening
 - Breast data - N. Ireland https://cancerscreening.hscni.net/breast-screening/performance-standards/. Section Breast Screening Statistical Profile KC62 Returns.
 - Bowel data - N. Ireland https://www.publichealth.hscni.net/directorates/operations/communications-and-knowledge-management/communications/publications Using Sheet 15d from Director of Public Health Core Tables 2018 - 2022.
 
+Diet
+- Fibre data - UK https://www.gov.uk/government/statistics/ndns-results-from-years-9-to-11-2016-to-2017-and-2018-to-2019, NDNS: results from years 9 to 11 (combined) – data tables, NDNS Y9_11_DESCRIPTIVE STATISTICS TABLES_FINAL-2.xlsx, Table 3.11_macronutrients_fibre
+
+
 Cancer_Projection_Data(_All)
 - UK wide data from Globocan
 
