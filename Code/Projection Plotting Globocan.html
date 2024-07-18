@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -89,6 +89,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#meeting-targets-function" id="toc-meeting-targets-function" class="nav-link" data-scroll-target="#meeting-targets-function">Meeting Targets Function</a></li>
   <li><a href="#apc-trend-table-function" id="toc-apc-trend-table-function" class="nav-link" data-scroll-target="#apc-trend-table-function">APC Trend Table Function</a></li>
   <li><a href="#apc-barchart-function" id="toc-apc-barchart-function" class="nav-link" data-scroll-target="#apc-barchart-function">APC Barchart Function</a></li>
+  <li><a href="#apc-full-table" id="toc-apc-full-table" class="nav-link" data-scroll-target="#apc-full-table">APC Full Table</a></li>
+  <li><a href="#compare-trends" id="toc-compare-trends" class="nav-link" data-scroll-target="#compare-trends">Compare trends</a></li>
   </ul></li>
   <li><a href="#cancer-incidencemortality" id="toc-cancer-incidencemortality" class="nav-link" data-scroll-target="#cancer-incidencemortality">Cancer Incidence/Mortality</a></li>
   <li><a href="#meeting-targets-table" id="toc-meeting-targets-table" class="nav-link" data-scroll-target="#meeting-targets-table">Meeting Targets Table</a></li>
@@ -98,7 +100,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#colorectal-cancer-by-age" id="toc-colorectal-cancer-by-age" class="nav-link" data-scroll-target="#colorectal-cancer-by-age">Colorectal Cancer by Age</a></li>
   <li><a href="#extra-plots" id="toc-extra-plots" class="nav-link" data-scroll-target="#extra-plots">Extra Plots</a></li>
   <li><a href="#england-wales-total-cancer-plot" id="toc-england-wales-total-cancer-plot" class="nav-link" data-scroll-target="#england-wales-total-cancer-plot">England + Wales Total Cancer Plot</a></li>
-  <li><a href="#apc-barchart" id="toc-apc-barchart" class="nav-link" data-scroll-target="#apc-barchart">APC Barchart</a></li>
+  <li><a href="#apc-barchart---england-and-wales" id="toc-apc-barchart---england-and-wales" class="nav-link" data-scroll-target="#apc-barchart---england-and-wales">APC Barchart - England and Wales</a></li>
+  <li><a href="#apc-barchart---scotland" id="toc-apc-barchart---scotland" class="nav-link" data-scroll-target="#apc-barchart---scotland">APC Barchart - Scotland</a></li>
+  <li><a href="#apc-barchart---n.-ireland" id="toc-apc-barchart---n.-ireland" class="nav-link" data-scroll-target="#apc-barchart---n.-ireland">APC Barchart - N. Ireland</a></li>
+  <li><a href="#full-tables" id="toc-full-tables" class="nav-link" data-scroll-target="#full-tables">Full Tables</a></li>
   </ul>
 </nav>
 </div>
@@ -146,9 +151,6 @@ Attaching package: 'dplyr'</code></pre>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'gridExtra' was built under R version 4.3.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'gridExtra'</code></pre>
 </div>
@@ -157,20 +159,26 @@ Attaching package: 'gridExtra'</code></pre>
 
     combine</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(webshot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'gt' was built under R version 4.3.2</code></pre>
+<pre><code>Warning: package 'webshot2' was built under R version 4.4.1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(writexl)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'gtsummary' was built under R version 4.4.1</code></pre>
 </div>
 </div>
 </section>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/Position Paper/Data")</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_knit<span class="sc">$</span><span class="fu">set</span>(<span class="at">root.dir =</span> <span class="st">"C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data/Cancer Trends"</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># knitr::opts_knit$set(root.dir = "C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/Position Paper/Data")</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_knit<span class="sc">$</span><span class="fu">set</span>(<span class="at">root.dir =</span> <span class="st">"C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Data/Cancer Trends"</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="functions" class="level2">
@@ -193,82 +201,100 @@ Attaching package: 'gridExtra'</code></pre>
 <section id="apc-barchart-function" class="level3">
 <h3 class="anchored" data-anchor-id="apc-barchart-function">APC Barchart Function</h3>
 </section>
+<section id="apc-full-table" class="level3">
+<h3 class="anchored" data-anchor-id="apc-full-table">APC Full Table</h3>
+</section>
+<section id="compare-trends" class="level3">
+<h3 class="anchored" data-anchor-id="compare-trends">Compare trends</h3>
+</section>
 </section>
 <section id="cancer-incidencemortality" class="level2">
 <h2 class="anchored" data-anchor-id="cancer-incidencemortality">Cancer Incidence/Mortality</h2>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 10 rows containing missing values (`geom_line()`).
-Removed 10 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).
+Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="1920"></p>
+<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="1920"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 10 rows containing missing values (`geom_line()`).
-Removed 10 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).
+Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid figure-img" width="1920"></p>
+<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-10-2.png" class="img-fluid figure-img" width="1920"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 10 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-8-3.png" class="img-fluid figure-img" width="1920"></p>
+<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-10-3.png" class="img-fluid figure-img" width="1920"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 10 rows containing missing values (`geom_line()`).
-Removed 10 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).
+Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-8-4.png" class="img-fluid figure-img" width="1920"></p>
+<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-10-4.png" class="img-fluid figure-img" width="1920"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 10 rows containing missing values (`geom_line()`).
-Removed 10 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).
+Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-8-5.png" class="img-fluid figure-img" width="1920"></p>
+<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-10-5.png" class="img-fluid figure-img" width="1920"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 10 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-8-6.png" class="img-fluid figure-img" width="1920"></p>
+<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-10-6.png" class="img-fluid figure-img" width="1920"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 10 rows containing missing values (`geom_line()`).
-Removed 10 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).
+Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-8-7.png" class="img-fluid figure-img" width="1920"></p>
+<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-10-7.png" class="img-fluid figure-img" width="1920"></p>
 </figure>
 </div>
 </div>
@@ -278,24 +304,23 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
 <h2 class="anchored" data-anchor-id="meeting-targets-table">Meeting Targets Table</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div>
-<div id="wfogdiybyw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wfogdiybyw table {
+<div id="aeeqymjolm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#aeeqymjolm table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wfogdiybyw thead, #wfogdiybyw tbody, #wfogdiybyw tfoot, #wfogdiybyw tr, #wfogdiybyw td, #wfogdiybyw th {
+#aeeqymjolm thead, #aeeqymjolm tbody, #aeeqymjolm tfoot, #aeeqymjolm tr, #aeeqymjolm td, #aeeqymjolm th {
   border-style: none;
 }
 
-#wfogdiybyw p {
+#aeeqymjolm p {
   margin: 0;
   padding: 0;
 }
 
-#wfogdiybyw .gt_table {
+#aeeqymjolm .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -321,12 +346,12 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#wfogdiybyw .gt_caption {
+#aeeqymjolm .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wfogdiybyw .gt_title {
+#aeeqymjolm .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -338,7 +363,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-bottom-width: 0;
 }
 
-#wfogdiybyw .gt_subtitle {
+#aeeqymjolm .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -350,7 +375,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-top-width: 0;
 }
 
-#wfogdiybyw .gt_heading {
+#aeeqymjolm .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -362,13 +387,13 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#wfogdiybyw .gt_bottom_border {
+#aeeqymjolm .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wfogdiybyw .gt_col_headings {
+#aeeqymjolm .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -383,7 +408,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#wfogdiybyw .gt_col_heading {
+#aeeqymjolm .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -403,7 +428,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   overflow-x: hidden;
 }
 
-#wfogdiybyw .gt_column_spanner_outer {
+#aeeqymjolm .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -415,15 +440,15 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   padding-right: 4px;
 }
 
-#wfogdiybyw .gt_column_spanner_outer:first-child {
+#aeeqymjolm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wfogdiybyw .gt_column_spanner_outer:last-child {
+#aeeqymjolm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wfogdiybyw .gt_column_spanner {
+#aeeqymjolm .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -435,11 +460,11 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   width: 100%;
 }
 
-#wfogdiybyw .gt_spanner_row {
+#aeeqymjolm .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wfogdiybyw .gt_group_heading {
+#aeeqymjolm .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -465,7 +490,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   text-align: left;
 }
 
-#wfogdiybyw .gt_empty_group_heading {
+#aeeqymjolm .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -480,15 +505,15 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   vertical-align: middle;
 }
 
-#wfogdiybyw .gt_from_md > :first-child {
+#aeeqymjolm .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wfogdiybyw .gt_from_md > :last-child {
+#aeeqymjolm .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wfogdiybyw .gt_row {
+#aeeqymjolm .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -507,7 +532,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   overflow-x: hidden;
 }
 
-#wfogdiybyw .gt_stub {
+#aeeqymjolm .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -520,7 +545,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   padding-right: 5px;
 }
 
-#wfogdiybyw .gt_stub_row_group {
+#aeeqymjolm .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -534,15 +559,15 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   vertical-align: top;
 }
 
-#wfogdiybyw .gt_row_group_first td {
+#aeeqymjolm .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wfogdiybyw .gt_row_group_first th {
+#aeeqymjolm .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wfogdiybyw .gt_summary_row {
+#aeeqymjolm .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -552,16 +577,16 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   padding-right: 5px;
 }
 
-#wfogdiybyw .gt_first_summary_row {
+#aeeqymjolm .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wfogdiybyw .gt_first_summary_row.thick {
+#aeeqymjolm .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wfogdiybyw .gt_last_summary_row {
+#aeeqymjolm .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -571,7 +596,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#wfogdiybyw .gt_grand_summary_row {
+#aeeqymjolm .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -581,7 +606,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   padding-right: 5px;
 }
 
-#wfogdiybyw .gt_first_grand_summary_row {
+#aeeqymjolm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -591,7 +616,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#wfogdiybyw .gt_last_grand_summary_row_top {
+#aeeqymjolm .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -601,11 +626,11 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#wfogdiybyw .gt_striped {
+#aeeqymjolm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wfogdiybyw .gt_table_body {
+#aeeqymjolm .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -614,7 +639,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#wfogdiybyw .gt_footnotes {
+#aeeqymjolm .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -628,7 +653,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#wfogdiybyw .gt_footnote {
+#aeeqymjolm .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -637,7 +662,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   padding-right: 5px;
 }
 
-#wfogdiybyw .gt_sourcenotes {
+#aeeqymjolm .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -651,7 +676,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#wfogdiybyw .gt_sourcenote {
+#aeeqymjolm .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -659,68 +684,68 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   padding-right: 5px;
 }
 
-#wfogdiybyw .gt_left {
+#aeeqymjolm .gt_left {
   text-align: left;
 }
 
-#wfogdiybyw .gt_center {
+#aeeqymjolm .gt_center {
   text-align: center;
 }
 
-#wfogdiybyw .gt_right {
+#aeeqymjolm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wfogdiybyw .gt_font_normal {
+#aeeqymjolm .gt_font_normal {
   font-weight: normal;
 }
 
-#wfogdiybyw .gt_font_bold {
+#aeeqymjolm .gt_font_bold {
   font-weight: bold;
 }
 
-#wfogdiybyw .gt_font_italic {
+#aeeqymjolm .gt_font_italic {
   font-style: italic;
 }
 
-#wfogdiybyw .gt_super {
+#aeeqymjolm .gt_super {
   font-size: 65%;
 }
 
-#wfogdiybyw .gt_footnote_marks {
+#aeeqymjolm .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wfogdiybyw .gt_asterisk {
+#aeeqymjolm .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wfogdiybyw .gt_indent_1 {
+#aeeqymjolm .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wfogdiybyw .gt_indent_2 {
+#aeeqymjolm .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wfogdiybyw .gt_indent_3 {
+#aeeqymjolm .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wfogdiybyw .gt_indent_4 {
+#aeeqymjolm .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wfogdiybyw .gt_indent_5 {
+#aeeqymjolm .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
 
-<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
 <tr class="header gt_heading">
 <th colspan="5" class="gt_heading gt_title gt_font_normal" style="text-align: center;"><strong>Globocan JoinPoint Target Analysis</strong></th>
@@ -841,30 +866,28 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
 </div>
 </div>
 </div>
-</div>
 </section>
 <section id="apc-trends-table-uk" class="level2">
 <h2 class="anchored" data-anchor-id="apc-trends-table-uk">APC Trends Table UK</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div>
-<div id="usulijjtax" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#usulijjtax table {
+<div id="wpixwykels" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wpixwykels table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#usulijjtax thead, #usulijjtax tbody, #usulijjtax tfoot, #usulijjtax tr, #usulijjtax td, #usulijjtax th {
+#wpixwykels thead, #wpixwykels tbody, #wpixwykels tfoot, #wpixwykels tr, #wpixwykels td, #wpixwykels th {
   border-style: none;
 }
 
-#usulijjtax p {
+#wpixwykels p {
   margin: 0;
   padding: 0;
 }
 
-#usulijjtax .gt_table {
+#wpixwykels .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -890,12 +913,12 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#usulijjtax .gt_caption {
+#wpixwykels .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#usulijjtax .gt_title {
+#wpixwykels .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -907,7 +930,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-bottom-width: 0;
 }
 
-#usulijjtax .gt_subtitle {
+#wpixwykels .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -919,7 +942,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-top-width: 0;
 }
 
-#usulijjtax .gt_heading {
+#wpixwykels .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -931,13 +954,13 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#usulijjtax .gt_bottom_border {
+#wpixwykels .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#usulijjtax .gt_col_headings {
+#wpixwykels .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -952,7 +975,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#usulijjtax .gt_col_heading {
+#wpixwykels .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -972,7 +995,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   overflow-x: hidden;
 }
 
-#usulijjtax .gt_column_spanner_outer {
+#wpixwykels .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -984,15 +1007,15 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   padding-right: 4px;
 }
 
-#usulijjtax .gt_column_spanner_outer:first-child {
+#wpixwykels .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#usulijjtax .gt_column_spanner_outer:last-child {
+#wpixwykels .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#usulijjtax .gt_column_spanner {
+#wpixwykels .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1004,11 +1027,11 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   width: 100%;
 }
 
-#usulijjtax .gt_spanner_row {
+#wpixwykels .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#usulijjtax .gt_group_heading {
+#wpixwykels .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1034,7 +1057,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   text-align: left;
 }
 
-#usulijjtax .gt_empty_group_heading {
+#wpixwykels .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1049,15 +1072,15 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   vertical-align: middle;
 }
 
-#usulijjtax .gt_from_md > :first-child {
+#wpixwykels .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#usulijjtax .gt_from_md > :last-child {
+#wpixwykels .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#usulijjtax .gt_row {
+#wpixwykels .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1076,7 +1099,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   overflow-x: hidden;
 }
 
-#usulijjtax .gt_stub {
+#wpixwykels .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1089,7 +1112,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   padding-right: 5px;
 }
 
-#usulijjtax .gt_stub_row_group {
+#wpixwykels .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1103,15 +1126,15 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   vertical-align: top;
 }
 
-#usulijjtax .gt_row_group_first td {
+#wpixwykels .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#usulijjtax .gt_row_group_first th {
+#wpixwykels .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#usulijjtax .gt_summary_row {
+#wpixwykels .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1121,16 +1144,16 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   padding-right: 5px;
 }
 
-#usulijjtax .gt_first_summary_row {
+#wpixwykels .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#usulijjtax .gt_first_summary_row.thick {
+#wpixwykels .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#usulijjtax .gt_last_summary_row {
+#wpixwykels .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1140,7 +1163,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#usulijjtax .gt_grand_summary_row {
+#wpixwykels .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1150,7 +1173,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   padding-right: 5px;
 }
 
-#usulijjtax .gt_first_grand_summary_row {
+#wpixwykels .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1160,7 +1183,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#usulijjtax .gt_last_grand_summary_row_top {
+#wpixwykels .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1170,11 +1193,11 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#usulijjtax .gt_striped {
+#wpixwykels .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#usulijjtax .gt_table_body {
+#wpixwykels .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1183,7 +1206,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#usulijjtax .gt_footnotes {
+#wpixwykels .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1197,7 +1220,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#usulijjtax .gt_footnote {
+#wpixwykels .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1206,7 +1229,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   padding-right: 5px;
 }
 
-#usulijjtax .gt_sourcenotes {
+#wpixwykels .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1220,7 +1243,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#usulijjtax .gt_sourcenote {
+#wpixwykels .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1228,68 +1251,68 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   padding-right: 5px;
 }
 
-#usulijjtax .gt_left {
+#wpixwykels .gt_left {
   text-align: left;
 }
 
-#usulijjtax .gt_center {
+#wpixwykels .gt_center {
   text-align: center;
 }
 
-#usulijjtax .gt_right {
+#wpixwykels .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#usulijjtax .gt_font_normal {
+#wpixwykels .gt_font_normal {
   font-weight: normal;
 }
 
-#usulijjtax .gt_font_bold {
+#wpixwykels .gt_font_bold {
   font-weight: bold;
 }
 
-#usulijjtax .gt_font_italic {
+#wpixwykels .gt_font_italic {
   font-style: italic;
 }
 
-#usulijjtax .gt_super {
+#wpixwykels .gt_super {
   font-size: 65%;
 }
 
-#usulijjtax .gt_footnote_marks {
+#wpixwykels .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#usulijjtax .gt_asterisk {
+#wpixwykels .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#usulijjtax .gt_indent_1 {
+#wpixwykels .gt_indent_1 {
   text-indent: 5px;
 }
 
-#usulijjtax .gt_indent_2 {
+#wpixwykels .gt_indent_2 {
   text-indent: 10px;
 }
 
-#usulijjtax .gt_indent_3 {
+#wpixwykels .gt_indent_3 {
   text-indent: 15px;
 }
 
-#usulijjtax .gt_indent_4 {
+#wpixwykels .gt_indent_4 {
   text-indent: 20px;
 }
 
-#usulijjtax .gt_indent_5 {
+#wpixwykels .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
 
-<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
 <tr class="header gt_heading">
 <th colspan="5" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="text-align: center;"><strong>Recent Trends for Cancer Incidence</strong></th>
@@ -1366,26 +1389,24 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
 
 </div>
 </div>
-</div>
 <div class="cell-output-display">
-<div>
-<div id="fwpajzgtmy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fwpajzgtmy table {
+<div id="tflaiemvim" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#tflaiemvim table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fwpajzgtmy thead, #fwpajzgtmy tbody, #fwpajzgtmy tfoot, #fwpajzgtmy tr, #fwpajzgtmy td, #fwpajzgtmy th {
+#tflaiemvim thead, #tflaiemvim tbody, #tflaiemvim tfoot, #tflaiemvim tr, #tflaiemvim td, #tflaiemvim th {
   border-style: none;
 }
 
-#fwpajzgtmy p {
+#tflaiemvim p {
   margin: 0;
   padding: 0;
 }
 
-#fwpajzgtmy .gt_table {
+#tflaiemvim .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1411,12 +1432,12 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#fwpajzgtmy .gt_caption {
+#tflaiemvim .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fwpajzgtmy .gt_title {
+#tflaiemvim .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1428,7 +1449,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-bottom-width: 0;
 }
 
-#fwpajzgtmy .gt_subtitle {
+#tflaiemvim .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1440,7 +1461,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-top-width: 0;
 }
 
-#fwpajzgtmy .gt_heading {
+#tflaiemvim .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1452,13 +1473,13 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#fwpajzgtmy .gt_bottom_border {
+#tflaiemvim .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fwpajzgtmy .gt_col_headings {
+#tflaiemvim .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1473,7 +1494,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#fwpajzgtmy .gt_col_heading {
+#tflaiemvim .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1493,7 +1514,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   overflow-x: hidden;
 }
 
-#fwpajzgtmy .gt_column_spanner_outer {
+#tflaiemvim .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1505,15 +1526,15 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   padding-right: 4px;
 }
 
-#fwpajzgtmy .gt_column_spanner_outer:first-child {
+#tflaiemvim .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fwpajzgtmy .gt_column_spanner_outer:last-child {
+#tflaiemvim .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fwpajzgtmy .gt_column_spanner {
+#tflaiemvim .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1525,11 +1546,11 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   width: 100%;
 }
 
-#fwpajzgtmy .gt_spanner_row {
+#tflaiemvim .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fwpajzgtmy .gt_group_heading {
+#tflaiemvim .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1555,7 +1576,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   text-align: left;
 }
 
-#fwpajzgtmy .gt_empty_group_heading {
+#tflaiemvim .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1570,15 +1591,15 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   vertical-align: middle;
 }
 
-#fwpajzgtmy .gt_from_md > :first-child {
+#tflaiemvim .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fwpajzgtmy .gt_from_md > :last-child {
+#tflaiemvim .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fwpajzgtmy .gt_row {
+#tflaiemvim .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1597,7 +1618,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   overflow-x: hidden;
 }
 
-#fwpajzgtmy .gt_stub {
+#tflaiemvim .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1610,7 +1631,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   padding-right: 5px;
 }
 
-#fwpajzgtmy .gt_stub_row_group {
+#tflaiemvim .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1624,15 +1645,15 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   vertical-align: top;
 }
 
-#fwpajzgtmy .gt_row_group_first td {
+#tflaiemvim .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fwpajzgtmy .gt_row_group_first th {
+#tflaiemvim .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fwpajzgtmy .gt_summary_row {
+#tflaiemvim .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1642,16 +1663,16 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   padding-right: 5px;
 }
 
-#fwpajzgtmy .gt_first_summary_row {
+#tflaiemvim .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fwpajzgtmy .gt_first_summary_row.thick {
+#tflaiemvim .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fwpajzgtmy .gt_last_summary_row {
+#tflaiemvim .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1661,7 +1682,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#fwpajzgtmy .gt_grand_summary_row {
+#tflaiemvim .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1671,7 +1692,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   padding-right: 5px;
 }
 
-#fwpajzgtmy .gt_first_grand_summary_row {
+#tflaiemvim .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1681,7 +1702,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#fwpajzgtmy .gt_last_grand_summary_row_top {
+#tflaiemvim .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1691,11 +1712,11 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#fwpajzgtmy .gt_striped {
+#tflaiemvim .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fwpajzgtmy .gt_table_body {
+#tflaiemvim .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1704,7 +1725,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#fwpajzgtmy .gt_footnotes {
+#tflaiemvim .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1718,7 +1739,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#fwpajzgtmy .gt_footnote {
+#tflaiemvim .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1727,7 +1748,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   padding-right: 5px;
 }
 
-#fwpajzgtmy .gt_sourcenotes {
+#tflaiemvim .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1741,7 +1762,7 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#fwpajzgtmy .gt_sourcenote {
+#tflaiemvim .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1749,68 +1770,68 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
   padding-right: 5px;
 }
 
-#fwpajzgtmy .gt_left {
+#tflaiemvim .gt_left {
   text-align: left;
 }
 
-#fwpajzgtmy .gt_center {
+#tflaiemvim .gt_center {
   text-align: center;
 }
 
-#fwpajzgtmy .gt_right {
+#tflaiemvim .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fwpajzgtmy .gt_font_normal {
+#tflaiemvim .gt_font_normal {
   font-weight: normal;
 }
 
-#fwpajzgtmy .gt_font_bold {
+#tflaiemvim .gt_font_bold {
   font-weight: bold;
 }
 
-#fwpajzgtmy .gt_font_italic {
+#tflaiemvim .gt_font_italic {
   font-style: italic;
 }
 
-#fwpajzgtmy .gt_super {
+#tflaiemvim .gt_super {
   font-size: 65%;
 }
 
-#fwpajzgtmy .gt_footnote_marks {
+#tflaiemvim .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fwpajzgtmy .gt_asterisk {
+#tflaiemvim .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fwpajzgtmy .gt_indent_1 {
+#tflaiemvim .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fwpajzgtmy .gt_indent_2 {
+#tflaiemvim .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fwpajzgtmy .gt_indent_3 {
+#tflaiemvim .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fwpajzgtmy .gt_indent_4 {
+#tflaiemvim .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fwpajzgtmy .gt_indent_5 {
+#tflaiemvim .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
 
-<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
 <tr class="header gt_heading">
 <th colspan="5" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="text-align: center;"><strong>Recent Trends for Cancer Mortality</strong></th>
@@ -1888,18 +1909,18 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
 </div>
 </div>
 </div>
-</div>
 </section>
 <section id="pretty-plots-for-presentation---bc-incidence" class="level2">
 <h2 class="anchored" data-anchor-id="pretty-plots-for-presentation---bc-incidence">Pretty Plots for Presentation - BC Incidence</h2>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 10 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1909,12 +1930,13 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
 <h2 class="anchored" data-anchor-id="pretty-plots-for-presentation---bc-mortality">Pretty Plots for Presentation - BC Mortality</h2>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 10 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1926,36 +1948,40 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-13-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 10 rows containing missing values (`geom_line()`).
-Removed 10 rows containing missing values (`geom_line()`).</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-13-3.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-15-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 10 rows containing missing values (`geom_line()`).
-Removed 10 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).
+Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-13-4.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-15-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).
+Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-15-4.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1965,35 +1991,41 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
 <h2 class="anchored" data-anchor-id="extra-plots">Extra Plots</h2>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 10 rows containing missing values (`geom_line()`).
-Removed 10 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).
+Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="1920"></p>
+<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="1920"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 10 rows containing missing values (`geom_line()`).
-Removed 10 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).
+Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-14-2.png" class="img-fluid figure-img" width="1920"></p>
+<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-16-2.png" class="img-fluid figure-img" width="1920"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 10 rows containing missing values (`geom_line()`).
-Removed 10 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).
+Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-14-3.png" class="img-fluid figure-img" width="1920"></p>
+<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-16-3.png" class="img-fluid figure-img" width="1920"></p>
 </figure>
 </div>
 </div>
@@ -2003,154 +2035,191 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
 <h2 class="anchored" data-anchor-id="england-wales-total-cancer-plot">England + Wales Total Cancer Plot</h2>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 52 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 52 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 20 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 20 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 94 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 94 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 10 rows containing missing values (`geom_line()`).
-Removed 10 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).
+Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="1920"></p>
+<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="1920"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 52 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 52 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 20 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 20 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 84 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 84 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 10 rows containing missing values (`geom_line()`).
-Removed 10 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).
+Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-15-2.png" class="img-fluid figure-img" width="1920"></p>
+<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-17-2.png" class="img-fluid figure-img" width="1920"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 52 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 52 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 20 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 20 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 94 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 94 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 10 rows containing missing values (`geom_line()`).
-Removed 10 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).
+Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-15-3.png" class="img-fluid figure-img" width="1920"></p>
+<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-17-3.png" class="img-fluid figure-img" width="1920"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 26 rows containing missing values (`geom_point()`).
-Removed 10 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 26 rows containing missing values or values outside the scale range
+(`geom_point()`).
+Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 47 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 47 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 10 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-15-4.png" class="img-fluid figure-img" width="1920"></p>
+<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-17-4.png" class="img-fluid figure-img" width="1920"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 52 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 52 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 20 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 20 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 94 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 94 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 10 rows containing missing values (`geom_line()`).
-Removed 10 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).
+Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-15-5.png" class="img-fluid figure-img" width="1920"></p>
+<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-17-5.png" class="img-fluid figure-img" width="1920"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 52 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 52 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 20 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 20 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 84 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 84 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 10 rows containing missing values (`geom_line()`).
-Removed 10 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).
+Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-15-6.png" class="img-fluid figure-img" width="1920"></p>
+<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-17-6.png" class="img-fluid figure-img" width="1920"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 26 rows containing missing values (`geom_point()`).
-Removed 10 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 26 rows containing missing values or values outside the scale range
+(`geom_point()`).
+Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 47 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 47 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 10 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-15-7.png" class="img-fluid figure-img" width="1920"></p>
+<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-17-7.png" class="img-fluid figure-img" width="1920"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="apc-barchart" class="level2">
-<h2 class="anchored" data-anchor-id="apc-barchart">APC Barchart</h2>
+<section id="apc-barchart---england-and-wales" class="level2">
+<h2 class="anchored" data-anchor-id="apc-barchart---england-and-wales">APC Barchart - England and Wales</h2>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2 rows containing missing values (`geom_bar()`).</code></pre>
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_bar()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2 rows containing missing values (`geom_text()`).</code></pre>
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_text()`).
+Removed 2 rows containing missing values or values outside the scale range
+(`geom_text()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -2158,19 +2227,27 @@ Removed 10 rows containing missing values (`geom_line()`).</code></pre>
 <pre><code>Saving 7 x 5 in image</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2 rows containing missing values (`geom_bar()`).
-Removed 2 rows containing missing values (`geom_text()`).</code></pre>
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_bar()`).
+Removed 2 rows containing missing values or values outside the scale range
+(`geom_text()`).
+Removed 2 rows containing missing values or values outside the scale range
+(`geom_text()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2 rows containing missing values (`geom_bar()`).</code></pre>
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_bar()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2 rows containing missing values (`geom_text()`).</code></pre>
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_text()`).
+Removed 2 rows containing missing values or values outside the scale range
+(`geom_text()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-16-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-18-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -2178,9 +2255,3141 @@ Removed 2 rows containing missing values (`geom_text()`).</code></pre>
 <pre><code>Saving 7 x 5 in image</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2 rows containing missing values (`geom_bar()`).
-Removed 2 rows containing missing values (`geom_text()`).</code></pre>
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_bar()`).
+Removed 2 rows containing missing values or values outside the scale range
+(`geom_text()`).
+Removed 2 rows containing missing values or values outside the scale range
+(`geom_text()`).</code></pre>
 </div>
+</div>
+</section>
+<section id="apc-barchart---scotland" class="level2">
+<h2 class="anchored" data-anchor-id="apc-barchart---scotland">APC Barchart - Scotland</h2>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_bar()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_text()`).
+Removed 2 rows containing missing values or values outside the scale range
+(`geom_text()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Saving 7 x 5 in image</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_bar()`).
+Removed 2 rows containing missing values or values outside the scale range
+(`geom_text()`).
+Removed 2 rows containing missing values or values outside the scale range
+(`geom_text()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_bar()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_text()`).
+Removed 2 rows containing missing values or values outside the scale range
+(`geom_text()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-19-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Saving 7 x 5 in image</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_bar()`).
+Removed 2 rows containing missing values or values outside the scale range
+(`geom_text()`).
+Removed 2 rows containing missing values or values outside the scale range
+(`geom_text()`).</code></pre>
+</div>
+</div>
+</section>
+<section id="apc-barchart---n.-ireland" class="level2">
+<h2 class="anchored" data-anchor-id="apc-barchart---n.-ireland">APC Barchart - N. Ireland</h2>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_bar()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_text()`).
+Removed 2 rows containing missing values or values outside the scale range
+(`geom_text()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Saving 7 x 5 in image</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_bar()`).
+Removed 2 rows containing missing values or values outside the scale range
+(`geom_text()`).
+Removed 2 rows containing missing values or values outside the scale range
+(`geom_text()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_bar()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_text()`).
+Removed 2 rows containing missing values or values outside the scale range
+(`geom_text()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Projection-Plotting-Globocan_files/figure-html/unnamed-chunk-20-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Saving 7 x 5 in image</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_bar()`).
+Removed 2 rows containing missing values or values outside the scale range
+(`geom_text()`).
+Removed 2 rows containing missing values or values outside the scale range
+(`geom_text()`).</code></pre>
+</div>
+</div>
+</section>
+<section id="full-tables" class="level2">
+<h2 class="anchored" data-anchor-id="full-tables">Full Tables</h2>
+<div id="vqwnzdqlpr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vqwnzdqlpr table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#vqwnzdqlpr thead, #vqwnzdqlpr tbody, #vqwnzdqlpr tfoot, #vqwnzdqlpr tr, #vqwnzdqlpr td, #vqwnzdqlpr th {
+  border-style: none;
+}
+
+#vqwnzdqlpr p {
+  margin: 0;
+  padding: 0;
+}
+
+#vqwnzdqlpr .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#vqwnzdqlpr .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#vqwnzdqlpr .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#vqwnzdqlpr .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#vqwnzdqlpr .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#vqwnzdqlpr .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vqwnzdqlpr .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#vqwnzdqlpr .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#vqwnzdqlpr .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#vqwnzdqlpr .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#vqwnzdqlpr .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#vqwnzdqlpr .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#vqwnzdqlpr .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#vqwnzdqlpr .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#vqwnzdqlpr .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#vqwnzdqlpr .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#vqwnzdqlpr .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#vqwnzdqlpr .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#vqwnzdqlpr .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vqwnzdqlpr .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#vqwnzdqlpr .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#vqwnzdqlpr .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#vqwnzdqlpr .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vqwnzdqlpr .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#vqwnzdqlpr .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#vqwnzdqlpr .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vqwnzdqlpr .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vqwnzdqlpr .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#vqwnzdqlpr .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vqwnzdqlpr .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#vqwnzdqlpr .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vqwnzdqlpr .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#vqwnzdqlpr .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vqwnzdqlpr .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#vqwnzdqlpr .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vqwnzdqlpr .gt_left {
+  text-align: left;
+}
+
+#vqwnzdqlpr .gt_center {
+  text-align: center;
+}
+
+#vqwnzdqlpr .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#vqwnzdqlpr .gt_font_normal {
+  font-weight: normal;
+}
+
+#vqwnzdqlpr .gt_font_bold {
+  font-weight: bold;
+}
+
+#vqwnzdqlpr .gt_font_italic {
+  font-style: italic;
+}
+
+#vqwnzdqlpr .gt_super {
+  font-size: 65%;
+}
+
+#vqwnzdqlpr .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#vqwnzdqlpr .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#vqwnzdqlpr .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#vqwnzdqlpr .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#vqwnzdqlpr .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#vqwnzdqlpr .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#vqwnzdqlpr .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" style="table-layout: fixed;" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col>
+<col style="width:120px;">
+<col style="width:180px;">
+<col>
+<col>
+<col style="width:180px;">
+<col>
+<col>
+<col style="width:180px;">
+<col>
+<col>
+</colgroup>
+<thead>
+<tr class="gt_heading">
+<td colspan="11" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">
+<strong>Cancer Incidence in England and Wales</strong>
+</td>
+</tr>
+<tr class="gt_col_headings gt_spanner_row">
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Site">
+Site
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Sex">
+Sex
+</th>
+<th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3" scope="colgroup" id="Segment 1">
+<span class="gt_column_spanner">Segment 1</span>
+</th>
+<th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3" scope="colgroup" id="Segment 2">
+<span class="gt_column_spanner">Segment 2</span>
+</th>
+<th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3" scope="colgroup" id="Segment 3">
+<span class="gt_column_spanner">Segment 3</span>
+</th>
+</tr>
+<tr class="gt_col_headings">
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Years">
+Years
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="APC">
+APC
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Significant">
+Significant
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Years">
+Years
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="APC">
+APC
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Significant">
+Significant
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Years">
+Years
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="APC">
+APC
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Significant">
+Significant
+</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr>
+<td headers="Site" class="gt_row gt_left">
+All
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Women
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1997, 2002)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+-0.0311
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+(2002, 2015)
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+1.1454
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+(2015, 2017)
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-0.2893
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+All
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Men
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1997, 2013)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+0.7212
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+(2013, 2017)
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+-0.5663
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Colorectal
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Women
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1997, 2003)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+-1.0620
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+(2003, 2011)
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+1.7053
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+(2011, 2017)
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-0.6028
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Colorectal
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Men
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1997, 2003)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+-0.8241
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+(2003, 2010)
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+1.3817
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+(2010, 2017)
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-1.3459
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Lung
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Women
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1997, 2003)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+0.0988
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+(2003, 2012)
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+1.9926
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+(2012, 2017)
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+0.2826
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Lung
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Men
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1997, 2003)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+-2.8922
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+(2003, 2017)
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+-1.0893
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Oesophageal
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Women
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1997, 2015)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+-0.3257
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+(2015, 2017)
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+-3.6809
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Oesophageal
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Men
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1997, 2008)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+1.2753
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+(2008, 2017)
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+-0.0990
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Pancreatic
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Women
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1997, 2017)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+1.1977
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Pancreatic
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Men
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1997, 2002)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+-0.2363
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+(2002, 2017)
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+0.9593
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Prostate
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Women
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Prostate
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Men
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1997, 2001)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+9.7689
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+(2001, 2013)
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+1.9194
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+(2013, 2017)
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-1.3314
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Breast
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Women
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1997, 2012)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+0.5127
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+(2012, 2015)
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+2.7576
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+(2015, 2017)
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-1.4450
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Breast
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Men
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="psclldgwxc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#psclldgwxc table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#psclldgwxc thead, #psclldgwxc tbody, #psclldgwxc tfoot, #psclldgwxc tr, #psclldgwxc td, #psclldgwxc th {
+  border-style: none;
+}
+
+#psclldgwxc p {
+  margin: 0;
+  padding: 0;
+}
+
+#psclldgwxc .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#psclldgwxc .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#psclldgwxc .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#psclldgwxc .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#psclldgwxc .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#psclldgwxc .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#psclldgwxc .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#psclldgwxc .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#psclldgwxc .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#psclldgwxc .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#psclldgwxc .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#psclldgwxc .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#psclldgwxc .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#psclldgwxc .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#psclldgwxc .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#psclldgwxc .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#psclldgwxc .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#psclldgwxc .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#psclldgwxc .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#psclldgwxc .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#psclldgwxc .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#psclldgwxc .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#psclldgwxc .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#psclldgwxc .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#psclldgwxc .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#psclldgwxc .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#psclldgwxc .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#psclldgwxc .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#psclldgwxc .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#psclldgwxc .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#psclldgwxc .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#psclldgwxc .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#psclldgwxc .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#psclldgwxc .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#psclldgwxc .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#psclldgwxc .gt_left {
+  text-align: left;
+}
+
+#psclldgwxc .gt_center {
+  text-align: center;
+}
+
+#psclldgwxc .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#psclldgwxc .gt_font_normal {
+  font-weight: normal;
+}
+
+#psclldgwxc .gt_font_bold {
+  font-weight: bold;
+}
+
+#psclldgwxc .gt_font_italic {
+  font-style: italic;
+}
+
+#psclldgwxc .gt_super {
+  font-size: 65%;
+}
+
+#psclldgwxc .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#psclldgwxc .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#psclldgwxc .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#psclldgwxc .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#psclldgwxc .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#psclldgwxc .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#psclldgwxc .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" style="table-layout: fixed;" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col>
+<col style="width:120px;">
+<col style="width:180px;">
+<col>
+<col>
+<col style="width:180px;">
+<col>
+<col>
+<col style="width:180px;">
+<col>
+<col>
+</colgroup>
+<thead>
+<tr class="gt_heading">
+<td colspan="11" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">
+<strong>Cancer Incidence in Scotland</strong>
+</td>
+</tr>
+<tr class="gt_col_headings gt_spanner_row">
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Site">
+Site
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Sex">
+Sex
+</th>
+<th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3" scope="colgroup" id="Segment 1">
+<span class="gt_column_spanner">Segment 1</span>
+</th>
+<th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3" scope="colgroup" id="Segment 2">
+<span class="gt_column_spanner">Segment 2</span>
+</th>
+<th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3" scope="colgroup" id="Segment 3">
+<span class="gt_column_spanner">Segment 3</span>
+</th>
+</tr>
+<tr class="gt_col_headings">
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Years">
+Years
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="APC">
+APC
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Significant">
+Significant
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Years">
+Years
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="APC">
+APC
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Significant">
+Significant
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Years">
+Years
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="APC">
+APC
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Significant">
+Significant
+</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr>
+<td headers="Site" class="gt_row gt_left">
+All
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Women
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1993, 1996)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+1.8967
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+(1996, 1999)
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+-1.5190
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+(1999, 2013)
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+0.7519
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+All
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Men
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1993, 2013)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+-0.1411
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Colorectal
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Women
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1993, 2004)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+-0.6295
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+(2004, 2013)
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+1.1631
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Colorectal
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Men
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1993, 2013)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+-0.0817
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Lung
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Women
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1993, 2013)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+0.7006
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Lung
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Men
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1993, 2000)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+-3.4712
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+(2000, 2013)
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+-1.7839
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Oesophageal
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Women
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1993, 2013)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+-1.2755
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Oesophageal
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Men
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1993, 2004)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+0.3790
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+(2004, 2013)
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+-0.7033
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Pancreatic
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Women
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1993, 2013)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+0.2562
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Pancreatic
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Men
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1993, 2013)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+0.0891
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Prostate
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Women
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Prostate
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Men
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1993, 2013)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+2.0734
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Breast
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Women
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1993, 2013)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+1.0064
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Breast
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Men
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="sfauoqjqvu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#sfauoqjqvu table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#sfauoqjqvu thead, #sfauoqjqvu tbody, #sfauoqjqvu tfoot, #sfauoqjqvu tr, #sfauoqjqvu td, #sfauoqjqvu th {
+  border-style: none;
+}
+
+#sfauoqjqvu p {
+  margin: 0;
+  padding: 0;
+}
+
+#sfauoqjqvu .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#sfauoqjqvu .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#sfauoqjqvu .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#sfauoqjqvu .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#sfauoqjqvu .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#sfauoqjqvu .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#sfauoqjqvu .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#sfauoqjqvu .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#sfauoqjqvu .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#sfauoqjqvu .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#sfauoqjqvu .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#sfauoqjqvu .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#sfauoqjqvu .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#sfauoqjqvu .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#sfauoqjqvu .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#sfauoqjqvu .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#sfauoqjqvu .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#sfauoqjqvu .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#sfauoqjqvu .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#sfauoqjqvu .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#sfauoqjqvu .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#sfauoqjqvu .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#sfauoqjqvu .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#sfauoqjqvu .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#sfauoqjqvu .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#sfauoqjqvu .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#sfauoqjqvu .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#sfauoqjqvu .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#sfauoqjqvu .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#sfauoqjqvu .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#sfauoqjqvu .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#sfauoqjqvu .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#sfauoqjqvu .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#sfauoqjqvu .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#sfauoqjqvu .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#sfauoqjqvu .gt_left {
+  text-align: left;
+}
+
+#sfauoqjqvu .gt_center {
+  text-align: center;
+}
+
+#sfauoqjqvu .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#sfauoqjqvu .gt_font_normal {
+  font-weight: normal;
+}
+
+#sfauoqjqvu .gt_font_bold {
+  font-weight: bold;
+}
+
+#sfauoqjqvu .gt_font_italic {
+  font-style: italic;
+}
+
+#sfauoqjqvu .gt_super {
+  font-size: 65%;
+}
+
+#sfauoqjqvu .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#sfauoqjqvu .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#sfauoqjqvu .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#sfauoqjqvu .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#sfauoqjqvu .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#sfauoqjqvu .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#sfauoqjqvu .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" style="table-layout: fixed;" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col>
+<col style="width:120px;">
+<col style="width:180px;">
+<col>
+<col>
+<col style="width:180px;">
+<col>
+<col>
+<col style="width:180px;">
+<col>
+<col>
+</colgroup>
+<thead>
+<tr class="gt_heading">
+<td colspan="11" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">
+<strong>Cancer Incidence in N. Ireland</strong>
+</td>
+</tr>
+<tr class="gt_col_headings gt_spanner_row">
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Site">
+Site
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Sex">
+Sex
+</th>
+<th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3" scope="colgroup" id="Segment 1">
+<span class="gt_column_spanner">Segment 1</span>
+</th>
+<th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3" scope="colgroup" id="Segment 2">
+<span class="gt_column_spanner">Segment 2</span>
+</th>
+<th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3" scope="colgroup" id="Segment 3">
+<span class="gt_column_spanner">Segment 3</span>
+</th>
+</tr>
+<tr class="gt_col_headings">
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Years">
+Years
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="APC">
+APC
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Significant">
+Significant
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Years">
+Years
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="APC">
+APC
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Significant">
+Significant
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Years">
+Years
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="APC">
+APC
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="text-align: center; font-weight: bold;" scope="col" id="Significant">
+Significant
+</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr>
+<td headers="Site" class="gt_row gt_left">
+All
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Women
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1993, 2001)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+-0.2000
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+(2001, 2013)
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+0.9961
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+All
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Men
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1993, 1999)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+-2.0010
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+(1999, 2008)
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+1.6298
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+(2008, 2013)
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-0.4928
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Colorectal
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Women
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1993, 2005)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+-1.0607
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+(2005, 2013)
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+1.8367
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Colorectal
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Men
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1993, 1999)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+-2.0972
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+(1999, 2013)
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+1.0910
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Lung
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Women
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1993, 2004)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+-0.1192
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+(2004, 2013)
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+2.5725
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Lung
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Men
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1993, 1999)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+-3.7178
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+(1999, 2013)
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+-0.3940
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Oesophageal
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Women
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1993, 2013)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+-0.2159
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Oesophageal
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Men
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1993, 2013)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+0.3434
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Pancreatic
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Women
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1993, 1998)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+-4.5118
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+(1998, 2013)
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+2.9563
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Pancreatic
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Men
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1993, 2013)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+0.7430
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Prostate
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Women
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Prostate
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Men
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1993, 1998)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+-0.1775
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+(1998, 2007)
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+7.5558
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+(2007, 2013)
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-1.8510
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center; background-color: #EF5350;">
+NO
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Breast
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Women
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+(1993, 2013)
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+0.8656
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center; background-color: #C8E870;">
+YES
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+<tr>
+<td headers="Site" class="gt_row gt_left">
+Breast
+</td>
+<td headers="Sex" class="gt_row gt_left" style="border-right-width: 0.5px; border-right-style: solid; border-right-color: lightgrey;">
+Men
+</td>
+<td headers="Years_1" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_1" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_1" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+<td headers="Years_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_2" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_2" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+<td headers="Years_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="APC_3" class="gt_row gt_right" style="text-align: center;">
+-
+</td>
+<td headers="Significant_3" class="gt_row gt_left" style="text-align: center;">
+-
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 

@@ -9,7 +9,8 @@ format:
       body-width: 2000px
       margin-width: 300px
       gutter-width: 1.5rem
-editor: visual
+editor: 
+  mode: source
 ---
 
 ## Packages
@@ -22,6 +23,9 @@ library(ggplot2)
 library(gridExtra)
 library(scales)
 library(gt)
+library(webshot2)
+library(writexl)
+library(gtsummary)
 ```
 
 ## Setup
@@ -624,35 +628,53 @@ apc_barchart <- function(data_jp, title){
   # browser()
 
   # Manipulate table so it is ready for plotting
+  apc_table <- data.frame(Cancer = rep(apc_table$Cancer, 2), sex = rep(c("women", "men"), each = length(unique(apc_table$Cancer))), apc = c(apc_table$apc_women, apc_table$apc_men), period = c(apc_table$period_women, apc_table$period_men))
+  
   apc_table <- apc_table |> 
-    pivot_longer(cols = c(apc_women, apc_men)) |>
+    # pivot_longer(cols = c(apc_women, apc_men)) |>
     mutate(
       
-      sex = gsub(name, pattern = "apc\\_", replacement = ""),
+      # sex = gsub(name, pattern = "apc\\_", replacement = ""),
       
       sex = ifelse(sex == "men", "Men", "Women"),
       
-      apc = gsub(value, pattern = "\\%", replacement = ""),
+      apc = gsub(apc, pattern = "\\%", replacement = ""),
       
       significant = grepl(apc, pattern = "\\*"),
       
-      apc = as.numeric(gsub(apc, pattern = "\\*", replacement = ""))
+      apc = as.numeric(gsub(apc, pattern = "\\*", replacement = "")),
       
-    )
+      period = ifelse(is.na(period), NA, paste0("(", period, ")"))
+      
+    ) |>
+    # Reorder Cancer label so plot is nicer
+    arrange(desc(Cancer)) |>
+    mutate(Cancer = factor(Cancer, levels = unique(Cancer)))
+  
+  # Grab max apc so we can scale plot with period annotations
+  max_apc <- max(apc_table$apc, na.rm = T)
+  
   
   # Create plot
   plot <- apc_table |>
     ggplot(aes(x = Cancer, y = apc, fill = sex)) +
-    geom_bar(stat = "identity", position = position_dodge()) +
+    geom_bar(stat = "identity", position = position_dodge(), colour = "black") +
     geom_hline(yintercept = 0) +
     ggtitle(title) +
     ylab("APC") +
     scale_fill_discrete(name = "Sex") +
     geom_text(aes(label = ifelse(significant, "*", ""),
-                hjust = ifelse(apc>0, 0, 1.2)),
+                hjust = ifelse(apc>0, -0.1, 1.1)),
             position = position_dodge(width = 0.9),
-            size = 6) + 
-  labs(caption = "* Indicates an APC significantly different from 0") +
+            vjust = 0.8,
+            size = 6) +
+     geom_text(aes(label = period,
+                    y = max_apc +1),
+              position = position_dodge(width = 0.9),
+              vjust = 0.38) +
+  labs(caption = "* Indicates an APC significantly different from 0",
+       y = "Annual Percentage Change (APC)") +
+    ylim(NA, max_apc+2)  +
     coord_flip()
     
     
@@ -661,6 +683,276 @@ apc_barchart <- function(data_jp, title){
   return(plot)
 
 }
+
+
+# # Incidence data
+# incidence_jp <- read.delim("Globocan By Country Last 20/Scotland/Cancer_Joinpoint_Scotland_Last_20.txt", sep = "\t") |>
+#   filter(incmort == "Incidence") |>
+#   mutate(Cancer.label = case_when(
+#     Cancer.label == "Colorectum" ~ "Colorectal",
+#     Cancer.label == "Oesophagus" ~ "Oesophageal",
+#     Cancer.label == "Pancreas" ~ "Pancreatic",
+#     Cancer.label == "All sites excl. non-melanoma skin cancer" ~ "All",
+#     TRUE ~ Cancer.label
+#   ))
+# 
+# # Mortality data
+# mortality_jp <- read.delim("Globocan By Country Last 20/Scotland/Cancer_Joinpoint_Scotland_Last_20.txt", sep = "\t") |>
+#   filter(incmort == "Mortality") |>
+#   mutate(Cancer.label = case_when(
+#     Cancer.label == "Colorectum" ~ "Colorectal",
+#     Cancer.label == "Oesophagus" ~ "Oesophageal",
+#     Cancer.label == "Pancreas" ~ "Pancreatic",
+#     Cancer.label == "All sites excl. non-melanoma skin cancer" ~ "All",
+#     TRUE ~ Cancer.label
+#   ))
+# 
+# 
+# print(apc_barchart(incidence_jp, title = "Recent Trends for Cancer Incidence in Scotland"))
+# ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/scotland_all_cancer_inc_barchart.png")
+# print(apc_barchart(mortality_jp, title = "Recent Trends for Cancer Mortality in Scotland"))
+# ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/scotland_all_cancer_mort_barchart.png")
+
+
+```
+
+
+### APC Full Table
+```{r, results = "asis"}
+
+
+apc_full_table <- function(data_jp, title = NA){
+  
+  
+  # Initialise output table
+  output_table <- data.frame(Site = character(0), Sex = character(0), JP_N = numeric(0), JP_years = character(0), APC = numeric(0), Significant = character(0))
+  
+  # Edit sex variable for table
+  jp_table <- data_jp |>
+    mutate(Sex = if_else(Sex == 2, "Women", "Men"))
+  
+  
+  for(cancer in unique(jp_table$Cancer.label)){
+
+    for(sex in c("Women", "Men")){
+      
+      # Initialise row for output
+      output_row <- c(cancer, sex)
+
+      # Filter data to data on sex and cancer of interest
+      spec_data <- filter(jp_table, Sex == sex & Cancer.label == cancer)
+
+      # If no data - output NA's, else calculate period of most recent APC and APC
+      if(nrow(spec_data)==0){
+        output_row <- append(output_row, c(1, rep(NA, 3)))
+        
+        output_table <- rbind(output_table, output_row)
+        
+      } else {
+
+        # Arrange by year
+        spec_data <- arrange(spec_data, Year)
+        
+        # Find join years
+        join_years <- spec_data$Year[is.na(spec_data$APC)]
+        join_years <- c(min(spec_data$Year), join_years, max(spec_data$Year))
+
+        # Total number of joins
+        no_segments <- spec_data$Joinpoints[1] + 1
+        
+        for(i in 1:no_segments){
+          
+          # Filter data to join
+          spec_data_join <- spec_data[spec_data$Year > join_years[i] & spec_data$Year < join_years[i+1],]
+          
+          # Add join no. to output
+          output_row_join <- append(output_row, i)
+          
+          # Add years of the join to output
+          output_row_join <- append(output_row_join, paste0("(", join_years[i], ", ", join_years[i+1], ")"))
+          
+          # Add APC of the join to output
+          output_row_join <- append(output_row_join, gsub(spec_data_join$APC[1], pattern = "\\*", replacement = ""))
+          
+          # Add significant indicator to output
+          output_row_join <- append(output_row_join, if_else(grepl(spec_data_join$APC[1], pattern = "\\*"), "YES", "NO"))
+          
+          # Append row onto dataframe
+          output_table <- rbind(output_table, output_row_join)
+          
+        }
+
+      }
+
+    }
+    
+  }
+  
+  # Readd in column names - rbind removes them
+  colnames(output_table) <- c("Site", "Sex", "Segment Number", "Years", "APC", "Significant")
+  
+  # Max number of segments
+  max_segments <- max(output_table$`Segment Number`)
+  
+  # Pivot wider
+  output_table <- output_table |>
+    pivot_wider(id_cols = c(Site, Sex), names_from = `Segment Number`, values_from = c(Years, APC, Significant), names_vary = "slowest") |>
+    mutate_all(~ replace_na(., "-"))
+
+  
+  # gt and make 'pretty'
+  output_table_gt <- output_table |>
+    gt()
+  
+  # For each segment, make a tab spanner
+  for(i in 1:max_segments){
+    output_table_gt <- tab_spanner(output_table_gt, label = paste0("Segment ", i), columns = ends_with(paste0("_", i)))
+    output_table_gt <- cols_width(output_table_gt, as.formula(paste0("Years_", i, "~ px(180)")))
+  }
+
+  # Define the new column names
+  column_names <- names(output_table)
+  new_names <- sub("_\\d+$", "", column_names)
+
+  # Create a named vector for cols_label()
+  rename_vector <- setNames(new_names, column_names)
+
+  # Rename columns using cols_label
+  output_table_gt <- output_table_gt |>
+      cols_label(!!!rename_vector)
+  
+  output_table_gt <- output_table_gt |>
+    tab_header(
+      title = md(paste0("**",ifelse(is.na(title), "", title),"**"))
+    ) |>
+    # Column headers
+    tab_style(
+    style = list(
+      cell_text(weight = "bold", align = "center")
+    ),
+    locations = cells_column_labels(everything())
+    ) |>
+    # Body rows
+    tab_style(
+      style = list(
+        cell_text(align = "center")
+      ),
+      locations = cells_body(
+          columns = c(paste0(c("Years_", "APC_", "Significant_"), rep(1:max_segments, each = 3)))
+      )
+    ) |>
+    # Line between sex column and rest of table
+    tab_style(
+      style = cell_borders(
+        sides = c("right"),
+        weight = px(0.5),
+        color = "lightgrey"),
+      locations = cells_body(
+        columns = Sex)) |>
+    cols_width(Sex ~ px(120))
+  
+  # Add colours to significant column to show if significant or not
+  for(i in 1:max_segments){
+    
+    column <- sym(paste0("Significant_", i))
+    
+    output_table_gt <- output_table_gt |>
+      tab_style(
+        style = list(
+          cell_fill(color = "#ef5350")
+          ),
+        locations = cells_body(
+          columns = column,
+          rows = !!column == "NO"
+        )
+      ) |>
+      tab_style(
+        style = list(
+          cell_fill(color = "#C8E870FF")
+          ),
+        locations = cells_body(
+          columns = column,
+          rows = !!column == "YES"
+        )
+      )
+  }
+    
+  
+  return(output_table_gt)
+  
+   
+}
+
+```
+
+
+### Compare trends
+```{r}
+
+compare_trends <- function(data_jp_1, data_jp_2){
+  
+  # Select columns of interest and merge
+  data_jp_1 <- data_jp_1 |>
+    select(Cancer.label, Sex, Year, ASR_1 = ASR..World.)
+  
+  data_jp_2 <- data_jp_2 |>
+    select(Cancer.label, Sex, Year, ASR_2 = ASR..World.)
+  
+  data_jp <- merge(data_jp_1, data_jp_2, by = c("Cancer.label", "Sex", "Year")) |>
+    mutate(
+      
+      Sex = if_else(Sex == 2, "Women", "Men"),
+      
+      ASR_diff = ASR_1-ASR_2
+      
+      ) |>
+    group_by(Cancer.label, Sex) |>
+    summarise(
+      
+      t_value = mean(ASR_diff)/(var(ASR_diff)/sqrt(n())),
+      
+      p_value = pt(t_value, df = n() - 1),
+      
+      p_value = 2*min(p_value, 1-p_value),
+      
+      p_value = round(p_value, digits = 3)
+      
+    )
+    
+  
+
+  
+  
+  
+  return(data_jp)
+  
+}
+
+
+data_jp_1 <- read.delim("Globocan By Country Last 20/England Wales/Cancer_Joinpoint_England_Wales_Last_20.txt", sep = "\t") |>
+  filter(incmort == "Incidence") |>
+  mutate(Cancer.label = case_when(
+    Cancer.label == "Colorectum" ~ "Colorectal",
+    Cancer.label == "Oesophagus" ~ "Oesophageal",
+    Cancer.label == "Pancreas" ~ "Pancreatic",
+    Cancer.label == "All sites excl. non-melanoma skin cancer" ~ "All",
+    TRUE ~ Cancer.label
+  ))
+
+
+data_jp_2 <- read.delim("Globocan By Country Last 20/Scotland/Cancer_Joinpoint_Scotland_Last_20.txt", sep = "\t") |>
+  filter(incmort == "Incidence") |>
+  mutate(Cancer.label = case_when(
+    Cancer.label == "Colorectum" ~ "Colorectal",
+    Cancer.label == "Oesophagus" ~ "Oesophageal",
+    Cancer.label == "Pancreas" ~ "Pancreatic",
+    Cancer.label == "All sites excl. non-melanoma skin cancer" ~ "All",
+    TRUE ~ Cancer.label
+  ))
+
+
+
+# View(compare_trends(data_jp_1, data_jp_2))
 
 
 ```
@@ -764,42 +1056,6 @@ apc_table(mortality_jp, title = "Recent Trends for Cancer Mortality")
 
 ```{r}
 
-# Filter both dataframes for the relevant data
-# data <- incidence_data |>
-#   filter(`Cancer label` == "Breast")
-# data_jp <- incidence_jp |>
-#   filter(Cancer.label == "Breast")
-# 
-# jp_plot <- extract_joinpoint_splines(data_jp)
-# 
-# plot <- ggplot(data = data, aes(x = Year, y = `ASR (World)`)) +
-#     geom_point() +
-#     geom_line(data = jp_plot, aes(x = Year, y = Model, colour = factor(APC, levels = unique(APC)))) +
-#     scale_colour_discrete() +
-#     labs(colour = "APC (%)") +
-#     ggtitle("Incidence Projections for Breast Cancer in the UK")
-# 
-# final <- data_jp |>
-#   arrange(desc(Year)) |>
-#   filter(row_number() == 1) |>
-#   mutate(APC = as.numeric(gsub(APC, pattern = "\\*", replacement = "")),
-#          APCnew = 1 + APC/100)
-# 
-# final_data <- data |>
-#   arrange(desc(Year)) |>
-#   filter(row_number()==1)
-# 
-# 
-# proj_data <- data.frame(Year = seq(final$Year, 2040, by = 0.1))
-# proj_data$lograte <- seq(from = log(final$Model), by = log((final$APCnew)^(1/10)), length.out = nrow(proj_data))
-# proj_data$rate <- exp(proj_data$lograte)
-# 
-# plot <- plot +
-#   geom_line(data = proj_data, aes(x = Year, y = rate), colour = "red", linetype = "dashed") 
-# 
-# plot +
-#   scale_x_continuous(breaks = pretty_breaks())
-
 plot_joinpoint_output(cancer = "Breast", data = incidence_data, data_jp = incidence_jp, incmort = "Incidence", projection.yr = 2040, report.APC = T)
 
 
@@ -808,50 +1064,6 @@ plot_joinpoint_output(cancer = "Breast", data = incidence_data, data_jp = incide
 ## Pretty Plots for Presentation - BC Mortality
 
 ```{r}
-
-# Filter both dataframes for the relevant data
-# data <- mortality_data |>
-#   filter(`Cancer label` == "Breast") |>
-#   filter(Year >= 1993)
-# data_jp <- mortality_jp |>
-#   filter(Cancer.label == "Breast")
-# 
-# jp_plot <- extract_joinpoint_splines(data_jp) |>
-#   filter(Year >= 1993)
-# 
-# plot <- ggplot(data = data, aes(x = Year, y = `ASR (World)`)) +
-#     geom_point() +
-#     geom_line(data = jp_plot, aes(x = Year, y = Model, colour = factor(APC, levels = unique(APC), labels = round(unique(APC), digits = 2)))) +
-#     # scale_colour_discrete() +
-#     labs(colour = "APC (%)") +
-#     ggtitle("Mortality Rates for Breast Cancer in the UK")
-# 
-# final <- data_jp |>
-#   arrange(desc(Year)) |>
-#   filter(row_number() == 1) |>
-#   mutate(APC = as.numeric(gsub(APC, pattern = "\\*", replacement = "")),
-#          APCnew = 1 + APC/100)
-# 
-# final_data <- data |>
-#   arrange(desc(Year)) |>
-#   filter(row_number()==1)
-# 
-# 
-# proj_data <- data.frame(Year = seq(final$Year, 2040, by = 0.1))
-# proj_data$lograte <- seq(from = log(final$Model), by = log((final$APCnew)^(1/10)), length.out = nrow(proj_data))
-# proj_data$rate <- exp(proj_data$lograte)
-# 
-# plot <- plot +
-#   geom_line(data = proj_data, aes(x = Year, y = rate), colour = "red", linetype = "dashed") +
-#   # geom_hline(yintercept = final_data$`ASR (World)`*0.85, colour = "forestgreen")
-#   annotate("rect", xmin = max(data$Year), xmax = Inf, 
-#            ymin = -Inf, ymax = final_data$`ASR (World)`*0.85,
-#            alpha = 0.2, fill = "lightgreen") +
-#   labs(caption = "Green box represents CRUK's goal of a 15% reduction in mortality rate in the UK by 2040")
-#   
-# plot +
-#   scale_x_continuous(breaks = pretty_breaks())
-
 
 plot_joinpoint_output(cancer = "Breast", data = mortality_data, data_jp = mortality_jp, incmort = "Mortality", projection.yr = 2040, report.APC = T, projection.target = 0.85, start.yr = 1993)
 
@@ -1007,12 +1219,140 @@ for(cancer in cancers){
 
 ```
 
-## APC Barchart
+## APC Barchart - England and Wales
 
 ```{r}
 
 print(apc_barchart(incidence_jp, title = "Recent Trends for Cancer Incidence in England and Wales"))
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/eng_wales_all_cancer_inc_barchart.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/eng_wales_all_cancer_inc_barchart.png", bg = "white")
 print(apc_barchart(mortality_jp, title = "Recent Trends for Cancer Mortality in England and Wales"))
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/eng_wales_all_cancer_mort_barchart.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/eng_wales_all_cancer_mort_barchart.png", bg = "white")
+
 ```
+
+## APC Barchart - Scotland
+
+```{r}
+
+# Incidence data
+incidence_jp <- read.delim("Globocan By Country Last 20/Scotland/Cancer_Joinpoint_Scotland_Last_20.txt", sep = "\t") |>
+  filter(incmort == "Incidence") |>
+  mutate(Cancer.label = case_when(
+    Cancer.label == "Colorectum" ~ "Colorectal",
+    Cancer.label == "Oesophagus" ~ "Oesophageal",
+    Cancer.label == "Pancreas" ~ "Pancreatic",
+    Cancer.label == "All sites excl. non-melanoma skin cancer" ~ "All",
+    TRUE ~ Cancer.label
+  ))
+
+# Mortality data
+mortality_jp <- read.delim("Globocan By Country Last 20/Scotland/Cancer_Joinpoint_Scotland_Last_20.txt", sep = "\t") |>
+  filter(incmort == "Mortality") |>
+  mutate(Cancer.label = case_when(
+    Cancer.label == "Colorectum" ~ "Colorectal",
+    Cancer.label == "Oesophagus" ~ "Oesophageal",
+    Cancer.label == "Pancreas" ~ "Pancreatic",
+    Cancer.label == "All sites excl. non-melanoma skin cancer" ~ "All",
+    TRUE ~ Cancer.label
+  ))
+
+
+print(apc_barchart(incidence_jp, title = "Recent Trends for Cancer Incidence in Scotland"))
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/scotland_all_cancer_inc_barchart.png", bg = "white")
+print(apc_barchart(mortality_jp, title = "Recent Trends for Cancer Mortality in Scotland"))
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/scotland_all_cancer_mort_barchart.png", bg = "white")
+
+```
+
+## APC Barchart - N. Ireland
+
+```{r}
+
+# Incidence data
+incidence_jp <- read.delim("Globocan By Country Last 20/N Ireland/Cancer_Joinpoint_NIreland_Last_20.txt", sep = "\t") |>
+  filter(incmort == "Incidence") |>
+  mutate(Cancer.label = case_when(
+    Cancer.label == "Colorectum" ~ "Colorectal",
+    Cancer.label == "Oesophagus" ~ "Oesophageal",
+    Cancer.label == "Pancreas" ~ "Pancreatic",
+    Cancer.label == "All sites excl. non-melanoma skin cancer" ~ "All",
+    TRUE ~ Cancer.label
+  ))
+
+# Mortality data
+mortality_jp <- read.delim("Globocan By Country Last 20/N Ireland/Cancer_Joinpoint_NIreland_Last_20.txt", sep = "\t") |>
+  filter(incmort == "Mortality") |>
+  mutate(Cancer.label = case_when(
+    Cancer.label == "Colorectum" ~ "Colorectal",
+    Cancer.label == "Oesophagus" ~ "Oesophageal",
+    Cancer.label == "Pancreas" ~ "Pancreatic",
+    Cancer.label == "All sites excl. non-melanoma skin cancer" ~ "All",
+    TRUE ~ Cancer.label
+  ))
+
+
+print(apc_barchart(incidence_jp, title = "Recent Trends for Cancer Incidence in Northern Ireland"))
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/nireland_all_cancer_inc_barchart.png", bg = "white")
+print(apc_barchart(mortality_jp, title = "Recent Trends for Cancer Mortality in Northern Ireland"))
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/nireland_all_cancer_mort_barchart.png", bg = "white")
+
+```
+
+## Full Tables
+```{r, results = "asis"}
+
+# England and Wales
+incidence_jp <- read.delim("Globocan By Country Last 20/England Wales/Cancer_Joinpoint_England_Wales_Last_20.txt", sep = "\t") |>
+  filter(incmort == "Incidence") |>
+  mutate(Cancer.label = case_when(
+    Cancer.label == "Colorectum" ~ "Colorectal",
+    Cancer.label == "Oesophagus" ~ "Oesophageal",
+    Cancer.label == "Pancreas" ~ "Pancreatic",
+    Cancer.label == "All sites excl. non-melanoma skin cancer" ~ "All",
+    TRUE ~ Cancer.label
+  ))
+
+output <- apc_full_table(incidence_jp, title = "Cancer Incidence in England and Wales")
+print(output)
+
+gtsave(output, filename = r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\UK-cancer-trends\Position Paper Tables\Joinpoint_Table_England_Wales.png)")
+
+
+
+# Scotland
+incidence_jp <- read.delim("Globocan By Country Last 20/Scotland/Cancer_Joinpoint_Scotland_Last_20.txt", sep = "\t") |>
+  filter(incmort == "Incidence") |>
+  mutate(Cancer.label = case_when(
+    Cancer.label == "Colorectum" ~ "Colorectal",
+    Cancer.label == "Oesophagus" ~ "Oesophageal",
+    Cancer.label == "Pancreas" ~ "Pancreatic",
+    Cancer.label == "All sites excl. non-melanoma skin cancer" ~ "All",
+    TRUE ~ Cancer.label
+  ))
+
+
+output <- apc_full_table(incidence_jp, title = "Cancer Incidence in Scotland")
+print(output)
+gtsave(output, filename = r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\UK-cancer-trends\Position Paper Tables\Joinpoint_Table_Scotland.png)")
+
+
+# N. Ireland
+incidence_jp <- read.delim("Globocan By Country Last 20/N Ireland/Cancer_Joinpoint_NIreland_Last_20.txt", sep = "\t") |>
+  filter(incmort == "Incidence") |>
+  mutate(Cancer.label = case_when(
+    Cancer.label == "Colorectum" ~ "Colorectal",
+    Cancer.label == "Oesophagus" ~ "Oesophageal",
+    Cancer.label == "Pancreas" ~ "Pancreatic",
+    Cancer.label == "All sites excl. non-melanoma skin cancer" ~ "All",
+    TRUE ~ Cancer.label
+  ))
+
+
+output <- apc_full_table(incidence_jp, title = "Cancer Incidence in N. Ireland")
+print(output)
+gtsave(output, filename = r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\UK-cancer-trends\Position Paper Tables\Joinpoint_Table_NIreland.png)")
+
+
+```
+
+

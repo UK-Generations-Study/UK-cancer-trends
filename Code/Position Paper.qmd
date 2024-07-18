@@ -9,7 +9,8 @@ format:
       body-width: 2000px
       margin-width: 300px
       gutter-width: 1.5rem
-editor: visual
+editor: 
+  mode: source
 execute:
   warning: false
 ---
@@ -28,6 +29,8 @@ library(scales)
 library(RColorBrewer)
 library(stringr)
 library(paletteer)
+library(fontawesome)
+library(gt)
 ```
 
 ## Setup
@@ -320,7 +323,7 @@ get_variable_HSNI <- function(rf){
 
 Grabbing data where all sources are similar.
 
-```{r}
+```{r, echo = F}
 risk_factors <- c("BMI", "Alcohol", "E_Cigarette", "Smoking", "Activity")
 countries <- c("England", "Scotland", "Wales", "NIreland")
 
@@ -375,26 +378,26 @@ data2 <- data |>
     country == "England" & section == "Alcohol" & variable == "% non drinker/did not drink in last 12 months" ~ "% Non-Drinker",
     country == "England" & section == "Smoking" & variable == "Current cigarette smoker" ~ "% Current Smoker",
     country == "England" & section == "E_Cigarette" & variable == "Currently uses e-cigarettes" ~ "% Current E-cigarette user",
-    country == "England" & section == "Activity" & variable %in% c("Meets aerobic guidelines") ~ "% Meets guidelines",
+    country == "England" & section == "Activity" & variable %in% c("Meets aerobic guidelines") ~ "% Meets Guidelines",
   
     country == "Scotland" & section == "BMI" & variable == "Overweight (including obesity)" ~ "% Overweight",
     country == "Scotland" & section == "Alcohol" & variable == "Non-drinker" ~ "% Non-Drinker",
     country == "Scotland" & section == "Smoking" & variable == "Current smoker" ~ "% Current Smoker",
     country == "Scotland" & section == "E_Cigarette" & variable == "Currently using" ~ "% Current E-cigarette user",
-    country == "Scotland" & section == "Activity" & variable == "Meets recommendations" ~ "% Meets guidelines",
+    country == "Scotland" & section == "Activity" & variable == "Meets recommendations" ~ "% Meets Guidelines",
     
     country == "Wales" & section == "BMI" & variable == "BMI 25+ (overweight or obese)" ~ "% Overweight",
     country == "Wales" & section == "BMI" & variable == "BMI 30+ (obese)" ~ "% Obese",
     country == "Wales" & section == "Alcohol" & variable == "Average weekly alcohol consumption - none (may include some people who do sometimes drink)" ~ "% Non-Drinker",
     country == "Wales" & section == "Smoking" & variable == "Smoker" ~ "% Current Smoker",
     country == "Wales" & section == "E_Cigarette" & variable == "E-cigarette user" ~ "% Current E-cigarette user",
-    country == "Wales" & section == "Activity" & variable == "Active at least 150 minutes in previous week" ~ "% Meets guidelines",
+    country == "Wales" & section == "Activity" & variable == "Active at least 150 minutes in previous week" ~ "% Meets Guidelines",
     
     country == "N. Ireland" & section == "BMI" & variable == "Overweight" ~ "% Overweight",
     country == "N. Ireland" & section == "Alcohol" & variable == "Drink" ~ "% Non-Drinker", # NOTE: This is not technically accurate but next code block rectifies.
     country == "N. Ireland" & section == "Smoking" & variable == "Smoke" ~ "% Current Smoker",
     country == "N. Ireland" & section == "E_Cigarette" & variable == "E-Cigarette Use" ~ "% Current E-cigarette user",
-    country == "N. Ireland" & section == "Activity" & variable %in% c("Meets Recommendations", "Meets recommendations") ~ "% Meets guidelines",
+    country == "N. Ireland" & section == "Activity" & variable %in% c("Meets Recommendations", "Meets recommendations") ~ "% Meets Guidelines",
     
     TRUE ~ variable
 
@@ -411,25 +414,25 @@ data3 <-  data2 |>
     TRUE ~ value
   ))
 
-## Need to group England overweight values together.
-
-# england_overweight <- data3 |>
-#   filter(country == "England" & section == "BMI" & !grepl(group, pattern = "Children")) |>
-#   pivot_wider(names_from = variable, values_from = value) |>
-#   mutate(`% Overweight` = `% overweight including obese`) |>
-#   pivot_longer(cols = c(unique(data3$variable[data3$country == "England" & data3$section == "BMI" & !grepl(data3$group, pattern = "Children")]), "% Overweight")) |>
-#   rename(variable = name)
-
-# data4 <- data3 |>
-#   # filter(!(country == "England" & section == "BMI" & !grepl(group, pattern = "Children"))) |>
-#   mutate(variable = case_when(
-#     country == "England" & section == "BMI" & variable == "Overweight including obese" & grepl(group, pattern = "Children") ~ "% Overweight",
-#     country == "England" & section == "BMI" & variable == "% overweight including obese" & !grepl(group, pattern = "Children") ~ "% Overweight",
-#     TRUE ~ variable
-#   )) # |>
-  # rbind(england_overweight)
-
-data4 <- data3
+# ## Need to group England overweight values together.
+# 
+# # england_overweight <- data3 |>
+# #   filter(country == "England" & section == "BMI" & !grepl(group, pattern = "Children")) |>
+# #   pivot_wider(names_from = variable, values_from = value) |>
+# #   mutate(`% Overweight` = `% overweight including obese`) |>
+# #   pivot_longer(cols = c(unique(data3$variable[data3$country == "England" & data3$section == "BMI" & !grepl(data3$group, pattern = "Children")]), "% Overweight")) |>
+# #   rename(variable = name)
+# 
+# # data4 <- data3 |>
+# #   # filter(!(country == "England" & section == "BMI" & !grepl(group, pattern = "Children"))) |>
+# #   mutate(variable = case_when(
+# #     country == "England" & section == "BMI" & variable == "Overweight including obese" & grepl(group, pattern = "Children") ~ "% Overweight",
+# #     country == "England" & section == "BMI" & variable == "% overweight including obese" & !grepl(group, pattern = "Children") ~ "% Overweight",
+# #     TRUE ~ variable
+# #   )) # |>
+#   # rbind(england_overweight)
+# 
+# data4 <- data3
 
 ```
 
@@ -473,7 +476,7 @@ whs_data <- whs_data |>
       section == "E_Cigarette" ~ "% Current E-cigarette user",
       section == "BMI" & variable == "Overweight or obese (9)" ~ "% Overweight",
       section == "BMI" & variable == "Obese (10)" ~ "% Obese",
-      section == "Activity" & variable == "Exercise or physical activity done (new questions): Active for 150 minutes or more in the previous week (8)" ~ "% Meets guidelines",
+      section == "Activity" & variable == "Exercise or physical activity done (new questions): Active for 150 minutes or more in the previous week (8)" ~ "% Meets Guidelines",
       TRUE ~ NA),
     
     country = "Wales",
@@ -486,7 +489,7 @@ whs_data <- whs_data |>
   filter(!is.na(variable))
 
 # Adding the Wales data to the main dataset
-data4 <- data4 |>
+data4 <- data3 |>
   rbind(whs_data)
 
 
@@ -525,6 +528,7 @@ plot_data |>
 # Need to use weightings from the data set to calculate % Obese for 25+ age range.
 weightings <- read_excel("BMI_Data.xlsx", sheet = "England_All")
 
+# Cleaning weightings data
 top_row <- which(weightings$...1 == "Weighted bases")
 weightings <-weightings[(top_row+1):nrow(weightings),]
 
@@ -551,6 +555,7 @@ weightings <- weightings |>
   rename(year = ...1) |>
   sapply(as.numeric)
 
+# Create new range using weights
 adult_bmi_england <- data4 |>
   filter(country == "England" & section == "BMI" & variable == "% Overweight" & group == "All" & !grepl(age_group, pattern = "16")) |>
   pivot_wider(names_from = age_group, values_from = value) |>
@@ -560,7 +565,7 @@ adult_bmi_england <- data4 |>
   select(year, variable, country, group, section, `25+`) |>
   pivot_longer(cols = `25+`) |>
   rename(age_group = name) |>
-  filter(year != 2005) # NOTE: this year has an issue with the sampling weights so is ommitted at this step.
+  filter(year != 2005) # NOTE: this year has an issue with the sampling weights so is omitted at this step.
 
 # Isolate the unaffected age groups and merge back in the new age group
 age_bmi_england <- data4 |>
@@ -581,7 +586,7 @@ ggplot(data = age_bmi_england, aes(x = year, y = value, colour = factor(age_grou
         panel.grid.minor.x = element_blank())
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Overweight_or_Obese_by_Age.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Overweight_or_Obese_by_Age.png", bg = "white")
 
 ```
 
@@ -591,37 +596,41 @@ ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK
 obese_data <- data4
 
 # Scotland BMI data collected was on Overweight so need to adjust and add Obesity data from a seperate source
-obese_sheets <- excel_sheets("BMI_Obese_Data.xlsx")
+obese_data_sheets <- excel_sheets("BMI_Obese_Data.xlsx")
 
-scotland_sheets <- obese_sheets[grepl(obese_sheets, pattern = "Scotland")]
+scotland_sheets <- obese_data_sheets[grepl(obese_data_sheets, pattern = "Scotland")]
 
 # Loop over sheets for age and sex and add both to total dataset used for this specific variable.
 for(sheet in scotland_sheets){
+  
+  # Read sheet and clean
   tempdata <- read_excel("BMI_Obese_Data.xlsx", sheet = sheet)
   group <- gsub(x = sheet, pattern = "Scotland_", replacement = "")
   tempdata <- pull_SHS_data(data = tempdata, group = group)
   tempdata$section <- "BMI"
   tempdata$variable <- ifelse(tempdata$variable == "Obesity", "% Obese", "% Non-Obese")
   
-  
+  # Merge into obese_data
   obese_data <- rbind(obese_data, tempdata)
 
 }
  # Similar to Scotland data, needed to extract specific information on Obesity for N. Ireland as initial data collected was only Overweight %
-nireland_sheets <- obese_sheets[grepl(obese_sheets, pattern = "NIreland")]
+nireland_sheets <- obese_data_sheets[grepl(obese_data_sheets, pattern = "NIreland")]
 
 # Loop over sheets for sexes and add both to total dataset used for this specific variable.
 for(sheet in nireland_sheets){
+  
+  # Read in sheet and clean
   tempdata <- read_excel(paste0("BMI_Obese_Data.xlsx"), sheet = sheet)
   group <- gsub(x = sheet, pattern = "NIreland_", replacement = "")
   tempdata <- pull_HSNI_data(data = tempdata, group = group)
   tempdata$variable <- "% Obese"
   tempdata$section <- "BMI"
   tempdata$value <- 100*tempdata$value
-  
   tempdata$year = as.numeric(map_chr(strsplit(tempdata$year, "/"), 1))
   tempdata$age_group = if_else(tempdata$age_group == "Total", "16+", tempdata$age_group)
   
+  # Merge into obese data
   obese_data <- rbind(obese_data, tempdata)
 }
 
@@ -687,7 +696,7 @@ plot_data |>
   facet_wrap(~group,scales = "fixed", dir = "v")
   
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Overweight_not_Obese_by_Sex.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Overweight_not_Obese_by_Sex.png", bg = "white")
 
 
 ```
@@ -769,7 +778,7 @@ plot_data |>
         panel.grid.minor.x = element_blank())
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Overweight_not_Obese_by_Age.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Overweight_not_Obese_by_Age.png", bg = "white")
 
 ```
 
@@ -806,7 +815,7 @@ plot_data |>
 
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Obese_by_Sex.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Obese_by_Sex.png", width = 8, height = 9, bg = "white")
 
 ```
 
@@ -858,6 +867,10 @@ age_bmi_england <- data4 |>
   filter(country == "England" & section == "BMI" & variable == "% Obese" & group %in% c("All", "Children_All") & age_group %in% c("16-24", "2-10", "11-15")) |>
   rbind(adult_bmi_england)
 
+# For presentation: Only considering two youngest groups
+age_bmi_england <- age_bmi_england |>
+  filter(age_group %in% c("2-10", "11-15"))
+
 # Plot the data
 ggplot(data = age_bmi_england, aes(x = year, y = value, colour = factor(age_group, levels = c("2-10", "11-15", "16-24", "25+")))) +
   geom_point() +
@@ -866,13 +879,14 @@ ggplot(data = age_bmi_england, aes(x = year, y = value, colour = factor(age_grou
   ylab("% Obese") +
   ggtitle("% Obese in England") +
   labs(colour =  "Age Group", caption = "*Obese for those aged >15 as BMI > 30\nObese for those aged <= 15 as at or above the 95th BMI percentile in the UK") +
+  scale_color_brewer(palette="Set2") +
   scale_x_continuous(breaks = 2002:2022, limits = c(2002, 2022)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
         panel.grid.minor.x = element_blank())
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Obese_by_Age.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Obese_by_Age.png", width = 8, height = 4.5, bg = "white")
 
 ```
 
@@ -1125,7 +1139,7 @@ plot_data |>
   facet_wrap(~group, scales = "fixed", dir = "v")
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Alcohol_Over_Guidelines_by_Sex.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Alcohol_Over_Guidelines_by_Sex.png", bg = "white")
 
 ```
 
@@ -1177,7 +1191,7 @@ plot_data |>
   facet_wrap(~group, scales = "fixed", dir = "v")
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Smoking_by_Sex.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Smoking_by_Sex.png", width = 8, height = 9, bg = "white")
 
 ```
 
@@ -1336,7 +1350,7 @@ plot_data |>
   ylim(5, 10)
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/E_Cigarette_Usage_UK.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/E_Cigarette_Usage_GB.png", width = 8, height = 4.5, bg = "white")
 
 # Initialising colours for next plot
 cols <- brewer.pal(n = 8, name = "Greys")[4:8]
@@ -1403,7 +1417,7 @@ plot_data |>
         panel.grid.minor.x = element_blank())
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/E_Cigarette_Usage_by_Age.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/E_Cigarette_Usage_by_Age.png", bg = "white")
 ```
 
 ## E-Cigarette - Great Britain by Sex
@@ -1435,8 +1449,8 @@ Added a new source for the activity that provides more years. The Welsh definiti
 # Plotting pre-cleaned data for activity
 
 plot_data <- data4 |>
-  filter(variable == "% Meets guidelines" & age_group %in% c("16+") & grepl(group, pattern = "All") |
-           variable == "% Meets guidelines" & age_group %in% c("19+") & grepl(group, pattern = "All") & country == "N. Ireland")
+  filter(variable == "% Meets Guidelines" & age_group %in% c("16+") & grepl(group, pattern = "All") |
+           variable == "% Meets Guidelines" & age_group %in% c("19+") & grepl(group, pattern = "All") & country == "N. Ireland")
 
 plot_data |>
   ggplot(aes(x = year, y = value, colour = country)) +
@@ -1465,19 +1479,19 @@ activity_england <- activity_england |>
   mutate(year = as.numeric(paste0("20", substr(year, start = 1, stop = 2))),
          value = 100*as.numeric(value),
          variable = case_when(
-           variable == "Active: at least 150 minutes a week" ~ "% Meets guidelines",
+           variable == "Active: at least 150 minutes a week" ~ "% Meets Guidelines",
            TRUE ~ variable
          ), age_group = "16+",
          group = "All",
          country = "England",
          section = "Activity") |>
-  filter(variable == "% Meets guidelines")
+  filter(variable == "% Meets Guidelines")
 
 # Filtering out old source for England and adding the new source
 
 plot_data <- data4 |>
-  filter(variable == "% Meets guidelines" & age_group %in% c("16+") & grepl(group, pattern = "All") & country != "England" |
-           variable == "% Meets guidelines" & age_group %in% c("19+") & grepl(group, pattern = "All") & country == "N. Ireland") |>
+  filter(variable == "% Meets Guidelines" & age_group %in% c("16+") & grepl(group, pattern = "All") & country != "England" |
+           variable == "% Meets Guidelines" & age_group %in% c("19+") & grepl(group, pattern = "All") & country == "N. Ireland") |>
   rbind(activity_england)
 
 plot_data |>
@@ -1501,8 +1515,8 @@ Need to note here that activity for Wales is strictly 150mins whereas the other 
 
 ```{r, fig.height = 10, fig.width = 7}
 plot_data <- data4 |>
-  filter(variable == "% Meets guidelines" & age_group %in% c("16+") & !grepl(group, pattern = "All") |
-           variable == "% Meets guidelines" & age_group %in% c("19+") & !grepl(group, pattern = "All") & country == "N. Ireland") |>
+  filter(variable == "% Meets Guidelines" & age_group %in% c("16+") & !grepl(group, pattern = "All") |
+           variable == "% Meets Guidelines" & age_group %in% c("19+") & !grepl(group, pattern = "All") & country == "N. Ireland") |>
   mutate(group = case_when(
     group == "Male" ~ "Men",
     group == "Female" ~ "Women",
@@ -1524,7 +1538,7 @@ plot_data |>
   facet_wrap(~group, scales = "fixed", dir = "v")
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Activity_by_Sex.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Activity_by_Sex.png", bg = "white")
 
 ```
 
@@ -1556,7 +1570,7 @@ plot_data |>
   ylim(25, 30)
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Age_at_First_Birth.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Age_at_First_Birth.png", width = 8, height = 4.5, bg = "white")
 
 ```
 
@@ -1661,7 +1675,7 @@ plot_data |>
   ylim(55, 57)
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Parity_by_Year.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Parity_by_Year.png", width = 8, height = 4.5, bg = "white")
 
 ```
 
@@ -1718,7 +1732,7 @@ hrt_data <- read_excel("HRT_Data.xlsx")
 
 plot_data <- hrt_data |>
   mutate(Year = as.numeric(map_chr(strsplit(`Financial Year`, "/"), 1)), 
-         `% HRT` = as.numeric(`Patients per 1,000 Population`)) |>
+         `% HRT` = as.numeric(`Patients per 1,000 Population`)/1000) |>
   filter(!is.na(`% HRT`))
 
 plot_data |>
@@ -1736,7 +1750,7 @@ plot_data |>
 
 
 # Save plot
-ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/HRT_Usage.png")
+ggsave("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/HRT_Usage.png", width = 8, height = 4.5, bg = "white")
 
 
 ```
@@ -1778,7 +1792,7 @@ for(site in unique(cancer_data$`Cancer label`)){
   scale_x_continuous(breaks = seq(minyear+1, maxyear, by = 2)))
   
   # Save plot
-  ggsave(paste0("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Cancer_", site, "_Rates.png"))
+  ggsave(paste0("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Cancer_", site, "_Rates.png"), bg = "white")
 
 }
 
@@ -1808,7 +1822,42 @@ plot_data |>
   scale_x_continuous(breaks = seq(1998, max(plot_data$Year), by = 2))
   
 # Save plot
-ggsave(paste0("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Cancer_Prostate_Breast_Rates.png"))
+ggsave(paste0("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Cancer_Prostate_Breast_Rates.png"), bg = "white")
+
+```
+
+## Cancer Incidence - Globocan Data
+
+```{r}
+# Reading in data
+cancer_england_wales <- read_excel("Cancer Trends/Globocan By Country/Cancer_Projection_Data_England_Wales.xlsx")
+cancer_scotland <- read_excel("Cancer Trends/Globocan By Country/Cancer_Projection_Data_Scotland.xlsx")
+cancer_nireland <- read_excel("Cancer Trends/Globocan By Country/Cancer_Projection_Data_NIreland.xlsx")
+
+# Merging data and making sex and inc/mort variables clearer
+cancer_data <- cancer_england_wales |>
+  rbind(cancer_scotland) |>
+  rbind(cancer_nireland) |>
+  mutate(Sex = ifelse(Sex==1, "Male", "Female"),
+         IncMort = ifelse(Type == 0, "Incidence", "Mortality"),
+         `Cancer label` = ifelse(`Cancer label` == "All sites excl. non-melanoma skin cancer", "All Sites", `Cancer label`)) |>
+  filter(IncMort == "Incidence") |>
+  filter(Year >= 1997)
+
+
+ggplot(data = cancer_data, aes(x = Year, y = `ASR (World)`, colour = `Country label`)) +
+  geom_line() +
+  geom_point() +
+  ggtitle(paste0("Cancer Incidence Rates")) +
+  labs(colour = "Country") +
+  theme(legend.position="bottom",legend.box = "vertical") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
+        panel.grid.minor.x = element_blank()) +
+  facet_grid(`Cancer label` ~ Sex, scales = "free_y") +
+  scale_x_continuous(breaks = seq(1998, max(cancer_data$Year), by = 2))
+
+ggsave(paste0("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/All Cancers Plot.png"), height = 16, width = 8, bg = "white")
 
 ```
 
@@ -1931,7 +1980,7 @@ plot_data |>
   facet_wrap(~group, scales = "fixed", dir = "v")
   
 # Save plot
-ggsave(paste0("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Diabetes_by_Sex.png"))
+ggsave(paste0("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Diabetes_by_Sex.png"), bg = "white")
 
 ```
 
@@ -1958,9 +2007,27 @@ screening_data_breast_scotland <- screening_data_breast_scotland |>
   select(value, year) |>
   mutate(country = "Scotland")
 
+# Read in Wales data
+screening_data_breast_wales <- read_excel("Screening_Data.xlsx", sheet = "Wales_Breast_Uptake")
+
+# Match structure with England data
+screening_data_breast_wales <- screening_data_breast_wales |>
+  select(year = Year, value = Uptake) |>
+  mutate(country = "Wales")
+
+# Read in N. Ireland data
+screening_data_breast_nireland <- read_excel("Screening_Data.xlsx", sheet = "NIreland_Breast_Uptake")
+
+# Match structure with England data
+screening_data_breast_nireland <- screening_data_breast_nireland |>
+  select(year = Year, value = Uptake) |>
+  mutate(country = "N. Ireland")
+
 # Plotting
 plot_data <- screening_data_breast_england |>
-  rbind(screening_data_breast_scotland) 
+  rbind(screening_data_breast_scotland) |>
+  rbind(screening_data_breast_wales) |>
+  rbind(screening_data_breast_nireland)
 
 plot_data |>
   ggplot(aes(x = year, y = value, colour = country)) +
@@ -1977,7 +2044,7 @@ plot_data |>
   ylim(60,80)
 
 # Save plot
-ggsave(paste0("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Screening_Breast.png"))
+ggsave(paste0("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Screening_Breast.png"), bg = "white")
 
 ```
 
@@ -2004,7 +2071,7 @@ plot_data |>
         panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
         panel.grid.minor.x = element_blank())
 
-# Reading in data
+# Reading in data - England
 screening_data_bowel_england <- read_excel("Screening_Data.xlsx", sheet = "England_Bowel_Uptake")
 
 # Mutating to simple columns
@@ -2013,7 +2080,7 @@ screening_data_bowel_england <- screening_data_bowel_england |>
   select(year, value = Value) |>
   mutate(country = "England")
 
-# Reading in data
+# Reading in data - Scotland
 screening_data_bowel_scotland <- read_excel("Screening_Data.xlsx", sheet = "Scotland_Bowel_Uptake")
 
 # Matching columns of England data
@@ -2024,9 +2091,27 @@ screening_data_bowel_scotland <- screening_data_bowel_scotland |>
   select(year, value) |>
   mutate(country = "Scotland")
 
+# Reading in data - Wales
+screening_data_bowel_wales <- read_excel("Screening_Data.xlsx", sheet = "Wales_Bowel_Uptake")
+
+# Matching columns of England data
+screening_data_bowel_wales <- screening_data_bowel_wales |>
+  select(year = Year, value = Uptake) |>
+  mutate(country = "Wales")
+
+# Reading in data - N. Ireland
+screening_data_bowel_nireland <- read_excel("Screening_Data.xlsx", sheet = "NIreland_Bowel_Uptake")
+
+# Matching columns of England data
+screening_data_bowel_nireland <- screening_data_bowel_nireland |>
+  select(year = Year, value = Uptake) |>
+  mutate(country = "N. Ireland")
+
 # Merging and plotting
 plot_data <- screening_data_bowel_england |>
-  rbind(screening_data_bowel_scotland) 
+  rbind(screening_data_bowel_scotland)|>
+  rbind(screening_data_bowel_wales) |>
+  rbind(screening_data_bowel_nireland)
 
 plot_data |>
   ggplot(aes(x = year, y = value, colour = country)) +
@@ -2041,6 +2126,9 @@ plot_data |>
         panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
         panel.grid.minor.x = element_blank())
 
+# Save plot
+ggsave(paste0("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Screening_Bowel.png"), bg = "white")
+
 ```
 
 ## Screening - Breast + Bowel Uptake
@@ -2048,11 +2136,15 @@ plot_data |>
 ```{r, fig.height = 10, fig.width = 7}
 
 bowel_screening_data <- screening_data_bowel_england |>
-  rbind(screening_data_bowel_scotland) |>
+  rbind(screening_data_bowel_scotland)|>
+  rbind(screening_data_bowel_wales) |>
+  rbind(screening_data_bowel_nireland) |>
   mutate(Location = "Bowel")
 
 breast_screening_data <- screening_data_breast_england |>
   rbind(screening_data_breast_scotland) |>
+  rbind(screening_data_breast_wales) |>
+  rbind(screening_data_breast_nireland) |>
   mutate(Location = "Breast")
 
 plot_data <- bowel_screening_data |>
@@ -2060,6 +2152,7 @@ plot_data <- bowel_screening_data |>
 
 plot_data |>
   ggplot(aes(x = year, y = value, colour = country)) +
+  # scale_colour_manual(values = c("England" = "#FF7676FF", "Scotland" = "#75B7D1FF", "Wales" = "#F9D662FF", "N. Ireland" = "#7CAB7DFF")) +
   geom_line() +
   geom_point() +
   xlab("Year") +
@@ -2074,7 +2167,7 @@ plot_data |>
 
 
 # Save plot
-ggsave(paste0("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Screening_by_Location.png"))
+ggsave(paste0("C:/Users/rfrost/OneDrive - The Institute of Cancer Research/Documents/UK-cancer-trends/Position Paper Plots/Screening_by_Location.png"), bg = "white")
 
 ```
 
@@ -2102,3 +2195,61 @@ plot_data |>
         panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
         panel.grid.minor.x = element_blank())
 ```
+
+
+## Diet - Fibre Intake
+```{r}
+
+# Read in data
+fibre_data <- read_excel("Diet_Data.xlsx", sheet = "UK_Fibre")
+
+# Clean data
+fibre_data <- fibre_data |>
+  filter(!is.na(`Fibre (g/day)4 5`)) |>
+  select(-`Statistical comparison`, -...8, -...9)
+
+# Get groups from data
+fibre_data_groups <- fibre_data$`Fibre (g/day)4 5`[is.na(fibre_data$`NDNS RP survey years`)]
+
+# Filter to variable of interest
+fibre_data <- fibre_data |>
+  filter(grepl(`Fibre (g/day)4 5`, pattern = "% meeting recommendation7")) 
+
+# Create column names
+colnames(fibre_data) <- c("variable", "2009", "2011", "2013", "2015", "2017")
+
+# Add in groups
+fibre_data$group <- fibre_data_groups
+
+# Pivot longer
+fibre_data <- fibre_data |>
+  pivot_longer(cols = c("2009", "2011", "2013", "2015", "2017")) |>
+  mutate(variable = "% Meeting Fibre Intake Recommendations") |>
+  mutate(sex = str_extract(group, "^[^ ]+"),
+         age_group = str_extract(group, "(?<= ).*")) |>
+  filter(age_group == "19-64 years") |>
+  mutate(sex = if_else(sex == "Adults", "All", sex),
+         year = as.numeric(name),
+         country = "UK",
+         value = as.numeric(value))
+
+# Create plot data
+plot_data <- fibre_data |>
+  filter(sex != "All")
+
+# Plot figure
+ggplot(plot_data, aes(x = year, y = value, colour = sex)) +
+  geom_line() +
+  geom_point() +
+  xlab("Year") +
+  ylab("% Meeting Fibre Intake Recommendations") +
+  ggtitle("% Meeting Fibre Intake Recommendations in Adults in the UK") +
+  labs(colour =  "Sex", caption = "*Adult defined as aged 19-64") +
+  scale_x_continuous(breaks = 2002:2022, limits = c(2002, 2022)) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
+        panel.grid.minor.x = element_blank())
+
+```
+
+
