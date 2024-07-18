@@ -1,0 +1,937 @@
+"Cancer_Site"	"Country"	"Sex"	"Year"	"ASR"	"Model"	"Flag"	"APC"	"Joinpoints"	"Final Selected Model"
+All sites excl. NSMC	England	Men	2000	657.20	645.77	NA	0.5838*	1	1
+All sites excl. NSMC	England	Men	2001	662.20	649.54	NA	0.5838*	1	1
+All sites excl. NSMC	England	Men	2002	648.20	653.33	NA	0.5838*	1	1
+All sites excl. NSMC	England	Men	2003	643.20	657.15	NA	0.5838*	1	1
+All sites excl. NSMC	England	Men	2004	660.60	660.98	NA	0.5838*	1	1
+All sites excl. NSMC	England	Men	2005	653.80	664.84	NA	0.5838*	1	1
+All sites excl. NSMC	England	Men	2006	670.30	668.72	NA	0.5838*	1	1
+All sites excl. NSMC	England	Men	2007	664.30	672.63	NA	0.5838*	1	1
+All sites excl. NSMC	England	Men	2008	677.60	676.55	NA	0.5838*	1	1
+All sites excl. NSMC	England	Men	2009	687.80	680.50	NA	0.5838*	1	1
+All sites excl. NSMC	England	Men	2010	682.90	684.48	NA	0.5838*	1	1
+All sites excl. NSMC	England	Men	2011	684.30	688.47	NA	0.5838*	1	1
+All sites excl. NSMC	England	Men	2012	697.90	692.49	NA	0.5838*	1	1
+All sites excl. NSMC	England	Men	2013	714.80	696.53	Joinpoint 1	NA	1	1
+All sites excl. NSMC	England	Men	2014	690.60	694.29	NA	-0.3220	1	1
+All sites excl. NSMC	England	Men	2015	688.40	692.05	NA	-0.3220	1	1
+All sites excl. NSMC	England	Men	2016	683.90	689.83	NA	-0.3220	1	1
+All sites excl. NSMC	England	Men	2017	670.90	687.60	NA	-0.3220	1	1
+All sites excl. NSMC	England	Men	2018	697.50	685.39	NA	-0.3220	1	1
+All sites excl. NSMC	England	Men	2019	689.20	683.18	NA	-0.3220	1	1
+All sites excl. NSMC	England	Women	2000	490.50	491.76	NA	-0.3406	2	2
+All sites excl. NSMC	England	Women	2001	492.60	490.08	NA	-0.3406	2	2
+All sites excl. NSMC	England	Women	2002	483.60	488.41	Joinpoint 1	NA	2	2
+All sites excl. NSMC	England	Women	2003	496.90	494.16	NA	1.1758*	2	2
+All sites excl. NSMC	England	Women	2004	497.60	499.97	NA	1.1758*	2	2
+All sites excl. NSMC	England	Women	2005	506.10	505.85	NA	1.1758*	2	2
+All sites excl. NSMC	England	Women	2006	515.20	511.79	NA	1.1758*	2	2
+All sites excl. NSMC	England	Women	2007	515.70	517.81	NA	1.1758*	2	2
+All sites excl. NSMC	England	Women	2008	530.90	523.90	NA	1.1758*	2	2
+All sites excl. NSMC	England	Women	2009	530.50	530.06	NA	1.1758*	2	2
+All sites excl. NSMC	England	Women	2010	533.50	536.29	NA	1.1758*	2	2
+All sites excl. NSMC	England	Women	2011	540.20	542.60	NA	1.1758*	2	2
+All sites excl. NSMC	England	Women	2012	547.40	548.98	NA	1.1758*	2	2
+All sites excl. NSMC	England	Women	2013	558.60	555.44	Joinpoint 2	NA	2	2
+All sites excl. NSMC	England	Women	2014	555.90	554.61	NA	-0.1487	2	2
+All sites excl. NSMC	England	Women	2015	553.20	553.78	NA	-0.1487	2	2
+All sites excl. NSMC	England	Women	2016	551.60	552.96	NA	-0.1487	2	2
+All sites excl. NSMC	England	Women	2017	546.30	552.14	NA	-0.1487	2	2
+All sites excl. NSMC	England	Women	2018	550.70	551.32	NA	-0.1487	2	2
+All sites excl. NSMC	England	Women	2019	555.60	550.50	NA	-0.1487	2	2
+All sites excl. NSMC	Nothern Ireland	Men	2000	612.80	619.96	NA	1.4092*	1	1
+All sites excl. NSMC	Nothern Ireland	Men	2001	642.50	628.69	NA	1.4092*	1	1
+All sites excl. NSMC	Nothern Ireland	Men	2002	638.40	637.55	NA	1.4092*	1	1
+All sites excl. NSMC	Nothern Ireland	Men	2003	652.90	646.54	NA	1.4092*	1	1
+All sites excl. NSMC	Nothern Ireland	Men	2004	653.70	655.65	NA	1.4092*	1	1
+All sites excl. NSMC	Nothern Ireland	Men	2005	645.90	664.89	NA	1.4092*	1	1
+All sites excl. NSMC	Nothern Ireland	Men	2006	666.70	674.26	NA	1.4092*	1	1
+All sites excl. NSMC	Nothern Ireland	Men	2007	687.40	683.76	NA	1.4092*	1	1
+All sites excl. NSMC	Nothern Ireland	Men	2008	706.30	693.40	Joinpoint 1	NA	1	1
+All sites excl. NSMC	Nothern Ireland	Men	2009	696.90	691.73	NA	-0.2406	1	1
+All sites excl. NSMC	Nothern Ireland	Men	2010	673.20	690.06	NA	-0.2406	1	1
+All sites excl. NSMC	Nothern Ireland	Men	2011	706.60	688.40	NA	-0.2406	1	1
+All sites excl. NSMC	Nothern Ireland	Men	2012	694.30	686.74	NA	-0.2406	1	1
+All sites excl. NSMC	Nothern Ireland	Men	2013	677.60	685.09	NA	-0.2406	1	1
+All sites excl. NSMC	Nothern Ireland	Men	2014	677.80	683.44	NA	-0.2406	1	1
+All sites excl. NSMC	Nothern Ireland	Men	2015	680.90	681.80	NA	-0.2406	1	1
+All sites excl. NSMC	Nothern Ireland	Men	2016	672.80	680.16	NA	-0.2406	1	1
+All sites excl. NSMC	Nothern Ireland	Men	2017	675.70	678.52	NA	-0.2406	1	1
+All sites excl. NSMC	Nothern Ireland	Men	2018	675.00	676.89	NA	-0.2406	1	1
+All sites excl. NSMC	Nothern Ireland	Men	2019	686.80	675.26	NA	-0.2406	1	1
+All sites excl. NSMC	Nothern Ireland	Women	2000	487.50	476.19	NA	0.9690*	0	0
+All sites excl. NSMC	Nothern Ireland	Women	2001	464.30	480.80	NA	0.9690*	0	0
+All sites excl. NSMC	Nothern Ireland	Women	2002	486.70	485.46	NA	0.9690*	0	0
+All sites excl. NSMC	Nothern Ireland	Women	2003	493.30	490.17	NA	0.9690*	0	0
+All sites excl. NSMC	Nothern Ireland	Women	2004	496.80	494.92	NA	0.9690*	0	0
+All sites excl. NSMC	Nothern Ireland	Women	2005	488.40	499.71	NA	0.9690*	0	0
+All sites excl. NSMC	Nothern Ireland	Women	2006	489.60	504.55	NA	0.9690*	0	0
+All sites excl. NSMC	Nothern Ireland	Women	2007	511.70	509.44	NA	0.9690*	0	0
+All sites excl. NSMC	Nothern Ireland	Women	2008	526.70	514.38	NA	0.9690*	0	0
+All sites excl. NSMC	Nothern Ireland	Women	2009	527.90	519.36	NA	0.9690*	0	0
+All sites excl. NSMC	Nothern Ireland	Women	2010	515.30	524.40	NA	0.9690*	0	0
+All sites excl. NSMC	Nothern Ireland	Women	2011	536.60	529.48	NA	0.9690*	0	0
+All sites excl. NSMC	Nothern Ireland	Women	2012	547.70	534.61	NA	0.9690*	0	0
+All sites excl. NSMC	Nothern Ireland	Women	2013	547.50	539.79	NA	0.9690*	0	0
+All sites excl. NSMC	Nothern Ireland	Women	2014	541.10	545.02	NA	0.9690*	0	0
+All sites excl. NSMC	Nothern Ireland	Women	2015	551.70	550.30	NA	0.9690*	0	0
+All sites excl. NSMC	Nothern Ireland	Women	2016	567.20	555.63	NA	0.9690*	0	0
+All sites excl. NSMC	Nothern Ireland	Women	2017	556.40	561.02	NA	0.9690*	0	0
+All sites excl. NSMC	Nothern Ireland	Women	2018	562.40	566.45	NA	0.9690*	0	0
+All sites excl. NSMC	Nothern Ireland	Women	2019	556.50	571.94	NA	0.9690*	0	0
+All sites excl. NSMC	Scotland	Men	2000	719.24	726.01	NA	-0.0813	1	1
+All sites excl. NSMC	Scotland	Men	2001	719.36	725.42	NA	-0.0813	1	1
+All sites excl. NSMC	Scotland	Men	2002	730.93	724.83	NA	-0.0813	1	1
+All sites excl. NSMC	Scotland	Men	2003	732.69	724.24	NA	-0.0813	1	1
+All sites excl. NSMC	Scotland	Men	2004	739.03	723.65	NA	-0.0813	1	1
+All sites excl. NSMC	Scotland	Men	2005	704.89	723.06	NA	-0.0813	1	1
+All sites excl. NSMC	Scotland	Men	2006	722.87	722.48	NA	-0.0813	1	1
+All sites excl. NSMC	Scotland	Men	2007	715.41	721.89	NA	-0.0813	1	1
+All sites excl. NSMC	Scotland	Men	2008	725.53	721.30	NA	-0.0813	1	1
+All sites excl. NSMC	Scotland	Men	2009	734.51	720.71	NA	-0.0813	1	1
+All sites excl. NSMC	Scotland	Men	2010	710.86	720.13	NA	-0.0813	1	1
+All sites excl. NSMC	Scotland	Men	2011	727.31	719.54	NA	-0.0813	1	1
+All sites excl. NSMC	Scotland	Men	2012	710.45	718.96	NA	-0.0813	1	1
+All sites excl. NSMC	Scotland	Men	2013	720.78	718.37	NA	-0.0813	1	1
+All sites excl. NSMC	Scotland	Men	2014	724.07	717.79	Joinpoint 1	NA	1	1
+All sites excl. NSMC	Scotland	Men	2015	701.19	710.39	NA	-1.0308	1	1
+All sites excl. NSMC	Scotland	Men	2016	694.27	703.07	NA	-1.0308	1	1
+All sites excl. NSMC	Scotland	Men	2017	693.15	695.82	NA	-1.0308	1	1
+All sites excl. NSMC	Scotland	Men	2018	714.85	688.65	NA	-1.0308	1	1
+All sites excl. NSMC	Scotland	Men	2019	668.11	681.55	NA	-1.0308	1	1
+All sites excl. NSMC	Scotland	Women	2000	555.09	541.93	NA	0.8507*	1	1
+All sites excl. NSMC	Scotland	Women	2001	542.95	546.54	NA	0.8507*	1	1
+All sites excl. NSMC	Scotland	Women	2002	545.95	551.19	NA	0.8507*	1	1
+All sites excl. NSMC	Scotland	Women	2003	552.11	555.88	NA	0.8507*	1	1
+All sites excl. NSMC	Scotland	Women	2004	563.82	560.61	NA	0.8507*	1	1
+All sites excl. NSMC	Scotland	Women	2005	557.92	565.37	NA	0.8507*	1	1
+All sites excl. NSMC	Scotland	Women	2006	558.00	570.18	NA	0.8507*	1	1
+All sites excl. NSMC	Scotland	Women	2007	577.83	575.03	NA	0.8507*	1	1
+All sites excl. NSMC	Scotland	Women	2008	586.12	579.93	NA	0.8507*	1	1
+All sites excl. NSMC	Scotland	Women	2009	593.06	584.86	NA	0.8507*	1	1
+All sites excl. NSMC	Scotland	Women	2010	594.53	589.83	NA	0.8507*	1	1
+All sites excl. NSMC	Scotland	Women	2011	591.01	594.85	NA	0.8507*	1	1
+All sites excl. NSMC	Scotland	Women	2012	598.89	599.91	Joinpoint 1	NA	1	1
+All sites excl. NSMC	Scotland	Women	2013	599.38	598.16	NA	-0.2919	1	1
+All sites excl. NSMC	Scotland	Women	2014	596.89	596.42	NA	-0.2919	1	1
+All sites excl. NSMC	Scotland	Women	2015	596.02	594.67	NA	-0.2919	1	1
+All sites excl. NSMC	Scotland	Women	2016	586.38	592.94	NA	-0.2919	1	1
+All sites excl. NSMC	Scotland	Women	2017	582.20	591.21	NA	-0.2919	1	1
+All sites excl. NSMC	Scotland	Women	2018	608.37	589.48	NA	-0.2919	1	1
+All sites excl. NSMC	Scotland	Women	2019	581.23	587.76	NA	-0.2919	1	1
+All sites excl. NSMC	Wales	Men	2002	713.00	744.15	NA	-0.3551*	0	0
+All sites excl. NSMC	Wales	Men	2003	736.70	741.51	NA	-0.3551*	0	0
+All sites excl. NSMC	Wales	Men	2004	754.30	738.88	NA	-0.3551*	0	0
+All sites excl. NSMC	Wales	Men	2005	726.10	736.25	NA	-0.3551*	0	0
+All sites excl. NSMC	Wales	Men	2006	747.00	733.64	NA	-0.3551*	0	0
+All sites excl. NSMC	Wales	Men	2007	747.70	731.04	NA	-0.3551*	0	0
+All sites excl. NSMC	Wales	Men	2008	745.00	728.44	NA	-0.3551*	0	0
+All sites excl. NSMC	Wales	Men	2009	723.20	725.85	NA	-0.3551*	0	0
+All sites excl. NSMC	Wales	Men	2010	728.00	723.28	NA	-0.3551*	0	0
+All sites excl. NSMC	Wales	Men	2011	718.70	720.71	NA	-0.3551*	0	0
+All sites excl. NSMC	Wales	Men	2012	702.80	718.15	NA	-0.3551*	0	0
+All sites excl. NSMC	Wales	Men	2013	732.40	715.60	NA	-0.3551*	0	0
+All sites excl. NSMC	Wales	Men	2014	726.00	713.06	NA	-0.3551*	0	0
+All sites excl. NSMC	Wales	Men	2015	704.80	710.53	NA	-0.3551*	0	0
+All sites excl. NSMC	Wales	Men	2016	704.60	708.00	NA	-0.3551*	0	0
+All sites excl. NSMC	Wales	Men	2017	672.40	705.49	NA	-0.3551*	0	0
+All sites excl. NSMC	Wales	Men	2018	723.50	702.99	NA	-0.3551*	0	0
+All sites excl. NSMC	Wales	Men	2019	694.90	700.49	NA	-0.3551*	0	0
+All sites excl. NSMC	Wales	Women	2002	530.90	529.46	NA	0.6853*	1	1
+All sites excl. NSMC	Wales	Women	2003	528.00	533.09	NA	0.6853*	1	1
+All sites excl. NSMC	Wales	Women	2004	538.90	536.74	NA	0.6853*	1	1
+All sites excl. NSMC	Wales	Women	2005	535.50	540.42	NA	0.6853*	1	1
+All sites excl. NSMC	Wales	Women	2006	552.00	544.12	NA	0.6853*	1	1
+All sites excl. NSMC	Wales	Women	2007	544.20	547.85	NA	0.6853*	1	1
+All sites excl. NSMC	Wales	Women	2008	559.70	551.61	NA	0.6853*	1	1
+All sites excl. NSMC	Wales	Women	2009	552.70	555.39	NA	0.6853*	1	1
+All sites excl. NSMC	Wales	Women	2010	560.80	559.19	NA	0.6853*	1	1
+All sites excl. NSMC	Wales	Women	2011	564.70	563.02	NA	0.6853*	1	1
+All sites excl. NSMC	Wales	Women	2012	550.80	566.88	NA	0.6853*	1	1
+All sites excl. NSMC	Wales	Women	2013	582.90	570.77	NA	0.6853*	1	1
+All sites excl. NSMC	Wales	Women	2014	579.00	574.68	Joinpoint 1	NA	1	1
+All sites excl. NSMC	Wales	Women	2015	567.90	568.06	NA	-1.1520*	1	1
+All sites excl. NSMC	Wales	Women	2016	562.20	561.51	NA	-1.1520*	1	1
+All sites excl. NSMC	Wales	Women	2017	540.40	555.05	NA	-1.1520*	1	1
+All sites excl. NSMC	Wales	Women	2018	546.50	548.65	NA	-1.1520*	1	1
+All sites excl. NSMC	Wales	Women	2019	552.60	542.33	NA	-1.1520*	1	1
+Breast	England	Women	2000	150.80	149.92	NA	1.6996*	1	1
+Breast	England	Women	2001	152.70	152.47	NA	1.6996*	1	1
+Breast	England	Women	2002	151.90	155.06	NA	1.6996*	1	1
+Breast	England	Women	2003	159.80	157.70	NA	1.6996*	1	1
+Breast	England	Women	2004	159.90	160.38	Joinpoint 1	NA	1	1
+Breast	England	Women	2005	162.80	161.17	NA	0.4946*	1	1
+Breast	England	Women	2006	161.40	161.97	NA	0.4946*	1	1
+Breast	England	Women	2007	159.80	162.77	NA	0.4946*	1	1
+Breast	England	Women	2008	165.30	163.57	NA	0.4946*	1	1
+Breast	England	Women	2009	162.80	164.38	NA	0.4946*	1	1
+Breast	England	Women	2010	165.20	165.20	NA	0.4946*	1	1
+Breast	England	Women	2011	164.10	166.01	NA	0.4946*	1	1
+Breast	England	Women	2012	166.20	166.83	NA	0.4946*	1	1
+Breast	England	Women	2013	171.30	167.66	NA	0.4946*	1	1
+Breast	England	Women	2014	174.20	168.49	NA	0.4946*	1	1
+Breast	England	Women	2015	171.00	169.32	NA	0.4946*	1	1
+Breast	England	Women	2016	168.80	170.16	NA	0.4946*	1	1
+Breast	England	Women	2017	167.30	171.00	NA	0.4946*	1	1
+Breast	England	Women	2018	172.30	171.85	NA	0.4946*	1	1
+Breast	England	Women	2019	171.30	172.70	NA	0.4946*	1	1
+Breast	Nothern Ireland	Women	2000	136.60	134.90	NA	1.2456*	0	0
+Breast	Nothern Ireland	Women	2001	130.60	136.58	NA	1.2456*	0	0
+Breast	Nothern Ireland	Women	2002	132.40	138.28	NA	1.2456*	0	0
+Breast	Nothern Ireland	Women	2003	142.40	140.00	NA	1.2456*	0	0
+Breast	Nothern Ireland	Women	2004	153.90	141.75	NA	1.2456*	0	0
+Breast	Nothern Ireland	Women	2005	144.00	143.51	NA	1.2456*	0	0
+Breast	Nothern Ireland	Women	2006	130.80	145.30	NA	1.2456*	0	0
+Breast	Nothern Ireland	Women	2007	151.40	147.11	NA	1.2456*	0	0
+Breast	Nothern Ireland	Women	2008	151.60	148.94	NA	1.2456*	0	0
+Breast	Nothern Ireland	Women	2009	156.40	150.80	NA	1.2456*	0	0
+Breast	Nothern Ireland	Women	2010	151.20	152.68	NA	1.2456*	0	0
+Breast	Nothern Ireland	Women	2011	159.00	154.58	NA	1.2456*	0	0
+Breast	Nothern Ireland	Women	2012	161.20	156.51	NA	1.2456*	0	0
+Breast	Nothern Ireland	Women	2013	155.60	158.46	NA	1.2456*	0	0
+Breast	Nothern Ireland	Women	2014	152.30	160.43	NA	1.2456*	0	0
+Breast	Nothern Ireland	Women	2015	170.80	162.43	NA	1.2456*	0	0
+Breast	Nothern Ireland	Women	2016	165.40	164.45	NA	1.2456*	0	0
+Breast	Nothern Ireland	Women	2017	167.80	166.50	NA	1.2456*	0	0
+Breast	Nothern Ireland	Women	2018	170.00	168.57	NA	1.2456*	0	0
+Breast	Nothern Ireland	Women	2019	161.60	170.67	NA	1.2456*	0	0
+Breast	Scotland	Women	2000	152.82	149.03	NA	1.2223*	1	1
+Breast	Scotland	Women	2001	146.96	150.85	NA	1.2223*	1	1
+Breast	Scotland	Women	2002	149.79	152.69	NA	1.2223*	1	1
+Breast	Scotland	Women	2003	156.25	154.56	NA	1.2223*	1	1
+Breast	Scotland	Women	2004	157.52	156.45	NA	1.2223*	1	1
+Breast	Scotland	Women	2005	159.37	158.36	NA	1.2223*	1	1
+Breast	Scotland	Women	2006	161.76	160.30	NA	1.2223*	1	1
+Breast	Scotland	Women	2007	159.58	162.25	NA	1.2223*	1	1
+Breast	Scotland	Women	2008	164.18	164.24	NA	1.2223*	1	1
+Breast	Scotland	Women	2009	166.61	166.25	NA	1.2223*	1	1
+Breast	Scotland	Women	2010	167.80	168.28	Joinpoint 1	NA	1	1
+Breast	Scotland	Women	2011	169.81	168.25	NA	-0.0140	1	1
+Breast	Scotland	Women	2012	169.09	168.23	NA	-0.0140	1	1
+Breast	Scotland	Women	2013	170.01	168.21	NA	-0.0140	1	1
+Breast	Scotland	Women	2014	165.00	168.18	NA	-0.0140	1	1
+Breast	Scotland	Women	2015	169.82	168.16	NA	-0.0140	1	1
+Breast	Scotland	Women	2016	163.59	168.14	NA	-0.0140	1	1
+Breast	Scotland	Women	2017	165.14	168.11	NA	-0.0140	1	1
+Breast	Scotland	Women	2018	175.34	168.09	NA	-0.0140	1	1
+Breast	Scotland	Women	2019	166.71	168.07	NA	-0.0140	1	1
+Breast	Wales	Women	2002	160.00	162.06	NA	0.3268	0	0
+Breast	Wales	Women	2003	162.40	162.59	NA	0.3268	0	0
+Breast	Wales	Women	2004	160.60	163.12	NA	0.3268	0	0
+Breast	Wales	Women	2005	159.70	163.65	NA	0.3268	0	0
+Breast	Wales	Women	2006	164.30	164.18	NA	0.3268	0	0
+Breast	Wales	Women	2007	162.80	164.72	NA	0.3268	0	0
+Breast	Wales	Women	2008	172.10	165.26	NA	0.3268	0	0
+Breast	Wales	Women	2009	168.00	165.80	NA	0.3268	0	0
+Breast	Wales	Women	2010	170.40	166.34	NA	0.3268	0	0
+Breast	Wales	Women	2011	162.80	166.89	NA	0.3268	0	0
+Breast	Wales	Women	2012	156.30	167.43	NA	0.3268	0	0
+Breast	Wales	Women	2013	179.40	167.98	NA	0.3268	0	0
+Breast	Wales	Women	2014	181.10	168.53	NA	0.3268	0	0
+Breast	Wales	Women	2015	174.60	169.08	NA	0.3268	0	0
+Breast	Wales	Women	2016	171.50	169.63	NA	0.3268	0	0
+Breast	Wales	Women	2017	165.60	170.18	NA	0.3268	0	0
+Breast	Wales	Women	2018	165.00	170.74	NA	0.3268	0	0
+Breast	Wales	Women	2019	164.80	171.30	NA	0.3268	0	0
+Colorectal	England	Men	2000	90.00	89.54	NA	-2.0473	3	3
+Colorectal	England	Men	2001	86.80	87.70	NA	-2.0473	3	3
+Colorectal	England	Men	2002	85.70	85.91	Joinpoint 1	NA	3	3
+Colorectal	England	Men	2003	86.60	86.80	NA	1.0372*	3	3
+Colorectal	England	Men	2004	88.40	87.70	NA	1.0372*	3	3
+Colorectal	England	Men	2005	89.00	88.61	NA	1.0372*	3	3
+Colorectal	England	Men	2006	89.50	89.53	NA	1.0372*	3	3
+Colorectal	England	Men	2007	89.60	90.46	NA	1.0372*	3	3
+Colorectal	England	Men	2008	92.90	91.39	NA	1.0372*	3	3
+Colorectal	England	Men	2009	92.60	92.34	NA	1.0372*	3	3
+Colorectal	England	Men	2010	92.30	93.30	NA	1.0372*	3	3
+Colorectal	England	Men	2011	92.90	94.27	Joinpoint 2	NA	3	3
+Colorectal	England	Men	2012	93.30	91.41	NA	-3.0354	3	3
+Colorectal	England	Men	2013	88.60	88.63	NA	-3.0354	3	3
+Colorectal	England	Men	2014	85.70	85.94	Joinpoint 3	NA	3	3
+Colorectal	England	Men	2015	85.80	85.51	NA	-0.5006	3	3
+Colorectal	England	Men	2016	85.50	85.08	NA	-0.5006	3	3
+Colorectal	England	Men	2017	82.90	84.66	NA	-0.5006	3	3
+Colorectal	England	Men	2018	83.80	84.23	NA	-0.5006	3	3
+Colorectal	England	Men	2019	85.00	83.81	NA	-0.5006	3	3
+Colorectal	England	Women	2000	56.40	56.23	NA	-1.9287	3	3
+Colorectal	England	Women	2001	54.80	55.14	NA	-1.9287	3	3
+Colorectal	England	Women	2002	54.00	54.08	Joinpoint 1	NA	3	3
+Colorectal	England	Women	2003	54.00	54.71	NA	1.1610*	3	3
+Colorectal	England	Women	2004	55.50	55.34	NA	1.1610*	3	3
+Colorectal	England	Women	2005	56.10	55.98	NA	1.1610*	3	3
+Colorectal	England	Women	2006	57.00	56.63	NA	1.1610*	3	3
+Colorectal	England	Women	2007	58.00	57.29	NA	1.1610*	3	3
+Colorectal	England	Women	2008	58.70	57.96	NA	1.1610*	3	3
+Colorectal	England	Women	2009	58.70	58.63	NA	1.1610*	3	3
+Colorectal	England	Women	2010	58.70	59.31	NA	1.1610*	3	3
+Colorectal	England	Women	2011	59.80	60.00	Joinpoint 2	NA	3	3
+Colorectal	England	Women	2012	59.40	59.22	NA	-1.2923*	3	3
+Colorectal	England	Women	2013	57.60	58.46	NA	-1.2923*	3	3
+Colorectal	England	Women	2014	57.20	57.70	NA	-1.2923*	3	3
+Colorectal	England	Women	2015	57.80	56.96	NA	-1.2923*	3	3
+Colorectal	England	Women	2016	56.30	56.22	NA	-1.2923*	3	3
+Colorectal	England	Women	2017	55.60	55.49	Joinpoint 3	NA	3	3
+Colorectal	England	Women	2018	56.20	56.66	NA	2.1111	3	3
+Colorectal	England	Women	2019	58.10	57.86	NA	2.1111	3	3
+Colorectal	Nothern Ireland	Men	2000	88.60	93.93	NA	1.2617*	1	1
+Colorectal	Nothern Ireland	Men	2001	102.90	95.12	NA	1.2617*	1	1
+Colorectal	Nothern Ireland	Men	2002	90.20	96.32	NA	1.2617*	1	1
+Colorectal	Nothern Ireland	Men	2003	103.70	97.53	NA	1.2617*	1	1
+Colorectal	Nothern Ireland	Men	2004	94.10	98.76	NA	1.2617*	1	1
+Colorectal	Nothern Ireland	Men	2005	102.20	100.01	NA	1.2617*	1	1
+Colorectal	Nothern Ireland	Men	2006	102.70	101.27	NA	1.2617*	1	1
+Colorectal	Nothern Ireland	Men	2007	109.50	102.55	NA	1.2617*	1	1
+Colorectal	Nothern Ireland	Men	2008	99.20	103.84	NA	1.2617*	1	1
+Colorectal	Nothern Ireland	Men	2009	103.50	105.15	NA	1.2617*	1	1
+Colorectal	Nothern Ireland	Men	2010	106.70	106.48	NA	1.2617*	1	1
+Colorectal	Nothern Ireland	Men	2011	107.20	107.82	Joinpoint 1	NA	1	1
+Colorectal	Nothern Ireland	Men	2012	111.70	104.72	NA	-2.8747*	1	1
+Colorectal	Nothern Ireland	Men	2013	100.80	101.71	NA	-2.8747*	1	1
+Colorectal	Nothern Ireland	Men	2014	96.00	98.79	NA	-2.8747*	1	1
+Colorectal	Nothern Ireland	Men	2015	93.10	95.95	NA	-2.8747*	1	1
+Colorectal	Nothern Ireland	Men	2016	90.80	93.19	NA	-2.8747*	1	1
+Colorectal	Nothern Ireland	Men	2017	87.30	90.51	NA	-2.8747*	1	1
+Colorectal	Nothern Ireland	Men	2018	87.00	87.91	NA	-2.8747*	1	1
+Colorectal	Nothern Ireland	Men	2019	91.80	85.38	NA	-2.8747*	1	1
+Colorectal	Nothern Ireland	Women	2000	60.30	59.95	NA	0.8919	1	1
+Colorectal	Nothern Ireland	Women	2001	60.10	60.49	NA	0.8919	1	1
+Colorectal	Nothern Ireland	Women	2002	62.40	61.03	NA	0.8919	1	1
+Colorectal	Nothern Ireland	Women	2003	61.70	61.57	NA	0.8919	1	1
+Colorectal	Nothern Ireland	Women	2004	63.80	62.12	NA	0.8919	1	1
+Colorectal	Nothern Ireland	Women	2005	56.80	62.67	NA	0.8919	1	1
+Colorectal	Nothern Ireland	Women	2006	62.80	63.23	NA	0.8919	1	1
+Colorectal	Nothern Ireland	Women	2007	68.20	63.80	NA	0.8919	1	1
+Colorectal	Nothern Ireland	Women	2008	66.40	64.37	NA	0.8919	1	1
+Colorectal	Nothern Ireland	Women	2009	60.80	64.94	NA	0.8919	1	1
+Colorectal	Nothern Ireland	Women	2010	65.10	65.52	NA	0.8919	1	1
+Colorectal	Nothern Ireland	Women	2011	69.80	66.10	Joinpoint 1	NA	1	1
+Colorectal	Nothern Ireland	Women	2012	64.20	65.08	NA	-1.5517*	1	1
+Colorectal	Nothern Ireland	Women	2013	67.60	64.07	NA	-1.5517*	1	1
+Colorectal	Nothern Ireland	Women	2014	61.30	63.07	NA	-1.5517*	1	1
+Colorectal	Nothern Ireland	Women	2015	57.70	62.10	NA	-1.5517*	1	1
+Colorectal	Nothern Ireland	Women	2016	60.10	61.13	NA	-1.5517*	1	1
+Colorectal	Nothern Ireland	Women	2017	61.30	60.18	NA	-1.5517*	1	1
+Colorectal	Nothern Ireland	Women	2018	60.70	59.25	NA	-1.5517*	1	1
+Colorectal	Nothern Ireland	Women	2019	59.00	58.33	NA	-1.5517*	1	1
+Colorectal	Scotland	Men	2000	107.97	104.83	NA	0.1019	2	2
+Colorectal	Scotland	Men	2001	106.19	104.94	NA	0.1019	2	2
+Colorectal	Scotland	Men	2002	101.85	105.04	NA	0.1019	2	2
+Colorectal	Scotland	Men	2003	107.45	105.15	NA	0.1019	2	2
+Colorectal	Scotland	Men	2004	105.47	105.26	NA	0.1019	2	2
+Colorectal	Scotland	Men	2005	101.95	105.37	NA	0.1019	2	2
+Colorectal	Scotland	Men	2006	100.29	105.47	NA	0.1019	2	2
+Colorectal	Scotland	Men	2007	105.11	105.58	NA	0.1019	2	2
+Colorectal	Scotland	Men	2008	108.13	105.69	NA	0.1019	2	2
+Colorectal	Scotland	Men	2009	107.72	105.80	NA	0.1019	2	2
+Colorectal	Scotland	Men	2010	107.01	105.90	NA	0.1019	2	2
+Colorectal	Scotland	Men	2011	107.42	106.01	Joinpoint 1	NA	2	2
+Colorectal	Scotland	Men	2012	99.63	101.29	NA	-4.4531*	2	2
+Colorectal	Scotland	Men	2013	96.47	96.78	NA	-4.4531*	2	2
+Colorectal	Scotland	Men	2014	93.64	92.47	NA	-4.4531*	2	2
+Colorectal	Scotland	Men	2015	88.96	88.35	Joinpoint 2	NA	2	2
+Colorectal	Scotland	Men	2016	85.54	88.81	NA	0.5159	2	2
+Colorectal	Scotland	Men	2017	92.20	89.27	NA	0.5159	2	2
+Colorectal	Scotland	Men	2018	90.21	89.73	NA	0.5159	2	2
+Colorectal	Scotland	Men	2019	89.21	90.19	NA	0.5159	2	2
+Colorectal	Scotland	Women	2000	68.74	66.53	NA	-0.3306	0	0
+Colorectal	Scotland	Women	2001	68.31	66.31	NA	-0.3306	0	0
+Colorectal	Scotland	Women	2002	64.38	66.09	NA	-0.3306	0	0
+Colorectal	Scotland	Women	2003	61.88	65.88	NA	-0.3306	0	0
+Colorectal	Scotland	Women	2004	63.92	65.66	NA	-0.3306	0	0
+Colorectal	Scotland	Women	2005	62.78	65.44	NA	-0.3306	0	0
+Colorectal	Scotland	Women	2006	63.66	65.22	NA	-0.3306	0	0
+Colorectal	Scotland	Women	2007	66.06	65.01	NA	-0.3306	0	0
+Colorectal	Scotland	Women	2008	67.92	64.79	NA	-0.3306	0	0
+Colorectal	Scotland	Women	2009	68.48	64.58	NA	-0.3306	0	0
+Colorectal	Scotland	Women	2010	68.42	64.37	NA	-0.3306	0	0
+Colorectal	Scotland	Women	2011	65.90	64.15	NA	-0.3306	0	0
+Colorectal	Scotland	Women	2012	65.50	63.94	NA	-0.3306	0	0
+Colorectal	Scotland	Women	2013	63.26	63.73	NA	-0.3306	0	0
+Colorectal	Scotland	Women	2014	60.04	63.52	NA	-0.3306	0	0
+Colorectal	Scotland	Women	2015	60.83	63.31	NA	-0.3306	0	0
+Colorectal	Scotland	Women	2016	62.71	63.10	NA	-0.3306	0	0
+Colorectal	Scotland	Women	2017	56.88	62.89	NA	-0.3306	0	0
+Colorectal	Scotland	Women	2018	66.92	62.68	NA	-0.3306	0	0
+Colorectal	Scotland	Women	2019	64.39	62.48	NA	-0.3306	0	0
+Colorectal	Wales	Men	2002	91.00	93.11	NA	1.5660*	1	1
+Colorectal	Wales	Men	2003	97.70	94.57	NA	1.5660*	1	1
+Colorectal	Wales	Men	2004	96.30	96.05	NA	1.5660*	1	1
+Colorectal	Wales	Men	2005	97.50	97.55	NA	1.5660*	1	1
+Colorectal	Wales	Men	2006	97.70	99.08	NA	1.5660*	1	1
+Colorectal	Wales	Men	2007	100.10	100.63	NA	1.5660*	1	1
+Colorectal	Wales	Men	2008	102.10	102.21	NA	1.5660*	1	1
+Colorectal	Wales	Men	2009	105.60	103.81	NA	1.5660*	1	1
+Colorectal	Wales	Men	2010	109.10	105.44	Joinpoint 1	NA	1	1
+Colorectal	Wales	Men	2011	98.00	103.38	NA	-1.9519*	1	1
+Colorectal	Wales	Men	2012	104.30	101.36	NA	-1.9519*	1	1
+Colorectal	Wales	Men	2013	99.20	99.38	NA	-1.9519*	1	1
+Colorectal	Wales	Men	2014	98.60	97.44	NA	-1.9519*	1	1
+Colorectal	Wales	Men	2015	91.90	95.54	NA	-1.9519*	1	1
+Colorectal	Wales	Men	2016	93.80	93.68	NA	-1.9519*	1	1
+Colorectal	Wales	Men	2017	90.30	91.85	NA	-1.9519*	1	1
+Colorectal	Wales	Men	2018	88.50	90.05	NA	-1.9519*	1	1
+Colorectal	Wales	Men	2019	92.30	88.30	NA	-1.9519*	1	1
+Colorectal	Wales	Women	2002	56.40	54.96	NA	2.0282	1	1
+Colorectal	Wales	Women	2003	55.10	56.08	NA	2.0282	1	1
+Colorectal	Wales	Women	2004	57.70	57.21	NA	2.0282	1	1
+Colorectal	Wales	Women	2005	55.40	58.37	NA	2.0282	1	1
+Colorectal	Wales	Women	2006	60.30	59.56	NA	2.0282	1	1
+Colorectal	Wales	Women	2007	62.70	60.77	NA	2.0282	1	1
+Colorectal	Wales	Women	2008	61.00	62.00	Joinpoint 1	NA	1	1
+Colorectal	Wales	Women	2009	62.20	61.61	NA	-0.6202	1	1
+Colorectal	Wales	Women	2010	57.40	61.23	NA	-0.6202	1	1
+Colorectal	Wales	Women	2011	65.00	60.85	NA	-0.6202	1	1
+Colorectal	Wales	Women	2012	63.90	60.48	NA	-0.6202	1	1
+Colorectal	Wales	Women	2013	57.90	60.10	NA	-0.6202	1	1
+Colorectal	Wales	Women	2014	61.70	59.73	NA	-0.6202	1	1
+Colorectal	Wales	Women	2015	58.50	59.36	NA	-0.6202	1	1
+Colorectal	Wales	Women	2016	56.70	58.99	NA	-0.6202	1	1
+Colorectal	Wales	Women	2017	57.40	58.62	NA	-0.6202	1	1
+Colorectal	Wales	Women	2018	55.10	58.26	NA	-0.6202	1	1
+Colorectal	Wales	Women	2019	62.60	57.90	NA	-0.6202	1	1
+Lung	England	Men	2000	112.00	112.63	NA	-4.6634*	2	2
+Lung	England	Men	2001	108.60	107.38	NA	-4.6634*	2	2
+Lung	England	Men	2002	102.80	102.37	Joinpoint 1	NA	2	2
+Lung	England	Men	2003	100.10	101.71	NA	-0.6498*	2	2
+Lung	England	Men	2004	101.70	101.05	NA	-0.6498*	2	2
+Lung	England	Men	2005	99.40	100.39	NA	-0.6498*	2	2
+Lung	England	Men	2006	101.40	99.74	NA	-0.6498*	2	2
+Lung	England	Men	2007	98.90	99.09	NA	-0.6498*	2	2
+Lung	England	Men	2008	99.70	98.45	NA	-0.6498*	2	2
+Lung	England	Men	2009	96.10	97.81	NA	-0.6498*	2	2
+Lung	England	Men	2010	96.20	97.17	NA	-0.6498*	2	2
+Lung	England	Men	2011	96.30	96.54	NA	-0.6498*	2	2
+Lung	England	Men	2012	97.00	95.91	NA	-0.6498*	2	2
+Lung	England	Men	2013	95.30	95.29	Joinpoint 2	NA	2	2
+Lung	England	Men	2014	93.30	93.59	NA	-1.7845*	2	2
+Lung	England	Men	2015	91.40	91.92	NA	-1.7845*	2	2
+Lung	England	Men	2016	92.00	90.28	NA	-1.7845*	2	2
+Lung	England	Men	2017	88.40	88.67	NA	-1.7845*	2	2
+Lung	England	Men	2018	86.60	87.09	NA	-1.7845*	2	2
+Lung	England	Men	2019	85.50	85.53	NA	-1.7845*	2	2
+Lung	England	Women	2000	53.30	53.46	NA	-1.0766	2	2
+Lung	England	Women	2001	53.20	52.88	NA	-1.0766	2	2
+Lung	England	Women	2002	52.30	52.31	Joinpoint 1	NA	2	2
+Lung	England	Women	2003	53.80	53.54	NA	2.3339*	2	2
+Lung	England	Women	2004	53.90	54.78	NA	2.3339*	2	2
+Lung	England	Women	2005	55.90	56.06	NA	2.3339*	2	2
+Lung	England	Women	2006	58.00	57.37	NA	2.3339*	2	2
+Lung	England	Women	2007	58.70	58.71	NA	2.3339*	2	2
+Lung	England	Women	2008	61.20	60.08	NA	2.3339*	2	2
+Lung	England	Women	2009	61.10	61.48	NA	2.3339*	2	2
+Lung	England	Women	2010	61.90	62.92	NA	2.3339*	2	2
+Lung	England	Women	2011	63.90	64.39	NA	2.3339*	2	2
+Lung	England	Women	2012	66.20	65.89	Joinpoint 2	NA	2	2
+Lung	England	Women	2013	66.50	66.23	NA	0.5174*	2	2
+Lung	England	Women	2014	66.50	66.57	NA	0.5174*	2	2
+Lung	England	Women	2015	67.10	66.92	NA	0.5174*	2	2
+Lung	England	Women	2016	67.30	67.26	NA	0.5174*	2	2
+Lung	England	Women	2017	68.50	67.61	NA	0.5174*	2	2
+Lung	England	Women	2018	67.80	67.96	NA	0.5174*	2	2
+Lung	England	Women	2019	67.70	68.31	NA	0.5174*	2	2
+Lung	Nothern Ireland	Men	2000	103.10	104.04	NA	0.2524	1	1
+Lung	Nothern Ireland	Men	2001	110.10	104.30	NA	0.2524	1	1
+Lung	Nothern Ireland	Men	2002	98.70	104.57	NA	0.2524	1	1
+Lung	Nothern Ireland	Men	2003	102.30	104.83	NA	0.2524	1	1
+Lung	Nothern Ireland	Men	2004	112.00	105.10	NA	0.2524	1	1
+Lung	Nothern Ireland	Men	2005	102.20	105.36	NA	0.2524	1	1
+Lung	Nothern Ireland	Men	2006	103.10	105.63	NA	0.2524	1	1
+Lung	Nothern Ireland	Men	2007	104.20	105.89	NA	0.2524	1	1
+Lung	Nothern Ireland	Men	2008	115.30	106.16	NA	0.2524	1	1
+Lung	Nothern Ireland	Men	2009	104.20	106.43	NA	0.2524	1	1
+Lung	Nothern Ireland	Men	2010	105.80	106.70	NA	0.2524	1	1
+Lung	Nothern Ireland	Men	2011	106.40	106.97	Joinpoint 1	NA	1	1
+Lung	Nothern Ireland	Men	2012	104.90	105.32	NA	-1.5423*	1	1
+Lung	Nothern Ireland	Men	2013	105.40	103.69	NA	-1.5423*	1	1
+Lung	Nothern Ireland	Men	2014	99.80	102.09	NA	-1.5423*	1	1
+Lung	Nothern Ireland	Men	2015	100.30	100.52	NA	-1.5423*	1	1
+Lung	Nothern Ireland	Men	2016	96.20	98.97	NA	-1.5423*	1	1
+Lung	Nothern Ireland	Men	2017	102.60	97.44	NA	-1.5423*	1	1
+Lung	Nothern Ireland	Men	2018	96.60	95.94	NA	-1.5423*	1	1
+Lung	Nothern Ireland	Men	2019	92.50	94.46	NA	-1.5423*	1	1
+Lung	Nothern Ireland	Women	2000	50.40	47.22	NA	2.7209*	0	0
+Lung	Nothern Ireland	Women	2001	46.60	48.51	NA	2.7209*	0	0
+Lung	Nothern Ireland	Women	2002	53.40	49.83	NA	2.7209*	0	0
+Lung	Nothern Ireland	Women	2003	52.00	51.18	NA	2.7209*	0	0
+Lung	Nothern Ireland	Women	2004	52.60	52.57	NA	2.7209*	0	0
+Lung	Nothern Ireland	Women	2005	54.20	54.01	NA	2.7209*	0	0
+Lung	Nothern Ireland	Women	2006	51.20	55.47	NA	2.7209*	0	0
+Lung	Nothern Ireland	Women	2007	57.70	56.98	NA	2.7209*	0	0
+Lung	Nothern Ireland	Women	2008	54.50	58.53	NA	2.7209*	0	0
+Lung	Nothern Ireland	Women	2009	61.30	60.13	NA	2.7209*	0	0
+Lung	Nothern Ireland	Women	2010	54.60	61.76	NA	2.7209*	0	0
+Lung	Nothern Ireland	Women	2011	59.60	63.44	NA	2.7209*	0	0
+Lung	Nothern Ireland	Women	2012	67.70	65.17	NA	2.7209*	0	0
+Lung	Nothern Ireland	Women	2013	68.90	66.94	NA	2.7209*	0	0
+Lung	Nothern Ireland	Women	2014	72.60	68.76	NA	2.7209*	0	0
+Lung	Nothern Ireland	Women	2015	71.10	70.64	NA	2.7209*	0	0
+Lung	Nothern Ireland	Women	2016	83.70	72.56	NA	2.7209*	0	0
+Lung	Nothern Ireland	Women	2017	74.70	74.53	NA	2.7209*	0	0
+Lung	Nothern Ireland	Women	2018	70.60	76.56	NA	2.7209*	0	0
+Lung	Nothern Ireland	Women	2019	78.60	78.64	NA	2.7209*	0	0
+Lung	Scotland	Men	2000	146.77	147.44	NA	-1.2745*	1	1
+Lung	Scotland	Men	2001	143.07	145.56	NA	-1.2745*	1	1
+Lung	Scotland	Men	2002	149.25	143.70	NA	-1.2745*	1	1
+Lung	Scotland	Men	2003	140.52	141.87	NA	-1.2745*	1	1
+Lung	Scotland	Men	2004	139.48	140.07	NA	-1.2745*	1	1
+Lung	Scotland	Men	2005	137.81	138.28	NA	-1.2745*	1	1
+Lung	Scotland	Men	2006	136.86	136.52	NA	-1.2745*	1	1
+Lung	Scotland	Men	2007	135.00	134.78	NA	-1.2745*	1	1
+Lung	Scotland	Men	2008	128.83	133.06	NA	-1.2745*	1	1
+Lung	Scotland	Men	2009	137.39	131.36	NA	-1.2745*	1	1
+Lung	Scotland	Men	2010	127.93	129.69	NA	-1.2745*	1	1
+Lung	Scotland	Men	2011	128.99	128.04	NA	-1.2745*	1	1
+Lung	Scotland	Men	2012	125.19	126.41	NA	-1.2745*	1	1
+Lung	Scotland	Men	2013	124.93	124.79	NA	-1.2745*	1	1
+Lung	Scotland	Men	2014	126.58	123.20	Joinpoint 1	NA	1	1
+Lung	Scotland	Men	2015	116.52	119.71	NA	-2.8383*	1	1
+Lung	Scotland	Men	2016	113.94	116.31	NA	-2.8383*	1	1
+Lung	Scotland	Men	2017	113.88	113.01	NA	-2.8383*	1	1
+Lung	Scotland	Men	2018	111.51	109.80	NA	-2.8383*	1	1
+Lung	Scotland	Men	2019	106.33	106.68	NA	-2.8383*	1	1
+Lung	Scotland	Women	2000	83.67	79.97	NA	1.6887*	1	1
+Lung	Scotland	Women	2001	75.93	81.32	NA	1.6887*	1	1
+Lung	Scotland	Women	2002	83.36	82.69	NA	1.6887*	1	1
+Lung	Scotland	Women	2003	82.20	84.09	NA	1.6887*	1	1
+Lung	Scotland	Women	2004	87.78	85.51	NA	1.6887*	1	1
+Lung	Scotland	Women	2005	85.47	86.95	NA	1.6887*	1	1
+Lung	Scotland	Women	2006	89.28	88.42	NA	1.6887*	1	1
+Lung	Scotland	Women	2007	92.33	89.91	NA	1.6887*	1	1
+Lung	Scotland	Women	2008	93.58	91.43	NA	1.6887*	1	1
+Lung	Scotland	Women	2009	92.52	92.97	NA	1.6887*	1	1
+Lung	Scotland	Women	2010	93.65	94.54	NA	1.6887*	1	1
+Lung	Scotland	Women	2011	95.44	96.14	NA	1.6887*	1	1
+Lung	Scotland	Women	2012	97.21	97.76	Joinpoint 1	NA	1	1
+Lung	Scotland	Women	2013	97.93	97.33	NA	-0.4429	1	1
+Lung	Scotland	Women	2014	99.04	96.90	NA	-0.4429	1	1
+Lung	Scotland	Women	2015	92.32	96.47	NA	-0.4429	1	1
+Lung	Scotland	Women	2016	93.87	96.04	NA	-0.4429	1	1
+Lung	Scotland	Women	2017	97.45	95.62	NA	-0.4429	1	1
+Lung	Scotland	Women	2018	98.70	95.19	NA	-0.4429	1	1
+Lung	Scotland	Women	2019	92.92	94.77	NA	-0.4429	1	1
+Lung	Wales	Men	2002	109.80	111.22	NA	-0.4608	1	1
+Lung	Wales	Men	2003	112.70	110.71	NA	-0.4608	1	1
+Lung	Wales	Men	2004	112.90	110.20	NA	-0.4608	1	1
+Lung	Wales	Men	2005	104.60	109.69	NA	-0.4608	1	1
+Lung	Wales	Men	2006	111.20	109.18	NA	-0.4608	1	1
+Lung	Wales	Men	2007	108.30	108.68	NA	-0.4608	1	1
+Lung	Wales	Men	2008	110.40	108.18	Joinpoint 1	NA	1	1
+Lung	Wales	Men	2009	104.20	105.89	NA	-2.1166*	1	1
+Lung	Wales	Men	2010	102.80	103.65	NA	-2.1166*	1	1
+Lung	Wales	Men	2011	105.40	101.45	NA	-2.1166*	1	1
+Lung	Wales	Men	2012	93.40	99.31	NA	-2.1166*	1	1
+Lung	Wales	Men	2013	101.50	97.20	NA	-2.1166*	1	1
+Lung	Wales	Men	2014	94.90	95.15	NA	-2.1166*	1	1
+Lung	Wales	Men	2015	92.90	93.13	NA	-2.1166*	1	1
+Lung	Wales	Men	2016	90.90	91.16	NA	-2.1166*	1	1
+Lung	Wales	Men	2017	85.30	89.23	NA	-2.1166*	1	1
+Lung	Wales	Men	2018	90.40	87.34	NA	-2.1166*	1	1
+Lung	Wales	Men	2019	86.00	85.49	NA	-2.1166*	1	1
+Lung	Wales	Women	2002	57.00	59.55	NA	1.1224*	0	0
+Lung	Wales	Women	2003	55.30	60.22	NA	1.1224*	0	0
+Lung	Wales	Women	2004	63.50	60.89	NA	1.1224*	0	0
+Lung	Wales	Women	2005	61.50	61.58	NA	1.1224*	0	0
+Lung	Wales	Women	2006	65.30	62.27	NA	1.1224*	0	0
+Lung	Wales	Women	2007	60.90	62.97	NA	1.1224*	0	0
+Lung	Wales	Women	2008	68.90	63.67	NA	1.1224*	0	0
+Lung	Wales	Women	2009	61.50	64.39	NA	1.1224*	0	0
+Lung	Wales	Women	2010	66.00	65.11	NA	1.1224*	0	0
+Lung	Wales	Women	2011	66.70	65.84	NA	1.1224*	0	0
+Lung	Wales	Women	2012	71.80	66.58	NA	1.1224*	0	0
+Lung	Wales	Women	2013	66.90	67.33	NA	1.1224*	0	0
+Lung	Wales	Women	2014	68.30	68.08	NA	1.1224*	0	0
+Lung	Wales	Women	2015	70.80	68.85	NA	1.1224*	0	0
+Lung	Wales	Women	2016	73.00	69.62	NA	1.1224*	0	0
+Lung	Wales	Women	2017	67.70	70.40	NA	1.1224*	0	0
+Lung	Wales	Women	2018	68.40	71.19	NA	1.1224*	0	0
+Lung	Wales	Women	2019	68.20	71.99	NA	1.1224*	0	0
+Oesophageal	England	Men	2000	21.20	21.27	NA	0.7126*	1	1
+Oesophageal	England	Men	2001	21.50	21.42	NA	0.7126*	1	1
+Oesophageal	England	Men	2002	21.70	21.58	NA	0.7126*	1	1
+Oesophageal	England	Men	2003	21.80	21.73	NA	0.7126*	1	1
+Oesophageal	England	Men	2004	21.80	21.89	NA	0.7126*	1	1
+Oesophageal	England	Men	2005	21.90	22.04	NA	0.7126*	1	1
+Oesophageal	England	Men	2006	22.00	22.20	NA	0.7126*	1	1
+Oesophageal	England	Men	2007	22.20	22.36	NA	0.7126*	1	1
+Oesophageal	England	Men	2008	23.20	22.52	NA	0.7126*	1	1
+Oesophageal	England	Men	2009	22.40	22.68	NA	0.7126*	1	1
+Oesophageal	England	Men	2010	22.80	22.84	Joinpoint 1	NA	1	1
+Oesophageal	England	Men	2011	22.50	22.78	NA	-0.2453	1	1
+Oesophageal	England	Men	2012	23.30	22.73	NA	-0.2453	1	1
+Oesophageal	England	Men	2013	22.50	22.67	NA	-0.2453	1	1
+Oesophageal	England	Men	2014	22.00	22.61	NA	-0.2453	1	1
+Oesophageal	England	Men	2015	23.00	22.56	NA	-0.2453	1	1
+Oesophageal	England	Men	2016	22.80	22.50	NA	-0.2453	1	1
+Oesophageal	England	Men	2017	22.40	22.45	NA	-0.2453	1	1
+Oesophageal	England	Men	2018	22.60	22.39	NA	-0.2453	1	1
+Oesophageal	England	Men	2019	22.00	22.34	NA	-0.2453	1	1
+Oesophageal	England	Women	2000	9.70	9.52	NA	-0.5685*	1	1
+Oesophageal	England	Women	2001	9.60	9.47	NA	-0.5685*	1	1
+Oesophageal	England	Women	2002	9.30	9.41	NA	-0.5685*	1	1
+Oesophageal	England	Women	2003	9.40	9.36	NA	-0.5685*	1	1
+Oesophageal	England	Women	2004	9.10	9.31	NA	-0.5685*	1	1
+Oesophageal	England	Women	2005	9.30	9.25	NA	-0.5685*	1	1
+Oesophageal	England	Women	2006	9.30	9.20	NA	-0.5685*	1	1
+Oesophageal	England	Women	2007	9.10	9.15	NA	-0.5685*	1	1
+Oesophageal	England	Women	2008	9.00	9.10	NA	-0.5685*	1	1
+Oesophageal	England	Women	2009	8.80	9.05	NA	-0.5685*	1	1
+Oesophageal	England	Women	2010	9.00	8.99	NA	-0.5685*	1	1
+Oesophageal	England	Women	2011	8.70	8.94	NA	-0.5685*	1	1
+Oesophageal	England	Women	2012	9.10	8.89	NA	-0.5685*	1	1
+Oesophageal	England	Women	2013	9.10	8.84	NA	-0.5685*	1	1
+Oesophageal	England	Women	2014	8.80	8.79	Joinpoint 1	NA	1	1
+Oesophageal	England	Women	2015	8.80	8.64	NA	-1.7578*	1	1
+Oesophageal	England	Women	2016	8.40	8.49	NA	-1.7578*	1	1
+Oesophageal	England	Women	2017	8.10	8.34	NA	-1.7578*	1	1
+Oesophageal	England	Women	2018	8.30	8.19	NA	-1.7578*	1	1
+Oesophageal	England	Women	2019	8.10	8.05	NA	-1.7578*	1	1
+Oesophageal	Nothern Ireland	Men	2000	13.90	17.71	NA	1.0111*	0	0
+Oesophageal	Nothern Ireland	Men	2001	19.80	17.89	NA	1.0111*	0	0
+Oesophageal	Nothern Ireland	Men	2002	16.90	18.07	NA	1.0111*	0	0
+Oesophageal	Nothern Ireland	Men	2003	18.40	18.25	NA	1.0111*	0	0
+Oesophageal	Nothern Ireland	Men	2004	18.90	18.44	NA	1.0111*	0	0
+Oesophageal	Nothern Ireland	Men	2005	19.60	18.62	NA	1.0111*	0	0
+Oesophageal	Nothern Ireland	Men	2006	21.00	18.81	NA	1.0111*	0	0
+Oesophageal	Nothern Ireland	Men	2007	21.70	19.00	NA	1.0111*	0	0
+Oesophageal	Nothern Ireland	Men	2008	19.80	19.20	NA	1.0111*	0	0
+Oesophageal	Nothern Ireland	Men	2009	17.80	19.39	NA	1.0111*	0	0
+Oesophageal	Nothern Ireland	Men	2010	18.70	19.59	NA	1.0111*	0	0
+Oesophageal	Nothern Ireland	Men	2011	20.00	19.78	NA	1.0111*	0	0
+Oesophageal	Nothern Ireland	Men	2012	21.70	19.98	NA	1.0111*	0	0
+Oesophageal	Nothern Ireland	Men	2013	19.80	20.19	NA	1.0111*	0	0
+Oesophageal	Nothern Ireland	Men	2014	21.80	20.39	NA	1.0111*	0	0
+Oesophageal	Nothern Ireland	Men	2015	18.10	20.60	NA	1.0111*	0	0
+Oesophageal	Nothern Ireland	Men	2016	21.30	20.80	NA	1.0111*	0	0
+Oesophageal	Nothern Ireland	Men	2017	23.20	21.01	NA	1.0111*	0	0
+Oesophageal	Nothern Ireland	Men	2018	20.80	21.23	NA	1.0111*	0	0
+Oesophageal	Nothern Ireland	Men	2019	18.80	21.44	NA	1.0111*	0	0
+Oesophageal	Nothern Ireland	Women	2000	10.30	10.15	NA	-10.3277	2	2
+Oesophageal	Nothern Ireland	Women	2001	9.00	9.10	NA	-10.3277	2	2
+Oesophageal	Nothern Ireland	Women	2002	8.00	8.16	NA	-10.3277	2	2
+Oesophageal	Nothern Ireland	Women	2003	7.20	7.32	Joinpoint 1	NA	2	2
+Oesophageal	Nothern Ireland	Women	2004	7.40	7.44	NA	1.5818	2	2
+Oesophageal	Nothern Ireland	Women	2005	6.80	7.55	NA	1.5818	2	2
+Oesophageal	Nothern Ireland	Women	2006	7.70	7.67	NA	1.5818	2	2
+Oesophageal	Nothern Ireland	Women	2007	9.50	7.79	NA	1.5818	2	2
+Oesophageal	Nothern Ireland	Women	2008	8.10	7.92	NA	1.5818	2	2
+Oesophageal	Nothern Ireland	Women	2009	7.70	8.04	NA	1.5818	2	2
+Oesophageal	Nothern Ireland	Women	2010	8.50	8.17	NA	1.5818	2	2
+Oesophageal	Nothern Ireland	Women	2011	7.70	8.30	NA	1.5818	2	2
+Oesophageal	Nothern Ireland	Women	2012	9.20	8.43	NA	1.5818	2	2
+Oesophageal	Nothern Ireland	Women	2013	8.00	8.56	NA	1.5818	2	2
+Oesophageal	Nothern Ireland	Women	2014	8.30	8.70	Joinpoint 2	NA	2	2
+Oesophageal	Nothern Ireland	Women	2015	8.80	8.10	NA	-6.9231*	2	2
+Oesophageal	Nothern Ireland	Women	2016	8.00	7.54	NA	-6.9231*	2	2
+Oesophageal	Nothern Ireland	Women	2017	5.70	7.02	NA	-6.9231*	2	2
+Oesophageal	Nothern Ireland	Women	2018	6.80	6.53	NA	-6.9231*	2	2
+Oesophageal	Nothern Ireland	Women	2019	6.40	6.08	NA	-6.9231*	2	2
+Oesophageal	Scotland	Men	2000	24.81	24.99	NA	5.8755	2	2
+Oesophageal	Scotland	Men	2001	26.85	26.46	NA	5.8755	2	2
+Oesophageal	Scotland	Men	2002	28.20	28.02	Joinpoint 1	NA	2	2
+Oesophageal	Scotland	Men	2003	28.32	27.87	NA	-0.5144*	2	2
+Oesophageal	Scotland	Men	2004	29.22	27.73	NA	-0.5144*	2	2
+Oesophageal	Scotland	Men	2005	26.87	27.59	NA	-0.5144*	2	2
+Oesophageal	Scotland	Men	2006	27.35	27.45	NA	-0.5144*	2	2
+Oesophageal	Scotland	Men	2007	26.83	27.30	NA	-0.5144*	2	2
+Oesophageal	Scotland	Men	2008	27.04	27.16	NA	-0.5144*	2	2
+Oesophageal	Scotland	Men	2009	26.36	27.02	NA	-0.5144*	2	2
+Oesophageal	Scotland	Men	2010	26.46	26.88	NA	-0.5144*	2	2
+Oesophageal	Scotland	Men	2011	25.30	26.75	NA	-0.5144*	2	2
+Oesophageal	Scotland	Men	2012	27.02	26.61	NA	-0.5144*	2	2
+Oesophageal	Scotland	Men	2013	25.80	26.47	NA	-0.5144*	2	2
+Oesophageal	Scotland	Men	2014	27.89	26.34	NA	-0.5144*	2	2
+Oesophageal	Scotland	Men	2015	26.26	26.20	NA	-0.5144*	2	2
+Oesophageal	Scotland	Men	2016	24.94	26.07	NA	-0.5144*	2	2
+Oesophageal	Scotland	Men	2017	27.60	25.93	Joinpoint 2	NA	2	2
+Oesophageal	Scotland	Men	2018	24.10	24.16	NA	-6.8218	2	2
+Oesophageal	Scotland	Men	2019	22.55	22.51	NA	-6.8218	2	2
+Oesophageal	Scotland	Women	2000	11.85	12.25	NA	-0.4943	1	1
+Oesophageal	Scotland	Women	2001	11.91	12.19	NA	-0.4943	1	1
+Oesophageal	Scotland	Women	2002	12.49	12.13	NA	-0.4943	1	1
+Oesophageal	Scotland	Women	2003	11.95	12.07	NA	-0.4943	1	1
+Oesophageal	Scotland	Women	2004	13.18	12.01	NA	-0.4943	1	1
+Oesophageal	Scotland	Women	2005	12.18	11.95	NA	-0.4943	1	1
+Oesophageal	Scotland	Women	2006	12.09	11.89	NA	-0.4943	1	1
+Oesophageal	Scotland	Women	2007	11.47	11.83	NA	-0.4943	1	1
+Oesophageal	Scotland	Women	2008	10.73	11.77	NA	-0.4943	1	1
+Oesophageal	Scotland	Women	2009	11.41	11.72	NA	-0.4943	1	1
+Oesophageal	Scotland	Women	2010	12.57	11.66	NA	-0.4943	1	1
+Oesophageal	Scotland	Women	2011	11.03	11.60	NA	-0.4943	1	1
+Oesophageal	Scotland	Women	2012	11.39	11.54	NA	-0.4943	1	1
+Oesophageal	Scotland	Women	2013	12.54	11.49	NA	-0.4943	1	1
+Oesophageal	Scotland	Women	2014	11.01	11.43	NA	-0.4943	1	1
+Oesophageal	Scotland	Women	2015	11.66	11.37	Joinpoint 1	NA	1	1
+Oesophageal	Scotland	Women	2016	10.00	10.84	NA	-4.6677	1	1
+Oesophageal	Scotland	Women	2017	10.99	10.34	NA	-4.6677	1	1
+Oesophageal	Scotland	Women	2018	10.00	9.85	NA	-4.6677	1	1
+Oesophageal	Scotland	Women	2019	9.19	9.39	NA	-4.6677	1	1
+Oesophageal	Wales	Men	2002	22.50	23.33	NA	-0.7603*	0	0
+Oesophageal	Wales	Men	2003	23.40	23.15	NA	-0.7603*	0	0
+Oesophageal	Wales	Men	2004	22.00	22.98	NA	-0.7603*	0	0
+Oesophageal	Wales	Men	2005	21.10	22.80	NA	-0.7603*	0	0
+Oesophageal	Wales	Men	2006	24.00	22.63	NA	-0.7603*	0	0
+Oesophageal	Wales	Men	2007	24.60	22.46	NA	-0.7603*	0	0
+Oesophageal	Wales	Men	2008	24.10	22.29	NA	-0.7603*	0	0
+Oesophageal	Wales	Men	2009	23.40	22.12	NA	-0.7603*	0	0
+Oesophageal	Wales	Men	2010	23.60	21.95	NA	-0.7603*	0	0
+Oesophageal	Wales	Men	2011	19.40	21.78	NA	-0.7603*	0	0
+Oesophageal	Wales	Men	2012	20.50	21.62	NA	-0.7603*	0	0
+Oesophageal	Wales	Men	2013	19.40	21.45	NA	-0.7603*	0	0
+Oesophageal	Wales	Men	2014	22.00	21.29	NA	-0.7603*	0	0
+Oesophageal	Wales	Men	2015	22.20	21.13	NA	-0.7603*	0	0
+Oesophageal	Wales	Men	2016	19.10	20.97	NA	-0.7603*	0	0
+Oesophageal	Wales	Men	2017	20.40	20.81	NA	-0.7603*	0	0
+Oesophageal	Wales	Men	2018	22.90	20.65	NA	-0.7603*	0	0
+Oesophageal	Wales	Men	2019	20.20	20.49	NA	-0.7603*	0	0
+Oesophageal	Wales	Women	2002	12.00	10.95	NA	-1.7322*	0	0
+Oesophageal	Wales	Women	2003	10.20	10.76	NA	-1.7322*	0	0
+Oesophageal	Wales	Women	2004	9.90	10.57	NA	-1.7322*	0	0
+Oesophageal	Wales	Women	2005	10.00	10.39	NA	-1.7322*	0	0
+Oesophageal	Wales	Women	2006	10.40	10.21	NA	-1.7322*	0	0
+Oesophageal	Wales	Women	2007	10.10	10.03	NA	-1.7322*	0	0
+Oesophageal	Wales	Women	2008	10.20	9.86	NA	-1.7322*	0	0
+Oesophageal	Wales	Women	2009	10.20	9.69	NA	-1.7322*	0	0
+Oesophageal	Wales	Women	2010	9.10	9.52	NA	-1.7322*	0	0
+Oesophageal	Wales	Women	2011	10.30	9.36	NA	-1.7322*	0	0
+Oesophageal	Wales	Women	2012	8.20	9.19	NA	-1.7322*	0	0
+Oesophageal	Wales	Women	2013	8.60	9.04	NA	-1.7322*	0	0
+Oesophageal	Wales	Women	2014	8.80	8.88	NA	-1.7322*	0	0
+Oesophageal	Wales	Women	2015	9.50	8.73	NA	-1.7322*	0	0
+Oesophageal	Wales	Women	2016	8.50	8.57	NA	-1.7322*	0	0
+Oesophageal	Wales	Women	2017	8.60	8.43	NA	-1.7322*	0	0
+Oesophageal	Wales	Women	2018	8.70	8.28	NA	-1.7322*	0	0
+Oesophageal	Wales	Women	2019	7.60	8.14	NA	-1.7322*	0	0
+Pancreatic	England	Men	2000	17.10	16.99	NA	-0.6147	1	1
+Pancreatic	England	Men	2001	16.70	16.88	NA	-0.6147	1	1
+Pancreatic	England	Men	2002	16.80	16.78	NA	-0.6147	1	1
+Pancreatic	England	Men	2003	16.30	16.67	Joinpoint 1	NA	1	1
+Pancreatic	England	Men	2004	17.20	16.86	NA	1.1425*	1	1
+Pancreatic	England	Men	2005	16.90	17.06	NA	1.1425*	1	1
+Pancreatic	England	Men	2006	17.50	17.25	NA	1.1425*	1	1
+Pancreatic	England	Men	2007	17.00	17.45	NA	1.1425*	1	1
+Pancreatic	England	Men	2008	18.10	17.65	NA	1.1425*	1	1
+Pancreatic	England	Men	2009	17.90	17.85	NA	1.1425*	1	1
+Pancreatic	England	Men	2010	17.80	18.05	NA	1.1425*	1	1
+Pancreatic	England	Men	2011	18.00	18.26	NA	1.1425*	1	1
+Pancreatic	England	Men	2012	18.70	18.47	NA	1.1425*	1	1
+Pancreatic	England	Men	2013	19.30	18.68	NA	1.1425*	1	1
+Pancreatic	England	Men	2014	18.80	18.89	NA	1.1425*	1	1
+Pancreatic	England	Men	2015	19.00	19.11	NA	1.1425*	1	1
+Pancreatic	England	Men	2016	19.70	19.33	NA	1.1425*	1	1
+Pancreatic	England	Men	2017	19.80	19.55	NA	1.1425*	1	1
+Pancreatic	England	Men	2018	19.50	19.77	NA	1.1425*	1	1
+Pancreatic	England	Men	2019	19.50	20.00	NA	1.1425*	1	1
+Pancreatic	England	Women	2000	13.00	12.72	NA	1.4414*	1	1
+Pancreatic	England	Women	2001	12.90	12.90	NA	1.4414*	1	1
+Pancreatic	England	Women	2002	12.70	13.09	NA	1.4414*	1	1
+Pancreatic	England	Women	2003	13.00	13.28	NA	1.4414*	1	1
+Pancreatic	England	Women	2004	13.50	13.47	NA	1.4414*	1	1
+Pancreatic	England	Women	2005	13.80	13.66	NA	1.4414*	1	1
+Pancreatic	England	Women	2006	14.20	13.86	NA	1.4414*	1	1
+Pancreatic	England	Women	2007	14.00	14.06	NA	1.4414*	1	1
+Pancreatic	England	Women	2008	14.40	14.26	NA	1.4414*	1	1
+Pancreatic	England	Women	2009	14.60	14.47	NA	1.4414*	1	1
+Pancreatic	England	Women	2010	14.40	14.68	NA	1.4414*	1	1
+Pancreatic	England	Women	2011	14.80	14.89	NA	1.4414*	1	1
+Pancreatic	England	Women	2012	15.00	15.10	NA	1.4414*	1	1
+Pancreatic	England	Women	2013	15.50	15.32	Joinpoint 1	NA	1	1
+Pancreatic	England	Women	2014	15.20	15.33	NA	0.0982	1	1
+Pancreatic	England	Women	2015	15.60	15.35	NA	0.0982	1	1
+Pancreatic	England	Women	2016	15.20	15.36	NA	0.0982	1	1
+Pancreatic	England	Women	2017	15.50	15.38	NA	0.0982	1	1
+Pancreatic	England	Women	2018	15.10	15.39	NA	0.0982	1	1
+Pancreatic	England	Women	2019	15.60	15.41	NA	0.0982	1	1
+Pancreatic	Nothern Ireland	Men	2000	13.30	14.93	NA	1.6586*	0	0
+Pancreatic	Nothern Ireland	Men	2001	19.30	15.18	NA	1.6586*	0	0
+Pancreatic	Nothern Ireland	Men	2002	16.50	15.43	NA	1.6586*	0	0
+Pancreatic	Nothern Ireland	Men	2003	11.00	15.68	NA	1.6586*	0	0
+Pancreatic	Nothern Ireland	Men	2004	13.30	15.94	NA	1.6586*	0	0
+Pancreatic	Nothern Ireland	Men	2005	18.70	16.21	NA	1.6586*	0	0
+Pancreatic	Nothern Ireland	Men	2006	17.60	16.48	NA	1.6586*	0	0
+Pancreatic	Nothern Ireland	Men	2007	19.20	16.75	NA	1.6586*	0	0
+Pancreatic	Nothern Ireland	Men	2008	19.40	17.03	NA	1.6586*	0	0
+Pancreatic	Nothern Ireland	Men	2009	20.40	17.31	NA	1.6586*	0	0
+Pancreatic	Nothern Ireland	Men	2010	14.80	17.60	NA	1.6586*	0	0
+Pancreatic	Nothern Ireland	Men	2011	15.40	17.89	NA	1.6586*	0	0
+Pancreatic	Nothern Ireland	Men	2012	19.20	18.19	NA	1.6586*	0	0
+Pancreatic	Nothern Ireland	Men	2013	16.90	18.49	NA	1.6586*	0	0
+Pancreatic	Nothern Ireland	Men	2014	17.50	18.80	NA	1.6586*	0	0
+Pancreatic	Nothern Ireland	Men	2015	22.30	19.11	NA	1.6586*	0	0
+Pancreatic	Nothern Ireland	Men	2016	20.00	19.42	NA	1.6586*	0	0
+Pancreatic	Nothern Ireland	Men	2017	20.40	19.75	NA	1.6586*	0	0
+Pancreatic	Nothern Ireland	Men	2018	21.20	20.07	NA	1.6586*	0	0
+Pancreatic	Nothern Ireland	Men	2019	17.80	20.41	NA	1.6586*	0	0
+Pancreatic	Nothern Ireland	Women	2000	11.70	11.19	NA	2.4473*	1	1
+Pancreatic	Nothern Ireland	Women	2001	10.80	11.46	NA	2.4473*	1	1
+Pancreatic	Nothern Ireland	Women	2002	12.70	11.75	NA	2.4473*	1	1
+Pancreatic	Nothern Ireland	Women	2003	13.80	12.03	NA	2.4473*	1	1
+Pancreatic	Nothern Ireland	Women	2004	11.40	12.33	NA	2.4473*	1	1
+Pancreatic	Nothern Ireland	Women	2005	11.20	12.63	NA	2.4473*	1	1
+Pancreatic	Nothern Ireland	Women	2006	13.60	12.94	NA	2.4473*	1	1
+Pancreatic	Nothern Ireland	Women	2007	11.40	13.25	NA	2.4473*	1	1
+Pancreatic	Nothern Ireland	Women	2008	14.90	13.58	NA	2.4473*	1	1
+Pancreatic	Nothern Ireland	Women	2009	13.10	13.91	NA	2.4473*	1	1
+Pancreatic	Nothern Ireland	Women	2010	13.40	14.25	NA	2.4473*	1	1
+Pancreatic	Nothern Ireland	Women	2011	14.80	14.60	NA	2.4473*	1	1
+Pancreatic	Nothern Ireland	Women	2012	15.90	14.96	NA	2.4473*	1	1
+Pancreatic	Nothern Ireland	Women	2013	16.00	15.32	Joinpoint 1	NA	1	1
+Pancreatic	Nothern Ireland	Women	2014	15.60	15.02	NA	-2.0080	1	1
+Pancreatic	Nothern Ireland	Women	2015	15.50	14.71	NA	-2.0080	1	1
+Pancreatic	Nothern Ireland	Women	2016	13.30	14.42	NA	-2.0080	1	1
+Pancreatic	Nothern Ireland	Women	2017	13.90	14.13	NA	-2.0080	1	1
+Pancreatic	Nothern Ireland	Women	2018	13.00	13.85	NA	-2.0080	1	1
+Pancreatic	Nothern Ireland	Women	2019	14.70	13.57	NA	-2.0080	1	1
+Pancreatic	Scotland	Men	2000	18.82	16.20	NA	0.7435*	0	0
+Pancreatic	Scotland	Men	2001	15.05	16.32	NA	0.7435*	0	0
+Pancreatic	Scotland	Men	2002	16.07	16.44	NA	0.7435*	0	0
+Pancreatic	Scotland	Men	2003	16.74	16.56	NA	0.7435*	0	0
+Pancreatic	Scotland	Men	2004	15.72	16.68	NA	0.7435*	0	0
+Pancreatic	Scotland	Men	2005	15.56	16.81	NA	0.7435*	0	0
+Pancreatic	Scotland	Men	2006	16.05	16.93	NA	0.7435*	0	0
+Pancreatic	Scotland	Men	2007	16.48	17.06	NA	0.7435*	0	0
+Pancreatic	Scotland	Men	2008	18.19	17.19	NA	0.7435*	0	0
+Pancreatic	Scotland	Men	2009	18.64	17.31	NA	0.7435*	0	0
+Pancreatic	Scotland	Men	2010	17.57	17.44	NA	0.7435*	0	0
+Pancreatic	Scotland	Men	2011	18.38	17.57	NA	0.7435*	0	0
+Pancreatic	Scotland	Men	2012	17.97	17.70	NA	0.7435*	0	0
+Pancreatic	Scotland	Men	2013	18.67	17.83	NA	0.7435*	0	0
+Pancreatic	Scotland	Men	2014	17.56	17.97	NA	0.7435*	0	0
+Pancreatic	Scotland	Men	2015	18.15	18.10	NA	0.7435*	0	0
+Pancreatic	Scotland	Men	2016	17.99	18.23	NA	0.7435*	0	0
+Pancreatic	Scotland	Men	2017	17.57	18.37	NA	0.7435*	0	0
+Pancreatic	Scotland	Men	2018	17.99	18.51	NA	0.7435*	0	0
+Pancreatic	Scotland	Men	2019	19.22	18.64	NA	0.7435*	0	0
+Pancreatic	Scotland	Women	2000	13.22	12.88	NA	0.8048*	0	0
+Pancreatic	Scotland	Women	2001	12.91	12.98	NA	0.8048*	0	0
+Pancreatic	Scotland	Women	2002	12.06	13.08	NA	0.8048*	0	0
+Pancreatic	Scotland	Women	2003	14.72	13.19	NA	0.8048*	0	0
+Pancreatic	Scotland	Women	2004	12.35	13.30	NA	0.8048*	0	0
+Pancreatic	Scotland	Women	2005	13.74	13.40	NA	0.8048*	0	0
+Pancreatic	Scotland	Women	2006	12.56	13.51	NA	0.8048*	0	0
+Pancreatic	Scotland	Women	2007	13.58	13.62	NA	0.8048*	0	0
+Pancreatic	Scotland	Women	2008	13.17	13.73	NA	0.8048*	0	0
+Pancreatic	Scotland	Women	2009	14.48	13.84	NA	0.8048*	0	0
+Pancreatic	Scotland	Women	2010	13.72	13.95	NA	0.8048*	0	0
+Pancreatic	Scotland	Women	2011	15.05	14.06	NA	0.8048*	0	0
+Pancreatic	Scotland	Women	2012	14.55	14.18	NA	0.8048*	0	0
+Pancreatic	Scotland	Women	2013	14.54	14.29	NA	0.8048*	0	0
+Pancreatic	Scotland	Women	2014	15.30	14.41	NA	0.8048*	0	0
+Pancreatic	Scotland	Women	2015	15.02	14.52	NA	0.8048*	0	0
+Pancreatic	Scotland	Women	2016	14.68	14.64	NA	0.8048*	0	0
+Pancreatic	Scotland	Women	2017	14.17	14.76	NA	0.8048*	0	0
+Pancreatic	Scotland	Women	2018	13.74	14.87	NA	0.8048*	0	0
+Pancreatic	Scotland	Women	2019	14.99	14.99	NA	0.8048*	0	0
+Pancreatic	Wales	Men	2002	17.90	18.00	NA	0.1269	0	0
+Pancreatic	Wales	Men	2003	18.30	18.02	NA	0.1269	0	0
+Pancreatic	Wales	Men	2004	18.20	18.05	NA	0.1269	0	0
+Pancreatic	Wales	Men	2005	18.20	18.07	NA	0.1269	0	0
+Pancreatic	Wales	Men	2006	17.50	18.09	NA	0.1269	0	0
+Pancreatic	Wales	Men	2007	17.60	18.12	NA	0.1269	0	0
+Pancreatic	Wales	Men	2008	15.90	18.14	NA	0.1269	0	0
+Pancreatic	Wales	Men	2009	18.70	18.16	NA	0.1269	0	0
+Pancreatic	Wales	Men	2010	19.80	18.18	NA	0.1269	0	0
+Pancreatic	Wales	Men	2011	19.80	18.21	NA	0.1269	0	0
+Pancreatic	Wales	Men	2012	18.20	18.23	NA	0.1269	0	0
+Pancreatic	Wales	Men	2013	19.10	18.25	NA	0.1269	0	0
+Pancreatic	Wales	Men	2014	19.80	18.28	NA	0.1269	0	0
+Pancreatic	Wales	Men	2015	17.20	18.30	NA	0.1269	0	0
+Pancreatic	Wales	Men	2016	17.70	18.32	NA	0.1269	0	0
+Pancreatic	Wales	Men	2017	16.40	18.35	NA	0.1269	0	0
+Pancreatic	Wales	Men	2018	19.10	18.37	NA	0.1269	0	0
+Pancreatic	Wales	Men	2019	18.70	18.39	NA	0.1269	0	0
+Pancreatic	Wales	Women	2002	14.20	14.65	NA	0.3018	0	0
+Pancreatic	Wales	Women	2003	15.30	14.70	NA	0.3018	0	0
+Pancreatic	Wales	Women	2004	14.40	14.74	NA	0.3018	0	0
+Pancreatic	Wales	Women	2005	14.10	14.78	NA	0.3018	0	0
+Pancreatic	Wales	Women	2006	14.60	14.83	NA	0.3018	0	0
+Pancreatic	Wales	Women	2007	15.00	14.87	NA	0.3018	0	0
+Pancreatic	Wales	Women	2008	15.10	14.92	NA	0.3018	0	0
+Pancreatic	Wales	Women	2009	14.90	14.96	NA	0.3018	0	0
+Pancreatic	Wales	Women	2010	16.30	15.01	NA	0.3018	0	0
+Pancreatic	Wales	Women	2011	16.20	15.05	NA	0.3018	0	0
+Pancreatic	Wales	Women	2012	14.80	15.10	NA	0.3018	0	0
+Pancreatic	Wales	Women	2013	15.40	15.14	NA	0.3018	0	0
+Pancreatic	Wales	Women	2014	13.90	15.19	NA	0.3018	0	0
+Pancreatic	Wales	Women	2015	16.60	15.24	NA	0.3018	0	0
+Pancreatic	Wales	Women	2016	14.40	15.28	NA	0.3018	0	0
+Pancreatic	Wales	Women	2017	14.60	15.33	NA	0.3018	0	0
+Pancreatic	Wales	Women	2018	15.30	15.37	NA	0.3018	0	0
+Pancreatic	Wales	Women	2019	15.80	15.42	NA	0.3018	0	0
+Prostate	England	Men	2000	149.20	160.17	NA	1.0477*	0	0
+Prostate	England	Men	2001	166.00	161.85	NA	1.0477*	0	0
+Prostate	England	Men	2002	164.90	163.55	NA	1.0477*	0	0
+Prostate	England	Men	2003	164.10	165.26	NA	1.0477*	0	0
+Prostate	England	Men	2004	173.80	166.99	NA	1.0477*	0	0
+Prostate	England	Men	2005	166.30	168.74	NA	1.0477*	0	0
+Prostate	England	Men	2006	173.20	170.51	NA	1.0477*	0	0
+Prostate	England	Men	2007	170.70	172.30	NA	1.0477*	0	0
+Prostate	England	Men	2008	170.50	174.10	NA	1.0477*	0	0
+Prostate	England	Men	2009	183.20	175.93	NA	1.0477*	0	0
+Prostate	England	Men	2010	180.60	177.77	NA	1.0477*	0	0
+Prostate	England	Men	2011	178.60	179.63	NA	1.0477*	0	0
+Prostate	England	Men	2012	182.90	181.51	NA	1.0477*	0	0
+Prostate	England	Men	2013	195.90	183.41	NA	1.0477*	0	0
+Prostate	England	Men	2014	184.50	185.34	NA	1.0477*	0	0
+Prostate	England	Men	2015	183.40	187.28	NA	1.0477*	0	0
+Prostate	England	Men	2016	179.70	189.24	NA	1.0477*	0	0
+Prostate	England	Men	2017	177.40	191.22	NA	1.0477*	0	0
+Prostate	England	Men	2018	207.30	193.23	NA	1.0477*	0	0
+Prostate	England	Men	2019	193.60	195.25	NA	1.0477*	0	0
+Prostate	Nothern Ireland	Men	2000	127.10	122.45	NA	7.8485*	1	1
+Prostate	Nothern Ireland	Men	2001	125.50	132.06	NA	7.8485*	1	1
+Prostate	Nothern Ireland	Men	2002	140.60	142.42	NA	7.8485*	1	1
+Prostate	Nothern Ireland	Men	2003	158.20	153.60	NA	7.8485*	1	1
+Prostate	Nothern Ireland	Men	2004	162.10	165.66	Joinpoint 1	NA	1	1
+Prostate	Nothern Ireland	Men	2005	159.50	166.16	NA	0.3016	1	1
+Prostate	Nothern Ireland	Men	2006	160.00	166.66	NA	0.3016	1	1
+Prostate	Nothern Ireland	Men	2007	170.70	167.16	NA	0.3016	1	1
+Prostate	Nothern Ireland	Men	2008	178.70	167.67	NA	0.3016	1	1
+Prostate	Nothern Ireland	Men	2009	188.20	168.17	NA	0.3016	1	1
+Prostate	Nothern Ireland	Men	2010	162.50	168.68	NA	0.3016	1	1
+Prostate	Nothern Ireland	Men	2011	173.90	169.19	NA	0.3016	1	1
+Prostate	Nothern Ireland	Men	2012	171.90	169.70	NA	0.3016	1	1
+Prostate	Nothern Ireland	Men	2013	158.00	170.21	NA	0.3016	1	1
+Prostate	Nothern Ireland	Men	2014	171.30	170.72	NA	0.3016	1	1
+Prostate	Nothern Ireland	Men	2015	166.20	171.24	NA	0.3016	1	1
+Prostate	Nothern Ireland	Men	2016	172.10	171.75	NA	0.3016	1	1
+Prostate	Nothern Ireland	Men	2017	160.10	172.27	NA	0.3016	1	1
+Prostate	Nothern Ireland	Men	2018	176.60	172.79	NA	0.3016	1	1
+Prostate	Nothern Ireland	Men	2019	182.30	173.31	NA	0.3016	1	1
+Prostate	Scotland	Men	2000	131.48	140.53	NA	0.7517*	0	0
+Prostate	Scotland	Men	2001	136.59	141.59	NA	0.7517*	0	0
+Prostate	Scotland	Men	2002	146.73	142.65	NA	0.7517*	0	0
+Prostate	Scotland	Men	2003	148.61	143.72	NA	0.7517*	0	0
+Prostate	Scotland	Men	2004	155.48	144.80	NA	0.7517*	0	0
+Prostate	Scotland	Men	2005	141.86	145.89	NA	0.7517*	0	0
+Prostate	Scotland	Men	2006	150.21	146.99	NA	0.7517*	0	0
+Prostate	Scotland	Men	2007	146.53	148.09	NA	0.7517*	0	0
+Prostate	Scotland	Men	2008	153.33	149.21	NA	0.7517*	0	0
+Prostate	Scotland	Men	2009	154.97	150.33	NA	0.7517*	0	0
+Prostate	Scotland	Men	2010	145.83	151.46	NA	0.7517*	0	0
+Prostate	Scotland	Men	2011	156.45	152.60	NA	0.7517*	0	0
+Prostate	Scotland	Men	2012	148.51	153.74	NA	0.7517*	0	0
+Prostate	Scotland	Men	2013	158.04	154.90	NA	0.7517*	0	0
+Prostate	Scotland	Men	2014	155.66	156.06	NA	0.7517*	0	0
+Prostate	Scotland	Men	2015	149.70	157.24	NA	0.7517*	0	0
+Prostate	Scotland	Men	2016	152.28	158.42	NA	0.7517*	0	0
+Prostate	Scotland	Men	2017	155.21	159.61	NA	0.7517*	0	0
+Prostate	Scotland	Men	2018	179.87	160.81	NA	0.7517*	0	0
+Prostate	Scotland	Men	2019	156.26	162.02	NA	0.7517*	0	0
+Prostate	Wales	Men	2002	176.70	190.90	NA	0.0306	0	0
+Prostate	Wales	Men	2003	187.40	190.96	NA	0.0306	0	0
+Prostate	Wales	Men	2004	203.60	191.02	NA	0.0306	0	0
+Prostate	Wales	Men	2005	193.90	191.08	NA	0.0306	0	0
+Prostate	Wales	Men	2006	191.50	191.14	NA	0.0306	0	0
+Prostate	Wales	Men	2007	207.20	191.20	NA	0.0306	0	0
+Prostate	Wales	Men	2008	201.70	191.25	NA	0.0306	0	0
+Prostate	Wales	Men	2009	192.00	191.31	NA	0.0306	0	0
+Prostate	Wales	Men	2010	194.30	191.37	NA	0.0306	0	0
+Prostate	Wales	Men	2011	178.50	191.43	NA	0.0306	0	0
+Prostate	Wales	Men	2012	180.50	191.49	NA	0.0306	0	0
+Prostate	Wales	Men	2013	192.60	191.55	NA	0.0306	0	0
+Prostate	Wales	Men	2014	183.80	191.61	NA	0.0306	0	0
+Prostate	Wales	Men	2015	182.10	191.66	NA	0.0306	0	0
+Prostate	Wales	Men	2016	193.70	191.72	NA	0.0306	0	0
+Prostate	Wales	Men	2017	185.50	191.78	NA	0.0306	0	0
+Prostate	Wales	Men	2018	211.20	191.84	NA	0.0306	0	0
+Prostate	Wales	Men	2019	193.20	191.90	NA	0.0306	0	0

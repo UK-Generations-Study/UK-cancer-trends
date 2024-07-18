@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -118,12 +118,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#hrt" id="toc-hrt" class="nav-link" data-scroll-target="#hrt">HRT</a></li>
   <li><a href="#cancer---globocan-data" id="toc-cancer---globocan-data" class="nav-link" data-scroll-target="#cancer---globocan-data">Cancer - Globocan Data</a></li>
   <li><a href="#cancer---plotting-prostate-and-breast-together" id="toc-cancer---plotting-prostate-and-breast-together" class="nav-link" data-scroll-target="#cancer---plotting-prostate-and-breast-together">Cancer - Plotting Prostate and Breast together</a></li>
+  <li><a href="#cancer-incidence---globocan-data" id="toc-cancer-incidence---globocan-data" class="nav-link" data-scroll-target="#cancer-incidence---globocan-data">Cancer Incidence - Globocan Data</a></li>
   <li><a href="#diabetes" id="toc-diabetes" class="nav-link" data-scroll-target="#diabetes">Diabetes</a></li>
   <li><a href="#diabetes-by-sex" id="toc-diabetes-by-sex" class="nav-link" data-scroll-target="#diabetes-by-sex">Diabetes by Sex</a></li>
   <li><a href="#screening---breast" id="toc-screening---breast" class="nav-link" data-scroll-target="#screening---breast">Screening - Breast</a></li>
   <li><a href="#screening---bowel" id="toc-screening---bowel" class="nav-link" data-scroll-target="#screening---bowel">Screening - Bowel</a></li>
   <li><a href="#screening---breast-bowel-uptake" id="toc-screening---breast-bowel-uptake" class="nav-link" data-scroll-target="#screening---breast-bowel-uptake">Screening - Breast + Bowel Uptake</a></li>
   <li><a href="#screening---cervix" id="toc-screening---cervix" class="nav-link" data-scroll-target="#screening---cervix">Screening - Cervix</a></li>
+  <li><a href="#diet---fibre-intake" id="toc-diet---fibre-intake" class="nav-link" data-scroll-target="#diet---fibre-intake">Diet - Fibre Intake</a></li>
   </ul>
 </nav>
 </div>
@@ -161,7 +163,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(paletteer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(paletteer)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fontawesome)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="setup" class="level2">
@@ -612,13 +616,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
+<section id="cancer-incidence---globocan-data" class="level2">
+<h2 class="anchored" data-anchor-id="cancer-incidence---globocan-data">Cancer Incidence - Globocan Data</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
 <section id="diabetes" class="level2">
 <h2 class="anchored" data-anchor-id="diabetes">Diabetes</h2>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-40-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -630,7 +646,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-40-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-41-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -642,7 +658,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-41-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -654,14 +670,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-43-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-42-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-43-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -673,7 +689,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-43-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -685,7 +701,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Position-Paper_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-45-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="diet---fibre-intake" class="level2">
+<h2 class="anchored" data-anchor-id="diet---fibre-intake">Diet - Fibre Intake</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Position-Paper_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>

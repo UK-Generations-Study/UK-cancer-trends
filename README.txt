@@ -67,7 +67,7 @@ Population
 - England and Wales data sourced from https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/estimatesofthepopulationforenglandandwales, Table 9.
 
 HRT
-- England data sourced from source 2, Table "National_Population"
+- England data sourced from source 3, Table "National_Population"
 
 Diabetes
 - England data sourced from source 1, Adult health, Table 3. Years extracted were 2003-2019 due to concerns about comparing other years due to methodology.
@@ -83,6 +83,15 @@ Screening
 	Uptake Invitations Table. Removed Year 2015/16 as reported incomplete.
 - Bowel data - Scotland https://publichealthscotland.scot/publications/scottish-bowel-screening-programme-statistics/scottish-bowel-screening-programme-statistics-for-the-period-of-invitations-from-may-2021-to-april-2023/,
 	Sheet KPI_1, Table 1.1.
+- Breast data - Wales https://phw.nhs.wales/services-and-teams/screening/breast-screening/programme-reports/annual-statistical-reports/breast-test-wales-annual-statistical-report-2019-20/#:~:text=With%20the%20exception%20of%20financial,to%20screening%20in%202019%2D20. Graph 3.
+- Bowel data - Wales https://phw.nhs.wales/services-and-teams/screening/bowel-screening/programme-reports/annual-statistical-reports/bsw-annual-statistical-report-2019-20/. Table 1g
+					 Additional years 2020-2021 provided from reports here https://phw.nhs.wales/services-and-teams/screening/bowel-screening/programme-reports/uptake-coverage-by-gp-cluster/
+- Breast data - N. Ireland https://cancerscreening.hscni.net/breast-screening/performance-standards/. Section Breast Screening Statistical Profile KC62 Returns.
+- Bowel data - N. Ireland https://www.publichealth.hscni.net/directorates/operations/communications-and-knowledge-management/communications/publications Using Sheet 15d from Director of Public Health Core Tables 2018 - 2022.
+
+Diet
+- Fibre data - UK https://www.gov.uk/government/statistics/ndns-results-from-years-9-to-11-2016-to-2017-and-2018-to-2019, NDNS: results from years 9 to 11 (combined) – data tables, NDNS Y9_11_DESCRIPTIVE STATISTICS TABLES_FINAL-2.xlsx, Table 3.11_macronutrients_fibre
+
 
 Cancer_Projection_Data(_All)
 - UK wide data from Globocan
@@ -103,3 +112,16 @@ Cancer_Incident/Mortality_Data_CRUK
 
 Cancer_Incident/Mortality_Joinpoint_CRUK
 - UK wide data outputted from Joinpoint
+
+Source Data/Raw Data/
+- Cancer_England.xlsx - https://digital.nhs.uk/data-and-information/publications/statistical/cancer-registration-statistics/england-2020, Cancer diagnoses (incidence) data tables, Table_5
+- Cancer_Scotland.xlsx - https://www.opendata.nhs.scot/dataset/annual-cancer-incidence/resource/72c852b8-ee28-4fd8-84a9-5f415f4bc325
+- Cancer_NIreland.xlsx 
+	- All cancers excl. NMSC - https://www.qub.ac.uk/research-centres/nicr/CancerInformation/official-statistics/BySite/All-Cancers-excl-non-malignant-melanoma-skin/, All Cancers exclud (NMSC) 1993-2021 (Excel), T03
+	- Breast cancer - https://www.qub.ac.uk/research-centres/nicr/CancerInformation/official-statistics/BySite/Breastcancerandinsitutumours/, Breast cancer statistics: 1993-2021 (Excel), T03
+	- Colorectal cancer - https://www.qub.ac.uk/research-centres/nicr/CancerInformation/official-statistics/BySite/Colorectalcancer/, Colorectal cancer statistics: 1993-2021 (Excel), T03
+	- Lung cancer - https://www.qub.ac.uk/research-centres/nicr/CancerInformation/official-statistics/BySite/Lungcancer/, Lung cancer statistics: 1993-2021 (Excel), T03
+	- Oesophageal cancer - https://www.qub.ac.uk/research-centres/nicr/CancerInformation/official-statistics/BySite/Oesophagealcancer/, Oesophageal cancer statistics: 1993-2021 (Excel), T03
+	- Pancreatic cancer  - https://www.qub.ac.uk/research-centres/nicr/CancerInformation/official-statistics/BySite/Pancreaticcancer/, Pancreatic cancer statistics: 1993-2021 (Excel), T03
+	- Prostate cancer - https://www.qub.ac.uk/research-centres/nicr/CancerInformation/official-statistics/BySite/Prostatecancer/, Prostate cancer statistics: 1993-2021 (Excel), T03
+- Cancer_Wales.xlsx - https://publichealthwales.shinyapps.io/Cancer_Reporting_Tool_PHW/ - Incidence rates taken from appropriately named section

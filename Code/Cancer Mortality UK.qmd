@@ -1,7 +1,8 @@
 ---
 title: "Top Cancers UK"
 format: html
-editor: visual
+editor:
+  source: mode
 ---
 
 ## Packages
@@ -14,6 +15,7 @@ library(stringr)
 ```
 
 ## Set Up
+
 ```{r}
 
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE)
