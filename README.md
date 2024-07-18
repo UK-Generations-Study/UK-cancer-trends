@@ -1,7 +1,7 @@
 # Position Paper
 
 ## Overview
-Goal is to combine public sources of information to get an effective view of the trends of cancer incidence/mortality and risk factors in the UK. These will then be plotted in graph for fast understanding.
+Goal is to combine public sources of information to get an effective view of the trends of cancer incidence/mortality and risk factors in the UK. These will then be plotted in graphs.
 
 ## Contents
 ### [Cancer Mortality](https://uk-generations-study.github.io/UK-cancer-trends/Code/Cancer%20Mortality%20UK.html)
@@ -12,5 +12,7 @@ Initial graphs generated for the position paper. Data for the graphs is in the D
 Trends and projections for the cancers selected using data from Globocan.
 ### [Cancer Projections CRUK](https://uk-generations-study.github.io/UK-cancer-trends/Code/Projection%20Plotting%20CRUK.html)
 Trends and projections for the cancers selected using CRUK data and comparing to CRUK projections.
+### [Final Position Paper Figures](https://uk-generations-study.github.io/UK-cancer-trends/Code/Final%20Position%20Paper%20Figures.html)
+A more formal list of the figures being considered for the position paper.
 ### [Sources](https://uk-generations-study.github.io/UK-cancer-trends/Sources)
 An initial list of sources to consider when writing the position paper.
