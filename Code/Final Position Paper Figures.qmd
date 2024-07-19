@@ -47,7 +47,7 @@ output_filepath <- r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Researc
 data_filepath <- r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\UK-cancer-trends\Data)"
 
 # Output data 
-output_data <- F
+output_data <- T
 
 # Set working directory to data location
 setwd(data_filepath)
@@ -1777,6 +1777,142 @@ ggsave(paste0(output_filepath, "Supplement Figure 9 - Bowel Screening Uptake.png
 ```
 
 
+### Additional variable generation
+This section is to generate data on variables that aren't being plotted here but may be useful.
+#### % Overweight data (not Obese)
+```{r}
+
+# Grab most data from BMI_Data.xlsx
+# Scotland and NIreland data needs to be manipulated to get % Overweight not obese
+overweight_data <- bind_rows(data_hub(country = "England", rf = "BMI")) |>
+  rbind(bind_rows(data_hub(country = "Wales", rf = "BMI")))  |>
+  # rbind(bind_rows(data_hub(country = "NIreland", rf = "BMI"))) |>
+  # rbind(bind_rows(data_hub(country = "Scotland", rf = "BMI")))
+   filter((country == "England" & variable  == "% overweight" & age_group %in% c("All men", "All women") & group  %in% c("Men", "Women")) |
+      (country == "Wales" & age_group == "All aged 16+" & group %in% c("Men", "Women") & variable == "BMI 25 - under 30 (overweight but not obese)")) |>
+  # Clean year data from Wales
+  mutate(year = as.numeric(substr(year, 1, 4)))
+
+
+# WHS Data
+overweight_whs <- whs_data |>
+  pivot_wider(names_from = variable) |>
+  mutate(
+    
+    `% Overweight not Obese` = `% Overweight` - `% Obese`
+    
+  ) |>
+  filter(!is.na(`% Overweight not Obese`) & group != "All") |>
+  select(any_of(colnames(whs_data)), value = `% Overweight not Obese`) |>
+  mutate(variable =  "% Overweight not Obese")
+  
+
+# Scotland data
+overweight_scotland <- bind_rows(data_hub(country = "Scotland", rf = "BMI"))
+
+# Scotland BMI data collected was on Overweight so need to adjust and add Obesity data from a seperate source
+obese_data_sheets <- excel_sheets("BMI_Obese_Data.xlsx")
+
+scotland_sheets <- obese_data_sheets[grepl(obese_data_sheets, pattern = "Scotland")]
+
+# Loop over sheets for age and sex and add both to total dataset used for this specific variable.
+for(sheet in scotland_sheets){
+  
+  # Read sheet and clean
+  tempdata <- read_excel("BMI_Obese_Data.xlsx", sheet = sheet)
+  group <- gsub(x = sheet, pattern = "Scotland_", replacement = "")
+  tempdata <- pull_SHS_data(data = tempdata, group = group)
+  tempdata$section <- "BMI"
+  tempdata$variable <- ifelse(tempdata$variable == "Obesity", "% Obese", "% Non-Obese")
+  
+  # Merge into obese_data
+  overweight_scotland <- rbind(overweight_scotland, tempdata)
+
+}
+
+# Pivot and generate variable of interest
+overweight_scotland <- overweight_scotland |>
+  pivot_wider(names_from = variable) |>
+  mutate(
+    
+    value = `Overweight (including obesity)` - `% Obese`,
+    
+    variable = "% Overweight not obese"
+    
+  ) |>
+  filter(age_group == "16+", group != "All") |>
+  select(colnames(overweight_data))
+
+
+# NIreland data
+overweight_nireland <- bind_rows(data_hub(country = "NIreland", rf = "BMI")) |>
+  mutate(year = as.numeric(substr(year, 1, 4)),
+         age_group = if_else(age_group == "Total", "16+", age_group),
+         value = 100*value)
+
+# Similar to Scotland data, needed to extract specific information on Obesity for N. Ireland as initial data collected was only Overweight %
+nireland_sheets <- obese_data_sheets[grepl(obese_data_sheets, pattern = "NIreland")]
+
+# Loop over sheets for sexes and add both to total dataset used for this specific variable.
+for(sheet in nireland_sheets){
+  
+  # Read in sheet and clean
+  tempdata <- read_excel(paste0("BMI_Obese_Data.xlsx"), sheet = sheet)
+  group <- gsub(x = sheet, pattern = "NIreland_", replacement = "")
+  tempdata <- pull_HSNI_data(data = tempdata, group = group)
+  tempdata$variable <- "% Obese"
+  tempdata$section <- "BMI"
+  tempdata$value <- 100*tempdata$value
+  tempdata$year = as.numeric(map_chr(strsplit(tempdata$year, "/"), 1))
+  tempdata$age_group = if_else(tempdata$age_group == "Total", "16+", tempdata$age_group)
+  
+  # Merge into obese data
+  overweight_nireland <- rbind(overweight_nireland, tempdata)
+}
+
+
+# Pivot and generate variable of interest
+overweight_nireland <- overweight_nireland |>
+  pivot_wider(names_from = variable) |>
+  mutate(
+    
+    value = Overweight - `% Obese`,
+    
+    variable = "% Overweight not obese"
+    
+  ) |>
+  filter(age_group == "16+", group != "All") |>
+  select(colnames(overweight_data))
+
+
+# Collect all data together
+overweight_data <- overweight_data |>
+  rbind(overweight_whs) |>
+  rbind(overweight_nireland) |>
+  rbind(overweight_scotland) |>
+  mutate(
+    
+    age_group = "16+",
+    
+    variable = "% Overweight not obese",
+    
+    group = case_when(
+           group == "Female" ~ "Women",
+           group == "Male" ~ "Men",
+           TRUE ~ group)
+    
+    ) |>
+  select(-section, sex = group)
+    
+
+# Add data to output
+data_rf_output <- rbind(data_rf_output, overweight_data)
+
+
+
+```
+
+
 
 
 
@@ -2022,7 +2158,4 @@ for(country in unique(incidence_jp$Country)){
 
 
 ```
-
-
-### 
 
