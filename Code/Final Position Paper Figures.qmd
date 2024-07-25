@@ -798,7 +798,7 @@ cancer_data <- read.csv(r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Re
 
 # Filtering to data needed for figure
 figure1_data <- cancer_data |>
-  filter(Cancer_Site == "All sites excl. NSMC")
+  filter(Cancer_Site == "All sites excl. NMSC", between(Year, 2000, 2019))
 
 # Plot Figure 1
 ggplot(figure1_data, aes(x = Year, y = ASR, colour = Country)) +
@@ -876,7 +876,7 @@ Supplement Figure 1 consists of plotting cancer incidence for all sites of inter
 
 # Using cancer_data from Figure 1, filter to data needed for plot
 supp_figure1_data <- cancer_data |>
-  filter(Cancer_Site != "All sites excl. NSMC")
+  filter(Cancer_Site != "All sites excl. NMSC", between(Year, 2000, 2019))
 
 # Plot supplement figure 1
 ggplot(data = supp_figure1_data, aes(x = Year, y = ASR, colour = Country)) +
