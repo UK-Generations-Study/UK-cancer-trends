@@ -1871,6 +1871,7 @@ ggsave(paste0(output_filepath, "Supplement Figure 9 - Bowel Screening Uptake.png
 
 ### Additional variable generation
 This section is to generate data on variables that aren't being plotted here but may be useful.
+
 #### % Overweight data (not Obese)
 ```{r}
 
@@ -2073,7 +2074,7 @@ data_ndhns <- rbind(data_1_4, data_5_6) |>
 data_ndhns |>
   group_by(surveyyear_cat, sex, country) |>
   mutate(fibre_rec = weight*(aoac_fibre  >= 30)) |>
-  summarise(mean_weight = mean(weight), fibre_rec = sum(fibre_rec)/sum(weight)) |>
+  summarise(mean_weight = mean(weight), fibre_rec = 100*sum(fibre_rec)/sum(weight)) |>
   ggplot(aes(x= surveyyear_cat, y = fibre_rec, colour = country)) +
   geom_point() +
   geom_line() +
@@ -2101,7 +2102,7 @@ ggsave(filename = paste0(output_filepath, "Extra Supplement Figure 1a - Fibre.pn
 data_ndhns |>
   group_by(surveyyear_cat, sex, country) |>
   mutate(redmeat_rec = weight*(totalredmeat < 70)) |>
-  summarise(mean_weight = mean(weight), redmeat_rec = sum(redmeat_rec)/sum(weight)) |>
+  summarise(mean_weight = mean(weight), redmeat_rec = 100*sum(redmeat_rec)/sum(weight)) |>
   ggplot(aes(x= surveyyear_cat, y = redmeat_rec, colour = country)) +
   geom_point() +
   geom_line() +
