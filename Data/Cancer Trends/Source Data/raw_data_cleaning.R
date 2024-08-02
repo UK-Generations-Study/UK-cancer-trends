@@ -23,7 +23,7 @@ cancer_england <- read_excel(r"(C:\Users\rfrost\OneDrive - The Institute of Canc
                                    "Malignant neoplasm of oesophagus",
                                    "Malignant neoplasm of pancreas",
                                    "Malignant neoplasm of prostate")) |>
-  select(Year, Country, Cancer_Site = `Site description`, Sex = Gender, ASR = `Rate (per 100,000 population)`) # Sex == Gender comparison not accurate, but necessary for statistical comparisons between countries.
+  select(Year, Country, Cancer_Site = `Site description`, Sex = Gender, Incidences = Count, ASR = `Rate (per 100,000 population)`) # Sex == Gender comparison not accurate, but necessary for statistical comparisons between countries.
 
 ## SCOTLAND DATA
 cancer_scotland <- read_excel(r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\UK-cancer-trends\Data\Cancer Trends\Source Data\Raw Data\Cancer_Scotland.xlsx)") |>
@@ -35,7 +35,7 @@ cancer_scotland <- read_excel(r"(C:\Users\rfrost\OneDrive - The Institute of Can
                            "Oesophagus",
                            "Pancreas",
                            "Prostate")) |>
-  select(Year, Country, Cancer_Site = CancerSite, Sex, ASR = EASR)
+  select(Year, Country, Cancer_Site = CancerSite, Sex, Incidences = IncidencesAllAges, ASR = EASR)
 
 ## WALES DATA 
 cancer_wales <- data.frame(Year = numeric(0), Country = character(0), Sex = character(0), ASR = numeric(0))
@@ -45,8 +45,10 @@ cancer_wales_sheets <- excel_sheets(r"(C:\Users\rfrost\OneDrive - The Institute 
 for(sheet in cancer_wales_sheets){
   
   temp_data <- read_excel(r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\UK-cancer-trends\Data\Cancer Trends\Source Data\Raw Data\Cancer_Wales.xlsx)", sheet = sheet) |>
-    select(Year, Country = Geography, Cancer_Site = Cancer_type, Sex = Sex, ASR = Value)
-  
+    select(Year, Country = Geography, Cancer_Site = Cancer_type, Sex = Sex, ASR = Value) |>
+    # Need to add Wales raw incidence data
+    mutate(Incidences = NA)
+    
   cancer_wales <- rbind(cancer_wales, temp_data)
   
 }
@@ -70,11 +72,15 @@ for(sheet in cancer_nireland_sheets){
   # Get ASR data
   ASR_data <- as.vector(as.matrix(temp_data[,grepl(colnames(temp_data), pattern = "European age-standardised incidence rate per 100,000")]))
   
+  # Get raw incidence rates
+  Incidence_data <- as.vector(as.matrix(temp_data[,grepl(colnames(temp_data), pattern = "Total number of")]))
+  
   # Combine into one dataframe
   temp_data_2 <- data.frame(Year = rep(temp_data$`Year of diagnosis`, length(groups)),
                             Country = "Nothern Ireland",
                             Cancer_Site = sheet,
                             Sex = rep(groups, each = nrow(temp_data)),
+                            Incidences = Incidence_data,
                             ASR = ASR_data)
 
   cancer_nireland <- rbind(cancer_nireland, temp_data_2)
@@ -96,7 +102,7 @@ cancer_data <- cancer_data |>
     
     # Cleaning and standardising site of cancer
     Cancer_Site = case_when(
-      grepl(Cancer_Site, pattern = "All") ~ "All sites excl. NSMC",
+      grepl(Cancer_Site, pattern = "All") ~ "All sites excl. NMSC",
       grepl(Cancer_Site, pattern = "Breast", ignore.case = T) ~ "Breast",
       grepl(Cancer_Site, pattern = "Colo|colo") ~ "Colorectal",
       grepl(Cancer_Site, pattern = "Lung|lung") ~ "Lung",
@@ -117,7 +123,7 @@ cancer_data <- cancer_data |>
     
   ) |>
   # Filtering for specified years
-  filter(between(Year, 2000, 2019)) |>
+  # filter(between(Year, 2000, 2019)) |>
   # Filtering out male breast cancer
   filter(!(Sex == "Men" & Cancer_Site == "Breast")) |>
   # England doesn't have rates for men and women combined so have to filter this out
