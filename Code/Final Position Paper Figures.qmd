@@ -734,6 +734,126 @@ apc_full_table <- function(data_jp, title = NA){
 
 ```
 
+#### Meeting Mortality Target Table Generation
+```{r}
+
+
+meet_targets_table <- function(targets, target.year, target.start = NA, data_jp, title = NA){
+
+  output.table <- data.frame(Cancer = character(0), Sex = character(0), APC_Req = character(0), Pace = character(0), Year_Ach = character(0))
+
+  for(cancer in unique(data_jp$Cancer_Site)){
+    for(sex in unique(data_jp$Sex)){
+      
+      # Filter data to sex and cancer of interest
+      temp_data <- data_jp |>
+        filter(Cancer_Site == cancer, Sex == sex)
+      
+      if(nrow(temp_data)>0){
+        
+        # Get final APC to extrapolate from
+        finalAPC <- temp_data |>
+          arrange(desc(Year)) |>
+          filter(row_number()==1) |>
+          pull(APC)
+        
+        finalAPC <- as.numeric(gsub(finalAPC, pattern = "\\*", replacement = ""))
+        
+        # Go from APC to percentage change mulitplier
+        finalAPC_num <- 1+finalAPC/100
+        
+        finalyear <- temp_data |>
+          arrange(desc(Year)) |>
+          filter(row_number()==1) |>
+          pull(Year)
+        
+        # If a target start year is given, then use that
+        if(!is.na(target.start)){
+          finalyear <- target.start
+        }
+        
+        # Years left until target year
+        yearsremaining <- target.year  - finalyear
+        
+        yearachieved <- ifelse(finalAPC_num<1, floor(log(targets)/log(finalAPC_num)) + finalyear, "Inf")
+          
+        goalAPC <- targets^(1/yearsremaining)
+        
+        goalAPC <- 100*(goalAPC-1)
+        
+        new_row <- c(cancer, sex, round(goalAPC, digits = 3),  round(finalAPC, digits = 3),  yearachieved)
+
+      } else {
+        
+        new_row <- c(cancer, sex, "-", "-", "-")
+        
+      }
+      
+      output.table[nrow(output.table)+1,] <- new_row
+      
+    }
+  }
+  
+  output.table <- output.table |>
+    gt() |>
+    # Header Creation
+    tab_header(
+      title = md(if_else(is.na(title), "**Globocan JoinPoint Target Analysis**", paste0("**", title, "**"))),
+      subtitle = paste0("For a Goal of a 15% Reduction in Mortality by 2040", if_else(is.na(target.start), "", paste0(" from ", target.start)))
+    ) |>
+    
+    # Head Rows
+    tab_style(
+      style = list(
+        cell_text(weight = "bold", align = "center")
+      ),
+      locations = cells_column_labels(columns = everything())
+    ) |>
+    
+    # Body rows
+    tab_style(
+      style = list(
+        cell_text(align = "center")
+      ),
+      locations = cells_body(
+          columns = everything()
+      )
+    ) |>
+    # Colour final column based on if target is reached
+    tab_style(
+      style = list(
+        cell_text(color = "#D83800FF", weight = "bold")
+      ),
+      locations = cells_body(
+        columns = Year_Ach,
+        rows = Year_Ach == "Inf" | suppressWarnings(as.numeric(Year_Ach)) > target.year
+      )
+    ) |>
+    tab_style(
+      style = list(
+        cell_text(color = "#489838FF", weight = "bold")
+      ),
+      locations = cells_body(
+        columns = Year_Ach,
+        rows = suppressWarnings(as.numeric(Year_Ach)) <= target.year
+      )
+    ) |>
+    
+    # Rename columns
+    cols_label(
+      APC_Req = "APC Required",
+      Pace = "Current APC",
+      Year_Ach = "Year Achieved"
+    ) 
+    
+  
+  return(output.table)
+
+}
+
+
+```
+
 ### Additional Wales Data
 Additional Wales data has been included past the original 4 years. It it all loaded in this chunk so that data can be drawn from it when it is needed.
 ```{r}
@@ -2015,7 +2135,7 @@ data_weights <- read.delim(r"(C:\Users\rfrost\Documents\UK Data Service\UK Cance
   mutate(weight = wti_UKY1234) |>
   select(seriali, weight)
 data_1_4 <- merge(data_1_4, data_weights, by = "seriali") |>
-  select(surveyyear = SurveyYear, totalredmeat, aoac_fibre = AOACFibreg, sex = Sex, age = Age, weight, country = Country)
+  select(surveyyear = SurveyYear, totalredmeat, aoac_fibre = AOACFibreg, sex = Sex, age = Age, weight, country = Country, processed.poultry = ProcessedPoultryg, processed.redmeat = ProcessedRedMeatg, burgers = Burgersg, sausages = Sausagesg)
 
 # Read in data years 5-6
 data_5_6 <- read.delim(r"(C:\Users\rfrost\Documents\UK Data Service\UK Cancer Trends\NDNS 2008-2019\tab\ndns_rp_yr5-6a_personleveldietarydata_v2.tab)")
@@ -2023,7 +2143,7 @@ data_weights <- read.delim(r"(C:\Users\rfrost\Documents\UK Data Service\UK Cance
   mutate(weight = wti_Y56) |>
   select(seriali, weight)
 data_5_6 <- merge(data_5_6, data_weights, by = "seriali") |>
-  select(surveyyear = Surveyyear, totalredmeat, aoac_fibre = AOACFibreg, sex = Sex, age = Age, weight, country = Country)
+  select(surveyyear = Surveyyear, totalredmeat, aoac_fibre = AOACFibreg, sex = Sex, age = Age, weight, country = Country, processed.poultry = ProcessedPoultryg, processed.redmeat = ProcessedRedMeatg, burgers = Burgersg, sausages = Sausagesg)
 
 # Read in data years 7-8
 data_7_8 <- read.delim(r"(C:\Users\rfrost\Documents\UK Data Service\UK Cancer Trends\NDNS 2008-2019\tab\ndns_rp_yr7-8a_personleveldietarydata.tab)")
@@ -2031,7 +2151,7 @@ data_weights <- read.delim(r"(C:\Users\rfrost\Documents\UK Data Service\UK Cance
   mutate(weight = wti_Y78) |>
   select(seriali, weight)
 data_7_8 <- merge(data_7_8, data_weights, by = "seriali") |>
-  select(surveyyear = SurveyYear, totalredmeat, aoac_fibre = AOACFibreg, sex = Sex, age = Age, weight, country = Country)
+  select(surveyyear = SurveyYear, totalredmeat, aoac_fibre = AOACFibreg, sex = Sex, age = Age, weight, country = Country, processed.poultry = ProcessedPoultryg, processed.redmeat = ProcessedRedMeatg, burgers = Burgersg, sausages = Sausagesg)
 
 # Read in data years 9-11
 data_9_11 <- read.delim(r"(C:\Users\rfrost\Documents\UK Data Service\UK Cancer Trends\NDNS 2008-2019\tab\ndns_rp_yr9-11a_personleveldietarydata_uk_20210831.tab)")
@@ -2039,7 +2159,7 @@ data_weights <- read.delim(r"(C:\Users\rfrost\Documents\UK Data Service\UK Cance
   mutate(weight = wti_Y911) |>
   select(seriali, weight)
 data_9_11 <- merge(data_9_11, data_weights, by = "seriali") |>
-  select(surveyyear = SurveyYear, totalredmeat, aoac_fibre = AOACFibreg, sex = Sex, age = AgeR, weight, country = Country)
+  select(surveyyear = SurveyYear, totalredmeat, aoac_fibre = AOACFibreg, sex = Sex, age = AgeR, weight, country = Country, processed.poultry = ProcessedPoultryg, processed.redmeat = ProcessedRedMeatg, burgers = Burgersg, sausages = Sausagesg)
 
 # RBind all data together
 data_ndhns <- rbind(data_1_4, data_5_6) |>
@@ -2094,22 +2214,21 @@ ggsave(filename = paste0(output_filepath, "Extra Supplement Figure 1a - Fibre.pn
 
 ```
 
-#### Red Meat Consumption
+#### Processed Meat Consumption
 ```{r, fig.height=9, fig.width=8}
 
 
 # Plot
 data_ndhns |>
   group_by(surveyyear_cat, sex, country) |>
-  mutate(redmeat_rec = weight*(totalredmeat < 70)) |>
-  summarise(mean_weight = mean(weight), redmeat_rec = 100*sum(redmeat_rec)/sum(weight)) |>
-  ggplot(aes(x= surveyyear_cat, y = redmeat_rec, colour = country)) +
+  summarise(total = n(), mean_weight = mean(weight), processed.meat = sum(weight*(processed.redmeat + processed.poultry + sausages + burgers))/sum(weight)) |>
+  ggplot(aes(x= surveyyear_cat, y = processed.meat, colour = country)) +
   geom_point() +
   geom_line() +
   xlab("Year") +
-  ylab("% Below Red Meat Intake Guidelines") +
-  ggtitle("% Below Red Meat Intake Guidelines* in UK") +
-  labs(colour = "Country", caption = "*Guidelines are 70g of Red Meat per day") +
+  ylab("Processed Meat Consumption (g/day)") +
+  ggtitle("% Processed Meat Consumption in the UK") +
+  labs(colour = "Country") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
         panel.grid.minor.x = element_blank()) +
@@ -2118,26 +2237,30 @@ data_ndhns |>
                      breaks = floor(min(data_ndhns$surveyyear_cat)):ceiling(max(data_ndhns$surveyyear_cat)))
 
 # Save plot
-ggsave(filename = paste0(output_filepath, "Extra Supplement Figure 1b - Red Meat.png"), width = 8, height = 9, bg = "white")
+ggsave(filename = paste0(output_filepath, "Extra Supplement Figure 1b - Processed Meat.png"), width = 8, height = 9, bg = "white")
 
 
 ```
 
 
+#### Cancer Mortality - Meeting Targets
+```{r, results = "asis"}
+
+mortality_jp <- read.delim(r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\UK-cancer-trends\Data\Cancer Trends\Source Data\Cancer_Mortality_Data_Joinpoint.txt)", sep = "\t")
+
+for(Country in unique(mortality_jp$Country)){
+  
+  mortality_jp_spec <- mortality_jp[mortality_jp$Country == Country,]
+  
+  plot <- meet_targets_table(target = 0.85, target.year = 2040, data_jp = mortality_jp_spec, target.start = 2024, title = paste0("JP Target Analysis: ", Country))
+  print(plot)
+  gtsave(plot, filename = paste0(output_filepath, "Extra Supplement Figure 2" , letters[which(unique(mortality_jp$Country) == Country)] , " - Recent Cancer Mortality Trends ", Country, ".png"))
+  
+}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+```
 
 
 ### Output Figure data
