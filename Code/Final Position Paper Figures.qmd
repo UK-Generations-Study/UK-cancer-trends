@@ -740,7 +740,7 @@ apc_full_table <- function(data_jp, title = NA){
 
 meet_targets_table <- function(targets, target.year, target.start = NA, data_jp, title = NA){
 
-  output.table <- data.frame(Cancer = character(0), Sex = character(0), APC_Req = character(0), Pace = character(0), Year_Ach = character(0))
+  output.table <- data.frame(Cancer = character(0), Sex = character(0), APC_Req = character(0), Pace = character(0), Full_Change = character(0), Year_Ach = character(0))
 
   for(cancer in unique(data_jp$Cancer_Site)){
     for(sex in unique(data_jp$Sex)){
@@ -775,17 +775,21 @@ meet_targets_table <- function(targets, target.year, target.start = NA, data_jp,
         # Years left until target year
         yearsremaining <- target.year  - finalyear
         
+        total_change_num <- finalAPC_num^(yearsremaining)
+        
+        total_change <- 100*(total_change_num-1)
+        
         yearachieved <- ifelse(finalAPC_num<1, floor(log(targets)/log(finalAPC_num)) + finalyear, "Inf")
           
         goalAPC <- targets^(1/yearsremaining)
         
         goalAPC <- 100*(goalAPC-1)
         
-        new_row <- c(cancer, sex, round(goalAPC, digits = 3),  round(finalAPC, digits = 3),  yearachieved)
+        new_row <- c(cancer, sex, round(goalAPC, digits = 3),  round(finalAPC, digits = 3),  round(total_change, digits = 3), yearachieved)
 
       } else {
         
-        new_row <- c(cancer, sex, "-", "-", "-")
+        new_row <- c(cancer, sex, "-", "-", "-", "-")
         
       }
       
@@ -843,6 +847,7 @@ meet_targets_table <- function(targets, target.year, target.start = NA, data_jp,
     cols_label(
       APC_Req = "APC Required",
       Pace = "Current APC",
+      Full_Change = "Total Change",
       Year_Ach = "Year Achieved"
     ) 
     

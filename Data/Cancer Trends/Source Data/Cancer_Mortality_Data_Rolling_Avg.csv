@@ -1,0 +1,1057 @@
+"Year","Country","Cancer_Site","Sex","Mortalities","ASR","ASR_rolling"
+2002,"England","All sites excl. NMSC","Men","66520",390.7,388.6
+2003,"England","All sites excl. NMSC","Men","66029",383.5,383.466666666667
+2004,"England","All sites excl. NMSC","Men","65666",376.2,376.466666666667
+2005,"England","All sites excl. NMSC","Men","65526",369.7,370.833333333333
+2006,"England","All sites excl. NMSC","Men","66164",366.6,365.566666666667
+2007,"England","All sites excl. NMSC","Men","66265",360.4,361.866666666667
+2008,"England","All sites excl. NMSC","Men","67070",358.6,357.2
+2009,"England","All sites excl. NMSC","Men","67548",352.6,353.066666666667
+2010,"England","All sites excl. NMSC","Men","67942",348,348.633333333333
+2011,"England","All sites excl. NMSC","Men","68639",345.3,345.866666666667
+2012,"England","All sites excl. NMSC","Men","70078",344.3,342.266666666667
+2013,"England","All sites excl. NMSC","Men","70164",337.2,338.066666666667
+2014,"England","All sites excl. NMSC","Men","71058",332.7,333.133333333333
+2015,"England","All sites excl. NMSC","Men","71781",329.5,328.633333333333
+2016,"England","All sites excl. NMSC","Men","72086",323.7,324.033333333333
+2017,"England","All sites excl. NMSC","Men","72678",318.9,318.566666666667
+2018,"England","All sites excl. NMSC","Men","72882",313.1,313.066666666667
+2019,"England","All sites excl. NMSC","Men","73318",307.2,307.8
+2002,"England","All sites excl. NMSC","Women","61456",255.8,254.366666666667
+2003,"England","All sites excl. NMSC","Women","60843",251.8,251.633333333333
+2004,"England","All sites excl. NMSC","Women","59951",247.3,248.6
+2005,"England","All sites excl. NMSC","Women","60304",246.7,246.066666666667
+2006,"England","All sites excl. NMSC","Women","60195",244.2,245.166666666667
+2007,"England","All sites excl. NMSC","Women","60996",244.6,244.033333333333
+2008,"England","All sites excl. NMSC","Women","61347",243.3,241.9
+2009,"England","All sites excl. NMSC","Women","60572",237.8,239.233333333333
+2010,"England","All sites excl. NMSC","Women","61132",236.6,237.033333333333
+2011,"England","All sites excl. NMSC","Women","61935",236.7,236.166666666667
+2012,"England","All sites excl. NMSC","Women","62527",235.2,234.3
+2013,"England","All sites excl. NMSC","Women","62215",231,231.533333333333
+2014,"England","All sites excl. NMSC","Women","62669",228.4,228.666666666667
+2015,"England","All sites excl. NMSC","Women","62894",226.6,227.233333333333
+2016,"England","All sites excl. NMSC","Women","63680",226.7,224.833333333333
+2017,"England","All sites excl. NMSC","Women","63207",221.2,222.133333333333
+2018,"England","All sites excl. NMSC","Women","63338",218.5,218.466666666667
+2019,"England","All sites excl. NMSC","Women","63778",215.7,216.1
+2002,"England","Breast","Women","10795",45,44.7333333333333
+2003,"England","Breast","Women","10501",43.6,43.7
+2004,"England","Breast","Women","10288",42.5,42.7333333333333
+2005,"England","Breast","Women","10297",42.1,42.0333333333333
+2006,"England","Breast","Women","10243",41.5,41.2333333333333
+2007,"England","Breast","Women","9986",40.1,40.5
+2008,"England","Breast","Women","10065",39.9,39.4
+2009,"England","Breast","Women","9749",38.2,38.4666666666667
+2010,"England","Breast","Women","9634",37.3,37.5
+2011,"England","Breast","Women","9702",37,36.9
+2012,"England","Breast","Women","9698",36.4,36.2333333333333
+2013,"England","Breast","Women","9545",35.3,35.4
+2014,"England","Breast","Women","9497",34.5,34.7
+2015,"England","Breast","Women","9556",34.3,34.3
+2016,"England","Breast","Women","9613",34.1,33.9
+2017,"England","Breast","Women","9502",33.3,33.4666666666667
+2018,"England","Breast","Women","9562",33,32.8333333333333
+2019,"England","Breast","Women","9462",32.2,32.5333333333333
+2002,"England","Colorectal","Men","6985",41.1,40.7666666666667
+2003,"England","Colorectal","Men","6883",40.1,40.4
+2004,"England","Colorectal","Men","6946",40,39.8333333333333
+2005,"England","Colorectal","Men","6938",39.4,39.2333333333333
+2006,"England","Colorectal","Men","6873",38.3,38.2
+2007,"England","Colorectal","Men","6801",36.9,37.7333333333333
+2008,"England","Colorectal","Men","7077",38,36.9666666666667
+2009,"England","Colorectal","Men","6892",36,36.7
+2010,"England","Colorectal","Men","7055",36.1,35.8
+2011,"England","Colorectal","Men","6974",35.3,35.6333333333333
+2012,"England","Colorectal","Men","7198",35.5,34.9
+2013,"England","Colorectal","Men","7051",33.9,34.2333333333333
+2014,"England","Colorectal","Men","7049",33.3,33.3666666666667
+2015,"England","Colorectal","Men","7136",32.9,32.9666666666667
+2016,"England","Colorectal","Men","7268",32.7,32.8333333333333
+2017,"England","Colorectal","Men","7509",32.9,32.4666666666667
+2018,"England","Colorectal","Men","7394",31.8,32.2
+2019,"England","Colorectal","Men","7602",31.9,31.8666666666667
+2002,"England","Colorectal","Women","6201",25.3,24.9333333333333
+2003,"England","Colorectal","Women","6019",24.5,24.7666666666667
+2004,"England","Colorectal","Women","6032",24.5,24.3666666666667
+2005,"England","Colorectal","Women","5986",24.1,24.1333333333333
+2006,"England","Colorectal","Women","5995",23.8,23.8666666666667
+2007,"England","Colorectal","Women","6040",23.7,23.6
+2008,"England","Colorectal","Women","5990",23.3,23.1
+2009,"England","Colorectal","Women","5799",22.3,22.5666666666667
+2010,"England","Colorectal","Women","5850",22.1,22.1333333333333
+2011,"England","Colorectal","Women","5897",22,22.1
+2012,"England","Colorectal","Women","6035",22.2,21.9
+2013,"England","Colorectal","Women","5948",21.5,21.6666666666667
+2014,"England","Colorectal","Women","5987",21.3,21.3333333333333
+2015,"England","Colorectal","Women","6024",21.2,21.3
+2016,"England","Colorectal","Women","6147",21.4,21.1333333333333
+2017,"England","Colorectal","Women","6057",20.8,21
+2018,"England","Colorectal","Women","6171",20.8,20.8333333333333
+2019,"England","Colorectal","Women","6320",20.9,20.8333333333333
+2002,"England","Lung","Men","16384",93.4,93.3333333333333
+2003,"England","Lung","Men","16069",90.9,90.6333333333333
+2004,"England","Lung","Men","15740",87.6,88.3
+2005,"England","Lung","Men","15692",86.4,86.6
+2006,"England","Lung","Men","15846",85.8,85.4333333333333
+2007,"England","Lung","Men","15811",84.1,84.6333333333333
+2008,"England","Lung","Men","16019",84,83.3
+2009,"England","Lung","Men","15949",81.8,81.6
+2010,"England","Lung","Men","15748",79,79.4666666666667
+2011,"England","Lung","Men","15707",77.6,77.3
+2012,"England","Lung","Men","15618",75.3,75.8
+2013,"England","Lung","Men","15778",74.5,74.2333333333333
+2014,"England","Lung","Men","15855",72.9,72.5
+2015,"England","Lung","Men","15509",70.1,70.6333333333333
+2016,"England","Lung","Men","15614",68.9,68.2666666666667
+2017,"England","Lung","Men","15229",65.8,66.1
+2018,"England","Lung","Men","15021",63.6,63.6333333333333
+2019,"England","Lung","Men","14890",61.5,61.1666666666667
+2002,"England","Lung","Women","10699",45.5,45.4
+2003,"England","Lung","Women","10906",46,45.5
+2004,"England","Lung","Women","10678",45,45.8333333333333
+2005,"England","Lung","Women","11119",46.5,46.4666666666667
+2006,"England","Lung","Women","11540",47.9,47.6666666666667
+2007,"England","Lung","Women","11869",48.6,48.6666666666667
+2008,"England","Lung","Women","12203",49.5,48.9
+2009,"England","Lung","Women","12111",48.6,48.9333333333333
+2010,"England","Lung","Women","12317",48.7,48.6666666666667
+2011,"England","Lung","Women","12460",48.7,48.7333333333333
+2012,"England","Lung","Women","12697",48.8,48.6333333333333
+2013,"England","Lung","Women","12765",48.4,48.5333333333333
+2014,"England","Lung","Women","12992",48.4,48.3
+2015,"England","Lung","Women","13077",48.1,47.8666666666667
+2016,"England","Lung","Women","12950",47.1,47.1
+2017,"England","Lung","Women","12959",46.1,45.9
+2018,"England","Lung","Women","12661",44.5,44.6666666666667
+2019,"England","Lung","Women","12626",43.4,43.6
+2002,"England","Oesophageal","Men","3745",21.1,21.2
+2003,"England","Oesophageal","Men","3866",21.6,21.2666666666667
+2004,"England","Oesophageal","Men","3825",21.1,21.4333333333333
+2005,"England","Oesophageal","Men","3985",21.6,21.3
+2006,"England","Oesophageal","Men","3985",21.2,21.1
+2007,"England","Oesophageal","Men","3909",20.5,20.8666666666667
+2008,"England","Oesophageal","Men","4085",20.9,20.8666666666667
+2009,"England","Oesophageal","Men","4205",21.2,20.9333333333333
+2010,"England","Oesophageal","Men","4188",20.7,20.7
+2011,"England","Oesophageal","Men","4182",20.2,20.5
+2012,"England","Oesophageal","Men","4349",20.6,20.3
+2013,"England","Oesophageal","Men","4320",20.1,20
+2014,"England","Oesophageal","Men","4274",19.3,19.7666666666667
+2015,"England","Oesophageal","Men","4469",19.9,19.6
+2016,"England","Oesophageal","Men","4482",19.6,19.6
+2017,"England","Oesophageal","Men","4512",19.3,19.3333333333333
+2018,"England","Oesophageal","Men","4562",19.1,19
+2019,"England","Oesophageal","Men","4550",18.6,18.8
+2002,"England","Oesophageal","Women","2169",8.9,8.66666666666667
+2003,"England","Oesophageal","Women","2130",8.7,8.66666666666667
+2004,"England","Oesophageal","Women","2069",8.4,8.5
+2005,"England","Oesophageal","Women","2076",8.4,8.36666666666667
+2006,"England","Oesophageal","Women","2081",8.3,8.26666666666667
+2007,"England","Oesophageal","Women","2044",8.1,8.13333333333333
+2008,"England","Oesophageal","Women","2046",8,7.96666666666667
+2009,"England","Oesophageal","Women","2017",7.8,7.83333333333333
+2010,"England","Oesophageal","Women","2021",7.7,7.66666666666667
+2011,"England","Oesophageal","Women","2015",7.5,7.53333333333333
+2012,"England","Oesophageal","Women","1983",7.4,7.43333333333333
+2013,"England","Oesophageal","Women","2014",7.4,7.4
+2014,"England","Oesophageal","Women","2046",7.4,7.33333333333333
+2015,"England","Oesophageal","Women","2019",7.2,7.26666666666667
+2016,"England","Oesophageal","Women","2049",7.2,7.03333333333333
+2017,"England","Oesophageal","Women","1946",6.7,6.9
+2018,"England","Oesophageal","Women","1983",6.8,6.86666666666667
+2019,"England","Oesophageal","Women","2130",7.1,6.7
+2002,"England","Pancreatic","Men","2769",15.8,15.8666666666667
+2003,"England","Pancreatic","Men","2856",16,15.8666666666667
+2004,"England","Pancreatic","Men","2841",15.8,15.8666666666667
+2005,"England","Pancreatic","Men","2897",15.8,16
+2006,"England","Pancreatic","Men","3060",16.4,16.1666666666667
+2007,"England","Pancreatic","Men","3108",16.3,16.3666666666667
+2008,"England","Pancreatic","Men","3172",16.4,16.4333333333333
+2009,"England","Pancreatic","Men","3257",16.6,16.3333333333333
+2010,"England","Pancreatic","Men","3218",16,16.5333333333333
+2011,"England","Pancreatic","Men","3501",17,16.7333333333333
+2012,"England","Pancreatic","Men","3599",17.2,16.9
+2013,"England","Pancreatic","Men","3539",16.5,16.8666666666667
+2014,"England","Pancreatic","Men","3716",16.9,16.7333333333333
+2015,"England","Pancreatic","Men","3763",16.8,17.1
+2016,"England","Pancreatic","Men","4003",17.6,17.1666666666667
+2017,"England","Pancreatic","Men","3977",17.1,17.4
+2018,"England","Pancreatic","Men","4163",17.5,17.1333333333333
+2019,"England","Pancreatic","Men","4093",16.8,17.1333333333333
+2002,"England","Pancreatic","Women","2960",12.3,12.3333333333333
+2003,"England","Pancreatic","Women","2975",12.3,12.4
+2004,"England","Pancreatic","Women","3047",12.6,12.6333333333333
+2005,"England","Pancreatic","Women","3177",13,12.7666666666667
+2006,"England","Pancreatic","Women","3123",12.7,12.9666666666667
+2007,"England","Pancreatic","Women","3286",13.2,13.0666666666667
+2008,"England","Pancreatic","Women","3334",13.3,13.3666666666667
+2009,"England","Pancreatic","Women","3436",13.6,13.3333333333333
+2010,"England","Pancreatic","Women","3378",13.1,13.3333333333333
+2011,"England","Pancreatic","Women","3453",13.3,13.4
+2012,"England","Pancreatic","Women","3632",13.8,13.4666666666667
+2013,"England","Pancreatic","Women","3549",13.3,13.5666666666667
+2014,"England","Pancreatic","Women","3714",13.6,13.4666666666667
+2015,"England","Pancreatic","Women","3731",13.5,13.5666666666667
+2016,"England","Pancreatic","Women","3813",13.6,13.6
+2017,"England","Pancreatic","Women","3892",13.7,13.5666666666667
+2018,"England","Pancreatic","Women","3868",13.4,13.5666666666667
+2019,"England","Pancreatic","Women","4003",13.6,13.5666666666667
+2002,"England","Prostate","Men","8471",56.5,56.4
+2003,"England","Prostate","Men","8570",56.7,56.1666666666667
+2004,"England","Prostate","Men","8531",55.3,55.3
+2005,"England","Prostate","Men","8492",53.9,53.9666666666667
+2006,"England","Prostate","Men","8506",52.7,53.0666666666667
+2007,"England","Prostate","Men","8659",52.6,52.1333333333333
+2008,"England","Prostate","Men","8597",51.1,51.5
+2009,"England","Prostate","Men","8842",50.8,51.0333333333333
+2010,"England","Prostate","Men","9082",51.2,50.7333333333333
+2011,"England","Prostate","Men","9123",50.2,50.1333333333333
+2012,"England","Prostate","Men","9133",49,49.1
+2013,"England","Prostate","Men","9187",48.1,48.4333333333333
+2014,"England","Prostate","Men","9530",48.2,48.6333333333333
+2015,"England","Prostate","Men","10017",49.6,48.4333333333333
+2016,"England","Prostate","Men","9851",47.5,48.2666666666667
+2017,"England","Prostate","Men","10146",47.7,47.1
+2018,"England","Prostate","Men","10068",46.1,46.4333333333333
+2019,"England","Prostate","Men","10263",45.5,45.4666666666667
+1994,"Nothern Ireland","All sites excl. NMSC","Men","1852",417.6,425.8
+1995,"Nothern Ireland","All sites excl. NMSC","Men","1897",425.1,420.933333333333
+1996,"Nothern Ireland","All sites excl. NMSC","Men","1887",420.1,415.766666666667
+1997,"Nothern Ireland","All sites excl. NMSC","Men","1843",402.1,413.7
+1998,"Nothern Ireland","All sites excl. NMSC","Men","1917",418.9,400.066666666667
+1999,"Nothern Ireland","All sites excl. NMSC","Men","1791",379.2,390.766666666667
+2000,"Nothern Ireland","All sites excl. NMSC","Men","1757",374.2,385.2
+2001,"Nothern Ireland","All sites excl. NMSC","Men","1918",402.2,389.466666666667
+2002,"Nothern Ireland","All sites excl. NMSC","Men","1901",392,394.933333333333
+2003,"Nothern Ireland","All sites excl. NMSC","Men","1894",390.6,387.933333333333
+2004,"Nothern Ireland","All sites excl. NMSC","Men","1932",381.2,381.566666666667
+2005,"Nothern Ireland","All sites excl. NMSC","Men","1907",372.9,379.333333333333
+2006,"Nothern Ireland","All sites excl. NMSC","Men","2016",383.9,377.9
+2007,"Nothern Ireland","All sites excl. NMSC","Men","2024",376.9,379.6
+2008,"Nothern Ireland","All sites excl. NMSC","Men","2054",378,369.3
+2009,"Nothern Ireland","All sites excl. NMSC","Men","1988",353,366.5
+2010,"Nothern Ireland","All sites excl. NMSC","Men","2119",368.5,362
+2011,"Nothern Ireland","All sites excl. NMSC","Men","2136",364.5,363
+2012,"Nothern Ireland","All sites excl. NMSC","Men","2146",356,357.966666666667
+2013,"Nothern Ireland","All sites excl. NMSC","Men","2203",353.4,351.833333333333
+2014,"Nothern Ireland","All sites excl. NMSC","Men","2202",346.1,354.033333333333
+2015,"Nothern Ireland","All sites excl. NMSC","Men","2343",362.6,353.433333333333
+2016,"Nothern Ireland","All sites excl. NMSC","Men","2340",351.6,351.966666666667
+2017,"Nothern Ireland","All sites excl. NMSC","Men","2339",341.7,341.533333333333
+2018,"Nothern Ireland","All sites excl. NMSC","Men","2305",331.3,332.566666666667
+2019,"Nothern Ireland","All sites excl. NMSC","Men","2319",324.7,327.366666666667
+2020,"Nothern Ireland","All sites excl. NMSC","Men","2388",326.1,323.233333333333
+1994,"Nothern Ireland","All sites excl. NMSC","Women","1754",267.3,262.766666666667
+1995,"Nothern Ireland","All sites excl. NMSC","Women","1681",254.4,259.066666666667
+1996,"Nothern Ireland","All sites excl. NMSC","Women","1708",255.5,256.233333333333
+1997,"Nothern Ireland","All sites excl. NMSC","Women","1745",258.8,256.266666666667
+1998,"Nothern Ireland","All sites excl. NMSC","Women","1728",254.5,256.333333333333
+1999,"Nothern Ireland","All sites excl. NMSC","Women","1747",255.7,257.466666666667
+2000,"Nothern Ireland","All sites excl. NMSC","Women","1791",262.2,256.1
+2001,"Nothern Ireland","All sites excl. NMSC","Women","1735",250.4,254.4
+2002,"Nothern Ireland","All sites excl. NMSC","Women","1755",250.6,253.1
+2003,"Nothern Ireland","All sites excl. NMSC","Women","1833",258.3,253.7
+2004,"Nothern Ireland","All sites excl. NMSC","Women","1811",252.2,253.433333333333
+2005,"Nothern Ireland","All sites excl. NMSC","Women","1819",249.8,249.733333333333
+2006,"Nothern Ireland","All sites excl. NMSC","Women","1835",247.2,245.533333333333
+2007,"Nothern Ireland","All sites excl. NMSC","Women","1796",239.6,244.366666666667
+2008,"Nothern Ireland","All sites excl. NMSC","Women","1882",246.3,242.766666666667
+2009,"Nothern Ireland","All sites excl. NMSC","Women","1865",242.4,243.4
+2010,"Nothern Ireland","All sites excl. NMSC","Women","1903",241.5,240.633333333333
+2011,"Nothern Ireland","All sites excl. NMSC","Women","1903",238,240.033333333333
+2012,"Nothern Ireland","All sites excl. NMSC","Women","1959",240.6,239.533333333333
+2013,"Nothern Ireland","All sites excl. NMSC","Women","1978",240,244.4
+2014,"Nothern Ireland","All sites excl. NMSC","Women","2121",252.6,242.233333333333
+2015,"Nothern Ireland","All sites excl. NMSC","Women","2000",234.1,245.3
+2016,"Nothern Ireland","All sites excl. NMSC","Women","2162",249.2,240.366666666667
+2017,"Nothern Ireland","All sites excl. NMSC","Women","2103",237.8,240.3
+2018,"Nothern Ireland","All sites excl. NMSC","Women","2097",233.9,234.666666666667
+2019,"Nothern Ireland","All sites excl. NMSC","Women","2123",232.3,232.933333333333
+2020,"Nothern Ireland","All sites excl. NMSC","Women","2158",232.6,231.666666666667
+1994,"Nothern Ireland","Breast","Women","337",51.8,50.7
+1995,"Nothern Ireland","Breast","Women","329",49.3,49.2666666666667
+1996,"Nothern Ireland","Breast","Women","311",46.7,44.8666666666667
+1997,"Nothern Ireland","Breast","Women","260",38.6,43.0666666666667
+1998,"Nothern Ireland","Breast","Women","297",43.9,41.6333333333333
+1999,"Nothern Ireland","Breast","Women","290",42.4,42.5666666666667
+2000,"Nothern Ireland","Breast","Women","286",41.4,43
+2001,"Nothern Ireland","Breast","Women","315",45.2,42
+2002,"Nothern Ireland","Breast","Women","278",39.4,41.4333333333333
+2003,"Nothern Ireland","Breast","Women","282",39.7,41.4
+2004,"Nothern Ireland","Breast","Women","324",45.1,41.9333333333333
+2005,"Nothern Ireland","Breast","Women","301",41,42.1
+2006,"Nothern Ireland","Breast","Women","300",40.2,40.7
+2007,"Nothern Ireland","Breast","Women","309",40.9,40.7
+2008,"Nothern Ireland","Breast","Women","315",41,40.4
+2009,"Nothern Ireland","Breast","Women","302",39.3,38.1
+2010,"Nothern Ireland","Breast","Women","268",34,38.2
+2011,"Nothern Ireland","Breast","Women","336",41.3,36.8666666666667
+2012,"Nothern Ireland","Breast","Women","290",35.3,38.1333333333333
+2013,"Nothern Ireland","Breast","Women","314",37.8,37.2333333333333
+2014,"Nothern Ireland","Breast","Women","326",38.6,36.8
+2015,"Nothern Ireland","Breast","Women","292",34,36.1666666666667
+2016,"Nothern Ireland","Breast","Women","316",35.9,35.1333333333333
+2017,"Nothern Ireland","Breast","Women","317",35.5,35.6666666666667
+2018,"Nothern Ireland","Breast","Women","320",35.6,34.8
+2019,"Nothern Ireland","Breast","Women","308",33.3,34.1333333333333
+2020,"Nothern Ireland","Breast","Women","312",33.5,32.9
+1994,"Nothern Ireland","Colorectal","Men","213",48.9,53.0666666666667
+1995,"Nothern Ireland","Colorectal","Men","240",55.5,51.6666666666667
+1996,"Nothern Ireland","Colorectal","Men","218",50.6,49.4
+1997,"Nothern Ireland","Colorectal","Men","191",42.1,48.7333333333333
+1998,"Nothern Ireland","Colorectal","Men","242",53.5,46.4666666666667
+1999,"Nothern Ireland","Colorectal","Men","198",43.8,46.8666666666667
+2000,"Nothern Ireland","Colorectal","Men","199",43.3,44.2
+2001,"Nothern Ireland","Colorectal","Men","218",45.5,44.0333333333333
+2002,"Nothern Ireland","Colorectal","Men","200",43.3,46.6
+2003,"Nothern Ireland","Colorectal","Men","251",51,46.1666666666667
+2004,"Nothern Ireland","Colorectal","Men","229",44.2,46.0333333333333
+2005,"Nothern Ireland","Colorectal","Men","223",42.9,44.1333333333333
+2006,"Nothern Ireland","Colorectal","Men","233",45.3,44.8
+2007,"Nothern Ireland","Colorectal","Men","254",46.2,44.9666666666667
+2008,"Nothern Ireland","Colorectal","Men","237",43.4,42.8666666666667
+2009,"Nothern Ireland","Colorectal","Men","223",39,40.8666666666667
+2010,"Nothern Ireland","Colorectal","Men","231",40.2,40.0333333333333
+2011,"Nothern Ireland","Colorectal","Men","232",40.9,39.7666666666667
+2012,"Nothern Ireland","Colorectal","Men","231",38.2,38.9666666666667
+2013,"Nothern Ireland","Colorectal","Men","233",37.8,36
+2014,"Nothern Ireland","Colorectal","Men","208",32,34.3666666666667
+2015,"Nothern Ireland","Colorectal","Men","215",33.3,33.4333333333333
+2016,"Nothern Ireland","Colorectal","Men","230",35,35.5666666666667
+2017,"Nothern Ireland","Colorectal","Men","262",38.4,36.3333333333333
+2018,"Nothern Ireland","Colorectal","Men","245",35.6,37.4333333333333
+2019,"Nothern Ireland","Colorectal","Men","267",38.3,34.4333333333333
+2020,"Nothern Ireland","Colorectal","Men","218",29.4,33.6
+1994,"Nothern Ireland","Colorectal","Women","223",34.1,34.6666666666667
+1995,"Nothern Ireland","Colorectal","Women","221",33.3,32.3666666666667
+1996,"Nothern Ireland","Colorectal","Women","200",29.7,31.8333333333333
+1997,"Nothern Ireland","Colorectal","Women","218",32.5,30.6666666666667
+1998,"Nothern Ireland","Colorectal","Women","202",29.8,30.5666666666667
+1999,"Nothern Ireland","Colorectal","Women","200",29.4,30.3333333333333
+2000,"Nothern Ireland","Colorectal","Women","216",31.8,29.1
+2001,"Nothern Ireland","Colorectal","Women","180",26.1,27.7
+2002,"Nothern Ireland","Colorectal","Women","176",25.2,27.1666666666667
+2003,"Nothern Ireland","Colorectal","Women","213",30.2,27.6333333333333
+2004,"Nothern Ireland","Colorectal","Women","196",27.5,28.6333333333333
+2005,"Nothern Ireland","Colorectal","Women","207",28.2,26.8333333333333
+2006,"Nothern Ireland","Colorectal","Women","185",24.8,26.1666666666667
+2007,"Nothern Ireland","Colorectal","Women","192",25.5,25.3
+2008,"Nothern Ireland","Colorectal","Women","197",25.6,26.0333333333333
+2009,"Nothern Ireland","Colorectal","Women","208",27,25.1666666666667
+2010,"Nothern Ireland","Colorectal","Women","180",22.9,24.0666666666667
+2011,"Nothern Ireland","Colorectal","Women","179",22.3,22.6666666666667
+2012,"Nothern Ireland","Colorectal","Women","187",22.8,23.4333333333333
+2013,"Nothern Ireland","Colorectal","Women","210",25.2,24.4
+2014,"Nothern Ireland","Colorectal","Women","214",25.2,24.1666666666667
+2015,"Nothern Ireland","Colorectal","Women","191",22.1,24.2333333333333
+2016,"Nothern Ireland","Colorectal","Women","224",25.4,24.3333333333333
+2017,"Nothern Ireland","Colorectal","Women","227",25.5,23.6
+2018,"Nothern Ireland","Colorectal","Women","181",19.9,23.2
+2019,"Nothern Ireland","Colorectal","Women","224",24.2,21.7333333333333
+2020,"Nothern Ireland","Colorectal","Women","197",21.1,22.1333333333333
+1994,"Nothern Ireland","Lung","Men","518",112.7,114
+1995,"Nothern Ireland","Lung","Men","516",109.8,111.166666666667
+1996,"Nothern Ireland","Lung","Men","523",111,109.033333333333
+1997,"Nothern Ireland","Lung","Men","501",106.3,106.866666666667
+1998,"Nothern Ireland","Lung","Men","489",103.3,103.1
+1999,"Nothern Ireland","Lung","Men","480",99.7,98.9
+2000,"Nothern Ireland","Lung","Men","457",93.7,98.3666666666667
+2001,"Nothern Ireland","Lung","Men","508",101.7,97.3
+2002,"Nothern Ireland","Lung","Men","492",96.5,97.5333333333333
+2003,"Nothern Ireland","Lung","Men","476",94.4,96.5
+2004,"Nothern Ireland","Lung","Men","508",98.6,96.4
+2005,"Nothern Ireland","Lung","Men","511",96.2,97.1666666666667
+2006,"Nothern Ireland","Lung","Men","526",96.7,93.9
+2007,"Nothern Ireland","Lung","Men","501",88.8,94.7
+2008,"Nothern Ireland","Lung","Men","559",98.6,92.4
+2009,"Nothern Ireland","Lung","Men","518",89.8,93.0666666666667
+2010,"Nothern Ireland","Lung","Men","541",90.8,90.9333333333333
+2011,"Nothern Ireland","Lung","Men","559",92.2,90.4666666666667
+2012,"Nothern Ireland","Lung","Men","543",88.4,89.1
+2013,"Nothern Ireland","Lung","Men","559",86.7,84.9333333333333
+2014,"Nothern Ireland","Lung","Men","527",79.7,83.3
+2015,"Nothern Ireland","Lung","Men","556",83.5,82.3666666666667
+2016,"Nothern Ireland","Lung","Men","572",83.9,82.4666666666667
+2017,"Nothern Ireland","Lung","Men","559",80,80.7666666666667
+2018,"Nothern Ireland","Lung","Men","558",78.4,77.2
+2019,"Nothern Ireland","Lung","Men","538",73.2,75.7333333333333
+2020,"Nothern Ireland","Lung","Men","574",75.6,72.1666666666667
+1994,"Nothern Ireland","Lung","Women","263",40.3,41.2666666666667
+1995,"Nothern Ireland","Lung","Women","276",42.2,41.6666666666667
+1996,"Nothern Ireland","Lung","Women","280",42.5,42.1
+1997,"Nothern Ireland","Lung","Women","276",41.6,43.0666666666667
+1998,"Nothern Ireland","Lung","Women","302",45.1,43.6333333333333
+1999,"Nothern Ireland","Lung","Women","300",44.2,46.1333333333333
+2000,"Nothern Ireland","Lung","Women","330",49.1,44.3666666666667
+2001,"Nothern Ireland","Lung","Women","270",39.8,44.9333333333333
+2002,"Nothern Ireland","Lung","Women","319",45.9,44.2666666666667
+2003,"Nothern Ireland","Lung","Women","328",47.1,46.3
+2004,"Nothern Ireland","Lung","Women","328",45.9,45.8666666666667
+2005,"Nothern Ireland","Lung","Women","319",44.6,45.2666666666667
+2006,"Nothern Ireland","Lung","Women","333",45.3,45.3333333333333
+2007,"Nothern Ireland","Lung","Women","341",46.1,46.5666666666667
+2008,"Nothern Ireland","Lung","Women","362",48.3,48.5
+2009,"Nothern Ireland","Lung","Women","389",51.1,48.8333333333333
+2010,"Nothern Ireland","Lung","Women","365",47.1,48.1666666666667
+2011,"Nothern Ireland","Lung","Women","363",46.3,48.4333333333333
+2012,"Nothern Ireland","Lung","Women","416",51.9,49.2333333333333
+2013,"Nothern Ireland","Lung","Women","398",49.5,52
+2014,"Nothern Ireland","Lung","Women","449",54.6,52.1666666666667
+2015,"Nothern Ireland","Lung","Women","439",52.4,55.6666666666667
+2016,"Nothern Ireland","Lung","Women","512",60,55.4666666666667
+2017,"Nothern Ireland","Lung","Women","469",54,55.9666666666667
+2018,"Nothern Ireland","Lung","Women","476",53.9,54.3666666666667
+2019,"Nothern Ireland","Lung","Women","495",55.2,53.5666666666667
+2020,"Nothern Ireland","Lung","Women","473",51.6,53.3666666666667
+1994,"Nothern Ireland","Oesophageal","Men","87",18.6,17.4
+1995,"Nothern Ireland","Oesophageal","Men","72",14.6,17.4
+1996,"Nothern Ireland","Oesophageal","Men","91",19,17.5
+1997,"Nothern Ireland","Oesophageal","Men","92",18.9,19.2
+1998,"Nothern Ireland","Oesophageal","Men","92",19.7,19.7
+1999,"Nothern Ireland","Oesophageal","Men","98",20.5,19.4
+2000,"Nothern Ireland","Oesophageal","Men","92",18,18.7
+2001,"Nothern Ireland","Oesophageal","Men","90",17.6,19.1
+2002,"Nothern Ireland","Oesophageal","Men","111",21.7,19.5666666666667
+2003,"Nothern Ireland","Oesophageal","Men","103",19.4,19.2333333333333
+2004,"Nothern Ireland","Oesophageal","Men","90",16.6,18.6666666666667
+2005,"Nothern Ireland","Oesophageal","Men","109",20,18.8666666666667
+2006,"Nothern Ireland","Oesophageal","Men","114",20,20
+2007,"Nothern Ireland","Oesophageal","Men","107",20,19.1666666666667
+2008,"Nothern Ireland","Oesophageal","Men","108",17.5,19.2666666666667
+2009,"Nothern Ireland","Oesophageal","Men","123",20.3,17.3
+2010,"Nothern Ireland","Oesophageal","Men","93",14.1,16.5333333333333
+2011,"Nothern Ireland","Oesophageal","Men","99",15.2,15.8333333333333
+2012,"Nothern Ireland","Oesophageal","Men","108",18.2,17.1333333333333
+2013,"Nothern Ireland","Oesophageal","Men","119",18,18.6666666666667
+2014,"Nothern Ireland","Oesophageal","Men","132",19.8,18.3333333333333
+2015,"Nothern Ireland","Oesophageal","Men","121",17.2,20.1
+2016,"Nothern Ireland","Oesophageal","Men","165",23.3,19.3333333333333
+2017,"Nothern Ireland","Oesophageal","Men","129",17.5,19.4333333333333
+2018,"Nothern Ireland","Oesophageal","Men","133",17.5,17.7333333333333
+2019,"Nothern Ireland","Oesophageal","Men","137",18.2,18.3333333333333
+2020,"Nothern Ireland","Oesophageal","Men","148",19.3,19.0666666666667
+1994,"Nothern Ireland","Oesophageal","Women","59",8.9,7.83333333333333
+1995,"Nothern Ireland","Oesophageal","Women","47",7.1,7.93333333333333
+1996,"Nothern Ireland","Oesophageal","Women","53",7.8,7.8
+1997,"Nothern Ireland","Oesophageal","Women","57",8.5,8.4
+1998,"Nothern Ireland","Oesophageal","Women","60",8.9,8.76666666666667
+1999,"Nothern Ireland","Oesophageal","Women","60",8.9,9.06666666666667
+2000,"Nothern Ireland","Oesophageal","Women","65",9.4,9.06666666666667
+2001,"Nothern Ireland","Oesophageal","Women","60",8.9,8.6
+2002,"Nothern Ireland","Oesophageal","Women","54",7.5,7.8
+2003,"Nothern Ireland","Oesophageal","Women","51",7,7.1
+2004,"Nothern Ireland","Oesophageal","Women","49",6.8,7.26666666666667
+2005,"Nothern Ireland","Oesophageal","Women","57",8,6.96666666666667
+2006,"Nothern Ireland","Oesophageal","Women","47",6.1,7.13333333333333
+2007,"Nothern Ireland","Oesophageal","Women","54",7.3,7.4
+2008,"Nothern Ireland","Oesophageal","Women","67",8.8,7.76666666666667
+2009,"Nothern Ireland","Oesophageal","Women","56",7.2,8.1
+2010,"Nothern Ireland","Oesophageal","Women","66",8.3,7.26666666666667
+2011,"Nothern Ireland","Oesophageal","Women","50",6.3,7.1
+2012,"Nothern Ireland","Oesophageal","Women","54",6.7,6.46666666666667
+2013,"Nothern Ireland","Oesophageal","Women","53",6.4,6.8
+2014,"Nothern Ireland","Oesophageal","Women","61",7.3,6.93333333333333
+2015,"Nothern Ireland","Oesophageal","Women","61",7.1,7.06666666666667
+2016,"Nothern Ireland","Oesophageal","Women","58",6.8,6.4
+2017,"Nothern Ireland","Oesophageal","Women","47",5.3,5.83333333333333
+2018,"Nothern Ireland","Oesophageal","Women","49",5.4,5.2
+2019,"Nothern Ireland","Oesophageal","Women","45",4.9,5.53333333333333
+2020,"Nothern Ireland","Oesophageal","Women","58",6.3,5.96666666666667
+1994,"Nothern Ireland","Pancreatic","Men","69",14.4,15.4666666666667
+1995,"Nothern Ireland","Pancreatic","Men","71",15.7,16.0333333333333
+1996,"Nothern Ireland","Pancreatic","Men","79",18,16.7666666666667
+1997,"Nothern Ireland","Pancreatic","Men","80",16.6,17.4333333333333
+1998,"Nothern Ireland","Pancreatic","Men","88",17.7,16.7666666666667
+1999,"Nothern Ireland","Pancreatic","Men","75",16,16.5333333333333
+2000,"Nothern Ireland","Pancreatic","Men","78",15.9,17.2333333333333
+2001,"Nothern Ireland","Pancreatic","Men","90",19.8,18.6333333333333
+2002,"Nothern Ireland","Pancreatic","Men","101",20.2,17.9333333333333
+2003,"Nothern Ireland","Pancreatic","Men","71",13.8,15.6333333333333
+2004,"Nothern Ireland","Pancreatic","Men","72",12.9,14.5
+2005,"Nothern Ireland","Pancreatic","Men","89",16.8,15.5333333333333
+2006,"Nothern Ireland","Pancreatic","Men","96",16.9,17.3666666666667
+2007,"Nothern Ireland","Pancreatic","Men","107",18.4,18.7333333333333
+2008,"Nothern Ireland","Pancreatic","Men","119",20.9,19.8
+2009,"Nothern Ireland","Pancreatic","Men","113",20.1,18.7666666666667
+2010,"Nothern Ireland","Pancreatic","Men","89",15.3,16.2333333333333
+2011,"Nothern Ireland","Pancreatic","Men","84",13.3,15
+2012,"Nothern Ireland","Pancreatic","Men","103",16.4,15.7
+2013,"Nothern Ireland","Pancreatic","Men","114",17.4,16.4
+2014,"Nothern Ireland","Pancreatic","Men","101",15.4,16.8666666666667
+2015,"Nothern Ireland","Pancreatic","Men","118",17.8,17.3666666666667
+2016,"Nothern Ireland","Pancreatic","Men","134",18.9,18.7333333333333
+2017,"Nothern Ireland","Pancreatic","Men","139",19.5,18.8
+2018,"Nothern Ireland","Pancreatic","Men","124",18,18.0333333333333
+2019,"Nothern Ireland","Pancreatic","Men","123",16.6,17.4
+2020,"Nothern Ireland","Pancreatic","Men","133",17.6,16.9666666666667
+1994,"Nothern Ireland","Pancreatic","Women","80",12.3,12
+1995,"Nothern Ireland","Pancreatic","Women","72",10.9,11.4333333333333
+1996,"Nothern Ireland","Pancreatic","Women","74",11.1,11.3
+1997,"Nothern Ireland","Pancreatic","Women","81",11.9,11
+1998,"Nothern Ireland","Pancreatic","Women","68",10,10.4333333333333
+1999,"Nothern Ireland","Pancreatic","Women","64",9.4,10.7
+2000,"Nothern Ireland","Pancreatic","Women","86",12.7,11.5333333333333
+2001,"Nothern Ireland","Pancreatic","Women","87",12.5,12.8
+2002,"Nothern Ireland","Pancreatic","Women","90",13.2,13.3333333333333
+2003,"Nothern Ireland","Pancreatic","Women","102",14.3,12.7666666666667
+2004,"Nothern Ireland","Pancreatic","Women","79",10.8,12.4
+2005,"Nothern Ireland","Pancreatic","Women","87",12.1,12.1666666666667
+2006,"Nothern Ireland","Pancreatic","Women","102",13.6,12.8333333333333
+2007,"Nothern Ireland","Pancreatic","Women","95",12.8,13.5666666666667
+2008,"Nothern Ireland","Pancreatic","Women","108",14.3,13.3333333333333
+2009,"Nothern Ireland","Pancreatic","Women","99",12.9,13.2
+2010,"Nothern Ireland","Pancreatic","Women","99",12.4,13.1666666666667
+2011,"Nothern Ireland","Pancreatic","Women","113",14.2,14.6666666666667
+2012,"Nothern Ireland","Pancreatic","Women","141",17.4,15.6666666666667
+2013,"Nothern Ireland","Pancreatic","Women","123",15.4,15.1666666666667
+2014,"Nothern Ireland","Pancreatic","Women","107",12.7,13.7666666666667
+2015,"Nothern Ireland","Pancreatic","Women","112",13.2,13.3333333333333
+2016,"Nothern Ireland","Pancreatic","Women","121",14.1,13.9666666666667
+2017,"Nothern Ireland","Pancreatic","Women","127",14.6,13.9666666666667
+2018,"Nothern Ireland","Pancreatic","Women","118",13.2,13.3666666666667
+2019,"Nothern Ireland","Pancreatic","Women","112",12.3,13.1666666666667
+2020,"Nothern Ireland","Pancreatic","Women","130",14,13.3
+1994,"Nothern Ireland","Prostate","Men","211",55.3,56.6
+1995,"Nothern Ireland","Prostate","Men","222",63.7,58.1666666666667
+1996,"Nothern Ireland","Prostate","Men","210",55.5,58.4333333333333
+1997,"Nothern Ireland","Prostate","Men","208",56.1,57.2
+1998,"Nothern Ireland","Prostate","Men","221",60,54.7666666666667
+1999,"Nothern Ireland","Prostate","Men","197",48.2,53.6
+2000,"Nothern Ireland","Prostate","Men","209",52.6,51.2666666666667
+2001,"Nothern Ireland","Prostate","Men","214",53,51.4666666666667
+2002,"Nothern Ireland","Prostate","Men","193",48.8,52.7333333333333
+2003,"Nothern Ireland","Prostate","Men","219",56.4,53.5
+2004,"Nothern Ireland","Prostate","Men","240",55.3,55.5333333333333
+2005,"Nothern Ireland","Prostate","Men","221",54.9,53
+2006,"Nothern Ireland","Prostate","Men","217",48.8,51.9666666666667
+2007,"Nothern Ireland","Prostate","Men","227",52.2,50.9
+2008,"Nothern Ireland","Prostate","Men","232",51.7,49
+2009,"Nothern Ireland","Prostate","Men","207",43.1,48.1333333333333
+2010,"Nothern Ireland","Prostate","Men","247",49.6,46.2
+2011,"Nothern Ireland","Prostate","Men","234",45.9,48.3
+2012,"Nothern Ireland","Prostate","Men","266",49.4,48.2333333333333
+2013,"Nothern Ireland","Prostate","Men","271",49.4,47.2666666666667
+2014,"Nothern Ireland","Prostate","Men","243",43,46.5
+2015,"Nothern Ireland","Prostate","Men","267",47.1,46.3
+2016,"Nothern Ireland","Prostate","Men","293",48.8,48.6666666666667
+2017,"Nothern Ireland","Prostate","Men","300",50.1,47.8
+2018,"Nothern Ireland","Prostate","Men","276",44.5,46.7333333333333
+2019,"Nothern Ireland","Prostate","Men","290",45.6,44.0666666666667
+2020,"Nothern Ireland","Prostate","Men","277",42.1,43.7666666666667
+1996,"Scotland","All sites excl. NMSC","Men","7684",484.707836034699,483.349080312849
+1997,"Scotland","All sites excl. NMSC","Men","7521",472.261586706845,471.783126448735
+1998,"Scotland","All sites excl. NMSC","Men","7420",458.379956604661,463.072851668819
+1999,"Scotland","All sites excl. NMSC","Men","7451",458.57701169495,457.467868680959
+2000,"Scotland","All sites excl. NMSC","Men","7453",455.446637743265,459.502122942405
+2001,"Scotland","All sites excl. NMSC","Men","7738",464.482719388999,458.633833597326
+2002,"Scotland","All sites excl. NMSC","Men","7737",455.972143659714,455.597267855596
+2003,"Scotland","All sites excl. NMSC","Men","7602",446.336940518076,447.949368818797
+2004,"Scotland","All sites excl. NMSC","Men","7640",441.539022278602,439.985300805883
+2005,"Scotland","All sites excl. NMSC","Men","7637",432.07993962097,434.601500229527
+2006,"Scotland","All sites excl. NMSC","Men","7692",430.185538789009,429.476658347161
+2007,"Scotland","All sites excl. NMSC","Men","7739",426.164496631504,423.772776015615
+2008,"Scotland","All sites excl. NMSC","Men","7691",414.968292626333,415.483338717983
+2009,"Scotland","All sites excl. NMSC","Men","7694",405.317226896112,407.129221721513
+2010,"Scotland","All sites excl. NMSC","Men","7775",401.102145642094,403.117382417957
+2011,"Scotland","All sites excl. NMSC","Men","7952",402.932774715665,399.050478945052
+2012,"Scotland","All sites excl. NMSC","Men","7931",393.116516477397,395.299953745263
+2013,"Scotland","All sites excl. NMSC","Men","8047",389.850570042726,388.127928857733
+2014,"Scotland","All sites excl. NMSC","Men","8081",381.416700053075,386.425002083794
+2015,"Scotland","All sites excl. NMSC","Men","8321",388.00773615558,381.629141200216
+2016,"Scotland","All sites excl. NMSC","Men","8243",375.462987391993,379.274007278573
+2017,"Scotland","All sites excl. NMSC","Men","8327",374.351298288147,371.034145936458
+2018,"Scotland","All sites excl. NMSC","Men","8292",363.288152129234,365.422459859322
+2019,"Scotland","All sites excl. NMSC","Men","8375",358.627929160585,358.069189329677
+1996,"Scotland","All sites excl. NMSC","Women","7436",308.122668836133,306.698170037607
+1997,"Scotland","All sites excl. NMSC","Women","7317",302.04831854417,303.179715489054
+1998,"Scotland","All sites excl. NMSC","Women","7288",299.368159086859,300.050260938561
+1999,"Scotland","All sites excl. NMSC","Women","7296",298.734305184655,300.440507083257
+2000,"Scotland","All sites excl. NMSC","Women","7460",303.219056978257,300.09141857429
+2001,"Scotland","All sites excl. NMSC","Women","7399",298.320893559958,297.388909710817
+2002,"Scotland","All sites excl. NMSC","Women","7257",290.626778594235,295.581922021115
+2003,"Scotland","All sites excl. NMSC","Women","7461",297.798093909153,293.265259326016
+2004,"Scotland","All sites excl. NMSC","Women","7357",291.37090547466,293.877955990921
+2005,"Scotland","All sites excl. NMSC","Women","7450",292.464868588951,289.93558681888
+2006,"Scotland","All sites excl. NMSC","Women","7333",285.97098639303,288.836477121058
+2007,"Scotland","All sites excl. NMSC","Women","7463",288.073576381194,287.037019639285
+2008,"Scotland","All sites excl. NMSC","Women","7520",287.066496143631,285.244764502585
+2009,"Scotland","All sites excl. NMSC","Women","7425",280.594220982931,282.661226754203
+2010,"Scotland","All sites excl. NMSC","Women","7495",280.322963136048,278.231097657508
+2011,"Scotland","All sites excl. NMSC","Women","7423",273.776108853544,279.993490779532
+2012,"Scotland","All sites excl. NMSC","Women","7856",285.881400349003,279.351461049436
+2013,"Scotland","All sites excl. NMSC","Women","7717",278.396873945761,278.806425180413
+2014,"Scotland","All sites excl. NMSC","Women","7665",272.141001246475,273.712220081342
+2015,"Scotland","All sites excl. NMSC","Women","7690",270.598785051789,268.687832928058
+2016,"Scotland","All sites excl. NMSC","Women","7570",263.323712485909,266.972787206307
+2017,"Scotland","All sites excl. NMSC","Women","7778",266.995864081223,265.639076988251
+2018,"Scotland","All sites excl. NMSC","Women","7861",266.597654397621,266.801516269781
+2019,"Scotland","All sites excl. NMSC","Women","7991",266.8110303305,264.359317779752
+1996,"Scotland","Breast","Women","1190",49.6093420644401,49.9234910280813
+1997,"Scotland","Breast","Women","1154",48.0394657216842,48.3095562961277
+1998,"Scotland","Breast","Women","1142",47.2798611022588,47.2890197158122
+1999,"Scotland","Breast","Women","1129",46.5477323234935,46.4190825563269
+2000,"Scotland","Breast","Women","1116",45.4296542432283,46.0507709431835
+2001,"Scotland","Breast","Women","1143",46.1749262628288,45.2901791608773
+2002,"Scotland","Breast","Women","1105",44.2659569765748,45.3154795659992
+2003,"Scotland","Breast","Women","1138",45.5055554585939,44.1905915885373
+2004,"Scotland","Breast","Women","1082",42.8002623304431,44.3605600583277
+2005,"Scotland","Breast","Women","1144",44.7758623859462,43.6045091282426
+2006,"Scotland","Breast","Women","1108",43.2374026683386,42.9605813290848
+2007,"Scotland","Breast","Women","1062",40.8684789329695,41.2726726921482
+2008,"Scotland","Breast","Women","1043",39.7121364751365,39.5742480125789
+2009,"Scotland","Breast","Women","1002",38.1421286296306,38.5909564814076
+2010,"Scotland","Breast","Women","1022",37.9186043394558,38.0243735071179
+2011,"Scotland","Breast","Women","1036",38.0123875522672,38.1666407958842
+2012,"Scotland","Breast","Women","1063",38.5689304959295,37.6482933580288
+2013,"Scotland","Breast","Women","1013",36.3635620258897,36.4218273807079
+2014,"Scotland","Breast","Women","966",34.3329896203046,35.1485339773136
+2015,"Scotland","Breast","Women","989",34.7490502857464,34.8803437623568
+2016,"Scotland","Breast","Women","1020",35.5589913810193,34.2543330750598
+2017,"Scotland","Breast","Women","946",32.4549575584137,33.9839263629298
+2018,"Scotland","Breast","Women","993",33.9378301493564,33.1441478251939
+2019,"Scotland","Breast","Women","985",33.0396557678116,33.0949677255756
+1996,"Scotland","Colorectal","Men","865",56.3622027311306,55.0656389874655
+1997,"Scotland","Colorectal","Men","889",56.2969467831817,55.1884476443816
+1998,"Scotland","Colorectal","Men","848",52.9061934188326,54.8662560391745
+1999,"Scotland","Colorectal","Men","870",55.3956279155092,53.5035993856718
+2000,"Scotland","Colorectal","Men","839",52.2089768226736,52.870619671169
+2001,"Scotland","Colorectal","Men","835",51.0072542753241,51.2551982796218
+2002,"Scotland","Colorectal","Men","842",50.5493637408676,50.2282307353734
+2003,"Scotland","Colorectal","Men","830",49.1280741899286,49.8704321183656
+2004,"Scotland","Colorectal","Men","844",49.9338584243006,49.2984212079941
+2005,"Scotland","Colorectal","Men","855",48.833331009753,48.5924851337782
+2006,"Scotland","Colorectal","Men","835",47.0102659672811,46.9712820147316
+2007,"Scotland","Colorectal","Men","812",45.0702490671608,45.7377302879098
+2008,"Scotland","Colorectal","Men","829",45.1326758292875,44.7215857271577
+2009,"Scotland","Colorectal","Men","825",43.9618322850247,43.4007881370312
+2010,"Scotland","Colorectal","Men","782",41.1078562967813,42.3829282771779
+2011,"Scotland","Colorectal","Men","824",42.0790962497276,41.8908970527907
+2012,"Scotland","Colorectal","Men","837",42.4857386118632,42.3038470649838
+2013,"Scotland","Colorectal","Men","871",42.3467063333607,40.9898314221239
+2014,"Scotland","Colorectal","Men","786",38.1370493211478,40.0573681119576
+2015,"Scotland","Colorectal","Men","844",39.6883486813644,39.0513225030811
+2016,"Scotland","Colorectal","Men","857",39.3285695067311,39.8708501408312
+2017,"Scotland","Colorectal","Men","884",40.595632234398,40.4269950727144
+2018,"Scotland","Colorectal","Men","941",41.356783477014,40.6362967331604
+2019,"Scotland","Colorectal","Men","926",39.9564744880692,40.0815222094788
+1996,"Scotland","Colorectal","Women","864",35.6843619015129,35.1321253843615
+1997,"Scotland","Colorectal","Women","781",32.0951812807477,33.3546291396384
+1998,"Scotland","Colorectal","Women","791",32.2843442366545,32.219362736545
+1999,"Scotland","Colorectal","Women","792",32.2785626922328,31.6879361790655
+2000,"Scotland","Colorectal","Women","757",30.5009016083093,31.3144092914929
+2001,"Scotland","Colorectal","Women","780",31.1637635739367,29.993320454468
+2002,"Scotland","Colorectal","Women","713",28.3152961811581,29.7974247587015
+2003,"Scotland","Colorectal","Women","752",29.9132145210098,28.6912291467709
+2004,"Scotland","Colorectal","Women","706",27.8451767381447,28.2754736338091
+2005,"Scotland","Colorectal","Women","695",27.0680296422728,27.5122187561269
+2006,"Scotland","Colorectal","Women","715",27.6234498879633,27.5391000751709
+2007,"Scotland","Colorectal","Women","727",27.9258206952765,27.909238542413
+2008,"Scotland","Colorectal","Women","736",28.1784450439991,27.8552759032409
+2009,"Scotland","Colorectal","Women","730",27.4615619704471,27.4055803096673
+2010,"Scotland","Colorectal","Women","719",26.5767339145558,26.5618164266992
+2011,"Scotland","Colorectal","Women","702",25.6471533950948,26.8387542793873
+2012,"Scotland","Colorectal","Women","784",28.2923755285113,26.3712450660435
+2013,"Scotland","Colorectal","Women","707",25.1742062745244,26.4427532272251
+2014,"Scotland","Colorectal","Women","739",25.8616778786396,25.3545925094145
+2015,"Scotland","Colorectal","Women","721",25.0278933750796,25.6656985603777
+2016,"Scotland","Colorectal","Women","760",26.1075244274139,26.0950793127039
+2017,"Scotland","Colorectal","Women","803",27.1498201356182,26.7726215980191
+2018,"Scotland","Colorectal","Women","802",27.0605202310252,27.0520139732359
+2019,"Scotland","Colorectal","Women","816",26.9457015530642,26.653868327492
+1996,"Scotland","Lung","Men","2446",148.444437203484,151.797596736305
+1997,"Scotland","Lung","Men","2448",148.747407460461,145.440274678072
+1998,"Scotland","Lung","Men","2332",139.128979370271,141.631143909684
+1999,"Scotland","Lung","Men","2305",137.017044898319,135.98763584523
+2000,"Scotland","Lung","Men","2225",131.8168832671,133.42198830471
+2001,"Scotland","Lung","Men","2277",131.432036748712,131.611255076913
+2002,"Scotland","Lung","Men","2317",131.584845214928,128.946334614472
+2003,"Scotland","Lung","Men","2186",123.822121879776,124.746532158072
+2004,"Scotland","Lung","Men","2151",118.832629379511,120.899726226916
+2005,"Scotland","Lung","Men","2195",120.044427421461,118.606528101417
+2006,"Scotland","Lung","Men","2162",116.942527503278,118.608485206146
+2007,"Scotland","Lung","Men","2239",118.8385006937,115.083129761303
+2008,"Scotland","Lung","Men","2114",109.46836108693,113.399477575519
+2009,"Scotland","Lung","Men","2196",111.891570945928,109.125235222603
+2010,"Scotland","Lung","Men","2107",106.01577363495,108.790336363734
+2011,"Scotland","Lung","Men","2200",108.463664510325,104.952528876437
+2012,"Scotland","Lung","Men","2094",100.378148484037,103.248484676481
+2013,"Scotland","Lung","Men","2127",100.90364103508,99.6123746392528
+2014,"Scotland","Lung","Men","2119",97.5553343986415,97.5335089353314
+2015,"Scotland","Lung","Men","2075",94.1415513722726,94.8959179666729
+2016,"Scotland","Lung","Men","2081",92.9908681291047,91.9757657733766
+2017,"Scotland","Lung","Men","2036",88.7948778187525,88.8622390616338
+2018,"Scotland","Lung","Men","1981",84.8009712370442,86.3192778903031
+2019,"Scotland","Lung","Men","2043",85.3619846151125,83.4578447604751
+1996,"Scotland","Lung","Women","1679",70.0784268698828,69.1687187410951
+1997,"Scotland","Lung","Women","1658",68.8156090012011,69.0502522274942
+1998,"Scotland","Lung","Women","1652",68.2567208113988,68.4572585119367
+1999,"Scotland","Lung","Women","1656",68.2994457232101,69.0792314839306
+2000,"Scotland","Lung","Women","1723",70.6815279171829,68.6253525975573
+2001,"Scotland","Lung","Women","1638",66.8950841522788,69.1311269976154
+2002,"Scotland","Lung","Women","1722",69.8167689233846,68.4652239945796
+2003,"Scotland","Lung","Women","1707",68.6838189080754,69.6993166526996
+2004,"Scotland","Lung","Women","1772",70.5973621266389,70.3374669616725
+2005,"Scotland","Lung","Women","1814",71.7312198503032,72.3538252638744
+2006,"Scotland","Lung","Women","1900",74.732893814681,73.2008937867803
+2007,"Scotland","Lung","Women","1876",73.1385676953567,74.5307579898808
+2008,"Scotland","Lung","Women","1966",75.7208124596047,74.3576996689009
+2009,"Scotland","Lung","Women","1951",74.2137188517413,74.5201564246332
+2010,"Scotland","Lung","Women","1948",73.6259379625535,73.8592437333219
+2011,"Scotland","Lung","Women","1978",73.7380743856709,74.7384061698099
+2012,"Scotland","Lung","Women","2095",76.8512061612052,74.3707798031602
+2013,"Scotland","Lung","Women","1993",72.5230588626046,73.7215045091266
+2014,"Scotland","Lung","Women","1998",71.7902485035699,71.5155994663775
+2015,"Scotland","Lung","Women","1972",70.233491032958,70.156478236151
+2016,"Scotland","Lung","Women","1954",68.4456951719252,69.7025510850492
+2017,"Scotland","Lung","Women","2033",70.4284670502645,69.030916786962
+2018,"Scotland","Lung","Women","1999",68.2185881386963,69.2106665396964
+2019,"Scotland","Lung","Women","2052",68.9849444301284,67.1783077834532
+1996,"Scotland","Oesophageal","Men","421",24.4867571649125,25.7841792164876
+1997,"Scotland","Oesophageal","Men","426",25.6150120521899,25.8961600060696
+1998,"Scotland","Oesophageal","Men","471",27.5867108011064,26.3545812880431
+1999,"Scotland","Oesophageal","Men","443",25.8620210108331,25.9872404949079
+2000,"Scotland","Oesophageal","Men","427",24.5129896727843,25.7150671592202
+2001,"Scotland","Oesophageal","Men","472",26.7701907940431,25.652691951619
+2002,"Scotland","Oesophageal","Men","462",25.6748953880296,26.8938518270216
+2003,"Scotland","Oesophageal","Men","501",28.236469298992,27.4424893859306
+2004,"Scotland","Oesophageal","Men","511",28.4161034707701,27.7513131474006
+2005,"Scotland","Oesophageal","Men","495",26.6013666724396,26.9425397563227
+2006,"Scotland","Oesophageal","Men","490",25.8101491257585,25.8915080109048
+2007,"Scotland","Oesophageal","Men","485",25.2630082345163,25.6571709329229
+2008,"Scotland","Oesophageal","Men","520",25.898355438494,25.4551426622706
+2009,"Scotland","Oesophageal","Men","507",25.2040643138015,25.6896690132618
+2010,"Scotland","Oesophageal","Men","533",25.9665872874898,25.7026328060898
+2011,"Scotland","Oesophageal","Men","541",25.937246816978,25.5950559647499
+2012,"Scotland","Oesophageal","Men","533",24.8813337897819,25.3836727387306
+2013,"Scotland","Oesophageal","Men","538",25.3324376094319,24.7819423151527
+2014,"Scotland","Oesophageal","Men","535",24.1320555462442,24.7679218685084
+2015,"Scotland","Oesophageal","Men","552",24.839272449849,24.3817380985679
+2016,"Scotland","Oesophageal","Men","553",24.1738862996105,24.2586823225427
+2017,"Scotland","Oesophageal","Men","555",23.7628882181687,24.249605259692
+2018,"Scotland","Oesophageal","Men","584",24.8120412612969,23.4240992226597
+2019,"Scotland","Oesophageal","Men","526",21.6973681885134,23.0791317779027
+1996,"Scotland","Oesophageal","Women","302",12.5449782823579,12.7250770918402
+1997,"Scotland","Oesophageal","Women","308",12.6021112849052,11.8847221005461
+1998,"Scotland","Oesophageal","Women","259",10.5070767343751,12.2364440935838
+1999,"Scotland","Oesophageal","Women","333",13.6001442614712,11.8353986442971
+2000,"Scotland","Oesophageal","Women","281",11.3989749370451,12.0558224882712
+2001,"Scotland","Oesophageal","Women","280",11.1683482662974,11.5056592971095
+2002,"Scotland","Oesophageal","Women","301",11.9496546879861,11.3253444134413
+2003,"Scotland","Oesophageal","Women","275",10.8580302860404,11.4108313634832
+2004,"Scotland","Oesophageal","Women","290",11.4248091164232,11.3772296286026
+2005,"Scotland","Oesophageal","Women","303",11.8488494833442,11.3030601089548
+2006,"Scotland","Oesophageal","Women","275",10.6355217270971,11.3293434561991
+2007,"Scotland","Oesophageal","Women","301",11.503659158156,11.2898783372598
+2008,"Scotland","Oesophageal","Women","311",11.7304541265263,10.7840965610185
+2009,"Scotland","Oesophageal","Women","239",9.11817639837328,10.3924330646598
+2010,"Scotland","Oesophageal","Women","278",10.3286686690798,9.97812753335843
+2011,"Scotland","Oesophageal","Women","283",10.4875375326222,10.3268803553587
+2012,"Scotland","Oesophageal","Women","280",10.1644348643742,10.3392369684939
+2013,"Scotland","Oesophageal","Women","290",10.3657385084852,10.5323016564082
+2014,"Scotland","Oesophageal","Women","315",11.0667315963653,10.2348504919052
+2015,"Scotland","Oesophageal","Women","264",9.27208137086503,9.85311757841848
+2016,"Scotland","Oesophageal","Women","267",9.22053976802512,9.34113874516357
+2017,"Scotland","Oesophageal","Women","278",9.53079509660057,9.48216494071195
+2018,"Scotland","Oesophageal","Women","289",9.69515995751017,9.80015360260615
+2019,"Scotland","Oesophageal","Women","307",10.1745057537077,9.77326048371129
+1996,"Scotland","Pancreatic","Men","280",17.3479969742529,16.5112843074704
+1997,"Scotland","Pancreatic","Men","269",16.7946505927057,17.0371896843221
+1998,"Scotland","Pancreatic","Men","289",16.9689214860076,16.3487224565456
+1999,"Scotland","Pancreatic","Men","257",15.2825952909235,16.4479494384204
+2000,"Scotland","Pancreatic","Men","294",17.0923315383301,16.0580094506061
+2001,"Scotland","Pancreatic","Men","280",15.7991015225647,16.3165455545503
+2002,"Scotland","Pancreatic","Men","281",16.0582036027562,16.0724356082042
+2003,"Scotland","Pancreatic","Men","297",16.3600016992916,16.279939215166
+2004,"Scotland","Pancreatic","Men","300",16.4216123434501,16.1082257635968
+2005,"Scotland","Pancreatic","Men","284",15.5430632480486,15.4926552987923
+2006,"Scotland","Pancreatic","Men","269",14.5132903048783,15.9776069166564
+2007,"Scotland","Pancreatic","Men","338",17.8764671970423,16.2505227864656
+2008,"Scotland","Pancreatic","Men","319",16.3618108574762,16.7632079936444
+2009,"Scotland","Pancreatic","Men","309",16.0513459264148,16.5475105848813
+2010,"Scotland","Pancreatic","Men","346",17.229374970753,16.832200388405
+2011,"Scotland","Pancreatic","Men","358",17.2158802680473,17.3044037195446
+2012,"Scotland","Pancreatic","Men","369",17.4679559198334,17.0785032453337
+2013,"Scotland","Pancreatic","Men","354",16.5516735481203,16.9043498509835
+2014,"Scotland","Pancreatic","Men","364",16.6934200849968,16.5484740213256
+2015,"Scotland","Pancreatic","Men","365",16.4003284308598,16.1951353801544
+2016,"Scotland","Pancreatic","Men","353",15.4916576246065,16.4130221351631
+2017,"Scotland","Pancreatic","Men","403",17.347080350023,16.9735341555819
+2018,"Scotland","Pancreatic","Men","419",18.0818644921162,17.6362056215613
+2019,"Scotland","Pancreatic","Men","423",17.4796720225446,17.6045344879737
+1996,"Scotland","Pancreatic","Women","280",11.5253394243045,11.8280971390244
+1997,"Scotland","Pancreatic","Women","287",11.7894268220041,12.1512512414493
+1998,"Scotland","Pancreatic","Women","318",13.1389874780394,12.635352530899
+1999,"Scotland","Pancreatic","Women","317",12.9776432926535,13.2765941125705
+2000,"Scotland","Pancreatic","Women","339",13.7131515670185,13.1105614633974
+2001,"Scotland","Pancreatic","Women","315",12.6408895305203,12.5393316275589
+2002,"Scotland","Pancreatic","Women","281",11.263953785138,12.5335193847626
+2003,"Scotland","Pancreatic","Women","344",13.6957148386295,12.5089384710525
+2004,"Scotland","Pancreatic","Women","315",12.56714678939,12.9634025615288
+2005,"Scotland","Pancreatic","Women","319",12.6273460565669,12.2987370842574
+2006,"Scotland","Pancreatic","Women","298",11.7017184068154,12.9289336147898
+2007,"Scotland","Pancreatic","Women","375",14.4577363809872,12.8132739193136
+2008,"Scotland","Pancreatic","Women","323",12.2803669701382,13.6731157882876
+2009,"Scotland","Pancreatic","Women","382",14.2812440137374,12.860423785135
+2010,"Scotland","Pancreatic","Women","323",12.0196603715294,13.0184286678462
+2011,"Scotland","Pancreatic","Women","344",12.7543816182717,12.8093627853079
+2012,"Scotland","Pancreatic","Women","373",13.6540463661227,13.4815489906532
+2013,"Scotland","Pancreatic","Women","388",14.0362189875653,13.370016959981
+2014,"Scotland","Pancreatic","Women","349",12.4197855262549,13.2893548093741
+2015,"Scotland","Pancreatic","Women","384",13.412059914302,12.8612712423838
+2016,"Scotland","Pancreatic","Women","366",12.7519682865946,13.0383853231256
+2017,"Scotland","Pancreatic","Women","378",12.9511277684801,12.9754287783759
+2018,"Scotland","Pancreatic","Women","392",13.2231902800529,13.1793652098482
+2019,"Scotland","Pancreatic","Women","399",13.3637775810115,13.8618560973554
+1996,"Scotland","Prostate","Men","743",56.5104027817844,55.801880251885
+1997,"Scotland","Prostate","Men","708",52.9183634255555,53.3003173574773
+1998,"Scotland","Prostate","Men","677",50.4721858650921,53.022094446143
+1999,"Scotland","Prostate","Men","769",55.6757340477814,54.1529852571162
+2000,"Scotland","Prostate","Men","773",56.3110358584751,55.8799748113284
+2001,"Scotland","Prostate","Men","777",55.6531545277288,55.4552704926469
+2002,"Scotland","Prostate","Men","775",54.4016210917368,54.754097761917
+2003,"Scotland","Prostate","Men","786",54.2075176662853,54.2479061440312
+2004,"Scotland","Prostate","Men","802",54.1345796740715,53.128498249463
+2005,"Scotland","Prostate","Men","765",51.0433974080321,51.5775079484464
+2006,"Scotland","Prostate","Men","779",49.5545467632355,50.7959043892098
+2007,"Scotland","Prostate","Men","793",51.7897689963618,50.59974080371
+2008,"Scotland","Prostate","Men","792",50.4549066515328,49.9728720540993
+2009,"Scotland","Prostate","Men","790",47.6739405144034,49.2951454392287
+2010,"Scotland","Prostate","Men","849",49.75658915175,49.9109669128906
+2011,"Scotland","Prostate","Men","900",52.3023710725185,50.5765635927856
+2012,"Scotland","Prostate","Men","881",49.6707305540882,49.7355346936453
+2013,"Scotland","Prostate","Men","876",47.2335024543292,47.8727919804444
+2014,"Scotland","Prostate","Men","906",46.7141429329158,48.4154723443998
+2015,"Scotland","Prostate","Men","985",51.2987716459544,47.5626722703021
+2016,"Scotland","Prostate","Men","894",44.675102232036,48.3293337036266
+2017,"Scotland","Prostate","Men","986",49.0141272328893,45.8777881915835
+2018,"Scotland","Prostate","Men","923",43.9441351098251,47.0337221182675
+2019,"Scotland","Prostate","Men","1033",48.1429040120882,46.4847033880835
+2003,"Wales","All sites excl. NMSC","Men",NA,400.6,396.633333333333
+2004,"Wales","All sites excl. NMSC","Men",NA,397.8,392.3
+2005,"Wales","All sites excl. NMSC","Men",NA,378.5,387.066666666667
+2006,"Wales","All sites excl. NMSC","Men",NA,384.9,384.866666666667
+2007,"Wales","All sites excl. NMSC","Men",NA,391.2,385.733333333333
+2008,"Wales","All sites excl. NMSC","Men",NA,381.1,380.2
+2009,"Wales","All sites excl. NMSC","Men",NA,368.3,366.666666666667
+2010,"Wales","All sites excl. NMSC","Men",NA,350.6,361.033333333333
+2011,"Wales","All sites excl. NMSC","Men",NA,364.2,353.466666666667
+2012,"Wales","All sites excl. NMSC","Men",NA,345.6,351.933333333333
+2013,"Wales","All sites excl. NMSC","Men",NA,346,347.833333333333
+2014,"Wales","All sites excl. NMSC","Men",NA,351.9,344.866666666667
+2015,"Wales","All sites excl. NMSC","Men",NA,336.7,342.633333333333
+2016,"Wales","All sites excl. NMSC","Men",NA,339.3,336.4
+2017,"Wales","All sites excl. NMSC","Men",NA,333.2,337.766666666667
+2018,"Wales","All sites excl. NMSC","Men",NA,340.8,337.166666666667
+2019,"Wales","All sites excl. NMSC","Men",NA,337.5,335.166666666667
+2020,"Wales","All sites excl. NMSC","Men",NA,327.2,326.466666666667
+2021,"Wales","All sites excl. NMSC","Men",NA,314.7,318.766666666667
+2003,"Wales","All sites excl. NMSC","Women",NA,259,259.733333333333
+2004,"Wales","All sites excl. NMSC","Women",NA,258.2,258.566666666667
+2005,"Wales","All sites excl. NMSC","Women",NA,258.5,257.966666666667
+2006,"Wales","All sites excl. NMSC","Women",NA,257.2,258.066666666667
+2007,"Wales","All sites excl. NMSC","Women",NA,258.5,256.4
+2008,"Wales","All sites excl. NMSC","Women",NA,253.5,252.733333333333
+2009,"Wales","All sites excl. NMSC","Women",NA,246.2,249.266666666667
+2010,"Wales","All sites excl. NMSC","Women",NA,248.1,244.966666666667
+2011,"Wales","All sites excl. NMSC","Women",NA,240.6,245.6
+2012,"Wales","All sites excl. NMSC","Women",NA,248.1,243.933333333333
+2013,"Wales","All sites excl. NMSC","Women",NA,243.1,245.566666666667
+2014,"Wales","All sites excl. NMSC","Women",NA,245.5,242.333333333333
+2015,"Wales","All sites excl. NMSC","Women",NA,238.4,239.6
+2016,"Wales","All sites excl. NMSC","Women",NA,234.9,237.766666666667
+2017,"Wales","All sites excl. NMSC","Women",NA,240,237.4
+2018,"Wales","All sites excl. NMSC","Women",NA,237.3,238.533333333333
+2019,"Wales","All sites excl. NMSC","Women",NA,238.3,236.366666666667
+2020,"Wales","All sites excl. NMSC","Women",NA,233.5,230.9
+2021,"Wales","All sites excl. NMSC","Women",NA,220.9,229
+2003,"Wales","Breast","Women",NA,45.9,44.0333333333333
+2004,"Wales","Breast","Women",NA,41.9,43.7333333333333
+2005,"Wales","Breast","Women",NA,43.4,42.8333333333333
+2006,"Wales","Breast","Women",NA,43.2,42.3333333333333
+2007,"Wales","Breast","Women",NA,40.4,40.9333333333333
+2008,"Wales","Breast","Women",NA,39.2,39.1333333333333
+2009,"Wales","Breast","Women",NA,37.8,38.7666666666667
+2010,"Wales","Breast","Women",NA,39.3,38.0333333333333
+2011,"Wales","Breast","Women",NA,37,37.3666666666667
+2012,"Wales","Breast","Women",NA,35.8,35.6333333333333
+2013,"Wales","Breast","Women",NA,34.1,34.6666666666667
+2014,"Wales","Breast","Women",NA,34.1,34.6333333333333
+2015,"Wales","Breast","Women",NA,35.7,33.7333333333333
+2016,"Wales","Breast","Women",NA,31.4,34.2333333333333
+2017,"Wales","Breast","Women",NA,35.6,34.5
+2018,"Wales","Breast","Women",NA,36.5,35.3333333333333
+2019,"Wales","Breast","Women",NA,33.9,35.1
+2020,"Wales","Breast","Women",NA,34.9,32.8
+2021,"Wales","Breast","Women",NA,29.6,31.8333333333333
+2003,"Wales","Colorectal","Men",NA,46.4,45.4666666666667
+2004,"Wales","Colorectal","Men",NA,47.2,46.7333333333333
+2005,"Wales","Colorectal","Men",NA,46.6,45.3
+2006,"Wales","Colorectal","Men",NA,42.1,44.0666666666667
+2007,"Wales","Colorectal","Men",NA,43.5,42.1333333333333
+2008,"Wales","Colorectal","Men",NA,40.8,43.3666666666667
+2009,"Wales","Colorectal","Men",NA,45.8,42.3666666666667
+2010,"Wales","Colorectal","Men",NA,40.5,41.6333333333333
+2011,"Wales","Colorectal","Men",NA,38.6,39.7333333333333
+2012,"Wales","Colorectal","Men",NA,40.1,38.4333333333333
+2013,"Wales","Colorectal","Men",NA,36.6,38.6333333333333
+2014,"Wales","Colorectal","Men",NA,39.2,38.1333333333333
+2015,"Wales","Colorectal","Men",NA,38.6,38.4333333333333
+2016,"Wales","Colorectal","Men",NA,37.5,37.1666666666667
+2017,"Wales","Colorectal","Men",NA,35.4,36.2
+2018,"Wales","Colorectal","Men",NA,35.7,35.9666666666667
+2019,"Wales","Colorectal","Men",NA,36.8,36.2
+2020,"Wales","Colorectal","Men",NA,36.1,37.3333333333333
+2021,"Wales","Colorectal","Men",NA,39.1,37.4666666666667
+2003,"Wales","Colorectal","Women",NA,26.9,25.5333333333333
+2004,"Wales","Colorectal","Women",NA,24.5,25.4
+2005,"Wales","Colorectal","Women",NA,24.8,24.7333333333333
+2006,"Wales","Colorectal","Women",NA,24.9,25.4
+2007,"Wales","Colorectal","Women",NA,26.5,25.4666666666667
+2008,"Wales","Colorectal","Women",NA,25,25.2
+2009,"Wales","Colorectal","Women",NA,24.1,24.1
+2010,"Wales","Colorectal","Women",NA,23.2,22.9
+2011,"Wales","Colorectal","Women",NA,21.4,22.4666666666667
+2012,"Wales","Colorectal","Women",NA,22.8,22.8
+2013,"Wales","Colorectal","Women",NA,24.2,23.2
+2014,"Wales","Colorectal","Women",NA,22.6,23.5
+2015,"Wales","Colorectal","Women",NA,23.7,22.7
+2016,"Wales","Colorectal","Women",NA,21.8,23
+2017,"Wales","Colorectal","Women",NA,23.5,22.7
+2018,"Wales","Colorectal","Women",NA,22.8,22.9666666666667
+2019,"Wales","Colorectal","Women",NA,22.6,22.9333333333333
+2020,"Wales","Colorectal","Women",NA,23.4,22.6
+2021,"Wales","Colorectal","Women",NA,21.8,22.5666666666667
+2003,"Wales","Lung","Men",NA,91,92.6666666666667
+2004,"Wales","Lung","Men",NA,92.8,91.4
+2005,"Wales","Lung","Men",NA,90.4,91.8
+2006,"Wales","Lung","Men",NA,92.2,91.1666666666667
+2007,"Wales","Lung","Men",NA,90.9,92.5666666666667
+2008,"Wales","Lung","Men",NA,94.6,90.1666666666667
+2009,"Wales","Lung","Men",NA,85,86.6
+2010,"Wales","Lung","Men",NA,80.2,84.2333333333333
+2011,"Wales","Lung","Men",NA,87.5,81.7666666666667
+2012,"Wales","Lung","Men",NA,77.6,80.1
+2013,"Wales","Lung","Men",NA,75.2,76.6666666666667
+2014,"Wales","Lung","Men",NA,77.2,75.4
+2015,"Wales","Lung","Men",NA,73.8,75.2
+2016,"Wales","Lung","Men",NA,74.6,72.4
+2017,"Wales","Lung","Men",NA,68.8,70.8333333333333
+2018,"Wales","Lung","Men",NA,69.1,68.6
+2019,"Wales","Lung","Men",NA,67.9,66
+2020,"Wales","Lung","Men",NA,61,62.5333333333333
+2021,"Wales","Lung","Men",NA,58.7,59.5666666666667
+2003,"Wales","Lung","Women",NA,44.6,46.2
+2004,"Wales","Lung","Women",NA,49.3,47.8666666666667
+2005,"Wales","Lung","Women",NA,49.7,49.8333333333333
+2006,"Wales","Lung","Women",NA,50.5,50.2666666666667
+2007,"Wales","Lung","Women",NA,50.6,51.8
+2008,"Wales","Lung","Women",NA,54.3,52.0666666666667
+2009,"Wales","Lung","Women",NA,51.3,52.1666666666667
+2010,"Wales","Lung","Women",NA,50.9,50.3666666666667
+2011,"Wales","Lung","Women",NA,48.9,50.5333333333333
+2012,"Wales","Lung","Women",NA,51.8,50.1333333333333
+2013,"Wales","Lung","Women",NA,49.7,51.7333333333333
+2014,"Wales","Lung","Women",NA,53.7,51.0333333333333
+2015,"Wales","Lung","Women",NA,49.7,51.8333333333333
+2016,"Wales","Lung","Women",NA,52.1,51.0666666666667
+2017,"Wales","Lung","Women",NA,51.4,51.1333333333333
+2018,"Wales","Lung","Women",NA,49.9,50.2333333333333
+2019,"Wales","Lung","Women",NA,49.4,48.8666666666667
+2020,"Wales","Lung","Women",NA,47.3,47.2666666666667
+2021,"Wales","Lung","Women",NA,45.1,46.5333333333333
+2003,"Wales","Oesophageal","Men",NA,23.5,22.2333333333333
+2004,"Wales","Oesophageal","Men",NA,20.2,21.7333333333333
+2005,"Wales","Oesophageal","Men",NA,21.5,21.5
+2006,"Wales","Oesophageal","Men",NA,22.8,23.1
+2007,"Wales","Oesophageal","Men",NA,25,24.0666666666667
+2008,"Wales","Oesophageal","Men",NA,24.4,23.4666666666667
+2009,"Wales","Oesophageal","Men",NA,21,22.6666666666667
+2010,"Wales","Oesophageal","Men",NA,22.6,22.1
+2011,"Wales","Oesophageal","Men",NA,22.7,21.1666666666667
+2012,"Wales","Oesophageal","Men",NA,18.2,20.6
+2013,"Wales","Oesophageal","Men",NA,20.9,19.7
+2014,"Wales","Oesophageal","Men",NA,20,21.1666666666667
+2015,"Wales","Oesophageal","Men",NA,22.6,21.1666666666667
+2016,"Wales","Oesophageal","Men",NA,20.9,21.1666666666667
+2017,"Wales","Oesophageal","Men",NA,20,20.6666666666667
+2018,"Wales","Oesophageal","Men",NA,21.1,20.9
+2019,"Wales","Oesophageal","Men",NA,21.6,21.1333333333333
+2020,"Wales","Oesophageal","Men",NA,20.7,20.5
+2021,"Wales","Oesophageal","Men",NA,19.2,19.8333333333333
+2003,"Wales","Oesophageal","Women",NA,9.6,9.63333333333333
+2004,"Wales","Oesophageal","Women",NA,9.7,9.36666666666667
+2005,"Wales","Oesophageal","Women",NA,8.8,9.1
+2006,"Wales","Oesophageal","Women",NA,8.8,9.03333333333333
+2007,"Wales","Oesophageal","Women",NA,9.5,9.33333333333333
+2008,"Wales","Oesophageal","Women",NA,9.7,9.46666666666667
+2009,"Wales","Oesophageal","Women",NA,9.2,9.13333333333333
+2010,"Wales","Oesophageal","Women",NA,8.5,8.46666666666667
+2011,"Wales","Oesophageal","Women",NA,7.7,8.2
+2012,"Wales","Oesophageal","Women",NA,8.4,7.66666666666667
+2013,"Wales","Oesophageal","Women",NA,6.9,8.06666666666667
+2014,"Wales","Oesophageal","Women",NA,8.9,8.16666666666667
+2015,"Wales","Oesophageal","Women",NA,8.7,8.36666666666667
+2016,"Wales","Oesophageal","Women",NA,7.5,8.1
+2017,"Wales","Oesophageal","Women",NA,8.1,7.96666666666667
+2018,"Wales","Oesophageal","Women",NA,8.3,8.06666666666667
+2019,"Wales","Oesophageal","Women",NA,7.8,7.73333333333333
+2020,"Wales","Oesophageal","Women",NA,7.1,7.43333333333333
+2021,"Wales","Oesophageal","Women",NA,7.4,7.26666666666667
+2003,"Wales","Pancreatic","Men",NA,16.8,16.5333333333333
+2004,"Wales","Pancreatic","Men",NA,16.4,16.4333333333333
+2005,"Wales","Pancreatic","Men",NA,16.1,16
+2006,"Wales","Pancreatic","Men",NA,15.5,15.8
+2007,"Wales","Pancreatic","Men",NA,15.8,15.6666666666667
+2008,"Wales","Pancreatic","Men",NA,15.7,15.9
+2009,"Wales","Pancreatic","Men",NA,16.2,16.3
+2010,"Wales","Pancreatic","Men",NA,17,17.1333333333333
+2011,"Wales","Pancreatic","Men",NA,18.2,16.8
+2012,"Wales","Pancreatic","Men",NA,15.2,16.4666666666667
+2013,"Wales","Pancreatic","Men",NA,16,16.2
+2014,"Wales","Pancreatic","Men",NA,17.4,16.2333333333333
+2015,"Wales","Pancreatic","Men",NA,15.3,16.3666666666667
+2016,"Wales","Pancreatic","Men",NA,16.4,16.5333333333333
+2017,"Wales","Pancreatic","Men",NA,17.9,17.1
+2018,"Wales","Pancreatic","Men",NA,17,17.3333333333333
+2019,"Wales","Pancreatic","Men",NA,17.1,17.0666666666667
+2020,"Wales","Pancreatic","Men",NA,17.1,16.8333333333333
+2021,"Wales","Pancreatic","Men",NA,16.3,16.7
+2003,"Wales","Pancreatic","Women",NA,12.7,13.0666666666667
+2004,"Wales","Pancreatic","Women",NA,13.1,12.7333333333333
+2005,"Wales","Pancreatic","Women",NA,12.4,12.3666666666667
+2006,"Wales","Pancreatic","Women",NA,11.6,12.8
+2007,"Wales","Pancreatic","Women",NA,14.4,12.9666666666667
+2008,"Wales","Pancreatic","Women",NA,12.9,13.6333333333333
+2009,"Wales","Pancreatic","Women",NA,13.6,13.5666666666667
+2010,"Wales","Pancreatic","Women",NA,14.2,13.7
+2011,"Wales","Pancreatic","Women",NA,13.3,13.8333333333333
+2012,"Wales","Pancreatic","Women",NA,14,13.5
+2013,"Wales","Pancreatic","Women",NA,13.2,13.4333333333333
+2014,"Wales","Pancreatic","Women",NA,13.1,13.3666666666667
+2015,"Wales","Pancreatic","Women",NA,13.8,13.5666666666667
+2016,"Wales","Pancreatic","Women",NA,13.8,13.8333333333333
+2017,"Wales","Pancreatic","Women",NA,13.9,13.7
+2018,"Wales","Pancreatic","Women",NA,13.4,14.1
+2019,"Wales","Pancreatic","Women",NA,15,14
+2020,"Wales","Pancreatic","Women",NA,13.6,13.9
+2021,"Wales","Pancreatic","Women",NA,13.1,13.7666666666667
+2003,"Wales","Prostate","Men",NA,60.8,59.4333333333333
+2004,"Wales","Prostate","Men",NA,63.5,58.7666666666667
+2005,"Wales","Prostate","Men",NA,52,56.4333333333333
+2006,"Wales","Prostate","Men",NA,53.8,53.4666666666667
+2007,"Wales","Prostate","Men",NA,54.6,53.7333333333333
+2008,"Wales","Prostate","Men",NA,52.8,52.2333333333333
+2009,"Wales","Prostate","Men",NA,49.3,50.3
+2010,"Wales","Prostate","Men",NA,48.8,48.4
+2011,"Wales","Prostate","Men",NA,47.1,47.6666666666667
+2012,"Wales","Prostate","Men",NA,47.1,46.0333333333333
+2013,"Wales","Prostate","Men",NA,43.9,47.1333333333333
+2014,"Wales","Prostate","Men",NA,50.4,46.4
+2015,"Wales","Prostate","Men",NA,44.9,47.2666666666667
+2016,"Wales","Prostate","Men",NA,46.5,45.9666666666667
+2017,"Wales","Prostate","Men",NA,46.5,46.6333333333333
+2018,"Wales","Prostate","Men",NA,46.9,45.9333333333333
+2019,"Wales","Prostate","Men",NA,44.4,47.1
+2020,"Wales","Prostate","Men",NA,50,45.3666666666667
+2021,"Wales","Prostate","Men",NA,41.7,45.7333333333333

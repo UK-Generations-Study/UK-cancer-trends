@@ -12,6 +12,7 @@
 ## PACKAGES
 library(dplyr)
 library(readxl)
+library(zoo)
 
 ### INCIDENCE
 
@@ -263,4 +264,19 @@ cancer_data <- cancer_data |>
 
 # Write output
 write.csv(cancer_data, file = r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\UK-cancer-trends\Data\Cancer Trends\Source Data\Cancer_Mortality_Data.csv)", row.names = F)
-  
+
+## 3 YEAR ROLLING AVERAGES
+cancer_data <- cancer_data |>
+  arrange(Year) |>
+  group_by(Country, Sex, Cancer_Site) |>
+  mutate(
+    
+    ASR_rolling = rollmean(ASR, k = 3, fill = NA)
+    
+    ) |>
+  ungroup() |>
+  filter(!is.na(ASR_rolling)) |>
+  arrange(Country, Cancer_Site, Sex, Year)
+    
+# Write output
+write.csv(cancer_data, file = r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\UK-cancer-trends\Data\Cancer Trends\Source Data\Cancer_Mortality_Data_Rolling_Avg.csv)", row.names = F)
