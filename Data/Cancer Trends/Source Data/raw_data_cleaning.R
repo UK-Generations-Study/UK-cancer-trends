@@ -137,7 +137,26 @@ cancer_data <- cancer_data |>
 
 
 # Write output
-write.csv(cancer_data, file = r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\UK-cancer-trends\Data\Cancer Trends\Source Data\Cancer_Incidence_Data.csv)", row.names = F)
+write.csv(cancer_data |> filter(between(Year, 2000, 2019)), file = r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\UK-cancer-trends\Data\Cancer Trends\Source Data\Cancer_Incidence_Data.csv)", row.names = F)
+
+
+## 3 YEAR ROLLING AVERAGES
+cancer_data <- cancer_data |>
+  arrange(Year) |>
+  group_by(Country, Sex, Cancer_Site) |>
+  mutate(
+    
+    ASR_rolling = rollmean(ASR, k = 3, fill = NA)
+    
+  ) |>
+  ungroup() |>
+  filter(!is.na(ASR_rolling)) |>
+  filter(between(Year, 2001, 2018)) |>
+  arrange(Country, Cancer_Site, Sex, Year)
+
+# Write output
+write.csv(cancer_data, file = r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\UK-cancer-trends\Data\Cancer Trends\Source Data\Cancer_Incidence_Data_Rolling_Avg.csv)", row.names = F)
+
 
 
 ### MORTALITY
@@ -263,7 +282,7 @@ cancer_data <- cancer_data |>
 
 
 # Write output
-write.csv(cancer_data, file = r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\UK-cancer-trends\Data\Cancer Trends\Source Data\Cancer_Mortality_Data.csv)", row.names = F)
+write.csv(cancer_data |> filter(between(Year, 2000, 2019)), file = r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\UK-cancer-trends\Data\Cancer Trends\Source Data\Cancer_Mortality_Data.csv)", row.names = F)
 
 ## 3 YEAR ROLLING AVERAGES
 cancer_data <- cancer_data |>
@@ -276,6 +295,7 @@ cancer_data <- cancer_data |>
     ) |>
   ungroup() |>
   filter(!is.na(ASR_rolling)) |>
+  filter(between(Year, 2001, 2018)) |>
   arrange(Country, Cancer_Site, Sex, Year)
     
 # Write output
