@@ -222,14 +222,15 @@ plot_joinpoint_output <- function(data, projection.yr = NA, title = NA){
         axis.text.x = element_text(angle = 45, hjust = 1),
         panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
         panel.grid.minor.x = element_blank()) +
-    facet_grid(Sex ~ incmort, scales = "free_x") +
+    facet_wrap(Sex ~ incmort, scales = "free") +
     scale_x_continuous(breaks = seq(min(data$Year), max(data$Year), by = 3))
   
   
 }
 
-incidence_jp <- read.delim(r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\UK-cancer-trends\Data\Cancer Trends\Source Data\Cancer_Incidence_Data_Joinpoint.txt)", sep = "\t") |>
-  filter(Cancer_Site == "All sites excl. NSMC") |>
+incidence_jp <- read.delim(r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\UK-cancer-trends\Data\Cancer Trends\Source Data\Cancer_Incidence_Data_Rolling_Avg_Joinpoint.txt)", sep = "\t") |>
+  filter(Cancer_Site == "All sites excl. NMSC") |>
+  rename(ASR = ASR_rolling) |>
   mutate(incmort = "Incidence")
 
 mortality_jp <- read.delim(r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\UK-cancer-trends\Data\Cancer Trends\Source Data\Cancer_Mortality_Data_Rolling_Avg_Joinpoint.txt)", sep = "\t") |>
@@ -239,7 +240,8 @@ mortality_jp <- read.delim(r"(C:\Users\rfrost\OneDrive - The Institute of Cancer
 
 total_jp <- rbind(incidence_jp, mortality_jp)
 
-plot_joinpoint_output(data = total_jp, projection.yr = 2040)
+plot_joinpoint_output(data = total_jp, projection.yr = 2040) |>
+  ggsave(filename = r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\Testing\Breast Cancer Trends\Temp Plot.png)", width = 12, height = 9, bg = "white")
 
 
 ```
