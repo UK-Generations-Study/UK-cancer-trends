@@ -19,6 +19,8 @@ library(readxl)
 library(gt)
 library(tidyr)
 library(scales)
+library(patchwork)
+library(cowplot)
 
 ```
 
@@ -131,13 +133,13 @@ get_proj_data <- function(data, data_jp, projection.yr){
 
 add_proj_data <- function(data, projection.yr){
   
-  proj_data <- data.frame(Sex = character(0), Country = character(0), Year = numeric(0), ASR = numeric(0), incmort = character(0), proj_data = logical(0), last_join = logical(0))
+  proj_data <- data.frame(group = character(0), Cancer_Site = character(0), Country = character(0), Year = numeric(0), ASR = numeric(0), incmort = character(0), proj_data = logical(0), last_join = logical(0))
   
-  for(sex in unique(data$Sex)){
+  for(group in unique(data$group)){
     for(country in unique(data$Country)){
       
-      # Filter to data for sex and country
-      spec_data <- data[data$Sex == sex & data$Country == country,]
+      # Filter to data for group and country
+      spec_data <- data[data$group == group & data$Country == country,]
       
       # Arrange by year
       spec_data <- arrange(spec_data, Year)
@@ -149,7 +151,7 @@ add_proj_data <- function(data, projection.yr){
       last_apc <- 1 + as.numeric(gsub(last_apc, pattern = "\\*", replacement = ""))/100
       
       # Add data to proj data
-      proj_data_new <- data.frame(Sex = sex, Country = country, Year = seq(last_year, projection.yr, by = 0.1))
+      proj_data_new <- data.frame(group = group, Cancer_Site = spec_data$Cancer_Site[1], Country = country, Year = seq(last_year, projection.yr, by = 0.1))
       proj_data_new$lograte <- seq(from = log(last_rate), by = log((last_apc)^(1/10)), length.out = nrow(proj_data_new))
       proj_data_new$ASR <- exp(proj_data_new$lograte)
       proj_data_new$incmort <- "Mortality"
@@ -176,12 +178,19 @@ add_proj_data <- function(data, projection.yr){
 
 ```{r}
 
-plot_joinpoint_output <- function(data, projection.yr = NA, title = NA){
+plot_joinpoint_output <- function(data, projection.yr = NA){
+  
+  # Create new group variable that is needed for plotting multiple cancers and facet wrapping
+  if(length(unique(data$Cancer_Site)) > 1){
+    data$group <- paste0(data$Cancer_Site, " - ", data$Sex)
+  } else {
+    data$group <- data$Sex
+  }
   
   # Add last join and projected data flags onto data
   data <- data |>
     mutate(proj_data = F) |>
-    group_by(Sex, Country, incmort) |>
+    group_by(group, Country, incmort) |>
     arrange(desc(Year)) |>
     mutate(
       
@@ -199,31 +208,108 @@ plot_joinpoint_output <- function(data, projection.yr = NA, title = NA){
   # Add projections
   proj_data <- add_proj_data(data |> filter(incmort == "Mortality"), projection.yr = projection.yr)
   data <- data |>
-    select(Sex, Country, Year, ASR, incmort, proj_data, last_join) |>
+    select(group, Cancer_Site, Country, Year, ASR, incmort, proj_data, last_join) |>
     rbind(proj_data)
   
   # Need to add duplicate point for join between final join and non final join
   data_last_joins <- data |>
     filter(last_join == T) |>
-    group_by(Sex, Country) |>
+    group_by(group, Country) |>
     filter(row_number() == 1) |>
     mutate(last_join = F)
   
   data <- rbind(data, data_last_joins)
   
+  # Need to create dummy datapoints to get desired y limits between graphs in R
+  data_mins <- data |>
+    group_by(Cancer_Site, incmort) |>
+    mutate(Year = min(Year), ASR = min(ASR)) |>
+    ungroup() |>
+    group_by(group, incmort) |>
+    select(Year, ASR, group, incmort) |>
+    distinct()
   
-  # Plot
-  ggplot(data, aes(x = Year, y = ASR, colour = Country, linetype = last_join, shape = proj_data)) +
-    geom_line() + 
-    geom_point(data = subset(data, proj_data == F)) +
-    guides(linetype = "none", shape = "none") + 
+  data_maxes <- data |>
+    group_by(Cancer_Site, incmort) |>
+    mutate(Year = max(Year), ASR = max(ASR)) |>
+    ungroup() |>
+    group_by(group, incmort) |>
+    select(Year, ASR, group, incmort) |>
+    distinct()
+  
+  invisible_points <- rbind(data_mins, data_maxes)
+  
+  invisible_points_inc <- invisible_points |>
+    filter(incmort == "Incidence")
+  
+  invisible_points_mort <- invisible_points |>
+    filter(incmort == "Mortality")
+  
+  
+  # Plot - Incidence
+  data_inc <- data |>
+    filter(incmort == "Incidence")
+  
+  plot_inc <- ggplot(data_inc, aes(x = Year, y = ASR)) +
+    geom_line(aes(colour = Country, linetype = last_join)) +
+    geom_point(data = subset(data_inc, proj_data == F), aes(colour = Country, shape = proj_data)) +
+    geom_point(data = invisible_points_inc, aes(x = Year, y = ASR), alpha = 0) + 
+    guides(linetype = "none", shape = "none") +
+    theme(legend.position="none",
+        legend.box = "vertical",
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
+        panel.grid.minor.x = element_blank(),
+        strip.text.x = element_blank()) +
+    facet_wrap( ~ group, scales = "free", ncol = 1)  +
+    scale_x_continuous(breaks = seq(min(data_inc$Year), max(data_inc$Year), by = 3))
+  
+  # Plot - Mortality
+  data_mort <- data |>
+    filter(incmort == "Mortality")
+  
+  plot_mort <- ggplot(data_mort, aes(x = Year, y = ASR)) +
+    geom_line(aes(colour = Country, linetype = last_join)) +
+    geom_point(data = subset(data_mort, proj_data == F), aes(colour = Country, shape = proj_data)) +
+    geom_point(data = invisible_points_mort, aes(x = Year, y = ASR), alpha = 0) + 
+    guides(linetype = "none", shape = "none") +
+    theme(legend.position="none",
+        legend.box = "vertical",
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
+        panel.grid.minor.x = element_blank(),
+        # strip.placement = "outside",
+        strip.text.y = element_text(size = 11)) +
+    # ) +
+    facet_wrap( ~ group, scales = "free", ncol = 1, strip.position = "right") +
+    scale_x_continuous(breaks = seq(min(data_mort$Year), max(data_mort$Year), by = 3))
+  
+  # Grabbing legend to use between plots
+  legend <- get_legend(
+    ggplot(data_inc, aes(x = Year, y = ASR)) +
+    geom_line(aes(colour = Country, linetype = last_join)) +
+    geom_point(data = subset(data_inc, proj_data == F), aes(colour = Country, shape = proj_data)) +
+    geom_point(data = invisible_points_inc, aes(x = Year, y = ASR), alpha = 0) + 
+    guides(linetype = "none", shape = "none") +
     theme(legend.position="bottom",
         legend.box = "vertical",
         axis.text.x = element_text(angle = 45, hjust = 1),
         panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
         panel.grid.minor.x = element_blank()) +
-    facet_wrap(Sex ~ incmort, scales = "free") +
-    scale_x_continuous(breaks = seq(min(data$Year), max(data$Year), by = 3))
+    facet_wrap( ~ group, scales = "free", ncol = 1)
+  )
+
+  
+  # Combining Plots
+  combined_plot <- wrap_plots(
+    wrap_elements(textGrob("Incidence", gp = gpar(fontsize = 11))) + wrap_elements(textGrob("Mortality", gp = gpar(fontsize = 11))) + plot_layout(ncol = 2, widths = c(1,2.294118)),
+    plot_inc + plot_mort + plot_layout(ncol = 2, widths = c(1,2.294118)),
+    heights = c(0.07, length(unique(data$group))/2),  # Control height of labels and plots
+    widths = c(1,2),
+    ncol = 1
+  ) + plot_layout(guides = "collect") & theme(legend.position = "bottom")
+  
+  return(combined_plot)
   
   
 }
@@ -240,8 +326,22 @@ mortality_jp <- read.delim(r"(C:\Users\rfrost\OneDrive - The Institute of Cancer
 
 total_jp <- rbind(incidence_jp, mortality_jp)
 
-plot_joinpoint_output(data = total_jp, projection.yr = 2040) |>
-  ggsave(filename = r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\Testing\Breast Cancer Trends\Temp Plot.png)", width = 12, height = 9, bg = "white")
+plot_joinpoint_output(data = total_jp, projection.yr = 2040) +
+  plot_annotation(title = "TEST", theme = theme(plot.title = element_text(hjust = 0.5)))
+
+# incidence_jp <- read.delim(r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\UK-cancer-trends\Data\Cancer Trends\Source Data\Cancer_Incidence_Data_Rolling_Avg_Joinpoint.txt)", sep = "\t") |>
+#   filter(Cancer_Site == "Breast") |>
+#   rename(ASR = ASR_rolling) |>
+#   mutate(incmort = "Incidence")
+# 
+# mortality_jp <- read.delim(r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\UK-cancer-trends\Data\Cancer Trends\Source Data\Cancer_Mortality_Data_Rolling_Avg_Joinpoint.txt)", sep = "\t") |>
+#   filter(Cancer_Site == "Breast") |>
+#   rename(ASR = ASR_rolling) |>
+#   mutate(incmort = "Mortality")
+# 
+# total_jp <- rbind(incidence_jp, mortality_jp)
+# 
+# plot_joinpoint_output(data = total_jp, projection.yr = 2040)
 
 
 ```
