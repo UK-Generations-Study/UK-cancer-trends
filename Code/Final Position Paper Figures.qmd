@@ -34,6 +34,9 @@ library(stringr)
 library(scales)
 library(RColorBrewer)
 library(gt)
+library(patchwork)
+library(cowplot)
+library(grid)
 
 ```
 
@@ -63,281 +66,7 @@ theme_set(theme_minimal())
 
 ```
 
-### Functions
-Here are functions for reading in data. They are specified by the data source as generally data is structured in similar ways. There are exceptions to this that have lead to individual functions.
-
-#### Main
-```{r}
-## Main function that grabs data depending on source and calls specific cleaning function,
-data_hub <- function(country, rf){
-  
-  # Initialise empty dataframe
-  data <- list()
-  
-  # Grab sheets that correspond to the risk factor of interest
-  sheets <- excel_sheets(paste0(rf, "_Data.xlsx"))
-  
-  # Grab the subset of these sheets that correspond to the country
-  spec_sheets <- sheets[grepl(sheets, pattern = country)]
-  
-  # Depending on the country and risk factor, use specific data reading function
-  if(country == "England"){
-    for(sheet in spec_sheets){
-      nocol <- ncol(suppressMessages(read_excel(paste0(rf, "_Data.xlsx"), sheet = sheet)))
-      tempdata <- suppressMessages(read_excel(paste0(rf, "_Data.xlsx"), sheet = sheet, col_types = c("text", rep("numeric", nocol-1))))
-      group <- gsub(x = sheet, pattern = "England_", replacement = "")
-      data[[paste0(rf, "-", country, "-", sheet)]] <- pull_HSE_data(data = tempdata, group = group)
-      data[[paste0(rf, "-", country, "-", sheet)]]$section <- rf
-    }
-  } else if(country == "Scotland"){
-    for(sheet in spec_sheets){
-      tempdata <- suppressMessages(read_excel(paste0(rf, "_Data.xlsx"), sheet = sheet))
-      group <- gsub(x = sheet, pattern = "Scotland_", replacement = "")
-      data[[paste0(rf, "-", country, "-", sheet)]] <- pull_SHS_data(data = tempdata, group = group)
-          data[[paste0(rf, "-", country, "-", sheet)]]$section <- rf
-    }
-  } else if(country == "Wales"){
-    for(sheet in spec_sheets){
-      tempdata <- suppressMessages(read_excel(paste0(rf, "_Data.xlsx"), sheet = sheet))
-      group <- gsub(x = sheet, pattern = "Wales_", replacement = "")
-      data[[paste0(rf, "-", country, "-", sheet)]] <- pull_NSW_data(data = tempdata, group = group)
-      data[[paste0(rf, "-", country, "-", sheet)]]$section <- rf
-
-    }
-  } else if(country == "NIreland" & rf != "Activity"){
-    for(sheet in spec_sheets){
-      tempdata <- suppressMessages(read_excel(paste0(rf, "_Data.xlsx"), sheet = sheet))
-      group <- gsub(x = sheet, pattern = "NIreland_", replacement = "")
-      data[[paste0(rf, "-", country, "-", sheet)]] <- pull_HSNI_data(data = tempdata, group = group)
-      data[[paste0(rf, "-", country, "-", sheet)]]$variable <- get_variable_HSNI(rf)
-      data[[paste0(rf, "-", country, "-", sheet)]]$section <- rf
-    }
-    # Activity data formatted differently than other N. Ireland data so need different formatting.
-  } else if(country == "NIreland" & rf == "Activity"){
-    
-    tempdata <- suppressMessages(read_excel(paste0(rf, "_Data.xlsx"), sheet = "NIreland_Men"))
-    group <- "Men"
-    data[["Activity-NIreland-Men"]] <- pull_HSNI_activity_data(data = tempdata, group = "Men")
-    # data[["Activity-NIreland-Men"]]$variable <- get_variable_HSNI(rf)
-    data[["Activity-NIreland-Men"]]$section <- rf
-    
-    tempdata <- suppressMessages(read_excel(paste0(rf, "_Data.xlsx"), sheet = "NIreland_Women"))
-    group <- "Women"
-    data[["Activity-NIreland-Women"]] <- pull_HSNI_activity_data(data = tempdata, group = "Women")
-    # data[["Activity-NIreland-Women"]]$variable <- get_variable_HSNI(rf)
-    data[["Activity-NIreland-Women"]]$section <- rf
-
-    
-    tempdata <- suppressMessages(read_excel(paste0(rf, "_Data.xlsx"), sheet = "NIreland_All"))
-    group <- "All"
-    data[["Activity-NIreland-All"]] <- pull_HSNI_data(data = tempdata, group = "All")
-    data[["Activity-NIreland-All"]]$variable <- get_variable_HSNI(rf)
-    data[["Activity-NIreland-All"]]$section <- rf
-    
-  } else {
-    stop("ERROR: Invalid country chosen")
-  }
-  
-  return(data)
-}
-
-```
-
-#### England Health Survey
-```{r}
-
-pull_HSE_data <- function(data, group){
-  
-  # Edit for activity data format
-  if(is.na(data[2,2])){
-    data <- data[-1,]
-  }
-  
-  # Remove weighted bases - can alter to keep
-  if("Weighted bases" %in% data$...1){
-    data <- data[1:(which(data$`...1`=="Weighted bases")-1),]
-  } else if("Bases (weighted)" %in% data$...1){
-    data <- data[1:(which(data$`...1`=="Bases (weighted)")-1),]
-  }
-  
-  # Get cat columns
-  ranges <- data$...1[is.na(data[,2])]
-  rangesdif <- diff(which(is.na(data[,2]))) # Getting number of categories for each group - they should be equal!
-  
-  # All groups should have the same number of categories - if not we need to throw an error
-  if(max(rangesdif) != min(rangesdif)){
-    return(cat("ERROR: Inconsistent Data Format"))
-  }
-  
-  # Add age groups and pivot longer
-  data <- data |>
-    mutate(age_group = rep(ranges, each = rangesdif[1])) |>
-    filter(!`...1` %in% ranges) |>
-    pivot_longer(cols = colnames(data)[2:ncol(data)]) |>
-    rename(year = name, variable = `...1`)
-  
-  # Manually add country and group
-  data[["country"]] <- "England"
-  data[["group"]] <- group
-  
-  # Smoking data for some reason is ordered oppositely, so made quick fix here.
-  if("Current cigarette smoker" %in% data[["age_group"]] | "Currently uses e-cigarettes" %in% data[["age_group"]] ){
-    data <- data |>
-      rename(temp_age = variable, temp_var = age_group) |>
-      rename(age_group = temp_age, variable = temp_var)
-  }
-  
-  return(data)
-  
-}
-
-```
-
-#### England Health Survey (Diabetes Data)
-```{r}
-
-pull_HSE_diabetes_data <- function(data, group){
-  
-  # Remove weighted bases - can alter to keep
-  if("Weighted bases" %in% data$...1){
-    data <- data[1:(which(data$`...1`=="Weighted bases")-1),]
-  }
-  
-  # Rename first column
-  colnames(data) <- c("age_group", colnames(data)[2:ncol(data)])
-  
-  # Remove first row
-  data <- data[-1,]
-  
-  # Pivot longer
-  data <- data |>
-    pivot_longer(cols = colnames(data)[2:ncol(data)]) |>
-    rename(year = name)
-  
-  # Manually name country, group and variable
-  data[["country"]] <- "England"
-  data[["group"]] <- group
-  data[["variable"]] <- "% Diabetes"
-  
-  return(data)
-  
-}
-
-```
-
-#### Scottish Health Survey
-```{r}
-
-pull_SHS_data <- function(data, group){
-  
-  # SHS data is either stratified by sex or age
-  if(group == "Sex"){
-    data <- data |>
-      select(year = Year, country = Geographylevel, variable = Categories, 
-             group = Sex, value = Percent) |>
-      mutate(age_group = "16+")
-  } else if(group == "Age"){
-    data <- data |>
-      select(year = Year, country = Geographylevel, 
-             variable = Categories, value = Percent, age_group = Age) |>
-      mutate(group = "All adults")
-  }
-  
-  return(data)
-  
-}
-
-```
-
-#### National Survey for Wales
-```{r}
-
-pull_NSW_data <- function(data, group){
-  
-  # Welsh data is split by year, so the 'group' input corresponds to the year of the survey
-  year_input <- group
-  
-  # Initialise dataframe by transposing data
-  data <- as.data.frame(t(as.matrix(data, dimnames = NULL)))
-  
-  # Cleaning dataframe
-  rownames(data) <- NULL
-  data[data=="."] <- NA
-  
-  # Age groups are in hierachical struture, collapsing this
-  data <- data |>
-    mutate(V2 = case_when(
-      is.na(V2) ~ V1,
-      TRUE ~ V2
-    ), V3 = case_when(
-      is.na(V3) ~ V2,
-      TRUE ~ V3
-    )) |>
-    select(-V1, -V2)
-  
-  # Adding column name and removing first two rows
-  colnames(data) <- c("age_group", data[2,2:ncol(data)])
-  data <- data[-c(1,2),]
-  
-  
-  data <- data |>
-    mutate(group = rep(c("All", "Men", "Women"), each = 11),
-           year = year_input,
-           country = "Wales") |>
-    pivot_longer(cols = colnames(data)[2:ncol(data)]) |>
-    rename(variable = name)
-  
-  return(data)
-}
-
-```
-
-#### Health Survey Northern Ireland
-```{r}
-
-pull_HSNI_data <- function(data, group){
-  
-  colnames(data)[1] <- "age_group"
-  
-  data <-  data |>
-    pivot_longer(cols = colnames(data)[2:ncol(data)]) |>
-    rename(year = name) |>
-    mutate(country = "N. Ireland",
-           group = {{group}})
-  
-  return(data)
-}
-
-# Activity data is different, so need a slightly different function to take care of this special case
-pull_HSNI_activity_data <- function(data, group){
-
-  colnames(data)[1] <- "variable"
-  
-  data <-  data |>
-    pivot_longer(cols = colnames(data)[2:ncol(data)]) |>
-    rename(year = name) |>
-    mutate(country = "N. Ireland",
-           group = {{group}},
-           age_group = "19+") # Table specifies 19+ participants.
-  
-  return(data)
-}
-
-# HSNI doesn't store variable information, so it must be inferred from the section.
-# For alcohol etc, drinking over guidelines is from an _alt dataset which is treated seperately. 
-get_variable_HSNI <- function(rf){
-  section <- rf
-  variable <- case_when(
-    section == "BMI" ~ "Overweight",
-    section == "Alcohol" ~ "Drink",
-    section == "Smoking" ~ "Smoke",
-    section == "E_Cigarette" ~ "E-Cigarette Use",
-    section == "Activity" ~ "Meets Recommendations",
-    TRUE ~ "ERROR"
-  )
-}
-
-```
+### Plotting Functions
 
 #### Recent APC Table Function
 ```{r}
@@ -570,8 +299,6 @@ apc_barchart <- function(data_jp, title){
 
 ```
 
-### Plotting Functions
-
 #### Extracting JoinPoint data
 
 ```{r}
@@ -759,12 +486,9 @@ plot_joinpoint_output <- function(data, projection.yr = NA){
     geom_point(data = subset(data_inc, proj_data == F), aes(colour = Country, shape = proj_data)) +
     geom_point(data = invisible_points_inc, aes(x = Year, y = ASR), alpha = 0) + 
     guides(linetype = "none", shape = "none") +
-    theme(legend.position="none",
-        legend.box = "vertical",
-        axis.text.x = element_text(angle = 45, hjust = 1),
-        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank(),
-        strip.text.x = element_blank()) +
+    theme(legend.position="none") +
+    personal_theme() +
+    theme(strip.text = element_blank()) + 
     facet_wrap( ~ group, scales = "free", ncol = 1)  +
     scale_x_continuous(breaks = seq(min(data_inc$Year), max(data_inc$Year), by = 2))
   
@@ -777,36 +501,16 @@ plot_joinpoint_output <- function(data, projection.yr = NA){
     geom_point(data = subset(data_mort, proj_data == F), aes(colour = Country, shape = proj_data)) +
     geom_point(data = invisible_points_mort, aes(x = Year, y = ASR), alpha = 0) + 
     guides(linetype = "none", shape = "none") +
-    theme(legend.position="none",
-        legend.box = "vertical",
-        axis.text.x = element_text(angle = 45, hjust = 1),
-        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank(),
-        strip.text.y = element_text(size = 11)) +
+    theme(strip.text.y = element_text(size = 11)) +
+    personal_theme() +
     facet_wrap( ~ group, scales = "free", ncol = 1, strip.position = "right") +
     scale_x_continuous(breaks = seq(min(data_mort$Year), max(data_mort$Year), by = 2))
   
-  # Grabbing legend to use between plots
-  legend <- get_legend(
-    ggplot(data_inc, aes(x = Year, y = ASR)) +
-    geom_line(aes(colour = Country, linetype = last_join)) +
-    geom_point(data = subset(data_inc, proj_data == F), aes(colour = Country, shape = proj_data)) +
-    geom_point(data = invisible_points_inc, aes(x = Year, y = ASR), alpha = 0) + 
-    guides(linetype = "none", shape = "none") +
-    theme(legend.position="bottom",
-        legend.box = "vertical",
-        axis.text.x = element_text(angle = 45, hjust = 1),
-        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank()) +
-    facet_wrap( ~ group, scales = "free", ncol = 1)
-  )
-
-  
   # Combining Plots
   combined_plot <- wrap_plots(
-    wrap_elements(textGrob("Incidence", gp = gpar(fontsize = 11))) + wrap_elements(textGrob("Mortality", gp = gpar(fontsize = 11))) + plot_layout(ncol = 2, widths = c(1,2.294118)),
+    wrap_elements(textGrob("Incidence", gp = gpar(fontsize = 11, fontface = "bold"))) + wrap_elements(textGrob("Mortality", gp = gpar(fontsize = 11, fontface = "bold"))) + plot_layout(ncol = 2, widths = c(1,2.294118)),
     plot_inc + plot_mort + plot_layout(ncol = 2, widths = c(1,2.294118)),
-    heights = c(0.05, length(unique(data$group))/2),  # Control height of labels and plots
+    heights = c(0.03, length(unique(data$group))/2),  # Control height of labels and plots
     widths = c(1,2),
     ncol = 1
   ) + plot_layout(guides = "collect") & theme(legend.position = "bottom")
@@ -818,57 +522,43 @@ plot_joinpoint_output <- function(data, projection.yr = NA){
 
 ```
 
-
-### Additional Wales Data
-Additional Wales data has been included past the original 4 years. It it all loaded in this chunk so that data can be drawn from it when it is needed.
+#### ggplot General Function
+General function to apply to ggplot objects to get same theme etc. between plots
 ```{r}
 
-whs_data <- read_excel("Wales_Health_Survey_Data.xlsx")
-
-names_to_pivot <- colnames(whs_data)[-c(1,2)]
-
-whs_data <- whs_data |>
-  filter(!is.na(...2)) |>
-  mutate(across(.cols = !contains("..."), .fns = as.numeric)) |>
-  mutate(group = rep(c("Men", "Women", "All"), each = 12)) |>
-  rename(year = ...2) |>
-  select(-...1) |>
-  pivot_longer(cols = all_of(names_to_pivot)) |>
-  rename(variable = name) |>
-  filter(!is.na(value)) |>
-  mutate(
-    
-    age_group = "16+",
-    
-    # Choosing a section for the variables we want to export - not all are applicable
-    section = case_when(
-      variable == "Smoker (1)" ~ "Smoking",
-      variable == "Currently use an e-cigarette (2)" ~ "E_Cigarette",
-      variable == "Overweight or obese (9)" ~ "BMI",
-      variable == "Obese (10)" ~ "BMI",
-      variable == "Exercise or physical activity done (new questions): Active for 150 minutes or more in the previous week (8)" ~ "Activity",
-      variable == "Exercise or physical activity done (new questions): Active for less than 30 minutes in the previous week (8)" ~ "Activity",
-      TRUE ~ NA),
-    
-    # Linking variables to pre established variable names
-    variable = case_when(
-      section == "Smoking" ~ "% Current Smoker",
-      section == "E_Cigarette" ~ "% Current E-cigarette user",
-      section == "BMI" & variable == "Overweight or obese (9)" ~ "% Overweight",
-      section == "BMI" & variable == "Obese (10)" ~ "% Obese",
-      section == "Activity" & variable == "Exercise or physical activity done (new questions): Active for 150 minutes or more in the previous week (8)" ~ "% Meets Guidelines",
-      TRUE ~ NA),
-    
-    country = "Wales",
-    
-    # Choosing the later year for consistency with NSW data, which I believe is a continuation
-    year = if_else(grepl(year, pattern = "\\/"), as.numeric(str_sub(year, start = 1, end = 4))+1, as.numeric(year))
-    
-    ) |>
+personal_theme <- function(continuous.x = TRUE) {
   
-  filter(!is.na(variable))
+  # Base theme components
+  output <- list(
+    geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
+              colour = "black", fill = NA, inherit.aes = FALSE),
+    theme(strip.text = element_text(face = "bold"))
+  )
+  
+  # Additional components if x-axis is continuous
+  if (continuous.x) {
+    output <- c(output, list(
+      scale_x_continuous(breaks = 2002:2022, limits = c(2002, 2022)),
+      theme(legend.position = "none",
+            axis.text.x = element_text(angle = 45, hjust = 1),
+            panel.grid.major.x = element_line(color = "grey92", size = 0.5),
+            panel.grid.minor.x = element_blank())
+    ))
+  }
+  
+  return(output)
+}
+
 
 ```
+
+## Read in data
+```{r}
+
+data <- read.csv("Cleaned Data/Risk_Factor_Data.csv")
+
+```
+
 
 ## Plot Generation
 
@@ -887,12 +577,12 @@ Need to add further annotation to this plot - explaining the dotted line is the 
 ```{r, fig.width=10, fig.height=10}
 
 # Read in data
-incidence_jp <- read.delim(r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\UK-cancer-trends\Data\Cancer Trends\Source Data\Cancer_Incidence_Data_Rolling_Avg_Joinpoint.txt)", sep = "\t") |>
+incidence_jp <- read.delim(r"(Cancer Trends\Source Data\Cancer_Incidence_Data_Rolling_Avg_Joinpoint.txt)", sep = "\t") |>
   filter(Cancer_Site == "All sites excl. NMSC") |>
   rename(ASR = ASR_rolling) |>
   mutate(incmort = "Incidence")
 
-mortality_jp <- read.delim(r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\UK-cancer-trends\Data\Cancer Trends\Source Data\Cancer_Mortality_Data_Rolling_Avg_Joinpoint.txt)", sep = "\t") |>
+mortality_jp <- read.delim(r"(Cancer Trends\Source Data\Cancer_Mortality_Data_Rolling_Avg_Joinpoint.txt)", sep = "\t") |>
   filter(Cancer_Site == "All sites excl. NMSC") |>
   rename(ASR = ASR_rolling) |>
   mutate(incmort = "Mortality")
@@ -921,43 +611,110 @@ Scotland - NHS Scotland\
 Northern Ireland - QUB Northern Ireland Cancer Registry\
 Wales - Public Health Wales
 
-```{r, fig.width=10, fig.height=16}
+```{r, fig.height = 6, fig.width = 15}
 
-# Read in Joinpoint Output
-incidence_jp <- read.delim(r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\UK-cancer-trends\Data\Cancer Trends\Source Data\Cancer_Incidence_Data_Joinpoint.txt)", sep = "\t")
+# Read in mortality data
+mortality_jp <- read.delim(r"(Cancer Trends\Source Data\Cancer_Mortality_Data_Rolling_Avg_Joinpoint.txt)", sep = "\t") |>
+  rename(ASR = ASR_rolling)
 
-# Group by country and prepare data
-figure2_data <- incidence_jp |>
-  group_by(Country) |>
-  do(apc_table(.))
+# Find values of interest
+mortality_goals <- mortality_jp |>
+  group_by(Country, Sex, Cancer_Site) |>
+  arrange(desc(Year)) |>
+  reframe(
+    last_year = max(Year),
+    last_APC = as.numeric(gsub(APC[1], pattern = "\\*", replacement = ""))
+    ) |>
+  ungroup() |>
+  # Calculate years until goal
+  mutate(
+    
+    # Numeric APC value
+    last_APC = 1 + last_APC/100,
+    
+    # Calculate years until goal is reached
+    years_goal = if_else(last_APC >= 1, Inf, log(0.85)/log(last_APC)),
+    
+    # Years over goal
+    years_goal_under =  (2040-2024) - years_goal,
+    
+    # Create tag for over 15 years
+    over_15 = years_goal_under < -15,
+    
+    # Create tag for under/over/over15
+    fill_tag = case_when(
+      years_goal_under >= 0 ~ "Under",
+      over_15 ~ "Over 15",
+      TRUE ~ "Over"),
+    
+    # Get years goal for plotting purposes
+    years_goal_under_plot = if_else(over_15, -15, years_goal_under),
+    
+    # Merge cancer site and sex for plotting
+    Site_Sex = paste0(Cancer_Site, " - ", Sex)
+    
+  ) |>
+  arrange(desc(Site_Sex))
 
-# Plot Figure 2
-ggplot(figure2_data, aes(x = Cancer, y = apc, fill = sex)) +
-    geom_bar(stat = "identity", position = position_dodge(), colour = "black") +
-    geom_hline(yintercept = 0) +
-    ylab("APC") +
-    scale_fill_discrete(name = "Sex") +
-    geom_text(aes(label = ifelse(significant, "*", ""),
-                hjust = ifelse(apc>0, -0.1, 1.1)),
-            position = position_dodge(width = 0.9),
-            vjust = 0.8,
-            size = 6) +
-    geom_text(aes(label = period,
-                    y = max(apc, na.rm = T) +1),
-              position = position_dodge(width = 0.9),
-              vjust = 0.38) +
-    labs(caption = "* Indicates an APC significantly different from 0",
-       y = "Annual Percentage Change (APC)") +
-    ylim(NA, max(figure2_data$apc, na.rm = T)+2)  +
-    coord_flip() +
-    geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
-              colour = "black", fill = NA, inherit.aes = FALSE) +
-    facet_wrap(~ Country, ncol = 1) +
-    theme(strip.text = element_text(face = "bold"))
+# Get appropriately ordered levels for site and sex
+mortality_goals$Site_Sex <- factor(mortality_goals$Site_Sex, levels = unique(mortality_goals$Site_Sex))
 
 
-# Save Plot
-ggsave(filename = paste0(output_filepath, "Figure 2 - Cancer APC by Country.png"), bg = "white", height = 16, width = 10)
+# Plot Figure
+ggplot(mortality_goals, aes(x = Site_Sex, y = years_goal_under_plot, fill = fill_tag)) + 
+  geom_bar(stat = "identity", colour = "black") +
+  theme(strip.text = element_text(face = "bold")) +
+  scale_fill_manual(breaks = c("Under", "Over", "Over 15"),
+                    values = c("#66BB6AFF", "#E89800FF", "#EF5350FF")) +
+  ylab("Years Under Goal") +
+  xlab("") +
+  labs(fill = "Target Trajectory") +
+  geom_hline(yintercept = 0) +
+  personal_theme(continuous.x = F) +
+  facet_wrap(~ Country, nrow = 1) + 
+  coord_flip()
+
+ggsave(filename = paste0(output_filepath, "Figure 2 - Cancer Mortality Target Projections.png"), bg = "white", height = 6, width = 15)
+
+
+```
+
+
+##### Figure 2 (Test)
+```{r, fig.height = 6, fig.width = 15}
+
+mortality_goals <- mortality_goals |>
+  mutate(
+    
+    last_APC_pretty = 100*(last_APC - 1),
+    
+    positive_APC = case_when(
+      last_APC <= 0.85^(1/(2040-2024)) ~ "Reach Goal",
+      last_APC < 1 ~ "Decreasing",
+      TRUE ~ "Not Decreasing"
+    )
+    
+  )
+
+
+# Plot Figure
+ggplot(mortality_goals, aes(x = Site_Sex, y = last_APC_pretty, fill = positive_APC)) + 
+  geom_bar(stat = "identity", colour = "black") +
+  scale_fill_manual(breaks = c("Reach Goal", "Decreasing", "Not Decreasing"),
+                    values = c("#2E7D32FF", "#66BB6AFF", "#EF5350FF")) +
+  ylab("APC") +
+  xlab("") +
+  labs(fill = "APC Trend") +
+  scale_y_reverse() +
+  ylim(c(8.5, -8.5)) +
+  geom_hline(yintercept = 0) +
+  geom_hline(yintercept = 100*(0.85^(1/(2040-2024))-1), linetype = "dashed") +
+  personal_theme(continuous.x = F) + 
+  facet_wrap(~ Country, nrow = 1) + 
+  coord_flip()
+
+ggsave(filename = paste0(output_filepath, "Figure 2 (Test) - Cancer Mortality Target Projections.png"), bg = "white", height = 6, width = 15)
+
 
 ```
 
@@ -968,154 +725,18 @@ Figure 3 consists of two plots showing recent trends in risk factors by UK count
 ##### Smoking/Alcohol/Obesity
 ```{r, fig.height = 9, fig.width = 24}
 
-# Grab smoking data
-smoking_data <- bind_rows(data_hub(country = "England", rf = "Smoking")) |>
-  rbind(bind_rows(data_hub(country = "Scotland", rf = "Smoking"))) |>
-  rbind(bind_rows(data_hub(country = "Wales", rf = "Smoking"))) |>
-  rbind(bind_rows(data_hub(country = "NIreland", rf = "Smoking")))
+# Get data for each variable
+figure3a_data_alcohol <- data |>
+  filter(variable == "% Drinking Over Guidelines") |>
+  filter(group != "All")
 
+figure3a_data_smoking <- data |>
+  filter(variable == "% Smoke") |>
+  filter(group != "All")
 
-# Grabbing whs data
-tempdata <- whs_data |>
-  filter(section == "Smoking" & group != "All")
-
-# Clean data
-figure3a_data_smoking <- smoking_data |>
-  filter(
-    (country == "England" & variable  == "Current cigarette smoker" & age_group %in% c("All men", "All women") & group  %in% c("Men", "Women")) |
-      (country == "Scotland" & age_group == "16+" & group %in% c("Male", "Female") & variable == "Current smoker") |
-      (country == "Wales" & variable == "Smoker" & age_group == "All aged 16+" & group %in% c("Men", "Women")) |
-      (country == "N. Ireland" & age_group == "Total" & group %in% c("Men", "Women"))
-  ) |>
-  rbind(tempdata) |>
-  # Clean year data
-  mutate(year = as.numeric(substr(year, 1, 4)),
-         value = case_when(
-           country == "N. Ireland" ~ as.numeric(value)*100,
-           TRUE ~ as.numeric(value)),
-         group = case_when(
-           group == "Female" ~ "Women",
-           group == "Male" ~ "Men",
-           TRUE ~ group),
-         variable = "% Current Smoker")
-
-
-# Grab alcohol data
-# First need to get England data and merge two variables from it
-alcohol_data <- bind_rows(data_hub(country = "England", rf = "Alcohol")) |>
-  pivot_wider(names_from = variable, values_from = value) |>
-  mutate(value = 100 - (`% non drinker/did not drink in last 12 months` + `% up to 14 units per week (lower risk)`),
-         variable = "% Over Guidelines") |>
-  select(year, country, value, group, age_group, variable, section)
-
-# Now add in Scotland and Wales data using conventional method
-alcohol_data <- alcohol_data |>
-  rbind(bind_rows(data_hub(country = "Scotland", rf = "Alcohol"))) |>
-  rbind(bind_rows(data_hub(country = "Wales", rf = "Alcohol")))
-
-# Read in Northern Ireland data manually
-new_alcohol_sheets <- excel_sheets("Alcohol_Data_Alt.xlsx")
-for(sheet in new_alcohol_sheets){
-  tempdata <- read_excel(paste0("Alcohol_Data_Alt.xlsx"), sheet = sheet)
-  group <- gsub(x = sheet, pattern = "NIreland_", replacement = "")
-  tempdata <- pull_HSNI_data(data = tempdata, group = group)
-  tempdata$variable <- "% Over Guidelines"
-  tempdata$section <- "Alcohol"
-  tempdata$value <- 100*tempdata$value
-  
-  alcohol_data <- rbind(alcohol_data, tempdata)
-}
-
-# Clean the data for what we need for the plot
-figure3a_data_alcohol <- alcohol_data |>
-  filter(
-    (country == "England" & age_group %in% c("All men", "All women")) |
-      (country == "Scotland" & variable == "Hazardous/Harmful drinker" & group %in% c("Male", "Female")) |
-      (country == "Wales" & variable == "Average weekly alcohol consumption - above 14 units (over guidelines)" & age_group == "All aged 16+" & group %in% c("Men", "Women")) |
-      (country == "N. Ireland" & age_group == "Total" & group %in% c("Men", "Women"))
-  ) |>
-  # Cleaning year variable
-  mutate(year = as.numeric(substr(year, 1, 4))) |>
-  # Cleaning value variable
-  mutate(value = as.numeric(value)) |>
-  # Cleaning group variable
-  mutate(group = case_when(
-    group == "Female" ~ "Women",
-    group == "Male" ~ "Men",
-    TRUE ~ group),
-    variable = "% Drinking Over Guidelines")
-
-
-# Grab obesity data
-obesity_data <- bind_rows(data_hub(country = "England", rf = "BMI")) |>
-  rbind(bind_rows(data_hub(country = "Wales", rf = "BMI")))
-
-# Grab Scotland and N. Ireland data from alternate excel file
-# Scotland BMI data collected was on Overweight so need to adjust and add Obesity data from a seperate source
-obese_data_sheets <- excel_sheets("BMI_Obese_Data.xlsx")
-
-scotland_sheets <- obese_data_sheets[grepl(obese_data_sheets, pattern = "Scotland")]
-
-# Loop over sheets for age and sex and add both to total dataset used for this specific variable.
-for(sheet in scotland_sheets){
-  
-  # Read sheet and clean
-  tempdata <- read_excel("BMI_Obese_Data.xlsx", sheet = sheet)
-  group <- gsub(x = sheet, pattern = "Scotland_", replacement = "")
-  tempdata <- pull_SHS_data(data = tempdata, group = group)
-  tempdata$section <- "BMI"
-  tempdata$variable <- ifelse(tempdata$variable == "Obesity", "% Obese", "% Non-Obese")
-  
-  # Merge into obese_data
-  obesity_data <- rbind(obesity_data, tempdata)
-
-}
- # Similar to Scotland data, needed to extract specific information on Obesity for N. Ireland as initial data collected was only Overweight %
-nireland_sheets <- obese_data_sheets[grepl(obese_data_sheets, pattern = "NIreland")]
-
-# Loop over sheets for sexes and add both to total dataset used for this specific variable.
-for(sheet in nireland_sheets){
-  
-  # Read in sheet and clean
-  tempdata <- read_excel(paste0("BMI_Obese_Data.xlsx"), sheet = sheet)
-  group <- gsub(x = sheet, pattern = "NIreland_", replacement = "")
-  tempdata <- pull_HSNI_data(data = tempdata, group = group)
-  tempdata$variable <- "% Obese"
-  tempdata$section <- "BMI"
-  tempdata$value <- 100*tempdata$value
-  tempdata$year = as.numeric(map_chr(strsplit(tempdata$year, "/"), 1))
-  tempdata$age_group = if_else(tempdata$age_group == "Total", "16+", tempdata$age_group)
-  
-  # Merge into obese data
-  obesity_data <- rbind(obesity_data, tempdata)
-}
-
-
-# Also need to add additional Wales years to data
-tempdata <- whs_data |>
-  filter(variable == "% Obese" & group %in% c("Men", "Women"))
-
-# Clean obesity data
-figure3a_data_obesity <- obesity_data |>
-  # Filter for needed variable from all sources
-  filter(
-    (country == "England" & variable == "% obese" & age_group %in% c("All men", "All women")) |
-      (country == "Scotland" & variable == "% Obese" & age_group == "16+" & group %in% c("Male", "Female")) |
-      (country == "Wales" & variable  == "BMI 30+ (obese)" & age_group == "All aged 16+" & group %in% c("Men", "Women")) |
-      (country == "N. Ireland" & age_group == "16+" & group %in% c("Men", "Women"))
-  ) |>
-  # Clean year variable from Welsh data and make variable numeric
-  mutate(year = suppressWarnings(as.numeric(substr(year, 1, 4)))) |>
-  # Make value column numeric
-  mutate(value = as.numeric(value)) |>
-  # Clean group data
-  mutate(group = case_when(
-    group == "Male" ~ "Men",
-    group == "Female" ~ "Women",
-    TRUE ~ group)) |>
-  # Merge in additional Wales data
-  rbind(tempdata) |>
-  mutate(variable = "% Obesity")
+figure3a_data_obesity <- data |>
+  filter(variable == "% Obese") |>
+  filter(group != "All")
 
 # Generate seperate plots for each variable
 
@@ -1128,11 +749,7 @@ figure3a_alcohol <- ggplot(figure3a_data_alcohol, aes(x = year, y = value, colou
   ggtitle("% Drinking Over Guidelines in Adults") +
   labs(colour =  "Country",
        caption = "*Adult is defined as 16+ in England, Scotland and Wales and 18+ in N. Ireland") +
-  scale_x_continuous(breaks = 2002:2022, limits = c(2002,2022)) +
-  theme(legend.position="none",
-        axis.text.x = element_text(angle = 45, hjust = 1),
-        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank()) +
+  personal_theme() +
   facet_wrap(~group, scales = "fixed", dir = "v")
 
 # Smoking
@@ -1143,11 +760,7 @@ figure3a_smoking <- ggplot(figure3a_data_smoking, aes(x = year, y = value, colou
   ylab("% Current Smoker") +
   ggtitle("% Current Smoker in Adults") +
   labs(colour =  "Country") +
-  scale_x_continuous(breaks = 2002:2022, limits = c(2002,2022)) +
-  theme(legend.position="none",
-        axis.text.x = element_text(angle = 45, hjust = 1),
-        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank()) +
+  personal_theme() +
   facet_wrap(~group, scales = "fixed", dir = "v")
 
 # Obesity
@@ -1158,17 +771,8 @@ figure3a_obesity <- ggplot(figure3a_data_obesity, aes(x = year, y = value, colou
   ylab("% Obese") +
   ggtitle("% Obese in Adults") +
   labs(colour =  "Country") +
-  theme(legend.position="none",
-        axis.text.x = element_text(angle = 45, hjust = 1),
-        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank()) +
-  facet_wrap(~group,scales = "fixed", dir = "v") +
-  scale_x_continuous(breaks = 2002:2022, limits = c(2002, 2022))
-
-# Need to grab legend from the plots
-figure3a_legend <- get_legend(ggplot(figure3a_data_obesity, aes(x = year, y = value, colour = country)) +
-  geom_line() +
-  geom_point())
+  personal_theme() +
+  facet_wrap(~group,scales = "fixed", dir = "v")
 
 # Merge plots using patchwork
 # Plot Figure 3
@@ -1180,44 +784,15 @@ figure3a
 # Save Plot
 ggsave(figure3a, filename = paste0(output_filepath, "Figure 3a - Alcohol, Smoking, Obesity.png"), bg = "white", height = 9, width = 24)
 
-
-
-
 ```
 
 ##### Activity/Fibre/Processed Meat
-```{r}
+```{r, fig.height = 9, fig.width=24}
 
-# Grab Activity Data
-activity_data <- bind_rows(data_hub(country = "England", rf = "Activity")) |>
-  rbind(bind_rows(data_hub(country = "Scotland", rf = "Activity"))) |>
-  rbind(bind_rows(data_hub(country = "Wales", rf = "Activity"))) |>
-  rbind(bind_rows(data_hub(country = "NIreland", rf = "Activity")))
-
-# Grabbing extra data on activity from Wales
-tempdata <- whs_data |>
-  filter(section == "Activity" & group != "All") 
-
-
-# Cleaning data on activity
-figure3b_data_activity <- activity_data |>
-  filter(
-    (country == "England" & variable  == "Meets aerobic guidelines" & age_group == "All adults 16+" & group  %in% c("Men", "Women")) |
-      (country == "Scotland" & age_group == "16+" & group %in% c("Male", "Female") & variable == "Meets recommendations") |
-      (country == "Wales" & variable == "Active at least 150 minutes in previous week" & age_group == "All aged 16+" & group %in% c("Men", "Women")) |
-      (country == "N. Ireland" & age_group == "19+" & variable == "Meets recommendations" & group %in% c("Men", "Women"))
-  ) |>
-  # Merge in whs data
-  rbind(tempdata) |>
-  # Clean year data
-  mutate(year = as.numeric(substr(year, 1, 4)),
-         value = case_when(
-           country == "N. Ireland" ~ as.numeric(value)*100,
-           TRUE ~ as.numeric(value)),
-         group = case_when(
-           group == "Female" ~ "Women",
-           group == "Male" ~ "Men",
-           TRUE ~ group))
+# Grab data on activity
+figure3b_data_activity <- data |>
+  filter(variable == "% Meet Activity Guidelines") |>
+  filter(group != "All")
 
 
 # Grab data on fibre and processed meat
@@ -1292,12 +867,8 @@ figure3b_activity <- ggplot(figure3b_data_activity, aes(x = year, y = value, col
   ylab("% Meets Activity Guidelines") +
   ggtitle("% Meets Activity Guidelines in Adults*") +
   labs(colour =  "Country", caption = "*Adult for England, Scotland and Wales defined as 16+, and for N. Ireland as 19+\nActivity guidelines are >150 mins Moderate Physical Activity") +
-  theme(legend.position="none",
-        axis.text.x = element_text(angle = 45, hjust = 1),
-        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank()) +
-  facet_wrap(~group, scales = "fixed", dir = "v") +
-  scale_x_continuous(breaks = 2002:2022, limits = c(2002, 2022))
+  personal_theme() +
+  facet_wrap(~group, scales = "fixed", dir = "v")
 
 # Fibre
 figure3b_fibre <- data_ndhns |>
@@ -1305,18 +876,14 @@ figure3b_fibre <- data_ndhns |>
   mutate(fibre_rec = weight*(aoac_fibre  >= 30)) |>
   summarise(mean_weight = mean(weight), fibre_rec = 100*sum(fibre_rec)/sum(weight)) |>
   ggplot(aes(x= surveyyear_cat, y = fibre_rec, colour = country)) +
-  geom_point() +
   geom_line() +
+  geom_point() +
   xlab("Year") +
-  ylab("% Meeting Fibre Intake Guidelines*") +
-  ggtitle("% Meeting Fibre Intake Guidelines in UK") +
-  labs(colour = "Country", caption = "*Guidelines are 30g of Fibre per day") +
-  theme(legend.position="none",
-        axis.text.x = element_text(angle = 45, hjust = 1),
-        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank()) +
-  facet_wrap(~sex, scales = "fixed", dir = "v") +
-  scale_x_continuous(breaks = 2002:2022, limits = c(2002, 2022))
+  ylab("% Meeting Fibre Intake Guidelines") +
+  ggtitle("% Meeting Fibre Intake Guidelines in UK**") +
+  labs(colour = "Country", caption = "**Guidelines are 30g of Fibre per day") +
+  personal_theme() +
+  facet_wrap(~sex, scales = "fixed", dir = "v")
 
 
 # Processed Meat
@@ -1324,25 +891,14 @@ figure3b_pmeat <- data_ndhns |>
   group_by(surveyyear_cat, sex, country) |>
   summarise(total = n(), mean_weight = mean(weight), processed.meat = sum(weight*(processed.redmeat + processed.poultry + sausages + burgers))/sum(weight)) |>
   ggplot(aes(x= surveyyear_cat, y = processed.meat, colour = country)) +
-  geom_point() +
   geom_line() +
+  geom_point() +
   xlab("Year") +
   ylab("Processed Meat Consumption (g/day)") +
   ggtitle("% Processed Meat Consumption in the UK") +
   labs(colour = "Country") +
-  theme(legend.position="none",
-        axis.text.x = element_text(angle = 45, hjust = 1),
-        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank()) +
-  facet_wrap(~sex, scales = "fixed", dir = "v") +
-  scale_x_continuous(breaks = 2002:2022, limits = c(2002, 2022))
-
-# Need to grab legend from the plots
-# figure3a_legend <- get_legend(ggplot(figure3b_data_activity, aes(x = year, y = value, colour = country)) +
-#   geom_line() +
-#   geom_point() +
-#   labs(colour =  "Country"))
-
+  personal_theme() +
+  facet_wrap(~sex, scales = "fixed", dir = "v")
 
 # Merge plots using patchwork
 # Plot Figure 3b
@@ -1354,7 +910,55 @@ figure3b
 # Save Plot
 ggsave(figure3b, filename = paste0(output_filepath, "Figure 3b - Activity, Fibre, Processed Meat.png"), bg = "white", height = 9, width = 24)
 
+```
 
+#### Figure 4
+
+Figure 4 has a plot comparing screening rates in different UK countries for both breast and bowel screening
+```{r, fig.height= 4.5 , fig.width=16}
+
+# Read in data for each variable
+figure4_data_breast <- data |>
+  filter(variable == "% Uptake Breast Screening")
+
+
+figure4_data_bowel <- data |>
+  filter(variable == "% Uptake Bowel Screening") |>
+  filter(group == "All")
+
+# Generate seperate plots for each variable
+
+# Breast screening
+figure4_breast <- ggplot(figure4_data_breast, aes(x = year, y = value, colour = country)) +
+  geom_line() +
+  geom_point() +
+  xlab("Year") +
+  ylab("% Uptake") +
+  labs(colour = "Country") +
+  ggtitle("% Breast Screening Uptake") +
+  ylim(60,80) +
+  personal_theme()
+
+# Bowel screening
+figure4_bowel <- ggplot(figure4_data_bowel, aes(x = year, y = value, colour = country)) +
+  geom_line() +
+  geom_point() +
+  xlab("Year") +
+  ylab("% Uptake") +
+  labs(colour = "Country") +
+  ggtitle("% Bowel Screening Uptake") +
+  ylim(40,75) +
+  personal_theme()
+
+# Merge plots using patchwork
+# Plot Figure 4
+figure4 <- figure4_breast + figure4_bowel +
+  plot_layout(guides = "collect") & theme(legend.position = "right")
+
+figure4
+
+# Save Plot
+ggsave(figure4, filename = paste0(output_filepath, "Figure 4 - Bowel, Breast Screening Uptake.png"), bg = "white", height = 4.5, width = 16)
 
 ```
 
@@ -1371,268 +975,34 @@ Wales - Public Health Wales
 
 ```{r, fig.width=8, fig.height=16}
 
-# Using cancer_data from Figure 1, filter to data needed for plot
-supp_figure1_data <- cancer_data |>
-  filter(Cancer_Site != "All sites excl. NMSC", between(Year, 2000, 2019))
+# Read in data
+incidence_jp <- read.delim(r"(Cancer Trends\Source Data\Cancer_Incidence_Data_Rolling_Avg_Joinpoint.txt)", sep = "\t") |>
+  filter(Cancer_Site != "All sites excl. NMSC") |>
+  rename(ASR = ASR_rolling) |>
+  mutate(incmort = "Incidence")
 
-# Plot supplement figure 1
-ggplot(data = supp_figure1_data, aes(x = Year, y = ASR, colour = Country)) +
-  geom_line() +
-  geom_point() +
-  ggtitle(paste0("Cancer Incidence Rates")) +
-  theme(legend.position="bottom",legend.box = "vertical") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank()) +
-  facet_grid(Cancer_Site ~ Sex, scales = "free_y") +
-  scale_x_continuous(breaks = seq(1998, max(cancer_data$Year), by = 2))
+mortality_jp <- read.delim(r"(Cancer Trends\Source Data\Cancer_Mortality_Data_Rolling_Avg_Joinpoint.txt)", sep = "\t") |>
+  filter(Cancer_Site != "All sites excl. NMSC") |>
+  rename(ASR = ASR_rolling) |>
+  mutate(incmort = "Mortality")
 
-ggsave(filename = paste0(output_filepath, "Supplement Figure 1 - Cancer Trends All Sites.png"), height = 16, width = 8, bg = "white")
+total_jp <- rbind(incidence_jp, mortality_jp)
+
+# Plot Figure 1
+supp_figure1 <- plot_joinpoint_output(data = total_jp, projection.yr = 2040) +
+  plot_annotation(title = "Cancer Incidence and Mortality in the UK", theme = theme(plot.title = element_text(hjust = 0.5)))
+
+supp_figure1
+
+# Save Figure 1
+ggsave(supp_figure1, filename = paste0(output_filepath, "Supplement Figure 1 - Cancer Incidence and Mortality by Country.png"),
+       bg = "white", height = 50, width = 10, limitsize = F)
+
 
 ```
 
 #### Figure 2
-Supplement Figure 2 consists of 3 graphs
-
-- Plotting parity over time
-
-- Plotting age at first birth over time
-
-- Plotting HRT usage over time
-
-
-##### Parity
-
-**Data Sources:**\
-England and Wales (Population Estimates) - ONS\
-England and Wales (Parity) - ONS
-
-```{r, fig.width=8, fig.height=4.5}
-
-# Read in population size data
-pop_data <- suppressMessages(read_excel("Population_Data.xlsx")) |>
-  filter(Sex == "Females", Age != "All Ages") |>
-  select(-Sex) 
-
-# Manipulate population data to useable format
-pop_data <- as.data.frame(t(as.matrix(pop_data))) 
-colnames(pop_data) <- pop_data[1,]
-pop_data$year <- rownames(pop_data)
-pop_data <- pop_data[-1,] |>
-  mutate(year = gsub(year, pattern = "Mid-", replacement = "")) |>
-  sapply(as.numeric)
- 
-# Filter to post 1970
-pop_data <- as.data.frame(pop_data) |>
-  filter(year>1970)
-
-# Loop over rows and normalise each one to get proportions
-for(i in 1:nrow(pop_data)){
-  pop_data[i,which(colnames(pop_data)!="year")] <- pop_data[i,which(colnames(pop_data)!="year")]/sum(pop_data[i,which(colnames(pop_data)!="year")])
-}
-
-# Pivot population data
-pop_data <- pop_data |>
-  pivot_longer(cols = colnames(pop_data)[colnames(pop_data)!="year"])
-
-# Read in parity data
-parity_data <- suppressMessages(read_excel("Parity_Data.xlsx", sheet = "England_Wales_Parity")) |>
-  mutate(flag =  case_when(
-    is.na(`Age exact years`) ~ "Final",
-    TRUE ~ NA),
-    parous = 100 - `0 (No children)`,
-    YOB = as.numeric(`Year of birth of woman`),
-    age = as.numeric(`Age exact years`),
-    year = YOB + age)
-
-# Initialise empty dataframe for final parity data
-parity <- data.frame(year = integer(0), parity = integer(0))
-
-# Loop through years, calculating % parity in each year
-for(y in 2010:2022){
-  tempdata <- as.data.frame(parity_data) # Initialising temporary data
-  tempdata$finalage <- ifelse(parity_data$flag=="Final", y - tempdata$YOB, NA) # Calculating age at year for 'final' parity statistics (final parity data for birth cohort)
-  tempdata <- filter(tempdata, year == y|finalage>45) # Filtering data to data collected in the year, or cohorts who have 'completed' parity statistic measurement
-  tempdata$age <- ifelse(is.na(tempdata$age), tempdata$finalage, tempdata$age) 
-  over90 <- mean(tempdata$parous[tempdata$age>89]) # Taking mean over 90+ as population data groups them
-  tempdata <- tempdata[tempdata$age<90,] # Filtering out over 90
-  tempdata <- select(tempdata, age, parous)
-  tempdata[nrow(tempdata)+1,] <- c("90+", over90) # Adding in over 90 statistic
-  tempdata$parous <- as.numeric(tempdata$parous)
-  temppop <- pop_data[pop_data$year==y,] # Grabbing population distribution for the year
-  df <- merge(tempdata, temppop, by.x = "age", by.y = "name") # Merge population distribution to parity data
-  df$relpar <- df$parous*df$value 
-  parity[nrow(parity)+1,] <- c(y, sum(df$relpar)) # Add in parity data to final parity dataframe along with year
-}
-
-supp_figure2a_data <- parity
-
-supp_figure2a_data |>
-  ggplot(aes(x = year, y = parity)) +
-  geom_point() +
-  geom_line() +
-  ylab("Parity (%)") +
-  xlab("Year") +
-  ggtitle("Parity in England and Wales") +
-  scale_x_continuous(breaks = 2002:2022, limits = c(2002,2022)) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank()) +
-  ylim(55, 57)
-
-# Save plot
-ggsave(filename = paste0(output_filepath, "Supplement Figure 2(a) - Parity Trends.png"), width = 8, height = 4.5, bg = "white")
-
-
-# Create output data file and write parity data to it
-data_rf_output <- supp_figure2a_data |>
-  # Need to add additional columns that will be needed for other variables
-  mutate(
-    
-    value = parity,
-    
-    country = "England and Wales",
-    
-    variable = "% Parity",
-    
-    sex = "Women",
-    
-    age_group = "20+"
-    
-  ) |>
-  select(variable, country, sex, year, age_group, value)
-
-
-
-```
-
-##### Age at First Birth
-
-**Data Sources:**\
-England and Wales (Population Estimates) - ONS\
-England and Wales (Parity) - ONS
-
-```{r, fig.width=8, fig.height=4.5}
-
-# Read in data
-afb_data <- read_excel("Age_First_Birth_Data.xlsx")[2:3,13:31]
-
-# Clean data
-colnames(afb_data) <- afb_data[1,]
-afb_data <- afb_data[2,]
-
-supp_figure2b_data <- afb_data |>
-  pivot_longer(cols = colnames(afb_data)) |>
-  mutate(Year = as.numeric(name), value = as.numeric(value)) 
-
-# Plot Supplementary Figure 2(b)
-supp_figure2b_data |>
-  ggplot(aes(x = Year, y = value)) +
-  geom_line() +
-  geom_point() +
-  ylab("Average Age at First Birth") +
-  ggtitle("Average Age at First Birth in UK") +
-  scale_x_continuous(breaks = 2002:2022, limits = c(2002,2022)) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank()) +
-  ylim(25, 30)
-
-# Save plot
-ggsave(filename = paste0(output_filepath, "Supplement Figure 2(b) - Age at First Birth Trends.png"), width = 8, height = 4.5, bg = "white")
-
-
-
-# Add figure data to output
-data_temp_output <- supp_figure2b_data |>
-  mutate(
-    
-    year = Year,
-    
-    variable = "Age at First Birth",
-    
-    country = "UK",
-    
-    age_group = NA,
-    
-    sex = "Women"
-    
-  ) |>
-  select(variable, country, sex, year, age_group, value)
-
-data_rf_output <- rbind(data_rf_output, data_temp_output)
-
-
-
-```
-
-##### HRT
-
-**Data Sources:**\
-England - NHS BSA
-
-```{r, fig.width=8, fig.height=4.5}
-
-# Read in data
-hrt_data <- read_excel("HRT_Data.xlsx") 
-
-# Clean data
-supp_figure2c_data <- hrt_data |>
-  mutate(Year = as.numeric(map_chr(strsplit(`Financial Year`, "/"), 1)), 
-         `% HRT` = as.numeric(`Patients per 1,000 Population`)/10) |>
-  filter(!is.na(`% HRT`))
-
-supp_figure2c_data |>
-  ggplot(aes(x = Year, y = `% HRT`)) +
-  geom_line() +
-  geom_point() +
-  xlab("Year") +
-  ylab("HRT (%)") +
-  ggtitle("HRT Usage in England") +
-  scale_x_continuous(breaks = min(supp_figure2c_data$Year):max(supp_figure2c_data$Year)) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank()) +
-  ylim(2, 4)
-
-
-# Save plot
-ggsave(filename = paste0(output_filepath, "Supplement Figure 2(c) - HRT Usage Trends.png"), width = 8, height = 4.5, bg = "white")
-
-
-# Add figure data to output
-data_temp_output <- supp_figure2c_data |>
-  mutate(
-    
-    year = Year,
-    
-    variable = "% HRT Usage",
-    
-    country = "England",
-    
-    age_group = NA,
-    
-    sex = "Women",
-    
-    value = `% HRT`
-    
-  ) |>
-  select(variable, country, sex, year, age_group, value)
-
-data_rf_output <- rbind(data_rf_output, data_temp_output)
-
-
-```
-
-#### Figure 3
-Figure 3 consists of two plots
-
-- Plotting Obesity trends by UK nation
-
-- Plotting Obesity trends in children in England
-  
-  
-##### Obesity UK
+Figure 2 consists of plotting trends in smoking in the UK
 
 **Data Sources:**\
 England - Health Survey England\
@@ -1642,433 +1012,84 @@ Wales - National Survey for Wales
 
 ```{r, fig.width=8, fig.height=9}
 
-# Grab most data from BMI_Data.xlsx
-obesity_data <- bind_rows(data_hub(country = "England", rf = "BMI")) |>
-  rbind(bind_rows(data_hub(country = "Wales", rf = "BMI")))
-
-# Grab Scotland and N. Ireland data from alternate excel file
-# Scotland BMI data collected was on Overweight so need to adjust and add Obesity data from a seperate source
-obese_data_sheets <- excel_sheets("BMI_Obese_Data.xlsx")
-
-scotland_sheets <- obese_data_sheets[grepl(obese_data_sheets, pattern = "Scotland")]
-
-# Loop over sheets for age and sex and add both to total dataset used for this specific variable.
-for(sheet in scotland_sheets){
-  
-  # Read sheet and clean
-  tempdata <- read_excel("BMI_Obese_Data.xlsx", sheet = sheet)
-  group <- gsub(x = sheet, pattern = "Scotland_", replacement = "")
-  tempdata <- pull_SHS_data(data = tempdata, group = group)
-  tempdata$section <- "BMI"
-  tempdata$variable <- ifelse(tempdata$variable == "Obesity", "% Obese", "% Non-Obese")
-  
-  # Merge into obese_data
-  obesity_data <- rbind(obesity_data, tempdata)
-
-}
- # Similar to Scotland data, needed to extract specific information on Obesity for N. Ireland as initial data collected was only Overweight %
-nireland_sheets <- obese_data_sheets[grepl(obese_data_sheets, pattern = "NIreland")]
-
-# Loop over sheets for sexes and add both to total dataset used for this specific variable.
-for(sheet in nireland_sheets){
-  
-  # Read in sheet and clean
-  tempdata <- read_excel(paste0("BMI_Obese_Data.xlsx"), sheet = sheet)
-  group <- gsub(x = sheet, pattern = "NIreland_", replacement = "")
-  tempdata <- pull_HSNI_data(data = tempdata, group = group)
-  tempdata$variable <- "% Obese"
-  tempdata$section <- "BMI"
-  tempdata$value <- 100*tempdata$value
-  tempdata$year = as.numeric(map_chr(strsplit(tempdata$year, "/"), 1))
-  tempdata$age_group = if_else(tempdata$age_group == "Total", "16+", tempdata$age_group)
-  
-  # Merge into obese data
-  obesity_data <- rbind(obesity_data, tempdata)
-}
-
-
-# Also need to add additional Wales years to data
-tempdata <- whs_data |>
-  filter(variable == "% Obese" & group %in% c("Men", "Women"))
-
-# Clean obesity data
-supp_figure3a_data <- obesity_data |>
-  # Filter for needed variable from all sources
-  filter(
-    (country == "England" & variable == "% obese" & age_group %in% c("All men", "All women")) |
-      (country == "Scotland" & variable == "% Obese" & age_group == "16+" & group %in% c("Male", "Female")) |
-      (country == "Wales" & variable  == "BMI 30+ (obese)" & age_group == "All aged 16+" & group %in% c("Men", "Women")) |
-      (country == "N. Ireland" & age_group == "16+" & group %in% c("Men", "Women"))
-  ) |>
-  # Clean year variable from Welsh data and make variable numeric
-  mutate(year = suppressWarnings(as.numeric(substr(year, 1, 4)))) |>
-  # Make value column numeric
-  mutate(value = as.numeric(value)) |>
-  # Clean group data
-  mutate(group = case_when(
-    group == "Male" ~ "Men",
-    group == "Female" ~ "Women",
-    TRUE ~ group)) |>
-  # Merge in additional Wales data
-  rbind(tempdata) 
-
-
-# Plot Supplementary Figure 3(a)
-ggplot(supp_figure3a_data, aes(x = year, y = value, colour = country)) +
-  geom_line() +
-  geom_point() +
-  xlab("Year") +
-  ylab("% Obese") +
-  ggtitle("% Obese in Adults") +
-  labs(colour =  "Country") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank()) +
-  facet_wrap(~group,scales = "fixed", dir = "v") +
-  scale_x_continuous(breaks = 2002:2022, limits = c(2002, 2022))
-
+figure3a_smoking
 
 # Save plot
-ggsave(filename = paste0(output_filepath, "Supplement Figure 3(a) - Obesity by Country and Sex.png"), width = 8, height = 9, bg = "white")
-
-
-
-# Add figure data to output
-data_temp_output <- supp_figure3a_data |>
-  mutate(
-    
-    variable = "% Obese",
-    
-    age_group = "16+",
-    
-    sex = group
-  
-  ) |>
-  select(variable, country, sex, year, age_group, value)
-
-data_rf_output <- rbind(data_rf_output, data_temp_output)
+ggsave(figure3a_smoking, filename = paste0(output_filepath, "Supplement Figure 2 - Smoking.png"), width = 8, height = 9, bg = "white")
 
 ```
 
-##### Childhood Obesity England
+#### Figure 3
+Figure 3 consists of plotting obesity trends by UK nation
 
 **Data Sources:**\
-England - Health Survey England
+England - Health Survey England\
+Scotland - Scottish Health Survey\
+Northern Ireland - Health Survey Nothern Ireland\
+Wales - National Survey for Wales
 
-```{r, fig.width=8, fig.height=4.5}
+```{r, fig.width=8, fig.height=9}
 
-# Filter to data needed for figure
-supp_figure3b_data <- obesity_data |>
-  # Filter for needed variable from all sources
-  filter(country == "England" & group == "Children_All" & variable == "Obese" & age_group %in% c("2-10 years", "11-15 years")) |>
-  # Clean year variable from Welsh data and make variable numeric
-  mutate(year = suppressWarnings(as.numeric(substr(year, 1, 4)))) |>
-  # Make value column numeric
-  mutate(value = as.numeric(value)) |>
-  # Remove 'years' from age groups
-  mutate(age_group = gsub(age_group, pattern = " years", replacement = ""))
-
-# Plot Supplementary Figure 3(b)
-ggplot(data = supp_figure3b_data, aes(x = year, y = value, colour = factor(age_group, levels = c("2-10", "11-15")))) +
-  geom_point() +
-  geom_line() +
-  xlab("Year") +
-  ylab("% Obese") +
-  ggtitle("% Obese in England") +
-  labs(colour =  "Age Group", caption = "*Obese for those aged >15 as BMI > 30\nObese for those aged <= 15 as at or above the 95th BMI percentile in the UK") +
-  scale_color_brewer(palette="Set2") +
-  scale_x_continuous(breaks = 2002:2022, limits = c(2002, 2022)) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank())
+figure3a_obesity
 
 # Save plot
-ggsave(filename = paste0(output_filepath, "Supplement Figure 3(b) - Childhood Obesity England.png"), width = 8, height = 4.5, bg = "white")
+ggsave(figure3a_obesity, filename = paste0(output_filepath, "Supplement Figure 3 - Obesity.png"), width = 8, height = 9, bg = "white")
 
 ```
 
 
 #### Figure 4
-Supplement Figure 4 is a graph showing the trends in doctor-diagnosed diabetes in the UK.
+Supplement Figure 4 is a graph showing the trends in drinking above the guidelines in the UK
 
 **Data Sources:**\
 England - Health Survey England\
-Scotland - Scottish Health Survey
+Scotland - Scottish Health Survey\
+Northern Ireland - Health Survey Nothern Ireland\
+Wales - National Survey for Wales
 
-```{r, fig.width=8, fig.height=9}
+```{r, fig.height=9, fig.width=8}
 
-# Read in diabetes data
-diabetes_data <- integer(0)
+figure3a_alcohol
 
-sheets <- excel_sheets("Diabetes_Data.xlsx")
-
-# Go through England sheets and apply HSE specific function to clean the data
-england_sheets <- sheets[grepl(sheets, pattern = "England")]
-
-for(sheet in england_sheets){
-
-  nocol <- ncol(suppressMessages(read_excel("Diabetes_Data.xlsx", sheet = sheet)))
-  tempdata <- suppressMessages(read_excel("Diabetes_Data.xlsx", sheet = sheet, col_types = c("text", rep("numeric", nocol-1))))
-  group <- gsub(x = sheet, pattern = "England_", replacement = "")
-  tempdata <- pull_HSE_diabetes_data(data = tempdata, group = group)
-  tempdata$section <- "Diabetes"
-  diabetes_data <- rbind(diabetes_data, tempdata)
-        
-}
-
-# Go through Scotland sheets and apply SHS specific cleaning function
-scotland_sheets <- sheets[grepl(sheets, pattern = "Scotland")]
-
-
-for(sheet in scotland_sheets){
-  tempdata <- suppressMessages(read_excel("Diabetes_Data.xlsx", sheet = sheet))
-  group <- gsub(x = sheet, pattern = "Scotland_", replacement = "")
-  tempdata <- pull_SHS_data(data = tempdata, group = group)
-  tempdata$section <- "Diabetes"
-  tempdata$variable = ifelse(tempdata$variable == "Yes", "% Diabetes", "% No Diabetes")
-  diabetes_data <- rbind(diabetes_data, tempdata)
-}
-
-
-# Filter to data needed for figure
-supp_figure4_data <- diabetes_data |>
-  filter(
-    (country == "England" & age_group %in% c("All men", "All women")) |
-      (country == "Scotland" & age_group == "16+" & group %in% c("Male", "Female") & variable == "% Diabetes")
-  ) |>
-  # Change year to numeric
-  mutate(year = as.numeric(year)) |>
-  # Organise group variable
-  mutate(group = case_when(
-    group %in% c("Male") ~ "Men",
-    group %in% c("Female") ~ "Women",
-    TRUE ~ group))
-
-
-# Plot Supplement Figure 4
-ggplot(supp_figure4_data, aes(x = year, y = value, colour = country)) +
-  geom_line() +
-  geom_point() +
-  xlab("Year") +
-  ylab("% Diabetes") +
-  ggtitle("% Doctor Diagnosed Diabetes in Adults") +
-  labs(colour =  "Country", caption = "*Adult for England and Scotland defined as aged 16+") +
-  scale_x_continuous(breaks = 2002:2022, limits = c(2002, 2022)) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank()) +
-  facet_wrap(~group, scales = "fixed", dir = "v")
-  
 # Save plot
-ggsave(filename = paste0(output_filepath, "Supplement Figure 4 - Diabetes.png"), bg = "white", height = 9, width = 8)
-
-
-
-# Add figure data to output
-data_temp_output <- supp_figure4_data |>
-  mutate(
-    
-    variable = "% Doctor Diagnosed Diabetes",
-    
-    age_group = "16+",
-    
-    sex = group
-  
-  ) |>
-  select(variable, country, sex, year, age_group, value)
-
-data_rf_output <- rbind(data_rf_output, data_temp_output)
-
+ggsave(figure3a_alcohol, filename = paste0(output_filepath, "Supplement Figure 4 - Alcohol.png"), bg = "white", height = 9, width = 8)
 
 ```
-
 
 #### Figure 5
-Figure 5 displays trends in drinking above guidelines
+Supplement Figure  is a graph showing the trends in fibre consumption in the UK
 
 **Data Sources:**\
-England - Health Survey England\
-Scotland - Scottish Health Survey\
-Northern Ireland - Health Survey Nothern Ireland\
-Wales - National Survey for Wales
+UK - NDNS (via UK Data Service)
 
 ```{r, fig.height=9, fig.width=8}
 
-# Grabbing data
-
-# First need to get England data and merge two variables from it
-alcohol_data <- bind_rows(data_hub(country = "England", rf = "Alcohol")) |>
-  pivot_wider(names_from = variable, values_from = value) |>
-  mutate(value = 100 - (`% non drinker/did not drink in last 12 months` + `% up to 14 units per week (lower risk)`),
-         variable = "% Over Guidelines") |>
-  select(year, country, value, group, age_group, variable, section)
-
-# Now add in Scotland and Wales data using conventional method
-alcohol_data <- alcohol_data |>
-  rbind(bind_rows(data_hub(country = "Scotland", rf = "Alcohol"))) |>
-  rbind(bind_rows(data_hub(country = "Wales", rf = "Alcohol")))
-
-# Read in Northern Ireland data manually
-new_alcohol_sheets <- excel_sheets("Alcohol_Data_Alt.xlsx")
-for(sheet in new_alcohol_sheets){
-  tempdata <- read_excel(paste0("Alcohol_Data_Alt.xlsx"), sheet = sheet)
-  group <- gsub(x = sheet, pattern = "NIreland_", replacement = "")
-  tempdata <- pull_HSNI_data(data = tempdata, group = group)
-  tempdata$variable <- "% Over Guidelines"
-  tempdata$section <- "Alcohol"
-  tempdata$value <- 100*tempdata$value
-  
-  alcohol_data <- rbind(alcohol_data, tempdata)
-}
-
-# Clean the data for what we need for the plot
-supp_figure5_data <- alcohol_data |>
-  filter(
-    (country == "England" & age_group %in% c("All men", "All women")) |
-      (country == "Scotland" & variable == "Hazardous/Harmful drinker" & group %in% c("Male", "Female")) |
-      (country == "Wales" & variable == "Average weekly alcohol consumption - above 14 units (over guidelines)" & age_group == "All aged 16+" & group %in% c("Men", "Women")) |
-      (country == "N. Ireland" & age_group == "Total" & group %in% c("Men", "Women"))
-  ) |>
-  # Cleaning year variable
-  mutate(year = as.numeric(substr(year, 1, 4))) |>
-  # Cleaning value variable
-  mutate(value = as.numeric(value)) |>
-  # Cleaning group variable
-  mutate(group = case_when(
-    group == "Female" ~ "Women",
-    group == "Male" ~ "Men",
-    TRUE ~ group))
-
-
-# Plot Supplementary Figure 5
- ggplot(supp_figure5_data, aes(x = year, y = value, colour = country)) +
-  geom_line() +
-  geom_point() +
-  xlab("Year") +
-  ylab("% Drinking Over Guidelines") +
-  ggtitle("% Drinking Over Guidelines in Adults") +
-  labs(colour =  "Country",
-       caption = "*Adult is defined as 16+ in England, Scotland and Wales and 18+ in N. Ireland") +
-  scale_x_continuous(breaks = 2002:2022, limits = c(2002,2022)) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank()) +
-  facet_wrap(~group, scales = "fixed", dir = "v")
+figure3b_fibre +
+  ggtitle("% Meeting Fibre Intake Guidelines in UK*") +
+  labs(caption = "*Guidelines are 30g of Fibre per day")
 
 # Save plot
-ggsave(filename = paste0(output_filepath, "Supplement Figure 5 - Alcohol.png"), bg = "white", height = 9, width = 8)
-
-
-
-# Add figure data to output
-data_temp_output <- supp_figure5_data |>
-  mutate(
-    
-    variable = "% Over Weekly Alcohol Guidelines",
-    
-    age_group = if_else(country == "N. Ireland", "18+", "16+"),
-    
-    sex = group
-  
-  ) |>
-  select(variable, country, sex, year, age_group, value)
-
-data_rf_output <- rbind(data_rf_output, data_temp_output)
-
-
+ggsave(filename = paste0(output_filepath, "Supplement Figure 5 - Fibre.png"), bg = "white", height = 9, width = 8)
 
 ```
 
-
 #### Figure 6
-Figure 6 details trends in physical activity over guidelines
+Supplement Figure 6 is a graph showing the trends in processed meat consumption in the UK
 
 **Data Sources:**\
-England - Health Survey England\
-Scotland - Scottish Health Survey\
-Northern Ireland - Health Survey Nothern Ireland\
-Wales - National Survey for Wales
+UK - NDNS (via UK Data Service)
 
 ```{r, fig.height=9, fig.width=8}
 
-# Grabbing data on activity
-activity_data <- bind_rows(data_hub(country = "England", rf = "Activity")) |>
-  rbind(bind_rows(data_hub(country = "Scotland", rf = "Activity"))) |>
-  rbind(bind_rows(data_hub(country = "Wales", rf = "Activity"))) |>
-  rbind(bind_rows(data_hub(country = "NIreland", rf = "Activity")))
-
-# Grabbing extra data on activity from Wales
-tempdata <- whs_data |>
-  filter(section == "Activity" & group != "All") 
-
-
-# Cleaning data on activity
-supp_figure6_data <- activity_data |>
-  filter(
-    (country == "England" & variable  == "Meets aerobic guidelines" & age_group == "All adults 16+" & group  %in% c("Men", "Women")) |
-      (country == "Scotland" & age_group == "16+" & group %in% c("Male", "Female") & variable == "Meets recommendations") |
-      (country == "Wales" & variable == "Active at least 150 minutes in previous week" & age_group == "All aged 16+" & group %in% c("Men", "Women")) |
-      (country == "N. Ireland" & age_group == "19+" & variable == "Meets recommendations" & group %in% c("Men", "Women"))
-  ) |>
-  # Merge in whs data
-  rbind(tempdata) |>
-  # Clean year data
-  mutate(year = as.numeric(substr(year, 1, 4)),
-         value = case_when(
-           country == "N. Ireland" ~ as.numeric(value)*100,
-           TRUE ~ as.numeric(value)),
-         group = case_when(
-           group == "Female" ~ "Women",
-           group == "Male" ~ "Men",
-           TRUE ~ group))
-
-
-# Plot Supplement Figure 6
-ggplot(supp_figure6_data, aes(x = year, y = value, colour = country)) +
-  geom_line() +
-  geom_point() +
-  xlab("Year") +
-  ylab("% Meets Activity Guidelines") +
-  ggtitle("% Meets Activity Guidelines in Adults*") +
-  labs(colour =  "Country", caption = "*Adult for England, Scotland and Wales defined as 16+, and for N. Ireland as 19+\nActivity guidelines are >150 mins Moderate Physical Activity") +
-  scale_x_continuous(breaks = min(supp_figure6_data$year):max(supp_figure6_data$year)) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank()) +
-  facet_wrap(~group, scales = "fixed", dir = "v")
+figure3b_pmeat  
 
 # Save plot
-ggsave(filename = paste0(output_filepath, "Supplement Figure 6 - Activity.png"), bg = "white", height = 9, width = 8)
-
-
-# Add figure data to output
-data_temp_output <- supp_figure6_data |>
-  mutate(
-    
-    variable = "% Meet Physical Activity Guidelines",
-    
-    age_group = if_else(country == "N. Ireland", "19+", "16+"),
-    
-    sex = group
-  
-  ) |>
-  select(variable, country, sex, year, age_group, value)
-
-
-data_rf_output <- rbind(data_rf_output, data_temp_output)
-
+ggsave(figure3b_pmeat, filename = paste0(output_filepath, "Supplement Figure 6 - Processed Meat.png"), bg = "white", height = 9, width = 8)
 
 ```
 
 #### Figure 7
-Supplementary Figure 7 contains 2 graphs
-
-- Plotting smoking prevalance over time
-
-- Plotting E Cigarette usage over time
-
-
-##### Smoking
+Figure 7 details trends in physical activity over guidelines
 
 **Data Sources:**\
 England - Health Survey England\
@@ -2078,429 +1099,10 @@ Wales - National Survey for Wales
 
 ```{r, fig.height=9, fig.width=8}
 
-# Grabbing data on smoking
-smoking_data <- bind_rows(data_hub(country = "England", rf = "Smoking")) |>
-  rbind(bind_rows(data_hub(country = "Scotland", rf = "Smoking"))) |>
-  rbind(bind_rows(data_hub(country = "Wales", rf = "Smoking"))) |>
-  rbind(bind_rows(data_hub(country = "NIreland", rf = "Smoking")))
-
-
-# Grabbing whs data
-tempdata <- whs_data |>
-  filter(section == "Smoking" & group != "All")
-
-# Clean data
-supp_figure7a_data <- smoking_data |>
-  filter(
-    (country == "England" & variable  == "Current cigarette smoker" & age_group %in% c("All men", "All women") & group  %in% c("Men", "Women")) |
-      (country == "Scotland" & age_group == "16+" & group %in% c("Male", "Female") & variable == "Current smoker") |
-      (country == "Wales" & variable == "Smoker" & age_group == "All aged 16+" & group %in% c("Men", "Women")) |
-      (country == "N. Ireland" & age_group == "Total" & group %in% c("Men", "Women"))
-  ) |>
-  rbind(tempdata) |>
-  # Clean year data
-  mutate(year = as.numeric(substr(year, 1, 4)),
-         value = case_when(
-           country == "N. Ireland" ~ as.numeric(value)*100,
-           TRUE ~ as.numeric(value)),
-         group = case_when(
-           group == "Female" ~ "Women",
-           group == "Male" ~ "Men",
-           TRUE ~ group))
-
-
-
-# Plot Supplement Figure 7a
-ggplot(supp_figure7a_data, aes(x = year, y = value, colour = country)) +
-  geom_line() +
-  geom_point() +
-  xlab("Year") +
-  ylab("% Current Smoker") +
-  ggtitle("% Current Smoker in Adults") +
-  labs(colour =  "Country") +
-  scale_x_continuous(breaks = 2002:2022, limits = c(2002,2022)) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank()) +
-  facet_wrap(~group, scales = "fixed", dir = "v")
-
+figure3b_activity
 
 # Save plot
-ggsave(filename = paste0(output_filepath, "Supplement Figure 7a - Smoking.png"), width = 8, height = 9, bg = "white")
-
-
-
-# Add figure data to output
-data_temp_output <- supp_figure7a_data |>
-  mutate(
-    
-    variable = "% Current Smoker",
-    
-    age_group = "16+",
-    
-    sex = group
-  
-  ) |>
-  select(variable, country, sex, year, age_group, value)
-
-
-data_rf_output <- rbind(data_rf_output, data_temp_output)
-  
-
-```
-
-
-##### E-Cigarette Usage
-
-**Data Sources:**\
-England - Health Survey England\
-Scotland - Scottish Health Survey\
-Northern Ireland - Health Survey Nothern Ireland\
-Wales - National Survey for Wales
-
-```{r}
-
-# Reading in GB wide data
-ecig_data <- read_excel("E_Cigarette_Data.xlsx", sheet = "Great_Britain_All")
-
-# Clean data
-ecig_data <- ecig_data |>
-  pivot_longer(cols = colnames(ecig_data)[3:ncol(ecig_data)]) |>
-  pivot_wider(names_from = `Proportion of population aged 16 years and over by e-cigarette use [note 1]`, values_from = value) |>
-  mutate(`% User` = `Daily user (%)` + `Occasional user (%)`) |>
-  separate(col = name, sep = " \r\naged \r\n", into = c("group", "age_group")) |>
-  mutate(Year = as.integer(Year), 
-         age_group = case_when(
-           grepl(age_group, pattern = " to ") ~ gsub(age_group, pattern = " to ", replacement = "-"),
-           grepl(age_group, pattern = " and over") ~ gsub(age_group, pattern = " and over", replacement = "+"),
-           TRUE ~ age_group
-         ))
-
-
-# Initialising colours for next plot
-cols <- brewer.pal(n = 7, name = "Greys")[3:7]
-
-# Plotting by age group
-supp_figure7b_data <- ecig_data |>
-  filter(!age_group %in% c("16+"), group == "All persons") 
-
-# Plot Supplementary Figure 7b
-ggplot(supp_figure7b_data, aes(x = Year, y = `Daily user (%)`, colour = age_group)) +
-  geom_line() +
-  geom_point() +
-  ylab("% Current Regular E-Cigarette Users") +
-  ggtitle("% Current Regular E-Cigarette Users in Great Britain") +
-  labs(colour = "Age Group") +
-  scale_color_manual(values = cols) +
-  scale_x_continuous(breaks = min(supp_figure7b_data$Year):max(supp_figure7b_data$Year)) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank())
-
-# Save plot
-ggsave(filename = paste0(output_filepath, "Supplement Figure 7b - E-Cigarette Usage.png"), bg = "white")
-
-
-```
-
-#### Figure 8
-Figure 8 shows the trends in breast cancer screening uptake over time
-
-**Data Sources:**\
-England - Fingertips\
-Scotland - Public Health Scotland\
-Northern Ireland - HSCNI\
-Wales - Public Health Wales
-
-```{r}
-
-# Read in England data
-screening_data_breast_england <- read_excel("Screening_Data.xlsx", sheet = "England_Breast_Uptake")
-
-# Manipulate to useful structure
-screening_data_breast_england <- screening_data_breast_england |>
-  mutate(year = as.numeric(substr(`Time period`, start = 1, stop = 4))) |>
-  select(year, value = Value) |>
-  mutate(country = "England")
-
-# Read in Scotland data
-screening_data_breast_scotland <- read_excel("Screening_Data.xlsx", sheet = "Scotland_Breast_Uptake")
-
-# Making structure match England data
-screening_data_breast_scotland <- screening_data_breast_scotland |>
-  pivot_longer(cols = colnames(screening_data_breast_scotland)[2:ncol(screening_data_breast_scotland)]) |>
-  filter(`Type of invitation1` == "All routine invitations1") |>
-  mutate(year = as.numeric(substr(name, start = 1, stop = 4))) |>
-  select(value, year) |>
-  mutate(country = "Scotland")
-
-# Read in Wales data
-screening_data_breast_wales <- read_excel("Screening_Data.xlsx", sheet = "Wales_Breast_Uptake")
-
-# Match structure with England data
-screening_data_breast_wales <- screening_data_breast_wales |>
-  select(year = Year, value = Uptake) |>
-  mutate(country = "Wales")
-
-# Read in N. Ireland data
-screening_data_breast_nireland <- read_excel("Screening_Data.xlsx", sheet = "NIreland_Breast_Uptake")
-
-# Match structure with England data
-screening_data_breast_nireland <- screening_data_breast_nireland |>
-  select(year = Year, value = Uptake) |>
-  mutate(country = "N. Ireland")
-
-# Plotting
-supp_figure8_data <- screening_data_breast_england |>
-  rbind(screening_data_breast_scotland) |>
-  rbind(screening_data_breast_wales) |>
-  rbind(screening_data_breast_nireland)
-
-ggplot(supp_figure8_data, aes(x = year, y = value, colour = country)) +
-  geom_line() +
-  geom_point() +
-  xlab("Year") +
-  ylab("% Uptake") +
-  labs(colour = "Country") +
-  ggtitle("% Breast Screening Uptake") +
-  scale_x_continuous(breaks = min(supp_figure8_data$year):max(supp_figure8_data$year)) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank()) +
-  ylim(60,80)
-
-# Save plot
-ggsave(filename = paste0(output_filepath, "Supplement Figure 8 - Breast Screening Uptake.png"), bg = "white")
-
-
-```
-
-#### Figure 9
-Figure 9 shows the trends in bowel screening uptake over time
-
-**Data Sources:**\
-England - Fingertips\
-Scotland - Public Health Scotland\
-Northern Ireland - HSCNI\
-Wales - Public Health Wales
-
-```{r}
-
-# Reading in data - England
-screening_data_bowel_england <- read_excel("Screening_Data.xlsx", sheet = "England_Bowel_Uptake")
-
-# Mutating to simple columns
-screening_data_bowel_england <- screening_data_bowel_england |>
-  mutate(year = as.numeric(substr(`Time period`, start = 1, stop = 4))) |>
-  select(year, value = Value) |>
-  mutate(country = "England")
-
-# Reading in data - Scotland
-screening_data_bowel_scotland <- read_excel("Screening_Data.xlsx", sheet = "Scotland_Bowel_Uptake")
-
-# Matching columns of England data
-screening_data_bowel_scotland <- screening_data_bowel_scotland |>
-  pivot_longer(cols = colnames(screening_data_bowel_scotland)[2:ncol(screening_data_bowel_scotland)]) |>
-  filter(...1 == "All persons") |>
-  mutate(year = as.numeric(substr(name, start = 1, stop = 4))) |>
-  select(year, value) |>
-  mutate(country = "Scotland")
-
-# Reading in data - Wales
-screening_data_bowel_wales <- read_excel("Screening_Data.xlsx", sheet = "Wales_Bowel_Uptake")
-
-# Matching columns of England data
-screening_data_bowel_wales <- screening_data_bowel_wales |>
-  select(year = Year, value = Uptake) |>
-  mutate(country = "Wales")
-
-# Reading in data - N. Ireland
-screening_data_bowel_nireland <- read_excel("Screening_Data.xlsx", sheet = "NIreland_Bowel_Uptake")
-
-# Matching columns of England data
-screening_data_bowel_nireland <- screening_data_bowel_nireland |>
-  select(year = Year, value = Uptake) |>
-  mutate(country = "N. Ireland")
-
-# Merging and plotting
-supp_figure9_data <- screening_data_bowel_england |>
-  rbind(screening_data_bowel_scotland)|>
-  rbind(screening_data_bowel_wales) |>
-  rbind(screening_data_bowel_nireland)
-
-ggplot(supp_figure9_data, aes(x = year, y = value, colour = country)) +
-  geom_line() +
-  geom_point() +
-  xlab("Year") +
-  ylab("% Uptake") +
-  labs(colour = "Country") +
-  ggtitle("% Bowel Screening Uptake") +
-  scale_x_continuous(breaks = min(supp_figure9_data$year):max(supp_figure9_data$year)) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        panel.grid.major.x = element_line(color = "grey92", size = 0.5),  # Adjust grid lines
-        panel.grid.minor.x = element_blank())
-
-# Save plot
-ggsave(paste0(output_filepath, "Supplement Figure 9 - Bowel Screening Uptake.png"), bg = "white")
-
-```
-
-
-### Additional variable generation
-This section is to generate data on variables that aren't being plotted here but may be useful.
-
-#### % Overweight data (not Obese)
-```{r}
-
-# Grab most data from BMI_Data.xlsx
-# Scotland and NIreland data needs to be manipulated to get % Overweight not obese
-overweight_data <- bind_rows(data_hub(country = "England", rf = "BMI")) |>
-  rbind(bind_rows(data_hub(country = "Wales", rf = "BMI")))  |>
-  # rbind(bind_rows(data_hub(country = "NIreland", rf = "BMI"))) |>
-  # rbind(bind_rows(data_hub(country = "Scotland", rf = "BMI")))
-   filter((country == "England" & variable  == "% overweight" & age_group %in% c("All men", "All women") & group  %in% c("Men", "Women")) |
-      (country == "Wales" & age_group == "All aged 16+" & group %in% c("Men", "Women") & variable == "BMI 25 - under 30 (overweight but not obese)")) |>
-  # Clean year data from Wales
-  mutate(year = as.numeric(substr(year, 1, 4)))
-
-
-# WHS Data
-overweight_whs <- whs_data |>
-  pivot_wider(names_from = variable) |>
-  mutate(
-    
-    `% Overweight not Obese` = `% Overweight` - `% Obese`
-    
-  ) |>
-  filter(!is.na(`% Overweight not Obese`) & group != "All") |>
-  select(any_of(colnames(whs_data)), value = `% Overweight not Obese`) |>
-  mutate(variable =  "% Overweight not Obese")
-  
-
-# Scotland data
-overweight_scotland <- bind_rows(data_hub(country = "Scotland", rf = "BMI"))
-
-# Scotland BMI data collected was on Overweight so need to adjust and add Obesity data from a seperate source
-obese_data_sheets <- excel_sheets("BMI_Obese_Data.xlsx")
-
-scotland_sheets <- obese_data_sheets[grepl(obese_data_sheets, pattern = "Scotland")]
-
-# Loop over sheets for age and sex and add both to total dataset used for this specific variable.
-for(sheet in scotland_sheets){
-  
-  # Read sheet and clean
-  tempdata <- read_excel("BMI_Obese_Data.xlsx", sheet = sheet)
-  group <- gsub(x = sheet, pattern = "Scotland_", replacement = "")
-  tempdata <- pull_SHS_data(data = tempdata, group = group)
-  tempdata$section <- "BMI"
-  tempdata$variable <- ifelse(tempdata$variable == "Obesity", "% Obese", "% Non-Obese")
-  
-  # Merge into obese_data
-  overweight_scotland <- rbind(overweight_scotland, tempdata)
-
-}
-
-# Pivot and generate variable of interest
-overweight_scotland <- overweight_scotland |>
-  pivot_wider(names_from = variable) |>
-  mutate(
-    
-    value = `Overweight (including obesity)` - `% Obese`,
-    
-    variable = "% Overweight not obese"
-    
-  ) |>
-  filter(age_group == "16+", group != "All") |>
-  select(colnames(overweight_data))
-
-
-# NIreland data
-overweight_nireland <- bind_rows(data_hub(country = "NIreland", rf = "BMI")) |>
-  mutate(year = as.numeric(substr(year, 1, 4)),
-         age_group = if_else(age_group == "Total", "16+", age_group),
-         value = 100*value)
-
-# Similar to Scotland data, needed to extract specific information on Obesity for N. Ireland as initial data collected was only Overweight %
-nireland_sheets <- obese_data_sheets[grepl(obese_data_sheets, pattern = "NIreland")]
-
-# Loop over sheets for sexes and add both to total dataset used for this specific variable.
-for(sheet in nireland_sheets){
-  
-  # Read in sheet and clean
-  tempdata <- read_excel(paste0("BMI_Obese_Data.xlsx"), sheet = sheet)
-  group <- gsub(x = sheet, pattern = "NIreland_", replacement = "")
-  tempdata <- pull_HSNI_data(data = tempdata, group = group)
-  tempdata$variable <- "% Obese"
-  tempdata$section <- "BMI"
-  tempdata$value <- 100*tempdata$value
-  tempdata$year = as.numeric(map_chr(strsplit(tempdata$year, "/"), 1))
-  tempdata$age_group = if_else(tempdata$age_group == "Total", "16+", tempdata$age_group)
-  
-  # Merge into obese data
-  overweight_nireland <- rbind(overweight_nireland, tempdata)
-}
-
-
-# Pivot and generate variable of interest
-overweight_nireland <- overweight_nireland |>
-  pivot_wider(names_from = variable) |>
-  mutate(
-    
-    value = Overweight - `% Obese`,
-    
-    variable = "% Overweight not obese"
-    
-  ) |>
-  filter(age_group == "16+", group != "All") |>
-  select(colnames(overweight_data))
-
-
-# Collect all data together
-overweight_data <- overweight_data |>
-  rbind(overweight_whs) |>
-  rbind(overweight_nireland) |>
-  rbind(overweight_scotland) |>
-  mutate(
-    
-    age_group = "16+",
-    
-    variable = "% Overweight not obese",
-    
-    group = case_when(
-           group == "Female" ~ "Women",
-           group == "Male" ~ "Men",
-           TRUE ~ group)
-    
-    ) |>
-  select(-section, sex = group)
-    
-
-# Add data to output
-data_rf_output <- rbind(data_rf_output, overweight_data)
-
-
-
-```
-
-
-### Output Figure data
-Outputting data used for some of the figures in this document - this is so the data can be reused without having to be cleaned again separately.
-Also outputting data for use in JoinPoint analysis of the risk factor trends
-```{r}
-
-if(output_data){
-
-  write.csv(data_rf_output, r"(Z:\Generations\Projects\UK Cancer Trends\Data\Risk Factor Trends.csv)")
-  
-  # Filtering for variables needed in joinpoint analysis
-  data_jp_output <- data_rf_output |>
-    filter(variable %in% c("% Current Smoker", "% Doctor Diagnosed Diabetes", "% HRT Usage", "% Meet Physical Activity Guidelines", "% Obese", "% Over Weekly Alcohol Guidelines", "% Parity")) |>
-    arrange(variable, country, sex, year) |>
-    filter(between(year, 2000, 2019))
-  
-  write.csv(data_jp_output, r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\UK-cancer-trends\Data\Risk_Factor_Data_Joinpoint.csv)")
-
-}
+ggsave(figure3b_activity, filename = paste0(output_filepath, "Supplement Figure 7 - Activity.png"), bg = "white", height = 9, width = 8)
 
 ```
 
