@@ -14,6 +14,8 @@ library(readxl)
 library(dplyr)
 library(stringr)
 library(tidyr)
+library(readODS)
+library(zoo)
 
 ```
 
@@ -44,6 +46,61 @@ output_filepath <- "../Data/Cleaned Data/"
 
 ## Functions
 
+### Cleaning NI Cancer Data
+```{r}
+
+clean_ni_cancer_data <- function(data, site, incmort){
+  
+  
+  # Get sexes that this applies to
+  groups <- unique(data[4,])[!is.na(unique(data[4,]))]
+  
+  # Filter dataframe to useful data
+  colnames(data) <- data[5,]
+  data <- data[-(1:5),]
+  
+  if(incmort == "Incidence"){
+
+    # Get ASR data
+    ASR_data <- as.vector(as.matrix(data[,grepl(colnames(data), pattern = "European age-standardised incidence rate per 100,000")]))
+    
+    # Get raw incidence rates
+    Incidence_data <- as.vector(as.matrix(data[,grepl(colnames(data), pattern = "Total number of")]))
+    
+    # Combine into one dataframe
+    data_2 <- data.frame(Year = rep(data$`Year of diagnosis`, length(groups)),
+                              Country = "Nothern Ireland",
+                              Cancer_Site = site,
+                              Sex = rep(groups, each = nrow(data)),
+                              Incidences = Incidence_data,
+                              ASR = ASR_data)
+    
+  } else if(incmort == "Mortality"){
+    
+    # Get ASR data
+    ASR_data <- as.vector(as.matrix(data[,grepl(colnames(data), pattern = "European age-standardised mortality rate per 100,000")]))
+    
+    # Get raw Mortality rates
+    Mortality_data <- as.vector(as.matrix(data[,grepl(colnames(data), pattern = "Total number of")]))
+    
+    # Combine into one dataframe
+    data_2 <- data.frame(Year = rep(data$`Year of death`, length(groups)),
+                              Country = "Nothern Ireland",
+                              Cancer_Site = site,
+                              Sex = rep(groups, each = nrow(data)),
+                              Mortalities = Mortality_data,
+                              ASR = ASR_data)
+  
+  }
+  
+  # Output data
+  return(data_2)
+  
+
+}
+
+
+```
 
 ## Initialising Dataframe
 ```{r}
@@ -52,7 +109,7 @@ output <- data.frame(year = numeric(0), country = character(0), group = characte
 
 ```
 
-## Data Cleaning
+## Data Cleaning - Risk Factors
 
 ### England
 
@@ -893,11 +950,354 @@ output <- rbind(output, new_row)
 
 ```
 
+## Data Cleaning - Cancer Rates
+
+### England
+```{r}
+
+# Incidence
+incidence_england <- read_ods("../Data/Source Data/Cancer_Registrations_final.ods", sheet = "Table_5")
+
+colnames(incidence_england) <- incidence_england[2,]
+incidence_england <- incidence_england[-c(1,2),]
+
+incidence_england <- incidence_england |>
+  mutate(Country = "England") |> 
+  filter(`Site description` %in% c("All malignant cancers excluding non-melanoma skin cancer (NMSC)",
+                                   "Malignant neoplasm of breast",
+                                   "Malignant neoplasm of colon and rectum",
+                                   "Malignant neoplasm of trachea, bronchus and lung",
+                                   "Malignant neoplasm of oesophagus",
+                                   "Malignant neoplasm of pancreas",
+                                   "Malignant neoplasm of prostate")) |>
+  select(Year, Country, Cancer_Site = `Site description`, Sex = Gender, Incidences = Count, ASR = `Rate (per 100,000 population)`) 
+
+
+# Mortality
+mortality_england <- read_ods("../Data/Source Data/Cancer_Mortality_final.ods", sheet = "Table_2")
+
+colnames(mortality_england) <- mortality_england[2,]
+mortality_england <- mortality_england[-c(1,2),]
+
+mortality_england <- mortality_england |>
+  mutate(Country = "England") |> 
+  filter(`Site description` %in% c("All malignant cancers excluding non-melanoma skin cancer (NMSC)",
+                                   "Malignant neoplasm of breast",
+                                   "Malignant neoplasm of colon and rectum",
+                                   "Malignant neoplasm of trachea, bronchus and lung",
+                                   "Malignant neoplasm of oesophagus",
+                                   "Malignant neoplasm of pancreas",
+                                   "Malignant neoplasm of prostate")) |>
+  select(Year, Country, Cancer_Site = `Site description`, Sex = Gender, Mortalities = Count, ASR = `Rate (per 100,000 population)`) # Sex == Gender comparison not accurate, but necessary for statistical comparisons between countries.
+
+
+```
+
+### Scotland
+
+```{r}
+
+# Incidence
+incidence_scotland <- read.csv("../Data/Source Data/opendata_inc9721_scotland.csv")
+
+incidence_scotland <- incidence_scotland |>
+  mutate(Country = "Scotland") |>
+  filter(CancerSite %in% c("All cancer types",
+                           "Breast",
+                           "Trachea, bronchus and lung",
+                           "Colorectal cancer",
+                           "Oesophagus",
+                           "Pancreas",
+                           "Prostate")) |>
+  select(Year, Country, Cancer_Site = CancerSite, Sex, Incidences = IncidencesAllAges, ASR = EASR)
+
+
+# Mortality
+mortality_scotland <- read.csv("../Data/Source Data/opendata_mort9520_scotland.csv") |>
+  mutate(Country = "Scotland") |>
+  filter(CancerSite %in% c("All cancer types",
+                           "Breast",
+                           "Trachea, bronchus and lung",
+                           "Colorectal cancer",
+                           "Oesophagus",
+                           "Pancreas",
+                           "Prostate")) |>
+  select(Year, Country, Cancer_Site = CancerSite, Sex, Mortalities = DeathsAllAges, ASR = EASR)
+
+
+```
+
+
+### Northern Ireland
+
+```{r}
+
+# Initialise empty data frame
+incidence_nireland <- data.frame(Year = numeric(0), Country = character(0), Cancer_Site = character(0), Sex = character(0), Incidences = numeric(0), ASR = numeric(0))
+mortality_nireland <- data.frame(Year = numeric(0), Country = character(0), Cancer_Site = character(0), Sex = character(0), Mortalities = numeric(0), ASR = numeric(0))
+
+# Incidence
+
+## All Cancers (excl NMSC)
+temp_data <- read_excel("../Data/Source Data/All cancers (ex NMSC) data tables.xlsx", sheet = "T03") |>
+  clean_ni_cancer_data(site = "All Cancers", incmort = "Incidence")
+incidence_nireland <- rbind(incidence_nireland, temp_data)
+
+## Breast Cancer
+temp_data <- read_excel("../Data/Source Data/female-breast-cancer-data-tables.xlsx", sheet = "T03") |>
+  clean_ni_cancer_data(site = "Breast", incmort = "Incidence")
+incidence_nireland <- rbind(incidence_nireland, temp_data)
+
+## Colorectal Cancer
+temp_data <- read_excel("../Data/Source Data/colorectal-cancer-data-tables.xlsx", sheet = "T03") |>
+  clean_ni_cancer_data(site = "Colorectal", incmort = "Incidence")
+incidence_nireland <- rbind(incidence_nireland, temp_data)
+
+## Lung Cancer
+temp_data <- read_excel("../Data/Source Data/lung-cancer-data-tables.xlsx", sheet = "T03") |>
+  clean_ni_cancer_data(site = "Lung", incmort = "Incidence")
+incidence_nireland <- rbind(incidence_nireland, temp_data)
+
+## Oesophageal Cancer
+temp_data <- read_excel("../Data/Source Data/oesophageal-cancer-data-tables.xlsx", sheet = "T03") |>
+  clean_ni_cancer_data(site = "Oesophageal", incmort = "Incidence")
+incidence_nireland <- rbind(incidence_nireland, temp_data)
+
+## Pancreatic Cancer
+temp_data <- read_excel("../Data/Source Data/Pancreatic cancer data tables.xlsx", sheet = "T03") |>
+  clean_ni_cancer_data(site = "Pancreatic", incmort = "Incidence")
+incidence_nireland <- rbind(incidence_nireland, temp_data)
+
+## Prostate Cancer
+temp_data <- read_excel("../Data/Source Data/Prostate cancer data tables.xlsx", sheet = "T03") |>
+  clean_ni_cancer_data(site = "Prostate", incmort = "Incidence")
+incidence_nireland <- rbind(incidence_nireland, temp_data)
+
+
+# Mortality
+
+## All Cancers (excl NMSC)
+temp_data <- read_excel("../Data/Source Data/All cancers (ex NMSC) data tables.xlsx", sheet = "T26") |>
+  clean_ni_cancer_data(site = "All Cancers", incmort = "Mortality")
+mortality_nireland <- rbind(mortality_nireland, temp_data)
+
+## Breast Cancer
+temp_data <- read_excel("../Data/Source Data/female-breast-cancer-data-tables.xlsx", sheet = "T23") |>
+  clean_ni_cancer_data(site = "Breast", incmort = "Mortality")
+mortality_nireland <- rbind(mortality_nireland, temp_data)
+
+## Colorectal Cancer
+temp_data <- read_excel("../Data/Source Data/colorectal-cancer-data-tables.xlsx", sheet = "T23") |>
+  clean_ni_cancer_data(site = "Colorectal", incmort = "Mortality")
+mortality_nireland <- rbind(mortality_nireland, temp_data)
+
+## Lung Cancer
+temp_data <- read_excel("../Data/Source Data/lung-cancer-data-tables.xlsx", sheet = "T23") |>
+  clean_ni_cancer_data(site = "Lung", incmort = "Mortality")
+mortality_nireland <- rbind(mortality_nireland, temp_data)
+
+## Oesophageal Cancer
+temp_data <- read_excel("../Data/Source Data/oesophageal-cancer-data-tables.xlsx", sheet = "T21") |>
+  clean_ni_cancer_data(site = "Oesophageal", incmort = "Mortality")
+mortality_nireland <- rbind(mortality_nireland, temp_data)
+
+## Pancreatic Cancer
+temp_data <- read_excel("../Data/Source Data/Pancreatic cancer data tables.xlsx", sheet = "T21") |>
+  clean_ni_cancer_data(site = "Pancreatic", incmort = "Mortality")
+mortality_nireland <- rbind(mortality_nireland, temp_data)
+
+## Prostate Cancer
+temp_data <- read_excel("../Data/Source Data/Prostate cancer data tables.xlsx", sheet = "T23") |>
+  clean_ni_cancer_data(site = "Prostate", incmort = "Mortality")
+mortality_nireland <- rbind(mortality_nireland, temp_data)
+
+
+```
+
+### Wales
+```{r}
+
+# Incidence
+incidence_wales <- read_excel("../Data/Source Data/CancerIncidenceWales_DataTables_FinalRelease_2002-2020_Geography.xlsx", sheet = "Table 1 - Geography")
+colnames(incidence_wales) <- incidence_wales[3,]
+incidence_wales <- incidence_wales[-c(1:3),]
+
+# Clean dataset to standard
+incidence_wales <- incidence_wales |>
+  filter(Period == "One year") |>
+  filter(Geography == "Wales") |>
+  filter(`Cancer type` %in% c("All malignancies excluding NMSC",
+                              "Colorectal",
+                              "Breast",
+                              "Lung",
+                              "Oesophagus",
+                              "Pancreas",
+                              "Prostate")) |>
+  mutate(Country = "Wales") |>
+  mutate(Year = as.numeric(Year)) |>
+  select(Year, Country, Cancer_Site = `Cancer type`, Sex, Incidences = Count, ASR = `European age-standardised rate`)
+
+# Mortality
+mortality_wales <- read_excel("../Data/Source Data/CancerMortalityWales_DataTables_2002-2022_Geography.xlsx", sheet = "Table 1 - Geography")
+colnames(mortality_wales) <- mortality_wales[3,]
+mortality_wales <- mortality_wales[-c(1:3),]
+
+# Clean dataset to standard
+mortality_wales <- mortality_wales |>
+  filter(Period == "One year") |>
+  filter(Geography == "Wales") |>
+  filter(`Cancer type` %in% c("All cancers excluding NMSC",
+                              "Colorectal",
+                              "Breast",
+                              "Lung",
+                              "Oesophagus",
+                              "Pancreas",
+                              "Prostate")) |>
+  mutate(Country = "Wales") |>
+  mutate(Year = as.numeric(Year)) |>
+  select(Year, Country, Cancer_Site = `Cancer type`, Sex, Mortalities = Count, ASR = `European age-standardised rate`)
+
+
+```
+
+
+
+### Combining Datasets
+```{r}
+
+# Incidence
+incidence_all <- rbind(incidence_england, incidence_scotland) |>
+  rbind(incidence_wales) |>
+  rbind(incidence_nireland)
+
+incidence_all <- incidence_all |>
+  mutate(
+    
+    Year = as.numeric(Year),
+    
+    # Cleaning and standardising site of cancer
+    Cancer_Site = case_when(
+      grepl(Cancer_Site, pattern = "All") ~ "All sites excl. NMSC",
+      grepl(Cancer_Site, pattern = "Breast", ignore.case = T) ~ "Breast",
+      grepl(Cancer_Site, pattern = "Colo|colo") ~ "Colorectal",
+      grepl(Cancer_Site, pattern = "Lung|lung") ~ "Lung",
+      grepl(Cancer_Site, pattern = "Oesophag", ignore.case = T) ~ "Oesophageal",
+      grepl(Cancer_Site, pattern = "Pancrea", ignore.case = T) ~ "Pancreatic",
+      grepl(Cancer_Site, pattern = "Prostate", ignore.case = T) ~ "Prostate",
+      TRUE ~ NA),
+    
+    # Standardising Sex variable
+    Sex = case_when(
+      grepl(Sex, pattern = "female", ignore.case = T) ~ "Women",
+      grepl(Sex, pattern = "male", ignore.case = T) ~ "Men",
+      grepl(Sex, pattern = "All|Persons", ignore.case = T) ~ "All",
+      TRUE ~ Sex),
+    
+    ASR = as.numeric(ASR)
+    
+    
+  ) |>
+  # Filtering for specified years
+  # filter(between(Year, 2000, 2019)) |>
+  # Filtering out male breast cancer
+  filter(!(Sex == "Men" & Cancer_Site == "Breast")) |>
+  # England doesn't have rates for men and women combined so have to filter this out
+  filter(Sex != "All") |>
+  # Arrange for joinpoint
+  arrange(Cancer_Site, Country, Sex)
+
+
+mortality_all <- rbind(mortality_england, mortality_scotland) |>
+  rbind(mortality_wales) |>
+  rbind(mortality_nireland)
+
+mortality_all <- mortality_all |>
+  mutate(
+    
+    Year = as.numeric(Year),
+    
+    # Cleaning and standardising site of cancer
+    Cancer_Site = case_when(
+      grepl(Cancer_Site, pattern = "All") ~ "All sites excl. NMSC",
+      grepl(Cancer_Site, pattern = "Breast", ignore.case = T) ~ "Breast",
+      grepl(Cancer_Site, pattern = "Colo|colo") ~ "Colorectal",
+      grepl(Cancer_Site, pattern = "Lung|lung") ~ "Lung",
+      grepl(Cancer_Site, pattern = "Oesophag", ignore.case = T) ~ "Oesophageal",
+      grepl(Cancer_Site, pattern = "Pancrea", ignore.case = T) ~ "Pancreatic",
+      grepl(Cancer_Site, pattern = "Prostate", ignore.case = T) ~ "Prostate",
+      TRUE ~ NA),
+    
+    # Standardising Sex variable
+    Sex = case_when(
+      grepl(Sex, pattern = "female", ignore.case = T) ~ "Women",
+      grepl(Sex, pattern = "male", ignore.case = T) ~ "Men",
+      grepl(Sex, pattern = "All|Persons", ignore.case = T) ~ "All",
+      TRUE ~ Sex),
+    
+    ASR = as.numeric(ASR)
+    
+    
+  ) |>
+  # Filtering for specified years
+  # filter(between(Year, 2000, 2019)) |>
+  # Filtering out COVID affected rates
+  # filter(Year <= 2019) |>
+  # Filtering out male breast cancer
+  filter(!(Sex == "Men" & Cancer_Site == "Breast")) |>
+  # England doesn't have rates for men and women combined so have to filter this out
+  filter(Sex != "All") |>
+  # Arrange for joinpoint
+  arrange(Cancer_Site, Country, Sex)
+
+
+```
+
+### 3 year rolling cancer rates
+```{r}
+
+# Incidence
+incidence_all_rolling <- incidence_all |>
+  arrange(Year) |>
+  group_by(Country, Sex, Cancer_Site) |>
+  mutate(
+    
+    ASR_rolling = rollmean(ASR, k = 3, fill = NA)
+    
+    ) |>
+  ungroup() |>
+  filter(!is.na(ASR_rolling)) |>
+  filter(between(Year, 2000, 2018)) |>
+  arrange(Country, Cancer_Site, Sex, Year)
+
+
+# Mortality
+mortality_all_rolling <- mortality_all |>
+  arrange(Year) |>
+  group_by(Country, Sex, Cancer_Site) |>
+  mutate(
+    
+    ASR_rolling = rollmean(ASR, k = 3, fill = NA)
+    
+    ) |>
+  ungroup() |>
+  filter(!is.na(ASR_rolling)) |>
+  filter(between(Year, 2000, 2018)) |>
+  arrange(Country, Cancer_Site, Sex, Year)
+
+
+```
+
 ## Outputting Data
 ```{r}
 
-# Write data to output
+# Write risk factor data to output
 write.csv(output, paste0(output_filepath, "Risk_Factor_Data.csv"), row.names = F)
+
+# Write cancer rate data to output
+write.csv(incidence_all, paste0(output_filepath, "Cancer_Incidence_Data.csv"), row.names = F)
+write.csv(incidence_all_rolling, paste0(output_filepath, "Cancer_Incidence_Data_Rolling.csv"), row.names = F)
+write.csv(mortality_all, paste0(output_filepath, "Cancer_Mortality_Data.csv"), row.names = F)
+write.csv(mortality_all_rolling, paste0(output_filepath, "Cancer_Mortality_Data_Rolling.csv"), row.names = F)
 
 
 ```

@@ -76,7 +76,7 @@ England_Breast_Screening_Trends.csv
 - Description: Trends in breast cancer screening uptake trends among 50-70 year olds in England.
 
 England_Bowel_Screening_Trends.csv
-- URL: https://fingertips.phe.org.uk/search/screening#page/4/gid/1938133365/pat/159/par/K02000001/ati/15/are/E92000001/iid/92600/age/280/sex/4/cat/-1/ctp/-1/yrr/1/cid/4/tbm/1
+- URL: https://fingertips.phe.org.uk/search/screening#page/4/gid/1938132830/pat/159/par/K02000001/ati/15/are/E92000001/iid/92601/age/280/sex/4/cat/-1/ctp/-1/yrr/1/cid/4/tbm/1
 - Date Accessed: 09/08/2024
 - Description: Trends in bowel cancer screening uptake trends among 60-74 year olds in England.
 
@@ -155,3 +155,79 @@ Core Tables 2022 - Excel tables_1.xlsx
 	- Core Tables 2022 - Excel tables_1.xlsx
 - Date Accessed: 09/08/2024
 - Description: Data on a variety of demographic information for Northern Ireland in 2022.
+
+Cancer_Registrations_final.ods
+- URL: https://digital.nhs.uk/data-and-information/publications/statistical/cancer-registration-statistics/england-2020#resources
+	- Cancer diagnoses (incidence) data tables
+- Date Accessed: 12/08/2024
+- Description: Data on cancer incidence in England.
+
+Cancer_Mortality_final.ods
+- URL: https://digital.nhs.uk/data-and-information/publications/statistical/cancer-registration-statistics/england-2020#resources
+	- Cancer deaths (mortality) data tables
+- Date Accessed: 12/08/2024
+- Description: Data on cancer mortality in England.
+
+opendata_inc9721_scotland.csv
+- URL: https://www.opendata.nhs.scot/dataset/annual-cancer-incidence/resource/72c852b8-ee28-4fd8-84a9-5f415f4bc325?filters=CancerSite%3ABreast%7CCancerSite%3AColorectal%20cancer%7CCancerSite%3AOesophagus%7CCancerSite%3APancreas%7CCancerSite%3ATrachea%2C%20bronchus%20and%20lung%7CCancerSite%3AAll%20cancer%20types%7CCancerSite%3AProstate
+- Date Accessed: 12/08/2024
+- Description: Data on cancer incidence in Scotland.
+
+opendata_mort9520_scotland.csv
+- URL: https://www.opendata.nhs.scot/dataset/cancer-mortality/resource/ba8d7049-ec05-4291-9333-57ca49ce7697?filters=CancerSite%3ABreast%7CCancerSite%3AAll%20cancer%20types%7CCancerSite%3ATrachea%2C%20bronchus%20and%20lung%7CCancerSite%3AProstate%7CCancerSite%3AOesophagus%7CCancerSite%3APancreas%7CCancerSite%3AColorectal%20cancer
+- Date Accessed: 12/08/2024
+- Description: Data on cancer mortality in Scotland.
+
+CancerIncidenceWales_DataTables_FinalRelease_2002-2020_Geography.xlsx
+- URL: https://phw.nhs.wales/services-and-teams/welsh-cancer-intelligence-and-surveillance-unit-wcisu/cancer-reporting-tool-official-statistics/cancer-incidence/
+	- Geographical analysis, 2002-2020
+- Date Accessed: 12/08/2024
+- Description: Data on cancer incidence in Wales.
+
+CancerMortalityWales_DataTables_2002-2022_Geography.xlsx
+- URL: https://phw.nhs.wales/services-and-teams/welsh-cancer-intelligence-and-surveillance-unit-wcisu/cancer-reporting-tool-official-statistics/cancer-mortality/
+	- Geographical analysis, 2002-2020
+- Date Accessed: 12/08/2024
+- Description: Data on cancer mortality in Wales.
+
+All cancers (ex NMSC) data tables.xlsx
+- URL: https://www.qub.ac.uk/research-centres/nicr/CancerInformation/official-statistics/BySite/All-Cancers-excl-non-malignant-melanoma-skin/
+	- All Cancers eclud (NMSC) 1993-2021 (Excel)
+- Date Accessed: 12/08/2024
+- Description: Data on all cancers in Northern Ireland.
+
+female-breast-cancer-data-tables.xlsx
+- URL: https://www.qub.ac.uk/research-centres/nicr/CancerInformation/official-statistics/BySite/Breastcancerandinsitutumours/
+	- Breast cancer statistics: 1993-2021 (Excel)
+- Date Accessed: 12/08/2024
+- Description: Data on breast cancer in Northern Ireland.
+
+colorectal-cancer-data-tables.xlsx
+- URL: https://www.qub.ac.uk/research-centres/nicr/CancerInformation/official-statistics/BySite/Colorectalcancer/
+	- Colorectal cancer statistics: 1993-2021 (Excel)
+- Date Accessed: 12/08/2024
+- Description: Data on colorectal cancer in Northern Ireland.
+
+lung-cancer-data-tables.xlsx
+- URL: https://www.qub.ac.uk/research-centres/nicr/CancerInformation/official-statistics/BySite/Lungcancer/
+	- Lung cancer statistics: 1993-2021 (Excel)
+- Date Accessed: 12/08/2024
+- Description: Data on lung cancer in Northern Ireland.
+
+oesophageal-cancer-data-tables.xlsx
+- URL: https://www.qub.ac.uk/research-centres/nicr/CancerInformation/official-statistics/BySite/Oesophagealcancer/
+	- Oesophageal cancer statistics: 1993-2021 (Excel)
+- Date Accessed: 12/08/2024
+- Description: Data on oesophageal cancer in Northern Ireland.
+
+Pancreatic cancer data tables.xlsx
+- URL: https://www.qub.ac.uk/research-centres/nicr/CancerInformation/official-statistics/BySite/Pancreaticcancer/
+	- Pancreatic cancer statistics: 1993-2021 (Excel)
+- Date Accessed: 12/08/2024
+- Description: Data on cancer in Northern Ireland.
+
+Prostate cancer data tables.xlsx
+- URL: https://www.qub.ac.uk/research-centres/nicr/CancerInformation/official-statistics/BySite/Prostatecancer/
+	- Prostate cancer statistics: 1993-2021 (Excel)
+- Date Accessed: 12/08/2024
+- Description: Data on cancer in Northern Ireland.

@@ -552,6 +552,120 @@ personal_theme <- function(continuous.x = TRUE) {
 
 ```
 
+#### Meeting Mortality Target Table Generation
+```{r}
+
+meet_targets_table <- function(targets, target.year, target.start = NA, data_jp, title = NA){
+  output.table <- data.frame(Cancer = character(0), Sex = character(0), APC_Req = character(0), Pace = character(0), Year_Ach = character(0))
+  for(cancer in unique(data_jp$Cancer_Site)){
+    for(sex in unique(data_jp$Sex)){
+      
+      # Filter data to sex and cancer of interest
+      temp_data <- data_jp |>
+        filter(Cancer_Site == cancer, Sex == sex)
+      
+      if(nrow(temp_data)>0){
+        
+        # Get final APC to extrapolate from
+        finalAPC <- temp_data |>
+          arrange(desc(Year)) |>
+          filter(row_number()==1) |>
+          pull(APC)
+        
+        finalAPC <- as.numeric(gsub(finalAPC, pattern = "\\*", replacement = ""))
+        
+        # Go from APC to percentage change mulitplier
+        finalAPC_num <- 1+finalAPC/100
+        
+        finalyear <- temp_data |>
+          arrange(desc(Year)) |>
+          filter(row_number()==1) |>
+          pull(Year)
+        
+        # If a target start year is given, then use that
+        if(!is.na(target.start)){
+          finalyear <- target.start
+        }
+        
+        # Years left until target year
+        yearsremaining <- target.year  - finalyear
+        
+        yearachieved <- ifelse(finalAPC_num<1, floor(log(targets)/log(finalAPC_num)) + finalyear, "Inf")
+          
+        goalAPC <- targets^(1/yearsremaining)
+        
+        goalAPC <- 100*(goalAPC-1)
+        
+        new_row <- c(cancer, sex, round(goalAPC, digits = 3),  round(finalAPC, digits = 3),  yearachieved)
+      } else {
+        
+        new_row <- c(cancer, sex, "-", "-", "-")
+        
+      }
+      
+      output.table[nrow(output.table)+1,] <- new_row
+      
+    }
+  }
+  
+  output.table <- output.table |>
+    gt() |>
+    # Header Creation
+    tab_header(
+      title = md(if_else(is.na(title), "**Globocan JoinPoint Target Analysis**", paste0("**", title, "**"))),
+      subtitle = paste0("For a Goal of a 15% Reduction in Mortality by 2040", if_else(is.na(target.start), "", paste0(" from ", target.start)))
+    ) |>
+    
+    # Head Rows
+    tab_style(
+      style = list(
+        cell_text(weight = "bold", align = "center")
+      ),
+      locations = cells_column_labels(columns = everything())
+    ) |>
+    
+    # Body rows
+    tab_style(
+      style = list(
+        cell_text(align = "center")
+      ),
+      locations = cells_body(
+          columns = everything()
+      )
+    ) |>
+    # Colour final column based on if target is reached
+    tab_style(
+      style = list(
+        cell_text(color = "#D83800FF", weight = "bold")
+      ),
+      locations = cells_body(
+        columns = Year_Ach,
+        rows = Year_Ach == "Inf" | suppressWarnings(as.numeric(Year_Ach)) > target.year
+      )
+    ) |>
+    tab_style(
+      style = list(
+        cell_text(color = "#489838FF", weight = "bold")
+      ),
+      locations = cells_body(
+        columns = Year_Ach,
+        rows = suppressWarnings(as.numeric(Year_Ach)) <= target.year
+      )
+    ) |>
+    
+    # Rename columns
+    cols_label(
+      APC_Req = "APC Required",
+      Pace = "Current APC",
+      Year_Ach = "Year Achieved"
+    ) 
+    
+  
+  return(output.table)
+}
+```
+
+
 ## Read in data
 ```{r}
 
@@ -577,12 +691,12 @@ Need to add further annotation to this plot - explaining the dotted line is the 
 ```{r, fig.width=10, fig.height=10}
 
 # Read in data
-incidence_jp <- read.delim(r"(Cancer Trends\Source Data\Cancer_Incidence_Data_Rolling_Avg_Joinpoint.txt)", sep = "\t") |>
+incidence_jp <- read.delim(r"(Cleaned Data\Joinpoint Output\Cancer_Incidence_Data_Rolling_Joinpoint.txt)", sep = "\t") |>
   filter(Cancer_Site == "All sites excl. NMSC") |>
   rename(ASR = ASR_rolling) |>
   mutate(incmort = "Incidence")
 
-mortality_jp <- read.delim(r"(Cancer Trends\Source Data\Cancer_Mortality_Data_Rolling_Avg_Joinpoint.txt)", sep = "\t") |>
+mortality_jp <- read.delim(r"(Cleaned Data\Joinpoint Output\Cancer_Mortality_Data_Rolling_Joinpoint.txt)", sep = "\t") |>
   filter(Cancer_Site == "All sites excl. NMSC") |>
   rename(ASR = ASR_rolling) |>
   mutate(incmort = "Mortality")
@@ -614,7 +728,7 @@ Wales - Public Health Wales
 ```{r, fig.height = 6, fig.width = 15}
 
 # Read in mortality data
-mortality_jp <- read.delim(r"(Cancer Trends\Source Data\Cancer_Mortality_Data_Rolling_Avg_Joinpoint.txt)", sep = "\t") |>
+mortality_jp <- read.delim(r"(Cleaned Data\Joinpoint Output\Cancer_Mortality_Data_Rolling_Joinpoint.txt)", sep = "\t") |>
   rename(ASR = ASR_rolling)
 
 # Find values of interest
@@ -976,12 +1090,12 @@ Wales - Public Health Wales
 ```{r, fig.width=8, fig.height=16}
 
 # Read in data
-incidence_jp <- read.delim(r"(Cancer Trends\Source Data\Cancer_Incidence_Data_Rolling_Avg_Joinpoint.txt)", sep = "\t") |>
+incidence_jp <- read.delim(r"(Cleaned Data\Joinpoint Output\Cancer_Incidence_Data_Rolling_Joinpoint.txt)", sep = "\t") |>
   filter(Cancer_Site != "All sites excl. NMSC") |>
   rename(ASR = ASR_rolling) |>
   mutate(incmort = "Incidence")
 
-mortality_jp <- read.delim(r"(Cancer Trends\Source Data\Cancer_Mortality_Data_Rolling_Avg_Joinpoint.txt)", sep = "\t") |>
+mortality_jp <- read.delim(r"(Cleaned Data\Joinpoint Output\Cancer_Mortality_Data_Rolling_Joinpoint.txt)", sep = "\t") |>
   filter(Cancer_Site != "All sites excl. NMSC") |>
   rename(ASR = ASR_rolling) |>
   mutate(incmort = "Mortality")
@@ -1103,6 +1217,28 @@ figure3b_activity
 
 # Save plot
 ggsave(figure3b_activity, filename = paste0(output_filepath, "Supplement Figure 7 - Activity.png"), bg = "white", height = 9, width = 8)
+
+```
+
+
+### Supplement Tables
+```{r, results = "asis"}
+
+mortality_jp <- read.delim(r"(Cleaned Data\Joinpoint Output\Cancer_Mortality_Data_Rolling_Joinpoint.txt)", sep = "\t") |>
+  rename(ASR = ASR_rolling) |>
+  mutate(incmort = "Mortality")
+
+for(Country in unique(mortality_jp$Country)){
+  
+  mortality_jp_spec <- mortality_jp[mortality_jp$Country == Country,]
+  
+  plot <- meet_targets_table(target = 0.85, target.year = 2040, data_jp = mortality_jp_spec, target.start = 2024, title = paste0("JP Target Analysis: ", Country))
+  print(plot)
+  gtsave(plot, filename = paste0(output_filepath, "Supplement Table 3" , letters[which(unique(mortality_jp$Country) == Country)] , " - Recent Cancer Mortality Trends ", Country, ".png"))
+  
+}
+
+
 
 ```
 
