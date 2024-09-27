@@ -89,7 +89,7 @@ rr <- rr %>%
 # #cancer incidence visualization 
 # 
 # #MEN
-# cancerratesEM <- cancerrates %>% filter(Country == "England", Sex =="Men", Year <= 2019)
+cancerratesEM <- cancerrates %>% filter(Country == "England", Sex =="Men", Year <= 2019)
 # 
 # # Create the plot with a separate line and prediction line for each Cancer_Site
 # cancercases_englandmen <- ggplot(cancerratesEM, aes(x = Year, y = Incidences, color = Cancer_Site)) + 
@@ -102,7 +102,7 @@ rr <- rr %>%
 # 
 # 
 # #WOMEN
-# cancerratesEW <- cancerrates %>% filter(Country == "England", Sex =="Women", Year <= 2019)
+cancerratesEW <- cancerrates %>% filter(Country == "England", Sex =="Women", Year <= 2019)
 # 
 # # Create the plot with a separate line and prediction line for each Cancer_Site
 # cancercases_englandwomen <- ggplot(cancerratesEW, aes(x = Year, y = Incidences, color = Cancer_Site)) + 
@@ -672,14 +672,14 @@ backyears <- backyears %>%
 menalcohol <- bind_rows(alcohol, backyears)
 
 #visual
-check <- ggplot(menalcohol, aes(x= yr, y = SCC)) + geom_line() + geom_point() + 
-  labs(title = "Alcohol Prevalence Predictions - Men", x = "Year", y = "PAF") + 
-  theme_minimal () + ylim(0,.5) +xlim(2005, 2019)
-print(check)
-check1 <- ggplot(menalcohol, aes(x= yr, y = Colorectal)) + geom_line() + geom_point() + 
-  labs(title = "Alcohol Prevalence Predictions - Women", x = "Year", y = "PAF") + 
-  theme_minimal () + ylim(0,.1) +xlim(2005, 2019)
-print(check1)
+# check <- ggplot(menalcohol, aes(x= yr, y = SCC)) + geom_line() + geom_point() + 
+#   labs(title = "Alcohol Prevalence Predictions - Men", x = "Year", y = "PAF") + 
+#   theme_minimal () + ylim(0,.5) +xlim(2005, 2019)
+# print(check)
+# check1 <- ggplot(menalcohol, aes(x= yr, y = Colorectal)) + geom_line() + geom_point() + 
+#   labs(title = "Alcohol Prevalence Predictions - Women", x = "Year", y = "PAF") + 
+#   theme_minimal () + ylim(0,.1) +xlim(2005, 2019)
+# print(check1)
 
 #WOMEN
 alcohol <- PAF_all %>% 
@@ -707,21 +707,21 @@ backyears <- backyears %>%
 womenalcohol <- bind_rows(alcohol, backyears)
 
 #check
-check <- ggplot(womenalcohol, aes(x= yr, y = SCC)) + geom_line() + geom_point() + 
-  labs(title = "SCC Predictions", x = "Year", y = "PAF") + 
-  labs(caption = "Smoking") +
-  theme_minimal () + ylim(0,.5) +xlim(2005, 2019)
-print(check)
-check1 <- ggplot(womenalcohol, aes(x= yr, y = Colorectal)) + geom_line() + geom_point() + 
-  labs(title = "Colorectal Predictions", x = "Year", y = "PAF") + 
-  labs(caption = "Smoking") +
-  theme_minimal () + ylim(0,.1) +xlim(2005, 2019)
-print(check1)
-check2 <- ggplot(womenalcohol, aes(x= yr, y = Breast)) + geom_line() + geom_point() + 
-  labs(title = "Breast Predictions", x = "Year", y = "PAF") + 
-  labs(caption = "Smoking") +
-  theme_minimal () + ylim(0,.1) +xlim(2005, 2019)
-print(check2)
+# check <- ggplot(womenalcohol, aes(x= yr, y = SCC)) + geom_line() + geom_point() + 
+#   labs(title = "SCC Predictions", x = "Year", y = "PAF") + 
+#   labs(caption = "Smoking") +
+#   theme_minimal () + ylim(0,.5) +xlim(2005, 2019)
+# print(check)
+# check1 <- ggplot(womenalcohol, aes(x= yr, y = Colorectal)) + geom_line() + geom_point() + 
+#   labs(title = "Colorectal Predictions", x = "Year", y = "PAF") + 
+#   labs(caption = "Smoking") +
+#   theme_minimal () + ylim(0,.1) +xlim(2005, 2019)
+# print(check1)
+# check2 <- ggplot(womenalcohol, aes(x= yr, y = Breast)) + geom_line() + geom_point() + 
+#   labs(title = "Breast Predictions", x = "Year", y = "PAF") + 
+#   labs(caption = "Smoking") +
+#   theme_minimal () + ylim(0,.1) +xlim(2005, 2019)
+# print(check2)
 #create a dataset of just the predicted values
 alcohol <- bind_rows(menalcohol, womenalcohol) 
 alcohol <- alcohol %>% 
@@ -739,62 +739,62 @@ PAF_all <- PAF_all %>%
   filter(riskfactor !="alcohol")
 PAF_all <- bind_rows(alcohol_all, PAF_all)
 
-source("Code/PAF/AggregatePAFCode.R")
-source("Code/PAF/CaseCode.R")
-men <- grid.arrange(aggregatepaf_plot_men, mencases_visualized)
-women <- grid.arrange(aggregatepaf_plot_women, womencases_visualized)
-ggsave(filename = "PAF Figures/Men_AttributableCases.jpg", plot = men, width = 8, height = 6, dpi = 300)
-ggsave(filename = "PAF Figures/Women_AttributableCases.jpg", plot = women, width = 8, height = 6, dpi = 300)
+source("C:\\Users\\zrichards.ICR\\OneDrive - The Institute of Cancer Research\\Git\\UK-cancer-trends\\Code\\PAF\\AggregatePAFCode.R")
+source("C:\\Users\\zrichards.ICR\\OneDrive - The Institute of Cancer Research\\Git\\UK-cancer-trends\\Code\\PAF\\CaseCode.R")
+#men <- grid.arrange(aggregatepaf_plot_men, mencases_visualized)
+#women <- grid.arrange(aggregatepaf_plot_women, womencases_visualized)
+#ggsave(filename = "PAF Figures/Men_AttributableCases.jpg", plot = men, width = 8, height = 6, dpi = 300)
+#ggsave(filename = "PAF Figures/Women_AttributableCases.jpg", plot = women, width = 8, height = 6, dpi = 300)
 
 
 ####################################################################################################
 #Investigating the PAF relationships 
 
 #SCENARIO ONE: broad PAF relationship: 
-#creating a sequence of prevalence 
-prevalencerange <- seq(0, 1, by = 0.01)
-# Define a constant Relative Risk (RR)
-RRconstantlow <- 1.2 # Example RR constant
-RRconstant4 <- 1.5
-RRconstantmed <- 5.0
-RRconstanthigh <- 10.0 
-# Calculate the PAF for each prevalence value
-PAFlow <- (prevalencerange * (RRconstantlow-1)) / (1 + (prevalencerange * (RRconstantlow-1)))
-PAF4 <- (prevalencerange * (RRconstant4-1)) / (1 + (prevalencerange * (RRconstant4-1)))
-PAFmed <- (prevalencerange * (RRconstantmed-1)) / (1 + (prevalencerange * (RRconstantmed-1)))
-PAFhigh <- (prevalencerange * (RRconstanthigh-1)) / (1 + (prevalencerange * (RRconstanthigh-1)))
-# Plot the PAF against the prevalence
-pafplotlow <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFlow), aes(x = prevalence, y = PAF)) +
-  geom_line(color = "blue", size = 1) +
-  labs(title = "RR = 1.2",
-       x = "RF Prevalence",
-       y = "PAF") +
-  ylim(0, 1) +
-  theme_minimal()
-pafplot4 <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAF4), aes(x = prevalence, y = PAF)) +
-  geom_line(color = "blue", size = 1) +
-  labs(title = "RR = 1.5",
-       x = "RF Prevalence",
-       y = "PAF") +
-  ylim(0, 1) +
-  theme_minimal()
-pafplotmed <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFmed), aes(x = prevalence, y = PAF)) +
-  geom_line(color = "blue", size = 1) +
-  labs(title = "RR = 5.0",
-       x = "RF Prevalence",
-       y = "PAF") +
-  ylim(0, 1) +
-  theme_minimal()
-pafplothigh<- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFhigh), aes(x = prevalence, y = PAF)) +
-  geom_line(color = "blue", size = 1) +
-  labs(title = "RR = 10.0",
-       x = "RF Prevalence",
-       y = "PAF") +
-  ylim(0, 1) +
-  theme_minimal() 
-# Showing the plot
-changingpaf <- grid.arrange(pafplotlow, pafplot4, pafplotmed, pafplothigh, ncol=4)
-
+# #creating a sequence of prevalence 
+# prevalencerange <- seq(0, 1, by = 0.01)
+# # Define a constant Relative Risk (RR)
+# RRconstantlow <- 1.2 # Example RR constant
+# RRconstant4 <- 1.5
+# RRconstantmed <- 5.0
+# RRconstanthigh <- 10.0 
+# # Calculate the PAF for each prevalence value
+# PAFlow <- (prevalencerange * (RRconstantlow-1)) / (1 + (prevalencerange * (RRconstantlow-1)))
+# PAF4 <- (prevalencerange * (RRconstant4-1)) / (1 + (prevalencerange * (RRconstant4-1)))
+# PAFmed <- (prevalencerange * (RRconstantmed-1)) / (1 + (prevalencerange * (RRconstantmed-1)))
+# PAFhigh <- (prevalencerange * (RRconstanthigh-1)) / (1 + (prevalencerange * (RRconstanthigh-1)))
+# # Plot the PAF against the prevalence
+# pafplotlow <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFlow), aes(x = prevalence, y = PAF)) +
+#   geom_line(color = "blue", size = 1) +
+#   labs(title = "RR = 1.2",
+#        x = "RF Prevalence",
+#        y = "PAF") +
+#   ylim(0, 1) +
+#   theme_minimal()
+# pafplot4 <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAF4), aes(x = prevalence, y = PAF)) +
+#   geom_line(color = "blue", size = 1) +
+#   labs(title = "RR = 1.5",
+#        x = "RF Prevalence",
+#        y = "PAF") +
+#   ylim(0, 1) +
+#   theme_minimal()
+# pafplotmed <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFmed), aes(x = prevalence, y = PAF)) +
+#   geom_line(color = "blue", size = 1) +
+#   labs(title = "RR = 5.0",
+#        x = "RF Prevalence",
+#        y = "PAF") +
+#   ylim(0, 1) +
+#   theme_minimal()
+# pafplothigh<- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFhigh), aes(x = prevalence, y = PAF)) +
+#   geom_line(color = "blue", size = 1) +
+#   labs(title = "RR = 10.0",
+#        x = "RF Prevalence",
+#        y = "PAF") +
+#   ylim(0, 1) +
+#   theme_minimal() 
+# # Showing the plot
+# changingpaf <- grid.arrange(pafplotlow, pafplot4, pafplotmed, pafplothigh, ncol=4)
+# 
 
 #SCENARIO TWO: Smoking relationship - If there was 100% smoking cessation in 2019 with no initiation
 #pulling the relevant 2019 prevalence 
@@ -819,51 +819,51 @@ smokingprevalence2019$current <- (maxformersmoker - smokingprevalence2019$former
 #calculating the PAFs across the time 
 smokingprevalence2019$paf <- ((smokingprevalence2019$current * (RRcurrentsmoke-1))+ (smokingprevalence2019$former * (RRformersmoke-1))) / (1 + (smokingprevalence2019$current * (RRcurrentsmoke-1))+ (smokingprevalence2019$former * (RRformersmoke-1)))
 #plot the scenario graph 
-pafformersmoker<- ggplot(data.frame(prevalence = formersmokingrange2019, PAF = smokingprevalence2019$paf), aes(x = prevalence, y = PAF)) +
-  geom_line(color = "blue", size = 1) +
-  labs(title = "Lung Cancer PAF if all Current Smokers became Former Smokers in English Men in 2019",
-       x = "Former Smoker Prevalence",
-       y = "PAF") +
-  ylim(0, 1) +
-  theme_minimal() 
-print(pafformersmoker)
+# pafformersmoker<- ggplot(data.frame(prevalence = formersmokingrange2019, PAF = smokingprevalence2019$paf), aes(x = prevalence, y = PAF)) +
+#   geom_line(color = "blue", size = 1) +
+#   labs(title = "Lung Cancer PAF if all Current Smokers became Former Smokers in English Men in 2019",
+#        x = "Former Smoker Prevalence",
+#        y = "PAF") +
+#   ylim(0, 1) +
+#   theme_minimal() 
+# print(pafformersmoker)
 #FOLLOWING-UP : SCENARIO TWO
-male_smoking <- ggplot(cleanedprev %>% filter (country == "England", variable %in% c("smoker_men", "formersmoker_men")), aes(x = datayear, y = prev, color = variable)) + 
-  geom_point() + 
-  geom_line() +
-  labs(title = "Men",
-       x = "Year",
-       y = "Prevalence") +
-  ylim(0.1, 0.35) +
-  theme_minimal()
-female_smoking <- ggplot(cleanedprev %>% filter (country == "England", variable %in% c("smoker_women", "formersmoker_women")), aes(x = datayear, y = prev, color = variable)) + 
-  geom_point() + 
-  geom_line() +
-  labs(title = "Women",
-       x = "Year",
-       y = "Prevalence") +
-  ylim(0.1, 0.35) +
-  theme_minimal()
-smokingdistribution <- grid.arrange(male_smoking, female_smoking, ncol = 2, top = "Smoking Over Time: Current and Former Smokers in England ")
+# male_smoking <- ggplot(cleanedprev %>% filter (country == "England", variable %in% c("smoker_men", "formersmoker_men")), aes(x = datayear, y = prev, color = variable)) + 
+#   geom_point() + 
+#   geom_line() +
+#   labs(title = "Men",
+#        x = "Year",
+#        y = "Prevalence") +
+#   ylim(0.1, 0.35) +
+#   theme_minimal()
+# female_smoking <- ggplot(cleanedprev %>% filter (country == "England", variable %in% c("smoker_women", "formersmoker_women")), aes(x = datayear, y = prev, color = variable)) + 
+#   geom_point() + 
+#   geom_line() +
+#   labs(title = "Women",
+#        x = "Year",
+#        y = "Prevalence") +
+#   ylim(0.1, 0.35) +
+#   theme_minimal()
+# smokingdistribution <- grid.arrange(male_smoking, female_smoking, ncol = 2, top = "Smoking Over Time: Current and Former Smokers in England ")
 
 
 #SCENARIO THREE: all those obese lose weight to fall into the overweight category
-male_bmi <- ggplot(cleanedprev %>% filter (country == "England", variable %in% c("overweight_men", "obese_men")), aes(x = datayear, y = prev, color = variable)) + 
-  geom_point() + 
-  geom_line() +
-  labs(title = "Men",
-       x = "Year",
-       y = "Prevalence") +
-  ylim(0, 0.45) +
-  theme_minimal()
-female_bmi <- ggplot(cleanedprev %>% filter (country == "England", variable %in% c("overweight_women", "obese_women")), aes(x = datayear, y = prev, color = variable)) + 
-  geom_point() + 
-  geom_line() +
-  labs(title = "Women",
-       x = "Year",
-       y = "Prevalence") +
-  ylim(0, 0.45) +
-  theme_minimal()
-bmidistribution <- grid.arrange(male_bmi, female_bmi, ncol = 2, top = "BMI Over Time: Obese amd Overweight in England ")
+# male_bmi <- ggplot(cleanedprev %>% filter (country == "England", variable %in% c("overweight_men", "obese_men")), aes(x = datayear, y = prev, color = variable)) + 
+#   geom_point() + 
+#   geom_line() +
+#   labs(title = "Men",
+#        x = "Year",
+#        y = "Prevalence") +
+#   ylim(0, 0.45) +
+#   theme_minimal()
+# female_bmi <- ggplot(cleanedprev %>% filter (country == "England", variable %in% c("overweight_women", "obese_women")), aes(x = datayear, y = prev, color = variable)) + 
+#   geom_point() + 
+#   geom_line() +
+#   labs(title = "Women",
+#        x = "Year",
+#        y = "Prevalence") +
+#   ylim(0, 0.45) +
+#   theme_minimal()
+# bmidistribution <- grid.arrange(male_bmi, female_bmi, ncol = 2, top = "BMI Over Time: Obese amd Overweight in England ")
 
 ##################################################################################

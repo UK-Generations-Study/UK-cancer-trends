@@ -20,16 +20,16 @@ mencases <- aggregate_paf_men %>%
 #round cancer cases down 
 mencases$attrcases <- floor(mencases$attrcases)
 #graph the incident cancer cases
-mencases_visualized <- ggplot(mencases, aes(x = Yr_cases, y = attrcases, color = cancersite)) + 
-  geom_point() + 
-  geom_line() +
-  labs(title = "Cases Attributable to Modifiable RF in England for Men",
-       x = "Year",
-       y = "Attributable Cases") +
-  scale_x_continuous(breaks = 2005:2019, limits = c(2005, 2019)) +
-  scale_color_brewer(palette = "Dark2") +
-  theme_minimal() 
-print(mencases_visualized)
+# mencases_visualized <- ggplot(mencases, aes(x = Yr_cases, y = attrcases, color = cancersite)) + 
+#   geom_point() + 
+#   geom_line() +
+#   labs(title = "Cases Attributable to Modifiable RF in England for Men",
+#        x = "Year",
+#        y = "Attributable Cases") +
+#   scale_x_continuous(breaks = 2005:2019, limits = c(2005, 2019)) +
+#   scale_color_brewer(palette = "Dark2") +
+#   theme_minimal() 
+# print(mencases_visualized)
 
 #Women 
 #clean the data so datasets can be joined 
@@ -51,13 +51,13 @@ womencases <- aggregate_paf_women %>%
 #round cancer cases down 
 womencases$attrcases <- floor(womencases$attrcases)
 #graph the incident cancer cases
-womencases_visualized <- ggplot(womencases, aes(x = Yr_cases, y = attrcases, color = cancersite)) + 
-  geom_point() + 
-  geom_line() +
-  labs(title = "Cases Attributable to Modifiable RF in England for Women",
-       x = "Year",
-       y = "Attributable Cases") +
-  scale_x_continuous(breaks = 2005:2019, limits = c(2005, 2019)) +
-  scale_color_brewer(palette = "Dark2") +
-  theme_minimal() 
-print(womencases_visualized)
+# womencases_visualized <- ggplot(womencases, aes(x = Yr_cases, y = attrcases, color = cancersite)) + 
+#   geom_point() + 
+#   geom_line() +
+#   labs(title = "Cases Attributable to Modifiable RF in England for Women",
+#        x = "Year",
+#        y = "Attributable Cases") +
+#   scale_x_continuous(breaks = 2005:2019, limits = c(2005, 2019)) +
+#   scale_color_brewer(palette = "Dark2") +
+#   theme_minimal() 
+# print(womencases_visualized)

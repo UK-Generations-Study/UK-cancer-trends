@@ -70,15 +70,15 @@ all_redmeat <- data_ndhns |>
   mutate(redmeat_exp = weight*(totalredmeat  >= 100)) |>
   summarise(mean_weight = mean(weight), redmeat_exp = 100*sum(redmeat_exp)/sum(weight))
 
-all_redmeat_visualize <- ggplot(all_redmeat, aes(x= surveyyear_cat, y = redmeat_exp, colour = country)) +
-  geom_line() +
-  geom_point() +
-  xlab("Year") +
-  ylab("% eating over the red meat guidelines") +
-  ggtitle("%  Exposed to Red Meat Overconsumption**") +
-  labs(colour = "Country", caption = "**Guidelines are under 100g per day") +
-  facet_wrap(~sex, scales = "fixed", dir = "v")
-print(all_redmeat_visualize)
+ all_redmeat_visualize <- ggplot(all_redmeat, aes(x= surveyyear_cat, y = redmeat_exp, colour = country)) +
+   geom_line() +
+   geom_point() +
+   xlab("Year") +
+   ylab("% eating over the red meat guidelines") +
+   ggtitle("%  Exposed to Red Meat Overconsumption**") +
+   labs(colour = "Country", caption = "**Guidelines are under 100g per day") +
+   facet_wrap(~sex, scales = "fixed", dir = "v")
+# print(all_redmeat_visualize)
 
 #filling out the dataset so that there are datapoints for every year 
 #MEN

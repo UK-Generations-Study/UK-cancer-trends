@@ -5,6 +5,8 @@ format: html
 editor: visual
 ---
 
+This project is calculating the Population Attributable Fractions (PAFs) over time from 2015 and projecting them in to 2030.
+
 ## Preparing the Data
 
 The data needs to be loaded into the program and cleaned to be usable
@@ -12,6 +14,7 @@ The data needs to be loaded into the program and cleaned to be usable
 Loading the necessary packages
 
 ```{r}
+#| echo: false
 library(dplyr)
 library(tidyr)
 library(stringr)
@@ -20,16 +23,74 @@ library(gridExtra)
 library(segmented)
 ```
 
-Run the background code
+Run the background code ( I am not sure this is necessary)
 
 ```{r}
-source("C:\\Users\\zrichards.ICR\\OneDrive - The Institute of Cancer Research\\Git\\UK-cancer-trends\\Code\\PAF\\PAFCalculations.R", echo = TRUE)
+source("C:\\Users\\zrichards.ICR\\OneDrive - The Institute of Cancer Research\\Git\\UK-cancer-trends\\Code\\PAF\\PAFCalculations.R", echo = FALSE)
+
+```
+
+## PAF relationship
+
+Looking at how the PAF change as the population risk factor exposure ranges from 0-100% with different constant relative risks.
+
+```{r}
+#| echo: false
+#creating a sequence of prevalence 
+prevalencerange <- seq(0, 1, by = 0.01)
+# Define a constant Relative Risk (RR)
+RRconstantlow <- 1.2 # Example RR constant
+RRconstant4 <- 1.5
+RRconstantmed <- 5.0
+RRconstanthigh <- 10.0 
+# Calculate the PAF for each prevalence value
+PAFlow <- (prevalencerange * (RRconstantlow-1)) / (1 + (prevalencerange * (RRconstantlow-1)))
+PAF4 <- (prevalencerange * (RRconstant4-1)) / (1 + (prevalencerange * (RRconstant4-1)))
+PAFmed <- (prevalencerange * (RRconstantmed-1)) / (1 + (prevalencerange * (RRconstantmed-1)))
+PAFhigh <- (prevalencerange * (RRconstanthigh-1)) / (1 + (prevalencerange * (RRconstanthigh-1)))
+# Plot the PAF against the prevalence
+pafplotlow <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFlow), aes(x = prevalence, y = PAF)) +
+  geom_line(color = "blue", size = 1) +
+  labs(title = "RR = 1.2",
+       x = "RF Prevalence",
+       y = "PAF") +
+  ylim(0, 1) +
+  theme_minimal()
+pafplot4 <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAF4), aes(x = prevalence, y = PAF)) +
+  geom_line(color = "blue", size = 1) +
+  labs(title = "RR = 1.5",
+       x = "RF Prevalence",
+       y = "PAF") +
+  ylim(0, 1) +
+  theme_minimal()
+pafplotmed <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFmed), aes(x = prevalence, y = PAF)) +
+  geom_line(color = "blue", size = 1) +
+  labs(title = "RR = 5.0",
+       x = "RF Prevalence",
+       y = "PAF") +
+  ylim(0, 1) +
+  theme_minimal()
+pafplothigh<- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFhigh), aes(x = prevalence, y = PAF)) +
+  geom_line(color = "blue", size = 1) +
+  labs(title = "RR = 10.0",
+       x = "RF Prevalence",
+       y = "PAF") +
+  ylim(0, 1) +
+  theme_minimal() 
+# Showing the plot
+changingpaf <- grid.arrange(pafplotlow, pafplot4, pafplotmed, pafplothigh, ncol=4)
 
 ```
 
 ## Risk Factor Trends
 
+The risk factors trending over the past 2 decades.:
+
 ```{r}
+#| echo: false
+cleanedprev <- cleanedprev %>% 
+  filter(!variable %in% c("diabetes_men", "diabetes_women", "% Meet Physical Activity Guidelines", "hrt"))
+
 prev_englandwomen <- ggplot(cleanedprev %>% 
   filter (sex == "Women", country == "England"), aes(x = datayear, y = prev, color = variable)) + 
   geom_point() + 
@@ -49,19 +110,63 @@ prev_englandmen <- ggplot(cleanedprev %>%
        y = "Risk Factor Prevalence") +
   theme_minimal()
 print(prev_englandmen)
+
+
+print(figure3b_fibre)
+
+
+print(all_processedmeat_visualize)
+
+
+print(all_redmeat_visualize)
 ```
 
 The Health Survey of England changed how they asked questions on alcohol consumption in 2011, but data on alcohol consumption is needed from 2005.
 
-Alcohol prevalence was estimated for 2005-2010 based on the available data using a joint point method.
+Alcohol PAF was estimated for 2005-2010 based on the available data using a joint point method.
 
 ```{r}
+#| echo: false
+Mcheck <- ggplot(menalcohol, aes(x= yr, y = SCC)) +
+  geom_line() + geom_point() + 
+  labs(title = "Alcohol OSCC PAF Predictions - Men", x = "Year", y = "PAF") + 
+ #geom_vline(xintercept = 2015, color = "red", linetype = "dashed", size = 1) +
+  theme_minimal () + ylim(0,.5) +xlim(2005, 2019)
+print(Mcheck)
+
+Mcheck1 <- ggplot(menalcohol, aes(x= yr, y = Colorectal)) +
+  geom_line() + geom_point() + 
+  labs(title = "Alcohol Colorectal PAF Predictions - Men", x = "Year", y = "PAF") +
+  #geom_vline(xintercept = 2015, color = "red", linetype = "dashed", size = 1) +
+  theme_minimal () + ylim(0,.1) +xlim(2005, 2019)
+print(Mcheck1)
+
+Wcheck <- ggplot(womenalcohol, aes(x= yr, y = SCC)) +
+  geom_line() + geom_point() + 
+  labs(title = "Alcohol SCC PAF Predictions - Women", x = "Year", y = "PAF") +
+  theme_minimal () + ylim(0,.5) +xlim(2005, 2019)
+print(Wcheck)
+
+Wcheck1 <- ggplot(womenalcohol, aes(x= yr, y = Colorectal)) +
+  geom_line() + geom_point() + 
+  labs(title = "Alcohol Colorectal PAF Predictions - Women", x = "Year", y = "PAF") +
+  theme_minimal () + ylim(0,.1) +xlim(2005, 2019)
+print(Wcheck1)
+
+Wcheck2 <- ggplot(womenalcohol, aes(x= yr, y = Breast)) + 
+  geom_line() + geom_point() + 
+  labs(title = "Alcohol Breast PAF Predictions - Women", x = "Year", y = "PAF") + 
+  theme_minimal () + ylim(0,.1) +xlim(2005, 2019)
+print(Wcheck2)
 
 ```
 
 ## Cancer Case Trends
 
+How cancer incidence changes over time. These are absolute cases so they do not account for the ageing population or population growth.
+
 ```{r}
+#| echo: false
 #MEN
 cancerratesEM <- cancerrates %>% filter(Country == "England", Sex =="Men", Year <= 2019)
 
@@ -90,11 +195,15 @@ cancercases_englandwomen <- ggplot(cancerratesEW, aes(x = Year, y = Incidences, 
 print(cancercases_englandwomen)
 #print 
 #englandcancer <- grid.arrange(cancercases_englandmen, cancercases_englandwomen)
+
 ```
 
 ## PAF by Cancer Site
 
+How the individual risk factor PAFs trend over time by cancer site.
+
 ```{r}
+#| echo: false
 ############# MEN ###################
 smoking <- PAF_all %>% filter(riskfactor == "smoking", sex == "Men")
 bmi <- PAF_all %>% filter(riskfactor == "bmi", sex == "Men")
@@ -275,7 +384,10 @@ AC <- grid.arrange(MACcancer, WACcancer, nrow=2, top = "Estimates for Population
 
 ## PAF by Risk Factor
 
+How the individual risk factor PAFs trend over time grouped by risk factor.
+
 ```{r}
+#| echo: false
 ############# MEN ###################
 smoking <- PAF_all %>% filter(riskfactor == "smoking", sex == "Men")
 bmi <- PAF_all %>% filter(riskfactor == "bmi", sex == "Men")
@@ -452,7 +564,16 @@ dietary <- grid.arrange(dietaryMEN,dietaryWOMEN, nrow = 2,  top = "Dietary Cance
 
 ## Aggregate PAF
 
+Aggregate PAFs for each cancer site that include the risk factors investigated in this project:
+
+1.  BMI
+2.  Smoking
+3.  Alcohol
+4.  Dietary Factors (Fiber, Processed Meat, Red Meat)
+
 ```{r}
+#| echo: false
+#| 
 aggregatepaf_plot_men <- ggplot(aggregate_paf_men, aes(x = Year, y = PAF, color = cancersite, group = cancersite)) +
   geom_line() +
   geom_point() +
@@ -478,31 +599,81 @@ aggregatepaf_plot_women <- ggplot(aggregate_paf_women, aes(x = Year, y = PAF, co
   scale_color_brewer(palette = "Dark2") +
   geom_vline(xintercept = 2015, color = "red", linetype = "dashed", size = 1)  
 print(aggregatepaf_plot_women)
+
 ```
 
 ## Attributable Cases
 
+Using the historical incident cancer cases from the National Cancer Registry and a 10 year time lag between the PAFS and the year that it effects, the attributable cancer cases were calculated.
+
 ```{r}
-mencases_visualized <- ggplot(mencases, aes(x = Yr_cases, y = attrcases, color = cancersite)) + 
-  geom_point() + 
-  geom_line() +
+#| echo: false
+
+# mencases_visualized <- ggplot(mencases, aes(x = Yr_cases, y = attrcases, color = cancersite)) + 
+#   geom_point() + 
+#   geom_line() +
+#   labs(title = "Cases Attributable to Modifiable RF in England for Men",
+#        x = "Year",
+#        y = "Attributable Cases") +
+#   scale_x_continuous(breaks = 2015:2019, limits = c(2015, 2019)) +
+#   scale_color_brewer(palette = "Dark2") +
+#   theme_minimal() 
+# print(mencases_visualized)
+# 
+# womencases_visualized <- ggplot(womencases, aes(x = Yr_cases, y = attrcases, color = cancersite)) + 
+#   geom_point() + 
+#   geom_line() +
+#   labs(title = "Cases Attributable to Modifiable RF in England for Women",
+#        x = "Year",
+#        y = "Attributable Cases") +
+#   scale_x_continuous(breaks = 2015:2019, limits = c(2015, 2019)) +
+#   scale_color_brewer(palette = "Dark2") +
+#   theme_minimal() 
+# print(womencases_visualized)
+
+mencases_visualized <- ggplot(mencases, aes(x = Yr_cases, y = attrcases, fill = cancersite)) + 
+  geom_bar(stat = "identity", position = "dodge") +
   labs(title = "Cases Attributable to Modifiable RF in England for Men",
        x = "Year",
        y = "Attributable Cases") +
   scale_x_continuous(breaks = 2015:2019, limits = c(2015, 2019)) +
-  scale_color_brewer(palette = "Dark2") +
+  scale_fill_brewer(palette = "Dark2") +
   theme_minimal() 
 print(mencases_visualized)
 
-womencases_visualized <- ggplot(womencases, aes(x = Yr_cases, y = attrcases, color = cancersite)) + 
-  geom_point() + 
-  geom_line() +
+womencases_visualized <- ggplot(womencases, aes(x = Yr_cases, y = attrcases, fill = cancersite)) + 
+  geom_bar(stat = "identity", position = "dodge") +
   labs(title = "Cases Attributable to Modifiable RF in England for Women",
        x = "Year",
        y = "Attributable Cases") +
   scale_x_continuous(breaks = 2015:2019, limits = c(2015, 2019)) +
-  scale_color_brewer(palette = "Dark2") +
+  scale_fill_brewer(palette = "Dark2") +
   theme_minimal() 
 print(womencases_visualized)
+
+```
+
+## More Realistic Smoking Scenario
+
+Based in 2019, if all current smokers stopped smoking and no one starts smoking
+
+At the far right of the x-axis, the assumption is:
+
+former smoking prevalence = current smoking prevalence + former smoking prevalence
+
+current smoking prevalence = 0
+
+```{r}
+#| echo: false
+
+pafformersmoker<- ggplot(data.frame(prevalence = formersmokingrange2019, PAF = smokingprevalence2019$paf), aes(x = prevalence, y = PAF)) +
+  geom_line(color = "blue", size = 1) +
+  labs(title = "Lung Cancer PAF if all Current Smokers became Former Smokers in English Men in 2019",
+       x = "Former Smoker Prevalence",
+       y = "PAF") +
+  ylim(0, 1) +
+  theme_minimal() 
+print(pafformersmoker)
+
 
 ```

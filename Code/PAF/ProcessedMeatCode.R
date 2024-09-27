@@ -71,14 +71,14 @@ all_processedmeat <- data_ndhns |>
   summarise(mean_weight = mean(weight), processedmeat_exp = 100*sum(processedmeat_exp)/sum(weight))
 
 all_processedmeat_visualize <- ggplot(all_processedmeat, aes(x= surveyyear_cat, y = processedmeat_exp, colour = country)) +
-  geom_line() +
-  geom_point() +
-  xlab("Year") +
-  ylab("% eating over the processed meat guidelines") +
-  ggtitle("%  Exposed to Procesed Meat Overconsumption**") +
-  labs(colour = "Country", caption = "**Guidelines are under 50g per day") +
-  facet_wrap(~sex, scales = "fixed", dir = "v")
-print(all_processedmeat_visualize)
+    geom_line() +
+    geom_point() +
+    xlab("Year") +
+    ylab("% eating over the processed meat guidelines") +
+    ggtitle("%  Exposed to Procesed Meat Overconsumption**") +
+    labs(colour = "Country", caption = "**Guidelines are under 50g per day") +
+   facet_wrap(~sex, scales = "fixed", dir = "v")
+#print(all_processedmeat_visualize)
 
 #filling out the dataset so that there are datapoints for every year 
 #MEN

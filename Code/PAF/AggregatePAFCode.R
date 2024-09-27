@@ -98,17 +98,17 @@ aggregate_paf_long <- aggregate_paf_long %>%
 aggregate_paf_long$Year <- as.numeric(aggregate_paf_long$Year)
 aggregate_paf_men <- aggregate_paf_long
 # Create the plot
-aggregatepaf_plot_men <- ggplot(aggregate_paf_men, aes(x = Year, y = PAF, color = cancersite, group = cancersite)) +
-  geom_line() +
-  geom_point() +
-  labs(title = "Aggregate PAF for Men (2005-2019)",
-       x = "Year",
-       y = "Cumulative PAF") +
-  theme_minimal() +
-  ylim(0,.75) +
-  scale_x_continuous(breaks = 2005:2019, limits = c(2005, 2019)) +
-  scale_color_brewer(palette = "Dark2") 
-print(aggregatepaf_plot_men)
+# aggregatepaf_plot_men <- ggplot(aggregate_paf_men, aes(x = Year, y = PAF, color = cancersite, group = cancersite)) +
+#   geom_line() +
+#   geom_point() +
+#   labs(title = "Aggregate PAF for Men (2005-2019)",
+#        x = "Year",
+#        y = "Cumulative PAF") +
+#   theme_minimal() +
+#   ylim(0,.75) +
+#   scale_x_continuous(breaks = 2005:2019, limits = c(2005, 2019)) +
+#   scale_color_brewer(palette = "Dark2") 
+# print(aggregatepaf_plot_men)
 
 #do it again for women
 aggregate_paf_long <- aggregate_paf_women%>%
@@ -120,17 +120,17 @@ aggregate_paf_long <- aggregate_paf_long %>%
 aggregate_paf_long$Year <- as.numeric(aggregate_paf_long$Year)
 aggregate_paf_women <- aggregate_paf_long
 # Create the plot
-aggregatepaf_plot_women <- ggplot(aggregate_paf_women, aes(x = Year, y = PAF, color = cancersite, group = cancersite)) +
-  geom_line() +
-  geom_point() +
-  labs(title = "Aggregate PAF for Women(2005-2019)",
-       x = "Year",
-       y = "Cumulative PAF") +
-  theme_minimal() +
-  ylim(0,.75) +
-  scale_x_continuous(breaks = 2005:2019, limits = c(2005, 2019)) +
-  scale_color_brewer(palette = "Dark2") 
-print(aggregatepaf_plot_women)
+# aggregatepaf_plot_women <- ggplot(aggregate_paf_women, aes(x = Year, y = PAF, color = cancersite, group = cancersite)) +
+#   geom_line() +
+#   geom_point() +
+#   labs(title = "Aggregate PAF for Women(2005-2019)",
+#        x = "Year",
+#        y = "Cumulative PAF") +
+#   theme_minimal() +
+#   ylim(0,.75) +
+#   scale_x_continuous(breaks = 2005:2019, limits = c(2005, 2019)) +
+#   scale_color_brewer(palette = "Dark2") 
+# print(aggregatepaf_plot_women)
 
 ##save the functions 
 aggregate_paf_women <- aggregate_paf_women %>% 

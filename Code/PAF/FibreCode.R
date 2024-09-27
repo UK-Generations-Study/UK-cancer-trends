@@ -95,16 +95,16 @@ fibre_england <- fibre_summary %>%
 
 # Plot it
 figure3b_fibre <- ggplot(fibre_england, aes(x = surveyyear_cat, y = fibre_rec, colour = country)) +
-  geom_line() +
-  geom_point() +
-  xlab("Year") +
-  ylab("% Meeting Fibre Intake Guidelines") +
-  ggtitle("% Meeting Fibre Intake Guidelines in England**") +
-  labs(colour = "Country", caption = "**Guidelines are 30g of Fibre per day") +
-  facet_wrap(~sex, scales = "fixed", dir = "v")
+   geom_line() +
+   geom_point() +
+   xlab("Year") +
+   ylab("% Meeting Fibre Intake Guidelines") +
+   ggtitle("% Meeting Fibre Intake Guidelines in England**") +
+   labs(colour = "Country", caption = "**Guidelines are 30g of Fibre per day") +
+   facet_wrap(~sex, scales = "fixed", dir = "v")
 
-# Step 4: Print the plot
-print(figure3b_fibre)
+# # Step 4: Print the plot
+# print(figure3b_fibre)
 
 #MEN
 #cleaning the dataset 
