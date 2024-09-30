@@ -77,7 +77,8 @@ all_processedmeat_visualize <- ggplot(all_processedmeat, aes(x= surveyyear_cat, 
     ylab("% eating over the processed meat guidelines") +
     ggtitle("%  Exposed to Procesed Meat Overconsumption**") +
     labs(colour = "Country", caption = "**Guidelines are under 50g per day") +
-   facet_wrap(~sex, scales = "fixed", dir = "v")
+   facet_wrap(~sex, scales = "fixed", dir = "v") +
+   theme_minimal() 
 #print(all_processedmeat_visualize)
 
 #filling out the dataset so that there are datapoints for every year 

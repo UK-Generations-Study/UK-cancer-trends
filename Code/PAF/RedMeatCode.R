@@ -77,7 +77,8 @@ all_redmeat <- data_ndhns |>
    ylab("% eating over the red meat guidelines") +
    ggtitle("%  Exposed to Red Meat Overconsumption**") +
    labs(colour = "Country", caption = "**Guidelines are under 100g per day") +
-   facet_wrap(~sex, scales = "fixed", dir = "v")
+   facet_wrap(~sex, scales = "fixed", dir = "v") +
+   theme_minimal() 
 # print(all_redmeat_visualize)
 
 #filling out the dataset so that there are datapoints for every year 

@@ -101,7 +101,8 @@ figure3b_fibre <- ggplot(fibre_england, aes(x = surveyyear_cat, y = fibre_rec, c
    ylab("% Meeting Fibre Intake Guidelines") +
    ggtitle("% Meeting Fibre Intake Guidelines in England**") +
    labs(colour = "Country", caption = "**Guidelines are 30g of Fibre per day") +
-   facet_wrap(~sex, scales = "fixed", dir = "v")
+   facet_wrap(~sex, scales = "fixed", dir = "v") +
+   theme_minimal() 
 
 # # Step 4: Print the plot
 # print(figure3b_fibre)

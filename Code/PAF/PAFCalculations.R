@@ -759,8 +759,8 @@ source("C:\\Users\\zrichards.ICR\\OneDrive - The Institute of Cancer Research\\G
 source("C:\\Users\\zrichards.ICR\\OneDrive - The Institute of Cancer Research\\Git\\UK-cancer-trends\\Code\\PAF\\CaseCode.R")
 #men <- grid.arrange(aggregatepaf_plot_men, mencases_visualized)
 #women <- grid.arrange(aggregatepaf_plot_women, womencases_visualized)
-#ggsave(filename = "PAF Figures/Men_AttributableCases.jpg", plot = men, width = 8, height = 6, dpi = 300)
-#ggsave(filename = "PAF Figures/Women_AttributableCases.jpg", plot = women, width = 8, height = 6, dpi = 300)
+#ggsave(filename = "C:\\Users\\zrichards.ICR\\OneDrive - The Institute of Cancer Research\\Git\\UK-cancer-trends\\PAF Figures\\Men_AggregatePAF.jpg", plot = aggregatepaf_plot_men, width = 8, height = 6, dpi = 300)
+#ggsave(filename = "C:\\Users\\zrichards.ICR\\OneDrive - The Institute of Cancer Research\\Git\\UK-cancer-trends\\PAF Figures\\Women_AggregatePAF.jpg", plot = aggregatepaf_plot_women, width = 8, height = 6, dpi = 300)
 
 
 ####################################################################################################
