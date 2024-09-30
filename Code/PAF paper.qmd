@@ -1,8 +1,23 @@
 ---
 title: "PAF"
 author: "Z"
-format: html
-editor: visual
+format: 
+  html:
+    toc: true
+    toc-depth: 5
+    grid:
+      sidebar-width: 200px
+      body-width: 2500px
+      margin-width: 200px
+      gutter-width: 1.5rem
+editor: 
+  mode: source
+  project-dir: "."
+execute:
+  echo: false
+  warning: false
+  fig-width: 12    
+  fig-height: 8  
 ---
 
 This project is calculating the Population Attributable Fractions (PAFs) over time from 2015 and projecting them in to 2030.
