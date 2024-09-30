@@ -14,7 +14,7 @@ Trends and projections for the cancers selected using data from Globocan.
 Trends and projections for the cancers selected using CRUK data and comparing to CRUK projections.
 ### [Final Position Paper Figures](https://uk-generations-study.github.io/UK-cancer-trends/Code/Final%20Position%20Paper%20Figures.html)
 A more formal list of the figures being considered for the position paper.
-###[PAFs](http://localhost:3110/#preparing-the-data)
+### [PAFs](http://localhost:3110/#preparing-the-data)
 Population Attributable Fraction project
 ### [Sources](https://uk-generations-study.github.io/UK-cancer-trends/Sources)
 An initial list of sources to consider when writing the position paper.
