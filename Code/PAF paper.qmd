@@ -15,6 +15,7 @@ Loading the necessary packages
 
 ```{r}
 #| echo: false
+#| warning: false
 library(dplyr)
 library(tidyr)
 library(stringr)
@@ -26,6 +27,7 @@ library(segmented)
 Run the background code ( I am not sure this is necessary)
 
 ```{r}
+#| warning: false
 source("C:\\Users\\zrichards.ICR\\OneDrive - The Institute of Cancer Research\\Git\\UK-cancer-trends\\Code\\PAF\\PAFCalculations.R", echo = FALSE)
 
 ```
@@ -36,6 +38,7 @@ Looking at how the PAF change as the population risk factor exposure ranges from
 
 ```{r}
 #| echo: false
+#| warning: false
 #creating a sequence of prevalence 
 prevalencerange <- seq(0, 1, by = 0.01)
 # Define a constant Relative Risk (RR)
@@ -88,6 +91,7 @@ The risk factors trending over the past 2 decades.:
 
 ```{r}
 #| echo: false
+#| warning: false
 cleanedprev <- cleanedprev %>% 
   filter(!variable %in% c("diabetes_men", "diabetes_women", "% Meet Physical Activity Guidelines", "hrt"))
 
@@ -127,38 +131,36 @@ Alcohol PAF was estimated for 2005-2010 based on the available data using a join
 
 ```{r}
 #| echo: false
+#| warning: false
 Mcheck <- ggplot(menalcohol, aes(x= yr, y = SCC)) +
   geom_line() + geom_point() + 
-  labs(title = "Alcohol OSCC PAF Predictions - Men", x = "Year", y = "PAF") + 
+  labs(title = " OSCC", x = "Year", y = "PAF") + 
  #geom_vline(xintercept = 2015, color = "red", linetype = "dashed", size = 1) +
   theme_minimal () + ylim(0,.5) +xlim(2005, 2019)
-print(Mcheck)
 
 Mcheck1 <- ggplot(menalcohol, aes(x= yr, y = Colorectal)) +
   geom_line() + geom_point() + 
-  labs(title = "Alcohol Colorectal PAF Predictions - Men", x = "Year", y = "PAF") +
+  labs(title = " Colorectal", x = "Year", y = "PAF") +
   #geom_vline(xintercept = 2015, color = "red", linetype = "dashed", size = 1) +
-  theme_minimal () + ylim(0,.1) +xlim(2005, 2019)
-print(Mcheck1)
+  theme_minimal () + ylim(0,.5) +xlim(2005, 2019)
 
 Wcheck <- ggplot(womenalcohol, aes(x= yr, y = SCC)) +
   geom_line() + geom_point() + 
-  labs(title = "Alcohol SCC PAF Predictions - Women", x = "Year", y = "PAF") +
-  theme_minimal () + ylim(0,.5) +xlim(2005, 2019)
-print(Wcheck)
+  labs(title = " OSCC", x = "Year", y = "PAF") +
+  theme_minimal () + ylim(0,.35) +xlim(2005, 2019)
 
 Wcheck1 <- ggplot(womenalcohol, aes(x= yr, y = Colorectal)) +
   geom_line() + geom_point() + 
-  labs(title = "Alcohol Colorectal PAF Predictions - Women", x = "Year", y = "PAF") +
-  theme_minimal () + ylim(0,.1) +xlim(2005, 2019)
-print(Wcheck1)
+  labs(title = "Colorectal ", x = "Year", y = "PAF") +
+  theme_minimal () + ylim(0,.35) +xlim(2005, 2019)
 
 Wcheck2 <- ggplot(womenalcohol, aes(x= yr, y = Breast)) + 
   geom_line() + geom_point() + 
-  labs(title = "Alcohol Breast PAF Predictions - Women", x = "Year", y = "PAF") + 
-  theme_minimal () + ylim(0,.1) +xlim(2005, 2019)
-print(Wcheck2)
+  labs(title = "Breast", x = "Year", y = "PAF") + 
+  theme_minimal () + ylim(0,.35) +xlim(2005, 2019)
 
+mencheck <- grid.arrange(Mcheck, Mcheck1, ncol = 2, top = "Men Alcohol PAF back projections (2005-2010)")
+womencheck <- grid.arrange(Wcheck,Wcheck2, Wcheck1, ncol=3, top = "Women Alcohol PAF back projections (2005-2010)")
 ```
 
 ## Cancer Case Trends
@@ -167,6 +169,7 @@ How cancer incidence changes over time. These are absolute cases so they do not 
 
 ```{r}
 #| echo: false
+#| warning: false
 #MEN
 cancerratesEM <- cancerrates %>% filter(Country == "England", Sex =="Men", Year <= 2019)
 
@@ -204,6 +207,7 @@ How the individual risk factor PAFs trend over time by cancer site.
 
 ```{r}
 #| echo: false
+#| warning: false
 ############# MEN ###################
 smoking <- PAF_all %>% filter(riskfactor == "smoking", sex == "Men")
 bmi <- PAF_all %>% filter(riskfactor == "bmi", sex == "Men")
@@ -216,19 +220,19 @@ processedmeat <- PAF_all %>% filter(riskfactor =="processedmeat", sex == "Men")
 smoking_lungmen <- ggplot(smoking, aes(x= yr, y = Lung)) + 
   geom_line() + geom_point() + 
   labs(title = "Smoking", x = "Year", y = "PAF") +
-  theme_minimal () + ylim(0,.75)+xlim(2005, 2019)
+  theme_minimal () +  ylim(0,.75) +xlim(2005, 2019)
 #COLORECTAL CANCER
 smoking_colorectalmen <- ggplot(smoking, aes(x= yr, y = Colorectal)) +
   geom_line() + geom_point() + 
   labs(title = "Smoking", x = "Year", y = "PAF") + 
-  theme_minimal () + ylim(0,.75) +xlim(2005, 2019)
+  theme_minimal () +  ylim(0,.2) +xlim(2005, 2019)
 bmi_colorectalmen <- ggplot(bmi, aes(x= yr, y = Colorectal)) + geom_line() + geom_point() + 
   labs(title = "BMI", x = "Year", y = "PAF") + 
-  theme_minimal () + ylim(0,.4)+xlim(2005, 2019)
+  theme_minimal () +  ylim(0,.2) +xlim(2005, 2019)
 alcohol_colorectalmen <- ggplot(alcohol, aes(x= yr, y = Colorectal)) + 
   geom_line() + geom_point() + 
   labs(title = "Alcohol", x = "Year", y = "PAF") + 
-  theme_minimal () + ylim(0,.45) +xlim(2005, 2019)
+  theme_minimal () +  ylim(0,.2) +xlim(2005, 2019)
 fibre_colorectalmen <- ggplot(fibre, aes( x = yr, y = Colorectal)) + 
   geom_line() + geom_point() + 
   labs(title = "Fibre", x = "Year", y = "PAF") + 
@@ -244,29 +248,29 @@ processedmeat_colorectalmen <- ggplot(processedmeat, aes( x = yr, y = Colorectal
 smoking_pancreasmen <- ggplot(smoking, aes(x= yr, y = Pancreas)) +
   geom_line() + geom_point() + 
   labs(title = "Smoking", x = "Year", y = "PAF") +
-  theme_minimal () + ylim(0,.75) +xlim(2005, 2019)
+  theme_minimal () + ylim(0,.3) +xlim(2005, 2019)
 bmi_pancreasmen <- ggplot(bmi, aes(x= yr, y = Pancreas)) + 
   geom_line() + geom_point() + 
   labs(title = "BMI", x = "Year", y = "PAF") +
-  theme_minimal () + ylim(0,.4) +xlim(2005, 2019)
+  theme_minimal () + ylim(0,.3) +xlim(2005, 2019)
 #SCC CANCER
 smoking_SCCmen <- ggplot(smoking, aes(x= yr, y = SCC)) + 
   geom_line() + geom_point() + 
   labs(title = "Smoking", x = "Year", y = "PAF") + 
-  theme_minimal () + ylim(0,.75) +xlim(2005, 2019)
+  theme_minimal () + ylim(0,.6) +xlim(2005, 2019)
 bmi_SCCmen <- ggplot(bmi, aes(x= yr, y = SCC)) +
   geom_line() + geom_point() + 
   labs(title = "BMI", x = "Year", y = "PAF") + 
-  theme_minimal () + ylim(0,.4) +xlim(2005, 2019)
+  theme_minimal () + ylim(0,.6) +xlim(2005, 2019)
 alcohol_SCCmen <- ggplot(alcohol, aes(x= yr, y = SCC)) + 
   geom_line() + geom_point() + 
   labs(title = "Alcohol", x = "Year", y = "PAF") + 
-  theme_minimal () + ylim(0,.45) +xlim(2005, 2019)
+  theme_minimal () + ylim(0,.6) +xlim(2005, 2019)
 #AC CANCER
 smoking_ACmen <- ggplot(smoking, aes(x= yr, y = AC)) + 
   geom_line() + geom_point() +
   labs(title = "Smoking", x = "Year", y = "PAF") + 
-  theme_minimal () + ylim(0,.75) +xlim(2005, 2019)
+  theme_minimal () + ylim(0,.4) +xlim(2005, 2019)
 bmi_ACmen <- ggplot(bmi, aes(x= yr, y = AC)) + 
   geom_line() + geom_point() + 
   labs(title = "BMI", x = "Year", y = "PAF") + 
@@ -274,7 +278,7 @@ bmi_ACmen <- ggplot(bmi, aes(x= yr, y = AC)) +
 alcohol_ACmen <- ggplot(alcohol, aes(x= yr, y = AC)) + 
   geom_line() + geom_point() +
   labs(title = "Alcohol", x = "Year", y = "PAF") + 
-  theme_minimal () + ylim(0,.45) +xlim(2005, 2019)
+  theme_minimal () + ylim(0,.4) +xlim(2005, 2019)
 
 ############# WOMEN ###################
 smoking <- PAF_all %>% filter(riskfactor == "smoking", sex == "Women")
@@ -293,15 +297,15 @@ smoking_lungwomen <- ggplot(smoking, aes(x= yr, y = Lung)) +
 smoking_colorectalwomen <- ggplot(smoking, aes(x= yr, y = Colorectal)) +
   geom_line() + geom_point() + 
   labs(title = "Smoking", x = "Year", y = "PAF") + 
-  theme_minimal () + ylim(0,.75) +xlim(2005, 2019)
+  theme_minimal () + ylim(0,.2) +xlim(2005, 2019)
 bmi_colorectalwomen <- ggplot(bmi, aes(x= yr, y = Colorectal)) +
   geom_line() + geom_point() + 
   labs(title = "BMI", x = "Year", y = "PAF") + 
-  theme_minimal () + ylim(0,.4) +xlim(2005, 2019)
+  theme_minimal () + ylim(0,.2) +xlim(2005, 2019)
 alcohol_colorectalwomen <- ggplot(alcohol, aes(x= yr, y = Colorectal)) +
   geom_line() + geom_point() + 
   labs(title = "Alcohol", x = "Year", y = "PAF") + 
-  theme_minimal () + ylim(0,.45) +xlim(2005, 2019)
+  theme_minimal () + ylim(0,.2) +xlim(2005, 2019)
 fibre_colorectalwomen <- ggplot(fibre, aes( x = yr, y = Colorectal)) + 
   geom_line() + geom_point() + 
   labs(title = "Fibre", x = "Year", y = "PAF") + 
@@ -318,38 +322,38 @@ processedmeat_colorectalwomen <- ggplot(processedmeat, aes( x = yr, y = Colorect
 smoking_pancreaswomen <- ggplot(smoking, aes(x= yr, y = Pancreas)) + 
   geom_line() + geom_point() + 
   labs(title = "Smoking", x = "Year", y = "PAF") +
-  theme_minimal () + ylim(0,.75) +xlim(2005, 2019)
+  theme_minimal () + ylim(0,.3) +xlim(2005, 2019)
 bmi_pancreaswomen <- ggplot(bmi, aes(x= yr, y = Pancreas)) +
   geom_line() + geom_point() + 
   labs(title = "BMI ", x = "Year", y = "PAF") +
-  theme_minimal () + ylim(0,.4) +xlim(2005, 2019)
+  theme_minimal () + ylim(0,.3) +xlim(2005, 2019)
 #BREAST CANCER
 bmi_breastwomen <- ggplot(bmi, aes(x= yr, y = Breast)) + 
   geom_line() + geom_point() +
   labs(title = "BMI", x = "Year", y = "PAF") +
-  theme_minimal () + ylim(0,.4) +xlim(2005, 2019)
+  theme_minimal () + ylim(0,.1) +xlim(2005, 2019)
 alcohol_breastwomen <- ggplot(alcohol, aes(x= yr, y = Breast)) +
   geom_line() + geom_point() +
   labs(title = "Alcohol", x = "Year", y = "PAF") +
-  theme_minimal () + ylim(0,.45) +xlim(2005, 2019)
+  theme_minimal () + ylim(0,.1) +xlim(2005, 2019)
 #SCC CANCER
 smoking_SCCwomen <- ggplot(smoking, aes(x= yr, y = SCC)) + 
   geom_line() + geom_point() + 
   labs(title = "Smoking", x = "Year", y = "PAF") + 
-  theme_minimal () + ylim(0,.75)+xlim(2005, 2019)
+  theme_minimal () + ylim(0,.6)+xlim(2005, 2019)
 bmi_SCCwomen <- ggplot(bmi, aes(x= yr, y = SCC)) + 
   geom_line() + geom_point() + 
   labs(title = "BMI", x = "Year", y = "PAF") + 
-  theme_minimal () + ylim(0,.4) +xlim(2005, 2019)
+  theme_minimal () + ylim(0,.6) +xlim(2005, 2019)
 alcohol_SCCwomen <- ggplot(alcohol, aes(x= yr, y = SCC)) + 
   geom_line() + geom_point() + 
   labs(title = "Alcohol", x = "Year", y = "PAF") + 
-  theme_minimal () + ylim(0,.45) +xlim(2005, 2019)
+  theme_minimal () + ylim(0,.6) +xlim(2005, 2019)
 #AC CANCER
 smoking_ACwomen <- ggplot(smoking, aes(x= yr, y = AC)) + 
   geom_line() + geom_point() + 
   labs(title = "Smoking", x = "Year", y = "PAF") + 
-  theme_minimal () + ylim(0,.75) +xlim(2005, 2019)
+  theme_minimal () + ylim(0,.4) +xlim(2005, 2019)
 bmi_ACwomen <- ggplot(bmi, aes(x= yr, y = AC)) + 
   geom_line() + geom_point() + 
   labs(title = "BMI", x = "Year", y = "PAF") + 
@@ -357,28 +361,31 @@ bmi_ACwomen <- ggplot(bmi, aes(x= yr, y = AC)) +
 alcohol_ACwomen <- ggplot(alcohol, aes(x= yr, y = AC)) + 
   geom_line() + geom_point() + 
   labs(title = "Alcohol", x = "Year", y = "PAF") + 
-  theme_minimal () + ylim(0,.45)+xlim(2005, 2019)
+  theme_minimal () + ylim(0,.4)+xlim(2005, 2019)
 
 #print the graphs together 
-Mlungcancer <- grid.arrange(smoking_lungmen, ncol = 1, top = "MEN")
-Mcolorectalcancer <- grid.arrange(smoking_colorectalmen, bmi_colorectalmen, alcohol_colorectalmen, fibre_colorectalmen, redmeat_colorectalmen,processedmeat_colorectalmen, ncol = 6, top = "MEN")
-Mpancreascancer <- grid.arrange(smoking_pancreasmen, bmi_pancreasmen, ncol = 2, top = "MEN")
-MSCCcancer <- grid.arrange(smoking_SCCmen, bmi_SCCmen, alcohol_SCCmen, ncol = 3, top = "MEN")
-MACcancer <- grid.arrange(smoking_ACmen, bmi_ACmen, alcohol_ACmen, ncol = 3, top = "MEN")
-#Women
-Wlungcancer <- grid.arrange(smoking_lungwomen, ncol = 1, top = "WOMEN")
-Wcolorectalcancer <- grid.arrange(smoking_colorectalwomen, bmi_colorectalwomen, alcohol_colorectalwomen, fibre_colorectalwomen, redmeat_colorectalwomen, processedmeat_colorectalwomen, ncol = 6, top = "WOMEN")
-Wpancreascancer <- grid.arrange(smoking_pancreaswomen, bmi_pancreaswomen,ncol = 2, top = "WOMEN")
-Wbreastcancer <- grid.arrange( bmi_breastwomen, alcohol_breastwomen, ncol = 2, top = "WOMEN Estimates for Population Attributable Fractions on Breast Cancer")
-WSCCcancer <- grid.arrange(smoking_SCCwomen, bmi_SCCwomen, alcohol_SCCwomen, ncol = 3, top = "WOMEN")
-WACcancer <- grid.arrange(smoking_ACwomen, bmi_ACwomen, alcohol_ACwomen, ncol = 3, top = "WOMEN")
+# MEN
+Mlungcancer <- arrangeGrob(smoking_lungmen, ncol = 1, top = "MEN")
+Mcolorectalcancer <- arrangeGrob(fibre_colorectalmen,bmi_colorectalmen,  smoking_colorectalmen, alcohol_colorectalmen, redmeat_colorectalmen, processedmeat_colorectalmen, ncol = 6, top = "MEN")
+Mpancreascancer <- arrangeGrob(smoking_pancreasmen, bmi_pancreasmen, ncol = 2, top = "MEN")
+MSCCcancer <- arrangeGrob(smoking_SCCmen, alcohol_SCCmen, bmi_SCCmen, ncol = 3, top = "MEN")
+MACcancer <- arrangeGrob(smoking_ACmen, bmi_ACmen, alcohol_ACmen, ncol = 3, top = "MEN")
+
+# WOMEN
+Wlungcancer <- arrangeGrob(smoking_lungwomen, ncol = 1, top = "WOMEN")
+Wcolorectalcancer <- arrangeGrob(fibre_colorectalwomen,bmi_colorectalwomen, smoking_colorectalwomen, alcohol_colorectalwomen, redmeat_colorectalwomen, processedmeat_colorectalwomen, ncol = 6, top = "WOMEN")
+Wpancreascancer <- arrangeGrob(smoking_pancreaswomen, bmi_pancreaswomen, ncol = 2, top = "WOMEN")
+Wbreastcancer <- arrangeGrob(bmi_breastwomen, alcohol_breastwomen, nrow = 2, top = "WOMEN Estimates for Population Attributable Fractions on Breast Cancer")
+WSCCcancer <- arrangeGrob(smoking_SCCwomen, alcohol_SCCwomen, bmi_SCCwomen, ncol = 3, top = "WOMEN")
+WACcancer <- arrangeGrob(smoking_ACwomen, bmi_ACwomen, alcohol_ACwomen, ncol = 3, top = "WOMEN")
+
 #ALL
-lung <- grid.arrange(Mlungcancer, Wlungcancer, nrow=2, top = "Estimates for Population Attributable Fractions on Lung Cancer")
+lung <- grid.arrange(Mlungcancer, Wlungcancer, ncol=2, top = "Estimates for Population Attributable Fractions on Lung Cancer")
 colorectal <- grid.arrange(Mcolorectalcancer, Wcolorectalcancer, nrow=2, top = "Estimates for Population Attributable Fractions on Colorectal Cancer" )
 pancreas <- grid.arrange(Mpancreascancer, Wpancreascancer, nrow=2, top = "Estimates for Population Attributable Fractions on Pancreas Cancer")
 Wbreastcancer <- grid.arrange( bmi_breastwomen, alcohol_breastwomen, nrow=2, top = "WOMEN Estimates for Population Attributable Fractions on Breast Cancer")
-SCC <- grid.arrange(MSCCcancer, WSCCcancer, nrow=2, top = "Estimates for Population Attributable Fractions on SCC Cancer")
-AC <- grid.arrange(MACcancer, WACcancer, nrow=2, top = "Estimates for Population Attributable Fractions on AC Cancer")
+SCC <- grid.arrange(MSCCcancer, WSCCcancer, nrow=2, top = "Estimates for Population Attributable Fractions on OSCC Cancer")
+AC <- grid.arrange(MACcancer, WACcancer, nrow=2, top = "Estimates for Population Attributable Fractions on OAC Cancer")
 
 ```
 
@@ -388,6 +395,7 @@ How the individual risk factor PAFs trend over time grouped by risk factor.
 
 ```{r}
 #| echo: false
+#| warning: false
 ############# MEN ###################
 smoking <- PAF_all %>% filter(riskfactor == "smoking", sex == "Men")
 bmi <- PAF_all %>% filter(riskfactor == "bmi", sex == "Men")
@@ -438,28 +446,28 @@ bmi_pancreasmen <- ggplot(bmi, aes(x= yr, y = Pancreas)) +
 #SCC CANCER
 smoking_SCCmen <- ggplot(smoking, aes(x= yr, y = SCC)) + 
   geom_line() + geom_point() + 
-  labs(title = "SCC Oesophageal Cancer", x = "Year", y = "PAF") + 
+  labs(title = "OSCC Cancer", x = "Year", y = "PAF") + 
   theme_minimal () + ylim(0,.75) +xlim(2005, 2019)
 bmi_SCCmen <- ggplot(bmi, aes(x= yr, y = SCC)) + 
   geom_line() + geom_point() + 
-  labs(title = "SCC Oesophageal Cancer", x = "Year", y = "PAF") + 
+  labs(title = "OSCC Cancer", x = "Year", y = "PAF") + 
   theme_minimal () + ylim(0,.4) +xlim(2005, 2019)
 alcohol_SCCmen <- ggplot(alcohol, aes(x= yr, y = SCC)) + 
   geom_line() + geom_point() + 
-  labs(title = "SCC Oesophageal Cancer", x = "Year", y = "PAF") + 
+  labs(title = "OSCC Cancer", x = "Year", y = "PAF") + 
   theme_minimal () + ylim(0,.45) +xlim(2005, 2019)
 #AC CANCER
 smoking_ACmen <- ggplot(smoking, aes(x= yr, y = AC)) + 
   geom_line() + geom_point() + 
-  labs(title = "AC Oesophageal Cancer", x = "Year", y = "PAF") + 
+  labs(title = "OAC Cancer", x = "Year", y = "PAF") + 
   theme_minimal () + ylim(0,.75) +xlim(2005, 2019)
 bmi_ACmen <- ggplot(bmi, aes(x= yr, y = AC)) +
   geom_line() + geom_point() + 
-  labs(title = "AC Oesophageal Cancer", x = "Year", y = "PAF") + 
+  labs(title = "OAC Cancer", x = "Year", y = "PAF") + 
   theme_minimal () + ylim(0,0.4)+xlim(2005, 2019)
 alcohol_ACmen <- ggplot(alcohol, aes(x= yr, y = AC)) +
   geom_line() + geom_point() + 
-  labs(title = "AC Oesophageal Cancer", x = "Year", y = "PAF") + 
+  labs(title = "OAC Cancer", x = "Year", y = "PAF") + 
   theme_minimal () + ylim(0,.45) +xlim(2005, 2019)
 
 ############# WOMEN ###################
@@ -519,45 +527,49 @@ alcohol_breastwomen <- ggplot(alcohol, aes(x= yr, y = Breast)) +
 #SCC CANCER
 smoking_SCCwomen <- ggplot(smoking, aes(x= yr, y = SCC)) +
   geom_line() + geom_point() + 
-  labs(title = "SCC Oesophageal Cancer", x = "Year", y = "PAF") + 
+  labs(title = "OSCC Cancer", x = "Year", y = "PAF") + 
   theme_minimal () + ylim(0,.75)+xlim(2005, 2019)
 bmi_SCCwomen <- ggplot(bmi, aes(x= yr, y = SCC)) +
   geom_line() + geom_point() + 
-  labs(title = "SCC Oesophageal Cancer", x = "Year", y = "PAF") + 
+  labs(title = "OSCC Cancer", x = "Year", y = "PAF") + 
   theme_minimal () + ylim(0,.4) +xlim(2005, 2019)
 alcohol_SCCwomen <- ggplot(alcohol, aes(x= yr, y = SCC)) +
   geom_line() + geom_point() + 
-  labs(title = "SCC Oesophageal Cancer", x = "Year", y = "PAF") + 
+  labs(title = "OSCC Cancer", x = "Year", y = "PAF") + 
   theme_minimal () + ylim(0,.45) +xlim(2005, 2019)
 #AC CANCER
 smoking_ACwomen <- ggplot(smoking, aes(x= yr, y = AC)) + 
   geom_line() + geom_point() + 
-  labs(title = "AC Oesophageal Cancer", x = "Year", y = "PAF") + 
+  labs(title = "OAC Cancer", x = "Year", y = "PAF") + 
   theme_minimal () + ylim(0,.75) +xlim(2005, 2019)
 bmi_ACwomen <- ggplot(bmi, aes(x= yr, y = AC)) +
   geom_line() + geom_point() + 
-  labs(title = "AC Oesophageal Cancer", x = "Year", y = "PAF") + 
+  labs(title = "OAC Cancer", x = "Year", y = "PAF") + 
   theme_minimal () + ylim(0,0.4)+xlim(2005, 2019)
 alcohol_ACwomen <- ggplot(alcohol, aes(x= yr, y = AC)) + 
   geom_line() + geom_point() + 
-  labs(title = "AC Oesophageal Cancer", x = "Year", y = "PAF") + 
+  labs(title = "OAC Cancer", x = "Year", y = "PAF") + 
   theme_minimal () + ylim(0,.45)+xlim(2005, 2019)
 
 #visualzing 
-smokingmen <- grid.arrange(smoking_lungmen,smoking_SCCmen, smoking_ACmen, smoking_pancreasmen, smoking_colorectalmen, ncol = 5,  top = "MEN")
-smokingwomen <- grid.arrange(smoking_lungwomen, smoking_SCCwomen, smoking_ACwomen, smoking_pancreaswomen, smoking_colorectalwomen,ncol = 5,  top = "WOMEN")
+smokingmen <- arrangeGrob(smoking_lungmen, smoking_SCCmen, smoking_ACmen, smoking_pancreasmen, smoking_colorectalmen, ncol = 5, top = "MEN")
+smokingwomen <- arrangeGrob(smoking_lungwomen, smoking_SCCwomen, smoking_ACwomen, smoking_pancreaswomen, smoking_colorectalwomen, ncol = 5, top = "WOMEN")
+
 smoking_allcancersites <- grid.arrange(smokingmen, smokingwomen, nrow = 2, top = "Smoking as a Cancer Risk Factor")
 
-bmimen <- grid.arrange(bmi_ACmen, bmi_colorectalmen, bmi_pancreasmen, ncol =4, top = "MEN")
-bmiwomen <- grid.arrange( bmi_ACwomen, bmi_colorectalwomen, bmi_breastwomen, bmi_pancreaswomen, ncol = 4, top = "WOMEN")
+bmimen <- arrangeGrob(bmi_ACmen, bmi_colorectalmen, bmi_pancreasmen, ncol = 4, top = "MEN")
+bmiwomen <- arrangeGrob(bmi_ACwomen, bmi_colorectalwomen, bmi_breastwomen, bmi_pancreaswomen, ncol = 4, top = "WOMEN")
+
 bmi_allcancersites <- grid.arrange(bmimen, bmiwomen, nrow = 2, top = "BMI as a Cancer Risk Factor")
 
-alcoholmen <- grid.arrange(alcohol_SCCmen, alcohol_colorectalmen, alcohol_ACmen, ncol=4, top = "MEN")
-alcoholwomen <- grid.arrange(alcohol_SCCwomen,alcohol_breastwomen, alcohol_colorectalwomen, alcohol_ACwomen, ncol = 4, top = "WOMEN")
+alcoholmen <- arrangeGrob(alcohol_SCCmen, alcohol_colorectalmen, alcohol_ACmen, ncol = 4, top = "MEN")
+alcoholwomen <- arrangeGrob(alcohol_SCCwomen, alcohol_breastwomen, alcohol_colorectalwomen, alcohol_ACwomen, ncol = 4, top = "WOMEN")
+
 alcohol_allcancersites <- grid.arrange(alcoholmen, alcoholwomen, nrow=2, top = "Alcohol as a Cancer Risk Factor")
 
-dietaryMEN <- grid.arrange(fibre_colorectalmen, redmeat_colorectalmen, processedmeat_colorectalmen, ncol=3, top = "Men")
-dietaryWOMEN <- grid.arrange(fibre_colorectalwomen, redmeat_colorectalwomen,processedmeat_colorectalwomen, ncol =3, top = "Women")
+dietaryMEN <- arrangeGrob(fibre_colorectalmen, redmeat_colorectalmen, processedmeat_colorectalmen, ncol = 3, top = "MEN")
+dietaryWOMEN <- arrangeGrob(fibre_colorectalwomen, redmeat_colorectalwomen, processedmeat_colorectalwomen, ncol = 3, top = "WOMEN")
+
 dietary <- grid.arrange(dietaryMEN,dietaryWOMEN, nrow = 2,  top = "Dietary Cancer Risk Factors in Colorectal Cancer")
 
 ```
@@ -573,7 +585,7 @@ Aggregate PAFs for each cancer site that include the risk factors investigated i
 
 ```{r}
 #| echo: false
-#| 
+#| warning: false
 aggregatepaf_plot_men <- ggplot(aggregate_paf_men, aes(x = Year, y = PAF, color = cancersite, group = cancersite)) +
   geom_line() +
   geom_point() +
@@ -608,6 +620,7 @@ Using the historical incident cancer cases from the National Cancer Registry and
 
 ```{r}
 #| echo: false
+#| warning: false
 
 # mencases_visualized <- ggplot(mencases, aes(x = Yr_cases, y = attrcases, color = cancersite)) + 
 #   geom_point() + 
@@ -665,6 +678,7 @@ current smoking prevalence = 0
 
 ```{r}
 #| echo: false
+#| warning: false
 
 pafformersmoker<- ggplot(data.frame(prevalence = formersmokingrange2019, PAF = smokingprevalence2019$paf), aes(x = prevalence, y = PAF)) +
   geom_line(color = "blue", size = 1) +
