@@ -51,7 +51,7 @@ for (year in 2005:2019) {
   aggregate_paf_men[aggregate_paf_men$cancersite == "Pancreas", as.character(year)] <- cumulative_pancreas
 }
 
-print(aggregate_paf_men)
+#print(aggregate_paf_men)
 #################################################################################
 #for women
 aggregate_paf_women <- data.frame(

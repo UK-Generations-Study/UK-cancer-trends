@@ -672,7 +672,7 @@ mencases_visualized <- ggplot(mencases, aes(x = Yr_cases, y = attrcases, fill = 
   labs(title = "Cases Attributable to Modifiable RF in England for Men",
        x = "Year",
        y = "Attributable Cases") +
-  scale_x_continuous(breaks = 2015:2019, limits = c(2015, 2019)) +
+  scale_x_continuous(breaks = 2015:2019, limits = c(2014,2020)) +
   scale_fill_manual(values = cancer_colors) +
   theme_minimal() 
 print(mencases_visualized)
@@ -682,7 +682,7 @@ womencases_visualized <- ggplot(womencases, aes(x = Yr_cases, y = attrcases, fil
   labs(title = "Cases Attributable to Modifiable RF in England for Women",
        x = "Year",
        y = "Attributable Cases") +
-  scale_x_continuous(breaks = 2015:2019, limits = c(2015, 2019)) +
+  scale_x_continuous(breaks = 2015:2019, limits = c(2014,2020)) +
   scale_fill_manual(values = cancer_colors) +
   theme_minimal() 
 print(womencases_visualized)
