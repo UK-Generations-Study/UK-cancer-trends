@@ -637,6 +637,14 @@ Using the historical incident cancer cases from the National Cancer Registry and
 #| echo: false
 #| warning: false
 
+cancer_colors <- c(
+  "Lung" = "#1B9E77",
+  "Colorectal" = "#D95F02",
+  "Pancreas" = "#7570B3",
+  "Breast" = "#E7298A",
+  "SCC" = "#66A61E",
+  "AC" = "#E6AB02"
+)
 # mencases_visualized <- ggplot(mencases, aes(x = Yr_cases, y = attrcases, color = cancersite)) + 
 #   geom_point() + 
 #   geom_line() +
@@ -665,7 +673,7 @@ mencases_visualized <- ggplot(mencases, aes(x = Yr_cases, y = attrcases, fill = 
        x = "Year",
        y = "Attributable Cases") +
   scale_x_continuous(breaks = 2015:2019, limits = c(2015, 2019)) +
-  scale_fill_brewer(palette = "Dark2") +
+  scale_fill_manual(values = cancer_colors) +
   theme_minimal() 
 print(mencases_visualized)
 
@@ -675,7 +683,7 @@ womencases_visualized <- ggplot(womencases, aes(x = Yr_cases, y = attrcases, fil
        x = "Year",
        y = "Attributable Cases") +
   scale_x_continuous(breaks = 2015:2019, limits = c(2015, 2019)) +
-  scale_fill_brewer(palette = "Dark2") +
+  scale_fill_manual(values = cancer_colors) +
   theme_minimal() 
 print(womencases_visualized)
 
