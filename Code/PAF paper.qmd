@@ -20,7 +20,7 @@ execute:
   fig-height: 8  
 ---
 
-#Population Attributable Fractions (PAF) project 
+# Population Attributable Fractions (PAF) project 
 This project is calculating the PAFs over time from 2015 and projecting them in to 2030.
 
 ## Preparing the Data
