@@ -12,7 +12,7 @@ format:
       gutter-width: 1.5rem
 editor: 
   mode: source
-  project-dir: "."
+project-dir: "."
 execute:
   echo: false
   warning: false
