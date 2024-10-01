@@ -5,6 +5,7 @@ library(stringr)
 library (ggplot2)
 library(gridExtra)
 library(rstudioapi)
+library(table1)
 
 #trying this file directory thing 
 # Setting up wd for relative file paths
