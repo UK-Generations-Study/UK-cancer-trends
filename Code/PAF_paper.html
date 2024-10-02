@@ -35,6 +35,35 @@ ul.task-list li input[type="checkbox"] {
 <link href="PAF_paper_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="PAF_paper_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -48,7 +77,10 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#population-attributable-fractions-paf-project" id="toc-population-attributable-fractions-paf-project" class="nav-link active" data-scroll-target="#population-attributable-fractions-paf-project">Population Attributable Fractions (PAF) project</a>
   <ul>
-  <li><a href="#analysis-overview" id="toc-analysis-overview" class="nav-link" data-scroll-target="#analysis-overview">Analysis Overview</a></li>
+  <li><a href="#analysis-overview" id="toc-analysis-overview" class="nav-link" data-scroll-target="#analysis-overview">Analysis Overview</a>
+  <ul>
+  <li><a href="#sources" id="toc-sources" class="nav-link" data-scroll-target="#sources">Sources</a></li>
+  </ul></li>
   <li><a href="#calculations" id="toc-calculations" class="nav-link" data-scroll-target="#calculations">Calculations</a></li>
   </ul></li>
   <li><a href="#analysis-and-results" id="toc-analysis-and-results" class="nav-link" data-scroll-target="#analysis-and-results">Analysis and Results</a>
@@ -76,6 +108,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#aggregate-paf" id="toc-aggregate-paf" class="nav-link" data-scroll-target="#aggregate-paf">Aggregate PAF</a></li>
   <li><a href="#attributable-cases" id="toc-attributable-cases" class="nav-link" data-scroll-target="#attributable-cases">Attributable Cases</a></li>
   <li><a href="#more-realistic-smoking-scenario" id="toc-more-realistic-smoking-scenario" class="nav-link" data-scroll-target="#more-realistic-smoking-scenario">More Realistic Smoking Scenario</a></li>
+  </ul></li>
+  <li><a href="#relevant-for-conclusions" id="toc-relevant-for-conclusions" class="nav-link" data-scroll-target="#relevant-for-conclusions">Relevant for Conclusions</a>
+  <ul>
+  <li><a href="#predictions-in-the-wake-of-covid-19-pandemic" id="toc-predictions-in-the-wake-of-covid-19-pandemic" class="nav-link" data-scroll-target="#predictions-in-the-wake-of-covid-19-pandemic">Predictions in the wake of Covid-19 Pandemic</a></li>
+  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -110,6 +147,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="population-attributable-fractions-paf-project" class="level1">
 <h1>Population Attributable Fractions (PAF) project</h1>
 <p>This project is calculating the PAFs over time from 2015 and projecting them in to 2030.</p>
+<p>##Literature Review</p>
 <section id="analysis-overview" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-overview">Analysis Overview</h2>
 <p>This project involves the 6 cancer sites that have the top mortality rates in the UK (referencing Positions Paper):</p>
@@ -145,12 +183,26 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Fibre</p>
 <p>Consuming less than the UK recommended 30g/day</p></li>
 </ol>
+<section id="sources" class="level3">
+<h3 class="anchored" data-anchor-id="sources">Sources</h3>
+<p>Risk Factor Data</p>
+<ul>
+<li><p>Alcohol, Smoking, BMI: This data were sourced from cleaned data from the positions paper which were originally sourced from the ONS and collected via the Health Survey England (HSE)</p></li>
+<li><p>Dietary Data: This data were sourced from the National Diet and Nutrition Survey and downloaded from the UK Data Service.</p></li>
+</ul>
+<p>Cancer Incidence Data</p>
+<ul>
+<li><p>Data for all cancer incidences were sourced from cleaned data from the positions paper which were originally sourced from Cancer Research UK and Globocan.</p></li>
+<li><p>Additional data on Oesophageal cancer morphology was needed which was sourced from Offman et al 2018 research on projecting trends in OAC and OSCC.</p></li>
+</ul>
+</section>
 </section>
 <section id="calculations" class="level2">
 <h2 class="anchored" data-anchor-id="calculations">Calculations</h2>
 <p>The equation used to calculate the PAFS was the same one referenced in the Brown et al.&nbsp;paper to calculate PAFs with multiple exposure levels:</p>
-<p>PAF = ((p1 * ERR1)+(p2 * ERR2)+(p3 * ERR3)…(pn * ERRn)) / (1+(p1 * ERR1)+(p2 * ERR2)+(p3 * ERR3)…(pn * ERRn))</p>
-<p>where:</p>
+<p><span class="math display">\[
+  PAF = \frac {(p_1 * ERR_1)+(p_2 * ERR_2)+(p_3 * ERR_3)...(p_n * ERR_n)} {1+(p_1 * ERR_1)+(p_2 * ERR_2)+(p_3 * ERR_3)...(p_n * ERR_n)}
+  \]</span> where:</p>
 <ul>
 <li><p>pn = population exposure prevalence of risk factor n</p></li>
 <li><p>ERRn = Excess Relative Risk = (RR at exposure level n) - 1</p></li>
@@ -169,7 +221,7 @@ ul.task-list li input[type="checkbox"] {
 <h1>Analysis and Results</h1>
 <section id="preparing-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="preparing-the-data">Preparing the Data</h2>
-<p>Running the background code</p>
+<p>Running the background code and installing all of the necessary packages</p>
 </section>
 <section id="paf-relationship" class="level2">
 <h2 class="anchored" data-anchor-id="paf-relationship">PAF relationship</h2>
@@ -452,6 +504,36 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+</section>
+</section>
+<section id="relevant-for-conclusions" class="level1">
+<h1>Relevant for Conclusions</h1>
+<section id="predictions-in-the-wake-of-covid-19-pandemic" class="level2">
+<h2 class="anchored" data-anchor-id="predictions-in-the-wake-of-covid-19-pandemic">Predictions in the wake of Covid-19 Pandemic</h2>
+<p>Looking at the Health Survey England 2022 results to look at how the population prevalence of the main risk factors - alcohol, smoking, BMI - was effected by Covid-19. The HSE survey did not go ahead in 2020 but continued in 2021 and 2022.</p>
+<ol type="1">
+<li><p>Smoking: In 2022, the self reported prevalence of current smokers drops by 5% in both male and female adults when compared to 2019 prevalence.</p></li>
+<li><p>Alcohol: In 2022,the self reported prevalence of alcohol consumption at all levels is relatively the same when compared to 2019 prevalence.</p></li>
+<li><p>BMI: In 2022, the self reported prevalence of obesity and overweight is relatively the same when compared to 2019 prevalence (within 2%).</p></li>
+</ol>
+</section>
+<section id="limitations" class="level2">
+<h2 class="anchored" data-anchor-id="limitations">Limitations</h2>
+<p>The Brown et al.&nbsp;paper lists limitations for PAF calculations that should be considered. These are relevant for these calculations as well:</p>
+<ul>
+<li><p>Bias PAF estimates to be an underestimation of true population measures because:</p>
+<ul>
+<li><p>PAFs are based on the best available data so limitations of the source data should be considered</p>
+<pre><code>- Risk factor data is prone to self reporting errors (underestimate) </code></pre></li>
+<li><p>IARC classified sufficient/convincing causal link for risk factor inclusion criteria as there may be inclusion-worthy risk factors that haven’t reached this level</p></li>
+<li><p>Confounding cannot be ruled out through quality of relative risk evidence. (Example given unexposed group in alcohol RR could include ex and occasional drinkers which would dilute the measure.</p></li>
+<li><p>The method of summing individual PAFs to reach an overall number inherently underestimates the number because it doesn’t take the effect of risk factors in combination</p></li>
+</ul></li>
+<li><p>Blanket 10-year latency between PAF and incidence cases because the risk factor prevalence data does not have high quality historical data to have a 30-year latency</p>
+<ul>
+<li>Using custom time lag for each cancer site and risk factor would be unsystematic and reduced comparability</li>
+</ul></li>
+</ul>
 </section>
 </section>
 

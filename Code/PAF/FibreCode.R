@@ -79,6 +79,24 @@ data_ndhns <- rbind(data_1_4, data_5_6) |>
 #   facet_wrap(~sex, scales = "fixed", dir = "v")
 # print(figure3b_fibre)
 
+fibrerisk <- data_ndhns |>
+  filter(country == "England") |>
+  group_by(surveyyear_cat, sex, country) |>
+  mutate(fibre_rec = weight*(aoac_fibre < 30)) |>
+  summarise(mean_weight = mean(weight), fibre_rec = 100*sum(fibre_rec)/sum(weight)) |>
+  ggplot(aes(x= surveyyear_cat, y = fibre_rec, colour = country)) +
+  geom_line() +
+  geom_point() +
+  ylim(0,100) +
+  xlab("Year") +
+  ylab("% Not Meeting Fibre Intake Guidelines") +
+  ggtitle("% Not Meeting Fibre Intake Guidelines in England**") +
+  labs(colour = "Country", caption = "**Guidelines are 30g of Fibre per day") +
+  facet_wrap(~sex, scales = "fixed", dir = "v") +
+  theme_minimal()
+#print(fibrerisk)
+
+
 #new code from reubens 
 #it is calculating the prevaelnce of eating enough fibre 
 fibre_summary <- data_ndhns |>

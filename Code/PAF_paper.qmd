@@ -23,6 +23,8 @@ execute:
 # Population Attributable Fractions (PAF) project 
 This project is calculating the PAFs over time from 2015 and projecting them in to 2030.
 
+##Literature Review
+
 ## Analysis Overview 
 This project involves the 6 cancer sites that have the top mortality rates in the UK (referencing Positions Paper): 
 
@@ -50,42 +52,57 @@ The final list of risk factors and their exposures that are included in this res
 
 1. Smoking 
 
-    Current Smoking
+      Current Smoking
     
-     Former Smoking 
+      Former Smoking 
      
 2. BMI 
 
-    Obese(30+ BMI)
+      Obese(30+ BMI)
     
-    Overweight(25-30 BMI)
+      Overweight(25-30 BMI)
     
 3. Alcohol 
 
-    Light (<12g/day)Drinking
+      Light (<12g/day)Drinking
     
-    Medium(12-50g/day)Drinking
+      Medium(12-50g/day)Drinking
     
-    Heavy (>50g/day) Drinking 
+      Heavy (>50g/day) Drinking 
     
 4. Red Meat
 
-    Consuming more than the UK recommended 100g/day
+      Consuming more than the UK recommended 100g/day
     
 5. Processed Meat
 
-    Consuming more than the UK recommended 50g/day
+      Consuming more than the UK recommended 50g/day
     
 6. Fibre
 
-    Consuming less than the UK recommended 30g/day
+      Consuming less than the UK recommended 30g/day
+      
+### Sources 
+  
+Risk Factor Data 
+
+- Alcohol, Smoking, BMI: This data were sourced from cleaned data from the positions paper which were originally sourced from the ONS and collected via the Health Survey England (HSE)
+
+- Dietary Data: This data were sourced from the National Diet and Nutrition Survey and downloaded from the UK Data Service.
+
+Cancer Incidence Data
+
+- Data for all cancer incidences were sourced from cleaned data from the positions paper which were originally sourced from Cancer Research UK and Globocan. 
+
+- Additional data on Oesophageal cancer morphology was needed which was sourced from Offman et al 2018 research on projecting trends in OAC and OSCC. 
     
       
 ## Calculations  
 The equation used to calculate the PAFS was the same one referenced in the Brown et al. paper to calculate PAFs with multiple exposure levels: 
 
-  PAF = ((p1 * ERR1)+(p2 * ERR2)+(p3 * ERR3)...(pn * ERRn)) / (1+(p1 * ERR1)+(p2 * ERR2)+(p3 * ERR3)...(pn * ERRn))
-
+  $$
+  PAF = \frac {(p_1 * ERR_1)+(p_2 * ERR_2)+(p_3 * ERR_3)...(p_n * ERR_n)} {1+(p_1 * ERR_1)+(p_2 * ERR_2)+(p_3 * ERR_3)...(p_n * ERR_n)}
+  $$
 where: 
 
 - pn = population exposure prevalence of risk factor n 
@@ -120,7 +137,7 @@ library(gridExtra)
 library(segmented)
 ```
 
-Running the background code
+Running the background code and installing all of the necessary packages 
 ```{r}
 #| warning: false
 source("C:\\Users\\zrichards.ICR\\OneDrive - The Institute of Cancer Research\\Git\\UK-cancer-trends\\Code\\PAF\\PAFCalculations.R", echo = FALSE)
@@ -211,7 +228,7 @@ prev_englandmen <- ggplot(cleanedprev %>%
 print(prev_englandmen)
 
 
-print(figure3b_fibre)
+print(fibrerisk)
 
 
 print(all_processedmeat_visualize)
@@ -883,3 +900,35 @@ print(pafformersmoker)
 
 
 ```
+
+# Relevant for Conclusion
+
+## Predictions in the wake of Covid-19 Pandemic 
+
+Looking at the Health Survey England 2022 results to look at how the population prevalence of the main risk factors - alcohol, smoking, BMI - was effected by Covid-19. The HSE survey did not go ahead in 2020 but continued in 2021 and 2022. 
+
+1. Smoking: In 2022, the self reported prevalence of current smokers drops by 5% in both male and female adults when compared to 2019 prevalence.  
+
+2. Alcohol: In 2022,the self reported prevalence of alcohol consumption at all levels is relatively the same when compared to 2019 prevalence. 
+
+3. BMI: In 2022, the self reported prevalence of obesity and overweight is relatively the same when compared to 2019 prevalence (within 2%).
+
+## Limitations
+
+The Brown et al. paper lists limitations for PAF calculations that should be considered. These are relevant for these calculations as well:
+
+- Bias PAF estimates to be an underestimation of true population measures because:  
+
+    + PAFs are based on the best available data so limitations of the source data should be considered  
+
+            + Risk factor data is prone to self reporting errors (underestimate) 
+
+    + IARC classified sufficient/convincing causal link for risk factor inclusion criteria as there may be inclusion-worthy risk factors that haven’t reached this level  
+
+    + Confounding cannot be ruled out through quality of relative risk evidence. (Example given unexposed group in alcohol RR could include ex and occasional drinkers which would dilute the measure.  
+
+    + The method of summing individual PAFs to reach an overall number inherently underestimates the number because it doesn’t take the effect of risk factors in combination  
+
+- Blanket 10-year latency between PAF and incidence cases because the risk factor prevalence data does not have high quality historical data to have a 30-year latency  
+
+    + Using custom time lag for each cancer site and risk factor would be unsystematic and reduced comparability  
