@@ -33,8 +33,8 @@ This project involves the 6 cancer sites that have the top mortality rates in th
 6. Prostate
 
 The risk factors were included if they met the following criteria: 
--a modifiable risk factor surrounding an individuals lifestyle choices
--classified as having sufficient evidence for a causal relationship from IARC or World Cancer Research Fund
+- a modifiable risk factor surrounding an individuals lifestyle choices
+- classified as having sufficient evidence for a causal relationship from IARC or World Cancer Research Fund
 
 The final list of risk factors and their exposures that are included in this research project are: 
 1. Smoking 
@@ -57,7 +57,7 @@ The final list of risk factors and their exposures that are included in this res
 ## Calculations  
 The equation used to calculate the PAFS was the same one referenced in the Brown et al. paper to calculate PAFs with multiple exposure levels: 
 
-  PAF = ((p1*ERR1)+(p2*ERR2)+(p3*ERR3)...(pn*ERRn)) / (1+(p1*ERR1)+(p2*ERR2)+(p3*ERR3)...(pn*ERRn))
+  PAF = ((p1 * ERR1)+(p2 * ERR2)+(p3 * ERR3)...(pn * ERRn)) / (1+(p1 * ERR1)+(p2 * ERR2)+(p3 * ERR3)...(pn * ERRn))
 
 where: 
 - pn = population exposure prevalence of risk factor n 

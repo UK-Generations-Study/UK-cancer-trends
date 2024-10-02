@@ -113,13 +113,13 @@ ul.task-list li input[type="checkbox"] {
 <section id="analysis-overview" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-overview">Analysis Overview</h2>
 <p>This project involves the 6 cancer sites that have the top mortality rates in the UK (referencing Positions Paper): 1. Lung 2. Colorectal 3. Pancreatic 4. Breast 5. Oesophageal (Split by morphology - squamous cell carcinoma (OSCC) and adenocarcinoma (OAC)) 6. Prostate</p>
-<p>The risk factors were included if they met the following criteria: -a modifiable risk factor surrounding an individuals lifestyle choices -classified as having sufficient evidence for a causal relationship from IARC or World Cancer Research Fund</p>
+<p>The risk factors were included if they met the following criteria: - a modifiable risk factor surrounding an individuals lifestyle choices - classified as having sufficient evidence for a causal relationship from IARC or World Cancer Research Fund</p>
 <p>The final list of risk factors and their exposures that are included in this research project are: 1. Smoking Current Smoking Former Smoking 2. BMI Obese(30+ BMI) Overweight(25-30 BMI) 3. Alcohol Light (&lt;12g/day)Drinking Medium(12-50g/day)Drinking Heavy (&gt;50g/day) Drinking 4. Red Meat Consuming more than the UK recommended 100g/day 5. Processed Meat Consuming more than the UK recommended 50g/day 6. Fibre Consuming less than the UK recommended 30g/day</p>
 </section>
 <section id="calculations" class="level2">
 <h2 class="anchored" data-anchor-id="calculations">Calculations</h2>
 <p>The equation used to calculate the PAFS was the same one referenced in the Brown et al.&nbsp;paper to calculate PAFs with multiple exposure levels:</p>
-<p>PAF = ((p1<em>ERR1)+(p2</em>ERR2)+(p3<em>ERR3)…(pn</em>ERRn)) / (1+(p1<em>ERR1)+(p2</em>ERR2)+(p3<em>ERR3)…(pn</em>ERRn))</p>
+<p>PAF = ((p1 * ERR1)+(p2 * ERR2)+(p3 * ERR3)…(pn * ERRn)) / (1+(p1 * ERR1)+(p2 * ERR2)+(p3 * ERR3)…(pn * ERRn))</p>
 <p>where: - pn = population exposure prevalence of risk factor n - ERRn = Excess Relative Risk = (RR at exposure level n) - 1</p>
 <p>There are many assumptions that are made when calculating PAFs 1. Causality between the risk factor and the outcome 2. Accurate measurement of the relative risk and exposure prevalence 3. Removing the risk factor from the population would remove the risk of the outcome 4. The exposure is removable from the popualtion 5. All other risk factors remain constant</p>
 </section>
