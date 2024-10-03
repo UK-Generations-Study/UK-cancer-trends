@@ -77,6 +77,7 @@ window.Quarto = {
   <ul>
   <li><a href="#population-attributable-fractions-paf-project" id="toc-population-attributable-fractions-paf-project" class="nav-link active" data-scroll-target="#population-attributable-fractions-paf-project">Population Attributable Fractions (PAF) project</a>
   <ul>
+  <li><a href="#literature-review" id="toc-literature-review" class="nav-link" data-scroll-target="#literature-review">Literature Review</a></li>
   <li><a href="#analysis-overview" id="toc-analysis-overview" class="nav-link" data-scroll-target="#analysis-overview">Analysis Overview</a>
   <ul>
   <li><a href="#sources" id="toc-sources" class="nav-link" data-scroll-target="#sources">Sources</a></li>
@@ -147,7 +148,9 @@ window.Quarto = {
 <section id="population-attributable-fractions-paf-project" class="level1">
 <h1>Population Attributable Fractions (PAF) project</h1>
 <p>This project is calculating the PAFs over time from 2015 and projecting them in to 2030.</p>
-<p>##Literature Review</p>
+<section id="literature-review" class="level2">
+<h2 class="anchored" data-anchor-id="literature-review">Literature Review</h2>
+</section>
 <section id="analysis-overview" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-overview">Analysis Overview</h2>
 <p>This project involves the 6 cancer sites that have the top mortality rates in the UK (referencing Positions Paper):</p>
@@ -187,13 +190,17 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="sources">Sources</h3>
 <p>Risk Factor Data</p>
 <ul>
-<li><p>Alcohol, Smoking, BMI: This data were sourced from cleaned data from the positions paper which were originally sourced from the ONS and collected via the Health Survey England (HSE)</p></li>
-<li><p>Dietary Data: This data were sourced from the National Diet and Nutrition Survey and downloaded from the UK Data Service.</p></li>
+<li><p>Alcohol, Smoking, BMI: This data were sourced from cleaned data from the positions paper which were originally sourced from the ONS and collected via the <a href="https://digital.nhs.uk/data-and-information/publications/statistical/health-survey-for-england">Health Survey England (HSE)</a>. The data were requested from the <a href="https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=8860">UK Data Service</a> by year.</p></li>
+<li><p>Dietary Data: This data were sourced from the <a href="https://www.gov.uk/government/collections/national-diet-and-nutrition-survey">National Diet and Nutrition Survey</a> and downloaded from the <a href="https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=6533">UK Data Service</a>.</p></li>
 </ul>
 <p>Cancer Incidence Data</p>
 <ul>
 <li><p>Data for all cancer incidences were sourced from cleaned data from the positions paper which were originally sourced from Cancer Research UK and Globocan.</p></li>
-<li><p>Additional data on Oesophageal cancer morphology was needed which was sourced from Offman et al 2018 research on projecting trends in OAC and OSCC.</p></li>
+<li><p>Additional data on Oesophageal cancer morphology was needed which was sourced from <a href="https://pubmed.ncbi.nlm.nih.gov/29563637/">Offman et al 2018</a> research on projecting trends in OAC and OSCC.</p></li>
+</ul>
+<p>Risk Ratios</p>
+<ul>
+<li>Risk ratios were sourced from recent meta-analysis about cancer and the specific risk factors. A list of the sources can be found in Mendeley <a href="https://www.mendeley.com/reference-manager/library/collections/90fc0272-7ce4-4e01-a8c3-0c350cb2a74a/all-references/">here</a> and tracked in the <a href="https://icracuk.sharepoint.com/:f:/r/sites/DescriptiveEpidemiology/Shared%20Documents/PAF/PAFcalculations/Background%20Literature?csf=1&amp;web=1&amp;e=IboMfc">PAF Teams folder</a></li>
 </ul>
 </section>
 </section>
@@ -320,6 +327,7 @@ window.Quarto = {
 <p>How the individual risk factor PAFs trend over time by cancer site:</p>
 <section id="lung" class="level3">
 <h3 class="anchored" data-anchor-id="lung">1. Lung</h3>
+<p>Estimates for Population Attributable Fractions on Lung Cancer</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -332,6 +340,7 @@ window.Quarto = {
 </section>
 <section id="colorectal" class="level3">
 <h3 class="anchored" data-anchor-id="colorectal">2. Colorectal</h3>
+<p>Estimates for Population Attributable Fractions on Colorectal Cancer</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -340,10 +349,18 @@ window.Quarto = {
 </figure>
 </div>
 </div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="PAF_paper_files/figure-html/unnamed-chunk-9-2.png" class="img-fluid figure-img" width="1152"></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
 <section id="pancreas" class="level3">
 <h3 class="anchored" data-anchor-id="pancreas">3. Pancreas</h3>
+<p>Estimates for Population Attributable Fractions on Pancreas Cancer</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -356,6 +373,7 @@ window.Quarto = {
 </section>
 <section id="breast" class="level3">
 <h3 class="anchored" data-anchor-id="breast">4. Breast</h3>
+<p>Estimates for Population Attributable Fractions on Breast Cancer</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -368,6 +386,7 @@ window.Quarto = {
 </section>
 <section id="oesophageal-scc" class="level3">
 <h3 class="anchored" data-anchor-id="oesophageal-scc">5. Oesophageal SCC</h3>
+<p>Estimates for Population Attributable Fractions on OSCC Cancer</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -380,6 +399,7 @@ window.Quarto = {
 </section>
 <section id="oesophageal-ac" class="level3">
 <h3 class="anchored" data-anchor-id="oesophageal-ac">6. Oesophageal AC</h3>
+<p>Estimates for Population Attributable Fractions on OAC Cancer</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -396,6 +416,7 @@ window.Quarto = {
 <p>How the individual risk factor PAFs trend over time grouped by risk factor:</p>
 <section id="smoking" class="level3">
 <h3 class="anchored" data-anchor-id="smoking">1.Smoking</h3>
+<p>Smoking as a Cancer Risk Factor</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -408,6 +429,7 @@ window.Quarto = {
 </section>
 <section id="bmi" class="level3">
 <h3 class="anchored" data-anchor-id="bmi">2.BMI</h3>
+<p>BMI as a Cancer Risk Factor</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -416,15 +438,30 @@ window.Quarto = {
 </figure>
 </div>
 </div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="PAF_paper_files/figure-html/unnamed-chunk-16-2.png" class="img-fluid figure-img" width="1152"></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
 <section id="alcohol" class="level3">
 <h3 class="anchored" data-anchor-id="alcohol">3.Alcohol</h3>
+<p>Alcohol as a Cancer Risk Factor</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
 <p><img src="PAF_paper_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="1152"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="PAF_paper_files/figure-html/unnamed-chunk-17-2.png" class="img-fluid figure-img" width="1152"></p>
 </figure>
 </div>
 </div>
@@ -525,7 +562,7 @@ window.Quarto = {
 <li><p>Bias PAF estimates to be an underestimation of true population measures because:</p>
 <ul>
 <li><p>PAFs are based on the best available data so limitations of the source data should be considered</p>
-<pre><code>  + Risk factor data is prone to self reporting errors (underestimate) </code></pre></li>
+<pre><code>  - Risk factor data is prone to self reporting errors (underestimate) </code></pre></li>
 <li><p>IARC classified sufficient/convincing causal link for risk factor inclusion criteria as there may be inclusion-worthy risk factors that haven’t reached this level</p></li>
 <li><p>Confounding cannot be ruled out through quality of relative risk evidence. (Example given unexposed group in alcohol RR could include ex and occasional drinkers which would dilute the measure.</p></li>
 <li><p>The method of summing individual PAFs to reach an overall number inherently underestimates the number because it doesn’t take the effect of risk factors in combination</p></li>
