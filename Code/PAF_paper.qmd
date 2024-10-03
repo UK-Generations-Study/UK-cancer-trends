@@ -101,7 +101,7 @@ Risk Ratios
 - Risk ratios were sourced from recent meta-analysis about cancer and the specific risk factors. A list of the sources can be found in Mendeley [here](https://www.mendeley.com/reference-manager/library/collections/90fc0272-7ce4-4e01-a8c3-0c350cb2a74a/all-references/) and tracked in the [PAF Teams folder](https://icracuk.sharepoint.com/:f:/r/sites/DescriptiveEpidemiology/Shared%20Documents/PAF/PAFcalculations/Background%20Literature?csf=1&web=1&e=IboMfc) 
       
 ## Calculations  
-The equation used to calculate the PAFS was the same one referenced in the Brown et al. paper to calculate PAFs with multiple exposure levels: 
+The equation used to calculate the PAFS was the same one referenced in the [Brown et al. paper](https://www.nature.com/articles/s41416-018-0029-6) to calculate PAFs with multiple exposure levels: 
 
   $$
   PAF = \frac {(p_1 * ERR_1)+(p_2 * ERR_2)+(p_3 * ERR_3)...(p_n * ERR_n)} {1+(p_1 * ERR_1)+(p_2 * ERR_2)+(p_3 * ERR_3)...(p_n * ERR_n)}
