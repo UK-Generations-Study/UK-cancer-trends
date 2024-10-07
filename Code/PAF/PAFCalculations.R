@@ -75,6 +75,96 @@ cleanedprev <- cleanedprev %>%
 cleanedprev <- cleanedprev %>% 
   dplyr::select(-year)
 
+###################################################################################################
+#Alcohol back predictions using a logistic regression model 
+cleanedprev <- cleanedprev %>% 
+  dplyr::select(-X.1, -X.2)
+alcohol <- cleanedprev %>% 
+  filter(country == "England") %>%
+  filter (datayear >= 2011 & datayear <= 2020) %>%
+  filter(str_detect(variable, "alcohol"))
+
+#MEN 
+### 1: Light Alcohol Predictions
+light <- alcohol %>% 
+  filter(variable == "lightalcohol_men")
+#fit a ligustic regression model for the available years
+log <- glm(prev~datayear, data=light, family= binomial)
+newyrs <- data.frame(datayear = 2005:2010)
+predict <- predict(log, newdata=newyrs, type = "response")
+done <-newyrs %>%
+  mutate(prev=predict, variable = "lightalcohol_men", country = "England", sex = "Men", value = prev*100, age_group = "16+", X = "99")
+light<- rbind(light, done)
+### 2: Medium Alcohol Predictions
+medium <- alcohol %>% 
+  filter(variable == "medalcohol_men")
+#fit a ligustic regression model for the available years
+log <- glm(prev~datayear, data=medium, family= binomial)
+newyrs <- data.frame(datayear = 2005:2010)
+predict <- predict(log, newdata=newyrs, type = "response")
+done <-newyrs %>%
+  mutate(prev=predict, variable = "medalcohol_men", country = "England", sex = "Men", value = prev*100, age_group = "16+", X = "99")
+medium<- rbind(medium, done)
+### 3: Heavy Alcohol Predictions
+heavy <- alcohol %>% 
+  filter(variable == "heavyalcohol_men")
+#fit a ligustic regression model for the available years
+log <- glm(prev~datayear, data=heavy, family= binomial)
+newyrs <- data.frame(datayear = 2005:2010)
+predict <- predict(log, newdata=newyrs, type = "response")
+done <-newyrs %>%
+  mutate(prev=predict, variable = "heavyalcohol_men", country = "England", sex = "Men", value = prev*100, age_group = "16+", X = "99")
+heavy<- rbind(heavy, done)
+#complete male dataset
+alcohol_fullmen <- rbind(light, medium, heavy)
+
+#WOMEN 
+### 1: Light Alcohol Predictions
+light <- alcohol %>% 
+  filter(variable == "lightalcohol_women")
+#fit a ligustic regression model for the available years
+log <- glm(prev~datayear, data=light, family= binomial)
+newyrs <- data.frame(datayear = 2005:2010)
+predict <- predict(log, newdata=newyrs, type = "response")
+done <-newyrs %>%
+  mutate(prev=predict, variable = "lightalcohol_women", country = "England", sex = "Women", value = prev*100, age_group = "16+", X = "99")
+light<- rbind(light, done)
+### 2: Medium Alcohol Predictions
+medium <- alcohol %>% 
+  filter(variable == "medalcohol_women")
+#fit a ligustic regression model for the available years
+log <- glm(prev~datayear, data=medium, family= binomial)
+newyrs <- data.frame(datayear = 2005:2010)
+predict <- predict(log, newdata=newyrs, type = "response")
+done <-newyrs %>%
+  mutate(prev=predict, variable = "medalcohol_women", country = "England", sex = "Women", value = prev*100, age_group = "16+", X = "99")
+medium<- rbind(medium, done)
+### 3: Heavy Alcohol Predictions
+heavy <- alcohol %>% 
+  filter(variable == "heavyalcohol_women")
+#fit a ligustic regression model for the available years
+log <- glm(prev~datayear, data=heavy, family= binomial)
+newyrs <- data.frame(datayear = 2005:2010)
+predict <- predict(log, newdata=newyrs, type = "response")
+done <-newyrs %>%
+  mutate(prev=predict, variable = "heavyalcohol_women", country = "England", sex = "Women", value = prev*100, age_group = "16+", X = "99")
+heavy<- rbind(heavy, done)
+#complete women dataset
+alcohol_fullwomen <- rbind(light, medium, heavy)
+
+alcoholall <- rbind(alcohol_fullmen, alcohol_fullwomen)
+# 
+
+
+#adding the alchol back in
+allprev_trial <- cleanedprev %>%
+  filter(!str_detect(variable, "alcohol"))
+all<- rbind(alcoholall,allprev_trial)
+all<- all %>%
+  filter(datayear>=2005)
+cleanedprev <- all 
+##########################################################################################
+
 #clean the rr calculation
 rr <- rr %>% 
   mutate(across(-1, as.numeric))
@@ -94,7 +184,7 @@ cleanedprev1 <- cleanedprev
 cancercases1 <- cancerrates
 
 #trying on a loop 
-years <- seq(2003,2019)
+years <- seq(2005,2019)
 
 # Initialize lists to store results
 paf_results_men <- list()
@@ -360,71 +450,6 @@ PAF <- rbind (cleanPAF_women, cleanPAF_men)
 PAF_all <-rbind(PAF, cleanfibre, all_redmeat, all_processedmeat)
 
 #write.csv(PAF_all, "Findings/PAF_all.csv", row.names= FALSE)
-#######################################################################################################################
-#Aggregate PAFS
-library(segmented)
-#need to extend the alcohol pafs back to 2005
-#MEN
-alcohol <- PAF_all %>% 
-  dplyr::select(riskfactor, yr, sex, Colorectal, SCC) %>%
-  filter(riskfactor == "alcohol", sex == "Men", !is.na(Colorectal))
-#these are the years that I need to fill in data for 
-backyears <- data.frame(yr = 2005:2010)
-#Colorectal Cancer 
-mcolorectal_lm<- lm(Colorectal ~ yr, data = alcohol)
-mcolorectal_seg <- segmented(mcolorectal_lm, seg.Z = ~yr, npsi = 1) 
-predictions <- predict(mcolorectal_seg, newdata = backyears)
-backyears$Colorectal <- predictions
-#SCC
-mSCC_lm<- lm(SCC ~ yr, data = alcohol)
-mSCC_seg <- segmented(mSCC_lm, seg.Z = ~yr, npsi = 1) 
-predictions <- predict(mSCC_seg, newdata = backyears)
-backyears$SCC <- predictions 
-backyears <- backyears %>%
-  mutate(riskfactor = "alcohol", sex = "Men")
-menalcohol <- bind_rows(alcohol, backyears)
-
-#WOMEN
-alcohol <- PAF_all %>% 
-  dplyr::select(riskfactor, yr, sex, Breast, Colorectal, SCC) %>%
-  filter(riskfactor == "alcohol", sex == "Women", !is.na(Colorectal))
-#these are the years that I need to fill in data for 
-backyears <- data.frame(yr = 2005:2010)
-#Colorectal Cancer 
-wcolorectal_lm<- lm(Colorectal ~ yr, data = alcohol)
-wcolorectal_seg <- segmented(wcolorectal_lm, seg.Z = ~yr, npsi = 1) 
-predictions <- predict(wcolorectal_seg, newdata = backyears)
-backyears$Colorectal <- predictions
-#SCC
-wSCC_lm<- lm(SCC ~ yr, data = alcohol)
-wSCC_seg <- segmented(wSCC_lm, seg.Z = ~yr, npsi = 1) 
-predictions <- predict(wSCC_seg, newdata = backyears)
-backyears$SCC <- predictions 
-#Breast
-wBreast_lm<- lm(Breast ~ yr, data = alcohol)
-wBreast_seg <- segmented(wBreast_lm, seg.Z = ~yr, npsi = 1) 
-predictions <- predict(wBreast_seg, newdata = backyears)
-backyears$Breast <- predictions 
-backyears <- backyears %>%
-  mutate(riskfactor = "alcohol", sex = "Women")
-womenalcohol <- bind_rows(alcohol, backyears)
-
-#create a dataset of just the predicted values
-alcohol <- bind_rows(menalcohol, womenalcohol) 
-alcohol <- alcohol %>% 
-  dplyr::filter(yr<=2010)
-alcohol$combined <- paste(alcohol$riskfactor, alcohol$yr, sep = "")
-#create a dataset of just the known alcohol values
-alcohol_all <- PAF_all %>%
-  filter(riskfactor =="alcohol")
-alcohol_all <- alcohol_all %>%
-  dplyr::filter(yr>2010)
-#create a new dataset for all of the alcohol values (predicted and known) 
-alcohol_all <- bind_rows(alcohol_all,alcohol)
-#add them the full alcohol variable back into the dataset 
-PAF_all <- PAF_all %>%
-  filter(riskfactor !="alcohol")
-PAF_all <- bind_rows(alcohol_all, PAF_all)
 
 source("C:\\Users\\zrichards.ICR\\OneDrive - The Institute of Cancer Research\\Git\\UK-cancer-trends\\Code\\PAF\\AggregatePAFCode.R")
 source("C:\\Users\\zrichards.ICR\\OneDrive - The Institute of Cancer Research\\Git\\UK-cancer-trends\\Code\\PAF\\CaseCode.R")
