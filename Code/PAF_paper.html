@@ -88,7 +88,10 @@ window.Quarto = {
   <ul>
   <li><a href="#preparing-the-data" id="toc-preparing-the-data" class="nav-link" data-scroll-target="#preparing-the-data">Preparing the Data</a></li>
   <li><a href="#paf-relationship" id="toc-paf-relationship" class="nav-link" data-scroll-target="#paf-relationship">PAF relationship</a></li>
-  <li><a href="#risk-factor-trends" id="toc-risk-factor-trends" class="nav-link" data-scroll-target="#risk-factor-trends">Risk Factor Trends</a></li>
+  <li><a href="#risk-factor-trends" id="toc-risk-factor-trends" class="nav-link" data-scroll-target="#risk-factor-trends">Risk Factor Trends</a>
+  <ul>
+  <li><a href="#alcohol-predictions" id="toc-alcohol-predictions" class="nav-link" data-scroll-target="#alcohol-predictions">Alcohol Predictions</a></li>
+  </ul></li>
   <li><a href="#cancer-case-trends" id="toc-cancer-case-trends" class="nav-link" data-scroll-target="#cancer-case-trends">Cancer Case Trends</a></li>
   <li><a href="#paf-by-cancer-site" id="toc-paf-by-cancer-site" class="nav-link" data-scroll-target="#paf-by-cancer-site">PAF by Cancer Site</a>
   <ul>
@@ -283,8 +286,10 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>###Projecting Alcohol PAFs The Health Survey of England changed how they asked questions on alcohol consumption in 2011, but data on alcohol consumption is needed from 2005.</p>
-<p>Alcohol PAF was estimated for 2005-2010 based on the available data using a joint point method.</p>
+<section id="alcohol-predictions" class="level3">
+<h3 class="anchored" data-anchor-id="alcohol-predictions">Alcohol Predictions</h3>
+<p>The Health Survey England (HSE) only has data through 2011. Data previously, whether from the HSE or from the old UK wide General Household Survey (ended in 2007), is not comparable as they ask the question is phrased in a different way. This results in prevalence of light drinkers in English men in 2005 being 10% less than what is reported in the same population in 2011 in the HSE. This is alarming as the prevalence of light drinkers in English men in the HSE does not vary by more than 3% from 2011-2019.</p>
+<p>As a consequence, prevalence of alcohol consumption in men and women in England was project back using the HSE data and logistic regression. The results can be seen below:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -293,14 +298,8 @@ window.Quarto = {
 </figure>
 </div>
 </div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="PAF_paper_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid figure-img" width="1152"></p>
-</figure>
 </div>
-</div>
-</div>
+</section>
 </section>
 <section id="cancer-case-trends" class="level2">
 <h2 class="anchored" data-anchor-id="cancer-case-trends">Cancer Case Trends</h2>

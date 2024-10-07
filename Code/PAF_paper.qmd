@@ -20,113 +20,112 @@ execute:
   fig-height: 8  
 ---
 
-# Population Attributable Fractions (PAF) project 
+# Population Attributable Fractions (PAF) project
+
 This project is calculating the PAFs over time from 2015 and projecting them in to 2030.
 
 ## Literature Review
 
-## Analysis Overview 
-This project involves the 6 cancer sites that have the top mortality rates in the UK (referencing Positions Paper): 
+## Analysis Overview
 
-1. Lung
+This project involves the 6 cancer sites that have the top mortality rates in the UK (referencing Positions Paper):
 
-2. Colorectal
+1.  Lung
 
-3. Pancreatic
+2.  Colorectal
 
-4. Breast
+3.  Pancreatic
 
-5. Oesophageal (Split by morphology - squamous cell carcinoma (OSCC) and adenocarcinoma (OAC))
+4.  Breast
 
-6. Prostate
+5.  Oesophageal (Split by morphology - squamous cell carcinoma (OSCC) and adenocarcinoma (OAC))
 
+6.  Prostate
 
-The risk factors were included if they met the following criteria: 
+The risk factors were included if they met the following criteria:
 
-- a modifiable risk factor surrounding an individuals lifestyle choices
+-   a modifiable risk factor surrounding an individuals lifestyle choices
 
-- classified as having sufficient evidence for a causal relationship from IARC or World Cancer Research Fund
+-   classified as having sufficient evidence for a causal relationship from IARC or World Cancer Research Fund
 
+The final list of risk factors and their exposures that are included in this research project are:
 
-The final list of risk factors and their exposures that are included in this research project are: 
+1.  Smoking
 
-1. Smoking 
+    Current Smoking
 
-      Current Smoking
-    
-      Former Smoking 
-     
-2. BMI 
+    Former Smoking
 
-      Obese(30+ BMI)
-    
-      Overweight(25-30 BMI)
-    
-3. Alcohol 
+2.  BMI
 
-      Light (<12g/day)Drinking
-    
-      Medium(12-50g/day)Drinking
-    
-      Heavy (>50g/day) Drinking 
-    
-4. Red Meat
+    Obese(30+ BMI)
 
-      Consuming more than the UK recommended 100g/day
-    
-5. Processed Meat
+    Overweight(25-30 BMI)
 
-      Consuming more than the UK recommended 50g/day
-    
-6. Fibre
+3.  Alcohol
 
-      Consuming less than the UK recommended 30g/day
-      
-### Sources 
-  
-Risk Factor Data 
+    Light (\<12g/day)Drinking
 
-- Alcohol, Smoking, BMI: This data were sourced from cleaned data from the positions paper which were originally sourced from the ONS and collected via the [Health Survey England (HSE)](https://digital.nhs.uk/data-and-information/publications/statistical/health-survey-for-england). The data were requested from the [UK Data Service](https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=8860) by year. 
+    Medium(12-50g/day)Drinking
 
-- Dietary Data: This data were sourced from the [National Diet and Nutrition Survey](https://www.gov.uk/government/collections/national-diet-and-nutrition-survey) and downloaded from the [UK Data Service](https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=6533).
+    Heavy (\>50g/day) Drinking
+
+4.  Red Meat
+
+    Consuming more than the UK recommended 100g/day
+
+5.  Processed Meat
+
+    Consuming more than the UK recommended 50g/day
+
+6.  Fibre
+
+    Consuming less than the UK recommended 30g/day
+
+### Sources
+
+Risk Factor Data
+
+-   Alcohol, Smoking, BMI: This data were sourced from cleaned data from the positions paper which were originally sourced from the ONS and collected via the [Health Survey England (HSE)](https://digital.nhs.uk/data-and-information/publications/statistical/health-survey-for-england). The data were requested from the [UK Data Service](https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=8860) by year.
+
+-   Dietary Data: This data were sourced from the [National Diet and Nutrition Survey](https://www.gov.uk/government/collections/national-diet-and-nutrition-survey) and downloaded from the [UK Data Service](https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=6533).
 
 Cancer Incidence Data
 
-- Data for all cancer incidences were sourced from cleaned data from the positions paper which were originally sourced from Cancer Research UK and Globocan. 
+-   Data for all cancer incidences were sourced from cleaned data from the positions paper which were originally sourced from Cancer Research UK and Globocan.
 
-- Additional data on Oesophageal cancer morphology was needed which was sourced from [Offman et al 2018](https://pubmed.ncbi.nlm.nih.gov/29563637/) research on projecting trends in OAC and OSCC. 
+-   Additional data on Oesophageal cancer morphology was needed which was sourced from [Offman et al 2018](https://pubmed.ncbi.nlm.nih.gov/29563637/) research on projecting trends in OAC and OSCC.
 
-Risk Ratios 
+Risk Ratios
 
-- Risk ratios were sourced from recent meta-analysis about cancer and the specific risk factors. A list of the sources can be found in Mendeley [here](https://www.mendeley.com/reference-manager/library/collections/90fc0272-7ce4-4e01-a8c3-0c350cb2a74a/all-references/) and tracked in the [PAF Teams folder](https://icracuk.sharepoint.com/:f:/r/sites/DescriptiveEpidemiology/Shared%20Documents/PAF/PAFcalculations/Background%20Literature?csf=1&web=1&e=IboMfc) 
-      
-## Calculations  
-The equation used to calculate the PAFS was the same one referenced in the [Brown et al. paper](https://www.nature.com/articles/s41416-018-0029-6) to calculate PAFs with multiple exposure levels: 
+-   Risk ratios were sourced from recent meta-analysis about cancer and the specific risk factors. A list of the sources can be found in Mendeley [here](https://www.mendeley.com/reference-manager/library/collections/90fc0272-7ce4-4e01-a8c3-0c350cb2a74a/all-references/) and tracked in the [PAF Teams folder](https://icracuk.sharepoint.com/:f:/r/sites/DescriptiveEpidemiology/Shared%20Documents/PAF/PAFcalculations/Background%20Literature?csf=1&web=1&e=IboMfc)
 
-  $$
+## Calculations
+
+The equation used to calculate the PAFS was the same one referenced in the [Brown et al. paper](https://www.nature.com/articles/s41416-018-0029-6) to calculate PAFs with multiple exposure levels:
+
+$$
   PAF = \frac {(p_1 * ERR_1)+(p_2 * ERR_2)+(p_3 * ERR_3)...(p_n * ERR_n)} {1+(p_1 * ERR_1)+(p_2 * ERR_2)+(p_3 * ERR_3)...(p_n * ERR_n)}
-  $$
-where: 
+  $$ where:
 
-- pn = population exposure prevalence of risk factor n 
+-   pn = population exposure prevalence of risk factor n
 
-- ERRn = Excess Relative Risk = (RR at exposure level n) - 1
-
+-   ERRn = Excess Relative Risk = (RR at exposure level n) - 1
 
 There are many assumptions that are made when calculating PAFs
 
-1. Causality between the risk factor and the outcome 
+1.  Causality between the risk factor and the outcome
 
-2. Accurate measurement of the relative risk and exposure prevalence
+2.  Accurate measurement of the relative risk and exposure prevalence
 
-3. Removing the risk factor from the population would remove the risk of the outcome 
+3.  Removing the risk factor from the population would remove the risk of the outcome
 
-4. The exposure is removable from the popualtion 
+4.  The exposure is removable from the popualtion
 
-5. All other risk factors remain constant 
-
+5.  All other risk factors remain constant
 
 # Analysis and Results
+
 ## Preparing the Data
 
 ```{r}
@@ -140,7 +139,8 @@ library(gridExtra)
 library(segmented)
 ```
 
-Running the background code and installing all of the necessary packages 
+Running the background code and installing all of the necessary packages
+
 ```{r}
 #| warning: false
 source("C:\\Users\\zrichards.ICR\\OneDrive - The Institute of Cancer Research\\Git\\UK-cancer-trends\\Code\\PAF\\PAFCalculations.R", echo = FALSE)
@@ -240,42 +240,29 @@ print(all_processedmeat_visualize)
 print(all_redmeat_visualize)
 ```
 
-###Projecting Alcohol PAFs The Health Survey of England changed how they asked questions on alcohol consumption in 2011, but data on alcohol consumption is needed from 2005.
+### Alcohol Predictions 
 
-Alcohol PAF was estimated for 2005-2010 based on the available data using a joint point method.
+The Health Survey England (HSE) only has data through 2011. Data previously, whether from the HSE or from the old UK wide General Household Survey (ended in 2007), is not comparable as they ask the question is phrased in a different way. This results in prevalence of light drinkers in English men in 2005 being 10% less than what is reported in the same population in 2011 in the HSE. This is alarming as the prevalence of light drinkers in English men in the HSE does not vary by more than 3% from 2011-2019.
 
-```{r}
-#| echo: false
-#| warning: false
-Mcheck <- ggplot(menalcohol, aes(x= yr, y = SCC)) +
-  geom_line() + geom_point() + 
-  labs(title = " OSCC", x = "Year", y = "PAF") + 
- #geom_vline(xintercept = 2015, color = "red", linetype = "dashed", size = 1) +
-  theme_minimal () + ylim(0,.5) +xlim(2005, 2019)
+As a consequence, prevalence of alcohol consumption in men and women in England was project back using the HSE data and logistic regression. The results can be seen below:
 
-Mcheck1 <- ggplot(menalcohol, aes(x= yr, y = Colorectal)) +
-  geom_line() + geom_point() + 
-  labs(title = " Colorectal", x = "Year", y = "PAF") +
-  #geom_vline(xintercept = 2015, color = "red", linetype = "dashed", size = 1) +
-  theme_minimal () + ylim(0,.5) +xlim(2005, 2019)
-
-Wcheck <- ggplot(womenalcohol, aes(x= yr, y = SCC)) +
-  geom_line() + geom_point() + 
-  labs(title = " OSCC", x = "Year", y = "PAF") +
-  theme_minimal () + ylim(0,.35) +xlim(2005, 2019)
-
-Wcheck1 <- ggplot(womenalcohol, aes(x= yr, y = Colorectal)) +
-  geom_line() + geom_point() + 
-  labs(title = "Colorectal ", x = "Year", y = "PAF") +
-  theme_minimal () + ylim(0,.35) +xlim(2005, 2019)
-
-Wcheck2 <- ggplot(womenalcohol, aes(x= yr, y = Breast)) + 
-  geom_line() + geom_point() + 
-  labs(title = "Breast", x = "Year", y = "PAF") + 
-  theme_minimal () + ylim(0,.35) +xlim(2005, 2019)
-
-mencheck <- grid.arrange(Mcheck, Mcheck1, ncol = 2, top = "Men Alcohol PAF back projections (2005-2010)")
-womencheck <- grid.arrange(Wcheck,Wcheck2, Wcheck1, ncol=3, top = "Women Alcohol PAF back projections (2005-2010)")
+```{r, }
+alcohol_predictions <- ggplot(data = alcoholall, aes(x = datayear, y = prev, color = variable)) +
+  geom_line(size = 1) +
+  geom_point() +
+  labs(title = "Prevalence of Alcohol Consumption in England",
+       x = "Year of Exposure",
+       y = "Prevalence",
+       color = "Drinking Category") +
+  theme_minimal() +
+  scale_color_manual(values = c("lightalcohol_men" = "darkolivegreen4", 
+                                "medalcohol_men" = "darkorange3", 
+                                "heavyalcohol_men" = "slateblue4", 
+                                "lightalcohol_women" = "olivedrab1", 
+                                "medalcohol_women" = "orange", 
+                                "heavyalcohol_women" = "lightslateblue"))
+  
+print(alcohol_predictions)
 ```
 
 ## Cancer Case Trends
@@ -518,14 +505,18 @@ WACcancer <- arrangeGrob(smoking_ACwomen, bmi_ACwomen, alcohol_ACwomen, ncol = 3
 ```
 
 ### 1. Lung
+
 Estimates for Population Attributable Fractions on Lung Cancer
+
 ```{r}
 lung <- grid.arrange(Mlungcancer, Wlungcancer, nrow=2, top = "Estimates for Population Attributable Fractions on Lung Cancer")
 
 ```
 
 ### 2. Colorectal
+
 Estimates for Population Attributable Fractions on Colorectal Cancer
+
 ```{r}
 colorectal <- grid.arrange(Mcolorectalcancer, nrow = 1)
 colorectal1 <- grid.arrange(Wcolorectalcancer, nrow = 1 )
@@ -534,28 +525,36 @@ colorectal1 <- grid.arrange(Wcolorectalcancer, nrow = 1 )
 ```
 
 ### 3. Pancreas
+
 Estimates for Population Attributable Fractions on Pancreas Cancer
+
 ```{r}
 pancreas <- grid.arrange(Mpancreascancer, Wpancreascancer, nrow=2, top = "Estimates for Population Attributable Fractions on Pancreas Cancer")
 
 ```
 
 ### 4. Breast
+
 Estimates for Population Attributable Fractions on Breast Cancer
+
 ```{r}
 Wbreastcancer <- grid.arrange( bmi_breastwomen, alcohol_breastwomen, ncol=3, top = "WOMEN")
 
 ```
 
 ### 5. Oesophageal SCC
+
 Estimates for Population Attributable Fractions on OSCC Cancer
+
 ```{r}
 SCC <- grid.arrange(MSCCcancer, WSCCcancer, nrow=2, top = "Estimates for Population Attributable Fractions on OSCC Cancer")
 
 ```
 
 ### 6. Oesophageal AC
+
 Estimates for Population Attributable Fractions on OAC Cancer
+
 ```{r}
 AC <- grid.arrange(MACcancer, WACcancer, nrow=2, top = "Estimates for Population Attributable Fractions on OAC Cancer")
 ```
@@ -746,21 +745,27 @@ dietaryWOMEN <- arrangeGrob(fibre_colorectalwomen, redmeat_colorectalwomen, proc
 ```
 
 ### 1.Smoking
+
 Smoking as a Cancer Risk Factor
+
 ```{r}
 smoking_allcancersites <- grid.arrange(smokingmen, nrow = 1)
 smoking_allcancersites1 <- grid.arrange(smokingmen, nrow = 1)
 ```
 
 ### 2.BMI
+
 BMI as a Cancer Risk Factor
+
 ```{r}
 bmi_allcancersites <- grid.arrange(bmimen, nrow = 2)
 bmi_allcancersites1 <- grid.arrange( bmiwomen, nrow = 1)
 ```
 
 ### 3.Alcohol
+
 Alcohol as a Cancer Risk Factor
+
 ```{r}
 alcohol_allcancersites <- grid.arrange(alcoholmen, nrow=2)
 alcohol_allcancersites1 <- grid.arrange(alcoholwomen, nrow=1)
@@ -909,36 +914,38 @@ print(pafformersmoker)
 
 ```
 
-The conclusion that can be drawn here is that even if it were possible to remove all current smokers from the population by getting them to quit smoking, there would still be a large proportion of lung cancer cases attributable to the longitudinal effects of smoking. This means that the only way to truly remove smoking as a lung cancer risk factor from the population would be for universal smoking cessation and time for those who have ever been cigarette smoking to age out of the population. 
+The conclusion that can be drawn here is that even if it were possible to remove all current smokers from the population by getting them to quit smoking, there would still be a large proportion of lung cancer cases attributable to the longitudinal effects of smoking. This means that the only way to truly remove smoking as a lung cancer risk factor from the population would be for universal smoking cessation and time for those who have ever been cigarette smoking to age out of the population.
 
 # Relevant for Conclusion
 
-## Predictions in the wake of Covid-19 Pandemic 
+## Predictions in the wake of Covid-19 Pandemic
 
-Looking at the Health Survey England 2022 results to look at how the population prevalence of the main risk factors - alcohol, smoking, BMI - was effected by Covid-19. The HSE survey did not go ahead in 2020 but continued in 2021 and 2022. 
+Looking at the Health Survey England 2022 results to look at how the population prevalence of the main risk factors - alcohol, smoking, BMI - was effected by Covid-19. The HSE survey did not go ahead in 2020 but continued in 2021 and 2022.
 
-1. Smoking: In 2022, the self reported prevalence of current smokers drops by 5% in both male and female adults when compared to 2019 prevalence.  
+1.  Smoking: In 2022, the self reported prevalence of current smokers drops by 5% in both male and female adults when compared to 2019 prevalence.
 
-2. Alcohol: In 2022,the self reported prevalence of alcohol consumption at all levels is relatively the same when compared to 2019 prevalence. 
+2.  Alcohol: In 2022,the self reported prevalence of alcohol consumption at all levels is relatively the same when compared to 2019 prevalence.
 
-3. BMI: In 2022, the self reported prevalence of obesity and overweight is relatively the same when compared to 2019 prevalence (within 2%).
+3.  BMI: In 2022, the self reported prevalence of obesity and overweight is relatively the same when compared to 2019 prevalence (within 2%).
 
 ## Limitations
 
 The Brown et al. paper lists limitations for PAF calculations that should be considered. These are relevant for these calculations as well:
 
-- Bias PAF estimates to be an underestimation of true population measures because:  
+-   Bias PAF estimates to be an underestimation of true population measures because:
 
-    + PAFs are based on the best available data so limitations of the source data should be considered  
+    -   PAFs are based on the best available data so limitations of the source data should be considered
 
-            - Risk factor data is prone to self reporting errors (underestimate) 
+        ```         
+          - Risk factor data is prone to self reporting errors (underestimate) 
+        ```
 
-    + IARC classified sufficient/convincing causal link for risk factor inclusion criteria as there may be inclusion-worthy risk factors that haven’t reached this level  
+    -   IARC classified sufficient/convincing causal link for risk factor inclusion criteria as there may be inclusion-worthy risk factors that haven’t reached this level
 
-    + Confounding cannot be ruled out through quality of relative risk evidence. (Example given unexposed group in alcohol RR could include ex and occasional drinkers which would dilute the measure.  
+    -   Confounding cannot be ruled out through quality of relative risk evidence. (Example given unexposed group in alcohol RR could include ex and occasional drinkers which would dilute the measure.
 
-    + The method of summing individual PAFs to reach an overall number inherently underestimates the number because it doesn’t take the effect of risk factors in combination  
+    -   The method of summing individual PAFs to reach an overall number inherently underestimates the number because it doesn’t take the effect of risk factors in combination
 
-- Blanket 10-year latency between PAF and incidence cases because the risk factor prevalence data does not have high quality historical data to have a 30-year latency  
+-   Blanket 10-year latency between PAF and incidence cases because the risk factor prevalence data does not have high quality historical data to have a 30-year latency
 
-    + Using custom time lag for each cancer site and risk factor would be unsystematic and reduced comparability  
+    -   Using custom time lag for each cancer site and risk factor would be unsystematic and reduced comparability
