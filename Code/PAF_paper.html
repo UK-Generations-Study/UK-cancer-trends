@@ -82,7 +82,10 @@ window.Quarto = {
   <ul>
   <li><a href="#sources" id="toc-sources" class="nav-link" data-scroll-target="#sources">Sources</a></li>
   </ul></li>
-  <li><a href="#calculations" id="toc-calculations" class="nav-link" data-scroll-target="#calculations">Calculations</a></li>
+  <li><a href="#calculations" id="toc-calculations" class="nav-link" data-scroll-target="#calculations">Calculations</a>
+  <ul>
+  <li><a href="#dietary-risk-factor-calculations" id="toc-dietary-risk-factor-calculations" class="nav-link" data-scroll-target="#dietary-risk-factor-calculations">Dietary Risk Factor Calculations</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#analysis-and-results" id="toc-analysis-and-results" class="nav-link" data-scroll-target="#analysis-and-results">Analysis and Results</a>
   <ul>
@@ -90,6 +93,7 @@ window.Quarto = {
   <li><a href="#paf-relationship" id="toc-paf-relationship" class="nav-link" data-scroll-target="#paf-relationship">PAF relationship</a></li>
   <li><a href="#risk-factor-trends" id="toc-risk-factor-trends" class="nav-link" data-scroll-target="#risk-factor-trends">Risk Factor Trends</a>
   <ul>
+  <li><a href="#dietary-risk-factors" id="toc-dietary-risk-factors" class="nav-link" data-scroll-target="#dietary-risk-factors">Dietary Risk Factors</a></li>
   <li><a href="#alcohol-predictions" id="toc-alcohol-predictions" class="nav-link" data-scroll-target="#alcohol-predictions">Alcohol Predictions</a></li>
   </ul></li>
   <li><a href="#cancer-case-trends" id="toc-cancer-case-trends" class="nav-link" data-scroll-target="#cancer-case-trends">Cancer Case Trends</a></li>
@@ -109,7 +113,10 @@ window.Quarto = {
   <li><a href="#alcohol" id="toc-alcohol" class="nav-link" data-scroll-target="#alcohol">3.Alcohol</a></li>
   <li><a href="#dietary-factorsfiber-processed-meat-red-meat" id="toc-dietary-factorsfiber-processed-meat-red-meat" class="nav-link" data-scroll-target="#dietary-factorsfiber-processed-meat-red-meat">4.Dietary Factors(Fiber, Processed Meat, Red Meat)</a></li>
   </ul></li>
-  <li><a href="#aggregate-paf" id="toc-aggregate-paf" class="nav-link" data-scroll-target="#aggregate-paf">Aggregate PAF</a></li>
+  <li><a href="#aggregate-paf" id="toc-aggregate-paf" class="nav-link" data-scroll-target="#aggregate-paf">Aggregate PAF</a>
+  <ul>
+  <li><a href="#tables" id="toc-tables" class="nav-link" data-scroll-target="#tables">Tables</a></li>
+  </ul></li>
   <li><a href="#attributable-cases" id="toc-attributable-cases" class="nav-link" data-scroll-target="#attributable-cases">Attributable Cases</a></li>
   <li><a href="#more-realistic-smoking-scenario" id="toc-more-realistic-smoking-scenario" class="nav-link" data-scroll-target="#more-realistic-smoking-scenario">More Realistic Smoking Scenario</a></li>
   </ul></li>
@@ -225,6 +232,11 @@ window.Quarto = {
 <li><p>The exposure is removable from the popualtion</p></li>
 <li><p>All other risk factors remain constant</p></li>
 </ol>
+<section id="dietary-risk-factor-calculations" class="level3">
+<h3 class="anchored" data-anchor-id="dietary-risk-factor-calculations">Dietary Risk Factor Calculations</h3>
+<p>These dietary risk factors do not have clearly defined exposed and unexposed categories.</p>
+<p>Instead, categories of consumption were created from the National Diet and Nutrition Survey and RR were broken down to risk per g of increase. Risk at each category was calculated based on risk of consumption at the midpoint of the category.</p>
+</section>
 </section>
 </section>
 <section id="analysis-and-results" class="level1">
@@ -264,28 +276,34 @@ window.Quarto = {
 </figure>
 </div>
 </div>
+</div>
+<section id="dietary-risk-factors" class="level3">
+<h3 class="anchored" data-anchor-id="dietary-risk-factors">Dietary Risk Factors</h3>
+<p>Bar graphs of prevalence of different levels of exposure consumption.</p>
+<div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="PAF_paper_files/figure-html/unnamed-chunk-4-3.png" class="img-fluid figure-img" width="1152"></p>
+<p><img src="PAF_paper_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="1152"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="PAF_paper_files/figure-html/unnamed-chunk-4-4.png" class="img-fluid figure-img" width="1152"></p>
+<p><img src="PAF_paper_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid figure-img" width="1152"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="PAF_paper_files/figure-html/unnamed-chunk-4-5.png" class="img-fluid figure-img" width="1152"></p>
+<p><img src="PAF_paper_files/figure-html/unnamed-chunk-5-3.png" class="img-fluid figure-img" width="1152"></p>
 </figure>
 </div>
 </div>
 </div>
+</section>
 <section id="alcohol-predictions" class="level3">
 <h3 class="anchored" data-anchor-id="alcohol-predictions">Alcohol Predictions</h3>
 <p>The Health Survey England (HSE) only has data through 2011. Data previously, whether from the HSE or from the old UK wide General Household Survey (ended in 2007), is not comparable as they ask the question is phrased in a different way. This results in prevalence of light drinkers in English men in 2005 being 10% less than what is reported in the same population in 2011 in the HSE. This is alarming as the prevalence of light drinkers in English men in the HSE does not vary by more than 3% from 2011-2019.</p>
@@ -294,7 +312,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="PAF_paper_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="1152"></p>
+<p><img src="PAF_paper_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="1152"></p>
 </figure>
 </div>
 </div>
@@ -308,14 +326,14 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="PAF_paper_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="1152"></p>
+<p><img src="PAF_paper_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="1152"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="PAF_paper_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="1152"></p>
+<p><img src="PAF_paper_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid figure-img" width="1152"></p>
 </figure>
 </div>
 </div>
@@ -331,7 +349,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="PAF_paper_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="1152"></p>
+<p><img src="PAF_paper_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="1152"></p>
 </figure>
 </div>
 </div>
@@ -344,14 +362,14 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="PAF_paper_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="1152"></p>
+<p><img src="PAF_paper_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="1152"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="PAF_paper_files/figure-html/unnamed-chunk-9-2.png" class="img-fluid figure-img" width="1152"></p>
+<p><img src="PAF_paper_files/figure-html/unnamed-chunk-10-2.png" class="img-fluid figure-img" width="1152"></p>
 </figure>
 </div>
 </div>
@@ -364,7 +382,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="PAF_paper_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="1152"></p>
+<p><img src="PAF_paper_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="1152"></p>
 </figure>
 </div>
 </div>
@@ -377,7 +395,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="PAF_paper_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="1152"></p>
+<p><img src="PAF_paper_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="1152"></p>
 </figure>
 </div>
 </div>
@@ -390,7 +408,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="PAF_paper_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="1152"></p>
+<p><img src="PAF_paper_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="1152"></p>
 </figure>
 </div>
 </div>
@@ -403,7 +421,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="PAF_paper_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="1152"></p>
+<p><img src="PAF_paper_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="1152"></p>
 </figure>
 </div>
 </div>
@@ -420,7 +438,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="PAF_paper_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="1152"></p>
+<p><img src="PAF_paper_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="1152"></p>
 </figure>
 </div>
 </div>
@@ -429,26 +447,6 @@ window.Quarto = {
 <section id="bmi" class="level3">
 <h3 class="anchored" data-anchor-id="bmi">2.BMI</h3>
 <p>BMI as a Cancer Risk Factor</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="PAF_paper_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="1152"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="PAF_paper_files/figure-html/unnamed-chunk-16-2.png" class="img-fluid figure-img" width="1152"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="alcohol" class="level3">
-<h3 class="anchored" data-anchor-id="alcohol">3.Alcohol</h3>
-<p>Alcohol as a Cancer Risk Factor</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -466,13 +464,33 @@ window.Quarto = {
 </div>
 </div>
 </section>
+<section id="alcohol" class="level3">
+<h3 class="anchored" data-anchor-id="alcohol">3.Alcohol</h3>
+<p>Alcohol as a Cancer Risk Factor</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="PAF_paper_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="1152"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="PAF_paper_files/figure-html/unnamed-chunk-18-2.png" class="img-fluid figure-img" width="1152"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
 <section id="dietary-factorsfiber-processed-meat-red-meat" class="level3">
 <h3 class="anchored" data-anchor-id="dietary-factorsfiber-processed-meat-red-meat">4.Dietary Factors(Fiber, Processed Meat, Red Meat)</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="PAF_paper_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="1152"></p>
+<p><img src="PAF_paper_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="1152"></p>
 </figure>
 </div>
 </div>
@@ -492,26 +510,6 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="PAF_paper_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="1152"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="PAF_paper_files/figure-html/unnamed-chunk-19-2.png" class="img-fluid figure-img" width="1152"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="attributable-cases" class="level2">
-<h2 class="anchored" data-anchor-id="attributable-cases">Attributable Cases</h2>
-<p>Using the historical incident cancer cases from the National Cancer Registry and a 10 year time lag between the PAFS and the year that it effects, the attributable cancer cases were calculated.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
 <p><img src="PAF_paper_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="1152"></p>
 </figure>
 </div>
@@ -520,6 +518,94 @@ window.Quarto = {
 <div>
 <figure class="figure">
 <p><img src="PAF_paper_files/figure-html/unnamed-chunk-20-2.png" class="img-fluid figure-img" width="1152"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="tables" class="level3">
+<h3 class="anchored" data-anchor-id="tables">Tables</h3>
+<p>PAF table for Men</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 15 × 6
+   Exposure_Year  Lung Pancreas    AC   SCC Colorectal
+           &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;
+ 1          2005  72.8     23.8  57.9  73.7        0  
+ 2          2006  70.7     22.4  57.3  72.1        0  
+ 3          2007  70.7     22.4  57.0  72.0        0  
+ 4          2008  70.5     22.4  57.1  71.7       43.1
+ 5          2009  70.6     22.1  56.7  71.6       42.8
+ 6          2010  69.4     21.9  57.3  70.6       42.9
+ 7          2011  70.3     22.2  56.8  71.2       42.4
+ 8          2012  69.3     21.6  56.5  70.3       42.8
+ 9          2013  70.8     22.9  57.9  71.1       43.2
+10          2014  68.6     21.1  55.9  69.4       41.5
+11          2015  67.1     20.5  56.3  68.1       41.8
+12          2016  67.8     20.8  56.0  68.6       40.3
+13          2017  67.2     20.6  56.3  67.4       40.3
+14          2018  66.6     20.1  55.8  67.8       40.4
+15          2019  66.3     20.0  55.8  67.3        0  </code></pre>
+</div>
+</div>
+<p>PAF table for women</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 15 × 7
+   Exposure_Year  Lung Pancreas    AC   SCC Breast Colorectal
+           &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;
+ 1          2005  65.4     21.7  54.1  64.7   14.0        0  
+ 2          2006  63.8     20.6  53.3  63.4   14.0        0  
+ 3          2007  63.5     20.4  53.2  63.0   13.9        0  
+ 4          2008  62.8     20.1  53.2  62.5   13.9       36.8
+ 5          2009  63.1     20.1  53.0  62.6   13.8       36.7
+ 6          2010  61.5     19.5  53.0  61.3   13.9       36.4
+ 7          2011  61.7     19.6  53.1  61.4   14.0       36.4
+ 8          2012  60.5     18.8  52.1  60.8   13.9       35.6
+ 9          2013  60.6     18.6  52.0  60.0   13.4       35.2
+10          2014  59.3     18.5  52.1  59.0   13.6       35.4
+11          2015  60.0     18.8  52.6  59.6   13.6       35.6
+12          2016  58.6     18.1  51.8  58.7   13.6       34.4
+13          2017  58.8     18.7  53.5  58.5   14.0       35.2
+14          2018  58.4     18.4  52.8  58.4   13.8       34.9
+15          2019  57.0     17.7  52.0  57.2   13.9        0  </code></pre>
+</div>
+</div>
+<p>Relative change in PAF from 2005-2019 (except for Colorectal which will be from 2008-2018)</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 11 × 5
+   cancersite sex   `2005` `2019` PAF_Change
+   &lt;chr&gt;      &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;
+ 1 Lung       Women   65.4   57.0      -8.47
+ 2 Pancreas   Women   21.7   17.7      -3.99
+ 3 AC         Women   54.1   52.0      -2.09
+ 4 SCC        Women   64.7   57.2      -7.53
+ 5 Breast     Women   14.0   13.9      -0.18
+ 6 Colorectal Women   36.8   34.9      -1.93
+ 7 Lung       Men     72.8   66.3      -6.49
+ 8 Pancreas   Men     23.8   20.0      -3.82
+ 9 AC         Men     57.9   55.8      -2.08
+10 SCC        Men     73.7   67.3      -6.33
+11 Colorectal Men     43.1   40.4      -2.76</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="attributable-cases" class="level2">
+<h2 class="anchored" data-anchor-id="attributable-cases">Attributable Cases</h2>
+<p>Using the historical incident cancer cases from the National Cancer Registry and a 10 year time lag between the PAFS and the year that it effects, the attributable cancer cases were calculated.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="PAF_paper_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="1152"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="PAF_paper_files/figure-html/unnamed-chunk-24-2.png" class="img-fluid figure-img" width="1152"></p>
 </figure>
 </div>
 </div>
@@ -535,7 +621,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="PAF_paper_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="1152"></p>
+<p><img src="PAF_paper_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="1152"></p>
 </figure>
 </div>
 </div>
