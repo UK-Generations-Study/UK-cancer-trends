@@ -124,6 +124,12 @@ There are many assumptions that are made when calculating PAFs
 
 5.  All other risk factors remain constant
 
+### Dietary Risk Factor Calculations 
+
+These dietary risk factors do not have clearly defined exposed and unexposed categories.
+
+Instead, categories of consumption were created from the National Diet and Nutrition Survey and RR were broken down to risk per g of increase. Risk at each category was calculated based on risk of consumption at the midpoint of the category.
+
 # Analysis and Results
 
 ## Preparing the Data
@@ -230,17 +236,25 @@ prev_englandmen <- ggplot(cleanedprev %>%
   theme_minimal()
 print(prev_englandmen)
 
-
-print(fibrerisk)
-
-
-print(all_processedmeat_visualize)
-
-
-print(all_redmeat_visualize)
 ```
 
-### Alcohol Predictions 
+### Dietary Risk Factors 
+
+Bar graphs of prevalence of different levels of exposure consumption.
+
+```{r}
+
+#print(fibrerisk)
+print(fibrebar)
+
+#print(all_processedmeat_visualize)
+print(pm_dist)
+
+#print(all_redmeat_visualize)
+print(rm_dist)
+```
+
+### Alcohol Predictions
 
 The Health Survey England (HSE) only has data through 2011. Data previously, whether from the HSE or from the old UK wide General Household Survey (ended in 2007), is not comparable as they ask the question is phrased in a different way. This results in prevalence of light drinkers in English men in 2005 being 10% less than what is reported in the same population in 2011 in the HSE. This is alarming as the prevalence of light drinkers in English men in the HSE does not vary by more than 3% from 2011-2019.
 
@@ -826,6 +840,60 @@ aggregatepaf_plot_women <- ggplot(aggregate_paf_women, aes(x = Year, y = PAF, co
   geom_vline(xintercept = 2015, color = "red", linetype = "dashed", size = 1)  
 print(aggregatepaf_plot_women)
 
+```
+
+### Tables 
+
+PAF table for Men
+
+```{r}
+
+format_pafmen <- aggregate_paf_men %>%
+  rename(Exposure_Year = Year) %>%
+  mutate(PAF_format = PAF * 100, PAF_format = round(ifelse(is.na(PAF_format), 0, PAF_format), 2))
+
+pafmen_table <- format_pafmen %>%
+  dplyr::select(Exposure_Year, cancersite, PAF_format) %>%
+  pivot_wider(names_from = cancersite, values_from = PAF_format, values_fill = list(PAF_format = 0))
+
+print(pafmen_table)
+
+```
+
+PAF table for women
+
+```{r}
+
+format_pafwomen <- aggregate_paf_women %>%
+  rename(Exposure_Year = Year) %>%
+  mutate(PAF_format = PAF * 100, PAF_format = round(ifelse(is.na(PAF_format), 0, PAF_format), 2))
+
+pafwomen_table <- format_pafwomen %>%
+  dplyr::select(Exposure_Year, cancersite, PAF_format) %>%
+  pivot_wider(names_from = cancersite, values_from = PAF_format, values_fill = list(PAF_format = 0))
+
+print(pafwomen_table)
+```
+
+Relative change in PAF from 2005-2019 (except for Colorectal which will be from 2008-2018)
+
+```{r}
+relativechange <- aggregate_PAF_all %>%
+  filter((cancersite == "Colorectal" & Year %in% c(2008, 2018)) | 
+         (cancersite != "Colorectal" & Year %in% c(2005, 2019))) %>% 
+  pivot_wider(names_from = Year, values_from = PAF, values_fill = list(PAF = 0)) %>%
+   mutate(`2005` = ifelse(cancersite == "Colorectal", `2008`, `2005`),
+         `2019` = ifelse(cancersite == "Colorectal", `2018`, `2019`)) %>%
+  mutate(
+    `2005` = `2005` * 100, 
+    `2019` = `2019` * 100, 
+    PAF_Change = `2019` -`2005`, 
+    `2005` = round(ifelse(is.na(`2005`), 0, `2005`), 2), 
+    `2019` = round(ifelse(is.na(`2019`), 0, `2019`), 2), 
+    PAF_Change = round(ifelse(is.na(PAF_Change), 0, PAF_Change), 2)
+    ) %>% 
+  dplyr::select(cancersite,sex, `2005`, `2019`, PAF_Change) 
+print(relativechange)
 ```
 
 ## Attributable Cases

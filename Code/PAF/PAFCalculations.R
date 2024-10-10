@@ -425,11 +425,11 @@ complete_paf_women <- complete_paf_women %>%
 #FIBRE
 #adding the data from fibre to the paf cases 
 #run Fibre Code
-source("C:\\Users\\zrichards.ICR\\OneDrive - The Institute of Cancer Research\\Git\\UK-cancer-trends\\Code\\PAF\\FibreCode.R")
+source("C:\\Users\\zrichards.ICR\\OneDrive - The Institute of Cancer Research\\Git\\UK-cancer-trends\\Code\\PAF\\AvgFibre_Code.R")
 #run Red Meat 
-source("C:\\Users\\zrichards.ICR\\OneDrive - The Institute of Cancer Research\\Git\\UK-cancer-trends\\Code\\PAF\\RedMeatCode.R")
+source("C:\\Users\\zrichards.ICR\\OneDrive - The Institute of Cancer Research\\Git\\UK-cancer-trends\\Code\\PAF\\AvgRedMeat_Code.R")
 #run Processed Meat 
-source("C:\\Users\\zrichards.ICR\\OneDrive - The Institute of Cancer Research\\Git\\UK-cancer-trends\\Code\\PAF\\ProcessedMeatCode.R")
+source("C:\\Users\\zrichards.ICR\\OneDrive - The Institute of Cancer Research\\Git\\UK-cancer-trends\\Code\\PAF\\AvgProcessedMeat_Code.R")
 
 #create a clean table 
 #cleaning the bmi/smoking/alcohol pafs by removing all the negative numbers 
