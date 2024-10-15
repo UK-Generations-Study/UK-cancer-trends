@@ -145,3 +145,7 @@ walcprev$paf <- ((walcprev$light * (RRlightalc-1))+ (walcprev$medium * (RRmedalc
 #   xlim(.45,.9) +
 #   theme_minimal()
 # alcohol_alllight <- grid.arrange(mpafalc, wpafalc, ncol=2, top= "OSCC PAF if all Medium and Heavy Drinkers became Light Smokers in England 2019")
+
+#######################################################################################################################################################
+#SCENARIO THREE: Obesity to overweight and OAC
+
