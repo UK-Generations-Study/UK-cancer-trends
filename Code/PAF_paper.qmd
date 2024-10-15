@@ -124,7 +124,7 @@ There are many assumptions that are made when calculating PAFs
 
 5.  All other risk factors remain constant
 
-### Dietary Risk Factor Calculations 
+### Dietary Risk Factor Calculations
 
 These dietary risk factors do not have clearly defined exposed and unexposed categories.
 
@@ -238,7 +238,7 @@ print(prev_englandmen)
 
 ```
 
-### Dietary Risk Factors 
+### Dietary Risk Factors
 
 Bar graphs of prevalence of different levels of exposure consumption.
 
@@ -842,7 +842,7 @@ print(aggregatepaf_plot_women)
 
 ```
 
-### Tables 
+### Tables
 
 PAF table for Men
 
@@ -956,7 +956,9 @@ print(womencases_visualized)
 
 ```
 
-## More Realistic Smoking Scenario
+## Exposure Scenarios
+
+### Complete Smoking Cessation and Lung Cancer
 
 Based in 2019, if all current smokers stopped smoking and no one starts smoking
 
@@ -970,21 +972,73 @@ current smoking prevalence = 0
 #| echo: false
 #| warning: false
 
-pafformersmoker<- ggplot(data.frame(prevalence = formersmokingrange2019, PAF = smokingprevalence2019$paf), aes(x = prevalence, y = PAF)) +
+source("C:\\Users\\zrichards.ICR\\OneDrive - The Institute of Cancer Research\\Git\\UK-cancer-trends\\Code\\PAF\\ExposureScenarios.R")
+
+mpafformersmoker<- ggplot(data.frame(prevalence = formersmokingrange2019, PAF = smokingprevalence2019$paf), aes(x = prevalence, y = PAF)) +
   geom_line(color = "blue", size = 1) +
-  labs(title = "Lung Cancer PAF if all Current Smokers became Former Smokers in English Men in 2019",
+  labs(title = "Men",
        x = "Former Smoker Prevalence",
        y = "PAF") +
   ylim(0, 1) +
+  xlim(0.2,0.5) +
   theme_minimal() 
-print(pafformersmoker)
+wpafformersmoker<- ggplot(data.frame(prevalence = wformersmokingrange2019, PAF = wsmokingprevalence2019$paf), aes(x = prevalence, y = PAF)) +
+  geom_line(color = "blue", size = 1) +
+  labs(title = "Women",
+       x = "Former Smoker Prevalence",
+       y = "PAF") +
+  ylim(0, 1) +
+  xlim(0.2,0.5) +
+  theme_minimal() 
+smokingcessation <- grid.arrange(mpafformersmoker, wpafformersmoker, ncol = 2, top = "Lung Cancer PAF if all Current Smokers became Former Smokers in England 2019")
 
 
 ```
 
 The conclusion that can be drawn here is that even if it were possible to remove all current smokers from the population by getting them to quit smoking, there would still be a large proportion of lung cancer cases attributable to the longitudinal effects of smoking. This means that the only way to truly remove smoking as a lung cancer risk factor from the population would be for universal smoking cessation and time for those who have ever been cigarette smoking to age out of the population.
 
+### Alcohol Limiting and OSCC Cancer
+
+Based on 2019, if all drinkers in England started limiting their alcohol consumption to light alcohol consumption.
+
+OSCC cancer was chosen because it is the cancer site with the highest RR so the effect would be the most dramatic. This is the cancer site that would be the most affected by changes in alcohol consumption prevalence.
+
+Light alcohol consumption is classified as 1.5 units of alcohol per day which is about one drink. This definition is about what the UK guidelines recommend as healthy alcohol habits ( 14 units per week). That means that this scenario is if all drinkers in England 2019 decided to listen to government health interventions and drink appropriately.
+
+```{r}
+mpafalc<- ggplot(data.frame(prevalence = mlightalc_range, PAF = malcprev$paf), aes(x = prevalence, y = PAF)) +
+  geom_line(color = "blue", size = 1) +
+  labs(title = "Men",
+       x = "Light Drinking Prevalence",
+       y = "PAF") +
+  ylim(0, .5) +
+  xlim(.45,.9) +
+  theme_minimal() 
+wpafalc<- ggplot(data.frame(prevalence = wlightalc_range, PAF = walcprev$paf), aes(x = prevalence, y = PAF)) +
+  geom_line(color = "blue", size = 1) +
+  labs(title = "Women",
+       x = "Light Drinking Prevalence",
+       y = "PAF") +
+  ylim(0, .5) +
+  xlim(.45,.9) +
+  theme_minimal()
+alcohol_alllight <- grid.arrange(mpafalc, wpafalc, ncol=2, top= "OSCC PAF if all Medium and Heavy Drinkers became Light Drinkers in England 2019")
+
+```
+
+The assumptions behind this scenario are that all drinkers in England 2019 continue drinking but limit their consumption and there are no new drinkers entering the "exposed" population.
+
 # Relevant for Conclusion
+
+## Literature Comparisons
+
+### Fibre
+
+One of the biggest discrepancies in current PAF literature is the RR for fibre. The RR used in this analysis is 0.91(0.87, 1.00) per 10g increment of fibre per day and is sourced from a meta-analysis from the \[WCRF\](Wholegrains, vegetables and fruit and the risk of cancer (wcrf.org).The RR can be transformed to be an ERR per 1g/day by: $$
+per 1 g = ln(\frac1{0.93}) = \frac {0.073}{10g} * 10 = \frac {0.007}{1g} deficit from 30g/day
+$$ The methodology is described in [Brown et al.](https://pubmed.ncbi.nlm.nih.gov/29567982/). The problem is that the reported RR per 1g of fibre deficit in the methodology is 0.03 per 1g deficit which is significantly larger than the one used in this analysis.
+
+This number is sourced from this [Parkin, 2011 paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3252068/). In this paper, it is acknowledged that the WCRF published a similar number to 0.93; however, it uses a RR of 0.84 per 6g from [Dahm, 2010](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3252068/)which resulted in the reported 3% per 1g increase in risk that is used in the Parkin paper. This number has been widely used throughout literature - [Goon, 2021](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11064977/) - and drastically overestimates the PAF for fibre and colorectal cancer.
 
 ## Predictions in the wake of Covid-19 Pandemic
 
