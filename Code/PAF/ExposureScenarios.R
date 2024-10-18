@@ -53,7 +53,7 @@ wsmokingprevalence2019$paf <- ((wsmokingprevalence2019$current * (wRRcurrentsmok
 #        y = "PAF") +
 #   ylim(0, 1) +
 #   xlim(0.2,0.5) +
-#   theme_minimal() 
+#   theme_minimal()
 # wpafformersmoker<- ggplot(data.frame(prevalence = wformersmokingrange2019, PAF = wsmokingprevalence2019$paf), aes(x = prevalence, y = PAF)) +
 #   geom_line(color = "blue", size = 1) +
 #   labs(title = "Women",
@@ -61,7 +61,7 @@ wsmokingprevalence2019$paf <- ((wsmokingprevalence2019$current * (wRRcurrentsmok
 #        y = "PAF") +
 #   ylim(0, 1) +
 #   xlim(0.2,0.5) +
-#   theme_minimal() 
+#   theme_minimal()
 # smokingcessation <- grid.arrange(mpafformersmoker, wpafformersmoker, ncol = 2, top = "Lung Cancer PAF if all Current Smokers became Former Smokers in England 2019")
 
 #######################################################################################################################################################
@@ -144,8 +144,62 @@ walcprev$paf <- ((walcprev$light * (RRlightalc-1))+ (walcprev$medium * (RRmedalc
 #   ylim(0, .5) +
 #   xlim(.45,.9) +
 #   theme_minimal()
-# alcohol_alllight <- grid.arrange(mpafalc, wpafalc, ncol=2, top= "OSCC PAF if all Medium and Heavy Drinkers became Light Smokers in England 2019")
+# alcohol_alllight <- grid.arrange(mpafalc, wpafalc, ncol=2, top= "OSCC PAF if all Medium and Heavy Drinkers became Light Drinkers in England 2019")
 
 #######################################################################################################################################################
 #SCENARIO THREE: Obesity to overweight and OAC
-
+#there is no obesity in the population meaning that the population BMI maximum is 30
+RRobese <- rr %>% 
+  filter(riskfactor == "obese") %>% 
+  pull(ACRR)
+RRoverweight <- rr %>% 
+  filter(riskfactor == "overweight") %>% 
+  pull(ACRR)
+#MEN
+Mobese <- cleanedprev %>%
+  filter(variable == "obese_men", datayear == 2019, country == "England") %>%
+  pull(prev)
+Moverweight <- cleanedprev %>%
+  filter(variable == "overweight_men", datayear == 2019, country == "England") %>%
+  pull(prev)
+mmaxbmirisk = Mobese + Moverweight 
+#creating the range of possible bmi 
+moverweightrange2019 <- seq(Moverweight, mmaxbmirisk, by = 0.01)
+mbmiprev2019 <- data.frame(count = seq(1,27))
+mbmiprev2019$overweight <- moverweightrange2019
+mbmiprev2019$obese <- (mmaxbmirisk - mbmiprev2019$overweight)
+#calculating the PAFs across the time 
+mbmiprev2019$paf <- ((mbmiprev2019$obese * (RRobese-1))+ (mbmiprev2019$overweight * (RRoverweight-1))) / (1 + (mbmiprev2019$obese * (RRobese-1))+ (mbmiprev2019$overweight * (RRoverweight-1)))
+#WOMEN
+Wobese <- cleanedprev %>%
+  filter(variable == "obese_women", datayear == 2019, country == "England") %>%
+  pull(prev)
+Woverweight <- cleanedprev %>%
+  filter(variable == "overweight_women", datayear == 2019, country == "England") %>%
+  pull(prev)
+wmaxbmirisk = Wobese + Woverweight 
+#creating the range of possible bmi 
+woverweightrange2019 <- seq(Woverweight, wmaxbmirisk, by = 0.01)
+wbmiprev2019 <- data.frame(count = seq(1,30))
+wbmiprev2019$overweight <- woverweightrange2019
+wbmiprev2019$obese <- (wmaxbmirisk - wbmiprev2019$overweight)
+#calculating the PAFs across the time 
+wbmiprev2019$paf <- ((wbmiprev2019$obese * (RRobese-1))+ (wbmiprev2019$overweight * (RRoverweight-1))) / (1 + (wbmiprev2019$obese * (RRobese-1))+ (wbmiprev2019$overweight * (RRoverweight-1)))
+#visualize
+# mpaf_bmi<- ggplot(data.frame(prevalence = moverweightrange2019, PAF = mbmiprev2019$paf), aes(x = prevalence, y = PAF)) +
+#   geom_line(color = "blue", size = 1) +
+#   labs(title = "Men",
+#        x = "Overweight Prevalence",
+#        y = "PAF") +
+#   ylim(0, .5) +
+#   xlim(0.3,.7) +
+#   theme_minimal()
+# wpaf_bmi<- ggplot(data.frame(prevalence = woverweightrange2019, PAF = wbmiprev2019$paf), aes(x = prevalence, y = PAF)) +
+#   geom_line(color = "blue", size = 1) +
+#   labs(title = "Women",
+#        x = "Overweight Prevalence",
+#        y = "PAF") +
+#   ylim(0, .5) +
+#   xlim(0.3,.7) +
+#   theme_minimal()
+# bmi_paf <- grid.arrange(mpaf_bmi,wpaf_bmi, ncol = 2, top = "OAC PAF if all People with Obesity became Overweight in England 2019" )
