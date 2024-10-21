@@ -1028,7 +1028,7 @@ alcohol_alllight <- grid.arrange(mpafalc, wpafalc, ncol=2, top= "OSCC PAF if all
 
 The assumptions behind this scenario are that all drinkers in England 2019 continue drinking but limit their consumption and there are no new drinkers entering the "exposed" population.
 
-### BMI Overweight No Obese and OAC Cancer 
+### BMI Overweight No Obese and OAC Cancer
 
 In this scenario, all obese people in 2019 have moved in to the overweight BMI category. OAC was chosen for the same reasons as OSCC cancer was chosen for Alcohol. The scenario is also the same set of assumptions -the whole England population moves to the lowest risk group.
 
@@ -1060,7 +1060,7 @@ The assumptions behind this scenario are that all people in the BMI "risk" categ
 
 ### Fibre
 
-One of the biggest discrepancies between current PAF literature and this analysis is the RR for fibre. The RR used in this analysis is 0.91(0.87, 1.00) per 10g increment of fibre per day and is sourced from a meta-analysis from the \[WCRF\](Wholegrains, vegetables and fruit and the risk of cancer (wcrf.org).The RR can be transformed to be an ERR per 1g/day by:\
+One of the biggest discrepancies between current PAF literature and this analysis is the RR for fibre. The RR used in this analysis is 0.91(0.87, 1.00) per 10g increment of fibre per day and is sourced from a meta-analysis from the [WCRF](https://www.wcrf.org/wp-content/uploads/2020/12/Wholegrains-veg-and-fruit.pdf).The RR can be transformed to be an ERR per 1g/day by:\
 $$
 per 1 g deficit  = ln(\frac1{0.93}) = \frac {0.073}{10g} / 10 = \frac {0.007}{1g}
 $$ The methodology is described in [Brown et al.](https://pubmed.ncbi.nlm.nih.gov/29567982/). The problem is that the reported RR per 1g of fibre deficit in the methodology is 0.03 per 1g deficit which is significantly larger than the one used in this analysis.
@@ -1070,6 +1070,12 @@ per 1 g deficit = ln(\frac1{0.84}) = \frac {0.174}{6g} / 6 = \frac {0.029}{1g}
 $$
 
 This number has been widely used throughout literature - [Goon, 2021](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11064977/) - and drastically overestimates the PAF for fibre and colorectal cancer.
+
+### Processed and Red Meat
+
+The PAF in Brown et al. for processed and red meat was calculated based on the population prevalence of red and processed meat together but the RR used is for processed meat - 74g/day of processed meat on average with an RR 1.13. This is an overestimate of the meat diet PAF calculations because not all of this 74g is processed meat.
+
+In this analysis, processed meat and red meat are calculated separately with different RR and different prevalence from the NDNS based on IARC definitions of red and processed meat.
 
 ## Predictions in the wake of Covid-19 Pandemic
 
