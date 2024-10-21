@@ -143,6 +143,7 @@ library(stringr)
 library (ggplot2)
 library(gridExtra)
 library(segmented)
+library(knitr)
 ```
 
 Running the background code and installing all of the necessary packages
@@ -856,7 +857,13 @@ pafmen_table <- format_pafmen %>%
   dplyr::select(Exposure_Year, cancersite, PAF_format) %>%
   pivot_wider(names_from = cancersite, values_from = PAF_format, values_fill = list(PAF_format = 0))
 
-print(pafmen_table)
+pafmen_table_formatted <- pafmen_table %>%
+  kable(col.names = c("Year", colnames(pafmen_table)[-1]),
+        format = "pipe",
+        digits = 2,
+        align = "c")
+
+print(pafmen_table_formatted)
 
 ```
 
@@ -872,27 +879,35 @@ pafwomen_table <- format_pafwomen %>%
   dplyr::select(Exposure_Year, cancersite, PAF_format) %>%
   pivot_wider(names_from = cancersite, values_from = PAF_format, values_fill = list(PAF_format = 0))
 
-print(pafwomen_table)
+pafwomen_table_formatted <- pafwomen_table %>%
+  kable(col.names = c("Year", colnames(pafwomen_table)[-1]),
+        format = "pipe",
+        digits = 2,
+        align = "c")
+
+print(pafwomen_table_formatted)
 ```
 
 Relative change in PAF from 2005-2019 (except for Colorectal which will be from 2008-2018)
 
 ```{r}
 relativechange <- aggregate_PAF_all %>%
-  filter((cancersite == "Colorectal" & Year %in% c(2008, 2018)) | 
-         (cancersite != "Colorectal" & Year %in% c(2005, 2019))) %>% 
+  filter((cancersite == "Colorectal" & Year %in% c(2008, 2018)) |
+         (cancersite != "Colorectal" & Year %in% c(2005, 2019))) %>%
   pivot_wider(names_from = Year, values_from = PAF, values_fill = list(PAF = 0)) %>%
    mutate(`2005` = ifelse(cancersite == "Colorectal", `2008`, `2005`),
          `2019` = ifelse(cancersite == "Colorectal", `2018`, `2019`)) %>%
   mutate(
-    `2005` = `2005` * 100, 
-    `2019` = `2019` * 100, 
-    PAF_Change = `2019` -`2005`, 
-    `2005` = round(ifelse(is.na(`2005`), 0, `2005`), 2), 
-    `2019` = round(ifelse(is.na(`2019`), 0, `2019`), 2), 
+    `2005` = `2005` * 100,
+    `2019` = `2019` * 100,
+    PAF_Change = `2019` -`2005`,
+    `2005` = round(ifelse(is.na(`2005`), 0, `2005`), 2),
+    `2019` = round(ifelse(is.na(`2019`), 0, `2019`), 2),
     PAF_Change = round(ifelse(is.na(PAF_Change), 0, PAF_Change), 2)
-    ) %>% 
-  dplyr::select(cancersite,sex, `2005`, `2019`, PAF_Change) 
+    ) %>%
+  dplyr::select(cancersite,sex, `2005`, `2019`, PAF_Change)
+
+
 print(relativechange)
 ```
 
@@ -974,7 +989,7 @@ current smoking prevalence = 0
 
 source("C:\\Users\\zrichards.ICR\\OneDrive - The Institute of Cancer Research\\Git\\UK-cancer-trends\\Code\\PAF\\ExposureScenarios.R")
 
-mpafformersmoker<- ggplot(data.frame(prevalence = formersmokingrange2019, PAF = smokingprevalence2019$paf), aes(x = prevalence, y = PAF)) +
+mpafformersmoker<- ggplot(data.frame(prevalence = formersmokingrange2019, PAF = smokingprevalence2019$Lungpaf), aes(x = prevalence, y = PAF)) +
   geom_line(color = "blue", size = 1) +
   labs(title = "Men",
        x = "Former Smoker Prevalence",
@@ -982,7 +997,7 @@ mpafformersmoker<- ggplot(data.frame(prevalence = formersmokingrange2019, PAF = 
   ylim(0, 1) +
   xlim(0.2,0.5) +
   theme_minimal() 
-wpafformersmoker<- ggplot(data.frame(prevalence = wformersmokingrange2019, PAF = wsmokingprevalence2019$paf), aes(x = prevalence, y = PAF)) +
+wpafformersmoker<- ggplot(data.frame(prevalence = wformersmokingrange2019, PAF = wsmokingprevalence2019$Lungpaf), aes(x = prevalence, y = PAF)) +
   geom_line(color = "blue", size = 1) +
   labs(title = "Women",
        x = "Former Smoker Prevalence",
@@ -997,6 +1012,40 @@ smokingcessation <- grid.arrange(mpafformersmoker, wpafformersmoker, ncol = 2, t
 
 The conclusion that can be drawn here is that even if it were possible to remove all current smokers from the population by getting them to quit smoking, there would still be a large proportion of lung cancer cases attributable to the longitudinal effects of smoking. This means that the only way to truly remove smoking as a lung cancer risk factor from the population would be for universal smoking cessation and time for those who have ever been cigarette smoking to age out of the population.
 
+Here are the actual smoking PAFs in 2019 vs. the PAFS with total smoking cessation (assumptions outlined above) for each cancer site.
+
+```{r}
+mensmokingcessation_bp <- ggplot(mensmokingcessation, aes(x = cancersite, y = PAF, fill = factor(scenario))) +
+  geom_bar(stat = "identity", position = "dodge") +  
+  geom_text(aes(label = round(PAF, 2)),              
+            position = position_dodge(width = 0.9),  
+            vjust = -0.3,                           
+            size = 3) +
+  labs(title = "Men",
+       x = "Cancer Site",
+       y = "PAF") +
+  scale_fill_manual(values = c("Actual" = "#6b9080", "Imagined" = "#cce3de")) +
+  theme_minimal()  +
+  theme(legend.position = "none")
+
+#plot(mensmokingcessation_bp)
+
+womensmokingcessation_bp <- ggplot(womensmokingcessation, aes(x = cancersite, y = PAF, fill = factor(scenario))) +
+  geom_bar(stat = "identity", position = "dodge") +  
+  geom_text(aes(label = round(PAF, 2)),              
+            position = position_dodge(width = 0.9),  
+            vjust = -0.3,                           
+            size = 3) +
+  labs(title = "Women",
+       x = "Cancer Site",
+       y = "PAF",
+       fill = "Scenarios") +
+  scale_fill_manual(values = c("Actual" = "#6b9080", "Imagined" = "#cce3de")) +
+  theme_minimal()
+#plot(womensmokingcessation_bp)
+smokingcessation <- grid.arrange(mensmokingcessation_bp,womensmokingcessation_bp, ncol = 2, top = "PAFs 2019: Actual vs. Smoking Cessation Scenario" )
+```
+
 ### Alcohol Limiting and OSCC Cancer
 
 Based on 2019, if all drinkers in England started limiting their alcohol consumption to light alcohol consumption.
@@ -1006,7 +1055,7 @@ OSCC cancer was chosen because it is the cancer site with the highest RR so the 
 Light alcohol consumption is classified as 1.5 units of alcohol per day which is about one drink. This definition is about what the UK guidelines recommend as healthy alcohol habits ( 14 units per week). That means that this scenario is if all drinkers in England 2019 decided to listen to government health interventions and drink appropriately.
 
 ```{r}
-mpafalc<- ggplot(data.frame(prevalence = mlightalc_range, PAF = malcprev$paf), aes(x = prevalence, y = PAF)) +
+mpafalc<- ggplot(data.frame(prevalence = mlightalc_range, PAF = malcprev$SCCpaf), aes(x = prevalence, y = PAF)) +
   geom_line(color = "blue", size = 1) +
   labs(title = "Men",
        x = "Light Drinking Prevalence",
@@ -1014,7 +1063,7 @@ mpafalc<- ggplot(data.frame(prevalence = mlightalc_range, PAF = malcprev$paf), a
   ylim(0, .5) +
   xlim(.45,.9) +
   theme_minimal() 
-wpafalc<- ggplot(data.frame(prevalence = wlightalc_range, PAF = walcprev$paf), aes(x = prevalence, y = PAF)) +
+wpafalc<- ggplot(data.frame(prevalence = wlightalc_range, PAF = walcprev$SCCpaf), aes(x = prevalence, y = PAF)) +
   geom_line(color = "blue", size = 1) +
   labs(title = "Women",
        x = "Light Drinking Prevalence",
@@ -1026,14 +1075,48 @@ alcohol_alllight <- grid.arrange(mpafalc, wpafalc, ncol=2, top= "OSCC PAF if all
 
 ```
 
-The assumptions behind this scenario are that all drinkers in England 2019 continue drinking but limit their consumption and there are no new drinkers entering the "exposed" population.
+The assumptions behind this scenario are that all drinkers in England 2019 continue drinking but limit their consumption to light drinkers and there are no new drinkers entering the "exposed" population.
+
+Here are the actual alcohol PAFs in 2019 vs. the PAFS with alcohol limiting assumptions (assumptions outlined above) for each cancer site.
+
+```{r}
+menalclimit_bp <- ggplot(menalclimit, aes(x = cancersite, y = PAF, fill = factor(scenario))) +
+  geom_bar(stat = "identity", position = "dodge") +
+  geom_text(aes(label = round(PAF, 2)),
+            position = position_dodge(width = 0.9),
+            vjust = -0.3,
+            size = 3) +
+  labs(title = "Men",
+       x = "Cancer Site",
+       y = "PAF",
+       fill = "Scenarios") +
+  scale_fill_manual(values = c("Actual" = "#6b9080", "Imagined" = "#cce3de")) +
+  theme_minimal() 
+#plot(menalclimit_bp)
+
+womenalclimit_bp <- ggplot(womenalclimit, aes(x = cancersite, y = PAF, fill = factor(scenario))) +
+  geom_bar(stat = "identity", position = "dodge") +
+  geom_text(aes(label = round(PAF, 2)),
+            position = position_dodge(width = 0.9),
+            vjust = -0.3,
+            size = 3) +
+  labs(title = "Women",
+       x = "Cancer Site",
+       y = "PAF",
+       fill = "Scenarios") +
+  scale_fill_manual(values = c("Actual" = "#6b9080", "Imagined" = "#cce3de")) +
+  theme_minimal()
+#plot(womenalclimit_bp)
+alclimit <- grid.arrange(menalclimit_bp, womenalclimit_bp, ncol = 2, top = "PAFs 2019: Actual vs. Alcohol Limiting Scenario" )
+
+```
 
 ### BMI Overweight No Obese and OAC Cancer
 
 In this scenario, all obese people in 2019 have moved in to the overweight BMI category. OAC was chosen for the same reasons as OSCC cancer was chosen for Alcohol. The scenario is also the same set of assumptions -the whole England population moves to the lowest risk group.
 
 ```{r}
-mpaf_bmi<- ggplot(data.frame(prevalence = moverweightrange2019, PAF = mbmiprev2019$paf), aes(x = prevalence, y = PAF)) +
+mpaf_bmi<- ggplot(data.frame(prevalence = moverweightrange2019, PAF = mbmiprev2019$ACpaf), aes(x = prevalence, y = PAF)) +
   geom_line(color = "blue", size = 1) +
   labs(title = "Men",
        x = "Overweight Prevalence",
@@ -1041,7 +1124,7 @@ mpaf_bmi<- ggplot(data.frame(prevalence = moverweightrange2019, PAF = mbmiprev20
   ylim(0, .5) +
   xlim(0.3,.7) +
   theme_minimal()
-wpaf_bmi<- ggplot(data.frame(prevalence = woverweightrange2019, PAF = wbmiprev2019$paf), aes(x = prevalence, y = PAF)) +
+wpaf_bmi<- ggplot(data.frame(prevalence = woverweightrange2019, PAF = wbmiprev2019$ACpaf), aes(x = prevalence, y = PAF)) +
   geom_line(color = "blue", size = 1) +
   labs(title = "Women",
        x = "Overweight Prevalence",
@@ -1053,6 +1136,40 @@ bmi_paf <- grid.arrange(mpaf_bmi,wpaf_bmi, ncol = 2, top = "OAC PAF if all Peopl
 ```
 
 The assumptions behind this scenario are that all people in the BMI "risk" category (overweight/obesity) stay in the category and there are no people entering this risk group.
+
+Here are the actual BMI PAFs in 2019 vs. the PAFS with BMI limiting assumptions (assumptions outlined above) for each cancer site.
+
+```{r}
+#plot the barplots
+menbmilimit_bp <- ggplot(menbmilimit, aes(x = cancersite, y = PAF, fill = factor(scenario))) +
+  geom_bar(stat = "identity", position = "dodge") +
+  geom_text(aes(label = round(PAF, 2)),
+            position = position_dodge(width = 0.9),
+            vjust = -0.3,
+            size = 3) +
+  labs(title = "Men",
+       x = "Cancer Site",
+       y = "PAF",
+       fill = "Scenarios") +
+  scale_fill_manual(values = c("Actual" = "#6b9080", "Imagined" = "#cce3de")) +
+  theme_minimal()
+#plot(mensmokingcessation_bp)
+
+womenbmilimit_bp <- ggplot(womenbmilimit, aes(x = cancersite, y = PAF, fill = factor(scenario))) +
+  geom_bar(stat = "identity", position = "dodge") +
+  geom_text(aes(label = round(PAF, 2)),
+            position = position_dodge(width = 0.9),
+            vjust = -0.3,
+            size = 3) +
+  labs(title = "Women",
+       x = "Cancer Site",
+       y = "PAF",
+       fill = "Scenarios") +
+  scale_fill_manual(values = c("Actual" = "#6b9080", "Imagined" = "#cce3de")) +
+  theme_minimal()
+#plot(womensmokingcessation_bp)
+bmilimit <- grid.arrange(menbmilimit_bp, womenbmilimit_bp, ncol = 2, top = "PAFs 2019: Actual vs. BMI Limiting Scenario" )
+```
 
 # Relevant for Conclusion
 
