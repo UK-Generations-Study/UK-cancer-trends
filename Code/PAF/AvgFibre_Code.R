@@ -102,15 +102,16 @@ fibre_cat <- data_ndhns |>
   ) |>
   complete(surveyyear_cat, sex, fibrecat, fill = list(weighted_count = 0, proportion = 0, total_weight=0))
 #Graph it 
-fibrebar <- ggplot(fibre_cat, aes(x = fibrecat, y = proportion, fill = sex)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  xlab("Fibre Daily Intake Category (g)") +
-  ylab(" Count") +
-  ggtitle(" Distribution of Fibre Daily Intake") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-  labs(fill = "Sex") +
-  facet_wrap(~surveyyear_cat, ncol = 1)
+# fibrebar <- ggplot(fibre_cat, aes(x = fibrecat, y = proportion, fill = sex)) +
+#   geom_bar(stat = "identity", position = "dodge") +
+#   xlab("Fibre Daily Intake Category (g)") +
+#   ylab(" Count") +
+#   ggtitle(" Distribution of Fibre Daily Intake") +
+#   theme_minimal() +
+#   theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+#   labs(fill = "Sex") +
+#   facet_wrap(~surveyyear_cat, ncol = 1) +
+#   scale_fill_manual(values = c("Men" = "#9cb380", "Women" = "#a44a3f"))
 #print(fibrebar)
 ###################################
 

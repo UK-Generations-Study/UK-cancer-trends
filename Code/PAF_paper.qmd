@@ -214,18 +214,29 @@ The risk factors trending over the past 2 decades.:
 ```{r}
 #| echo: false
 #| warning: false
+
+rf_colors <- c(
+  "formersmoker_men" = "#ffb627", 
+  "smoker_men" = "#e2711d", 
+  "lightalcohol_men" = "#a2d6f9", 
+  "medalcohol_men" = "#1e96fc", 
+  "heavyalcohol_men" = "#072ac8", 
+  "obese_men" = "#7cb518", 
+  "overweight_men" = "#058c42"
+)
+
+rf_colors_w <- c(
+  "formersmoker_women" = "#ffb627", 
+  "smoker_women" = "#e2711d", 
+  "lightalcohol_women" = "#a2d6f9", 
+  "medalcohol_women" = "#1e96fc", 
+  "heavyalcohol_women" = "#072ac8", 
+  "obese_women" = "#7cb518", 
+  "overweight_women" = "#058c42"
+)
+
 cleanedprev <- cleanedprev %>% 
   filter(!variable %in% c("diabetes_men", "diabetes_women", "% Meet Physical Activity Guidelines", "hrt"))
-
-prev_englandwomen <- ggplot(cleanedprev %>% 
-  filter (sex == "Women", country == "England"), aes(x = datayear, y = prev, color = variable)) + 
-  geom_point() + 
-  geom_line() +
-  labs(title = "Risk Factors for Women",
-       x = "Year",
-       y = "Risk Factor Prevalence") +
-  theme_minimal()
-print(prev_englandwomen)
 
 prev_englandmen <- ggplot(cleanedprev %>% 
   filter (sex == "Men", country == "England"), aes(x = datayear, y = prev, color = variable)) + 
@@ -234,8 +245,20 @@ prev_englandmen <- ggplot(cleanedprev %>%
   labs(title = "Risk Factors for Men",
        x = "Year",
        y = "Risk Factor Prevalence") +
+  scale_color_manual(values = rf_colors) +
   theme_minimal()
 print(prev_englandmen)
+
+prev_englandwomen <- ggplot(cleanedprev %>% 
+  filter (sex == "Women", country == "England"), aes(x = datayear, y = prev, color = variable)) + 
+  geom_point() + 
+  geom_line() +
+  labs(title = "Risk Factors for Women",
+       x = "Year",
+       y = "Risk Factor Prevalence") +
+  scale_color_manual(values = rf_colors_w) +
+  theme_minimal()
+print(prev_englandwomen)
 
 ```
 
@@ -244,14 +267,40 @@ print(prev_englandmen)
 Bar graphs of prevalence of different levels of exposure consumption.
 
 ```{r}
-
-#print(fibrerisk)
+fibrebar <- ggplot(fibre_cat, aes(x = fibrecat, y = proportion, fill = sex)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  xlab("Fibre Daily Intake Category (g)") +
+  ylab("Percentage") +
+  ggtitle(" Distribution of Fibre Daily Intake") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(fill = "Sex") +
+  facet_wrap(~surveyyear_cat, ncol = 1) +
+  scale_fill_manual(values = c("Men" = "#a8c256", "Women" = "#c33149"))
 print(fibrebar)
 
-#print(all_processedmeat_visualize)
+pm_dist <- ggplot(pm_cat, aes(x = processedmeat_category, y = proportion, fill = sex)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  xlab("Processed Meat Intake Category (g)") +
+  ylab("Percentage") +
+  ggtitle(" Distribution of Processed Meat Intake by Category") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(fill = "Sex") +
+  facet_wrap(~surveyyear_cat, ncol = 1)+
+  scale_fill_manual(values = c("Men" = "#a8c256", "Women" = "#c33149"))
 print(pm_dist)
 
-#print(all_redmeat_visualize)
+rm_dist <- ggplot(rm_cat, aes(x = redmeat_category, y = proportion, fill = sex)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  xlab("Red Meat Intake Category (g)") +
+  ylab("Percentage") +
+  ggtitle(" Distribution of Red Meat Intake by Category") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(fill = "Sex") +
+  facet_wrap(~surveyyear_cat, ncol = 1)+
+  scale_fill_manual(values = c("Men" = "#a8c256", "Women" = "#c33149"))
 print(rm_dist)
 ```
 
@@ -295,35 +344,58 @@ cancer_colors <- c(
   "Breast" = "#E7298A",
   "Oesophageal" = "#66A61E",
   "Prostate" = "firebrick3",
-  "All sites excl. NMSC" = "dodgerblue4"
+  "All sites excl. NMSC" = "dodgerblue4", 
+  "Men" = "#a8c256", 
+  "Women" = "#c33149"
 )
 
+#All cancer sites for men and women 
+allcancerin <- cancerrates %>% 
+  filter(Cancer_Site == "All sites excl. NMSC", Country == "England", Year <=2019, Year >=2005)
+allcancercases <- ggplot(allcancerin, aes(x = Year, y = Incidences, color = Sex, group = Sex)) +
+  geom_point() + 
+  geom_line() +
+  labs(title = "All Cancer Incidence in England",
+       x = "Year Diagnosed",
+       y = "Incidence Cases") +
+  scale_color_manual(values = cancer_colors) +
+  scale_x_continuous(breaks = seq(min(allcancerin$Year), max(allcancerin$Year), by = 5)) +
+  theme_minimal()
+print(allcancercases)
+
+
 #MEN
-cancerratesEM <- cancerrates %>% filter(Country == "England", Sex =="Men", Year <= 2019)
+cancerratesEM <- cancerrates %>% 
+  filter(Country == "England", Sex =="Men", Year <= 2019,Year >=2005,
+         Cancer_Site != "All sites excl. NMSC")
 
 # Create the plot with a separate line and prediction line for each Cancer_Site
 cancercases_englandmen <- ggplot(cancerratesEM, aes(x = Year, y = Incidences, color = Cancer_Site)) + 
   geom_point() + 
   geom_line() +
-  labs(title = "Cancer Incidences in England by Cancer Site for Men",
-       x = "Year",
+  labs(title = "Cancer Site  Incidences in England for Men",
+       x = "Year Diagnosed",
        y = "Incidence Cases") +
   scale_color_manual(values = cancer_colors) +
+  scale_x_continuous(breaks = seq(min(cancerratesEM$Year), max(cancerratesEM$Year), by = 5)) +
   theme_minimal()
 print(cancercases_englandmen)
 
 
 #WOMEN
-cancerratesEW <- cancerrates %>% filter(Country == "England", Sex =="Women", Year <= 2019)
+cancerratesEW <- cancerrates %>% 
+  filter(Country == "England", Sex =="Women", Year <= 2019, Year >=2005, 
+         Cancer_Site != "All sites excl. NMSC")
 
 # Create the plot with a separate line and prediction line for each Cancer_Site
 cancercases_englandwomen <- ggplot(cancerratesEW, aes(x = Year, y = Incidences, color = Cancer_Site)) + 
   geom_point() + 
   geom_line() +
-  labs(title = "Cancer Incidences in England by Cancer Site for Women",
-       x = "Year",
+  labs(title = "Cancer Site  Incidences in England for Women",
+       x = "Year Diagnosed",
        y = "Incidence Cases") +
   scale_color_manual(values = cancer_colors) +
+   scale_x_continuous(breaks = seq(min(cancerratesEW$Year), max(cancerratesEW$Year), by = 5)) +
   theme_minimal()
 print(cancercases_englandwomen)
 #print 
@@ -1090,7 +1162,7 @@ menalclimit_bp <- ggplot(menalclimit, aes(x = cancersite, y = PAF, fill = factor
        x = "Cancer Site",
        y = "PAF",
        fill = "Scenarios") +
-  scale_fill_manual(values = c("Actual" = "#6b9080", "Imagined" = "#cce3de")) +
+  scale_fill_manual(values = c("Actual" = "#6b9080", "Imagined" = "#f4743b")) +
   theme_minimal() 
 #plot(menalclimit_bp)
 
@@ -1104,7 +1176,7 @@ womenalclimit_bp <- ggplot(womenalclimit, aes(x = cancersite, y = PAF, fill = fa
        x = "Cancer Site",
        y = "PAF",
        fill = "Scenarios") +
-  scale_fill_manual(values = c("Actual" = "#6b9080", "Imagined" = "#cce3de")) +
+  scale_fill_manual(values = c("Actual" = "#6b9080", "Imagined" = "#f4743b")) +
   theme_minimal()
 #plot(womenalclimit_bp)
 alclimit <- grid.arrange(menalclimit_bp, womenalclimit_bp, ncol = 2, top = "PAFs 2019: Actual vs. Alcohol Limiting Scenario" )

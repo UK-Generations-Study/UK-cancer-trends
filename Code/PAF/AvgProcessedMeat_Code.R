@@ -111,15 +111,16 @@ pm_cat <- data_ndhns |>
     .groups = "drop"
   )
 
-pm_dist <- ggplot(pm_cat, aes(x = processedmeat_category, y = proportion, fill = sex)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  xlab("Processed Meat Intake Category (g)") +
-  ylab(" Count") +
-  ggtitle(" Distribution of Processed Meat Intake by Category") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-  labs(fill = "Sex") +
-  facet_wrap(~surveyyear_cat, ncol = 1)
+# pm_dist <- ggplot(pm_cat, aes(x = processedmeat_category, y = proportion, fill = sex)) +
+#   geom_bar(stat = "identity", position = "dodge") +
+#   xlab("Processed Meat Intake Category (g)") +
+#   ylab(" Count") +
+#   ggtitle(" Distribution of Processed Meat Intake by Category") +
+#   theme_minimal() +
+#   theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+#   labs(fill = "Sex") +
+#   facet_wrap(~surveyyear_cat, ncol = 1)+
+#   scale_fill_manual(values = c("Men" = "#9cb380", "Women" = "#a44a3f"))
 #print(pm_dist)
 
 

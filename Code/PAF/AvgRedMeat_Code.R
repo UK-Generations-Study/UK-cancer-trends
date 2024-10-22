@@ -104,15 +104,16 @@ rm_cat <- data_ndhns |>
     proportion = weighted_count / total_weight,
     .groups = "drop"
   )
-rm_dist <- ggplot(rm_cat, aes(x = redmeat_category, y = proportion, fill = sex)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  xlab("Red Meat Intake Category (g)") +
-  ylab(" Count") +
-  ggtitle(" Distribution of Red Meat Intake by Category") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-  labs(fill = "Sex") +
-  facet_wrap(~surveyyear_cat, ncol = 1)
+# rm_dist <- ggplot(rm_cat, aes(x = redmeat_category, y = proportion, fill = sex)) +
+#   geom_bar(stat = "identity", position = "dodge") +
+#   xlab("Red Meat Intake Category (g)") +
+#   ylab(" Count") +
+#   ggtitle(" Distribution of Red Meat Intake by Category") +
+#   theme_minimal() +
+#   theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+#   labs(fill = "Sex") +
+#   facet_wrap(~surveyyear_cat, ncol = 1)+
+#   scale_fill_manual(values = c("Men" = "#9cb380", "Women" = "#a44a3f"))
 #print(rm_dist)
 
 
