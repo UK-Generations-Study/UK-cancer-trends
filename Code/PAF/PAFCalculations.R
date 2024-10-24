@@ -74,6 +74,112 @@ cleanedprev <- cleanedprev %>%
   mutate(datayear = year)
 cleanedprev <- cleanedprev %>% 
   dplyr::select(-year)
+###################################################################################################
+#cleaning the cancerrates dataframe to include OSCC and OAC 
+#read in the data from Get Out Data who sourced their data from teh National Cancer Registration Dataset curated by the National Disease Registration Service 
+oesinc <- read.csv("C:\\Users\\zrichards.ICR\\OneDrive - The Institute of Cancer Research\\Git\\UK-cancer-trends\\Data\\PAF_Data\\GDO_oesophagealstomachdata.csv")
+
+#GDO data cleaning
+oes_totals <- oesinc %>% 
+  filter(
+    Tumour.Type == "Oesophagus",
+    !str_detect(Year, "-"),
+    Tumour.Type.2 =="All"
+  ) %>% 
+  dplyr::select(Year, Incidence)
+oes_byyr <- oesinc %>% 
+  filter(
+    Tumour.Type == "Oesophagus",
+    Age == "All ages", 
+    Stage == "All stages",
+    !str_detect(Year, "-"),
+    Tumour.Type.3 != "All", 
+    Tumour.Type.2 !="Oesophagogastric junction", 
+    #Tumour.Type.2 =="All"
+  )%>%
+  group_by(Year, Tumour.Type.3) %>%
+  summarise(
+    totalincidence = sum(as.numeric(Incidence), na.rm = TRUE)
+  ) %>%
+  rename(
+    Morphology = Tumour.Type.3
+  ) %>%
+  ungroup()
+
+#calculating proportion by morphology 
+oes_prop <- oes_byyr %>%
+  left_join(oes_totals, by = "Year") %>%
+  mutate (
+    props = as.numeric(totalincidence)/as.numeric(Incidence)
+  )
+
+#data format
+oes_formatted <- oes_prop %>% 
+  dplyr::select(-totalincidence, -Incidence)
+
+#by gender:
+#Men
+#Getting the total incidences 
+cancerrates_oes_men <- cancerrates %>% 
+  filter(
+    Cancer_Site == "Oesophageal", 
+    Country == "England", 
+    Sex == "Men"
+  ) %>%
+  dplyr::select(-ASR)
+#calculating the cases by morphology for men
+oes_men <- oes_prop%>%
+  mutate(
+    Year = as.numeric(Year)
+  )%>%
+  left_join(cancerrates_oes_men, by = "Year")%>%
+  mutate(
+    incidence = props * Incidences
+  )%>%
+  mutate(
+    Country = "England", 
+    cancersite = if_else(Morphology == "Adenocarcinoma", "AC", "SCC"), 
+    cancersite = if_else(Morphology == "Other", "NA", cancersite)
+  ) %>%
+  dplyr::select(Year, Country, Sex, cancersite, incidence)
+
+#Women
+#Getting the total incidences 
+cancerrates_oes_women <- cancerrates %>% 
+  filter(
+    Cancer_Site == "Oesophageal", 
+    Country == "England", 
+    Sex == "Women"
+  ) %>%
+  dplyr::select(-ASR)
+#calculating the cases by morphology for men
+oes_women <- oes_prop%>%
+  mutate(
+    Year = as.numeric(Year)
+  )%>%
+  left_join(cancerrates_oes_women, by = "Year")%>%
+  mutate(
+    incidence = props * Incidences
+  )%>%
+  mutate(
+    Country = "England", 
+    cancersite = if_else(Morphology == "Adenocarcinoma", "AC", "SCC"), 
+    cancersite = if_else(Morphology == "Other", "NA", cancersite)
+  ) %>%
+  dplyr::select(Year, Country, Sex, cancersite, incidence)
+
+#final formatting 
+oesophageal <- rbind(oes_men, oes_women) %>%
+  mutate(
+    Incidences = ceiling(incidence), 
+    ASR = 0
+  )%>%
+  rename(
+    Cancer_Site = cancersite
+  ) %>%
+  dplyr::select(-incidence)
+#Adding into the cancer rates dataset
+cancerrates <- rbind(cancerrates, oesophageal)
 
 ###################################################################################################
 #Alcohol back predictions using a logistic regression model 
