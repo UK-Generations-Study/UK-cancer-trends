@@ -20,6 +20,8 @@ execute:
   fig-height: 8  
 ---
 
+
+
 # Population Attributable Fractions (PAF) project
 
 This project is calculating the PAFs over time from 2015 and projecting them in to 2030.
@@ -134,6 +136,8 @@ Instead, categories of consumption were created from the National Diet and Nutri
 
 ## Preparing the Data
 
+
+
 ```{r}
 #| echo: false
 #| warning: false
@@ -146,7 +150,11 @@ library(segmented)
 library(knitr)
 ```
 
+
+
 Running the background code and installing all of the necessary packages
+
+
 
 ```{r}
 #| warning: false
@@ -154,9 +162,13 @@ source("C:\\Users\\zrichards.ICR\\OneDrive - The Institute of Cancer Research\\G
 
 ```
 
+
+
 ## PAF relationship
 
 Looking at how the PAF change as the population risk factor exposure ranges from 0-100% with different constant relative risks.
+
+
 
 ```{r}
 #| echo: false
@@ -207,9 +219,13 @@ changingpaf <- grid.arrange(pafplotlow, pafplot4, pafplotmed, pafplothigh, ncol=
 
 ```
 
+
+
 ## Risk Factor Trends
 
 The risk factors trending over the past 2 decades.:
+
+
 
 ```{r}
 #| echo: false
@@ -262,9 +278,13 @@ print(prev_englandwomen)
 
 ```
 
+
+
 ### Dietary Risk Factors
 
 Bar graphs of prevalence of different levels of exposure consumption.
+
+
 
 ```{r}
 fibrebar <- ggplot(fibre_cat, aes(x = fibrecat, y = proportion, fill = sex)) +
@@ -304,11 +324,15 @@ rm_dist <- ggplot(rm_cat, aes(x = redmeat_category, y = proportion, fill = sex))
 print(rm_dist)
 ```
 
+
+
 ### Alcohol Predictions
 
 The Health Survey England (HSE) only has data through 2011. Data previously, whether from the HSE or from the old UK wide General Household Survey (ended in 2007), is not comparable as they ask the question is phrased in a different way. This results in prevalence of light drinkers in English men in 2005 being 10% less than what is reported in the same population in 2011 in the HSE. This is alarming as the prevalence of light drinkers in English men in the HSE does not vary by more than 3% from 2011-2019.
 
 As a consequence, prevalence of alcohol consumption in men and women in England was project back using the HSE data and logistic regression. The results can be seen below:
+
+
 
 ```{r, }
 alcohol_predictions <- ggplot(data = alcoholall, aes(x = datayear, y = prev, color = variable)) +
@@ -329,9 +353,13 @@ alcohol_predictions <- ggplot(data = alcoholall, aes(x = datayear, y = prev, col
 print(alcohol_predictions)
 ```
 
+
+
 ## Cancer Case Trends
 
 How cancer incidence changes over time. These are absolute cases so they do not account for the ageing population or population growth.
+
+
 
 ```{r}
 #| echo: false
@@ -405,9 +433,13 @@ print(cancercases_englandwomen)
 
 ```
 
+
+
 ## PAF by Cancer Site
 
 How the individual risk factor PAFs trend over time by cancer site:
+
+
 
 ```{r}
 #| echo: false
@@ -627,18 +659,26 @@ WACcancer <- arrangeGrob(smoking_ACwomen, bmi_ACwomen, alcohol_ACwomen, ncol = 3
 
 ```
 
+
+
 ### 1. Lung
 
 Estimates for Population Attributable Fractions on Lung Cancer
+
+
 
 ```{r}
 lung <- grid.arrange(Mlungcancer, Wlungcancer, nrow=2, top = "Estimates for Population Attributable Fractions on Lung Cancer")
 
 ```
 
+
+
 ### 2. Colorectal
 
 Estimates for Population Attributable Fractions on Colorectal Cancer
+
+
 
 ```{r}
 colorectal <- grid.arrange(Mcolorectalcancer, nrow = 1)
@@ -647,44 +687,64 @@ colorectal1 <- grid.arrange(Wcolorectalcancer, nrow = 1 )
 
 ```
 
+
+
 ### 3. Pancreas
 
 Estimates for Population Attributable Fractions on Pancreas Cancer
+
+
 
 ```{r}
 pancreas <- grid.arrange(Mpancreascancer, Wpancreascancer, nrow=2, top = "Estimates for Population Attributable Fractions on Pancreas Cancer")
 
 ```
 
+
+
 ### 4. Breast
 
 Estimates for Population Attributable Fractions on Breast Cancer
+
+
 
 ```{r}
 Wbreastcancer <- grid.arrange( bmi_breastwomen, alcohol_breastwomen, ncol=3, top = "WOMEN")
 
 ```
 
+
+
 ### 5. Oesophageal SCC
 
 Estimates for Population Attributable Fractions on OSCC Cancer
+
+
 
 ```{r}
 SCC <- grid.arrange(MSCCcancer, WSCCcancer, nrow=2, top = "Estimates for Population Attributable Fractions on OSCC Cancer")
 
 ```
 
+
+
 ### 6. Oesophageal AC
 
 Estimates for Population Attributable Fractions on OAC Cancer
+
+
 
 ```{r}
 AC <- grid.arrange(MACcancer, WACcancer, nrow=2, top = "Estimates for Population Attributable Fractions on OAC Cancer")
 ```
 
+
+
 ## PAF by Risk Factor
 
 How the individual risk factor PAFs trend over time grouped by risk factor:
+
+
 
 ```{r}
 #| echo: false
@@ -867,38 +927,56 @@ dietaryWOMEN <- arrangeGrob(processedmeat_colorectalwomen, fibre_colorectalwomen
 
 ```
 
+
+
 ### 1.Smoking
 
 Smoking as a Cancer Risk Factor
+
+
 
 ```{r}
 smoking_allcancersites <- grid.arrange(smokingmen, nrow = 1)
 smoking_allcancersites1 <- grid.arrange(smokingmen, nrow = 1)
 ```
 
+
+
 ### 2.BMI
 
 BMI as a Cancer Risk Factor
+
+
 
 ```{r}
 bmi_allcancersites <- grid.arrange(bmimen, nrow = 2)
 bmi_allcancersites1 <- grid.arrange( bmiwomen, nrow = 1)
 ```
 
+
+
 ### 3.Alcohol
 
 Alcohol as a Cancer Risk Factor
+
+
 
 ```{r}
 alcohol_allcancersites <- grid.arrange(alcoholmen, nrow=2)
 alcohol_allcancersites1 <- grid.arrange(alcoholwomen, nrow=1)
 ```
 
+
+
 ### 4.Dietary Factors(Fiber, Processed Meat, Red Meat)
+
+
 
 ```{r}
 dietary <- grid.arrange(dietaryMEN,dietaryWOMEN, nrow = 2,  top = "Dietary Cancer Risk Factors in Colorectal Cancer")
 ```
+
+
 
 ## Aggregate PAF
 
@@ -908,6 +986,8 @@ Aggregate PAFs for each cancer site that include the risk factors investigated i
 2.  Smoking
 3.  Alcohol
 4.  Dietary Factors (Fiber, Processed Meat, Red Meat)
+
+
 
 ```{r}
 #| echo: false
@@ -951,9 +1031,13 @@ print(aggregatepaf_plot_women)
 
 ```
 
+
+
 ### Tables
 
 PAF table for Men
+
+
 
 ```{r}
 
@@ -975,7 +1059,11 @@ print(pafmen_table_formatted)
 
 ```
 
+
+
 PAF table for women
+
+
 
 ```{r}
 
@@ -996,9 +1084,13 @@ pafwomen_table_formatted <- pafwomen_table %>%
 print(pafwomen_table_formatted)
 ```
 
+
+
 Relative change in PAF from 2005-2019 (except for Colorectal which will be from 2008-2018)
 
 For Men:
+
+
 
 ```{r}
 relativechange <- aggregate_PAF_all %>%
@@ -1022,7 +1114,11 @@ relativechange <- aggregate_PAF_all %>%
 print(relativechange)
 ```
 
+
+
 For Women:
+
+
 
 ```{r}
 relativechangew <- aggregate_PAF_all %>%
@@ -1046,9 +1142,13 @@ relativechangew <- aggregate_PAF_all %>%
 print(relativechangew)
 ```
 
+
+
 ## Attributable Cases
 
 Using the historical incident cancer cases from the National Cancer Registry and a 10 year time lag between the PAFS and the year that it effects, the attributable cancer cases were calculated.
+
+
 
 ```{r}
 #| echo: false
@@ -1106,6 +1206,8 @@ print(womencases_visualized)
 
 ```
 
+
+
 ## Exposure Scenarios
 
 ### Complete Smoking Cessation and Lung Cancer
@@ -1117,6 +1219,8 @@ At the far right of the x-axis, the assumption is:
 former smoking prevalence = current smoking prevalence + former smoking prevalence
 
 current smoking prevalence = 0
+
+
 
 ```{r}
 #| echo: false
@@ -1145,9 +1249,13 @@ smokingcessation <- grid.arrange(mpafformersmoker, wpafformersmoker, ncol = 2, t
 
 ```
 
+
+
 The conclusion that can be drawn here is that even if it were possible to remove all current smokers from the population by getting them to quit smoking, there would still be a large proportion of lung cancer cases attributable to the longitudinal effects of smoking. This means that the only way to truly remove smoking as a lung cancer risk factor from the population would be for universal smoking cessation and time for those who have ever been cigarette smoking to age out of the population.
 
 Here are the actual smoking PAFs in 2019 vs. the PAFS with total smoking cessation (assumptions outlined above) for each cancer site.
+
+
 
 ```{r}
 mensmokingcessation_bp <- ggplot(mensmokingcessation, aes(x = cancersite, y = PAF, fill = factor(scenario))) +
@@ -1181,6 +1289,8 @@ womensmokingcessation_bp <- ggplot(womensmokingcessation, aes(x = cancersite, y 
 smokingcessation <- grid.arrange(mensmokingcessation_bp,womensmokingcessation_bp, ncol = 2, top = "PAFs 2019: Actual vs. Smoking Cessation Scenario" )
 ```
 
+
+
 ### Alcohol Limiting and OSCC Cancer
 
 Based on 2019, if all drinkers in England started limiting their alcohol consumption to light alcohol consumption.
@@ -1188,6 +1298,8 @@ Based on 2019, if all drinkers in England started limiting their alcohol consump
 OSCC cancer was chosen because it is the cancer site with the highest RR so the effect would be the most dramatic. This is the cancer site that would be the most affected by changes in alcohol consumption prevalence.
 
 Light alcohol consumption is classified as 1.5 units of alcohol per day which is about one drink. This definition is about what the UK guidelines recommend as healthy alcohol habits ( 14 units per week). That means that this scenario is if all drinkers in England 2019 decided to listen to government health interventions and drink appropriately.
+
+
 
 ```{r}
 mpafalc<- ggplot(data.frame(prevalence = mlightalc_range, PAF = malcprev$SCCpaf), aes(x = prevalence, y = PAF)) +
@@ -1210,9 +1322,13 @@ alcohol_alllight <- grid.arrange(mpafalc, wpafalc, ncol=2, top= "OSCC PAF if all
 
 ```
 
+
+
 The assumptions behind this scenario are that all drinkers in England 2019 continue drinking but limit their consumption to light drinkers and there are no new drinkers entering the "exposed" population.
 
 Here are the actual alcohol PAFs in 2019 vs. the PAFS with alcohol limiting assumptions (assumptions outlined above) for each cancer site.
+
+
 
 ```{r}
 menalclimit_bp <- ggplot(menalclimit, aes(x = cancersite, y = PAF, fill = factor(scenario))) +
@@ -1246,9 +1362,13 @@ alclimit <- grid.arrange(menalclimit_bp, womenalclimit_bp, ncol = 2, top = "PAFs
 
 ```
 
+
+
 ### BMI Overweight No Obese and OAC Cancer
 
 In this scenario, all obese people in 2019 have moved in to the overweight BMI category. OAC was chosen for the same reasons as OSCC cancer was chosen for Alcohol. The scenario is also the same set of assumptions -the whole England population moves to the lowest risk group.
+
+
 
 ```{r}
 mpaf_bmi<- ggplot(data.frame(prevalence = moverweightrange2019, PAF = mbmiprev2019$ACpaf), aes(x = prevalence, y = PAF)) +
@@ -1270,9 +1390,13 @@ wpaf_bmi<- ggplot(data.frame(prevalence = woverweightrange2019, PAF = wbmiprev20
 bmi_paf <- grid.arrange(mpaf_bmi,wpaf_bmi, ncol = 2, top = "OAC PAF if all People with Obesity became Overweight in England 2019" )
 ```
 
+
+
 The assumptions behind this scenario are that all people in the BMI "risk" category (overweight/obesity) stay in the category and there are no people entering this risk group.
 
 Here are the actual BMI PAFs in 2019 vs. the PAFS with BMI limiting assumptions (assumptions outlined above) for each cancer site.
+
+
 
 ```{r}
 #plot the barplots
@@ -1305,6 +1429,8 @@ womenbmilimit_bp <- ggplot(womenbmilimit, aes(x = cancersite, y = PAF, fill = fa
 #plot(womensmokingcessation_bp)
 bmilimit <- grid.arrange(menbmilimit_bp, womenbmilimit_bp, ncol = 2, top = "PAFs 2019: Actual vs. BMI Limiting Scenario" )
 ```
+
+
 
 # Relevant for Conclusion
 
@@ -1360,3 +1486,4 @@ The Brown et al. paper lists limitations for PAF calculations that should be con
 -   Blanket 10-year latency between PAF and incidence cases because the risk factor prevalence data does not have high quality historical data to have a 30-year latency
 
     -   Using custom time lag for each cancer site and risk factor would be unsystematic and reduced comparability
+
