@@ -1,8 +1,8 @@
-README - Documentation/Data_Sources
+README_Internal_Data
 
-This README is designed to describe the data sources being used for this project.
-As many of them are UKDS-based, they are all stored externally from this GitHub repo.
-Each one is described here as read in from the code, including a URL, date of access and description.
+This README is designed to describe the internal data sources being used for this project.
+As many of them are UKDS-based, that data is stored externally from this GitHub repo.
+Each internal one is described here as read in from the code, including a URL, date of access and description.
 
 Incidence_data_for_England_2024-10-30.csv
 	URL - https://www.cancerdata.nhs.uk/incidence_and_mortality
