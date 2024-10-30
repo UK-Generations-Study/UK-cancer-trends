@@ -4,7 +4,7 @@
 # It uses the cancer sites selected via early_onset paper and causal risk factor selection and looks at the time lengths of most recent trends by AAPC.
 
 ## Packages
-
+library(dplyr)
 
 ## Set working directory
 if(Sys.getenv("RSTUDIO") == '1' & !knitr::is_html_output()) { # If using Rstudio and not rendering
@@ -35,6 +35,7 @@ selected_sites <- selected_sites[-which(selected_sites %in% sites_no_rf)]
 selected_sites
 
 ## Extract most recent trend for selected sites
+# Renaming known differences to match
 jp_df <- jp_df |>
   mutate(
     
@@ -46,7 +47,7 @@ jp_df <- jp_df |>
     )
     
   ) |>
-  filter(Country.label == "UK" & agegrp == "20to49" & Cancer.label_new %in% selected_sites)
+  filter(Country.label == "UK" & agegrp == "20to49" & Cancer.label_new %in% selected_sites & APC.95..LCL > 0)
 
 # Check no sites are missing
 setdiff(selected_sites, unique(jp_df$Cancer.label_new))
