@@ -1,0 +1,68 @@
+### HSE VARIABLE DOCUMENTATION ###
+
+# This document is designed to describe the structure of the variables in the HSE datasets from 1995-2019
+# This is so the same variables  can be extracted methodically from the data with minimal intervention
+# Each entry will be a variable of the survey subset by year groups with the following data:
+#   - varname: variable name in the dataset
+#   - dict: dictionary descibing what levels go to what output
+
+age_group:
+  1995-2013:
+    varname: age
+    dict:
+    
+  2014:
+    varname: Age90
+    dict:
+    
+  2015-
+    varname: Age16g5
+    dict:
+      "3-8" ~ "20-49"
+      "9-17" ~ "50+"
+    
+      
+sex:
+  1995-2013:
+    varname: sex
+    dict:
+      1 ~ "Men"
+      2 ~ "Women"
+    
+weight:
+  2003:
+    varname: int_wt
+    dict:
+      - NULL
+   
+smoking_status:
+
+  1995-1996:
+    varname: fagsta
+    dict:
+      1 ~ "Never"
+      2 ~ "Previously"
+      3 ~ "Current"
+      4 ~ "Current"
+    
+  1997-1998:
+    varname: cigst1
+    dict:
+      1: "Never"
+      2: "Never"
+      3: "Previously"
+      4: "Current"
+    
+  1999-2018:
+    varname: cigsta3
+    dict:
+      1: "Current"
+      2: "Previously"
+      3: "Never"
+
+  2019:
+    varname: cigsta3_19
+    dict:
+      1: "Current"
+      2: "Previously"
+      3: "Never"
