@@ -12,8 +12,6 @@
 #   level: what category of the variable the value describes
 #   value: percentage of weighted survey population in the statum that take the value level
 
-filepath <- r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\PAF\Data)"
-
 ## Packages
 necessary_packages <- c("dplyr", "yaml")
 suppressMessages(
