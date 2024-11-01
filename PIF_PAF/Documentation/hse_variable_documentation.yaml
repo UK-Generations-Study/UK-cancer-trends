@@ -6,44 +6,79 @@
 #   - varname: variable name in the dataset
 #   - dict: dictionary descibing what levels go to what output
 
+### AGE GROUP
 age_group:
-  1995-2013:
+
+  1995-2010:
     varname: age
     dict:
+      "20-49": "20-49"
+      "50-120": "50+" # No max age so setting this as maximum - will check if any excluded
+    
+  2011-2013:
+    varname: Age
+    dict:
+      "20-49": "20-49"
+      "50-120": "50+" # No max age so setting this as maximum - will check if any excluded
     
   2014:
     varname: Age90
     dict:
+      "20-49": "20-49"
+      "50-90": "50+" # 90 is maximum for this dataset
     
-  2015-
+  2015-2017:
     varname: Age16g5
     dict:
-      "3-8" ~ "20-49"
-      "9-17" ~ "50+"
-    
+      "3-8": "20-49"
+      "9-17": "50+"
       
+  2018-2019:
+    varname: age16g5
+    dict:
+      "3-8": "20-49"
+      "9-17": "50+"
+    
+
+### SEX      
 sex:
-  1995-2013:
+
+  1995-2010:
     varname: sex
     dict:
-      1 ~ "Men"
-      2 ~ "Women"
-    
+      1: "Men"
+      2: "Women"
+      
+  2011-2019:
+    varname: Sex
+    dict:
+      1: "Men"
+      2: "Women"
+
+### WEIGHTING    
 weight:
+
   2003:
     varname: int_wt
     dict:
       - NULL
-   
+      
+  2004-2019:
+    varname: wt_int
+    dict:
+      - NULL
+
+### SMOKING STATUS   
 smoking_status:
 
   1995-1996:
     varname: fagsta
     dict:
-      1 ~ "Never"
-      2 ~ "Previously"
-      3 ~ "Current"
-      4 ~ "Current"
+      1: "Never"
+      2: "Previously"
+      3: "Current"
+      4: "Current"
+      -8: "Current"
     
   1997-1998:
     varname: cigst1

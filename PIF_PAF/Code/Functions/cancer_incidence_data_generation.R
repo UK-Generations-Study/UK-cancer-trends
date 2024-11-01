@@ -22,11 +22,11 @@ suppressMessages(
 )
 
 ## Function
-cancer_incidence_data_gen <- function(filepath = NULL){
+cancer_incidence_data_gen <- function(filepath){
   
   # Read in data - filepath should point to where data is located
-  data_inc_u50 <- read.csv(paste0(filepath, "/Data/Incidence_data_for_England_2024-10-30.csv"))
-  data_inc_oe50 <- read.csv(paste0(filepath, "/Data/Incidence_data_for_England_2024-10-30 (1).csv"))
+  data_inc_u50 <- read.csv(paste0(filepath, "/Incidence_data_for_England_2024-10-30.csv"))
+  data_inc_oe50 <- read.csv(paste0(filepath, "/Incidence_data_for_England_2024-10-30 (1).csv"))
   
   # Merge and clean data
   data_inc <- rbind(data_inc_u50, data_inc_oe50) |>
