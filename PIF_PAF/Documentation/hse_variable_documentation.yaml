@@ -12,30 +12,35 @@ age_group:
   1995-2010:
     varname: age
     dict:
+      # "16-120": "All"
       "20-49": "20-49"
       "50-120": "50+" # No max age so setting this as maximum - will check if any excluded
     
   2011-2013:
     varname: Age
     dict:
+      # "16-120": "All"
       "20-49": "20-49"
       "50-120": "50+" # No max age so setting this as maximum - will check if any excluded
     
   2014:
     varname: Age90
     dict:
+      # "16-120": "All"
       "20-49": "20-49"
       "50-90": "50+" # 90 is maximum for this dataset
     
   2015-2017:
     varname: Age16g5
     dict:
+      # "1-17": "All"
       "3-8": "20-49"
       "9-17": "50+"
       
   2018-2019:
     varname: age16g5
     dict:
+      # "1-17": "All"
       "3-8": "20-49"
       "9-17": "50+"
     
@@ -58,6 +63,11 @@ sex:
 ### WEIGHTING    
 weight:
 
+  2002:
+    varname: tablewt
+    dict:
+      - NULL
+        
   2003:
     varname: int_wt
     dict:
@@ -78,9 +88,8 @@ smoking_status:
       2: "Previously"
       3: "Current"
       4: "Current"
-      -8: "Current"
     
-  1997-1998:
+  1997-1999:
     varname: cigst1
     dict:
       1: "Never"
@@ -88,7 +97,7 @@ smoking_status:
       3: "Previously"
       4: "Current"
     
-  1999-2018:
+  2000-2018:
     varname: cigsta3
     dict:
       1: "Current"
@@ -101,3 +110,22 @@ smoking_status:
       1: "Current"
       2: "Previously"
       3: "Never"
+      
+### ALCOHOL CONSUMPTION      
+alcohol_amt:
+
+  2011-2018:
+    varname: totalwu
+    dict:
+      "0-11": "Light Drinker"
+      "11-44": "Moderate Drinker"
+      "44-9999": "Heavy Drinker" # Applied 9999 as this should be 44+
+      0: "Non-Drinker" # Slightly messy - this condition is applied last so instead of 0 going to light drinker it goes to non drinker
+  
+  2019:
+    varname: totalwu_19
+    dict:
+      "0-11": "Light Drinker"
+      "11-44": "Moderate Drinker"
+      "44-9999": "Heavy Drinker"
+      0: "Non-Drinker"

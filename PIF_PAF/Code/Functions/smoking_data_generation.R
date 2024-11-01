@@ -55,6 +55,9 @@ smoking_data_gen <- function(filepath){
     # Get year of dataset
     ukds_data_temp_year <- ukds_dict$Year[ukds_dict$UKDS_Number == dataset_no]
     
+    # If year = 2000, care home participants need to be removed
+    if(ukds_data_temp_year == 2000){ukds_data_temp <- filter(ukds_data_temp, wt_inst == -1)}
+    
     ## Find and clean base variables
     ukds_data_output_temp <- hse_base_variable_cleaning(ukds_data_temp, var_dict, ukds_data_temp_year)
 
