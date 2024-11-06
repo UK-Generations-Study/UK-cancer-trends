@@ -56,8 +56,13 @@ smoking_data_gen <- function(filepath){
     # If year = 2000, care home participants need to be removed
     if(ukds_data_temp_year == 2000){ukds_data_temp <- filter(ukds_data_temp, wt_inst == -1)}
     
+    # If year = 2002, boost samples should be removed
+    if(ukds_data_temp_year == 2002){ukds_data_temp <- filter(ukds_data_temp, samptype == 2)}
+    
     ## Find and clean base variables
     ukds_data_output_temp <- hse_base_variable_cleaning(ukds_data_temp, var_dict, ukds_data_temp_year)
+    
+    cat(paste0("Extracting data for ", ukds_data_temp_year, "...\n"))
 
   
     ## Find and clean smoking variable
@@ -101,7 +106,7 @@ smoking_data_gen <- function(filepath){
       select(-n)
     
     # Add year on
-    ukds_data_temp_table$year <- ukds_data_temp_year
+    ukds_data_temp_table$year <- as.numeric(ukds_data_temp_year)
     
     # relocate year to front
     ukds_data_temp_table <- ukds_data_temp_table |>

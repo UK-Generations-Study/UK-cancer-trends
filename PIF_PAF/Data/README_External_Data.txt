@@ -153,3 +153,15 @@ UKDA-8860-tab
 		- Exported as TAB
 	Date Accessed - 30/10/2024
 	Description - Health Survey for England data for the year 2019
+	
+UKDA-5640-tab
+	URL - https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=5640
+		- Exported as TAB
+	Date Accessed - 4/11/2024
+	Description - UK household survey for 2005 - used for verifying Parkin results
+	
+UKDA-6533-tab
+	URL - https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=6533
+		- Exported as TAB
+	Date Accessed - 6/11/2024
+	Description - Data from the National Diet and Health Survey for years 1-11

@@ -1,0 +1,85 @@
+---
+title: "Risk Factor Data Generation"
+format: html
+editor:
+  mode: source
+---
+
+## Packages
+```{r}
+
+library(dplyr)
+
+```
+
+## Setting working directory
+```{r}
+
+# Setting up wd for relative file paths
+# This sets wd to wherever the document is saved - this should be the github desktop folder
+if(Sys.getenv("RSTUDIO") == '1' & !knitr::is_html_output()) { # If using Rstudio and not rendering
+	setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+} else if(Sys.getenv("RSTUDIO") != '1'){ # If using Rscript
+	initial.options <- commandArgs(trailingOnly = FALSE)
+	file.arg.name <- "--file="
+	script.name <- sub(file.arg.name, "", initial.options[grep(file.arg.name, initial.options)])
+	script.basename <- dirname(script.name)
+	setwd(file.path(getwd(), script.basename))
+}
+
+```
+
+## Sourcing functions
+```{r}
+
+source("Functions/hse_data_cleaning_functions.R")
+source("Functions/alcohol_data_generation.R")
+source("Functions/bmi_data_generation.R")
+source("Functions/diet_data_generation.R")
+source("Functions/smoking_data_generation.R")
+
+```
+
+## Initialising empty dataset
+```{r}
+
+rf_df <- data.frame(variable = numeric(0), year = numeric(0), age_group = character(0), sex = character(0), level = character(0), perc = numeric(0))
+
+```
+
+## Going through variables adding to dataset
+
+### HSE - Alcohol
+```{r}
+
+alcohol_df <- alcohol_data_gen(filepath = "../../../Data")
+rf_df <- rbind(rf_df, alcohol_df)
+
+```
+
+### HSE - BMI
+```{r}
+
+bmi_df <- bmi_data_gen(filepath = "../../../Data")
+rf_df <- rbind(rf_df, bmi_df)
+
+```
+
+### HSE - Smoking
+```{r}
+
+smoking_df <- smoking_data_gen(filepath = "../../../Data")
+rf_df <- rbind(rf_df, smoking_df)
+
+```
+
+### NDNS
+```{r}
+
+diet_df <- diet_data_gen(filepath = "../../../Data")
+rf_df <- rbind(rf_df, diet_df)
+
+```
+
+
+

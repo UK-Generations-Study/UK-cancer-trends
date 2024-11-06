@@ -8,7 +8,7 @@
 check_year_spec <- function(year, year_spec){
   
   result <- case_when(
-    grepl("\\-", year_spec) ~ between(year, left = as.numeric(gsub("\\-.*", "", year_spec)), right = as.numeric(gsub(".*\\-", "", year_spec))), # IF year range - check it falls in year range
+    grepl("\\-", year_spec) ~ between(as.numeric(year), left = as.numeric(gsub("\\-.*", "", year_spec)), right = as.numeric(gsub(".*\\-", "", year_spec))), # IF year range - check it falls in year range
     TRUE ~ year == year_spec # Otherwise, precise year must be the same
   )
   
