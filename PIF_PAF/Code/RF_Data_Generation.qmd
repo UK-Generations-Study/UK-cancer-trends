@@ -1,0 +1,167 @@
+---
+title: "Risk Factor Data Generation"
+format: html
+editor:
+  mode: source
+---
+
+## Packages
+```{r}
+
+library(dplyr)
+
+```
+
+## Setting working directory
+```{r}
+
+# Setting up wd for relative file paths
+# This sets wd to wherever the document is saved - this should be the github desktop folder
+if(Sys.getenv("RSTUDIO") == '1' & !knitr::is_html_output()) { # If using Rstudio and not rendering
+	setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+} else if(Sys.getenv("RSTUDIO") != '1'){ # If using Rscript
+	initial.options <- commandArgs(trailingOnly = FALSE)
+	file.arg.name <- "--file="
+	script.name <- sub(file.arg.name, "", initial.options[grep(file.arg.name, initial.options)])
+	script.basename <- dirname(script.name)
+	setwd(file.path(getwd(), script.basename))
+}
+
+```
+
+## Sourcing functions
+```{r}
+
+source("Functions/hse_data_cleaning_functions.R")
+source("Functions/alcohol_data_generation.R")
+source("Functions/bmi_data_generation.R")
+source("Functions/diet_data_generation.R")
+source("Functions/diet_data_generation_continuous.R")
+source("Functions/smoking_data_generation.R")
+
+```
+
+## Initialising empty dataset
+```{r}
+
+rf_df <- data.frame(variable = numeric(0), year = numeric(0), age_group = character(0), sex = character(0), level = character(0), value = numeric(0))
+
+```
+
+## Going through variables adding to dataset
+
+### HSE - Alcohol
+```{r}
+
+alcohol_df <- alcohol_data_gen(filepath = "../../../Data")
+rf_df <- rbind(rf_df, alcohol_df)
+
+```
+
+### HSE - BMI
+```{r}
+
+bmi_df <- bmi_data_gen(filepath = "../../../Data")
+rf_df <- rbind(rf_df, bmi_df)
+
+```
+
+### HSE - Smoking
+```{r}
+
+smoking_df <- smoking_data_gen(filepath = "../../../Data")
+rf_df <- rbind(rf_df, smoking_df)
+
+```
+
+### GHS - Alcohol 2005
+```{r}
+
+ghs_data <- read.delim("../../../Data/UKDA-5640-tab/tab/ghs05client.tab", header = F)
+
+# Filter to columns of interest
+ghs_data <- ghs_data[,c(4,5, 231, 341, 1310)]
+colnames(ghs_data) <- ghs_data[1,]
+ghs_data <- ghs_data[-1,]
+
+# Get data on variable
+ghs_data <- ghs_data |>
+  mutate(
+    
+    age = as.numeric(age),
+    
+    drating = round(as.numeric(drating)),
+    
+    weight05 = as.numeric(weight05)
+     
+  ) |>
+  filter(drating >= 0) |>
+  filter(age >= 20) |>
+  filter(country == 1) |>
+  mutate(
+    
+    sex = if_else(sex == 1, "Men", "Women"),
+    
+    age_group = if_else(age<50, "20-49", "50+"),
+    # age_group = cut(as.numeric(age), breaks = c(16, 25, 45, 65, Inf), right = F),
+    # age_group = "All",
+
+    alcohol_cat = case_when(
+      drating == 0 ~ "Non-Drinker",
+      drating < 11 ~ "Light Drinker",
+      drating < 44 ~ "Moderate Drinker",
+      TRUE ~ "Heavy Drinker")
+    
+    # alcohol_cat = case_when(
+    #   round(drating, digits = 0) > 50 ~ "HEAVY",
+    #   TRUE ~ "LIGHT"
+    # )
+    
+  ) |>
+  group_by(sex, age_group) |>
+  mutate(total_weight = sum(weight05), 
+         # total_weight_adj = sum(weight05)/744.0531, 
+         # total = n()
+         ) |>
+  ungroup() |>
+  group_by(sex, age_group, alcohol_cat) |>
+  summarise(value = sum(weight05)/total_weight[1],
+            # total_weight_adj = total_weight_adj[1],
+            # total = total[1]
+            ) |>
+  mutate(variable = "alcohol_amt",
+         year = 2005) |>
+  rename(level = alcohol_cat)
+
+ghs_data
+
+# Add to data
+rf_df <- rbind(rf_df, ghs_data)
+
+
+
+```
+
+### NDNS
+```{r}
+
+diet_df <- diet_data_gen(filepath = "../../../Data")
+rf_df <- rbind(rf_df, diet_df)
+
+```
+
+### NDNS - Averages
+```{r}
+
+diet_df_cnt <- diet_data_gen_continuous(filepath = "../../../Data")
+rf_df <- rbind(rf_df, diet_df_cnt)
+
+```
+
+### Output data
+```{r}
+
+write.csv(rf_df, file = "../../../Data/Cleaned_Data/clean_rf_data.csv", row.names = F)
+
+```
+

@@ -1,9 +1,12 @@
 ### CANCER INCIDENCE DATA GENERATION ###
 
 # This function is intended to read in cancer incidence data and clean it for use in PAF analysis and plotting.
+# It requries one input:
+#   filepath: this should be the filepath to the cancer incidence data
 # It outputs a dataframe with columns:
 #   year: year of diagnosis
 #   gender: gender group considered
+#   age_group: age_group considered
 #   cancer_site: cancer site (globocan definitions)
 #   count: total cancer incidences when stratified by the other columns
 
@@ -19,7 +22,7 @@ suppressMessages(
 )
 
 ## Function
-cancer_incidence_data_gen <- function(filepath = NULL){
+cancer_incidence_data_gen <- function(filepath){
   
   # Read in data - filepath should point to where data is located
   data_inc_u50 <- read.csv(paste0(filepath, "/Incidence_data_for_England_2024-10-30.csv"))
