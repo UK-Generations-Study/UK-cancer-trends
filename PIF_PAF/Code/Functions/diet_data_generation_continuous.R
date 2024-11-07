@@ -9,7 +9,7 @@
 #   age_group: age_group considered
 #   variable: fibre_rec, red_meat, dairy
 #   level: what category of the variable the value describes
-#   value: percentage of weighted survey population in the statum that take the value level
+#   value: mean of weighted survey population in the variable that takes the value level
 
 ## Packages
 necessary_packages <- c("dplyr", "yaml")
@@ -23,7 +23,7 @@ suppressMessages(
 )
 
 ## Function
-diet_data_gen <- function(filepath){
+diet_data_gen_continuous <- function(filepath){
   
   ## Read in data dictionary
   ukds_dict <- read.csv(paste0(filepath, "/UKDS_Dictionary.csv"))
@@ -91,18 +91,15 @@ diet_data_gen <- function(filepath){
   
   ## FIBRE
   diet_df_fibre <- diet_df |>
-    mutate(
+    group_by(sex, age_group, year) |>
+    summarise(
       
-      fibre_cat = cut(aoac_fibre, breaks = c(seq(0,30), Inf), right = F)
+      fibre = sum(aoac_fibre*weight)/sum(weight)
       
     ) |>
-    group_by(sex, age_group, year) |>
-    mutate(total_weight = sum(weight)) |>
-    ungroup() |>
-    group_by(sex, age_group, year, fibre_cat) |>
-    summarise(value = sum(weight)/total_weight[1]) |>
-    mutate(variable = "fibre_consumption") |>
-    rename(level = fibre_cat)
+    mutate(variable = "fibre_consumption_mean",
+           level = "mean") |>
+    rename(value = fibre) 
   
   diet_df_total <- rbind(diet_df_total, diet_df_fibre)
   
@@ -111,16 +108,13 @@ diet_data_gen <- function(filepath){
     mutate(
       
       redmeat_total =  beef + lamb + pork + entrails + other,
-      redmeat_cat = cut(redmeat_total, breaks = c(seq(0,100, by = 10), Inf), right = F)
-      
+
     ) |>
     group_by(sex, age_group, year) |>
-    mutate(total_weight = sum(weight)) |>
-    ungroup() |>
-    group_by(sex, age_group, year, redmeat_cat) |>
-    summarise(value = sum(weight)/total_weight[1]) |>
-    mutate(variable = "redmeat_consumption") |>
-    rename(level = redmeat_cat)
+    summarise(redmeat = sum(redmeat_total*weight)/sum(weight)) |>
+    mutate(variable = "redmeat_consumption_mean",
+           level = "mean") |>
+    rename(value = redmeat)
   
   diet_df_total <- rbind(diet_df_total, diet_df_redmeat)
   
@@ -129,16 +123,13 @@ diet_data_gen <- function(filepath){
     mutate(
       
       processed_meat_total =  processed.redmeat + processed.poultry + burgers + sausages,
-      processed_cat = cut(processed_meat_total, breaks = c(seq(0,100, by = 5), Inf), right = F)
-      
+
     ) |>
     group_by(sex, age_group, year) |>
-    mutate(total_weight = sum(weight)) |>
-    ungroup() |>
-    group_by(sex, age_group, year, processed_cat) |>
-    summarise(value = sum(weight)/total_weight[1]) |>
-    mutate(variable = "processed_meat_consumption") |>
-    rename(level = processed_cat)
+    summarise(processed_meat = sum(processed_meat_total*weight)/sum(weight)) |>
+    mutate(variable = "processed_meat_consumption_mean",
+           level = "mean") |>
+    rename(value = processed_meat)
   
   diet_df_total <- rbind(diet_df_total, diet_df_processed)
   

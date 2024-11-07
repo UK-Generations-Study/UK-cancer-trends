@@ -102,7 +102,7 @@ smoking_data_gen <- function(filepath){
     ukds_data_temp_table <- ukds_data_output_temp |>
       count(age_group, sex, smoking_status, wt = weight) |>
       group_by(age_group, sex) |>
-      mutate(perc = n/sum(n)) |>
+      mutate(value = n/sum(n)) |>
       select(-n)
     
     # Add year on

@@ -63,10 +63,10 @@ sex:
 ### WEIGHTING    
 weight:
 
-  2002:
-    varname: tablewt
-    dict:
-      - NULL
+  # 2002:
+    # varname: tablewt
+    # dict:
+      # - NULL
         
   2003:
     varname: int_wt
@@ -129,3 +129,47 @@ alcohol_amt:
       "11-44": "Moderate Drinker"
       "44-9999": "Heavy Drinker"
       0: "Non-Drinker"
+      
+### BMI
+bmi:
+
+  1995-1996:
+    varname: bmi
+    dict:
+      "0-18.5": "Underweight"
+      "18.5-25": "Healthy Weight"
+      "25-30": "Overweight"
+      "30-999": "Obese"
+      
+  1997-2011:
+    varname: bmival
+    dict:
+      "0-18.5": "Underweight"
+      "18.5-25": "Healthy Weight"
+      "25-30": "Overweight"
+      "30-999": "Obese"
+      
+  2012:
+    varname: bmival2
+    dict:
+      "0-18.5": "Underweight"
+      "18.5-25": "Healthy Weight"
+      "25-30": "Overweight"
+      "30-999": "Obese"
+
+  2013-2019:
+    varname: BMIval2
+    dict:
+      "0-18.5": "Underweight"
+      "18.5-25": "Healthy Weight"
+      "25-30": "Overweight"
+      "30-999": "Obese"
+      
+### BMI VALID
+# 1995 and 1996 don't have bmi variables checked for validity - so we manually do it
+bmi_valid:
+
+  1995-1996:
+    varname: bmiok
+    dict:
+      1: "Valid"
