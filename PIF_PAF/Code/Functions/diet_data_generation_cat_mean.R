@@ -108,7 +108,7 @@ diet_data_gen_cat_mean <- function(filepath){
     mutate(
       
       redmeat_total =  beef + lamb + pork + entrails + other,
-      redmeat_cat = cut(redmeat_total, breaks = c(seq(0,100, by = 10), Inf), right = F)
+      redmeat_cat = if_else(redmeat_total == 0, "0", cut(redmeat_total, breaks = c(seq(0,100, by = 10), Inf), right = T))
       
     ) |>
     group_by(sex, age_group, year, redmeat_cat) |>
@@ -124,7 +124,7 @@ diet_data_gen_cat_mean <- function(filepath){
     mutate(
       
       processed_meat_total =  processed.redmeat + processed.poultry + burgers + sausages,
-      processed_cat = cut(processed_meat_total, breaks = c(seq(0,100, by = 5), Inf), right = F)
+      processed_cat = if_else(processed_meat_total == 0, "0", cut(processed_meat_total, breaks = c(seq(0,100, by = 5), Inf), right = T))
       
     ) |>
     group_by(sex, age_group, year, processed_cat) |>
