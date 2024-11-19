@@ -37,6 +37,7 @@ source("Functions/alcohol_data_generation.R")
 source("Functions/bmi_data_generation.R")
 source("Functions/diet_data_generation.R")
 source("Functions/diet_data_generation_continuous.R")
+source("Functions/diet_data_generation_cat_mean.R")
 source("Functions/smoking_data_generation.R")
 
 ```
@@ -155,6 +156,14 @@ rf_df <- rbind(rf_df, diet_df)
 
 diet_df_cnt <- diet_data_gen_continuous(filepath = "../../../Data")
 rf_df <- rbind(rf_df, diet_df_cnt)
+
+```
+
+### NDNS - Category Means
+```{r}
+
+diet_df_cat_mean <- diet_data_gen_cat_mean(filepath = "../../../Data")
+rf_df <- rbind(rf_df, diet_df_cat_mean)
 
 ```
 
