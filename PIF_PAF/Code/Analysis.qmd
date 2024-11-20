@@ -1,0 +1,103 @@
+---
+title: "PIF/PAF Analysis"
+format: html
+editor:
+  mode: source
+---
+
+## Packages
+```{r}
+
+library(dplyr)
+library(stringr)
+library(ggplot2)
+
+```
+
+## Setting working directory
+```{r}
+
+# Setting up wd for relative file paths
+# This sets wd to wherever the document is saved - this should be the github desktop folder
+if(Sys.getenv("RSTUDIO") == '1' & !knitr::is_html_output()) { # If using Rstudio and not rendering
+	setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+} else if(Sys.getenv("RSTUDIO") != '1'){ # If using Rscript
+	initial.options <- commandArgs(trailingOnly = FALSE)
+	file.arg.name <- "--file="
+	script.name <- sub(file.arg.name, "", initial.options[grep(file.arg.name, initial.options)])
+	script.basename <- dirname(script.name)
+	setwd(file.path(getwd(), script.basename))
+}
+
+```
+
+## Read in data
+```{r}
+
+data_rf <- read.csv("../../../Data/Cleaned_Data/clean_rf_data.csv")
+
+```
+
+## Figure 1 - Trends in risk factors
+```{r}
+
+# Filter to data desired and make formatting choices
+data_rf_trends <- data_rf |>
+  filter(!variable %in% c("fibre_consumption", "fibre_consumption_cat_mean", "processed_meat_consumption", "processed_meat_consumption_cat_mean", "redmeat_consumption", "redmeat_consumption_cat_mean")) |>
+  mutate(
+    
+    level = case_when(
+      grepl(variable, pattern = "\\_consumption_mean") ~ gsub("\\sConsumption\\sMean$", "", str_to_title(gsub("\\_", " ", variable))),
+      TRUE ~ level
+      ),
+    
+    # Quick fix for poorly named variable
+    level = if_else(level == "Redmeat", "Red Meat", level),
+    
+    variable = case_when(
+      grepl(variable, pattern = "\\_consumption_mean") ~ "diet",
+      TRUE ~ variable
+      ),
+    
+  )
+
+# Loop through variables and make plots
+for(var in unique(data_rf_trends$variable)){
+  
+  # Extract min and max years for nice plots
+  min_year <- min(data_rf_trends |> filter(variable == var) |> pull(year))
+  max_year <- max(data_rf_trends |> filter(variable == var) |> pull(year))
+  
+  # get pretty variable name for the plot header
+  var_title <- case_when(
+    var == "alcohol_amt" ~ "Alcohol Consumption",
+    var == "bmi" ~ "BMI",
+    var == "smoking_status" ~ "Smoking Status",
+    var == "diet" ~ "Daily Food Consumption",
+    TRUE ~ var
+  )
+  
+  # Create plot
+  plot <- ggplot(data_rf_trends |> filter(variable == var), aes(x = year, y = value, colour = level, fill = level)) +
+    geom_line() +
+    geom_point() +
+    theme_minimal() +
+    geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
+              colour = "black", fill = NA, inherit.aes = FALSE) +
+    theme(strip.text = element_text(face = "bold")) +
+    ylab(if_else(var == "diet", "Grams (g)", "Percentage (%)")) +
+    xlab("Year") +
+    labs(colour = "Category", fill = "Category") +
+    scale_x_continuous(breaks = seq(min_year, max_year, by = 2)) +
+    ggtitle(paste0("Trends in ", var_title)) +
+    facet_grid(sex ~ age_group)
+  
+  print(plot)
+  
+  ggsave(plot, filename = paste0("../Output/Plots/Figure 1 - ", var, ".png"), bg = "white", height = 6, width = 10)
+    
+  
+}
+
+
+```
