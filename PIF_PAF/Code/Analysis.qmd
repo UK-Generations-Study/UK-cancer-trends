@@ -31,10 +31,20 @@ if(Sys.getenv("RSTUDIO") == '1' & !knitr::is_html_output()) { # If using Rstudio
 
 ```
 
+## Functions
+```{r}
+
+source("Functions/cancer_incidence_data_generation.R")
+
+```
+
 ## Read in data
 ```{r}
 
 data_rf <- read.csv("../../../Data/Cleaned_Data/clean_rf_data.csv")
+data_paf <- read.csv("../Data/AggregatePAFs.csv")
+data_cancer <- cancer_incidence_data_gen("../Data")
+
 
 ```
 
@@ -90,12 +100,64 @@ for(var in unique(data_rf_trends$variable)){
     labs(colour = "Category", fill = "Category") +
     scale_x_continuous(breaks = seq(min_year, max_year, by = 2)) +
     ggtitle(paste0("Trends in ", var_title)) +
-    facet_grid(sex ~ age_group)
+    facet_grid(age_group ~ sex)
   
   print(plot)
   
   ggsave(plot, filename = paste0("../Output/Plots/Figure 1 - ", var, ".png"), bg = "white", height = 6, width = 10)
     
+  
+}
+
+
+```
+
+
+## Figure 2 - Change in PAFs
+```{r}
+
+# Pivot PAFs longer so we can merge
+data_paf_long <- data_paf |>
+  pivot_longer(cols = colnames(data_paf)[!colnames(data_paf) %in% c("sex", "year", "age_group")], names_to = "cancer_site", values_to = "PAF") |>
+  mutate(year = year + 10) # Broad assumption of 10 year lag period
+
+# Merge and find attributable cases
+data_attr_cases <- merge(data_paf_long, data_cancer, by = c("sex", "year", "age_group", "cancer_site")) |>
+  mutate(
+    
+    attr_cases = PAF*count,
+    non_attr_cases = (1-PAF)*count
+    
+  ) |>
+  pivot_longer(cols = c("attr_cases", "non_attr_cases"), names_to = "case_group", values_to = "cases_count") |>
+  mutate(
+    
+    case_group = factor(case_group, level = c("non_attr_cases", "attr_cases"), labels = c("Non-Attributable", "Attributable"))
+    
+  )
+
+
+# Make plots
+# Loop through cancer sites
+for(site in unique(data_attr_cases$cancer_site)){
+  
+  site_title = if_else(site == "MultipleMyeloma", "Multiple Myeloma", site)
+  
+  plot <- ggplot(data_attr_cases |> filter(cancer_site == site) |> filter(year %in% c(2015, 2019)), aes(x = as.character(year), y = cases_count, fill = case_group)) +
+    geom_bar(position="stack", stat="identity", colour = "black") +
+    theme_minimal() +
+    geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
+              colour = "black", fill = NA, inherit.aes = FALSE) +
+    theme(strip.text = element_text(face = "bold")) +
+    ylab("Cases") +
+    xlab("Year") +
+    ggtitle(paste0("Attributable Cases for ", site_title)) +
+    labs(fill = "Category") +
+    facet_grid(age_group ~ sex, scales = "free_y")
+  
+  print(plot)
+  
+  ggsave(plot, filename = paste0("../Output/Plots/Figure 2 - ", site, ".png"), bg = "white", height = 6, width = 10)
   
 }
 
