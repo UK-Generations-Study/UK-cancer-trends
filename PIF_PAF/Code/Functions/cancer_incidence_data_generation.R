@@ -36,7 +36,9 @@ cancer_incidence_data_gen <- function(filepath){
       age_group = if_else(Age_at_Diagnosis == "20 to 24, 25 to 29, 30 to 34, 35 to 39, 40 to 44, 45 to 49", "20-49", "50+"),
       
       # Change sex labelling
-      sex = if_else(Gender == "Male", "Men", "Women"),
+      sex = case_when(Gender == "Male" ~ "Men",
+                      Gender == "Female" ~ "Women",
+                      TRUE ~ "All"),
       
       # group by globocan specified ICD10 codes for the cancer sites desired
       # globocan sites by ICD10 code here: https://gco.iarc.fr/overtime/en/database#cancer-dictionary
@@ -57,6 +59,7 @@ cancer_incidence_data_gen <- function(filepath){
     ) |>
     filter(!is.na(cancer_site_globocan)) |>
     filter(!(cancer_site_globocan == "Breast" & sex == "Men")) |>
+    filter(sex != "All") |>
     group_by(Year, sex, age_group, cancer_site_globocan) |>
     summarise(count = sum(Count)) |>
     rename(year = Year, cancer_site = cancer_site_globocan)
