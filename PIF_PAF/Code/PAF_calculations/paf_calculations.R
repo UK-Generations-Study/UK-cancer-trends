@@ -389,3 +389,50 @@ paf_cancersite_over50 <- subpaf_over50 %>%
 #saving the PAF calculations 
 PAF_by_riskfactor <- rbind(paf_cancersite_over50, paf_cancersite_under50)
 write.csv(PAF_by_riskfactor, file = "../Data/PAF_by_riskfactor.csv", row.names = F)
+
+#############
+#aggregate PAFS 
+
+#function to calculate the PAFs 
+calculate_cumulative_paf <- function(paf_values) {
+  #setting the base values    
+  cumulative_paf <- 0
+     remaining_whole <- 1
+     
+       for (paf in paf_values) {
+           if (!is.na(paf)) {
+               cumulative_paf <- cumulative_paf + paf * remaining_whole
+               remaining_whole <- remaining_whole * (1 - paf)
+             }
+         }
+     
+       return(cumulative_paf)
+   }
+
+
+aggregate_pafs <- PAF_by_riskfactor %>%
+  group_by(year, age_group, sex) %>% #grouping by year/age/sex
+  summarise(
+    Oral = calculate_cumulative_paf(OralPAF),
+    Endometrium = calculate_cumulative_paf(EndometriumPAF),
+    Pancreas = calculate_cumulative_paf(PancreasPAF),
+    Gallbladder = calculate_cumulative_paf(GallbladderPAF),
+    Colorectum = calculate_cumulative_paf(ColorectumPAF),
+    Liver = calculate_cumulative_paf(LiverPAF),
+    Kidney = calculate_cumulative_paf(KidneyPAF),
+    Thyroid = calculate_cumulative_paf(ThyroidPAF),
+    MultipleMyeloma = calculate_cumulative_paf(MultipleMyelomaPAF),
+    Breast = calculate_cumulative_paf(BreastPAF)
+  ) %>% #applying the calculation above 
+  ungroup() 
+
+#cleaning the dataset and then saving it back to the git server
+#men have values for Breast PAFS due to not have RR by sex for alcohol - these are incorrect and should be 0 
+aggregate_pafs <- aggregate_pafs %>% 
+  mutate( 
+    Breast = ifelse(sex == "Men", 0, Breast)
+    )
+
+write.csv(aggregate_pafs, file = "../Data/AggregatePAFs.csv", row.names = F)
+
+
