@@ -1,0 +1,165 @@
+---
+title: "PIF/PAF Analysis"
+format: html
+editor:
+  mode: source
+---
+
+## Packages
+```{r}
+
+library(dplyr)
+library(stringr)
+library(ggplot2)
+
+```
+
+## Setting working directory
+```{r}
+
+# Setting up wd for relative file paths
+# This sets wd to wherever the document is saved - this should be the github desktop folder
+if(Sys.getenv("RSTUDIO") == '1' & !knitr::is_html_output()) { # If using Rstudio and not rendering
+	setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+} else if(Sys.getenv("RSTUDIO") != '1'){ # If using Rscript
+	initial.options <- commandArgs(trailingOnly = FALSE)
+	file.arg.name <- "--file="
+	script.name <- sub(file.arg.name, "", initial.options[grep(file.arg.name, initial.options)])
+	script.basename <- dirname(script.name)
+	setwd(file.path(getwd(), script.basename))
+}
+
+```
+
+## Functions
+```{r}
+
+source("Functions/cancer_incidence_data_generation.R")
+
+```
+
+## Read in data
+```{r}
+
+data_rf <- read.csv("../../../Data/Cleaned_Data/clean_rf_data.csv")
+data_paf <- read.csv("../Data/AggregatePAFs.csv")
+data_cancer <- cancer_incidence_data_gen("../Data")
+
+
+```
+
+## Figure 1 - Trends in risk factors
+```{r}
+
+# Filter to data desired and make formatting choices
+data_rf_trends <- data_rf |>
+  filter(!variable %in% c("fibre_consumption", "fibre_consumption_cat_mean", "processed_meat_consumption", "processed_meat_consumption_cat_mean", "redmeat_consumption", "redmeat_consumption_cat_mean")) |>
+  mutate(
+    
+    level = case_when(
+      grepl(variable, pattern = "\\_consumption_mean") ~ gsub("\\sConsumption\\sMean$", "", str_to_title(gsub("\\_", " ", variable))),
+      TRUE ~ level
+      ),
+    
+    # Quick fix for poorly named variable
+    level = if_else(level == "Redmeat", "Red Meat", level),
+    
+    variable = case_when(
+      grepl(variable, pattern = "\\_consumption_mean") ~ "diet",
+      TRUE ~ variable
+      ),
+    
+  )
+
+# Loop through variables and make plots
+for(var in unique(data_rf_trends$variable)){
+  
+  # Extract min and max years for nice plots
+  min_year <- min(data_rf_trends |> filter(variable == var) |> pull(year))
+  max_year <- max(data_rf_trends |> filter(variable == var) |> pull(year))
+  
+  # get pretty variable name for the plot header
+  var_title <- case_when(
+    var == "alcohol_amt" ~ "Alcohol Consumption",
+    var == "bmi" ~ "BMI",
+    var == "smoking_status" ~ "Smoking Status",
+    var == "diet" ~ "Daily Food Consumption",
+    TRUE ~ var
+  )
+  
+  # Create plot
+  plot <- ggplot(data_rf_trends |> filter(variable == var), aes(x = year, y = value, colour = level, fill = level)) +
+    geom_line() +
+    geom_point() +
+    theme_minimal() +
+    geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
+              colour = "black", fill = NA, inherit.aes = FALSE) +
+    theme(strip.text = element_text(face = "bold")) +
+    ylab(if_else(var == "diet", "Grams (g)", "Percentage (%)")) +
+    xlab("Year") +
+    labs(colour = "Category", fill = "Category") +
+    scale_x_continuous(breaks = seq(min_year, max_year, by = 2)) +
+    ggtitle(paste0("Trends in ", var_title)) +
+    facet_grid(age_group ~ sex)
+  
+  print(plot)
+  
+  ggsave(plot, filename = paste0("../Output/Plots/Figure 1 - ", var, ".png"), bg = "white", height = 6, width = 10)
+    
+  
+}
+
+
+```
+
+
+## Figure 2 - Change in PAFs
+```{r}
+
+# Pivot PAFs longer so we can merge
+data_paf_long <- data_paf |>
+  pivot_longer(cols = colnames(data_paf)[!colnames(data_paf) %in% c("sex", "year", "age_group")], names_to = "cancer_site", values_to = "PAF") |>
+  mutate(year = year + 10) # Broad assumption of 10 year lag period
+
+# Merge and find attributable cases
+data_attr_cases <- merge(data_paf_long, data_cancer, by = c("sex", "year", "age_group", "cancer_site")) |>
+  mutate(
+    
+    attr_cases = PAF*count,
+    non_attr_cases = (1-PAF)*count
+    
+  ) |>
+  pivot_longer(cols = c("attr_cases", "non_attr_cases"), names_to = "case_group", values_to = "cases_count") |>
+  mutate(
+    
+    case_group = factor(case_group, level = c("non_attr_cases", "attr_cases"), labels = c("Non-Attributable", "Attributable"))
+    
+  )
+
+
+# Make plots
+# Loop through cancer sites
+for(site in unique(data_attr_cases$cancer_site)){
+  
+  site_title = if_else(site == "MultipleMyeloma", "Multiple Myeloma", site)
+  
+  plot <- ggplot(data_attr_cases |> filter(cancer_site == site) |> filter(year %in% c(2015, 2019)), aes(x = as.character(year), y = cases_count, fill = case_group)) +
+    geom_bar(position="stack", stat="identity", colour = "black") +
+    theme_minimal() +
+    geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
+              colour = "black", fill = NA, inherit.aes = FALSE) +
+    theme(strip.text = element_text(face = "bold")) +
+    ylab("Cases") +
+    xlab("Year") +
+    ggtitle(paste0("Attributable Cases for ", site_title)) +
+    labs(fill = "Category") +
+    facet_grid(age_group ~ sex, scales = "free_y")
+  
+  print(plot)
+  
+  ggsave(plot, filename = paste0("../Output/Plots/Figure 2 - ", site, ".png"), bg = "white", height = 6, width = 10)
+  
+}
+
+
+```

@@ -35,31 +35,34 @@ cancer_incidence_data_gen <- function(filepath){
       # Simplify age group names
       age_group = if_else(Age_at_Diagnosis == "20 to 24, 25 to 29, 30 to 34, 35 to 39, 40 to 44, 45 to 49", "20-49", "50+"),
       
+      # Change sex labelling
+      sex = case_when(Gender == "Male" ~ "Men",
+                      Gender == "Female" ~ "Women",
+                      TRUE ~ "All"),
+      
       # group by globocan specified ICD10 codes for the cancer sites desired
       # globocan sites by ICD10 code here: https://gco.iarc.fr/overtime/en/database#cancer-dictionary
       cancer_site_globocan = case_when(
         ICD10_code == "C50" ~ "Breast",
-        ICD10_code == "C53" ~ "Cervix",
         ICD10_code %in% c("C18", "C19", "C20", "C21") ~ "Colorectum",
         ICD10_code == "C54" ~ "Endometrium",
         ICD10_code %in% c("C23", "C24") ~ "Gallbladder",
         ICD10_code == "C64" ~ "Kidney",
-        ICD10_code == "C91-C95" ~ "Leukaemia",
         ICD10_code == "C22" ~ "Liver",
-        ICD10_code == "C91-C95" ~ "Leukaemia",
-        ICD10_code %in% c("C88", "C90") ~ "Multiple myeloma",
+        ICD10_code %in% c("C88", "C90") ~ "MultipleMyeloma",
         ICD10_code == "C00-C14" ~ "Oral",
         ICD10_code == "C25" ~ "Pancreas",
-        ICD10_code == "C61" ~ "Prostate",
         ICD10_code == "C73" ~ "Thyroid",
         TRUE ~ NA
       )
       
     ) |>
     filter(!is.na(cancer_site_globocan)) |>
-    group_by(Year, Gender, age_group, cancer_site_globocan) |>
+    filter(!(cancer_site_globocan == "Breast" & sex == "Men")) |>
+    filter(sex != "All") |>
+    group_by(Year, sex, age_group, cancer_site_globocan) |>
     summarise(count = sum(Count)) |>
-    rename(year = Year, gender = Gender, cancer_site = cancer_site_globocan)
+    rename(year = Year, cancer_site = cancer_site_globocan)
   
   # Return clean data
   return(data_inc)
