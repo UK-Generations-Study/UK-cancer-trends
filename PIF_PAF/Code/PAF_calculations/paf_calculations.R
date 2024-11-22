@@ -1,16 +1,17 @@
 #This code will calculate the PAFs by cancer site per risk factor and as an aggregate number for the years: 2015 and 2019
+
 library(dplyr)
 library(stringr)
 library(ggplot2)
 library(gridExtra)
-#Before running any of this, please run "UK-cancer-trends\PIF_PAF\Code\RF_Data_Generation.qmd"
 
 #read in the data
 riskfactors<- read.csv("../../../Data/Cleaned_Data/clean_rf_data.csv")
 rr_under50<-read.csv("../Data/relativerisk_under50.csv")
 rr_over50<-read.csv("../Data/relativerisk_over50.csv")
 
-#cleaning the relative risk data frames so that they are all formatted correctly and representing the correct dose responses 
+#cleaning the risk factor data so that there are no data gaps 
+source("PAF_calculations/data_gaps.R")
 
 ###########################################################
 #under 50
