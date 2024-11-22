@@ -1,24 +1,37 @@
 #This code will calculate the PAFs by cancer site per risk factor and as an aggregate number for the years: 2015 and 2019
+
 library(dplyr)
 library(stringr)
 library(ggplot2)
 library(gridExtra)
-#Before running any of this, please run "UK-cancer-trends\PIF_PAF\Code\RF_Data_Generation.qmd"
 
 #read in the data
 riskfactors<- read.csv("../../../Data/Cleaned_Data/clean_rf_data.csv")
 rr_under50<-read.csv("../Data/relativerisk_under50.csv")
 rr_over50<-read.csv("../Data/relativerisk_over50.csv")
 
-#cleaning the relative risk data frames so that they are all formatted correctly and representing the correct dose responses 
+#cleaning the risk factor data so that there are no data gaps 
+source("PAF_calculations/data_gaps.R")
 
 ###########################################################
 #under 50
 
 #cleaning the RR
+#best estimate rr
 rr_under50[-1] <- lapply(rr_under50[-1], function(column) {
-  as.numeric(sub("\\s*\\(.*\\)", "", column)) 
-}) # taking just the rr and leaving the confidence interval 
+  as.numeric(sub("\\s*\\(.*\\)", "", column))
+})
+#low estimate rr
+# rr_under50[-1] <- lapply(rr_under50[-1], function(column) {
+#   as.numeric(sub(".*\\(([^,]+),.*", "\\1", column))
+# })
+#high estimate rr 
+# rr_under50[-1] <- lapply(rr_under50[-1], function(column) {
+#   as.numeric(sub(".*\\(.*,(.*)\\).*", "\\1", column))
+# })
+
+
+#high estimate rr 
 err_under50 <- rr_under50 %>%
   mutate(
     Fibre = log(1/Fibre)/10,
@@ -50,7 +63,7 @@ err_under50 <- err_under502 %>%
 #cleaning the risk factors and calculating the (ERR* risk factor prevalence) per risk factor 
 rf_under50 <- riskfactors %>% 
   filter(
-    year >= 2005 & year <= 2011, 
+    #year >= 2005 & year <= 2011, 
     age_group == "20-49"
     ) %>% #filtering the data to the years of interest and to only early onset (EO) cases 
   mutate(
@@ -203,9 +216,20 @@ paf_cancersite_under50 <- subpaf_under50 %>%
 #over 50 
 
 #cleaning the RR
+#best estimate rr
 rr_over50[-1] <- lapply(rr_over50[-1], function(column) {
-  as.numeric(sub("\\s*\\(.*\\)", "", column)) 
-}) # taking just the rr and leaving the confidence interval 
+  as.numeric(sub("\\s*\\(.*\\)", "", column))
+})
+#low estimate rr
+# rr_over50[-1] <- lapply(rr_over50[-1], function(column) {
+#   as.numeric(sub(".*\\(([^,]+),.*", "\\1", column))
+# })
+#high estimate rr 
+# rr_over50[-1] <- lapply(rr_over50[-1], function(column) {
+#   as.numeric(sub(".*\\(.*,(.*)\\).*", "\\1", column))
+# })
+
+
 err_over50 <- rr_over50 %>%
   mutate(
     Fibre = log(1/Fibre)/10,
@@ -237,7 +261,7 @@ err_over50 <- err_over502 %>%
 #cleaning the risk factors and calculating the (ERR* risk factor prevalence) per risk factor 
 rf_over50 <- riskfactors %>% 
   filter(
-    year >= 2005 & year <= 2011, 
+    #year >= 2005 & year <= 2011, 
     age_group == "50+"
   ) %>% #filtering the data to the years of interest and to only early onset (EO) cases 
   mutate(
@@ -388,7 +412,7 @@ paf_cancersite_over50 <- subpaf_over50 %>%
 
 #saving the PAF calculations 
 PAF_by_riskfactor <- rbind(paf_cancersite_over50, paf_cancersite_under50)
-write.csv(PAF_by_riskfactor, file = "../Data/PAF_by_riskfactor.csv", row.names = F)
+#write.csv(PAF_by_riskfactor, file = "../Data/PAF_by_riskfactor.csv", row.names = F)
 
 #############
 #aggregate PAFS 
@@ -433,6 +457,26 @@ aggregate_pafs <- aggregate_pafs %>%
     Breast = ifelse(sex == "Men", 0, Breast)
     )
 
-write.csv(aggregate_pafs, file = "../Data/AggregatePAFs.csv", row.names = F)
+#write.csv(aggregate_pafs, file = "../Data/AggregatePAFs_BestEstimates.csv", row.names = F)
+
+#Sensitivity Analysis
+
+#aggregate_pafs_lowestimate <- aggregate_pafs
+#aggregate_pafs_highestimate <- aggregate_pafs
+
+# aggregate_pafs_lowestimate <-  aggregate_pafs_lowestimate %>%
+#   mutate(
+#     estimate = "low"
+#   )
+# aggregate_pafs_highestimate <-  aggregate_pafs_highestimate %>%
+#   mutate(
+#     estimate = "high"
+#   )
+# aggregate_pafs <-  aggregate_pafs %>%
+#   mutate(
+#     estimate = "best"
+#   )
+#aggregate_pafs_sensitivity <- rbind(aggregate_pafs,aggregate_pafs_lowestimate, aggregate_pafs_highestimate, row.names = F)
+#write.csv(aggregate_pafs, file = "../Data/AggregatePAFs_sensitivityAnalysis_RRconfidenceintervals.csv", row.names = F)
 
 
