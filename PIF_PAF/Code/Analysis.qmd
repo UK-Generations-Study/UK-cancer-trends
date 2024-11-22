@@ -42,7 +42,7 @@ source("Functions/cancer_incidence_data_generation.R")
 ```{r}
 
 data_rf <- read.csv("../../../Data/Cleaned_Data/clean_rf_data.csv")
-data_paf <- read.csv("../Data/AggregatePAFs.csv")
+data_paf <- read.csv("../Data/AggregatePAFs_BestEstimates.csv")
 data_cancer <- cancer_incidence_data_gen("../Data")
 
 
