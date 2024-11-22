@@ -457,7 +457,7 @@ aggregate_pafs <- aggregate_pafs %>%
     Breast = ifelse(sex == "Men", 0, Breast)
     )
 
-write.csv(aggregate_pafs, file = "../Data/AggregatePAFs_BestEstimates.csv", row.names = F)
+#write.csv(aggregate_pafs, file = "../Data/AggregatePAFs_BestEstimates.csv", row.names = F)
 
 #Sensitivity Analysis
 
