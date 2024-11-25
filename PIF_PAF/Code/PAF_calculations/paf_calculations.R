@@ -30,6 +30,24 @@ rr_under50[-1] <- lapply(rr_under50[-1], function(column) {
 #   as.numeric(sub(".*\\(.*,(.*)\\).*", "\\1", column))
 # })
 
+#storing the maximum values for red and processed meat 
+over100 <- riskfactors %>%
+  mutate(
+    exp_low = as.numeric(str_extract(level, "\\d+")),
+  ) %>% 
+  filter(
+    exp_low == 100, 
+    variable == "redmeat_consumption_cat_mean" | variable == "processed_meat_consumption_cat_mean"
+  ) %>%
+  mutate(
+    variable = ifelse( variable == "processed_meat_consumption_cat_mean", "Processed_Meat", variable),
+    variable = ifelse( variable == "redmeat_consumption_cat_mean", "Red_Meat", variable), 
+    level = str_trim(level), 
+    variable = str_trim(variable)) %>%
+  rename(
+    exposure = variable, 
+    midpoint2 = value
+  ) 
 
 #high estimate rr 
 err_under50 <- rr_under50 %>%
@@ -58,7 +76,6 @@ colnames(err_under502) <- err_under502[1, ]
 err_under502 <- err_under502[-1, ]
 err_under50 <- err_under502 %>%
   rename(exposure = Cancer_sites)
-
 
 #cleaning the risk factors and calculating the (ERR* risk factor prevalence) per risk factor 
 rf_under50 <- riskfactors %>% 
@@ -91,10 +108,18 @@ rf_under50 <- riskfactors %>%
     exp_high = ifelse(variable == "redmeat_consumption", as.numeric(str_extract(level, "(?<=,)\\d+")), exp_high), 
     exp_mdpt = exp_low + ((exp_high-exp_low)/2), 
     exp_mdpt = ifelse(is.na(exp_low), 1, exp_mdpt), 
-    exp_mdpt = ifelse(exposure == "Red_Meat" & exp_low == 100, 110, exp_mdpt), #setting the dose response exposure category for the top dose response categories 
-    exp_mdpt = ifelse(exposure == "Processed_Meat" & exp_low == 100, 110, exp_mdpt), 
+    #exp_lvl = ifelse(exposure == "Fibre", 30 - exp_mdpt, exp_mdpt), #flipping fibre so that the exposure is deficient from the "risk free" 30p/day government guideline
+  ) 
+upperlimits <- rf_under50 %>%
+  merge(
+    over100, by = c("exposure", "sex", "age_group", "exp_low", "year", "level"), all.x = T
+    ) %>%
+  mutate(
+    exp_mdpt = ifelse(is.na(exp_mdpt), midpoint2, exp_mdpt), 
     exp_lvl = ifelse(exposure == "Fibre", 30 - exp_mdpt, exp_mdpt), #flipping fibre so that the exposure is deficient from the "risk free" 30p/day government guideline
-  ) %>%
+  )
+
+rf_under50 <- upperlimits %>%
   filter(!grepl("^[\\(\\[0]", exposure)) %>% #remove most of the rows that arent being used to remove noise 
   left_join(err_under50 %>% 
               select(exposure, Oral, Endometrium, Pancreas, Gallbladder, Colorectum, Liver, Kidney, Thyroid, `Multiple Myeloma`, `Breast `), by = c("exposure" = "exposure")) %>% #add the ERR to the dataframe
@@ -288,11 +313,17 @@ rf_over50 <- riskfactors %>%
     exp_high = ifelse(variable == "processed_meat_consumption", as.numeric(str_extract(level, "(?<=,)\\d+")), exp_high),
     exp_high = ifelse(variable == "redmeat_consumption", as.numeric(str_extract(level, "(?<=,)\\d+")), exp_high), 
     exp_mdpt = exp_low + ((exp_high-exp_low)/2), 
-    exp_mdpt = ifelse(is.na(exp_low), 1, exp_mdpt), 
-    exp_mdpt = ifelse(exposure == "Red_Meat" & exp_low == 100, 110, exp_mdpt), #setting the dose response exposure category for the top dose response categories 
-    exp_mdpt = ifelse(exposure == "Processed_Meat" & exp_low == 100, 110, exp_mdpt), 
-    exp_lvl = ifelse(exposure == "Fibre", 30 - exp_mdpt, exp_mdpt), #flipping fibre so that the exposure is deficient from the "risk free" 30p/day government guideline
+    exp_mdpt = ifelse(is.na(exp_low), 1, exp_mdpt)
+  ) 
+upperlimits <- rf_over50 %>%
+  merge(
+    over100, by = c("exposure", "sex", "age_group", "exp_low", "year", "level"), all.x = T
   ) %>%
+  mutate(
+    exp_mdpt = ifelse(is.na(exp_mdpt), midpoint2, exp_mdpt), 
+    exp_lvl = ifelse(exposure == "Fibre", 30 - exp_mdpt, exp_mdpt), #flipping fibre so that the exposure is deficient from the "risk free" 30p/day government guideline
+  )
+rf_over50 <- upperlimits %>%
   filter(!grepl("^[\\(\\[0]", exposure)) %>% #remove most of the rows that arent being used to remove noise 
   left_join(err_over50 %>% 
               select(exposure, Oral, Endometrium, Pancreas, Gallbladder, Colorectum, Liver, Kidney, Thyroid, `Multiple Myeloma`, `Breast`), by = c("exposure" = "exposure")) %>% #add the ERR to the dataframe
@@ -412,7 +443,7 @@ paf_cancersite_over50 <- subpaf_over50 %>%
 
 #saving the PAF calculations 
 PAF_by_riskfactor <- rbind(paf_cancersite_over50, paf_cancersite_under50)
-# write.csv(PAF_by_riskfactor, file = "../Data/PAF_by_riskfactor.csv", row.names = F)
+write.csv(PAF_by_riskfactor, file = "../Data/PAF_by_riskfactor.csv", row.names = F)
 
 #############
 #aggregate PAFS 
@@ -457,7 +488,7 @@ aggregate_pafs <- aggregate_pafs %>%
     Breast = ifelse(sex == "Men", 0, Breast)
     )
 
-#write.csv(aggregate_pafs, file = "../Data/AggregatePAFs_BestEstimates.csv", row.names = F)
+write.csv(aggregate_pafs, file = "../Data/AggregatePAFs_BestEstimates.csv", row.names = F)
 
 #Sensitivity Analysis
 
