@@ -412,7 +412,7 @@ paf_cancersite_over50 <- subpaf_over50 %>%
 
 #saving the PAF calculations 
 PAF_by_riskfactor <- rbind(paf_cancersite_over50, paf_cancersite_under50)
-#write.csv(PAF_by_riskfactor, file = "../Data/PAF_by_riskfactor.csv", row.names = F)
+# write.csv(PAF_by_riskfactor, file = "../Data/PAF_by_riskfactor.csv", row.names = F)
 
 #############
 #aggregate PAFS 
