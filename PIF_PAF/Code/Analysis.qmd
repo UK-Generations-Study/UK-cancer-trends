@@ -1,6 +1,14 @@
 ---
 title: "PIF/PAF Analysis"
-format: html
+format: 
+  html:
+    toc: true
+    toc-depth: 5
+    grid:
+      sidebar-width: 300px
+      body-width: 1500px
+      margin-width: 300px
+      gutter-width: 1.5rem
 editor:
   mode: source
 ---
@@ -11,6 +19,8 @@ editor:
 library(dplyr)
 library(stringr)
 library(ggplot2)
+library(gt)
+library(tidyr)
 
 ```
 
@@ -43,13 +53,36 @@ source("Functions/cancer_incidence_data_generation.R")
 
 data_rf <- read.csv("../../../Data/Cleaned_Data/clean_rf_data.csv")
 data_paf <- read.csv("../Data/AggregatePAFs_BestEstimates.csv")
+data_pif <- read.csv("../Data/PIF.csv")
 data_cancer <- cancer_incidence_data_gen("../Data")
 
 
 ```
 
-## Figure 1 - Trends in risk factors
-```{r}
+## Figure 1 - Trends in cancer incidence
+```{r, fig.height=16, fig.width=10, warning=F}
+
+# Removing 2020 as COVID affected cases
+ggplot(data_cancer |> filter(year<2020), aes(x = year, y = count, fill = sex, colour = sex)) +
+  geom_point() +
+  geom_line() +
+  theme_minimal() +
+  geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
+            colour = "black", fill = NA, inherit.aes = FALSE) +
+  theme(strip.text = element_text(face = "bold")) +
+  ylab("Cases") +
+  xlab("Year") +
+  labs(colour = "Sex", fill = "Sex") +
+  # scale_x_continuous(breaks = seq(min_year, max_year, by = 2)) +
+  ggtitle(paste0("Trends in Cancer Incidence in England")) +
+  facet_wrap(cancer_site~age_group,  scales = "free_y", nrow = 10)
+
+ggsave(filename = paste0("../Output/Plots/Figure 1.png"), bg = "white", height = 16, width = 10)
+
+```
+
+## Figure 2 - Trends in risk factors
+```{r, fig.height=6, fig.width=10, warning=F}
 
 # Filter to data desired and make formatting choices
 data_rf_trends <- data_rf |>
@@ -104,7 +137,7 @@ for(var in unique(data_rf_trends$variable)){
   
   print(plot)
   
-  ggsave(plot, filename = paste0("../Output/Plots/Figure 1 - ", var, ".png"), bg = "white", height = 6, width = 10)
+  ggsave(plot, filename = paste0("../Output/Plots/Figure 2 - ", var, ".png"), bg = "white", height = 6, width = 10)
     
   
 }
@@ -113,8 +146,8 @@ for(var in unique(data_rf_trends$variable)){
 ```
 
 
-## Figure 2 - Change in PAFs
-```{r}
+## Figure 3 - Change in PAFs
+```{r, fig.height=6, fig.width=10, warning=F}
 
 # Pivot PAFs longer so we can merge
 data_paf_long <- data_paf |>
@@ -157,9 +190,63 @@ for(site in unique(data_attr_cases$cancer_site)){
   
   print(plot)
   
-  ggsave(plot, filename = paste0("../Output/Plots/Figure 2 - ", site, ".png"), bg = "white", height = 6, width = 10)
+  ggsave(plot, filename = paste0("../Output/Plots/Figure 3 - ", site, ".png"), bg = "white", height = 6, width = 10)
   
 }
 
+
+```
+
+## Figure 4 - PIF
+```{r,warning=F}
+
+data_pif_gt <- data_pif |>
+  mutate(
+    
+    variable = case_when(
+      variable == "ProcessedMeat" ~ "Processed Meat",
+      variable == "RedMeat" ~ "Red Meat",
+      TRUE ~ variable
+    ),
+    
+    PIF = 100*round(PIF, digits = 3),
+    
+    PIF = if_else(is.na(PIF), "-", as.character(PIF))
+    
+  ) |>
+  pivot_wider(names_from = cancer_site, values_from = PIF) |>
+  group_by(sex, age_group) |>
+  gt() |>
+  cols_label(
+    variable = "",
+    MultipleMyeloma = "Multiple Myeloma"
+  ) |>
+  cols_align(
+    align = "center",
+    columns = -variable
+  ) |>
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = list(
+      cells_column_labels()
+    )
+  ) |>
+  tab_style(
+    style = list(
+      cell_text(weight = "bold"),
+      cell_fill(color = "lightgray"),
+      cell_borders(sides = "top"),
+      cell_borders(sides = "bottom")
+    ),
+    locations = cells_row_groups(groups = everything())
+  ) |>
+  cols_width(
+    variable ~ px(200)
+  )
+
+data_pif_gt
+
+gtsave(data_pif_gt, "../Output/Plots/Figure 4.html")
+  
 
 ```
