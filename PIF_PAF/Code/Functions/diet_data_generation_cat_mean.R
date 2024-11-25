@@ -87,7 +87,7 @@ diet_data_gen_cat_mean <- function(filepath){
   ## Data cleaning by variable
   
   # Initialise empty df
-  diet_df_total <- data.frame(sex = character(0), age_group = character(0), year = numeric(0), level = character(0), value = numeric(0))
+  diet_df_total <- data.frame(sex = character(0), age_group = character(0), year = numeric(0), level = character(0), value = numeric(0), N = numeric(0))
   
   ## FIBRE
   diet_df_fibre <- diet_df |>
@@ -96,8 +96,12 @@ diet_data_gen_cat_mean <- function(filepath){
       fibre_cat = cut(aoac_fibre, breaks = c(seq(0,30), Inf), right = F)
       
     ) |>
+    group_by(sex, age_group, year) |>
+    mutate(total_weight = sum(weight)) |>
+    ungroup() |>
     group_by(sex, age_group, year, fibre_cat) |>
-    summarise(value = sum(aoac_fibre*weight)/sum(weight)) |>
+    summarise(value = sum(aoac_fibre*weight)/sum(weight),
+              N = total_weight[1]) |>
     mutate(variable = "fibre_consumption_cat_mean") |>
     rename(level = fibre_cat)
   
@@ -108,11 +112,15 @@ diet_data_gen_cat_mean <- function(filepath){
     mutate(
       
       redmeat_total =  beef + lamb + pork + entrails + other,
-      redmeat_cat = if_else(redmeat_total == 0, "0", cut(redmeat_total, breaks = c(seq(0,100, by = 10), Inf), right = T))
-      
+      redmeat_cat = if_else(redmeat_total == 0, "0", cut(redmeat_total, breaks = c(seq(0,100, by = 10), Inf), right = T)),
+
     ) |>
+    group_by(sex, age_group, year) |>
+    mutate(total_weight = sum(weight)) |>
+    ungroup() |>
     group_by(sex, age_group, year, redmeat_cat) |>
-    summarise(value = sum(redmeat_total*weight)/sum(weight)) |>
+    summarise(value = sum(redmeat_total*weight)/sum(weight),
+              N = total_weight[1]) |>
     mutate(variable = "redmeat_consumption_cat_mean") |>
     rename(level = redmeat_cat)
   
@@ -124,11 +132,15 @@ diet_data_gen_cat_mean <- function(filepath){
     mutate(
       
       processed_meat_total =  processed.redmeat + processed.poultry + burgers + sausages,
-      processed_cat = if_else(processed_meat_total == 0, "0", cut(processed_meat_total, breaks = c(seq(0,100, by = 5), Inf), right = T))
-      
+      processed_cat = if_else(processed_meat_total == 0, "0", cut(processed_meat_total, breaks = c(seq(0,100, by = 5), Inf), right = T)),
+
     ) |>
+    group_by(sex, age_group, year) |>
+    mutate(total_weight = sum(weight)) |>
+    ungroup() |>
     group_by(sex, age_group, year, processed_cat) |>
-    summarise(value = sum(processed_meat_total*weight)/sum(weight)) |>
+    summarise(value = sum(processed_meat_total*weight)/sum(weight),
+              N = total_weight[1]) |>
     mutate(variable = "processed_meat_consumption_cat_mean") |>
     rename(level = processed_cat)
   

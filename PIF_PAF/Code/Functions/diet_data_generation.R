@@ -87,7 +87,7 @@ diet_data_gen <- function(filepath){
   ## Data cleaning by variable
   
   # Initialise empty df
-  diet_df_total <- data.frame(sex = character(0), age_group = character(0), year = numeric(0), level = character(0), value = numeric(0))
+  diet_df_total <- data.frame(sex = character(0), age_group = character(0), year = numeric(0), level = character(0), value = numeric(0), N = numeric(0))
   
   ## FIBRE
   diet_df_fibre <- diet_df |>
@@ -96,11 +96,13 @@ diet_data_gen <- function(filepath){
       fibre_cat = cut(aoac_fibre, breaks = c(seq(0,30), Inf), right = F)
       
     ) |>
-    group_by(sex, age_group, year) |>
+    group_by(sex, age_group, year) |>    
     mutate(total_weight = sum(weight)) |>
+
     ungroup() |>
     group_by(sex, age_group, year, fibre_cat) |>
-    summarise(value = sum(weight)/total_weight[1]) |>
+    summarise(value = sum(weight)/total_weight[1],
+              N = total_weight[1]) |>
     mutate(variable = "fibre_consumption") |>
     rename(level = fibre_cat)
   
@@ -118,7 +120,8 @@ diet_data_gen <- function(filepath){
     mutate(total_weight = sum(weight)) |>
     ungroup() |>
     group_by(sex, age_group, year, redmeat_cat) |>
-    summarise(value = sum(weight)/total_weight[1]) |>
+    summarise(value = sum(weight)/total_weight[1],
+              N = total_weight[1]) |>
     mutate(variable = "redmeat_consumption") |>
     rename(level = redmeat_cat)
   
@@ -136,7 +139,8 @@ diet_data_gen <- function(filepath){
     mutate(total_weight = sum(weight)) |>
     ungroup() |>
     group_by(sex, age_group, year, processed_cat) |>
-    summarise(value = sum(weight)/total_weight[1]) |>
+    summarise(value = sum(weight)/total_weight[1],
+              N = total_weight[1]) |>
     mutate(variable = "processed_meat_consumption") |>
     rename(level = processed_cat)
   
