@@ -87,14 +87,15 @@ diet_data_gen_continuous <- function(filepath){
   ## Data cleaning by variable
   
   # Initialise empty df
-  diet_df_total <- data.frame(sex = character(0), age_group = character(0), year = numeric(0), level = character(0), value = numeric(0))
+  diet_df_total <- data.frame(sex = character(0), age_group = character(0), year = numeric(0), level = character(0), value = numeric(0), N = numeric(0))
   
   ## FIBRE
   diet_df_fibre <- diet_df |>
     group_by(sex, age_group, year) |>
     summarise(
       
-      fibre = sum(aoac_fibre*weight)/sum(weight)
+      fibre = sum(aoac_fibre*weight)/sum(weight),
+      N = sum(weight)
       
     ) |>
     mutate(variable = "fibre_consumption_mean",
@@ -107,11 +108,12 @@ diet_data_gen_continuous <- function(filepath){
   diet_df_redmeat <- diet_df |>
     mutate(
       
-      redmeat_total =  beef + lamb + pork + entrails + other,
+      redmeat_total =  beef + lamb + pork + entrails + other
 
     ) |>
     group_by(sex, age_group, year) |>
-    summarise(redmeat = sum(redmeat_total*weight)/sum(weight)) |>
+    summarise(redmeat = sum(redmeat_total*weight)/sum(weight),,
+              N = sum(weight)) |>
     mutate(variable = "redmeat_consumption_mean",
            level = "mean") |>
     rename(value = redmeat)
@@ -126,7 +128,8 @@ diet_data_gen_continuous <- function(filepath){
 
     ) |>
     group_by(sex, age_group, year) |>
-    summarise(processed_meat = sum(processed_meat_total*weight)/sum(weight)) |>
+    summarise(processed_meat = sum(processed_meat_total*weight)/sum(weight),
+              N = sum(weight)) |>
     mutate(variable = "processed_meat_consumption_mean",
            level = "mean") |>
     rename(value = processed_meat)
