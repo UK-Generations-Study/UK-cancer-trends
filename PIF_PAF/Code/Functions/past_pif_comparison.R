@@ -1,0 +1,339 @@
+### PAF TREND EVALUATION - PAST ###
+
+# This code is intended to test whether the first PAF and 2019 PAF for a risk factor/cancer combination are significantly different.
+# It does this by using MC sampling.
+# The RR will be sampled from a log-normal distribution, assuming log(RR) is normally distributed. - THIS HAS NOT BEEN DONE. This is because they are using the same RR so would just add variance
+# The prevelances will be sampled using the prevelances and N values from the surveys.
+
+## Packages
+necessary_packages <- c("dplyr", "tidyr", "ggplot2")
+suppressMessages(
+  for (p in necessary_packages) {
+    if (!require(p, character.only = TRUE)){
+      install.packages(p)
+    }
+    library(p, character.only = TRUE)
+  }
+)
+
+## Set working directory
+# Setting up wd for relative file paths
+# This sets wd to wherever the document is saved - this should be the github desktop folder
+if(Sys.getenv("RSTUDIO") == '1' & !knitr::is_html_output()) { # If using Rstudio and not rendering
+  setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+} else if(Sys.getenv("RSTUDIO") != '1'){ # If using Rscript
+  initial.options <- commandArgs(trailingOnly = FALSE)
+  file.arg.name <- "--file="
+  script.name <- sub(file.arg.name, "", initial.options[grep(file.arg.name, initial.options)])
+  script.basename <- dirname(script.name)
+  setwd(file.path(getwd(), script.basename))
+}
+
+
+## Read in RF data
+data_rf <- read.csv("../../../../Data/Cleaned_Data/clean_rf_data.csv")
+
+
+## Read in RR estimates
+data_rr_u50 <- read.csv("../../Data/relativerisk_under50.csv", na.strings = "")
+data_rr_oe50 <- read.csv("../../Data/relativerisk_over50.csv", na.strings = "")
+
+# Filter RF data to just oldest and 2009 (or closest) estimate
+data_rf <- data_rf |>
+  filter(year <= 2019) |>
+  group_by(variable, sex, age_group) |>
+  mutate(
+    
+    dist_to_2009 = abs(year - 2009)
+    
+  ) |>
+  mutate(
+    
+    youngest_indicator = year == max(year),
+    oldest_indicator = year == min(year),
+    close_to_2009 = dist_to_2009 == min(dist_to_2009)
+    
+  ) |>
+  filter(oldest_indicator | close_to_2009) |>
+  ungroup() |>
+  select(-oldest_indicator, -youngest_indicator, -close_to_2009, -dist_to_2009)
+
+# Clean up RR estimates
+data_rr_u50 <- data_rr_u50 |>
+  pivot_longer(cols = -Cancer_sites) |>
+  mutate(age_group = "20-49")
+
+data_rr_oe50 <- data_rr_oe50 |>
+  pivot_longer(cols = -Cancer_sites) |>
+  mutate(age_group = "50+")
+
+# Combine to one RR data source
+data_rr <- rbind(data_rr_oe50, data_rr_u50) |>
+  mutate(
+    
+    RR = as.numeric(gsub("\\(.*", "", value)),
+    CI = gsub(".*\\(", "", value),
+    CI_lower = as.numeric(gsub("\\,.*", "", CI)),
+    CI_higher = as.numeric(gsub("\\)|.*,\\s|.*,", "", CI))
+    
+  ) |>
+  mutate(
+    
+    sex = case_when(
+      grepl("\\_men", name) ~ "Men",
+      grepl("\\_women", name) ~ "Women",
+      TRUE ~ "All"
+    ),
+    
+    variable = case_when(
+      grepl("\\_Smoking", name) ~ "smoking_status",
+      grepl("\\_alcohol", name) ~ "alcohol_amt",
+      grepl("^BMI", name) ~ "bmi",
+      name == "Processed_Meat" ~ "processed_meat_consumption",
+      name == "Red_Meat" ~ "redmeat_consumption",
+      name == "Fibre" ~ "fibre_consumption",
+      TRUE ~ NA # More will need to be added as and when needed
+    ),
+    
+    level = case_when(
+      variable == "alcohol_amt" & grepl("^Light", name) ~ "Light Drinker",
+      variable == "alcohol_amt" & grepl("^Medium", name) ~ "Moderate Drinker",
+      variable == "alcohol_amt" & grepl("^Heavy", name) ~ "Heavy Drinker",
+      variable == "smoking_status" & grepl("^Former", name) ~ "Previously",
+      variable == "smoking_status" & grepl("^Current", name) ~ "Current",
+      variable == "bmi" & grepl("\\_obese", name) ~ "Obese",
+      variable == "bmi" & grepl("\\_overweight", name) ~ "Overweight",
+      grepl("\\_consumption$", variable) ~ "dose_response",
+      TRUE ~ NA
+    )
+    
+  ) |>
+  filter(!is.na(variable)) |>
+  filter(!is.na(RR))
+
+# Splitting "all" into men and women
+data_rr_men <- data_rr |>
+  filter(sex == "All") |>
+  mutate(sex = "Men")
+
+data_rr_women <- data_rr |>
+  filter(sex == "All") |>
+  mutate(sex = "Women")
+
+data_rr <- data_rr |>
+  filter(sex != "All") |>
+  rbind(data_rr_men) |>
+  rbind(data_rr_women)
+
+
+# Need to grab midpoints for levels in the risk factors data
+midpoints_inf <- data_rf |>
+  filter(variable %in% c("redmeat_consumption_cat_mean", "processed_meat_consumption_cat_mean")) |>
+  filter(grepl("\\,Inf\\)$|\\,Inf\\]$", level)) |>
+  mutate(variable = gsub("\\_cat\\_mean", "", variable)) |>
+  select(-N) |>
+  rename(level_midpoint = value)
+  
+# Now adding in midpoints and adjusting level to be these midpoints
+data_rf <- data_rf |>
+  merge(midpoints_inf, by = c("year", "age_group", "sex", "level", "variable"), all.x = T) |>
+  mutate(
+    
+    level_midpoint = case_when(
+      !grepl("\\_consumption$", variable) ~ 1,
+      !grepl("\\,Inf\\)$|\\,Inf\\]$", level) ~ (as.numeric(gsub("\\)|.*\\,|\\]", "", level)) + as.numeric(gsub("\\[|\\(|\\,.*", "", level)))/2,
+      grepl("\\,Inf\\)$|\\,Inf\\]$", level) & variable == "fibre_consumption" ~ 30,
+      TRUE ~ level_midpoint
+    ),
+    
+    # Flipping fibre_consumption
+    level_midpoint = case_when(
+      variable == "fibre_consumption" ~ 30 - level_midpoint,
+      TRUE ~ level_midpoint
+    ),
+    
+  ) |>
+  mutate(
+    
+    # Recoding level variable so that we can merge with RR data
+    level = case_when(
+      grepl("\\_consumption$", variable) ~ "dose_response",
+      TRUE ~ level
+    )
+    
+  ) |>
+  rename(perc = value)
+
+# Combine RR and RF data together
+data_complete <- merge(data_rr, data_rf, by = c("age_group", "sex", "level", "variable"), all.y = T) |>
+  filter(!is.na(RR))
+
+
+# Calculate PAF
+data_complete_paf <- data_complete |>
+  mutate(
+    
+    
+    ERR_calc = case_when(
+      variable == "fibre_consumption" ~ log(1/RR)/10,
+      variable %in% c("redmeat_consumption", "processed_meat_consumption") ~ (RR-1)/100,
+      TRUE ~ RR - 1
+    ),
+    
+    # Correct for preventative RF
+    ERR_calc = pmax(ERR_calc, 0)
+    
+  ) |>
+  group_by(age_group, sex, variable, year, Cancer_sites) |>
+  summarise(
+    
+    PAF = sum(ERR_calc * level_midpoint * perc)/(1 + sum(ERR_calc * level_midpoint * perc))
+    
+  )
+
+View(data_complete_paf)
+
+# Set up for loop
+no_groups <- data_complete |>
+  group_by(variable, level, year, sex, age_group, Cancer_sites) |>
+  summarise() |>
+  nrow()
+
+
+# Loop for N times
+for(i in 1:100){
+  
+  # Get copy of data
+  data_complete_sample <- data_complete
+  
+  # Resample RR based on CI
+  norms <- rnorm(no_groups)
+  
+  data_complete_sample <- data_complete_sample |>
+    group_by(variable, level, year, sex, age_group, Cancer_sites) |>
+    mutate(
+      
+      variance = (log(CI_higher) - log(RR))/qnorm(0.975),
+      
+      RR = exp(log(RR) + variance*norms[cur_group_id()])
+      
+    ) |>
+    ungroup() |>
+    group_by(variable, year, sex, age_group, Cancer_sites) |>
+    mutate(group_id = cur_group_id())
+  
+  # Resample prevelances from a binomial
+  for(id in unique(data_complete_sample$group_id)){
+    
+    N <- data_complete_sample |>
+      filter(group_id == id) |>
+      pull(N) |>
+      unique() |>
+      round()
+    
+    p_values <- data_complete_sample |>
+      filter(group_id == id) |>
+      pull(perc)
+    
+    if(sum(p_values)<1){
+      
+      resampled_p_values <- rmultinom(N, 1, c(p_values, 1-sum(p_values))) |>
+        t() |>
+        as.data.frame() |>
+        colMeans()
+      
+      data_complete_sample_new <- data_complete_sample |>
+        filter(group_id == id) |>
+        mutate(perc = resampled_p_values[-length(resampled_p_values)])
+      
+    } else {
+      
+      resampled_p_values <- rmultinom(N, 1, p_values) |>
+        t() |>
+        as.data.frame() |>
+        colMeans()
+      
+      data_complete_sample_new <- data_complete_sample |>
+        filter(group_id == id) |>
+        mutate(perc = resampled_p_values)
+      
+    }
+    
+    data_complete_sample <- data_complete_sample |>
+      filter(group_id != id) |>
+      rbind(data_complete_sample_new)
+
+  }
+  
+  
+  # Now calculate PAFs
+  
+  data_complete_paf_sample <- data_complete_sample |>
+    mutate(
+      
+      
+      ERR_calc = case_when(
+        variable == "fibre_consumption" ~ log(1/RR)/10,
+        variable %in% c("redmeat_consumption", "processed_meat_consumption") ~ (RR-1)/100,
+        TRUE ~ RR - 1
+      ),
+      
+      # Correct for preventative RF
+      ERR_calc = pmax(ERR_calc, 0)
+      
+    ) |>
+    group_by(age_group, sex, variable, year, Cancer_sites) |>
+    summarise(
+      
+      PAF = sum(ERR_calc * level_midpoint * perc)/(1 + sum(ERR_calc * level_midpoint * perc))
+      
+    )
+  
+  
+  # Now if i = 1 initialise dataframe, otherwise rbind to it
+  if(i == 1){
+    data_complete_paf_analysis <- data_complete_paf_sample
+  } else {
+    data_complete_paf_analysis <- rbind(data_complete_paf_analysis, data_complete_paf_sample)
+  }
+  
+}
+
+
+# Now compare empirically between the years
+data_complete_paf_analysis_test <- data_complete_paf_analysis |>
+  group_by(Cancer_sites, age_group, sex, variable) |>
+  mutate(
+    
+    type = case_when(
+      year == min(year) ~ "Old",
+      TRUE ~ "Current"
+    ),
+    
+  ) |>
+  ungroup() |>
+  group_by(Cancer_sites, age_group, sex, variable, type) |>
+  mutate(
+    
+    in_type_no = row_number()
+    
+  ) |>
+  ungroup() |>
+  pivot_wider(id_cols = c("Cancer_sites", "age_group", "sex", "variable", "in_type_no"), names_from = type, values_from = PAF) |>
+  group_by(Cancer_sites, age_group, sex, variable) |>
+  summarise(PAF_diff = sum(Current > Old)/n()) |>
+  mutate(label = paste0(Cancer_sites, " | ", variable, " | ", sex, " | ", age_group))
+  
+# Plotting differences
+ggplot(data_complete_paf_analysis |> mutate(label = paste0(Cancer_sites, " | ", variable, " | ", sex, " | ", age_group)) |> merge(data_complete_paf_analysis_test), aes(x = PAF)) +
+  geom_density(alpha=0.3, aes(fill = as.character(year)), colour = "black") +
+  geom_label(aes(label = PAF_diff, x = Inf, y = Inf),
+             hjust = 1, vjust = 1, fill = "white", color = "black", size = 3,
+             position = position_nudge(y = -0.02)) +
+  theme_minimal() +
+  geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
+            colour = "black", fill = NA, inherit.aes = FALSE) +
+  theme(strip.text = element_text(face = "bold")) +
+  facet_wrap(~label, scales = "free", ncol = 8)
+
+ggsave()

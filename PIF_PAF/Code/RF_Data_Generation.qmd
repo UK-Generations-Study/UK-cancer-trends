@@ -120,13 +120,13 @@ ghs_data <- ghs_data |>
     
   ) |>
   group_by(sex, age_group) |>
-  mutate(total_weight = sum(weight05), 
+  mutate(total_weight = sum(weight05)/744.0531, 
          # total_weight_adj = sum(weight05)/744.0531, 
          # total = n()
          ) |>
   ungroup() |>
   group_by(sex, age_group, alcohol_cat) |>
-  summarise(value = sum(weight05)/total_weight[1],
+  summarise(value = sum(weight05/744.0531)/total_weight[1],
             N = total_weight[1]
             # total_weight_adj = total_weight_adj[1],
             # total = total[1]
