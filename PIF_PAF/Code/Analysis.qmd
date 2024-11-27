@@ -184,6 +184,9 @@ library(stringr)
 library(ggplot2)
 library(gt)
 library(tidyr)
+library(broom)
+library(purrr)
+library(tibble)
 
 ```
 
@@ -318,7 +321,7 @@ for(var in unique(data_rf_trends$variable)){
 
 ### Linear trends in risk factors
 
-```{r}
+```{r, linear trends}
 source("Initial_Data_Evaluation/riskfactor_trendanalysis.R")
 
 
@@ -534,7 +537,7 @@ The statistics test used was a z test for a difference in slope looking at the d
 
 The sub categories of risk factors that are have statistically significantly different trends are:
 
-```{r}
+```{r, rf differences}
 library(knitr)
 
 filtered_table <- sigchange_byage %>%
