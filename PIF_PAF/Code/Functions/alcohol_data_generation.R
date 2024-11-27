@@ -118,7 +118,8 @@ alcohol_data_gen <- function(filepath){
       ukds_data_temp_table <- ukds_data_output_temp |>
         count(age_group, sex, alcohol_amt, wt = weight) |>
         group_by(age_group, sex) |>
-        mutate(value = n/sum(n)) |>
+        mutate(value = n/sum(n),
+               N = sum(n)) |>
         select(-n)
       
       # Add year on

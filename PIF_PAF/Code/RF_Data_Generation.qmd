@@ -46,7 +46,7 @@ source("Functions/smoking_data_generation.R")
 ## Initialising empty dataset
 ```{r}
 
-rf_df <- data.frame(variable = numeric(0), year = numeric(0), age_group = character(0), sex = character(0), level = character(0), value = numeric(0))
+rf_df <- data.frame(variable = numeric(0), year = numeric(0), age_group = character(0), sex = character(0), level = character(0), value = numeric(0), N = numeric(0))
 
 ```
 
@@ -128,6 +128,7 @@ ghs_data <- ghs_data |>
   ungroup() |>
   group_by(sex, age_group, alcohol_cat) |>
   summarise(value = sum(weight05)/total_weight[1],
+            N = total_weight[1]
             # total_weight_adj = total_weight_adj[1],
             # total = total[1]
             ) |>
