@@ -11,6 +11,9 @@ format:
       gutter-width: 1.5rem
 editor:
   mode: source
+execute:
+  echo: false
+  warning: false
 ---
 
 ## Analysis plan 
@@ -39,19 +42,49 @@ How can the trends in modifiable lifestyle cancer risk factors in England explai
 
 The cancer sites in this analysis were included based on the analysis done in the Early Onset paper by Martina. Cancer sites were included if incident cases were found to be statistically significantly increasing in the population under 50 and who had modifiable lifestyle risk factors causally associated to them by IARC (group 1) or WCRF (strong evidence).  
 
-|                    |                             |
-|--------------------|-----------------------------|
-| **Cancer Site**    | **Risk Factors**            |
-| Oral               | Alcohol                     |
-| Endometrium        | Smoking                     |
-| Pancreas           | BMI (overweight and obese)  |
-| Gallbladder        | Processed Meat              |
-| Colorectum         | Red Meat                    |
-| Liver              | Fibre                       |
-| Kidney             | Dairy?                      |
-| Thyroid            | Physical Activity           |
-| Multiple Myeloma   |                             |
-| Breast             |                             |
++--------------------+----------------------------------------------------+
+| **Cancer Site**    | **Risk Factors**                                   |
++--------------------+----------------------------------------------------+
+| Oral               | Alcohol                                            |
+|                    |                                                    |
+|                    | -   Light (\<12g/day)Drinking                      |
+|                    |                                                    |
+|                    | -   Medium(12-50g/day)Drinking                     |
+|                    |                                                    |
+|                    | -   Heavy (\>50g/day) Drinking                     |
++--------------------+----------------------------------------------------+
+| Endometrium        | Smoking                                            |
+|                    |                                                    |
+|                    | -   Current Smoking                                |
+|                    |                                                    |
+|                    | -   Former Smoking                                 |
++--------------------+----------------------------------------------------+
+| Pancreas           | BMI                                                |
+|                    |                                                    |
+|                    | -   Obese(30+ BMI)                                 |
+|                    |                                                    |
+|                    | -   Overweight(25-30 BMI)                          |
++--------------------+----------------------------------------------------+
+| Gallbladder        | Processed Meat                                     |
+|                    |                                                    |
+|                    | -   Consuming any                                  |
++--------------------+----------------------------------------------------+
+| Colorectum         | Red Meat                                           |
+|                    |                                                    |
+|                    | -   Consuming any                                  |
++--------------------+----------------------------------------------------+
+| Liver              | Fibre                                              |
+|                    |                                                    |
+|                    | -   Consuming less than the UK recommended 30g/day |
++--------------------+----------------------------------------------------+
+| Kidney             | Physical Activity                                  |
++--------------------+----------------------------------------------------+
+| Thyroid            |                                                    |
++--------------------+----------------------------------------------------+
+| Multiple Myeloma   |                                                    |
++--------------------+----------------------------------------------------+
+| Breast             |                                                    |
++--------------------+----------------------------------------------------+
 
 The cancer sites that were excluded from the study were: Leukaemia, Prostate, Hodgkin Lymphoma, Brain and CNS, Melanoma of skin, and Cervix.  
 
