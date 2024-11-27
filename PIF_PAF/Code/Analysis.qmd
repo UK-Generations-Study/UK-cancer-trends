@@ -86,22 +86,25 @@ ggsave(filename = paste0("../Output/Plots/Figure 1.png"), bg = "white", height =
 
 # Filter to data desired and make formatting choices
 data_rf_trends <- data_rf |>
-  filter(!variable %in% c("fibre_consumption", "fibre_consumption_cat_mean", "processed_meat_consumption", "processed_meat_consumption_cat_mean", "redmeat_consumption", "redmeat_consumption_cat_mean")) |>
+  filter(!variable %in% c("fibre_consumption", "fibre_consumption_cat_mean", "processed_meat_consumption", "processed_meat_consumption_cat_mean", "redmeat_consumption", "redmeat_consumption_cat_mean" , "processed_meat_consumption_mean", "redmeat_consumption_mean")) |>
   mutate(
     
     level = case_when(
-      grepl(variable, pattern = "\\_consumption_mean") ~ gsub("\\sConsumption\\sMean$", "", str_to_title(gsub("\\_", " ", variable))),
+      grepl(variable, pattern = "\\_consumption_median") ~ gsub("\\sConsumption\\sMean$", "", str_to_title(gsub("\\_", " ", variable))),
       TRUE ~ level
       ),
-    
+    level = case_when(
+      grepl(variable, pattern = "\\_consumption_mean") ~ gsub("\\sConsumption\\sMea$", "", str_to_title(gsub("\\_", " ", variable))),
+      TRUE ~ level
+      ),
     # Quick fix for poorly named variable
     level = if_else(level == "Redmeat", "Red Meat", level),
     
     variable = case_when(
-      grepl(variable, pattern = "\\_consumption_mean") ~ "diet",
+      grepl(variable, pattern = "\\_consumption_median") | grepl(variable, pattern = "\\_consumption_mean") ~ "diet",
       TRUE ~ variable
       ),
-    
+
   )
 
 # Loop through variables and make plots
@@ -176,7 +179,7 @@ for(site in unique(data_attr_cases$cancer_site)){
   
   site_title = if_else(site == "MultipleMyeloma", "Multiple Myeloma", site)
   
-  plot <- ggplot(data_attr_cases |> filter(cancer_site == site) |> filter(year %in% c(2015, 2019)), aes(x = as.character(year), y = cases_count, fill = case_group)) +
+  plot <- ggplot(data_attr_cases |> filter(cancer_site == site) |> filter(year %in% c(2019)), aes(x = as.character(year), y = cases_count, fill = case_group)) +
     geom_bar(position="stack", stat="identity", colour = "black") +
     theme_minimal() +
     geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
@@ -186,7 +189,8 @@ for(site in unique(data_attr_cases$cancer_site)){
     xlab("Year") +
     ggtitle(paste0("Attributable Cases for ", site_title)) +
     labs(fill = "Category") +
-    facet_grid(age_group ~ sex, scales = "free_y")
+    facet_grid(sex ~ age_group, scales = "free_y") +
+    scale_fill_manual(values = setNames(c( "#0077b6", "#caf0f8"), unique(data_attr_cases$case_group)))
   
   print(plot)
   

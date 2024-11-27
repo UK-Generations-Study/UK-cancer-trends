@@ -105,10 +105,11 @@ diet_data_gen_continuous <- function(filepath){
   diet_df_total <- rbind(diet_df_total, diet_df_fibre)
   
   ## RED MEAT
-  diet_df_redmeat <- diet_df |>
+
+  diet_df_redmeat_mean <- diet_df |>
     mutate(
-      
-      redmeat_total =  beef + lamb + pork + entrails + other
+
+      redmeat_total =  beef + lamb + pork + entrails + other,
 
     ) |>
     group_by(sex, age_group, year) |>
@@ -117,13 +118,26 @@ diet_data_gen_continuous <- function(filepath){
     mutate(variable = "redmeat_consumption_mean",
            level = "mean") |>
     rename(value = redmeat)
+
+  diet_df_redmeat <- diet_df |>
+    mutate(
+      redmeat_total = beef + lamb + pork + entrails + other
+    ) |>
+    group_by(sex, age_group, year) |>
+    summarise(
+      redmeat_median = weightedMedian(redmeat_total, weight, na.rm = TRUE)
+    ) |>
+    mutate(variable = "redmeat_consumption_median",
+           level = "median") |>
+    rename(value = redmeat_median)
   
-  diet_df_total <- rbind(diet_df_total, diet_df_redmeat)
+  diet_df_total <- rbind(diet_df_total, diet_df_redmeat, diet_df_redmeat_mean)
   
   ## PROCESSED MEAT
-  diet_df_processed <- diet_df |>
+  
+  diet_df_processed_mean <- diet_df |>
     mutate(
-      
+
       processed_meat_total =  processed.redmeat + processed.poultry + burgers + sausages,
 
     ) |>
@@ -134,7 +148,19 @@ diet_data_gen_continuous <- function(filepath){
            level = "mean") |>
     rename(value = processed_meat)
   
-  diet_df_total <- rbind(diet_df_total, diet_df_processed)
+  diet_df_processed <- diet_df |>
+    mutate(
+      processed_meat_total =  processed.redmeat + processed.poultry + burgers + sausages,
+    ) |>
+    group_by(sex, age_group, year) |>
+    summarise(
+      processedmeat_median = weightedMedian(processed_meat_total, weight, na.rm = TRUE)
+    ) |>
+    mutate(variable = "processedmeat_consumption_median",
+           level = "median") |>
+    rename(value = processedmeat_median)
+  
+  diet_df_total <- rbind(diet_df_total, diet_df_processed, diet_df_processed_mean)
   
   ## DAIRY
   # UNDER DEVELOPMENT
