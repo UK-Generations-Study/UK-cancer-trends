@@ -64,209 +64,242 @@ rf_linearmodel <- rf_linearmodel %>%
       TRUE ~ "none"
     )
   )
-
+# write.csv(rf_linearmodel, file = "../Data/riskfactor_lineartrends.csv", row.names = F)
 
 ##Returns list of statistically increasing risk factors
-sigincrease_rf <- rf_linearmodel %>%
-  filter(
-    term == "year"
-  )%>%
-  mutate(
-    term = str_replace(term, "exposure", ""), 
-    sigincrease = ifelse(estimate > 0 & p.value < 0.05, 1, 0) #coded 1 if there is a significant increase and a positive coefficient
-    ) 
+# sigincrease_rf <- rf_linearmodel %>%
+#   filter(
+#     term == "year"
+#   )%>%
+#   mutate(
+#     term = str_replace(term, "exposure", ""), 
+#     sigincrease = ifelse(estimate > 0 & p.value < 0.05, 1, 0) #coded 1 if there is a significant increase and a positive coefficient
+#     ) 
 
 
-##Do risk factors change by age group 
+###Do risk factors change by age group 
+#this is a ztest for a difference in slopes 
+#ztest = difference in slopes/difference in std. errors
 sigchange_byage <- rf_linearmodel %>%
   group_by(
     sex, exposure
-    ) %>%  # Group by sex and term
-  summarise(
-    t_test = list(t.test(estimate)),  # t-test
-    .groups = "drop"  # Drop grouping structure
-  ) %>%
+    ) %>% # Group by sex and term
+ mutate(
+   def = ifelse(age_group == "50+", 2, 1)
+ )%>%
+  filter(
+    term == "year"
+  )%>%
+   summarise(
+     estimate_1 = sum(estimate[def == 1]), # Extract estimate for 20-49
+     estimate_2 = sum(estimate[def == 2]), # Extract estimate for 50+
+     std_error_1 = sum(std.error[def == 1]), # Extract std.error for 20-49
+     std_error_2 = sum(std.error[def == 2]), # Extract std.error for 50+
+     z_value = (estimate_1 - estimate_2) / sqrt(std_error_1^2 + std_error_2^2), # Compute z-value
+     p_value = 2 * (1 - pnorm(abs(z_value))) # Compute p-value
+  )%>%
   mutate(
-    t_statistic = map_dbl(t_test, ~ .x$statistic),  # Extract t-statistic
-    p_value = map_dbl(t_test, ~ .x$p.value)        # Extract p-value
-  ) %>%
-  select(sex, exposure, t_statistic, p_value)
+    sig = ifelse(p_value < 0.05, 1, 0) #if there is a significant difference (arbitrary cutoff) it will be coded 1, if insignificant it will be coded 0
+    ) %>%
+  select(
+    sex, exposure, z_value, p_value,sig 
+  )
 
 
 ############trying to graph 
-
-coef_wide <- rf_linearmodel %>%
-  pivot_wider(
-    names_from = term,
-    values_from = estimate, 
-    id_cols = c("age_group", "sex", "exposure", "variable")
-    ) %>%
-  rename(
-    intercept = "(Intercept)"
-  ) %>%
-  select(
-    age_group, sex, variable, exposure, intercept, year
-  ) %>%
-  filter(
-    #variable == "Smoking", 
-    exposure == "Red_Meat"
-    )
-
-#Alcohol 
-alcohol_plot <- ggplot(riskfactors %>% filter(variable == "Alcohol"), aes(x = year, y = value, color = exposure)) +
-  geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
-  facet_grid(sex ~ age_group) +  # grid by both age_group and sex
-  geom_abline(data = coef_wide, aes(intercept = intercept, slope = year, color = exposure), 
-              linetype = "solid", size = 1) +  # Add regression lines
-  theme_minimal() +
-  scale_color_manual( #fixing the colors 
-    values = c(
-      "Heavy_alcohol" = "#3d405b",  
-      "Medium_alcohol" = "#81b29a", 
-      "Light_alcohol" = "#e07a5f"  
-    )
-  ) +
-  labs(
-    title = "Alcohol",
-    x = "Year",
-    y = "Population prevalence",
-    color = "Exposure Category"
-  ) +
-  theme(
-    axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
-    panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
-    panel.grid.minor = element_blank()
-  )
-
-
-#BMI 
-bmi_plot <- ggplot(riskfactors %>% filter(variable == "BMI"), aes(x = year, y = value, color = exposure)) +
-  geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
-  facet_grid(sex ~ age_group) +  # grid by both age_group and sex
-  geom_abline(data = coef_wide, aes(intercept = intercept, slope = year, color = exposure), 
-              linetype = "solid", size = 1) +  # Add regression lines
-  theme_minimal() +
-  scale_color_manual( #fixing the colors 
-    values = c(
-      "BMI_obese_men" = "#81b29a",  
-      "BMI_overweight_men" = "#e07a5f", 
-      "BMI_obese_women" = "#81b29a",  
-      "BMI_overweight_women" = "#e07a5f" 
-    )
-  ) +
-  labs(
-    title = "BMI",
-    x = "Year",
-    y = "Population prevalence",
-    color = "Exposure Category"
-  ) +
-  theme(
-    axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
-    panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
-    panel.grid.minor = element_blank()
-  )
-
-#Smoking 
-smoking_plot <- ggplot(riskfactors %>% filter(variable == "Smoking"), aes(x = year, y = value, color = exposure)) +
-  geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
-  facet_grid(sex ~ age_group) +  # grid by both age_group and sex
-  geom_abline(data = coef_wide, aes(intercept = intercept, slope = year, color = exposure), 
-              linetype = "solid", size = 1) +  # Add regression lines
-  theme_minimal() +
-  scale_color_manual( #fixing the colors 
-    values = c(
-      "Current_Smoking_men" = "#81b29a",  
-      "Former_Smoking_men" = "#e07a5f", 
-      "Current_Smoking_women" = "#81b29a",  
-      "Former_Smoking_women" = "#e07a5f" 
-    )
-  ) +
-  labs(
-    title = "Smoking",
-    x = "Year",
-    y = "Population prevalence",
-    color = "Exposure Category"
-  ) +
-  theme(
-    axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
-    panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
-    panel.grid.minor = element_blank()
-  )
-
-#Fibre
-fibre_plot <- ggplot(riskfactors %>% filter(exposure == "Fibre"), aes(x = year, y = value, color = exposure)) +
-  geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
-  facet_grid(sex ~ age_group) +  # grid by both age_group and sex
-  geom_abline(data = coef_wide, aes(intercept = intercept, slope = year, color = exposure), 
-              linetype = "solid", size = 1) +  # Add regression lines
-  theme_minimal() +
-  scale_color_manual( #fixing the colors 
-    values = c(
-      "Fibre" = "#81b29a"
-    )
-  ) +
-  labs(
-    title = "Fibre Deficiency (Based on 30g/day recommendation)",
-    x = "Year",
-    y = "Population prevalence",
-    color = "Exposure"
-  ) +
-  theme(
-    axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
-    panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
-    panel.grid.minor = element_blank()
-  )
-
-#Processed meat
-processedmeat_plot <- ggplot(riskfactors %>% filter(exposure == "Processed_Meat"), aes(x = year, y = value, color = exposure)) +
-  geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
-  facet_grid(sex ~ age_group) +  # grid by both age_group and sex
-  geom_abline(data = coef_wide, aes(intercept = intercept, slope = year, color = exposure), 
-              linetype = "solid", size = 1) +  # Add regression lines
-  theme_minimal() +
-  scale_color_manual( #fixing the colors 
-    values = c(
-      "Processed_Meat" = "#81b29a"
-    )
-  ) +
-  labs(
-    title = "Processed Meat Consumption",
-    x = "Year",
-    y = "Population prevalence",
-    color = "Sex"
-  ) +
-  theme(
-    axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
-    panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
-    panel.grid.minor = element_blank()
-  )
-
-#Red Meat
-redmeat_plot <- ggplot(riskfactors %>% filter(exposure == "Red_Meat"), aes(x = year, y = value, color = exposure)) +
-  geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
-  facet_grid(sex ~ age_group) +  # grid by both age_group and sex
-  geom_abline(data = coef_wide, aes(intercept = intercept, slope = year, color = exposure), 
-              linetype = "solid", size = 1) +  # Add regression lines
-  theme_minimal() +
-  scale_color_manual( #fixing the colors 
-    values = c(
-      "Red_Meat" = "#81b29a"
-    )
-  ) +
-  labs(
-    title = "Red Meat Consumption",
-    x = "Year",
-    y = "Population prevalence",
-    color = "Exposure"
-  ) +
-  theme(
-    axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
-    panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
-    panel.grid.minor = element_blank()
-  )
-print(alcohol_plot)
-print(bmi_plot)
-print(smoking_plot)
-print(fibre_plot)
-print(processedmeat_plot)
-print(redmeat_plot)
+# 
+# coef_wide_full <- rf_linearmodel %>%
+#   pivot_wider(
+#     names_from = term,
+#     values_from = estimate, 
+#     id_cols = c("age_group", "sex", "exposure", "variable")
+#     ) %>%
+#   rename(
+#     intercept = "(Intercept)"
+#   ) %>%
+#   select(
+#     age_group, sex, variable, exposure, intercept, year
+#   ) 
+# 
+# #Alcohol
+# coef_wide <- coef_wide_full %>%
+#   filter(
+#     variable == "Alcohol"
+#   )
+# alcohol_plot <- ggplot(riskfactors %>% filter(variable == "Alcohol"), aes(x = year, y = value, color = exposure)) +
+#   geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
+#   facet_grid(sex ~ age_group) +  # grid by both age_group and sex
+#   geom_abline(data = coef_wide, aes(intercept = intercept, slope = year, color = exposure), 
+#               linetype = "solid", size = 1) +  # Add regression lines
+#   theme_minimal() +
+#   scale_color_manual( #fixing the colors 
+#     values = c(
+#       "Heavy_alcohol" = "#3d405b",  
+#       "Medium_alcohol" = "#81b29a", 
+#       "Light_alcohol" = "#e07a5f"  
+#     )
+#   ) +
+#   labs(
+#     title = "Alcohol",
+#     x = "Year",
+#     y = "Population prevalence",
+#     color = "Exposure Category"
+#   ) +
+#   theme(
+#     axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
+#     panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
+#     panel.grid.minor = element_blank()
+#   )
+# 
+# 
+# #BMI 
+# coef_wide <- coef_wide_full %>%
+#   filter(
+#     variable == "BMI"
+#   )
+# bmi_plot <- ggplot(riskfactors %>% filter(variable == "BMI"), aes(x = year, y = value, color = exposure)) +
+#   geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
+#   facet_grid(sex ~ age_group) +  # grid by both age_group and sex
+#   geom_abline(data = coef_wide, aes(intercept = intercept, slope = year, color = exposure), 
+#               linetype = "solid", size = 1) +  # Add regression lines
+#   theme_minimal() +
+#   scale_color_manual( #fixing the colors 
+#     values = c(
+#       "BMI_obese_men" = "#81b29a",  
+#       "BMI_overweight_men" = "#e07a5f", 
+#       "BMI_obese_women" = "#81b29a",  
+#       "BMI_overweight_women" = "#e07a5f" 
+#     )
+#   ) +
+#   labs(
+#     title = "BMI",
+#     x = "Year",
+#     y = "Population prevalence",
+#     color = "Exposure Category"
+#   ) +
+#   theme(
+#     axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
+#     panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
+#     panel.grid.minor = element_blank()
+#   )
+# 
+# #Smoking 
+# coef_wide <- coef_wide_full %>%
+#   filter(
+#     variable == "Smoking"
+#   )
+# smoking_plot <- ggplot(riskfactors %>% filter(variable == "Smoking"), aes(x = year, y = value, color = exposure)) +
+#   geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
+#   facet_grid(sex ~ age_group) +  # grid by both age_group and sex
+#   geom_abline(data = coef_wide, aes(intercept = intercept, slope = year, color = exposure), 
+#               linetype = "solid", size = 1) +  # Add regression lines
+#   theme_minimal() +
+#   scale_color_manual( #fixing the colors 
+#     values = c(
+#       "Current_Smoking_men" = "#81b29a",  
+#       "Former_Smoking_men" = "#e07a5f", 
+#       "Current_Smoking_women" = "#81b29a",  
+#       "Former_Smoking_women" = "#e07a5f" 
+#     )
+#   ) +
+#   labs(
+#     title = "Smoking",
+#     x = "Year",
+#     y = "Population prevalence",
+#     color = "Exposure Category"
+#   ) +
+#   theme(
+#     axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
+#     panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
+#     panel.grid.minor = element_blank()
+#   )
+# 
+# #Fibre
+# coef_wide <- coef_wide_full %>%
+#   filter(
+#     exposure == "Fibre"
+#   )
+# fibre_plot <- ggplot(riskfactors %>% filter(exposure == "Fibre"), aes(x = year, y = value, color = exposure)) +
+#   geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
+#   facet_grid(sex ~ age_group) +  # grid by both age_group and sex
+#   geom_abline(data = coef_wide, aes(intercept = intercept, slope = year, color = exposure), 
+#               linetype = "solid", size = 1) +  # Add regression lines
+#   theme_minimal() +
+#   scale_color_manual( #fixing the colors 
+#     values = c(
+#       "Fibre" = "#81b29a"
+#     )
+#   ) +
+#   labs(
+#     title = "Fibre Deficiency (Based on 30g/day recommendation)",
+#     x = "Year",
+#     y = "Population prevalence",
+#     color = "Exposure"
+#   ) +
+#   theme(
+#     axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
+#     panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
+#     panel.grid.minor = element_blank()
+#   )
+# 
+# #Processed meat
+# coef_wide <- coef_wide_full %>%
+#   filter(
+#     exposure == "Processed_Meat"
+#   )
+# processedmeat_plot <- ggplot(riskfactors %>% filter(exposure == "Processed_Meat"), aes(x = year, y = value, color = exposure)) +
+#   geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
+#   facet_grid(sex ~ age_group) +  # grid by both age_group and sex
+#   geom_abline(data = coef_wide, aes(intercept = intercept, slope = year, color = exposure), 
+#               linetype = "solid", size = 1) +  # Add regression lines
+#   theme_minimal() +
+#   scale_color_manual( #fixing the colors 
+#     values = c(
+#       "Processed_Meat" = "#81b29a"
+#     )
+#   ) +
+#   labs(
+#     title = "Processed Meat Consumption",
+#     x = "Year",
+#     y = "Population prevalence",
+#     color = "Sex"
+#   ) +
+#   theme(
+#     axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
+#     panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
+#     panel.grid.minor = element_blank()
+#   )
+# 
+# #Red Meat
+# coef_wide <- coef_wide_full %>%
+#   filter(
+#     exposure == "Red_Meat"
+#   )
+# redmeat_plot <- ggplot(riskfactors %>% filter(exposure == "Red_Meat"), aes(x = year, y = value, color = exposure)) +
+#   geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
+#   facet_grid(sex ~ age_group) +  # grid by both age_group and sex
+#   geom_abline(data = coef_wide, aes(intercept = intercept, slope = year, color = exposure), 
+#               linetype = "solid", size = 1) +  # Add regression lines
+#   theme_minimal() +
+#   scale_color_manual( #fixing the colors 
+#     values = c(
+#       "Red_Meat" = "#81b29a"
+#     )
+#   ) +
+#   labs(
+#     title = "Red Meat Consumption",
+#     x = "Year",
+#     y = "Population prevalence",
+#     color = "Exposure"
+#   ) +
+#   theme(
+#     axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
+#     panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
+#     panel.grid.minor = element_blank()
+#   )
+# print(alcohol_plot)
+# print(bmi_plot)
+# print(smoking_plot)
+# print(fibre_plot)
+# print(processedmeat_plot)
+# print(redmeat_plot)
