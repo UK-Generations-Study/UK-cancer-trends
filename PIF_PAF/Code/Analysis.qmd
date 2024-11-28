@@ -13,7 +13,7 @@ editor:
   mode: source
 ---
 
-## Analysis plan 
+## Analysis plan
 
 **Main Question:**  
 
@@ -165,11 +165,14 @@ RR/ risk factor match ups 
 
 ```{r}
 
-library(dplyr)
 library(stringr)
 library(ggplot2)
 library(gt)
 library(tidyr)
+library(broom)
+library(purrr)
+library(tibble)
+library(dplyr)
 
 ```
 
