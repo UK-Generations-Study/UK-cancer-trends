@@ -15,73 +15,103 @@ editor:
 
 ## Analysis plan
 
-**Main Question:**  
+**Main Question:**
 
-How can the trends in modifiable lifestyle cancer risk factors in England explain trends in the cancer incidence in cancer sites with which they are causally associated?  
+How can the trends in modifiable lifestyle cancer risk factors in England explain trends in the cancer incidence in cancer sites with which they are causally associated?
 
-**Sub Questions:** 
+**Sub Questions:**
 
-1.  What are the cancer incidence trends in England for the chosen cancer sites?  overall and split by age (50-year cutoff)? 
-
-<!-- -->
-
-2.  How does the exposure of the English population to the modifiable lifestyle risk factors causally associated with the chosen cancer sites vary over time? Overall and split by age (50-year cutoff)? 
+1.  What are the cancer incidence trends in England for the chosen cancer sites? overall and split by age (50-year cutoff)?
 
 <!-- -->
 
-3.  How do the aggregate population attributable fractions (PAFs) by cancer site change at study period end points? And the attributable incidence cases? Overall and split by age (50-year cutoff)? 
+2.  How does the exposure of the English population to the modifiable lifestyle risk factors causally associated with the chosen cancer sites vary over time? Overall and split by age (50-year cutoff)?
+
+<!-- -->
+
+3.  How do the aggregate population attributable fractions (PAFs) by cancer site change at study period end points? And the attributable incidence cases? Overall and split by age (50-year cutoff)?
 
 <!-- -->
 
 4.  For the risk factors that are increasing, what are the population impact fractions (PIFs) at study period end points? Overall and split by age (50-year cutoff)? 
 
-**Inclusion/Exclusion Criteria:**  
+**Inclusion/Exclusion Criteria:**
 
-The cancer sites in this analysis were included based on the analysis done in the Early Onset paper by Martina. Cancer sites were included if incident cases were found to be statistically significantly increasing in the population under 50 and who had modifiable lifestyle risk factors causally associated to them by IARC (group 1) or WCRF (strong evidence).  
+The cancer sites in this analysis were included based on the analysis done in the Early Onset paper by Martina. Cancer sites were included if incident cases were found to be statistically significantly increasing in the population under 50 and who had modifiable lifestyle risk factors causally associated to them by IARC (group 1) or WCRF (strong evidence).
 
-|                    |                             |
-|--------------------|-----------------------------|
-| **Cancer Site**    | **Risk Factors**            |
-| Oral               | Alcohol                     |
-| Endometrium        | Smoking                     |
-| Pancreas           | BMI (overweight and obese)  |
-| Gallbladder        | Processed Meat              |
-| Colorectum         | Red Meat                    |
-| Liver              | Fibre                       |
-| Kidney             | Dairy?                      |
-| Thyroid            | Physical Activity           |
-| Multiple Myeloma   |                             |
-| Breast             |                             |
++-------------------+----------------------------------------------------+
+| **Cancer Site**   | **Risk Factors**                                   |
++-------------------+----------------------------------------------------+
+| Oral              | Alcohol                                            |
+|                   |                                                    |
+|                   | -   Light (<12g/day)Drinking                      |
+|                   |                                                    |
+|                   | -   Medium(12-50g/day)Drinking                     |
+|                   |                                                    |
+|                   | -   Heavy (>50g/day) Drinking                     |
++-------------------+----------------------------------------------------+
+| Endometrium       | Smoking                                            |
+|                   |                                                    |
+|                   | -   Current Smoking                                |
+|                   |                                                    |
+|                   | -   Former Smoking                                 |
++-------------------+----------------------------------------------------+
+| Pancreas          | BMI                                                |
+|                   |                                                    |
+|                   | -   Obese(30+ BMI)                                 |
+|                   |                                                    |
+|                   | -   Overweight(25-30 BMI)                          |
++-------------------+----------------------------------------------------+
+| Gallbladder       | Processed Meat                                     |
+|                   |                                                    |
+|                   | -   Consuming any                                  |
++-------------------+----------------------------------------------------+
+| Colorectum        | Red Meat                                           |
+|                   |                                                    |
+|                   | -   Consuming any                                  |
++-------------------+----------------------------------------------------+
+| Liver             | Fibre                                              |
+|                   |                                                    |
+|                   | -   Consuming less than the UK recommended 30g/day |
++-------------------+----------------------------------------------------+
+| Kidney            | Physical Activity                                  |
++-------------------+----------------------------------------------------+
+| Thyroid           |                                                    |
++-------------------+----------------------------------------------------+
+| Multiple Myeloma  |                                                    |
++-------------------+----------------------------------------------------+
+| Breast            |                                                    |
++-------------------+----------------------------------------------------+
 
-The cancer sites that were excluded from the study were: Leukaemia, Prostate, Hodgkin Lymphoma, Brain and CNS, Melanoma of skin, and Cervix.  
+The cancer sites that were excluded from the study were: Leukaemia, Prostate, Hodgkin Lymphoma, Brain and CNS, Melanoma of skin, and Cervix.
 
-**Methodological plan:** 
+**Methodological plan:**
 
-Relative risk and risk factor exposure prevalences will be pulled from peer reviewed meta-analyses and open-source health datasets, respectively. 
+Relative risk and risk factor exposure prevalences will be pulled from peer reviewed meta-analyses and open-source health datasets, respectively.
 
-Data sources include National Diet and Nutrition Survey, Health Survey England, IARC GLOBOCAN, etc.  
+Data sources include National Diet and Nutrition Survey, Health Survey England, IARC GLOBOCAN, etc.
 
-Cancer incidence and risk factor trends will be examined from 2000 to present day, or as far back as data are available. These trends will be shown overall, and by age split (50-year cutoff).  
+Cancer incidence and risk factor trends will be examined from 2000 to present day, or as far back as data are available. These trends will be shown overall, and by age split (50-year cutoff).
 
 \~ Goal Figures: \~
 
-1.  For both cancer incidence and risk factors, line graphs for overall population, \<50, and \>50 that show the trends over time with the cancer site/risk factors differentiated by colour.  
+1.  For both cancer incidence and risk factors, line graphs for overall population, \<50, and \>50 that show the trends over time with the cancer site/risk factors differentiated by colour.
 
-    Assuming a 10-year time lag from risk factor exposure and cancer incidence, aggregate PAFs will be calculated for the years 2005 and 2009. These PAFs will be calculated overall, and by age split (50-year cutoff).  
+    Assuming a 10-year time lag from risk factor exposure and cancer incidence, aggregate PAFs will be calculated for the years 2005 and 2009. These PAFs will be calculated overall, and by age split (50-year cutoff).
 
-\~ Goal Figures: \~ 
+\~ Goal Figures: \~
 
-1.  For \<50 and \>50, a bar chart with cancer site on the x axis and PAFs on the y axis. Each cancer site has 2 bars corresponding to the 2 years calculated which can be compared easily.  
+1.  For \<50 and \>50, a bar chart with cancer site on the x axis and PAFs on the y axis. Each cancer site has 2 bars corresponding to the 2 years calculated which can be compared easily.
 
 <!-- -->
 
-2.  For overall population, \<50, and \>50, the PAFs by cancer site and individual risk factor for both timepoints will be shown in a table.  (Appendix)  
+2.  For overall population, \<50, and \>50, the PAFs by cancer site and individual risk factor for both timepoints will be shown in a table.  (Appendix)
 
-    Assuming a 10-year time lag from exposure to a risk factor and cancer incidence, incident cancer cases that are attributable to the modifiable lifestyle factors will be calculated for 2019. These attributable cases will be calculated overall, and by age split (50-year cutoff).  
+    Assuming a 10-year time lag from exposure to a risk factor and cancer incidence, incident cancer cases that are attributable to the modifiable lifestyle factors will be calculated for 2019. These attributable cases will be calculated overall, and by age split (50-year cutoff).
 
-\~ Goal Figures: \~  
+\~ Goal Figures: \~
 
-1.  For \<50 and \>50, a stacked bar chart with total incidence cases and attributable cases by cancer site for each time point.  
+1.  For \<50 and \>50, a stacked bar chart with total incidence cases and attributable cases by cancer site for each time point.
 
 <!-- -->
 
@@ -99,19 +129,13 @@ General: 
 
 1.  10 year latency creates gap between “what’s going on right now” r.e. risk factors and what is actually causing changes in cancer incidence. When we discuss how risk factors need to be changed we are talking about effects that will happen 10 years from now. 
 
-<!-- -->
-
 2.  Is there a disconnect r.e. age groups for rates and for incidence? The age group 20-49 for e.g. alcohol consumption will be 30-69 when we evaluate cancer incidence from that consumption. This is relevant to the overall question of “what can we attribute rise in EO cancers to”. If we are defining EO as 20-49 then, with a latency of 10 years, this cohort was exposed to risks as a 10-39 age group. I (Reuben) need to think about how RR’s are defined in order to think about this a little more. I still think the method is effective in as much as the general trends should be captuted, but may be something worth thinking about. 
 
 Brown paper: 
 
 1.  How did they treat red and processed meat in calculating PAFs? Seems as though average was applied to whole population. 
 
-<!-- -->
-
 2.  Which year did they use for diet data to get to 2005? They quote 2000/1 but reference NDNS which goes back to 2008. They also seemingly reference incorrect papers for the Fibre prevalences.  
-
-<!-- -->
 
 3.  Which data did they use for activity prevalences? Numbers do not seem to line up with quoted values in HSE data. 
 
@@ -129,21 +153,13 @@ Risk factor data availability:  
 
     -   Could use status variable to potentially ‘fix’ number of non-drinkers 
 
-<!-- -->
-
 2.  All diet data stops at 2008 
 
     -   Similar issue to above. Projecting backwards may be best method. 
 
-<!-- -->
-
 3.  Oral contraceptive data source potentially non-existent 
 
-<!-- -->
-
 4.  Would need to ask for data access for OC and HRT from previous papers written using NHS financial data. 
-
-<!-- -->
 
 5.  Montse has suggested industry data for dietary factors, purely for graphic purposes. These should be found where possible. 
 
@@ -152,8 +168,6 @@ Relative Risk availability:  
 1.  Because we are limited to metanalysis, some risk factor/cancer site combinations have causal evidence through many papers, but no meta analysis has been published  
 
     -   Oral cancer and BMI   
-
-<!-- -->
 
 2.  Physical Activity RR need to be consistent across the cancer sites – the paper that covers all of the sites splits colon and rectal cancer. I put in the numbers for rectal cancer because it is the most prevalent in England according to CRUK. The RR reported for colon and rectal cancer are not super different from each other.  
 
@@ -173,6 +187,7 @@ library(broom)
 library(purrr)
 library(tibble)
 library(dplyr)
+
 
 ```
 
@@ -307,7 +322,7 @@ for(var in unique(data_rf_trends$variable)){
 
 ### Linear trends in risk factors
 
-```{r}
+```{r, linear trends}
 source("Initial_Data_Evaluation/riskfactor_trendanalysis.R")
 
 
@@ -523,7 +538,7 @@ The statistics test used was a z test for a difference in slope looking at the d
 
 The sub categories of risk factors that are have statistically significantly different trends are:
 
-```{r}
+```{r, rf differences}
 library(knitr)
 
 filtered_table <- sigchange_byage %>%
