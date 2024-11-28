@@ -263,7 +263,7 @@ ggplot(data_cancer |> filter(year<2020), aes(x = year, y = count, fill = sex, co
   ggtitle(paste0("Trends in Cancer Incidence in England")) +
   facet_wrap(cancer_site~age_group,  scales = "free_y", nrow = 10)
 
-ggsave(filename = paste0("../Output/Plots/Figure 1.png"), bg = "white", height = 16, width = 10)
+ggsave(filename = paste0("../Output/Plots/Figure_1.png"), bg = "white", height = 16, width = 10)
 
 ```
 
@@ -335,7 +335,7 @@ for(var in unique(data_rf_trends$variable)){
   
   print(plot)
   
-  ggsave(plot, filename = paste0("../Output/Plots/Figure 2 - ", var, ".png"), bg = "white", height = 6, width = 10)
+  ggsave(plot, filename = paste0("../Output/Plots/Figure_2-", gsub(" ", "-", var), ".png"), bg = "white", height = 6, width = 10)
     
   
 }
@@ -635,7 +635,7 @@ for(site in unique(data_attr_cases$cancer_site)){
   
   print(plot)
   
-  ggsave(plot, filename = paste0("../Output/Plots/Figure 3 - ", site, ".png"), bg = "white", height = 6, width = 10)
+  ggsave(plot, filename = paste0("../Output/Plots/Figure_3-", gsub(" ", "_", site), ".png"), bg = "white", height = 6, width = 10)
   
 }
 
@@ -802,11 +802,11 @@ for(var in unique(data_complete_paf_plot$variable_label)){
   rows <- length(plot$labels$Cancer_sites)
 
   # Make forest plot
-  pdf(file=paste0("../Output/Plots/Figure 4: ", var, ".pdf"), width = 15, height = (2/5)*(3 + rows))
+  pdf(file=paste0("../Output/Plots/Figure_4-", gsub(" ", "_", var), ".pdf"), width = 15, height = (2/5)*(3 + rows))
   print(plot)
   dev.off()
   
-  cat(sprintf("- [%s](%s)\n", paste0("**Figure 4: ", var, "**"), paste0("../Output/Plots/Figure 4: ", var, ".pdf")))
+  cat(sprintf("- [%s](%s)\n", paste0("**Figure 4: ", var, "**"), paste0("../Output/Plots/Figure_4-", gsub(" ", "_", var), ".pdf")))
   
 }
 
@@ -865,7 +865,7 @@ data_pif_gt_past <- data_pif |>
 
 data_pif_gt_past
 
-gtsave(data_pif_gt_past, "../Output/Plots/Figure 5 - PIF Past.html")
+gtsave(data_pif_gt_past, "../Output/Plots/Figure_5-PIF_Past.html")
   
 
 ```
@@ -924,7 +924,7 @@ data_pif_gt_future <- data_pif |>
 
 data_pif_gt_future
 
-gtsave(data_pif_gt_future, "../Output/Plots/Figure 5 - PIF Future.html")
+gtsave(data_pif_gt_future, "../Output/Plots/Figure_5-PIF_Future.html")
   
 
 ```
