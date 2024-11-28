@@ -29,26 +29,49 @@ if(Sys.getenv("RSTUDIO") == '1' & !knitr::is_html_output()) { # If using Rstudio
 ## Read in data
 data_paf <- read.csv("../../Data/PAF_by_riskfactor.csv")
 
+## TEMPORARY - removing imputed data from alcohol
+data_paf <- data_paf |>
+  filter(!(variable == "Alcohol" & between(year, 2006, 2010))) |>
+  mutate(BreastPAF = if_else(sex == "Men", 0, BreastPAF))
+
 ## Filter to data we need
 data_paf <- data_paf |>
-  mutate(year = year + 10) |>
-  filter(!grepl("\\_mean$", variable)) |>
-  filter(year %in% c(2015, 2019)) |>
+  # mutate(year = year + 10) |>
+  filter(!grepl("\\_mean$|\\_median$", variable)) |>
+  group_by(variable, sex, age_group) |>
+  mutate(
+    
+    dist_to_2009 = abs(year - 2009)
+    
+  ) |>
+  mutate(
+    
+    youngest_indicator = year == max(year),
+    oldest_indicator = year == min(year),
+    close_to_2009 = dist_to_2009 == min(dist_to_2009)
+    
+  ) |>
+  filter(youngest_indicator | close_to_2009 | oldest_indicator) |>
+  ungroup() |>
   pivot_longer(cols = colnames(data_paf)[!colnames(data_paf) %in% c("sex", "year", "age_group", "variable")], names_to = "cancer_site", values_to = "PAF") |>
   mutate(
     
     cancer_site = gsub("PAF$", "", cancer_site),
     
-    PIF_component = 1 + PAF/(PAF-1)
+    PIF_component = 1 + PAF/(1-PAF)
     
   ) |>
   group_by(sex, age_group, variable, cancer_site) |>
   arrange(year) |>
   summarise(
     
-    PIF = if_else(PAF[1] < PAF[2],
-                  (PIF_component[1] - PIF_component[2])/PIF_component[1],
-                  NA)
+    PIF_past = if_else(PAF[1] < PAF[2],
+                  (PIF_component[2] - PIF_component[1])/PIF_component[2],
+                  NA),
+    
+    PIF_future = if_else(PAF[2] < PAF[3],
+                       (PIF_component[3] - PIF_component[2])/PIF_component[3],
+                       NA)
   )
   
   

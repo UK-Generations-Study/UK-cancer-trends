@@ -11,6 +11,8 @@ format:
       gutter-width: 1.5rem
 editor:
   mode: source
+execute:
+  echo: false
 ---
 
 ## Analysis plan
@@ -187,6 +189,7 @@ library(tidyr)
 library(broom)
 library(purrr)
 library(tibble)
+library(forestplot)
 
 ```
 
@@ -220,9 +223,22 @@ source("Functions/cancer_incidence_data_generation.R")
 
 ```{r}
 
+# Read in clean risk factor trends
 data_rf <- read.csv("../../../Data/Cleaned_Data/clean_rf_data.csv")
+
+# Read in aggregate PAFs
 data_paf <- read.csv("../Data/AggregatePAFs_BestEstimates.csv")
+
+# Read in PAF samples
+data_paf_comparison <- read.csv(r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\PAF\UK-cancer-trends\PIF_PAF\Data\paf_comparison.csv)") |>
+  # TEMPORARY CODE
+  mutate(Cancer_sites = if_else(Cancer_sites == "Breast ", "Breast", Cancer_sites)) |>
+  filter(!(Cancer_sites == "Breast" & sex == "Men"))
+
+# Reading in PIFs
 data_pif <- read.csv("../Data/PIF.csv")
+
+# Reading in cancer incidence data
 data_cancer <- cancer_incidence_data_gen("../Data")
 
 
@@ -261,15 +277,16 @@ data_rf_trends <- data_rf |>
   mutate(
     
     level = case_when(
-      grepl(variable, pattern = "\\_consumption_median") ~ gsub("\\sConsumption\\sMean$", "", str_to_title(gsub("\\_", " ", variable))),
+      grepl(variable, pattern = "\\_consumption_median") ~ gsub("\\sConsumption\\sMedian$", "", str_to_title(gsub("\\_", " ", variable))),
       TRUE ~ level
       ),
     level = case_when(
-      grepl(variable, pattern = "\\_consumption_mean") ~ gsub("\\sConsumption\\sMea$", "", str_to_title(gsub("\\_", " ", variable))),
+      grepl(variable, pattern = "\\_consumption_mean") ~ gsub("\\sConsumption\\sMean$", "", str_to_title(gsub("\\_", " ", variable))),
       TRUE ~ level
       ),
     # Quick fix for poorly named variable
     level = if_else(level == "Redmeat", "Red Meat", level),
+    level = if_else(level == "Processedmeat", "Processed Meat", level),
     
     variable = case_when(
       grepl(variable, pattern = "\\_consumption_median") | grepl(variable, pattern = "\\_consumption_mean") ~ "diet",
@@ -290,7 +307,7 @@ for(var in unique(data_rf_trends$variable)){
     var == "alcohol_amt" ~ "Alcohol Consumption",
     var == "bmi" ~ "BMI",
     var == "smoking_status" ~ "Smoking Status",
-    var == "diet" ~ "Daily Food Consumption",
+    var == "diet" ~ "Daily Food Consumption*",
     TRUE ~ var
   )
   
@@ -298,6 +315,7 @@ for(var in unique(data_rf_trends$variable)){
   plot <- ggplot(data_rf_trends |> filter(variable == var), aes(x = year, y = value, colour = level, fill = level)) +
     geom_line() +
     geom_point() +
+    # geom_smooth(method='lm', se = FALSE) +
     theme_minimal() +
     geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
               colour = "black", fill = NA, inherit.aes = FALSE) +
@@ -308,6 +326,12 @@ for(var in unique(data_rf_trends$variable)){
     scale_x_continuous(breaks = seq(min_year, max_year, by = 2)) +
     ggtitle(paste0("Trends in ", var_title)) +
     facet_grid(age_group ~ sex)
+  
+  # Add footnote to diet plot
+  if(var == "diet"){
+    plot <- plot +
+      labs(caption = "*Red and Processed Meat uses the median, Fibre uses the mean")
+  }
   
   print(plot)
   
@@ -321,7 +345,7 @@ for(var in unique(data_rf_trends$variable)){
 
 ### Linear trends in risk factors
 
-```{r, linear trends}
+```{r, linear trends, , fig.height=6, fig.width=10, warning=F}
 source("Initial_Data_Evaluation/riskfactor_trendanalysis.R")
 
 
@@ -359,14 +383,17 @@ alcohol_plot <- ggplot(riskfactors %>% filter(variable == "Alcohol"), aes(x = ye
   labs(
     title = "Alcohol",
     x = "Year",
-    y = "Population prevalence",
+    y = "Population Prevalence (%)",
     color = "Exposure Category"
   ) +
-  theme(
-    axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
-    panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
-    panel.grid.minor = element_blank()
-  )
+  geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
+              colour = "black", fill = NA, inherit.aes = FALSE) +
+    theme(strip.text = element_text(face = "bold"))
+  # theme(
+  #   axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
+  #   panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
+  #   panel.grid.minor = element_blank()
+  # )
 
 
 #BMI 
@@ -391,14 +418,17 @@ bmi_plot <- ggplot(riskfactors %>% filter(variable == "BMI"), aes(x = year, y = 
   labs(
     title = "BMI",
     x = "Year",
-    y = "Population prevalence",
+    y = "Population Prevalence (%)",
     color = "Exposure Category"
   ) +
-  theme(
-    axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
-    panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
-    panel.grid.minor = element_blank()
-  )
+  geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
+              colour = "black", fill = NA, inherit.aes = FALSE) +
+  theme(strip.text = element_text(face = "bold"))
+  # theme(
+  #   axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
+  #   panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
+  #   panel.grid.minor = element_blank()
+  # )
 
 #Smoking 
 coef_wide <- coef_wide_full %>%
@@ -422,14 +452,17 @@ smoking_plot <- ggplot(riskfactors %>% filter(variable == "Smoking"), aes(x = ye
   labs(
     title = "Smoking",
     x = "Year",
-    y = "Population prevalence",
+    y = "Population Prevalence (%)",
     color = "Exposure Category"
   ) +
-  theme(
-    axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
-    panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
-    panel.grid.minor = element_blank()
-  )
+  geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
+              colour = "black", fill = NA, inherit.aes = FALSE) +
+  theme(strip.text = element_text(face = "bold"))
+  # theme(
+  #   axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
+  #   panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
+  #   panel.grid.minor = element_blank()
+  # )
 
 #Fibre
 coef_wide <- coef_wide_full %>%
@@ -450,14 +483,17 @@ fibre_plot <- ggplot(riskfactors %>% filter(exposure == "Fibre"), aes(x = year, 
   labs(
     title = "Fibre Deficiency (Based on 30g/day recommendation)",
     x = "Year",
-    y = "Population prevalence",
+    y = "Population Prevalence (%)",
     color = "Exposure"
   ) +
-  theme(
-    axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
-    panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
-    panel.grid.minor = element_blank()
-  )
+  geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
+              colour = "black", fill = NA, inherit.aes = FALSE) +
+    theme(strip.text = element_text(face = "bold"))
+  # theme(
+  #   axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
+  #   panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
+  #   panel.grid.minor = element_blank()
+  # )
 
 #Processed meat
 coef_wide <- coef_wide_full %>%
@@ -478,14 +514,17 @@ processedmeat_plot <- ggplot(riskfactors %>% filter(exposure == "Processed_Meat"
   labs(
     title = "Processed Meat Consumption",
     x = "Year",
-    y = "Population prevalence",
+    y = "Population Prevalence (%)",
     color = "Sex"
   ) +
-  theme(
-    axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
-    panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
-    panel.grid.minor = element_blank()
-  )
+  geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
+              colour = "black", fill = NA, inherit.aes = FALSE) +
+    theme(strip.text = element_text(face = "bold"))
+  # theme(
+  #   axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
+  #   panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
+  #   panel.grid.minor = element_blank()
+  # )
 
 #Red Meat
 coef_wide <- coef_wide_full %>%
@@ -506,14 +545,17 @@ redmeat_plot <- ggplot(riskfactors %>% filter(exposure == "Red_Meat"), aes(x = y
   labs(
     title = "Red Meat Consumption",
     x = "Year",
-    y = "Population prevalence",
+    y = "Population Prevalence (%)",
     color = "Exposure"
   ) +
-  theme(
-    axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
-    panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
-    panel.grid.minor = element_blank()
-  )
+  geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
+              colour = "black", fill = NA, inherit.aes = FALSE) +
+    theme(strip.text = element_text(face = "bold"))
+  # theme(
+  #   axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
+  #   panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
+  #   panel.grid.minor = element_blank()
+  # )
 
 print(alcohol_plot)
 print(bmi_plot)
@@ -547,7 +589,7 @@ kable(filtered_table, caption = "Risk factor sub categories that have statistica
 
 ```
 
-## Figure 3 - Change in PAFs
+## Figure 3 - Current PAFs
 
 ```{r, fig.height=6, fig.width=10, warning=F}
 
@@ -600,11 +642,181 @@ for(site in unique(data_attr_cases$cancer_site)){
 
 ```
 
-## Figure 4 - PIF
+## Figure 4 - Difference in PAFs
+```{r, results="asis"}
+
+# Calculate p-values
+# Now compare empirically between the years
+data_complete_paf_test <- data_paf_comparison |>
+  group_by(Cancer_sites, age_group, sex, variable) |>
+  mutate(
+
+    type = case_when(
+      year == min(year) ~ "Past",
+      year == max(year) ~ "Future",
+      TRUE ~ "Current"
+    ),
+
+  ) |>
+  ungroup() |>
+  group_by(Cancer_sites, age_group, sex, variable, type) |>
+  mutate(
+
+    in_type_no = row_number()
+
+  ) |>
+  ungroup() |>
+  pivot_wider(id_cols = c("Cancer_sites", "age_group", "sex", "variable", "in_type_no"), names_from = type, values_from = PAF) |>
+  group_by(Cancer_sites, age_group, sex, variable) |>
+  # Calculate estimates for p values
+  summarise(PAF_diff_Past = sum(Past > Current)/n(),
+            PAF_diff_Future = sum(Current > Future)/n()
+  )
+
+
+# Calculate mean and CI for each point
+data_complete_paf_plot <- data_paf_comparison |>
+  group_by(Cancer_sites, age_group, sex, variable) |>
+  mutate(
+    
+    year_cat = case_when(
+      year == min(year) ~ "Past",
+      year == max(year) ~ "Future",
+      TRUE ~ "Current"
+    ),
+    
+  ) |>
+  ungroup() |>
+  group_by(Cancer_sites, age_group, sex, variable, year_cat) |>
+  summarise(
+    
+    mean = mean(PAF),
+    
+    CI_low = quantile(PAF, 0.025),
+    
+    CI_high = quantile(PAF, 0.975),
+    
+    category = paste0(variable[1], " | ", sex[1], " | ", age_group[1]),
+    
+  ) |>
+  merge(data_complete_paf_test) |>
+  mutate(
+    
+    # Cleaning variable label for plotting purposes
+    variable_label = case_when(
+      variable == "alcohol_amt" ~ "Alcohol",
+      variable == "bmi" ~ "BMI",
+      variable == "fibre_consumption" ~ "Fibre",
+      variable == "processed_meat_consumption" ~ "Processed Meat",
+      variable == "redmeat_consumption" ~ "Red Meat",
+      variable == "smoking_status" ~ "Smoking Status",
+      TRUE ~ NA
+    ),
+    
+    # Categorising
+    year_cat = factor(year_cat, levels = c("Past", "Current", "Future"))
+    
+  )
+
+
+# Loop through risk factors generating a different plot for each one
+for(var in unique(data_complete_paf_plot$variable_label)){
+  
+  # Filter to specific plot data
+  data_complete_paf_plot_var <- data_complete_paf_plot |>
+    filter(variable_label == var)
+  
+  # Initialise plot
+  plot <- data_complete_paf_plot_var |>
+    group_by(year_cat) |>
+    arrange(Cancer_sites, sex, age_group) |>
+    mutate(
+      
+      Cancer_sites = ""
+      
+    ) |>
+    forestplot(
+      labeltext = c(Cancer_sites, sex, age_group, PAF_diff_Past, PAF_diff_Future),
+      boxsize = 0.2,
+      mean = mean,
+      lower = CI_low,
+      upper = CI_high,
+      xlab = "PAF",
+      title = paste0("PAF Values for ", var, " by Time Point"),
+      line.margin = 0.2,
+      xticks = c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+      colgap = unit(0.03, "npc")
+    )
+  
+  
+  
+  # Loop through cancer sites in the data and add summary row for it
+  start <- 1
+  for(site in sort(unique(data_complete_paf_plot_var$Cancer_sites))){
+
+    # Add row
+    plot <- plot |>
+      fp_insert_row(
+                    position = start,
+                    Cancer_sites = site,
+                    sex = "",
+                    age_group = "",
+                    PAF_diff_Past = "",
+                    PAF_diff_Future = "",
+                    mean = NULL,
+                    lower = NULL,
+                    upper = NULL,
+                    is.summary = TRUE,
+                    boxsize = NA
+      )
+
+    # Count number of instances
+    no_instances <- sum(data_complete_paf_plot_var$Cancer_sites == site)/3
+
+    # Now add to start
+    start <- start + no_instances + 1
+
+  }
+
+  # Adding thematic elements to the plot
+  plot <- plot |>
+    fp_set_style(box = "black",
+                 line = "black") |>
+    fp_add_header(
+                  Cancer_sites = c("", ""),
+                  sex = c("", "Sex"),
+                  age_group = c("", "Age Group"),
+                  PAF_diff_Past = c("Past < Present", "P Value"),
+                  PAF_diff_Future = c("Present < Future", "P Value")) |>
+    fp_decorate_graph(graph.pos = 4) |>
+    fp_set_zebra_style("#EFEFEF") |>
+    fp_set_style(box = c("red", "blue", "yellow") |> lapply(function(x) gpar(fill = x, col = "#555555")),
+                 default = gpar(vertices = TRUE),
+                 line = "grey20",
+                 summary =  "black",
+                 align = "lrrrrr",
+                 hrz_lines =  "#999999",
+                 txt_gp = fpTxtGp(label = gpar(cex = 0.8)))
+  
+  # Find appropriate height for plot based on number of rows
+  rows <- length(plot$labels$Cancer_sites)
+
+  # Make forest plot
+  pdf(file=paste0("../Output/Plots/Figure 4: ", var, ".pdf"), width = 15, height = (2/5)*(3 + rows))
+  print(plot)
+  dev.off()
+  
+  cat(sprintf("- [%s](%s)\n", paste0("**Figure 4: ", var, "**"), paste0("../Output/Plots/Figure 4: ", var, ".pdf")))
+  
+}
+
+```
+
+## Figure 5 - PIF (Past)
 
 ```{r,warning=F}
 
-data_pif_gt <- data_pif |>
+data_pif_gt_past <- data_pif |>
   mutate(
     
     variable = case_when(
@@ -613,11 +825,13 @@ data_pif_gt <- data_pif |>
       TRUE ~ variable
     ),
     
-    PIF = 100*round(PIF, digits = 3),
+    
+    PIF = 100*round(PIF_past, digits = 3),
     
     PIF = if_else(is.na(PIF), "-", as.character(PIF))
     
   ) |>
+  select(-PIF_past, -PIF_future) |>
   pivot_wider(names_from = cancer_site, values_from = PIF) |>
   group_by(sex, age_group) |>
   gt() |>
@@ -646,11 +860,71 @@ data_pif_gt <- data_pif |>
   ) |>
   cols_width(
     variable ~ px(200)
-  )
+  ) |>
+  tab_header("PIF Values from Past to Present")
 
-data_pif_gt
+data_pif_gt_past
 
-gtsave(data_pif_gt, "../Output/Plots/Figure 4.html")
+gtsave(data_pif_gt_past, "../Output/Plots/Figure 5 - PIF Past.html")
+  
+
+```
+
+## Figure 5 - PIF (Future)
+
+```{r,warning=F}
+
+data_pif_gt_future <- data_pif |>
+  mutate(
+    
+    variable = case_when(
+      variable == "ProcessedMeat" ~ "Processed Meat",
+      variable == "RedMeat" ~ "Red Meat",
+      TRUE ~ variable
+    ),
+    
+    
+    PIF = 100*round(PIF_future, digits = 3),
+    
+    PIF = if_else(is.na(PIF), "-", as.character(PIF))
+    
+  ) |>
+  select(-PIF_past, -PIF_future) |>
+  pivot_wider(names_from = cancer_site, values_from = PIF) |>
+  group_by(sex, age_group) |>
+  gt() |>
+  cols_label(
+    variable = "",
+    MultipleMyeloma = "Multiple Myeloma"
+  ) |>
+  cols_align(
+    align = "center",
+    columns = -variable
+  ) |>
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = list(
+      cells_column_labels()
+    )
+  ) |>
+  tab_style(
+    style = list(
+      cell_text(weight = "bold"),
+      cell_fill(color = "lightgray"),
+      cell_borders(sides = "top"),
+      cell_borders(sides = "bottom")
+    ),
+    locations = cells_row_groups(groups = everything())
+  ) |>
+  cols_width(
+    variable ~ px(200)
+  ) |>
+  tab_header("PIF Values from Present to Future")
+
+
+data_pif_gt_future
+
+gtsave(data_pif_gt_future, "../Output/Plots/Figure 5 - PIF Future.html")
   
 
 ```

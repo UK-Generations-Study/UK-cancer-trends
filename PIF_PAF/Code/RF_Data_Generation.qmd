@@ -7,8 +7,8 @@ editor:
 
 ## Packages
 ```{r}
-library(matrixStats)
 
+library(matrixStats)
 library(dplyr)
 
 ```
