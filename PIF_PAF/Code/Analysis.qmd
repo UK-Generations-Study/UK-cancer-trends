@@ -13,7 +13,170 @@ editor:
   mode: source
 ---
 
+## Analysis plan
+
+**Main Question:**
+
+How can the trends in modifiable lifestyle cancer risk factors in England explain trends in the cancer incidence in cancer sites with which they are causally associated?
+
+**Sub Questions:**
+
+1.  What are the cancer incidence trends in England for the chosen cancer sites? overall and split by age (50-year cutoff)?
+
+<!-- -->
+
+2.  How does the exposure of the English population to the modifiable lifestyle risk factors causally associated with the chosen cancer sites vary over time? Overall and split by age (50-year cutoff)?
+
+<!-- -->
+
+3.  How do the aggregate population attributable fractions (PAFs) by cancer site change at study period end points? And the attributable incidence cases? Overall and split by age (50-year cutoff)?
+
+<!-- -->
+
+4.  For the risk factors that are increasing, what are the population impact fractions (PIFs) at study period end points? Overall and split by age (50-year cutoff)? 
+
+**Inclusion/Exclusion Criteria:**
+
+The cancer sites in this analysis were included based on the analysis done in the Early Onset paper by Martina. Cancer sites were included if incident cases were found to be statistically significantly increasing in the population under 50 and who had modifiable lifestyle risk factors causally associated to them by IARC (group 1) or WCRF (strong evidence).
+
++-------------------+----------------------------------------------------+
+| **Cancer Site**   | **Risk Factors**                                   |
++-------------------+----------------------------------------------------+
+| Oral              | Alcohol                                            |
+|                   |                                                    |
+|                   | -   Light (\<12g/day)Drinking                      |
+|                   |                                                    |
+|                   | -   Medium(12-50g/day)Drinking                     |
+|                   |                                                    |
+|                   | -   Heavy (\>50g/day) Drinking                     |
++-------------------+----------------------------------------------------+
+| Endometrium       | Smoking                                            |
+|                   |                                                    |
+|                   | -   Current Smoking                                |
+|                   |                                                    |
+|                   | -   Former Smoking                                 |
++-------------------+----------------------------------------------------+
+| Pancreas          | BMI                                                |
+|                   |                                                    |
+|                   | -   Obese(30+ BMI)                                 |
+|                   |                                                    |
+|                   | -   Overweight(25-30 BMI)                          |
++-------------------+----------------------------------------------------+
+| Gallbladder       | Processed Meat                                     |
+|                   |                                                    |
+|                   | -   Consuming any                                  |
++-------------------+----------------------------------------------------+
+| Colorectum        | Red Meat                                           |
+|                   |                                                    |
+|                   | -   Consuming any                                  |
++-------------------+----------------------------------------------------+
+| Liver             | Fibre                                              |
+|                   |                                                    |
+|                   | -   Consuming less than the UK recommended 30g/day |
++-------------------+----------------------------------------------------+
+| Kidney            | Physical Activity                                  |
++-------------------+----------------------------------------------------+
+| Thyroid           |                                                    |
++-------------------+----------------------------------------------------+
+| Multiple Myeloma  |                                                    |
++-------------------+----------------------------------------------------+
+| Breast            |                                                    |
++-------------------+----------------------------------------------------+
+
+The cancer sites that were excluded from the study were: Leukaemia, Prostate, Hodgkin Lymphoma, Brain and CNS, Melanoma of skin, and Cervix.
+
+**Methodological plan:**
+
+Relative risk and risk factor exposure prevalences will be pulled from peer reviewed meta-analyses and open-source health datasets, respectively.
+
+Data sources include National Diet and Nutrition Survey, Health Survey England, IARC GLOBOCAN, etc.
+
+Cancer incidence and risk factor trends will be examined from 2000 to present day, or as far back as data are available. These trends will be shown overall, and by age split (50-year cutoff).
+
+\~ Goal Figures: \~
+
+1.  For both cancer incidence and risk factors, line graphs for overall population, \<50, and \>50 that show the trends over time with the cancer site/risk factors differentiated by colour.
+
+    Assuming a 10-year time lag from risk factor exposure and cancer incidence, aggregate PAFs will be calculated for the years 2005 and 2009. These PAFs will be calculated overall, and by age split (50-year cutoff).
+
+\~ Goal Figures: \~
+
+1.  For \<50 and \>50, a bar chart with cancer site on the x axis and PAFs on the y axis. Each cancer site has 2 bars corresponding to the 2 years calculated which can be compared easily.
+
+<!-- -->
+
+2.  For overall population, \<50, and \>50, the PAFs by cancer site and individual risk factor for both timepoints will be shown in a table.  (Appendix)
+
+    Assuming a 10-year time lag from exposure to a risk factor and cancer incidence, incident cancer cases that are attributable to the modifiable lifestyle factors will be calculated for 2019. These attributable cases will be calculated overall, and by age split (50-year cutoff).
+
+\~ Goal Figures: \~
+
+1.  For \<50 and \>50, a stacked bar chart with total incidence cases and attributable cases by cancer site for each time point.
+
+<!-- -->
+
+2.  For overall population, \<50, and \>50, total cases, attributable cases, and change in attributable cases for each time point will be shown in a table. (Appendix)  
+
+    For any risk factors that were observed to be increasing at Step 2 – either overall or by age split – a PIF will be calculated for the proportion of cases attributable to the change in risk factor exposure. 
+
+\~ Goal Figures: \~
+
+1.  PIFs will be shown in a table for the relevant cancer sites and risk factors.  
+
+## Ongoing analysis questions 
+
+General: 
+
+1.  10 year latency creates gap between “what’s going on right now” r.e. risk factors and what is actually causing changes in cancer incidence. When we discuss how risk factors need to be changed we are talking about effects that will happen 10 years from now. 
+
+2.  Is there a disconnect r.e. age groups for rates and for incidence? The age group 20-49 for e.g. alcohol consumption will be 30-69 when we evaluate cancer incidence from that consumption. This is relevant to the overall question of “what can we attribute rise in EO cancers to”. If we are defining EO as 20-49 then, with a latency of 10 years, this cohort was exposed to risks as a 10-39 age group. I (Reuben) need to think about how RR’s are defined in order to think about this a little more. I still think the method is effective in as much as the general trends should be captuted, but may be something worth thinking about. 
+
+Brown paper: 
+
+1.  How did they treat red and processed meat in calculating PAFs? Seems as though average was applied to whole population. 
+
+2.  Which year did they use for diet data to get to 2005? They quote 2000/1 but reference NDNS which goes back to 2008. They also seemingly reference incorrect papers for the Fibre prevalences.  
+
+3.  Which data did they use for activity prevalences? Numbers do not seem to line up with quoted values in HSE data. 
+
+Risk factor data availability:  
+
+1.  Alcohol data stops at 2011, data has been inferred from the General Household Survey 2005 but the alcohol question may not be entirely consistent. This is mostly to do with the classification between non and light drinkers.  
+
+    -   Could project backwards from HSE values 
+
+    -   Could just use 2005 datapoint with a large caveat 
+
+    -   Could do some mixture of the two 
+
+    -   3rd data source??? 
+
+    -   Could use status variable to potentially ‘fix’ number of non-drinkers 
+
+2.  All diet data stops at 2008 
+
+    -   Similar issue to above. Projecting backwards may be best method. 
+
+3.  Oral contraceptive data source potentially non-existent 
+
+4.  Would need to ask for data access for OC and HRT from previous papers written using NHS financial data. 
+
+5.  Montse has suggested industry data for dietary factors, purely for graphic purposes. These should be found where possible. 
+
+Relative Risk availability:  
+
+1.  Because we are limited to metanalysis, some risk factor/cancer site combinations have causal evidence through many papers, but no meta analysis has been published  
+
+    -   Oral cancer and BMI   
+
+2.  Physical Activity RR need to be consistent across the cancer sites – the paper that covers all of the sites splits colon and rectal cancer. I put in the numbers for rectal cancer because it is the most prevalent in England according to CRUK. The RR reported for colon and rectal cancer are not super different from each other.  
+
+RR/ risk factor match ups 
+
+1.  Physical activity has been measured differently over the years, all recent meta analysis are in MET units/week for relative risks but this is not how data were measured and collected historically 
+
 ## Packages
+
 ```{r}
 
 library(dplyr)
@@ -21,10 +184,14 @@ library(stringr)
 library(ggplot2)
 library(gt)
 library(tidyr)
+library(broom)
+library(purrr)
+library(tibble)
 
 ```
 
 ## Setting working directory
+
 ```{r}
 
 # Setting up wd for relative file paths
@@ -42,6 +209,7 @@ if(Sys.getenv("RSTUDIO") == '1' & !knitr::is_html_output()) { # If using Rstudio
 ```
 
 ## Functions
+
 ```{r}
 
 source("Functions/cancer_incidence_data_generation.R")
@@ -49,6 +217,7 @@ source("Functions/cancer_incidence_data_generation.R")
 ```
 
 ## Read in data
+
 ```{r}
 
 data_rf <- read.csv("../../../Data/Cleaned_Data/clean_rf_data.csv")
@@ -60,6 +229,7 @@ data_cancer <- cancer_incidence_data_gen("../Data")
 ```
 
 ## Figure 1 - Trends in cancer incidence
+
 ```{r, fig.height=16, fig.width=10, warning=F}
 
 # Removing 2020 as COVID affected cases
@@ -82,26 +252,30 @@ ggsave(filename = paste0("../Output/Plots/Figure 1.png"), bg = "white", height =
 ```
 
 ## Figure 2 - Trends in risk factors
+
 ```{r, fig.height=6, fig.width=10, warning=F}
 
 # Filter to data desired and make formatting choices
 data_rf_trends <- data_rf |>
-  filter(!variable %in% c("fibre_consumption", "fibre_consumption_cat_mean", "processed_meat_consumption", "processed_meat_consumption_cat_mean", "redmeat_consumption", "redmeat_consumption_cat_mean")) |>
+  filter(!variable %in% c("fibre_consumption", "fibre_consumption_cat_mean", "processed_meat_consumption", "processed_meat_consumption_cat_mean", "redmeat_consumption", "redmeat_consumption_cat_mean" , "processed_meat_consumption_mean", "redmeat_consumption_mean")) |>
   mutate(
     
     level = case_when(
-      grepl(variable, pattern = "\\_consumption_mean") ~ gsub("\\sConsumption\\sMean$", "", str_to_title(gsub("\\_", " ", variable))),
+      grepl(variable, pattern = "\\_consumption_median") ~ gsub("\\sConsumption\\sMean$", "", str_to_title(gsub("\\_", " ", variable))),
       TRUE ~ level
       ),
-    
+    level = case_when(
+      grepl(variable, pattern = "\\_consumption_mean") ~ gsub("\\sConsumption\\sMea$", "", str_to_title(gsub("\\_", " ", variable))),
+      TRUE ~ level
+      ),
     # Quick fix for poorly named variable
     level = if_else(level == "Redmeat", "Red Meat", level),
     
     variable = case_when(
-      grepl(variable, pattern = "\\_consumption_mean") ~ "diet",
+      grepl(variable, pattern = "\\_consumption_median") | grepl(variable, pattern = "\\_consumption_mean") ~ "diet",
       TRUE ~ variable
       ),
-    
+
   )
 
 # Loop through variables and make plots
@@ -145,8 +319,236 @@ for(var in unique(data_rf_trends$variable)){
 
 ```
 
+### Linear trends in risk factors
+
+```{r, linear trends}
+source("Initial_Data_Evaluation/riskfactor_trendanalysis.R")
+
+
+coef_wide_full <- rf_linearmodel %>%
+  pivot_wider(
+    names_from = term,
+    values_from = estimate, 
+    id_cols = c("age_group", "sex", "exposure", "variable")
+    ) %>%
+  rename(
+    intercept = "(Intercept)"
+  ) %>%
+  select(
+    age_group, sex, variable, exposure, intercept, year
+  ) 
+
+#Alcohol
+coef_wide <- coef_wide_full %>%
+  filter(
+    variable == "Alcohol"
+  )
+alcohol_plot <- ggplot(riskfactors %>% filter(variable == "Alcohol"), aes(x = year, y = value, color = exposure)) +
+  geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
+  facet_grid(sex ~ age_group) +  # grid by both age_group and sex
+  geom_abline(data = coef_wide, aes(intercept = intercept, slope = year, color = exposure), 
+              linetype = "solid", size = 1) +  # Add regression lines
+  theme_minimal() +
+  scale_color_manual( #fixing the colors 
+    values = c(
+      "Heavy_alcohol" = "#3d405b",  
+      "Medium_alcohol" = "#81b29a", 
+      "Light_alcohol" = "#e07a5f"  
+    )
+  ) +
+  labs(
+    title = "Alcohol",
+    x = "Year",
+    y = "Population prevalence",
+    color = "Exposure Category"
+  ) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
+    panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
+    panel.grid.minor = element_blank()
+  )
+
+
+#BMI 
+coef_wide <- coef_wide_full %>%
+  filter(
+    variable == "BMI"
+  )
+bmi_plot <- ggplot(riskfactors %>% filter(variable == "BMI"), aes(x = year, y = value, color = exposure)) +
+  geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
+  facet_grid(sex ~ age_group) +  # grid by both age_group and sex
+  geom_abline(data = coef_wide, aes(intercept = intercept, slope = year, color = exposure), 
+              linetype = "solid", size = 1) +  # Add regression lines
+  theme_minimal() +
+  scale_color_manual( #fixing the colors 
+    values = c(
+      "BMI_obese_men" = "#81b29a",  
+      "BMI_overweight_men" = "#e07a5f", 
+      "BMI_obese_women" = "#81b29a",  
+      "BMI_overweight_women" = "#e07a5f" 
+    )
+  ) +
+  labs(
+    title = "BMI",
+    x = "Year",
+    y = "Population prevalence",
+    color = "Exposure Category"
+  ) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
+    panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
+    panel.grid.minor = element_blank()
+  )
+
+#Smoking 
+coef_wide <- coef_wide_full %>%
+  filter(
+    variable == "Smoking"
+  )
+smoking_plot <- ggplot(riskfactors %>% filter(variable == "Smoking"), aes(x = year, y = value, color = exposure)) +
+  geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
+  facet_grid(sex ~ age_group) +  # grid by both age_group and sex
+  geom_abline(data = coef_wide, aes(intercept = intercept, slope = year, color = exposure), 
+              linetype = "solid", size = 1) +  # Add regression lines
+  theme_minimal() +
+  scale_color_manual( #fixing the colors 
+    values = c(
+      "Current_Smoking_men" = "#81b29a",  
+      "Former_Smoking_men" = "#e07a5f", 
+      "Current_Smoking_women" = "#81b29a",  
+      "Former_Smoking_women" = "#e07a5f" 
+    )
+  ) +
+  labs(
+    title = "Smoking",
+    x = "Year",
+    y = "Population prevalence",
+    color = "Exposure Category"
+  ) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
+    panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
+    panel.grid.minor = element_blank()
+  )
+
+#Fibre
+coef_wide <- coef_wide_full %>%
+  filter(
+    exposure == "Fibre"
+  )
+fibre_plot <- ggplot(riskfactors %>% filter(exposure == "Fibre"), aes(x = year, y = value, color = exposure)) +
+  geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
+  facet_grid(sex ~ age_group) +  # grid by both age_group and sex
+  geom_abline(data = coef_wide, aes(intercept = intercept, slope = year, color = exposure), 
+              linetype = "solid", size = 1) +  # Add regression lines
+  theme_minimal() +
+  scale_color_manual( #fixing the colors 
+    values = c(
+      "Fibre" = "#81b29a"
+    )
+  ) +
+  labs(
+    title = "Fibre Deficiency (Based on 30g/day recommendation)",
+    x = "Year",
+    y = "Population prevalence",
+    color = "Exposure"
+  ) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
+    panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
+    panel.grid.minor = element_blank()
+  )
+
+#Processed meat
+coef_wide <- coef_wide_full %>%
+  filter(
+    exposure == "Processed_Meat"
+  )
+processedmeat_plot <- ggplot(riskfactors %>% filter(exposure == "Processed_Meat"), aes(x = year, y = value, color = exposure)) +
+  geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
+  facet_grid(sex ~ age_group) +  # grid by both age_group and sex
+  geom_abline(data = coef_wide, aes(intercept = intercept, slope = year, color = exposure), 
+              linetype = "solid", size = 1) +  # Add regression lines
+  theme_minimal() +
+  scale_color_manual( #fixing the colors 
+    values = c(
+      "Processed_Meat" = "#81b29a"
+    )
+  ) +
+  labs(
+    title = "Processed Meat Consumption",
+    x = "Year",
+    y = "Population prevalence",
+    color = "Sex"
+  ) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
+    panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
+    panel.grid.minor = element_blank()
+  )
+
+#Red Meat
+coef_wide <- coef_wide_full %>%
+  filter(
+    exposure == "Red_Meat"
+  )
+redmeat_plot <- ggplot(riskfactors %>% filter(exposure == "Red_Meat"), aes(x = year, y = value, color = exposure)) +
+  geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
+  facet_grid(sex ~ age_group) +  # grid by both age_group and sex
+  geom_abline(data = coef_wide, aes(intercept = intercept, slope = year, color = exposure), 
+              linetype = "solid", size = 1) +  # Add regression lines
+  theme_minimal() +
+  scale_color_manual( #fixing the colors 
+    values = c(
+      "Red_Meat" = "#81b29a"
+    )
+  ) +
+  labs(
+    title = "Red Meat Consumption",
+    x = "Year",
+    y = "Population prevalence",
+    color = "Exposure"
+  ) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
+    panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
+    panel.grid.minor = element_blank()
+  )
+
+print(alcohol_plot)
+print(bmi_plot)
+print(smoking_plot)
+print(fibre_plot)
+print(processedmeat_plot)
+print(redmeat_plot)
+
+ggsave(alcohol_plot, filename = paste0("../Output/Plots/alcohol_lineartrend.png"), bg = "white", height = 6, width = 10)
+ggsave(bmi_plot, filename = paste0("../Output/Plots/bmi_lineartrend.png"), bg = "white", height = 6, width = 10)
+ggsave(smoking_plot, filename = paste0("../Output/Plots/smoking_lineartrend.png"), bg = "white", height = 6, width = 10)
+ggsave(fibre_plot, filename = paste0("../Output/Plots/fibre_lineartrend.png"), bg = "white", height = 6, width = 10)
+ggsave(processedmeat_plot, filename = paste0("../Output/Plots/processedmeat_lineartrend.png"), bg = "white", height = 6, width = 10)
+ggsave(redmeat_plot, filename = paste0("../Output/Plots/redmeat_lineartrend.png"), bg = "white", height = 6, width = 10)
+
+```
+
+### Differences in risk factor trends by age
+
+The statistics test used was a z test for a difference in slope looking at the difference in slope coefficients.
+
+The sub categories of risk factors that are have statistically significantly different trends are:
+
+```{r, rf differences}
+library(knitr)
+
+filtered_table <- sigchange_byage %>%
+  filter(sig == 1)
+
+kable(filtered_table, caption = "Risk factor sub categories that have statistically significantly different slope coefficients")
+
+```
 
 ## Figure 3 - Change in PAFs
+
 ```{r, fig.height=6, fig.width=10, warning=F}
 
 # Pivot PAFs longer so we can merge
@@ -176,7 +578,7 @@ for(site in unique(data_attr_cases$cancer_site)){
   
   site_title = if_else(site == "MultipleMyeloma", "Multiple Myeloma", site)
   
-  plot <- ggplot(data_attr_cases |> filter(cancer_site == site) |> filter(year %in% c(2015, 2019)), aes(x = as.character(year), y = cases_count, fill = case_group)) +
+  plot <- ggplot(data_attr_cases |> filter(cancer_site == site) |> filter(year %in% c(2019)), aes(x = as.character(year), y = cases_count, fill = case_group)) +
     geom_bar(position="stack", stat="identity", colour = "black") +
     theme_minimal() +
     geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
@@ -186,7 +588,8 @@ for(site in unique(data_attr_cases$cancer_site)){
     xlab("Year") +
     ggtitle(paste0("Attributable Cases for ", site_title)) +
     labs(fill = "Category") +
-    facet_grid(age_group ~ sex, scales = "free_y")
+    facet_grid(sex ~ age_group, scales = "free_y") +
+    scale_fill_manual(values = setNames(c( "#0077b6", "#caf0f8"), unique(data_attr_cases$case_group)))
   
   print(plot)
   
@@ -198,6 +601,7 @@ for(site in unique(data_attr_cases$cancer_site)){
 ```
 
 ## Figure 4 - PIF
+
 ```{r,warning=F}
 
 data_pif_gt <- data_pif |>
