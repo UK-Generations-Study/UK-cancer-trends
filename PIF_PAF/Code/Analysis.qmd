@@ -46,11 +46,11 @@ The cancer sites in this analysis were included based on the analysis done in th
 +-------------------+----------------------------------------------------+
 | Oral              | Alcohol                                            |
 |                   |                                                    |
-|                   | -   Light (\<12g/day)Drinking                      |
+|                   | -   Light (<12g/day)Drinking                      |
 |                   |                                                    |
 |                   | -   Medium(12-50g/day)Drinking                     |
 |                   |                                                    |
-|                   | -   Heavy (\>50g/day) Drinking                     |
+|                   | -   Heavy (>50g/day) Drinking                     |
 +-------------------+----------------------------------------------------+
 | Endometrium       | Smoking                                            |
 |                   |                                                    |
@@ -181,7 +181,6 @@ RR/ risk factor match ups 
 
 ```{r}
 
-library(dplyr)
 library(stringr)
 library(ggplot2)
 library(gt)
@@ -190,6 +189,7 @@ library(broom)
 library(purrr)
 library(tibble)
 library(forestplot)
+library(dplyr)
 
 ```
 
