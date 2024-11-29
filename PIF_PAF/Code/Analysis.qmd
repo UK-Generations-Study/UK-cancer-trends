@@ -127,35 +127,35 @@ Cancer Incidence Data
 
 Cancer incidence and risk factor trends will be examined from as far back as data are available to 2019 (present day). These trends will be shown overall, and by age split (50-year cutoff).
 
-\*( Goal Figures: )\*
+*Goal Figures:*
 
 1.  For both cancer incidence and risk factors, line graphs for overall population, \<50, and \>50 that show the trends over time with the cancer site/risk factors differentiated by colour.
 
-    STEP TWO
+STEP TWO
 
-    Assuming a 10-year time lag from risk factor exposure and cancer incidence, aggregate PAFs will be calculated for the years 2005 and 2009. These PAFs will be calculated overall, and by age split (50-year cutoff).
+Assuming a 10-year time lag from risk factor exposure and cancer incidence, aggregate PAFs will be calculated for the years 2005 and 2009. These PAFs will be calculated overall, and by age split (50-year cutoff).
 
-\*( Goal Figures: )\*
+*Goal Figures:*
 
 1.  For \<50 and \>50, a bar chart with cancer site on the x axis and PAFs on the y axis. Each cancer site has 2 bars corresponding to the 2 years calculated which can be compared easily.
 
 2.  For overall population, \<50, and \>50, the PAFs by cancer site and individual risk factor for both timepoints will be shown in a table.  (Appendix)
 
-    STEP THREE
+STEP THREE
 
-    Assuming a 10-year time lag from exposure to a risk factor and cancer incidence, incident cancer cases that are attributable to the modifiable lifestyle factors will be calculated for 2019. These attributable cases will be calculated overall, and by age split (50-year cutoff).
+Assuming a 10-year time lag from exposure to a risk factor and cancer incidence, incident cancer cases that are attributable to the modifiable lifestyle factors will be calculated for 2019. These attributable cases will be calculated overall, and by age split (50-year cutoff).
 
-\*( Goal Figures: )\*
+*Goal Figures:*
 
 1.  For \<50 and \>50, a stacked bar chart with total incidence cases and attributable cases by cancer site for each time point.
 
 2.  For overall population, \<50, and \>50, total cases, attributable cases, and change in attributable cases for each time point will be shown in a table. (Appendix)  
 
-    STEP FOUR
+STEP FOUR
 
-    For any risk factors that were observed to be increasing at Step 2 – either overall or by age split – a PIF will be calculated for the proportion of cases attributable to the change in risk factor exposure. 
+For any risk factors that were observed to be increasing at Step 2 – either overall or by age split – a PIF will be calculated for the proportion of cases attributable to the change in risk factor exposure. 
 
-\*( Goal Figures: )\*
+*Goal Figures:*
 
 1.  PIFs will be shown in a table for the relevant cancer sites and risk factors.  
 
@@ -207,7 +207,8 @@ RR/ risk factor match ups 
 
 1.  Physical activity has been measured differently over the years, all recent meta analysis are in MET units/week for relative risks but this is not how data were measured and collected historically 
 
-## Packages
+## Setting up
+### Packages
 
 ```{r}
 
@@ -223,7 +224,7 @@ library(dplyr)
 
 ```
 
-## Setting working directory
+### Setting working directory
 
 ```{r}
 
@@ -241,7 +242,7 @@ if(Sys.getenv("RSTUDIO") == '1' & !knitr::is_html_output()) { # If using Rstudio
 
 ```
 
-## Functions
+### Functions
 
 ```{r}
 
@@ -249,7 +250,7 @@ source("Functions/cancer_incidence_data_generation.R")
 
 ```
 
-## Read in data
+### Read in data
 
 ```{r}
 
@@ -621,7 +622,7 @@ kable(filtered_table, caption = "Risk factor sub categories that have statistica
 
 ```
 
-## Figure 3 - Current PAFs
+## Figure 3 - Current PAFs (2019)
 
 ```{r, fig.height=6, fig.width=10, warning=F}
 
