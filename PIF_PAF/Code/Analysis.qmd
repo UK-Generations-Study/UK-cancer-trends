@@ -41,87 +41,121 @@ How can the trends in modifiable lifestyle cancer risk factors in England explai
 
 The cancer sites in this analysis were included based on the analysis done in the Early Onset paper by Martina. Cancer sites were included if incident cases were found to be statistically significantly increasing in the population under 50 and who had modifiable lifestyle risk factors causally associated to them by IARC (group 1) or WCRF (strong evidence).
 
-+-------------------+----------------------------------------------------+
-| **Cancer Site**   | **Risk Factors**                                   |
-+-------------------+----------------------------------------------------+
-| Oral              | Alcohol                                            |
-|                   |                                                    |
-|                   | -   Light (<12g/day)Drinking                      |
-|                   |                                                    |
-|                   | -   Medium(12-50g/day)Drinking                     |
-|                   |                                                    |
-|                   | -   Heavy (>50g/day) Drinking                     |
-+-------------------+----------------------------------------------------+
-| Endometrium       | Smoking                                            |
-|                   |                                                    |
-|                   | -   Current Smoking                                |
-|                   |                                                    |
-|                   | -   Former Smoking                                 |
-+-------------------+----------------------------------------------------+
-| Pancreas          | BMI                                                |
-|                   |                                                    |
-|                   | -   Obese(30+ BMI)                                 |
-|                   |                                                    |
-|                   | -   Overweight(25-30 BMI)                          |
-+-------------------+----------------------------------------------------+
-| Gallbladder       | Processed Meat                                     |
-|                   |                                                    |
-|                   | -   Consuming any                                  |
-+-------------------+----------------------------------------------------+
-| Colorectum        | Red Meat                                           |
-|                   |                                                    |
-|                   | -   Consuming any                                  |
-+-------------------+----------------------------------------------------+
-| Liver             | Fibre                                              |
-|                   |                                                    |
-|                   | -   Consuming less than the UK recommended 30g/day |
-+-------------------+----------------------------------------------------+
-| Kidney            | Physical Activity                                  |
-+-------------------+----------------------------------------------------+
-| Thyroid           |                                                    |
-+-------------------+----------------------------------------------------+
-| Multiple Myeloma  |                                                    |
-+-------------------+----------------------------------------------------+
-| Breast            |                                                    |
-+-------------------+----------------------------------------------------+
+Cancer Sites:
 
-The cancer sites that were excluded from the study were: Leukaemia, Prostate, Hodgkin Lymphoma, Brain and CNS, Melanoma of skin, and Cervix.
+1.  Oral
+
+2.  Endometrium
+
+3.  Pancreas
+
+4.  Gallbladder
+
+5.  Colorectum
+
+6.  Liver
+
+7.  Kidney
+
+8.  Thyroid
+
+9.  Multiple Myeloma
+
+10. Breast
+
+    The cancer sites that met initial inclusion criteria but were excluded from the study were: Leukemia, Prostate, Hodgkin Lymphoma, Brain and CNS, Melanoma of skin, and Cervix.
+
+Modifiable Lifestyle Risk Factors:
+
+1.  Smoking
+
+    Current Smoking
+
+    Former Smoking
+
+2.  BMI
+
+    Obese(30+ BMI)
+
+    Overweight(25-30 BMI)
+
+3.  Alcohol
+
+    Light (\<12g/day)Drinking
+
+    Medium(12-50g/day)Drinking
+
+    Heavy (\>50g/day) Drinking
+
+4.  Red Meat
+
+    Consuming any based on UK recommendations
+
+5.  Processed Meat
+
+    Consuming any based on UK recommendations
+
+6.  Fibre
+
+    Consuming less than the UK recommended 30g/day
+
+Waiting to add:
+
+7.  Physical Activity
+8.  Hormone Replacement Therapy
+9.  Oral Contraceptives
 
 **Methodological plan:**
 
-Relative risk and risk factor exposure prevalences will be pulled from peer reviewed meta-analyses and open-source health datasets, respectively.
+STEP ONE
 
-Data sources include National Diet and Nutrition Survey, Health Survey England, IARC GLOBOCAN, etc.
+Source relative risk, risk factor, and cancer incidence data. These were sourced from:
 
-Cancer incidence and risk factor trends will be examined from 2000 to present day, or as far back as data are available. These trends will be shown overall, and by age split (50-year cutoff).
+Relative Risk
 
-\~ Goal Figures: \~
+-   These data were sourced from published peer-reviewed meta analysis. The papers are stored in a Mendeley folder as well as in Teams: Descriptive Epidemiology/PAF/PIF/RiskFactorInclusion.xlsx
+
+Risk Factor Data
+
+-   Alcohol, Smoking, BMI: This data were sourced from the ONS and collected via the [Health Survey England (HSE)](https://digital.nhs.uk/data-and-information/publications/statistical/health-survey-for-england). The data were requested from the [UK Data Service](https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=8860) by year.
+
+-   Dietary Data: This data were sourced from the [National Diet and Nutrition Survey](https://www.gov.uk/government/collections/national-diet-and-nutrition-survey) and downloaded from the [UK Data Service](https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=6533).
+
+Cancer Incidence Data
+
+-   Data for all cancer incidences were sourced from the England cancer registry.
+
+Cancer incidence and risk factor trends will be examined from as far back as data are available to 2019 (present day). These trends will be shown overall, and by age split (50-year cutoff).
+
+\*( Goal Figures: )\*
 
 1.  For both cancer incidence and risk factors, line graphs for overall population, \<50, and \>50 that show the trends over time with the cancer site/risk factors differentiated by colour.
 
+    STEP TWO
+
     Assuming a 10-year time lag from risk factor exposure and cancer incidence, aggregate PAFs will be calculated for the years 2005 and 2009. These PAFs will be calculated overall, and by age split (50-year cutoff).
 
-\~ Goal Figures: \~
+\*( Goal Figures: )\*
 
 1.  For \<50 and \>50, a bar chart with cancer site on the x axis and PAFs on the y axis. Each cancer site has 2 bars corresponding to the 2 years calculated which can be compared easily.
 
-<!-- -->
-
 2.  For overall population, \<50, and \>50, the PAFs by cancer site and individual risk factor for both timepoints will be shown in a table.  (Appendix)
+
+    STEP THREE
 
     Assuming a 10-year time lag from exposure to a risk factor and cancer incidence, incident cancer cases that are attributable to the modifiable lifestyle factors will be calculated for 2019. These attributable cases will be calculated overall, and by age split (50-year cutoff).
 
-\~ Goal Figures: \~
+\*( Goal Figures: )\*
 
 1.  For \<50 and \>50, a stacked bar chart with total incidence cases and attributable cases by cancer site for each time point.
 
-<!-- -->
-
 2.  For overall population, \<50, and \>50, total cases, attributable cases, and change in attributable cases for each time point will be shown in a table. (Appendix)  
+
+    STEP FOUR
 
     For any risk factors that were observed to be increasing at Step 2 – either overall or by age split – a PIF will be calculated for the proportion of cases attributable to the change in risk factor exposure. 
 
-\~ Goal Figures: \~
+\*( Goal Figures: )\*
 
 1.  PIFs will be shown in a table for the relevant cancer sites and risk factors.  
 
@@ -145,13 +179,11 @@ Risk factor data availability:  
 
 1.  Alcohol data stops at 2011, data has been inferred from the General Household Survey 2005 but the alcohol question may not be entirely consistent. This is mostly to do with the classification between non and light drinkers.  
 
-    -   Could project backwards from HSE values 
+    -   PREFERED: Could project backwards from HSE values 
 
     -   Could just use 2005 datapoint with a large caveat 
 
     -   Could do some mixture of the two 
-
-    -   3rd data source??? 
 
     -   Could use status variable to potentially ‘fix’ number of non-drinkers 
 
@@ -159,11 +191,9 @@ Risk factor data availability:  
 
     -   Similar issue to above. Projecting backwards may be best method. 
 
-3.  Oral contraceptive data source potentially non-existent 
+3.  Would need to ask for data access for OC and HRT from previous papers written using NHS financial data. 
 
-4.  Would need to ask for data access for OC and HRT from previous papers written using NHS financial data. 
-
-5.  Montse has suggested industry data for dietary factors, purely for graphic purposes. These should be found where possible. 
+4.  Montse has suggested industry data for dietary factors, purely for graphic purposes. These should be found where possible. 
 
 Relative Risk availability:  
 
@@ -230,7 +260,7 @@ data_rf <- read.csv("../../../Data/Cleaned_Data/clean_rf_data.csv")
 data_paf <- read.csv("../Data/AggregatePAFs_BestEstimates.csv")
 
 # Read in PAF samples
-data_paf_comparison <- read.csv(r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\PAF\UK-cancer-trends\PIF_PAF\Data\paf_comparison.csv)") |>
+data_paf_comparison <- read.csv(r"(..\Data\paf_comparison.csv)") |>
   # TEMPORARY CODE
   mutate(Cancer_sites = if_else(Cancer_sites == "Breast ", "Breast", Cancer_sites)) |>
   filter(!(Cancer_sites == "Breast" & sex == "Men"))
@@ -291,7 +321,9 @@ data_rf_trends <- data_rf |>
     variable = case_when(
       grepl(variable, pattern = "\\_consumption_median") | grepl(variable, pattern = "\\_consumption_mean") ~ "diet",
       TRUE ~ variable
-      ),
+      ), 
+    
+    value = ifelse(level == "Fibre", 30-value, value)
 
   )
 
@@ -330,7 +362,7 @@ for(var in unique(data_rf_trends$variable)){
   # Add footnote to diet plot
   if(var == "diet"){
     plot <- plot +
-      labs(caption = "*Red and Processed Meat uses the median, Fibre uses the mean")
+      labs(caption = "*Red and Processed Meat uses the median, Fibre Deficiency uses the mean")
   }
   
   print(plot)
@@ -643,6 +675,7 @@ for(site in unique(data_attr_cases$cancer_site)){
 ```
 
 ## Figure 4 - Difference in PAFs
+
 ```{r, results="asis"}
 
 # Calculate p-values
@@ -921,7 +954,7 @@ data_pif_gt_future <- data_pif |>
     variable ~ px(200)
   ) |>
   tab_header("PIF Values from 2009 to Future*") |>
-  tab_footnote("*Furthest forward datapoint available")
+  tab_footnote("*Furthest forward datapoint available up to 2019")
 
 
 data_pif_gt_future
