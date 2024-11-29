@@ -861,7 +861,8 @@ data_pif_gt_past <- data_pif |>
   cols_width(
     variable ~ px(200)
   ) |>
-  tab_header("PIF Values from Past to Present")
+  tab_header("PIF Values from Past* to 2009") |>
+  tab_footnote("*Furthest back datapoint available")
 
 data_pif_gt_past
 
@@ -919,7 +920,8 @@ data_pif_gt_future <- data_pif |>
   cols_width(
     variable ~ px(200)
   ) |>
-  tab_header("PIF Values from Present to Future")
+  tab_header("PIF Values from 2009 to Future*") |>
+  tab_footnote("*Furthest forward datapoint available")
 
 
 data_pif_gt_future
