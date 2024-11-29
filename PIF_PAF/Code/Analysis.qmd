@@ -119,6 +119,8 @@ Risk Factor Data
 
 -   Alcohol, Smoking, BMI: This data were sourced from the ONS and collected via the [Health Survey England (HSE)](https://digital.nhs.uk/data-and-information/publications/statistical/health-survey-for-england). The data were requested from the [UK Data Service](https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=8860) by year.
 
+- Alcohol data via HSE on average drinking is only available back to 2011. Previous to this were the GHS and GLS. As of 29/11/2024, the 2005 GHS datapoint has been used for alcohol usage. Weighting has been used as to replicate sheet 2.17 from Table 2 Drinking (Excel sheet 211Kb) [here](https://webarchive.nationalarchives.gov.uk/ukgwa/20160115220036/http://www.ons.gov.uk/ons/publications/re-reference-tables.html?edition=tcm%3A77-213744). However, as visible in the risk factor plots, the prevelances seem highly suspicious. When contrasting this data with sheet 2.5 [here](https://digital.nhs.uk/data-and-information/publications/statistical/statistics-on-alcohol/2012), we see differences. Between both sources there is a disagreement on number of participants even. The selection criterion for the second table needs to be identified and a choice made between the two.
+
 -   Dietary Data: This data were sourced from the [National Diet and Nutrition Survey](https://www.gov.uk/government/collections/national-diet-and-nutrition-survey) and downloaded from the [UK Data Service](https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=6533).
 
 Cancer Incidence Data
