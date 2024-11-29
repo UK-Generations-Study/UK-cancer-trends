@@ -102,8 +102,12 @@ Modifiable Lifestyle Risk Factors:
 Waiting to add:
 
 7.  Physical Activity
+  - HSE has measured MET hours/week for 3 years, 2012, 2016, 2021. In order to carry out the analysis needed for this paper we would need to extend this time period significantly.
+  - Brown et al. assumed an equivalence between meeting old guidelines and new MET hour guidelines, we should discuss if this is an appropriate assumption to make for this paper.
 8.  Hormone Replacement Therapy
+  - Possible data source for HRT usage [here](https://pmc.ncbi.nlm.nih.gov/articles/PMC6891893/).
 9.  Oral Contraceptives
+  - Possible data source for OC usage [here](https://srh.bmj.com/content/familyplanning/48/3/193.full.pdf).
 
 **Methodological plan:**
 
@@ -135,7 +139,7 @@ Cancer incidence and risk factor trends will be examined from as far back as dat
 
 STEP TWO
 
-Assuming a 10-year time lag from risk factor exposure and cancer incidence, aggregate PAFs will be calculated for the years 2005 and 2009. These PAFs will be calculated overall, and by age split (50-year cutoff).
+Assuming a 10-year time lag from risk factor exposure and cancer incidence, aggregate PAFs will be calculated for three sets of years: 2009, the oldest, and the most recent. These PAFs will be calculated overall, and by age split (50-year cutoff).
 
 *Goal Figures:*
 
@@ -149,7 +153,7 @@ Assuming a 10-year time lag from exposure to a risk factor and cancer incidence,
 
 *Goal Figures:*
 
-1.  For \<50 and \>50, a stacked bar chart with total incidence cases and attributable cases by cancer site for each time point.
+1.  For \<50 and \>50, a stacked bar chart with total incidence cases and attributable cases by cancer site for each age group at 2019.
 
 2.  For overall population, \<50, and \>50, total cases, attributable cases, and change in attributable cases for each time point will be shown in a table. (Appendix)  
 
@@ -167,15 +171,15 @@ General: 
 
 1.  10 year latency creates gap between “what’s going on right now” r.e. risk factors and what is actually causing changes in cancer incidence. When we discuss how risk factors need to be changed we are talking about effects that will happen 10 years from now. 
 
-2.  Is there a disconnect r.e. age groups for rates and for incidence? The age group 20-49 for e.g. alcohol consumption will be 30-69 when we evaluate cancer incidence from that consumption. This is relevant to the overall question of “what can we attribute rise in EO cancers to”. If we are defining EO as 20-49 then, with a latency of 10 years, this cohort was exposed to risks as a 10-39 age group. I (Reuben) need to think about how RR’s are defined in order to think about this a little more. I still think the method is effective in as much as the general trends should be captuted, but may be something worth thinking about. 
+2.  Is there a disconnect r.e. age groups for rates and for incidence? The age group 20-49 for e.g. alcohol consumption will be 30-69 when we evaluate cancer incidence from that consumption. This is relevant to the overall question of “what can we attribute rise in EO cancers to”. If we are defining EO as 20-49 then, with a latency of 10 years, this cohort was exposed to risks as a 10-39 age group. I (Reuben) need to think about how RR’s are defined in order to think about this a little more. I still think the method is effective in as much as the general trends should be captured, but may be something worth thinking about. 
 
 Brown paper: 
 
 1.  How did they treat red and processed meat in calculating PAFs? Seems as though average was applied to whole population. 
 
-2.  Which year did they use for diet data to get to 2005? They quote 2000/1 but reference NDNS which goes back to 2008. They also seemingly reference incorrect papers for the Fibre prevalences.  
+2.  Which year did they use for diet data to get to 2005? They quote 2000/1 but reference NDNS which goes back to 2008. They also seemingly reference incorrect papers for the Fibre prevalence.  
 
-3.  Which data did they use for activity prevalences? Numbers do not seem to line up with quoted values in HSE data. 
+3.  Which data did they use for activity prevalence? Numbers do not seem to line up with quoted values in HSE data. 
 
 Risk factor data availability:  
 
