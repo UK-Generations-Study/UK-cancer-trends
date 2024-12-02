@@ -65,13 +65,10 @@ data_paf <- data_paf |>
   arrange(year) |>
   summarise(
     
-    PIF_past = if_else(PAF[1] < PAF[2],
-                  (PIF_component[2] - PIF_component[1])/PIF_component[2],
-                  NA),
+    PIF_past = if_else(PIF_component[1] == 1 | PIF_component[2] == 1, NA, (PIF_component[2] - PIF_component[1])/PIF_component[2]),
     
-    PIF_future = if_else(PAF[2] < PAF[3],
-                       (PIF_component[3] - PIF_component[2])/PIF_component[3],
-                       NA)
+    PIF_future = if_else(PIF_component[2] == 1 | PIF_component[3] == 1, NA, (PIF_component[3] - PIF_component[2])/PIF_component[3])
+
   )
   
   

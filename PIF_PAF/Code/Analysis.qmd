@@ -307,6 +307,7 @@ ggsave(filename = paste0("../Output/Plots/Figure_1.png"), bg = "white", height =
 
 ## Figure 2 - Trends in risk factors
 
+### Trends in risk factors
 ```{r, fig.height=6, fig.width=10, warning=F}
 
 # Filter to data desired and make formatting choices
@@ -365,7 +366,7 @@ for(var in unique(data_rf_trends$variable)){
     labs(colour = "Category", fill = "Category") +
     scale_x_continuous(breaks = seq(min_year, max_year, by = 2)) +
     ggtitle(paste0("Trends in ", var_title)) +
-    facet_grid(age_group ~ sex)
+    facet_grid(sex ~ age_group)
   
   # Add footnote to diet plot
   if(var == "diet"){
@@ -869,7 +870,13 @@ data_pif_gt_past <- data_pif |>
     
     PIF = 100*round(PIF_past, digits = 3),
     
-    PIF = if_else(is.na(PIF), "-", as.character(PIF))
+    # PIF = if_else(is.na(PIF), "", as.character(PIF))
+    
+    PIF = case_when(
+      is.na(PIF) ~ "",
+      PIF<0 ~ "-",
+      TRUE ~ as.character(PIF)
+    )
     
   ) |>
   select(-PIF_past, -PIF_future) |>
@@ -928,7 +935,13 @@ data_pif_gt_future <- data_pif |>
     
     PIF = 100*round(PIF_future, digits = 3),
     
-    PIF = if_else(is.na(PIF), "-", as.character(PIF))
+    # PIF = if_else(is.na(PIF), "-", as.character(PIF))
+    
+    PIF = case_when(
+      is.na(PIF) ~ "",
+      PIF<0 ~ "-",
+      TRUE ~ as.character(PIF)
+    )
     
   ) |>
   select(-PIF_past, -PIF_future) |>
