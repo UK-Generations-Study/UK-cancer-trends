@@ -64,6 +64,10 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#figure-4---difference-in-pafs" id="toc-figure-4---difference-in-pafs" class="nav-link" data-scroll-target="#figure-4---difference-in-pafs">Figure 4 - Difference in PAFs</a></li>
   <li><a href="#figure-5---pif-past" id="toc-figure-5---pif-past" class="nav-link" data-scroll-target="#figure-5---pif-past">Figure 5 - PIF (Past)</a></li>
   <li><a href="#figure-5---pif-future" id="toc-figure-5---pif-future" class="nav-link" data-scroll-target="#figure-5---pif-future">Figure 5 - PIF (Future)</a></li>
+  <li><a href="#additional-figures" id="toc-additional-figures" class="nav-link" data-scroll-target="#additional-figures">Additional Figures</a>
+  <ul>
+  <li><a href="#childhood-bmi" id="toc-childhood-bmi" class="nav-link" data-scroll-target="#childhood-bmi">Childhood BMI</a></li>
+  </ul></li>
   </ul>
 </nav>
 </div>
@@ -146,9 +150,23 @@ ul.task-list li input[type="checkbox"] {
 <p>Waiting to add:</p>
 <ol start="7" type="1">
 <li>Physical Activity</li>
+</ol>
+<ul>
+<li>HSE has measured MET hours/week for 3 years, 2012, 2016, 2021. In order to carry out the analysis needed for this paper we would need to extend this time period significantly.</li>
+<li>Brown et al.&nbsp;assumed an equivalence between meeting old guidelines and new MET hour guidelines, we should discuss if this is an appropriate assumption to make for this paper.</li>
+</ul>
+<ol start="8" type="1">
 <li>Hormone Replacement Therapy</li>
+</ol>
+<ul>
+<li>Possible data source for HRT usage <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6891893/">here</a>.</li>
+</ul>
+<ol start="9" type="1">
 <li>Oral Contraceptives</li>
 </ol>
+<ul>
+<li>Possible data source for OC usage <a href="https://srh.bmj.com/content/familyplanning/48/3/193.full.pdf">here</a>.</li>
+</ul>
 <p><strong>Methodological plan:</strong></p>
 <p>STEP ONE</p>
 <p>Source relative risk, risk factor, and cancer incidence data. These were sourced from:</p>
@@ -159,6 +177,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Risk Factor Data</p>
 <ul>
 <li><p>Alcohol, Smoking, BMI: This data were sourced from the ONS and collected via the <a href="https://digital.nhs.uk/data-and-information/publications/statistical/health-survey-for-england">Health Survey England (HSE)</a>. The data were requested from the <a href="https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=8860">UK Data Service</a> by year.</p></li>
+<li><p>Alcohol data via HSE on average drinking is only available back to 2011. Previous to this were the GHS and GLS. As of 29/11/2024, the 2005 GHS datapoint has been used for alcohol usage. Weighting has been used as to replicate sheet 2.17 from Table 2 Drinking (Excel sheet 211Kb) <a href="https://webarchive.nationalarchives.gov.uk/ukgwa/20160115220036/http://www.ons.gov.uk/ons/publications/re-reference-tables.html?edition=tcm%3A77-213744">here</a>. However, as visible in the risk factor plots, the prevelances seem highly suspicious. When contrasting this data with sheet 2.5 <a href="https://digital.nhs.uk/data-and-information/publications/statistical/statistics-on-alcohol/2012">here</a>, we see differences. Between both sources there is a disagreement on number of participants even. The selection criterion for the second table needs to be identified and a choice made between the two.</p></li>
 <li><p>Dietary Data: This data were sourced from the <a href="https://www.gov.uk/government/collections/national-diet-and-nutrition-survey">National Diet and Nutrition Survey</a> and downloaded from the <a href="https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=6533">UK Data Service</a>.</p></li>
 </ul>
 <p>Cancer Incidence Data</p>
@@ -171,7 +190,7 @@ ul.task-list li input[type="checkbox"] {
 <li>For both cancer incidence and risk factors, line graphs for overall population, &lt;50, and &gt;50 that show the trends over time with the cancer site/risk factors differentiated by colour.</li>
 </ol>
 <p>STEP TWO</p>
-<p>Assuming a 10-year time lag from risk factor exposure and cancer incidence, aggregate PAFs will be calculated for the years 2005 and 2009. These PAFs will be calculated overall, and by age split (50-year cutoff).</p>
+<p>Assuming a 10-year time lag from risk factor exposure and cancer incidence, aggregate PAFs will be calculated for three sets of years: 2009, the oldest, and the most recent. These PAFs will be calculated overall, and by age split (50-year cutoff).</p>
 <p><em>Goal Figures:</em></p>
 <ol type="1">
 <li><p>For &lt;50 and &gt;50, a bar chart with cancer site on the x axis and PAFs on the y axis. Each cancer site has 2 bars corresponding to the 2 years calculated which can be compared easily.</p></li>
@@ -181,7 +200,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Assuming a 10-year time lag from exposure to a risk factor and cancer incidence, incident cancer cases that are attributable to the modifiable lifestyle factors will be calculated for 2019. These attributable cases will be calculated overall, and by age split (50-year cutoff).</p>
 <p><em>Goal Figures:</em></p>
 <ol type="1">
-<li><p>For &lt;50 and &gt;50, a stacked bar chart with total incidence cases and attributable cases by cancer site for each time point.</p></li>
+<li><p>For &lt;50 and &gt;50, a stacked bar chart with total incidence cases and attributable cases by cancer site for each age group at 2019.</p></li>
 <li><p>For overall population, &lt;50, and &gt;50, total cases, attributable cases, and change in attributable cases for each time point will be shown in a table. (Appendix)&nbsp;&nbsp;</p></li>
 </ol>
 <p>STEP FOUR</p>
@@ -196,13 +215,13 @@ ul.task-list li input[type="checkbox"] {
 <p>General:&nbsp;</p>
 <ol type="1">
 <li><p>10 year latency creates gap between “what’s going on right now” r.e. risk factors and what is actually causing changes in cancer incidence. When we discuss how risk factors need to be changed we are talking about effects that will happen 10 years from now.&nbsp;</p></li>
-<li><p>Is there a disconnect r.e. age groups for rates and for incidence? The age group 20-49 for e.g.&nbsp;alcohol consumption will be 30-69 when we evaluate cancer incidence from that consumption. This is relevant to the overall question of “what can we attribute rise in EO cancers to”. If we are defining EO as 20-49 then, with a latency of 10 years, this cohort was exposed to risks as a 10-39 age group. I (Reuben) need to think about how RR’s are defined in order to think about this a little more. I still think the method is effective in as much as the general trends should be captuted, but may be something worth thinking about.&nbsp;</p></li>
+<li><p>Is there a disconnect r.e. age groups for rates and for incidence? The age group 20-49 for e.g.&nbsp;alcohol consumption will be 30-69 when we evaluate cancer incidence from that consumption. This is relevant to the overall question of “what can we attribute rise in EO cancers to”. If we are defining EO as 20-49 then, with a latency of 10 years, this cohort was exposed to risks as a 10-39 age group. I (Reuben) need to think about how RR’s are defined in order to think about this a little more. I still think the method is effective in as much as the general trends should be captured, but may be something worth thinking about.&nbsp;</p></li>
 </ol>
 <p>Brown paper:&nbsp;</p>
 <ol type="1">
 <li><p>How did they treat red and processed meat in calculating PAFs? Seems as though average was applied to whole population.&nbsp;</p></li>
-<li><p>Which year did they use for diet data to get to 2005? They quote 2000/1 but reference NDNS which goes back to 2008. They also seemingly reference incorrect papers for the Fibre prevalences.&nbsp;&nbsp;</p></li>
-<li><p>Which data did they use for activity prevalences? Numbers do not seem to line up with quoted values in HSE data.&nbsp;</p></li>
+<li><p>Which year did they use for diet data to get to 2005? They quote 2000/1 but reference NDNS which goes back to 2008. They also seemingly reference incorrect papers for the Fibre prevalence.&nbsp;&nbsp;</p></li>
+<li><p>Which data did they use for activity prevalence? Numbers do not seem to line up with quoted values in HSE data.&nbsp;</p></li>
 </ol>
 <p>Risk factor data availability:&nbsp;&nbsp;</p>
 <ol type="1">
@@ -513,23 +532,23 @@ override using the `.groups` argument.
 <h2 class="anchored" data-anchor-id="figure-5---pif-past">Figure 5 - PIF (Past)</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div id="clxmctdedj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#clxmctdedj table {
+<div id="effstmgwgc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#effstmgwgc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#clxmctdedj thead, #clxmctdedj tbody, #clxmctdedj tfoot, #clxmctdedj tr, #clxmctdedj td, #clxmctdedj th {
+#effstmgwgc thead, #effstmgwgc tbody, #effstmgwgc tfoot, #effstmgwgc tr, #effstmgwgc td, #effstmgwgc th {
   border-style: none;
 }
 
-#clxmctdedj p {
+#effstmgwgc p {
   margin: 0;
   padding: 0;
 }
 
-#clxmctdedj .gt_table {
+#effstmgwgc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -555,12 +574,12 @@ override using the `.groups` argument.
   border-left-color: #D3D3D3;
 }
 
-#clxmctdedj .gt_caption {
+#effstmgwgc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#clxmctdedj .gt_title {
+#effstmgwgc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -572,7 +591,7 @@ override using the `.groups` argument.
   border-bottom-width: 0;
 }
 
-#clxmctdedj .gt_subtitle {
+#effstmgwgc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -584,7 +603,7 @@ override using the `.groups` argument.
   border-top-width: 0;
 }
 
-#clxmctdedj .gt_heading {
+#effstmgwgc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -596,13 +615,13 @@ override using the `.groups` argument.
   border-right-color: #D3D3D3;
 }
 
-#clxmctdedj .gt_bottom_border {
+#effstmgwgc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#clxmctdedj .gt_col_headings {
+#effstmgwgc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -617,7 +636,7 @@ override using the `.groups` argument.
   border-right-color: #D3D3D3;
 }
 
-#clxmctdedj .gt_col_heading {
+#effstmgwgc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -637,7 +656,7 @@ override using the `.groups` argument.
   overflow-x: hidden;
 }
 
-#clxmctdedj .gt_column_spanner_outer {
+#effstmgwgc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -649,15 +668,15 @@ override using the `.groups` argument.
   padding-right: 4px;
 }
 
-#clxmctdedj .gt_column_spanner_outer:first-child {
+#effstmgwgc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#clxmctdedj .gt_column_spanner_outer:last-child {
+#effstmgwgc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#clxmctdedj .gt_column_spanner {
+#effstmgwgc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -669,11 +688,11 @@ override using the `.groups` argument.
   width: 100%;
 }
 
-#clxmctdedj .gt_spanner_row {
+#effstmgwgc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#clxmctdedj .gt_group_heading {
+#effstmgwgc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -699,7 +718,7 @@ override using the `.groups` argument.
   text-align: left;
 }
 
-#clxmctdedj .gt_empty_group_heading {
+#effstmgwgc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -714,15 +733,15 @@ override using the `.groups` argument.
   vertical-align: middle;
 }
 
-#clxmctdedj .gt_from_md > :first-child {
+#effstmgwgc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#clxmctdedj .gt_from_md > :last-child {
+#effstmgwgc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#clxmctdedj .gt_row {
+#effstmgwgc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -741,7 +760,7 @@ override using the `.groups` argument.
   overflow-x: hidden;
 }
 
-#clxmctdedj .gt_stub {
+#effstmgwgc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -754,7 +773,7 @@ override using the `.groups` argument.
   padding-right: 5px;
 }
 
-#clxmctdedj .gt_stub_row_group {
+#effstmgwgc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -768,15 +787,15 @@ override using the `.groups` argument.
   vertical-align: top;
 }
 
-#clxmctdedj .gt_row_group_first td {
+#effstmgwgc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#clxmctdedj .gt_row_group_first th {
+#effstmgwgc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#clxmctdedj .gt_summary_row {
+#effstmgwgc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -786,16 +805,16 @@ override using the `.groups` argument.
   padding-right: 5px;
 }
 
-#clxmctdedj .gt_first_summary_row {
+#effstmgwgc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#clxmctdedj .gt_first_summary_row.thick {
+#effstmgwgc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#clxmctdedj .gt_last_summary_row {
+#effstmgwgc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -805,7 +824,7 @@ override using the `.groups` argument.
   border-bottom-color: #D3D3D3;
 }
 
-#clxmctdedj .gt_grand_summary_row {
+#effstmgwgc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -815,7 +834,7 @@ override using the `.groups` argument.
   padding-right: 5px;
 }
 
-#clxmctdedj .gt_first_grand_summary_row {
+#effstmgwgc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -825,7 +844,7 @@ override using the `.groups` argument.
   border-top-color: #D3D3D3;
 }
 
-#clxmctdedj .gt_last_grand_summary_row_top {
+#effstmgwgc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -835,11 +854,11 @@ override using the `.groups` argument.
   border-bottom-color: #D3D3D3;
 }
 
-#clxmctdedj .gt_striped {
+#effstmgwgc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#clxmctdedj .gt_table_body {
+#effstmgwgc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -848,7 +867,7 @@ override using the `.groups` argument.
   border-bottom-color: #D3D3D3;
 }
 
-#clxmctdedj .gt_footnotes {
+#effstmgwgc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -862,7 +881,7 @@ override using the `.groups` argument.
   border-right-color: #D3D3D3;
 }
 
-#clxmctdedj .gt_footnote {
+#effstmgwgc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -871,7 +890,7 @@ override using the `.groups` argument.
   padding-right: 5px;
 }
 
-#clxmctdedj .gt_sourcenotes {
+#effstmgwgc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -885,7 +904,7 @@ override using the `.groups` argument.
   border-right-color: #D3D3D3;
 }
 
-#clxmctdedj .gt_sourcenote {
+#effstmgwgc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -893,72 +912,72 @@ override using the `.groups` argument.
   padding-right: 5px;
 }
 
-#clxmctdedj .gt_left {
+#effstmgwgc .gt_left {
   text-align: left;
 }
 
-#clxmctdedj .gt_center {
+#effstmgwgc .gt_center {
   text-align: center;
 }
 
-#clxmctdedj .gt_right {
+#effstmgwgc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#clxmctdedj .gt_font_normal {
+#effstmgwgc .gt_font_normal {
   font-weight: normal;
 }
 
-#clxmctdedj .gt_font_bold {
+#effstmgwgc .gt_font_bold {
   font-weight: bold;
 }
 
-#clxmctdedj .gt_font_italic {
+#effstmgwgc .gt_font_italic {
   font-style: italic;
 }
 
-#clxmctdedj .gt_super {
+#effstmgwgc .gt_super {
   font-size: 65%;
 }
 
-#clxmctdedj .gt_footnote_marks {
+#effstmgwgc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#clxmctdedj .gt_asterisk {
+#effstmgwgc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#clxmctdedj .gt_indent_1 {
+#effstmgwgc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#clxmctdedj .gt_indent_2 {
+#effstmgwgc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#clxmctdedj .gt_indent_3 {
+#effstmgwgc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#clxmctdedj .gt_indent_4 {
+#effstmgwgc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#clxmctdedj .gt_indent_5 {
+#effstmgwgc .gt_indent_5 {
   text-indent: 25px;
 }
 
-#clxmctdedj .katex-display {
+#effstmgwgc .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#clxmctdedj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#effstmgwgc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1323,23 +1342,23 @@ override using the `.groups` argument.
 <h2 class="anchored" data-anchor-id="figure-5---pif-future">Figure 5 - PIF (Future)</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div id="slzdxfxgqs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#slzdxfxgqs table {
+<div id="hrxrozbjkv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hrxrozbjkv table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#slzdxfxgqs thead, #slzdxfxgqs tbody, #slzdxfxgqs tfoot, #slzdxfxgqs tr, #slzdxfxgqs td, #slzdxfxgqs th {
+#hrxrozbjkv thead, #hrxrozbjkv tbody, #hrxrozbjkv tfoot, #hrxrozbjkv tr, #hrxrozbjkv td, #hrxrozbjkv th {
   border-style: none;
 }
 
-#slzdxfxgqs p {
+#hrxrozbjkv p {
   margin: 0;
   padding: 0;
 }
 
-#slzdxfxgqs .gt_table {
+#hrxrozbjkv .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1365,12 +1384,12 @@ override using the `.groups` argument.
   border-left-color: #D3D3D3;
 }
 
-#slzdxfxgqs .gt_caption {
+#hrxrozbjkv .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#slzdxfxgqs .gt_title {
+#hrxrozbjkv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1382,7 +1401,7 @@ override using the `.groups` argument.
   border-bottom-width: 0;
 }
 
-#slzdxfxgqs .gt_subtitle {
+#hrxrozbjkv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1394,7 +1413,7 @@ override using the `.groups` argument.
   border-top-width: 0;
 }
 
-#slzdxfxgqs .gt_heading {
+#hrxrozbjkv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1406,13 +1425,13 @@ override using the `.groups` argument.
   border-right-color: #D3D3D3;
 }
 
-#slzdxfxgqs .gt_bottom_border {
+#hrxrozbjkv .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#slzdxfxgqs .gt_col_headings {
+#hrxrozbjkv .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1427,7 +1446,7 @@ override using the `.groups` argument.
   border-right-color: #D3D3D3;
 }
 
-#slzdxfxgqs .gt_col_heading {
+#hrxrozbjkv .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1447,7 +1466,7 @@ override using the `.groups` argument.
   overflow-x: hidden;
 }
 
-#slzdxfxgqs .gt_column_spanner_outer {
+#hrxrozbjkv .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1459,15 +1478,15 @@ override using the `.groups` argument.
   padding-right: 4px;
 }
 
-#slzdxfxgqs .gt_column_spanner_outer:first-child {
+#hrxrozbjkv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#slzdxfxgqs .gt_column_spanner_outer:last-child {
+#hrxrozbjkv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#slzdxfxgqs .gt_column_spanner {
+#hrxrozbjkv .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1479,11 +1498,11 @@ override using the `.groups` argument.
   width: 100%;
 }
 
-#slzdxfxgqs .gt_spanner_row {
+#hrxrozbjkv .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#slzdxfxgqs .gt_group_heading {
+#hrxrozbjkv .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1509,7 +1528,7 @@ override using the `.groups` argument.
   text-align: left;
 }
 
-#slzdxfxgqs .gt_empty_group_heading {
+#hrxrozbjkv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1524,15 +1543,15 @@ override using the `.groups` argument.
   vertical-align: middle;
 }
 
-#slzdxfxgqs .gt_from_md > :first-child {
+#hrxrozbjkv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#slzdxfxgqs .gt_from_md > :last-child {
+#hrxrozbjkv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#slzdxfxgqs .gt_row {
+#hrxrozbjkv .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1551,7 +1570,7 @@ override using the `.groups` argument.
   overflow-x: hidden;
 }
 
-#slzdxfxgqs .gt_stub {
+#hrxrozbjkv .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1564,7 +1583,7 @@ override using the `.groups` argument.
   padding-right: 5px;
 }
 
-#slzdxfxgqs .gt_stub_row_group {
+#hrxrozbjkv .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1578,15 +1597,15 @@ override using the `.groups` argument.
   vertical-align: top;
 }
 
-#slzdxfxgqs .gt_row_group_first td {
+#hrxrozbjkv .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#slzdxfxgqs .gt_row_group_first th {
+#hrxrozbjkv .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#slzdxfxgqs .gt_summary_row {
+#hrxrozbjkv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1596,16 +1615,16 @@ override using the `.groups` argument.
   padding-right: 5px;
 }
 
-#slzdxfxgqs .gt_first_summary_row {
+#hrxrozbjkv .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#slzdxfxgqs .gt_first_summary_row.thick {
+#hrxrozbjkv .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#slzdxfxgqs .gt_last_summary_row {
+#hrxrozbjkv .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1615,7 +1634,7 @@ override using the `.groups` argument.
   border-bottom-color: #D3D3D3;
 }
 
-#slzdxfxgqs .gt_grand_summary_row {
+#hrxrozbjkv .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1625,7 +1644,7 @@ override using the `.groups` argument.
   padding-right: 5px;
 }
 
-#slzdxfxgqs .gt_first_grand_summary_row {
+#hrxrozbjkv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1635,7 +1654,7 @@ override using the `.groups` argument.
   border-top-color: #D3D3D3;
 }
 
-#slzdxfxgqs .gt_last_grand_summary_row_top {
+#hrxrozbjkv .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1645,11 +1664,11 @@ override using the `.groups` argument.
   border-bottom-color: #D3D3D3;
 }
 
-#slzdxfxgqs .gt_striped {
+#hrxrozbjkv .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#slzdxfxgqs .gt_table_body {
+#hrxrozbjkv .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1658,7 +1677,7 @@ override using the `.groups` argument.
   border-bottom-color: #D3D3D3;
 }
 
-#slzdxfxgqs .gt_footnotes {
+#hrxrozbjkv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1672,7 +1691,7 @@ override using the `.groups` argument.
   border-right-color: #D3D3D3;
 }
 
-#slzdxfxgqs .gt_footnote {
+#hrxrozbjkv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1681,7 +1700,7 @@ override using the `.groups` argument.
   padding-right: 5px;
 }
 
-#slzdxfxgqs .gt_sourcenotes {
+#hrxrozbjkv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1695,7 +1714,7 @@ override using the `.groups` argument.
   border-right-color: #D3D3D3;
 }
 
-#slzdxfxgqs .gt_sourcenote {
+#hrxrozbjkv .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1703,72 +1722,72 @@ override using the `.groups` argument.
   padding-right: 5px;
 }
 
-#slzdxfxgqs .gt_left {
+#hrxrozbjkv .gt_left {
   text-align: left;
 }
 
-#slzdxfxgqs .gt_center {
+#hrxrozbjkv .gt_center {
   text-align: center;
 }
 
-#slzdxfxgqs .gt_right {
+#hrxrozbjkv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#slzdxfxgqs .gt_font_normal {
+#hrxrozbjkv .gt_font_normal {
   font-weight: normal;
 }
 
-#slzdxfxgqs .gt_font_bold {
+#hrxrozbjkv .gt_font_bold {
   font-weight: bold;
 }
 
-#slzdxfxgqs .gt_font_italic {
+#hrxrozbjkv .gt_font_italic {
   font-style: italic;
 }
 
-#slzdxfxgqs .gt_super {
+#hrxrozbjkv .gt_super {
   font-size: 65%;
 }
 
-#slzdxfxgqs .gt_footnote_marks {
+#hrxrozbjkv .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#slzdxfxgqs .gt_asterisk {
+#hrxrozbjkv .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#slzdxfxgqs .gt_indent_1 {
+#hrxrozbjkv .gt_indent_1 {
   text-indent: 5px;
 }
 
-#slzdxfxgqs .gt_indent_2 {
+#hrxrozbjkv .gt_indent_2 {
   text-indent: 10px;
 }
 
-#slzdxfxgqs .gt_indent_3 {
+#hrxrozbjkv .gt_indent_3 {
   text-indent: 15px;
 }
 
-#slzdxfxgqs .gt_indent_4 {
+#hrxrozbjkv .gt_indent_4 {
   text-indent: 20px;
 }
 
-#slzdxfxgqs .gt_indent_5 {
+#hrxrozbjkv .gt_indent_5 {
   text-indent: 25px;
 }
 
-#slzdxfxgqs .katex-display {
+#hrxrozbjkv .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#slzdxfxgqs div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#hrxrozbjkv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2128,6 +2147,58 @@ override using the `.groups` argument.
 </div>
 </div>
 </div>
+</section>
+<section id="additional-figures" class="level2">
+<h2 class="anchored" data-anchor-id="additional-figures">Additional Figures</h2>
+<section id="childhood-bmi" class="level3">
+<h3 class="anchored" data-anchor-id="childhood-bmi">Childhood BMI</h3>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>New names:
+• `` -&gt; `...2`
+• `` -&gt; `...3`
+• `` -&gt; `...4`
+• `` -&gt; `...5`
+• `` -&gt; `...6`
+• `` -&gt; `...7`
+• `` -&gt; `...8`
+• `` -&gt; `...9`
+• `` -&gt; `...10`
+• `` -&gt; `...11`
+• `` -&gt; `...12`
+• `` -&gt; `...13`
+• `` -&gt; `...14`
+• `` -&gt; `...15`
+• `` -&gt; `...16`
+• `` -&gt; `...17`
+• `` -&gt; `...18`
+• `` -&gt; `...19`
+• `` -&gt; `...20`
+• `` -&gt; `...21`
+• `` -&gt; `...22`
+• `` -&gt; `...23`
+• `` -&gt; `...24`
+• `` -&gt; `...25`
+• `` -&gt; `...26`
+• `` -&gt; `...27`
+• `` -&gt; `...28`
+• `` -&gt; `...29`
+• `` -&gt; `...30`</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf), : All aesthetics have length 1, but the data has 200 rows.
+ℹ Please consider using `annotate()` or provide this layer with data containing
+  a single row.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analysis_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
 </section>
 
 </main>

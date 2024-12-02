@@ -99,6 +99,7 @@ ghs_data <- ghs_data |>
   ) |>
   filter(drating >= 0) |>
   filter(age >= 20) |>
+  # filter(age >= 16) |>
   filter(country == 1) |>
   mutate(
     
@@ -115,8 +116,8 @@ ghs_data <- ghs_data |>
       TRUE ~ "Heavy Drinker")
     
     # alcohol_cat = case_when(
-    #   round(drating, digits = 0) > 50 ~ "HEAVY",
-    #   TRUE ~ "LIGHT"
+    #   round(drating, digits = 0) == 0 ~ "NON-DRINKER",
+    #   TRUE ~ "DRINKER"
     # )
     
   ) |>
@@ -128,7 +129,7 @@ ghs_data <- ghs_data |>
   ungroup() |>
   group_by(sex, age_group, alcohol_cat) |>
   summarise(value = sum(weight05/744.0531)/total_weight[1],
-            N = total_weight[1]
+            N = total_weight[1],
             # total_weight_adj = total_weight_adj[1],
             # total = total[1]
             ) |>
@@ -136,7 +137,7 @@ ghs_data <- ghs_data |>
          year = 2005) |>
   rename(level = alcohol_cat)
 
-ghs_data
+# ghs_data
 
 # Add to data
 rf_df <- rbind(rf_df, ghs_data)

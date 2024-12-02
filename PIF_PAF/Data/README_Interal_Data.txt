@@ -36,3 +36,9 @@ Incidence_data_for_England_2024-10-30 (1).csv
 	Date Accessed - 30/10/2024
 	Description - Data on cancer incidence in England across a range of years, cancers and sexes for people age 50+.
 	
+HSE-2022-Overweight-and-obesity-tables.xlsx
+	URL - https://digital.nhs.uk/data-and-information/publications/statistical/health-survey-for-england/2022-part-2/health-survey-for-england-hse-2022-part-2-data-tables
+		- HSE 2022 Adult and children's overweight and obesity tables
+	Date Accessed - 29/11/2024
+	Description - HSE data on BMI in England
+	
