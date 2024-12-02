@@ -976,9 +976,9 @@ gtsave(data_pif_gt_future, "../Output/Plots/Figure_5-PIF_Future.html")
 ## Additional Figures
 
 ### Childhood BMI
-```{r}
+```{r, fig.height=6, fig.width=10, warning=F}
 
-data_childhood_bmi <- read_excel("../Data/HSE-2022-Overweight-and-obesity-tables.xlsx", sheet = "Table 16")
+data_childhood_bmi <- suppressMessages(read_excel("../Data/HSE-2022-Overweight-and-obesity-tables.xlsx", sheet = "Table 16"))
 
 colnames(data_childhood_bmi) <- c("group", data_childhood_bmi[3,-1])
 data_childhood_bmi <- data_childhood_bmi[-(1:3),]
