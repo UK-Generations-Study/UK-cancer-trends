@@ -249,14 +249,6 @@ if(Sys.getenv("RSTUDIO") == '1' & !knitr::is_html_output()) { # If using Rstudio
 
 ```
 
-### Functions
-
-```{r}
-
-source("Functions/cancer_incidence_data_generation.R")
-
-```
-
 ### Read in data
 
 ```{r}
@@ -277,8 +269,10 @@ data_paf_comparison <- read.csv(r"(..\Data\paf_comparison.csv)") |>
 data_pif <- read.csv("../Data/PIF.csv")
 
 # Reading in cancer incidence data
-data_cancer <- cancer_incidence_data_gen("../Data")
+data_cancer <- read.csv("../Data/incidence_data_clean.csv")
 
+# Reading in JP Analysis
+data_joinpoint <- read.delim("../Data/Joinpoint/export.Export.APC.txt", sep = "\t")
 
 ```
 
@@ -286,20 +280,96 @@ data_cancer <- cancer_incidence_data_gen("../Data")
 
 ```{r, fig.height=16, fig.width=10, warning=F}
 
+# Merge joinpoint data into cancer data
+data_joinpoint_last <- data_joinpoint |>
+  filter(Model == Segment)
+
+data_cancer_plot <- merge(data_cancer, data_joinpoint_last, by = c("sex", "age_group", "cancer_site"), all.x = T) |>
+  mutate(
+    
+    last_segment = between(year, Segment.Start, Segment.End),
+    
+    APC_clean = paste0(round(APC, digits = 2), if_else(APC.Significant == 1, "*", ""))
+    
+  ) |>
+  # Fix Multiple Myeloma
+  mutate(
+    
+    cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site)
+    
+  )
+
+# Need to get rows at join and duplicate with alternate last_segment
+data_cancer_plot_new_rows <- data_cancer_plot |>
+  group_by(sex, age_group, cancer_site) |>
+  filter(last_segment) |>
+  filter(year == min(year)) |>
+  mutate(last_segment = F) |>
+  ungroup()
+
+# Now add back in
+data_cancer_plot <- rbind(data_cancer_plot, data_cancer_plot_new_rows)
+
+# Now create labels
+data_cancer_plot_labels <- data_cancer_plot |>
+  group_by(age_group, cancer_site) |>
+  mutate(
+    count_range = max(count) - min(count)
+  ) |>
+  group_by(sex, age_group, cancer_site) |>
+  filter(last_segment) |>
+  filter(year == max(year)) |>
+  reframe(
+    
+    year = max(year) + 1.8,
+    count = max(count),
+    count_range = count_range[1],
+    APC_clean = APC_clean[1]
+    
+  ) |>
+  distinct() |>
+  # Now attempting to do manual repelling of plots away from each other
+  group_by(age_group, cancer_site) |>
+  mutate(
+    
+    count = case_when(
+      n() == 1 ~ count,
+      max(count) - min(count) < count_range/2 & count == min(count) ~ count - (count_range/2 -  (max(count) - min(count)))/2,
+      max(count) - min(count) < count_range/2 & count == max(count) ~ count + (count_range/2 -  (max(count) - min(count)))/2,
+      TRUE ~ count
+    )
+    
+  )
+
+# Create invisible points to expand y limits
+data_cancer_invisible_points <- data_cancer_plot |>
+  group_by(sex, age_group, cancer_site) |>
+  summarise(
+
+    year = 2001,
+    count = max(count) + (max(count) - min(count))/2
+
+  )
+
 # Removing 2020 as COVID affected cases
-ggplot(data_cancer |> filter(year<2020), aes(x = year, y = count, fill = sex, colour = sex)) +
+ggplot(data_cancer_plot, aes(x = year, y = count, fill = sex, colour = sex)) +
+  xlim(2001, 2021.5) +
   geom_point() +
-  geom_line() +
+  geom_point(data = data_cancer_invisible_points, alpha = 0) +
+  geom_line(aes(linetype = last_segment)) +
+  geom_label(data = data_cancer_plot_labels, aes(label = APC_clean),
+             fill = "white", size = 3, show.legend = F) +
   theme_minimal() +
   geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
             colour = "black", fill = NA, inherit.aes = FALSE) +
   theme(strip.text = element_text(face = "bold")) +
   ylab("Cases") +
   xlab("Year") +
-  labs(colour = "Sex", fill = "Sex") +
+  labs(colour = "Sex", fill = "Sex", linetype = "Last Segment") +
   # scale_x_continuous(breaks = seq(min_year, max_year, by = 2)) +
-  ggtitle(paste0("Trends in Cancer Incidence in England")) +
-  facet_wrap(cancer_site~age_group,  scales = "free_y", nrow = 10)
+  ggtitle("Trends in Cancer Incidence in England") +
+  labs(subtitle = "Labels show APC for most recent trend, * indicates a significant trend") +
+  facet_wrap(~ paste0(cancer_site, " - ", age_group),  scales = "free_y", nrow = 10)
 
 ggsave(filename = paste0("../Output/Plots/Figure_1.png"), bg = "white", height = 16, width = 10)
 
@@ -679,6 +749,67 @@ for(site in unique(data_attr_cases$cancer_site)){
   ggsave(plot, filename = paste0("../Output/Plots/Figure_3-", gsub(" ", "_", site), ".png"), bg = "white", height = 6, width = 10)
   
 }
+
+
+```
+
+
+## Figure 3 - Current PAFs (2019) - Table
+```{r, fig.width=10}
+
+# Clean data made above and create gt table for presentation
+data_attr_cases_gt <- data_attr_cases |>
+  filter(year == 2019) |>
+  select(-year) |>
+  mutate(cases_count = paste0(round(cases_count), " (", round(100*cases_count/count), "%)")) |>
+  pivot_wider(names_from = case_group, values_from = cases_count) |>
+  select(-PAF) |>
+  mutate(temp = "") |>
+  relocate(temp) |>
+  group_by(cancer_site) |>
+  gt() |>
+  cols_align(
+    align = "center",
+    columns = everything()
+  ) |>
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = list(
+      cells_column_labels()
+    )
+  ) |>
+  tab_style(
+    style = list(
+      cell_text(weight = "bold"),
+      cell_fill(color = "lightgray"),
+      cell_borders(sides = "top"),
+      cell_borders(sides = "bottom")
+    ),
+    locations = cells_row_groups(groups = everything())
+  ) |>
+  cols_width(
+    temp ~ px(100)
+  ) |>
+  cols_label(
+    temp = "",
+    sex = "Sex",
+    age_group = "Age Group",
+    count = "Total Cases"
+    ) |>
+  tab_spanner(
+    label = md("**Cases (%)**"),
+    columns = c(Attributable, `Non-Attributable`)
+  ) |>
+  tab_header(
+    title = md("Attributable Cases - England, 2019")
+  )
+
+# Print
+data_attr_cases_gt
+
+# Output table
+gtsave(data_attr_cases_gt, "../Output/Plots/Figure_3-Table.html")
+
 
 
 ```
