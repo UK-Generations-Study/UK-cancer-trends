@@ -29,6 +29,26 @@ pif_scenario <- function(dataframe) {
     return(cleaned) #return the new scenario dataset 
 }
 
+#PAF scenario function: 
+paf_scenario <- function(dataframe) {
+  
+  cleaned <- dataframe %>% #redefining the input 
+    group_by(level, sex, age_group) %>% #grouping the data by the stratifying variables 
+    mutate(
+      year = as.numeric(year), #ensuring the year variable is numeric  
+      ) %>%
+    filter(
+      year == 2009
+    )%>%
+    mutate(
+      sA = 1 + ((1)/(value - (1*value))), #scenario (A): PAF is %
+      sB = 1 + ((3)/(value - (3*value))), #scenario (B): PAF is %
+      sC = 1 + ((5)/(value - (5*value))), #scenario (C): PAF is %
+      sD = 1 + ((10)/(value - (10*value))), #scenario (D): PAF is %
+    ) 
+  
+  return(cleaned) #return the new scenario dataset 
+}
 
 
 ##testing 
