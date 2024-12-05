@@ -102,12 +102,17 @@ Modifiable Lifestyle Risk Factors:
 Waiting to add:
 
 7.  Physical Activity
-  - HSE has measured MET hours/week for 3 years, 2012, 2016, 2021. In order to carry out the analysis needed for this paper we would need to extend this time period significantly.
-  - Brown et al. assumed an equivalence between meeting old guidelines and new MET hour guidelines, we should discuss if this is an appropriate assumption to make for this paper.
+
+-   HSE has measured MET hours/week for 3 years, 2012, 2016, 2021. In order to carry out the analysis needed for this paper we would need to extend this time period significantly.
+-   Brown et al. assumed an equivalence between meeting old guidelines and new MET hour guidelines, we should discuss if this is an appropriate assumption to make for this paper.
+
 8.  Hormone Replacement Therapy
-  - Possible data source for HRT usage [here](https://pmc.ncbi.nlm.nih.gov/articles/PMC6891893/).
+
+-   Possible data source for HRT usage [here](https://pmc.ncbi.nlm.nih.gov/articles/PMC6891893/).
+
 9.  Oral Contraceptives
-  - Possible data source for OC usage [here](https://srh.bmj.com/content/familyplanning/48/3/193.full.pdf).
+
+-   Possible data source for OC usage [here](https://srh.bmj.com/content/familyplanning/48/3/193.full.pdf).
 
 **Methodological plan:**
 
@@ -123,7 +128,7 @@ Risk Factor Data
 
 -   Alcohol, Smoking, BMI: This data were sourced from the ONS and collected via the [Health Survey England (HSE)](https://digital.nhs.uk/data-and-information/publications/statistical/health-survey-for-england). The data were requested from the [UK Data Service](https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=8860) by year.
 
-- Alcohol data via HSE on average drinking is only available back to 2011. Previous to this were the GHS and GLS. As of 29/11/2024, the 2005 GHS datapoint has been used for alcohol usage. Weighting has been used as to replicate sheet 2.17 from Table 2 Drinking (Excel sheet 211Kb) [here](https://webarchive.nationalarchives.gov.uk/ukgwa/20160115220036/http://www.ons.gov.uk/ons/publications/re-reference-tables.html?edition=tcm%3A77-213744). However, as visible in the risk factor plots, the prevelances seem highly suspicious. When contrasting this data with sheet 2.5 [here](https://digital.nhs.uk/data-and-information/publications/statistical/statistics-on-alcohol/2012), we see differences. Between both sources there is a disagreement on number of participants even. The selection criterion for the second table needs to be identified and a choice made between the two.
+-   Alcohol data via HSE on average drinking is only available back to 2011. Previous to this were the GHS and GLS. As of 29/11/2024, the 2005 GHS datapoint has been used for alcohol usage. Weighting has been used as to replicate sheet 2.17 from Table 2 Drinking (Excel sheet 211Kb) [here](https://webarchive.nationalarchives.gov.uk/ukgwa/20160115220036/http://www.ons.gov.uk/ons/publications/re-reference-tables.html?edition=tcm%3A77-213744). However, as visible in the risk factor plots, the prevelances seem highly suspicious. When contrasting this data with sheet 2.5 [here](https://digital.nhs.uk/data-and-information/publications/statistical/statistics-on-alcohol/2012), we see differences. Between both sources there is a disagreement on number of participants even. The selection criterion for the second table needs to be identified and a choice made between the two.
 
 -   Dietary Data: This data were sourced from the [National Diet and Nutrition Survey](https://www.gov.uk/government/collections/national-diet-and-nutrition-survey) and downloaded from the [UK Data Service](https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=6533).
 
@@ -214,6 +219,7 @@ RR/ risk factor match ups 
 1.  Physical activity has been measured differently over the years, all recent meta analysis are in MET units/week for relative risks but this is not how data were measured and collected historically 
 
 ## Setting up
+
 ### Packages
 
 ```{r}
@@ -378,6 +384,7 @@ ggsave(filename = paste0("../Output/Plots/Figure_1.png"), bg = "white", height =
 ## Figure 2 - Trends in risk factors
 
 ### Trends in risk factors
+
 ```{r, fig.height=6, fig.width=10, warning=F}
 
 # Filter to data desired and make formatting choices
@@ -753,8 +760,8 @@ for(site in unique(data_attr_cases$cancer_site)){
 
 ```
 
-
 ## Figure 3 - Current PAFs (2019) - Table
+
 ```{r, fig.width=10}
 
 # Clean data made above and create gt table for presentation
@@ -1116,10 +1123,10 @@ gtsave(data_pif_gt_future, "../Output/Plots/Figure_5-PIF_Future.html")
 
 ```
 
-
 ## Additional Figures
 
 ### Childhood BMI
+
 ```{r, fig.height=6, fig.width=10, warning=F}
 
 data_childhood_bmi <- suppressMessages(read_excel("../Data/HSE-2022-Overweight-and-obesity-tables.xlsx", sheet = "Table 16"))
@@ -1189,4 +1196,113 @@ ggplot(data_childhood_bmi |> filter(level != "Overweight including obese") |> fi
   facet_grid(age_group~level)
 
 
+```
+
+### Suspected Risk Factor RR Scenarios
+
+PIF scenarios for suspected risk factors to predict relative risks. The PIF scenarios are based on the PIFs calculated for established risk factors (above) for the time period 2009-2019. The scenarios are PIF =
+
+-   1%
+
+-   3%
+
+-   5%
+
+-   10%
+
+```{r}
+library(gt)
+
+source ("Functions/pifpaf_scenario_generation.R")
+
+pifscenario_table <- pifscenarios_allrf %>%
+  mutate(
+    pif1 = ifelse(pif1 <1, NA, pif1),
+    pif3 = ifelse(pif3 <1, NA, pif3),
+    pif5 = ifelse(pif5 <1, NA, pif5),
+    pif10 = ifelse(pif10 <1, NA, pif10), 
+    p0 = p0*100, 
+    p1 = p1*100, 
+    p0 = round(p0, 2), 
+    p1 = round(p1, 2)
+  ) %>%
+  rename(
+    `2009exp` = p0, 
+    `2019exp` = p1
+  ) %>%
+  arrange(variable, level) %>%
+  gt(groupname_col = "variable") %>% # Specify group column
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  ) %>%
+  tab_style(
+    style = list(
+      cell_text(weight = "bold"),
+      cell_fill(color = "lightgray"),
+      cell_borders(sides = "top"),
+      cell_borders(sides = "bottom")
+    ),
+    locations = cells_row_groups(groups = everything())
+  ) %>%
+  cols_width(
+    everything() ~ px(100) 
+  ) %>%
+  tab_header(
+    title = md("Relative Risk by PIF Scenarios - UK, 2009-2019")
+  )
+
+# View the resulting table
+pifscenario_table
+```
+
+PAF scenarios for suspected risk factors to predict relative risks. The PAF scenarios are based on the PAF calculated for established risk factors (above) for risk factors exposures occurring in 2009. The scenarios are PAF =
+
+-   5%
+
+-   10%
+
+-   15%
+
+-   25%
+
+-   35%
+
+-   50%
+
+```{r}
+#run the previous chunk as well
+
+pafscenario_table <- pafscenarios_allrf %>%
+  mutate(
+    value = value *100, 
+    value = round(value, 2)
+  ) %>%
+  rename(
+    `2009exp` = value 
+  )%>%
+  arrange(variable, level) %>%
+  gt(groupname_col = "variable") %>% # Specify group column
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  ) %>%
+  tab_style(
+    style = list(
+      cell_text(weight = "bold"),
+      cell_fill(color = "lightgray"),
+      cell_borders(sides = "top"),
+      cell_borders(sides = "bottom")
+    ),
+    locations = cells_row_groups(groups = everything())
+  ) %>%
+  cols_width(
+    everything() ~ px(100) 
+  ) %>%
+  tab_header(
+    title = md(" Relative Risk by PAF Scenarios - UK, 2009")
+  )
+
+# View the resulting table
+pafscenario_table
 ```
