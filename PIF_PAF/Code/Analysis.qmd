@@ -265,6 +265,9 @@ data_rf <- read.csv("../../../Data/Cleaned_Data/clean_rf_data.csv")
 # Read in aggregate PAFs
 data_paf <- read.csv("../Data/AggregatePAFs_BestEstimates.csv")
 
+# Read in individual PAFs
+data_paf_individual <- read.csv("../Data/PAF_by_riskfactor.csv")
+
 # Read in PAF samples
 data_paf_comparison <- read.csv(r"(..\Data\paf_comparison.csv)") |>
   # TEMPORARY CODE
@@ -762,7 +765,7 @@ for(site in unique(data_attr_cases$cancer_site)){
 
 ## Figure 3 - Current PAFs (2019) - Table
 
-```{r, fig.width=10}
+```{r, fig.width=10, results = "asis"}
 
 # Clean data made above and create gt table for presentation
 data_attr_cases_gt <- data_attr_cases |>
@@ -795,7 +798,7 @@ data_attr_cases_gt <- data_attr_cases |>
     locations = cells_row_groups(groups = everything())
   ) |>
   cols_width(
-    temp ~ px(100)
+    temp ~ px(150)
   ) |>
   cols_label(
     temp = "",
@@ -812,7 +815,7 @@ data_attr_cases_gt <- data_attr_cases |>
   )
 
 # Print
-data_attr_cases_gt
+print(data_attr_cases_gt)
 
 # Output table
 gtsave(data_attr_cases_gt, "../Output/Plots/Figure_3-Table.html")
@@ -821,7 +824,101 @@ gtsave(data_attr_cases_gt, "../Output/Plots/Figure_3-Table.html")
 
 ```
 
-## Figure 4 - Difference in PAFs
+## Figure 4 - Current PAFs (2019) - Table by Risk Factor
+
+```{r, fig.width=10, results = "asis"}
+
+# Pivot PAFs longer so we can merge
+data_paf_long_individual <- data_paf_individual |>
+  pivot_longer(cols = colnames(data_paf_individual)[!colnames(data_paf_individual) %in% c("sex", "year", "age_group", "variable")], names_to = "cancer_site", values_to = "PAF") |>
+  mutate(year = year + 10) |> # Broad assumption of 10 year lag period
+  mutate(cancer_site = gsub("PAF$", "", cancer_site))
+
+# Merge and find attributable cases
+data_attr_cases_individual <- merge(data_paf_long_individual, data_cancer, by = c("sex", "year", "age_group", "cancer_site"), all.x = T) |>
+  mutate(
+    
+    attr_cases = PAF*count,
+    non_attr_cases = (1-PAF)*count
+    
+  ) |>
+  pivot_longer(cols = c("attr_cases", "non_attr_cases"), names_to = "case_group", values_to = "cases_count") |>
+  mutate(
+    
+    case_group = factor(case_group, level = c("non_attr_cases", "attr_cases"), labels = c("Non-Attributable", "Attributable"))
+    
+  )
+
+# Loop through variables and output gt table
+for(var in unique(data_attr_cases_individual$variable)[!grepl("\\_mean$|\\_median$", unique(data_attr_cases_individual$variable))]){
+  
+  # Clean data made above and create gt table for presentation
+  data_attr_cases_individual_gt <- data_attr_cases_individual |>
+    filter(variable == var) |>
+    filter(PAF > 0) |>
+    # filter(cases_count != 0 & !is.na(cases_count)) |>
+    filter(year == 2019) |>
+    select(-year) |>
+    select(-variable) |>
+    mutate(cases_count = paste0(round(cases_count), " (", round(100*cases_count/count), "%)")) |>
+    pivot_wider(names_from = case_group, values_from = cases_count) |>
+    select(-PAF) |>
+    mutate(temp = "") |>
+    relocate(temp) |>
+    group_by(cancer_site) |>
+    gt() |>
+    cols_align(
+      align = "center",
+      columns = everything()
+    ) |>
+    tab_style(
+      style = cell_text(weight = "bold"),
+      locations = list(
+        cells_column_labels()
+      )
+    ) |>
+    tab_style(
+      style = list(
+        cell_text(weight = "bold"),
+        cell_fill(color = "lightgray"),
+        cell_borders(sides = "top"),
+        cell_borders(sides = "bottom")
+      ),
+      locations = cells_row_groups(groups = everything())
+    ) |>
+    cols_width(
+      temp ~ px(150)
+    ) |>
+    cols_label(
+      temp = "",
+      sex = "Sex",
+      age_group = "Age Group",
+      count = "Total Cases"
+      ) |>
+    tab_spanner(
+      label = md("**Cases (%)**"),
+      columns = c(Attributable, `Non-Attributable`)
+    ) |>
+    tab_header(
+      title = md(paste0("Cases Attributable to ", var, " - England, 2019"))
+    )
+  
+  # Print
+  print(data_attr_cases_individual_gt)
+  
+  # Output table
+  gtsave(data_attr_cases_individual_gt, paste0("../Output/Plots/Figure_4-Table-", var, ".html"))
+  
+  
+}
+
+
+
+
+
+```
+
+## Figure 5 - Difference in PAFs
 
 ```{r, results="asis"}
 
@@ -982,17 +1079,17 @@ for(var in unique(data_complete_paf_plot$variable_label)){
   rows <- length(plot$labels$Cancer_sites)
 
   # Make forest plot
-  pdf(file=paste0("../Output/Plots/Figure_4-", gsub(" ", "_", var), ".pdf"), width = 15, height = (2/5)*(3 + rows))
+  pdf(file=paste0("../Output/Plots/Figure_5-", gsub(" ", "_", var), ".pdf"), width = 15, height = (2/5)*(3 + rows))
   print(plot)
   dev.off()
   
-  cat(sprintf("- [%s](%s)\n", paste0("**Figure 4: ", var, "**"), paste0("../Output/Plots/Figure_4-", gsub(" ", "_", var), ".pdf")))
+  cat(sprintf("- [%s](%s)\n", paste0("**Figure 4: ", var, "**"), paste0("../Output/Plots/Figure_5-", gsub(" ", "_", var), ".pdf")))
   
 }
 
 ```
 
-## Figure 5 - PIF (Past)
+## Figure 6 - PIF (Past)
 
 ```{r,warning=F}
 
@@ -1052,12 +1149,12 @@ data_pif_gt_past <- data_pif |>
 
 data_pif_gt_past
 
-gtsave(data_pif_gt_past, "../Output/Plots/Figure_5-PIF_Past.html")
+gtsave(data_pif_gt_past, "../Output/Plots/Figure_6-PIF_Past.html")
   
 
 ```
 
-## Figure 5 - PIF (Future)
+## Figure 6 - PIF (Future)
 
 ```{r,warning=F}
 
@@ -1118,7 +1215,7 @@ data_pif_gt_future <- data_pif |>
 
 data_pif_gt_future
 
-gtsave(data_pif_gt_future, "../Output/Plots/Figure_5-PIF_Future.html")
+gtsave(data_pif_gt_future, "../Output/Plots/Figure_6-PIF_Future.html")
   
 
 ```
