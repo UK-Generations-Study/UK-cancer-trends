@@ -5,13 +5,25 @@ library(stringr)
 library(ggplot2)
 library(gridExtra)
 
+# Setting up wd for relative file paths
+# This sets wd to wherever the document is saved - this should be the github desktop folder
+if(Sys.getenv("RSTUDIO") == '1' & !knitr::is_html_output()) { # If using Rstudio and not rendering
+  setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+} else if(Sys.getenv("RSTUDIO") != '1'){ # If using Rscript
+  initial.options <- commandArgs(trailingOnly = FALSE)
+  file.arg.name <- "--file="
+  script.name <- sub(file.arg.name, "", initial.options[grep(file.arg.name, initial.options)])
+  script.basename <- dirname(script.name)
+  setwd(file.path(getwd(), script.basename))
+}
+
 #read in the data
-riskfactors<- read.csv("../../../Data/Cleaned_Data/clean_rf_data.csv")
-rr_under50<-read.csv("../Data/relativerisk_under50.csv")
-rr_over50<-read.csv("../Data/relativerisk_over50.csv")
+riskfactors<- read.csv("../../../../Data/Cleaned_Data/clean_rf_data.csv")
+rr_under50<-read.csv("../../Data/relativerisk_under50.csv")
+rr_over50<-read.csv("../../Data/relativerisk_over50.csv")
 
 #cleaning the risk factor data so that there are no data gaps 
-source("PAF_calculations/data_gaps.R")
+source("data_gaps.R")
 
 ###########################################################
 #under 50
@@ -122,7 +134,7 @@ upperlimits <- rf_under50 %>%
 rf_under50 <- upperlimits %>%
   filter(!grepl("^[\\(\\[0]", exposure)) %>% #remove most of the rows that arent being used to remove noise 
   left_join(err_under50 %>% 
-              select(exposure, Oral, Endometrium, Pancreas, Gallbladder, Colorectum, Liver, Kidney, Thyroid, `Multiple Myeloma`, `Breast `), by = c("exposure" = "exposure")) %>% #add the ERR to the dataframe
+              select(exposure, Oral, Endometrium, Pancreas, Gallbladder, Colorectum, Liver, Kidney, Thyroid, `Multiple Myeloma`, `Breast`), by = c("exposure" = "exposure")) %>% #add the ERR to the dataframe
   rename(OralERR = Oral, 
          EndometriumERR = Endometrium, 
          PancreasERR = Pancreas, 
@@ -132,7 +144,7 @@ rf_under50 <- upperlimits %>%
          KidneyERR = Kidney, 
          ThyroidERR = Thyroid, 
          MultipleMyelomaERR = `Multiple Myeloma`, 
-         BreastERR = `Breast `
+         BreastERR = `Breast`
          ) %>% #cleaning and renaming the variables 
   mutate(
     Oral = value*exp_lvl*as.numeric(OralERR), 
@@ -443,7 +455,7 @@ paf_cancersite_over50 <- subpaf_over50 %>%
 
 #saving the PAF calculations 
 PAF_by_riskfactor <- rbind(paf_cancersite_over50, paf_cancersite_under50)
-write.csv(PAF_by_riskfactor, file = "../Data/PAF_by_riskfactor.csv", row.names = F)
+write.csv(PAF_by_riskfactor, file = "../../Data/PAF_by_riskfactor.csv", row.names = F)
 
 #############
 #aggregate PAFS 
@@ -488,7 +500,7 @@ aggregate_pafs <- aggregate_pafs %>%
     Breast = ifelse(sex == "Men", 0, Breast)
     )
 
-write.csv(aggregate_pafs, file = "../Data/AggregatePAFs_BestEstimates.csv", row.names = F)
+write.csv(aggregate_pafs, file = "../../Data/AggregatePAFs_BestEstimates.csv", row.names = F)
 
 #Sensitivity Analysis
 

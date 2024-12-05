@@ -51,16 +51,17 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
   <li><a href="#setting-working-directory" id="toc-setting-working-directory" class="nav-link" data-scroll-target="#setting-working-directory">Setting working directory</a></li>
-  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
   <li><a href="#read-in-data" id="toc-read-in-data" class="nav-link" data-scroll-target="#read-in-data">Read in data</a></li>
   </ul></li>
   <li><a href="#figure-1---trends-in-cancer-incidence" id="toc-figure-1---trends-in-cancer-incidence" class="nav-link" data-scroll-target="#figure-1---trends-in-cancer-incidence">Figure 1 - Trends in cancer incidence</a></li>
   <li><a href="#figure-2---trends-in-risk-factors" id="toc-figure-2---trends-in-risk-factors" class="nav-link" data-scroll-target="#figure-2---trends-in-risk-factors">Figure 2 - Trends in risk factors</a>
   <ul>
+  <li><a href="#trends-in-risk-factors" id="toc-trends-in-risk-factors" class="nav-link" data-scroll-target="#trends-in-risk-factors">Trends in risk factors</a></li>
   <li><a href="#linear-trends-in-risk-factors" id="toc-linear-trends-in-risk-factors" class="nav-link" data-scroll-target="#linear-trends-in-risk-factors">Linear trends in risk factors</a></li>
   <li><a href="#differences-in-risk-factor-trends-by-age" id="toc-differences-in-risk-factor-trends-by-age" class="nav-link" data-scroll-target="#differences-in-risk-factor-trends-by-age">Differences in risk factor trends by age</a></li>
   </ul></li>
   <li><a href="#figure-3---current-pafs-2019" id="toc-figure-3---current-pafs-2019" class="nav-link" data-scroll-target="#figure-3---current-pafs-2019">Figure 3 - Current PAFs (2019)</a></li>
+  <li><a href="#figure-3---current-pafs-2019---table" id="toc-figure-3---current-pafs-2019---table" class="nav-link" data-scroll-target="#figure-3---current-pafs-2019---table">Figure 3 - Current PAFs (2019) - Table</a></li>
   <li><a href="#figure-4---difference-in-pafs" id="toc-figure-4---difference-in-pafs" class="nav-link" data-scroll-target="#figure-4---difference-in-pafs">Figure 4 - Difference in PAFs</a></li>
   <li><a href="#figure-5---pif-past" id="toc-figure-5---pif-past" class="nav-link" data-scroll-target="#figure-5---pif-past">Figure 5 - PIF (Past)</a></li>
   <li><a href="#figure-5---pif-future" id="toc-figure-5---pif-future" class="nav-link" data-scroll-target="#figure-5---pif-future">Figure 5 - PIF (Future)</a></li>
@@ -285,21 +286,30 @@ Attaching package: 'dplyr'</code></pre>
 <section id="setting-working-directory" class="level3">
 <h3 class="anchored" data-anchor-id="setting-working-directory">Setting working directory</h3>
 </section>
-<section id="functions" class="level3">
-<h3 class="anchored" data-anchor-id="functions">Functions</h3>
-</section>
 <section id="read-in-data" class="level3">
 <h3 class="anchored" data-anchor-id="read-in-data">Read in data</h3>
-<div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>`summarise()` has grouped output by 'Year', 'sex', 'age_group'. You can
-override using the `.groups` argument.</code></pre>
-</div>
-</div>
 </section>
 </section>
 <section id="figure-1---trends-in-cancer-incidence" class="level2">
 <h2 class="anchored" data-anchor-id="figure-1---trends-in-cancer-incidence">Figure 1 - Trends in cancer incidence</h2>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'sex', 'age_group'. You can override using
+the `.groups` argument.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analysis_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="figure-2---trends-in-risk-factors" class="level2">
+<h2 class="anchored" data-anchor-id="figure-2---trends-in-risk-factors">Figure 2 - Trends in risk factors</h2>
+<section id="trends-in-risk-factors" class="level3">
+<h3 class="anchored" data-anchor-id="trends-in-risk-factors">Trends in risk factors</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -308,40 +318,29 @@ override using the `.groups` argument.</code></pre>
 </figure>
 </div>
 </div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analysis_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analysis_files/figure-html/unnamed-chunk-5-3.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analysis_files/figure-html/unnamed-chunk-5-4.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
-<section id="figure-2---trends-in-risk-factors" class="level2">
-<h2 class="anchored" data-anchor-id="figure-2---trends-in-risk-factors">Figure 2 - Trends in risk factors</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Analysis_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="960"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Analysis_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="960"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Analysis_files/figure-html/unnamed-chunk-6-3.png" class="img-fluid figure-img" width="960"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Analysis_files/figure-html/unnamed-chunk-6-4.png" class="img-fluid figure-img" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
 <section id="linear-trends-in-risk-factors" class="level3">
 <h3 class="anchored" data-anchor-id="linear-trends-in-risk-factors">Linear trends in risk factors</h3>
 <div class="cell">
@@ -444,111 +443,96 @@ argument.</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Analysis_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="960"></p>
+<p><img src="Analysis_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="960"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Analysis_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid figure-img" width="960"></p>
+<p><img src="Analysis_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="960"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Analysis_files/figure-html/unnamed-chunk-7-3.png" class="img-fluid figure-img" width="960"></p>
+<p><img src="Analysis_files/figure-html/unnamed-chunk-6-3.png" class="img-fluid figure-img" width="960"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Analysis_files/figure-html/unnamed-chunk-7-4.png" class="img-fluid figure-img" width="960"></p>
+<p><img src="Analysis_files/figure-html/unnamed-chunk-6-4.png" class="img-fluid figure-img" width="960"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Analysis_files/figure-html/unnamed-chunk-7-5.png" class="img-fluid figure-img" width="960"></p>
+<p><img src="Analysis_files/figure-html/unnamed-chunk-6-5.png" class="img-fluid figure-img" width="960"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Analysis_files/figure-html/unnamed-chunk-7-6.png" class="img-fluid figure-img" width="960"></p>
+<p><img src="Analysis_files/figure-html/unnamed-chunk-6-6.png" class="img-fluid figure-img" width="960"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Analysis_files/figure-html/unnamed-chunk-7-7.png" class="img-fluid figure-img" width="960"></p>
+<p><img src="Analysis_files/figure-html/unnamed-chunk-6-7.png" class="img-fluid figure-img" width="960"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Analysis_files/figure-html/unnamed-chunk-7-8.png" class="img-fluid figure-img" width="960"></p>
+<p><img src="Analysis_files/figure-html/unnamed-chunk-6-8.png" class="img-fluid figure-img" width="960"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Analysis_files/figure-html/unnamed-chunk-7-9.png" class="img-fluid figure-img" width="960"></p>
+<p><img src="Analysis_files/figure-html/unnamed-chunk-6-9.png" class="img-fluid figure-img" width="960"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Analysis_files/figure-html/unnamed-chunk-7-10.png" class="img-fluid figure-img" width="960"></p>
+<p><img src="Analysis_files/figure-html/unnamed-chunk-6-10.png" class="img-fluid figure-img" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="figure-4---difference-in-pafs" class="level2">
-<h2 class="anchored" data-anchor-id="figure-4---difference-in-pafs">Figure 4 - Difference in PAFs</h2>
-<pre><code>`summarise()` has grouped output by 'Cancer_sites', 'age_group', 'sex'. You can
-override using the `.groups` argument.
-`summarise()` has grouped output by 'Cancer_sites', 'age_group', 'sex',
-'variable'. You can override using the `.groups` argument.</code></pre>
-<ul>
-<li><a href="../Output/Plots/Figure_4-Alcohol.pdf"><strong>Figure 4: Alcohol</strong></a></li>
-<li><a href="../Output/Plots/Figure_4-BMI.pdf"><strong>Figure 4: BMI</strong></a></li>
-<li><a href="../Output/Plots/Figure_4-Fibre.pdf"><strong>Figure 4: Fibre</strong></a></li>
-<li><a href="../Output/Plots/Figure_4-Processed_Meat.pdf"><strong>Figure 4: Processed Meat</strong></a></li>
-<li><a href="../Output/Plots/Figure_4-Red_Meat.pdf"><strong>Figure 4: Red Meat</strong></a></li>
-<li><a href="../Output/Plots/Figure_4-Smoking_Status.pdf"><strong>Figure 4: Smoking Status</strong></a></li>
-</ul>
-</section>
-<section id="figure-5---pif-past" class="level2">
-<h2 class="anchored" data-anchor-id="figure-5---pif-past">Figure 5 - PIF (Past)</h2>
+<section id="figure-3---current-pafs-2019---table" class="level2">
+<h2 class="anchored" data-anchor-id="figure-3---current-pafs-2019---table">Figure 3 - Current PAFs (2019) - Table</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div id="qjsoipuafa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qjsoipuafa table {
+<div id="hiyomyhpnd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hiyomyhpnd table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#qjsoipuafa thead, #qjsoipuafa tbody, #qjsoipuafa tfoot, #qjsoipuafa tr, #qjsoipuafa td, #qjsoipuafa th {
+#hiyomyhpnd thead, #hiyomyhpnd tbody, #hiyomyhpnd tfoot, #hiyomyhpnd tr, #hiyomyhpnd td, #hiyomyhpnd th {
   border-style: none;
 }
 
-#qjsoipuafa p {
+#hiyomyhpnd p {
   margin: 0;
   padding: 0;
 }
 
-#qjsoipuafa .gt_table {
+#hiyomyhpnd .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -574,12 +558,12 @@ override using the `.groups` argument.
   border-left-color: #D3D3D3;
 }
 
-#qjsoipuafa .gt_caption {
+#hiyomyhpnd .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#qjsoipuafa .gt_title {
+#hiyomyhpnd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -591,7 +575,7 @@ override using the `.groups` argument.
   border-bottom-width: 0;
 }
 
-#qjsoipuafa .gt_subtitle {
+#hiyomyhpnd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -603,7 +587,7 @@ override using the `.groups` argument.
   border-top-width: 0;
 }
 
-#qjsoipuafa .gt_heading {
+#hiyomyhpnd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -615,13 +599,13 @@ override using the `.groups` argument.
   border-right-color: #D3D3D3;
 }
 
-#qjsoipuafa .gt_bottom_border {
+#hiyomyhpnd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qjsoipuafa .gt_col_headings {
+#hiyomyhpnd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -636,7 +620,7 @@ override using the `.groups` argument.
   border-right-color: #D3D3D3;
 }
 
-#qjsoipuafa .gt_col_heading {
+#hiyomyhpnd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -656,7 +640,7 @@ override using the `.groups` argument.
   overflow-x: hidden;
 }
 
-#qjsoipuafa .gt_column_spanner_outer {
+#hiyomyhpnd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -668,15 +652,15 @@ override using the `.groups` argument.
   padding-right: 4px;
 }
 
-#qjsoipuafa .gt_column_spanner_outer:first-child {
+#hiyomyhpnd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qjsoipuafa .gt_column_spanner_outer:last-child {
+#hiyomyhpnd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qjsoipuafa .gt_column_spanner {
+#hiyomyhpnd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -688,11 +672,11 @@ override using the `.groups` argument.
   width: 100%;
 }
 
-#qjsoipuafa .gt_spanner_row {
+#hiyomyhpnd .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#qjsoipuafa .gt_group_heading {
+#hiyomyhpnd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -718,7 +702,7 @@ override using the `.groups` argument.
   text-align: left;
 }
 
-#qjsoipuafa .gt_empty_group_heading {
+#hiyomyhpnd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -733,15 +717,15 @@ override using the `.groups` argument.
   vertical-align: middle;
 }
 
-#qjsoipuafa .gt_from_md > :first-child {
+#hiyomyhpnd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qjsoipuafa .gt_from_md > :last-child {
+#hiyomyhpnd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qjsoipuafa .gt_row {
+#hiyomyhpnd .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -760,7 +744,7 @@ override using the `.groups` argument.
   overflow-x: hidden;
 }
 
-#qjsoipuafa .gt_stub {
+#hiyomyhpnd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -773,7 +757,7 @@ override using the `.groups` argument.
   padding-right: 5px;
 }
 
-#qjsoipuafa .gt_stub_row_group {
+#hiyomyhpnd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -787,15 +771,15 @@ override using the `.groups` argument.
   vertical-align: top;
 }
 
-#qjsoipuafa .gt_row_group_first td {
+#hiyomyhpnd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qjsoipuafa .gt_row_group_first th {
+#hiyomyhpnd .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#qjsoipuafa .gt_summary_row {
+#hiyomyhpnd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -805,16 +789,16 @@ override using the `.groups` argument.
   padding-right: 5px;
 }
 
-#qjsoipuafa .gt_first_summary_row {
+#hiyomyhpnd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qjsoipuafa .gt_first_summary_row.thick {
+#hiyomyhpnd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qjsoipuafa .gt_last_summary_row {
+#hiyomyhpnd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -824,7 +808,7 @@ override using the `.groups` argument.
   border-bottom-color: #D3D3D3;
 }
 
-#qjsoipuafa .gt_grand_summary_row {
+#hiyomyhpnd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -834,7 +818,7 @@ override using the `.groups` argument.
   padding-right: 5px;
 }
 
-#qjsoipuafa .gt_first_grand_summary_row {
+#hiyomyhpnd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -844,7 +828,7 @@ override using the `.groups` argument.
   border-top-color: #D3D3D3;
 }
 
-#qjsoipuafa .gt_last_grand_summary_row_top {
+#hiyomyhpnd .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -854,11 +838,11 @@ override using the `.groups` argument.
   border-bottom-color: #D3D3D3;
 }
 
-#qjsoipuafa .gt_striped {
+#hiyomyhpnd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qjsoipuafa .gt_table_body {
+#hiyomyhpnd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -867,7 +851,7 @@ override using the `.groups` argument.
   border-bottom-color: #D3D3D3;
 }
 
-#qjsoipuafa .gt_footnotes {
+#hiyomyhpnd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -881,7 +865,7 @@ override using the `.groups` argument.
   border-right-color: #D3D3D3;
 }
 
-#qjsoipuafa .gt_footnote {
+#hiyomyhpnd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -890,7 +874,7 @@ override using the `.groups` argument.
   padding-right: 5px;
 }
 
-#qjsoipuafa .gt_sourcenotes {
+#hiyomyhpnd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -904,7 +888,7 @@ override using the `.groups` argument.
   border-right-color: #D3D3D3;
 }
 
-#qjsoipuafa .gt_sourcenote {
+#hiyomyhpnd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -912,72 +896,887 @@ override using the `.groups` argument.
   padding-right: 5px;
 }
 
-#qjsoipuafa .gt_left {
+#hiyomyhpnd .gt_left {
   text-align: left;
 }
 
-#qjsoipuafa .gt_center {
+#hiyomyhpnd .gt_center {
   text-align: center;
 }
 
-#qjsoipuafa .gt_right {
+#hiyomyhpnd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qjsoipuafa .gt_font_normal {
+#hiyomyhpnd .gt_font_normal {
   font-weight: normal;
 }
 
-#qjsoipuafa .gt_font_bold {
+#hiyomyhpnd .gt_font_bold {
   font-weight: bold;
 }
 
-#qjsoipuafa .gt_font_italic {
+#hiyomyhpnd .gt_font_italic {
   font-style: italic;
 }
 
-#qjsoipuafa .gt_super {
+#hiyomyhpnd .gt_super {
   font-size: 65%;
 }
 
-#qjsoipuafa .gt_footnote_marks {
+#hiyomyhpnd .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#qjsoipuafa .gt_asterisk {
+#hiyomyhpnd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qjsoipuafa .gt_indent_1 {
+#hiyomyhpnd .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qjsoipuafa .gt_indent_2 {
+#hiyomyhpnd .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qjsoipuafa .gt_indent_3 {
+#hiyomyhpnd .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qjsoipuafa .gt_indent_4 {
+#hiyomyhpnd .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qjsoipuafa .gt_indent_5 {
+#hiyomyhpnd .gt_indent_5 {
   text-indent: 25px;
 }
 
-#qjsoipuafa .katex-display {
+#hiyomyhpnd .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#qjsoipuafa div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#hiyomyhpnd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_heading">
+<th colspan="6" class="gt_heading gt_title gt_font_normal gt_bottom_border"><p>Attributable Cases - England, 2019</p></th>
+</tr>
+<tr class="odd gt_col_headings gt_spanner_row">
+<th rowspan="2" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col"></th>
+<th rowspan="2" id="Sex" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Sex</th>
+<th rowspan="2" id="Age Group" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Age Group</th>
+<th rowspan="2" id="Total Cases" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Total Cases</th>
+<th colspan="2" id="<div data-qmd-base64=&quot;KipDYXNlcyAoJSkqKg==&quot;><div class='gt_from_md'><p><strong>Cases (%)</strong></p>
+</div></div>" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><span class="gt_column_spanner"></span>
+<p><strong>Cases (%)</strong></p>
+</th>
+</tr>
+<tr class="header gt_col_headings">
+<th id="Attributable" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Attributable</th>
+<th id="Non-Attributable" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Non-Attributable</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd gt_group_heading_row">
+<td colspan="6" id="Colorectum" class="gt_group_heading" data-quarto-table-cell-role="th" style="font-weight: bold; background-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000" scope="colgroup">Colorectum</td>
+</tr>
+<tr class="even gt_row_group_first">
+<td class="gt_row gt_center" headers="Colorectum  temp"></td>
+<td class="gt_row gt_center" headers="Colorectum  sex">Men</td>
+<td class="gt_row gt_center" headers="Colorectum  age_group">20-49</td>
+<td class="gt_row gt_center" headers="Colorectum  count">1237</td>
+<td class="gt_row gt_center" headers="Colorectum  Attributable">515 (42%)</td>
+<td class="gt_row gt_center" headers="Colorectum  Non-Attributable">722 (58%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Colorectum  temp"></td>
+<td class="gt_row gt_center" headers="Colorectum  sex">Men</td>
+<td class="gt_row gt_center" headers="Colorectum  age_group">50+</td>
+<td class="gt_row gt_center" headers="Colorectum  count">20255</td>
+<td class="gt_row gt_center" headers="Colorectum  Attributable">9327 (46%)</td>
+<td class="gt_row gt_center" headers="Colorectum  Non-Attributable">10928 (54%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Colorectum  temp"></td>
+<td class="gt_row gt_center" headers="Colorectum  sex">Women</td>
+<td class="gt_row gt_center" headers="Colorectum  age_group">20-49</td>
+<td class="gt_row gt_center" headers="Colorectum  count">1219</td>
+<td class="gt_row gt_center" headers="Colorectum  Attributable">431 (35%)</td>
+<td class="gt_row gt_center" headers="Colorectum  Non-Attributable">788 (65%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Colorectum  temp"></td>
+<td class="gt_row gt_center" headers="Colorectum  sex">Women</td>
+<td class="gt_row gt_center" headers="Colorectum  age_group">50+</td>
+<td class="gt_row gt_center" headers="Colorectum  count">16482</td>
+<td class="gt_row gt_center" headers="Colorectum  Attributable">6147 (37%)</td>
+<td class="gt_row gt_center" headers="Colorectum  Non-Attributable">10335 (63%)</td>
+</tr>
+<tr class="even gt_group_heading_row">
+<td colspan="6" id="Gallbladder" class="gt_group_heading" data-quarto-table-cell-role="th" style="font-weight: bold; background-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000" scope="colgroup">Gallbladder</td>
+</tr>
+<tr class="odd gt_row_group_first">
+<td class="gt_row gt_center" headers="Gallbladder  temp"></td>
+<td class="gt_row gt_center" headers="Gallbladder  sex">Men</td>
+<td class="gt_row gt_center" headers="Gallbladder  age_group">20-49</td>
+<td class="gt_row gt_center" headers="Gallbladder  count">37</td>
+<td class="gt_row gt_center" headers="Gallbladder  Attributable">3 (7%)</td>
+<td class="gt_row gt_center" headers="Gallbladder  Non-Attributable">34 (93%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Gallbladder  temp"></td>
+<td class="gt_row gt_center" headers="Gallbladder  sex">Men</td>
+<td class="gt_row gt_center" headers="Gallbladder  age_group">50+</td>
+<td class="gt_row gt_center" headers="Gallbladder  count">880</td>
+<td class="gt_row gt_center" headers="Gallbladder  Attributable">102 (12%)</td>
+<td class="gt_row gt_center" headers="Gallbladder  Non-Attributable">778 (88%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Gallbladder  temp"></td>
+<td class="gt_row gt_center" headers="Gallbladder  sex">Women</td>
+<td class="gt_row gt_center" headers="Gallbladder  age_group">20-49</td>
+<td class="gt_row gt_center" headers="Gallbladder  count">41</td>
+<td class="gt_row gt_center" headers="Gallbladder  Attributable">8 (19%)</td>
+<td class="gt_row gt_center" headers="Gallbladder  Non-Attributable">33 (81%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Gallbladder  temp"></td>
+<td class="gt_row gt_center" headers="Gallbladder  sex">Women</td>
+<td class="gt_row gt_center" headers="Gallbladder  age_group">50+</td>
+<td class="gt_row gt_center" headers="Gallbladder  count">1221</td>
+<td class="gt_row gt_center" headers="Gallbladder  Attributable">288 (24%)</td>
+<td class="gt_row gt_center" headers="Gallbladder  Non-Attributable">933 (76%)</td>
+</tr>
+<tr class="odd gt_group_heading_row">
+<td colspan="6" id="Kidney" class="gt_group_heading" data-quarto-table-cell-role="th" style="font-weight: bold; background-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000" scope="colgroup">Kidney</td>
+</tr>
+<tr class="even gt_row_group_first">
+<td class="gt_row gt_center" headers="Kidney  temp"></td>
+<td class="gt_row gt_center" headers="Kidney  sex">Men</td>
+<td class="gt_row gt_center" headers="Kidney  age_group">20-49</td>
+<td class="gt_row gt_center" headers="Kidney  count">609</td>
+<td class="gt_row gt_center" headers="Kidney  Attributable">135 (22%)</td>
+<td class="gt_row gt_center" headers="Kidney  Non-Attributable">474 (78%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Kidney  temp"></td>
+<td class="gt_row gt_center" headers="Kidney  sex">Men</td>
+<td class="gt_row gt_center" headers="Kidney  age_group">50+</td>
+<td class="gt_row gt_center" headers="Kidney  count">5951</td>
+<td class="gt_row gt_center" headers="Kidney  Attributable">1673 (28%)</td>
+<td class="gt_row gt_center" headers="Kidney  Non-Attributable">4278 (72%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Kidney  temp"></td>
+<td class="gt_row gt_center" headers="Kidney  sex">Women</td>
+<td class="gt_row gt_center" headers="Kidney  age_group">20-49</td>
+<td class="gt_row gt_center" headers="Kidney  count">344</td>
+<td class="gt_row gt_center" headers="Kidney  Attributable">85 (25%)</td>
+<td class="gt_row gt_center" headers="Kidney  Non-Attributable">259 (75%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Kidney  temp"></td>
+<td class="gt_row gt_center" headers="Kidney  sex">Women</td>
+<td class="gt_row gt_center" headers="Kidney  age_group">50+</td>
+<td class="gt_row gt_center" headers="Kidney  count">3419</td>
+<td class="gt_row gt_center" headers="Kidney  Attributable">1046 (31%)</td>
+<td class="gt_row gt_center" headers="Kidney  Non-Attributable">2373 (69%)</td>
+</tr>
+<tr class="even gt_group_heading_row">
+<td colspan="6" id="Liver" class="gt_group_heading" data-quarto-table-cell-role="th" style="font-weight: bold; background-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000" scope="colgroup">Liver</td>
+</tr>
+<tr class="odd gt_row_group_first">
+<td class="gt_row gt_center" headers="Liver  temp"></td>
+<td class="gt_row gt_center" headers="Liver  sex">Men</td>
+<td class="gt_row gt_center" headers="Liver  age_group">20-49</td>
+<td class="gt_row gt_center" headers="Liver  count">130</td>
+<td class="gt_row gt_center" headers="Liver  Attributable">54 (42%)</td>
+<td class="gt_row gt_center" headers="Liver  Non-Attributable">76 (58%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Liver  temp"></td>
+<td class="gt_row gt_center" headers="Liver  sex">Men</td>
+<td class="gt_row gt_center" headers="Liver  age_group">50+</td>
+<td class="gt_row gt_center" headers="Liver  count">3645</td>
+<td class="gt_row gt_center" headers="Liver  Attributable">1809 (50%)</td>
+<td class="gt_row gt_center" headers="Liver  Non-Attributable">1836 (50%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Liver  temp"></td>
+<td class="gt_row gt_center" headers="Liver  sex">Women</td>
+<td class="gt_row gt_center" headers="Liver  age_group">20-49</td>
+<td class="gt_row gt_center" headers="Liver  count">89</td>
+<td class="gt_row gt_center" headers="Liver  Attributable">36 (40%)</td>
+<td class="gt_row gt_center" headers="Liver  Non-Attributable">53 (60%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Liver  temp"></td>
+<td class="gt_row gt_center" headers="Liver  sex">Women</td>
+<td class="gt_row gt_center" headers="Liver  age_group">50+</td>
+<td class="gt_row gt_center" headers="Liver  count">1973</td>
+<td class="gt_row gt_center" headers="Liver  Attributable">826 (42%)</td>
+<td class="gt_row gt_center" headers="Liver  Non-Attributable">1147 (58%)</td>
+</tr>
+<tr class="odd gt_group_heading_row">
+<td colspan="6" id="MultipleMyeloma" class="gt_group_heading" data-quarto-table-cell-role="th" style="font-weight: bold; background-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000" scope="colgroup">MultipleMyeloma</td>
+</tr>
+<tr class="even gt_row_group_first">
+<td class="gt_row gt_center" headers="MultipleMyeloma  temp"></td>
+<td class="gt_row gt_center" headers="MultipleMyeloma  sex">Men</td>
+<td class="gt_row gt_center" headers="MultipleMyeloma  age_group">20-49</td>
+<td class="gt_row gt_center" headers="MultipleMyeloma  count">177</td>
+<td class="gt_row gt_center" headers="MultipleMyeloma  Attributable">15 (8%)</td>
+<td class="gt_row gt_center" headers="MultipleMyeloma  Non-Attributable">162 (92%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="MultipleMyeloma  temp"></td>
+<td class="gt_row gt_center" headers="MultipleMyeloma  sex">Men</td>
+<td class="gt_row gt_center" headers="MultipleMyeloma  age_group">50+</td>
+<td class="gt_row gt_center" headers="MultipleMyeloma  count">3739</td>
+<td class="gt_row gt_center" headers="MultipleMyeloma  Attributable">407 (11%)</td>
+<td class="gt_row gt_center" headers="MultipleMyeloma  Non-Attributable">3332 (89%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="MultipleMyeloma  temp"></td>
+<td class="gt_row gt_center" headers="MultipleMyeloma  sex">Women</td>
+<td class="gt_row gt_center" headers="MultipleMyeloma  age_group">20-49</td>
+<td class="gt_row gt_center" headers="MultipleMyeloma  count">147</td>
+<td class="gt_row gt_center" headers="MultipleMyeloma  Attributable">11 (7%)</td>
+<td class="gt_row gt_center" headers="MultipleMyeloma  Non-Attributable">136 (93%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="MultipleMyeloma  temp"></td>
+<td class="gt_row gt_center" headers="MultipleMyeloma  sex">Women</td>
+<td class="gt_row gt_center" headers="MultipleMyeloma  age_group">50+</td>
+<td class="gt_row gt_center" headers="MultipleMyeloma  count">2777</td>
+<td class="gt_row gt_center" headers="MultipleMyeloma  Attributable">269 (10%)</td>
+<td class="gt_row gt_center" headers="MultipleMyeloma  Non-Attributable">2508 (90%)</td>
+</tr>
+<tr class="even gt_group_heading_row">
+<td colspan="6" id="Oral" class="gt_group_heading" data-quarto-table-cell-role="th" style="font-weight: bold; background-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000" scope="colgroup">Oral</td>
+</tr>
+<tr class="odd gt_row_group_first">
+<td class="gt_row gt_center" headers="Oral  temp"></td>
+<td class="gt_row gt_center" headers="Oral  sex">Men</td>
+<td class="gt_row gt_center" headers="Oral  age_group">20-49</td>
+<td class="gt_row gt_center" headers="Oral  count">575</td>
+<td class="gt_row gt_center" headers="Oral  Attributable">376 (65%)</td>
+<td class="gt_row gt_center" headers="Oral  Non-Attributable">199 (35%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Oral  temp"></td>
+<td class="gt_row gt_center" headers="Oral  sex">Men</td>
+<td class="gt_row gt_center" headers="Oral  age_group">50+</td>
+<td class="gt_row gt_center" headers="Oral  count">5045</td>
+<td class="gt_row gt_center" headers="Oral  Attributable">3177 (63%)</td>
+<td class="gt_row gt_center" headers="Oral  Non-Attributable">1868 (37%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Oral  temp"></td>
+<td class="gt_row gt_center" headers="Oral  sex">Women</td>
+<td class="gt_row gt_center" headers="Oral  age_group">20-49</td>
+<td class="gt_row gt_center" headers="Oral  count">327</td>
+<td class="gt_row gt_center" headers="Oral  Attributable">181 (55%)</td>
+<td class="gt_row gt_center" headers="Oral  Non-Attributable">146 (45%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Oral  temp"></td>
+<td class="gt_row gt_center" headers="Oral  sex">Women</td>
+<td class="gt_row gt_center" headers="Oral  age_group">50+</td>
+<td class="gt_row gt_center" headers="Oral  count">2491</td>
+<td class="gt_row gt_center" headers="Oral  Attributable">1173 (47%)</td>
+<td class="gt_row gt_center" headers="Oral  Non-Attributable">1318 (53%)</td>
+</tr>
+<tr class="odd gt_group_heading_row">
+<td colspan="6" id="Pancreas" class="gt_group_heading" data-quarto-table-cell-role="th" style="font-weight: bold; background-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000" scope="colgroup">Pancreas</td>
+</tr>
+<tr class="even gt_row_group_first">
+<td class="gt_row gt_center" headers="Pancreas  temp"></td>
+<td class="gt_row gt_center" headers="Pancreas  sex">Men</td>
+<td class="gt_row gt_center" headers="Pancreas  age_group">20-49</td>
+<td class="gt_row gt_center" headers="Pancreas  count">187</td>
+<td class="gt_row gt_center" headers="Pancreas  Attributable">39 (21%)</td>
+<td class="gt_row gt_center" headers="Pancreas  Non-Attributable">148 (79%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Pancreas  temp"></td>
+<td class="gt_row gt_center" headers="Pancreas  sex">Men</td>
+<td class="gt_row gt_center" headers="Pancreas  age_group">50+</td>
+<td class="gt_row gt_center" headers="Pancreas  count">4588</td>
+<td class="gt_row gt_center" headers="Pancreas  Attributable">899 (20%)</td>
+<td class="gt_row gt_center" headers="Pancreas  Non-Attributable">3689 (80%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Pancreas  temp"></td>
+<td class="gt_row gt_center" headers="Pancreas  sex">Women</td>
+<td class="gt_row gt_center" headers="Pancreas  age_group">20-49</td>
+<td class="gt_row gt_center" headers="Pancreas  count">165</td>
+<td class="gt_row gt_center" headers="Pancreas  Attributable">39 (24%)</td>
+<td class="gt_row gt_center" headers="Pancreas  Non-Attributable">126 (76%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Pancreas  temp"></td>
+<td class="gt_row gt_center" headers="Pancreas  sex">Women</td>
+<td class="gt_row gt_center" headers="Pancreas  age_group">50+</td>
+<td class="gt_row gt_center" headers="Pancreas  count">4387</td>
+<td class="gt_row gt_center" headers="Pancreas  Attributable">920 (21%)</td>
+<td class="gt_row gt_center" headers="Pancreas  Non-Attributable">3467 (79%)</td>
+</tr>
+<tr class="even gt_group_heading_row">
+<td colspan="6" id="Thyroid" class="gt_group_heading" data-quarto-table-cell-role="th" style="font-weight: bold; background-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000" scope="colgroup">Thyroid</td>
+</tr>
+<tr class="odd gt_row_group_first">
+<td class="gt_row gt_center" headers="Thyroid  temp"></td>
+<td class="gt_row gt_center" headers="Thyroid  sex">Men</td>
+<td class="gt_row gt_center" headers="Thyroid  age_group">20-49</td>
+<td class="gt_row gt_center" headers="Thyroid  count">345</td>
+<td class="gt_row gt_center" headers="Thyroid  Attributable">13 (4%)</td>
+<td class="gt_row gt_center" headers="Thyroid  Non-Attributable">332 (96%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Thyroid  temp"></td>
+<td class="gt_row gt_center" headers="Thyroid  sex">Men</td>
+<td class="gt_row gt_center" headers="Thyroid  age_group">50+</td>
+<td class="gt_row gt_center" headers="Thyroid  count">593</td>
+<td class="gt_row gt_center" headers="Thyroid  Attributable">25 (4%)</td>
+<td class="gt_row gt_center" headers="Thyroid  Non-Attributable">568 (96%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Thyroid  temp"></td>
+<td class="gt_row gt_center" headers="Thyroid  sex">Women</td>
+<td class="gt_row gt_center" headers="Thyroid  age_group">20-49</td>
+<td class="gt_row gt_center" headers="Thyroid  count">1224</td>
+<td class="gt_row gt_center" headers="Thyroid  Attributable">31 (3%)</td>
+<td class="gt_row gt_center" headers="Thyroid  Non-Attributable">1193 (97%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Thyroid  temp"></td>
+<td class="gt_row gt_center" headers="Thyroid  sex">Women</td>
+<td class="gt_row gt_center" headers="Thyroid  age_group">50+</td>
+<td class="gt_row gt_center" headers="Thyroid  count">1299</td>
+<td class="gt_row gt_center" headers="Thyroid  Attributable">44 (3%)</td>
+<td class="gt_row gt_center" headers="Thyroid  Non-Attributable">1255 (97%)</td>
+</tr>
+<tr class="odd gt_group_heading_row">
+<td colspan="6" id="Breast" class="gt_group_heading" data-quarto-table-cell-role="th" style="font-weight: bold; background-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000" scope="colgroup">Breast</td>
+</tr>
+<tr class="even gt_row_group_first">
+<td class="gt_row gt_center" headers="Breast  temp"></td>
+<td class="gt_row gt_center" headers="Breast  sex">Women</td>
+<td class="gt_row gt_center" headers="Breast  age_group">20-49</td>
+<td class="gt_row gt_center" headers="Breast  count">8504</td>
+<td class="gt_row gt_center" headers="Breast  Attributable">678 (8%)</td>
+<td class="gt_row gt_center" headers="Breast  Non-Attributable">7826 (92%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Breast  temp"></td>
+<td class="gt_row gt_center" headers="Breast  sex">Women</td>
+<td class="gt_row gt_center" headers="Breast  age_group">50+</td>
+<td class="gt_row gt_center" headers="Breast  count">39584</td>
+<td class="gt_row gt_center" headers="Breast  Attributable">5881 (15%)</td>
+<td class="gt_row gt_center" headers="Breast  Non-Attributable">33703 (85%)</td>
+</tr>
+<tr class="even gt_group_heading_row">
+<td colspan="6" id="Endometrium" class="gt_group_heading" data-quarto-table-cell-role="th" style="font-weight: bold; background-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000" scope="colgroup">Endometrium</td>
+</tr>
+<tr class="odd gt_row_group_first">
+<td class="gt_row gt_center" headers="Endometrium  temp"></td>
+<td class="gt_row gt_center" headers="Endometrium  sex">Women</td>
+<td class="gt_row gt_center" headers="Endometrium  age_group">20-49</td>
+<td class="gt_row gt_center" headers="Endometrium  count">543</td>
+<td class="gt_row gt_center" headers="Endometrium  Attributable">239 (44%)</td>
+<td class="gt_row gt_center" headers="Endometrium  Non-Attributable">304 (56%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Endometrium  temp"></td>
+<td class="gt_row gt_center" headers="Endometrium  sex">Women</td>
+<td class="gt_row gt_center" headers="Endometrium  age_group">50+</td>
+<td class="gt_row gt_center" headers="Endometrium  count">7565</td>
+<td class="gt_row gt_center" headers="Endometrium  Attributable">3856 (51%)</td>
+<td class="gt_row gt_center" headers="Endometrium  Non-Attributable">3709 (49%)</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="figure-4---difference-in-pafs" class="level2">
+<h2 class="anchored" data-anchor-id="figure-4---difference-in-pafs">Figure 4 - Difference in PAFs</h2>
+<pre><code>`summarise()` has grouped output by 'Cancer_sites', 'age_group', 'sex'. You can
+override using the `.groups` argument.
+`summarise()` has grouped output by 'Cancer_sites', 'age_group', 'sex',
+'variable'. You can override using the `.groups` argument.</code></pre>
+<ul>
+<li><a href="../Output/Plots/Figure_4-Alcohol.pdf"><strong>Figure 4: Alcohol</strong></a></li>
+<li><a href="../Output/Plots/Figure_4-BMI.pdf"><strong>Figure 4: BMI</strong></a></li>
+<li><a href="../Output/Plots/Figure_4-Fibre.pdf"><strong>Figure 4: Fibre</strong></a></li>
+<li><a href="../Output/Plots/Figure_4-Processed_Meat.pdf"><strong>Figure 4: Processed Meat</strong></a></li>
+<li><a href="../Output/Plots/Figure_4-Red_Meat.pdf"><strong>Figure 4: Red Meat</strong></a></li>
+<li><a href="../Output/Plots/Figure_4-Smoking_Status.pdf"><strong>Figure 4: Smoking Status</strong></a></li>
+</ul>
+</section>
+<section id="figure-5---pif-past" class="level2">
+<h2 class="anchored" data-anchor-id="figure-5---pif-past">Figure 5 - PIF (Past)</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div id="pqxkqiloat" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pqxkqiloat table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#pqxkqiloat thead, #pqxkqiloat tbody, #pqxkqiloat tfoot, #pqxkqiloat tr, #pqxkqiloat td, #pqxkqiloat th {
+  border-style: none;
+}
+
+#pqxkqiloat p {
+  margin: 0;
+  padding: 0;
+}
+
+#pqxkqiloat .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#pqxkqiloat .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#pqxkqiloat .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#pqxkqiloat .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#pqxkqiloat .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pqxkqiloat .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pqxkqiloat .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pqxkqiloat .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#pqxkqiloat .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#pqxkqiloat .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#pqxkqiloat .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#pqxkqiloat .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#pqxkqiloat .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#pqxkqiloat .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#pqxkqiloat .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#pqxkqiloat .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#pqxkqiloat .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#pqxkqiloat .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#pqxkqiloat .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pqxkqiloat .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#pqxkqiloat .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#pqxkqiloat .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#pqxkqiloat .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pqxkqiloat .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#pqxkqiloat .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#pqxkqiloat .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pqxkqiloat .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pqxkqiloat .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#pqxkqiloat .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pqxkqiloat .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#pqxkqiloat .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pqxkqiloat .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pqxkqiloat .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pqxkqiloat .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pqxkqiloat .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pqxkqiloat .gt_left {
+  text-align: left;
+}
+
+#pqxkqiloat .gt_center {
+  text-align: center;
+}
+
+#pqxkqiloat .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#pqxkqiloat .gt_font_normal {
+  font-weight: normal;
+}
+
+#pqxkqiloat .gt_font_bold {
+  font-weight: bold;
+}
+
+#pqxkqiloat .gt_font_italic {
+  font-style: italic;
+}
+
+#pqxkqiloat .gt_super {
+  font-size: 65%;
+}
+
+#pqxkqiloat .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#pqxkqiloat .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#pqxkqiloat .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#pqxkqiloat .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#pqxkqiloat .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#pqxkqiloat .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#pqxkqiloat .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#pqxkqiloat .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#pqxkqiloat div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1007,259 +1806,259 @@ override using the `.groups` argument.
 </tr>
 <tr class="even gt_row_group_first">
 <td class="gt_row gt_left" headers="Men - 20-49  variable">Alcohol</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Breast">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Breast"></td>
 <td class="gt_row gt_center" headers="Men - 20-49  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Kidney">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Endometrium"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Kidney"></td>
 <td class="gt_row gt_center" headers="Men - 20-49  Liver">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  MultipleMyeloma">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  MultipleMyeloma"></td>
 <td class="gt_row gt_center" headers="Men - 20-49  Oral">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Pancreas"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Thyroid"></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Men - 20-49  variable">BMI</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Breast">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Breast"></td>
 <td class="gt_row gt_center" headers="Men - 20-49  Colorectum">1</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Endometrium">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Endometrium"></td>
 <td class="gt_row gt_center" headers="Men - 20-49  Gallbladder">1.3</td>
 <td class="gt_row gt_center" headers="Men - 20-49  Kidney">1.4</td>
 <td class="gt_row gt_center" headers="Men - 20-49  Liver">2.1</td>
 <td class="gt_row gt_center" headers="Men - 20-49  MultipleMyeloma">0.5</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Oral">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Oral"></td>
 <td class="gt_row gt_center" headers="Men - 20-49  Pancreas">0.6</td>
 <td class="gt_row gt_center" headers="Men - 20-49  Thyroid">-</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Men - 20-49  variable">Fibre</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Breast">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Breast"></td>
 <td class="gt_row gt_center" headers="Men - 20-49  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Kidney">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Liver">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  MultipleMyeloma">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Oral">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Endometrium"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Kidney"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Liver"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  MultipleMyeloma"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Oral"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Pancreas"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Thyroid"></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Men - 20-49  variable">Processed Meat</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Breast">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Breast"></td>
 <td class="gt_row gt_center" headers="Men - 20-49  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Kidney">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Liver">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  MultipleMyeloma">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Oral">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Endometrium"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Kidney"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Liver"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  MultipleMyeloma"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Oral"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Pancreas"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Thyroid"></td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Men - 20-49  variable">Red Meat</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Breast">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Breast"></td>
 <td class="gt_row gt_center" headers="Men - 20-49  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Kidney">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Liver">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  MultipleMyeloma">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Oral">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Endometrium"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Kidney"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Liver"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  MultipleMyeloma"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Oral"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Pancreas"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Thyroid"></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Men - 20-49  variable">Smoking</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Breast">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Breast"></td>
 <td class="gt_row gt_center" headers="Men - 20-49  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Kidney">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Endometrium"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Kidney"></td>
 <td class="gt_row gt_center" headers="Men - 20-49  Liver">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  MultipleMyeloma">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  MultipleMyeloma"></td>
 <td class="gt_row gt_center" headers="Men - 20-49  Oral">-</td>
 <td class="gt_row gt_center" headers="Men - 20-49  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Thyroid"></td>
 </tr>
 <tr class="even gt_group_heading_row">
 <td colspan="11" id="Men - 50+" class="gt_group_heading" data-quarto-table-cell-role="th" style="font-weight: bold; background-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000" scope="colgroup">Men - 50+</td>
 </tr>
 <tr class="odd gt_row_group_first">
 <td class="gt_row gt_left" headers="Men - 50+  variable">Alcohol</td>
-<td class="gt_row gt_center" headers="Men - 50+  Breast">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Colorectum">0.7</td>
-<td class="gt_row gt_center" headers="Men - 50+  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Kidney">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Liver">1.9</td>
-<td class="gt_row gt_center" headers="Men - 50+  MultipleMyeloma">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Oral">5.3</td>
-<td class="gt_row gt_center" headers="Men - 50+  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  Breast"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Colorectum">1</td>
+<td class="gt_row gt_center" headers="Men - 50+  Endometrium"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Kidney"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Liver">2.2</td>
+<td class="gt_row gt_center" headers="Men - 50+  MultipleMyeloma"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Oral">5.4</td>
+<td class="gt_row gt_center" headers="Men - 50+  Pancreas"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Thyroid"></td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Men - 50+  variable">BMI</td>
-<td class="gt_row gt_center" headers="Men - 50+  Breast">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  Breast"></td>
 <td class="gt_row gt_center" headers="Men - 50+  Colorectum">3</td>
-<td class="gt_row gt_center" headers="Men - 50+  Endometrium">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  Endometrium"></td>
 <td class="gt_row gt_center" headers="Men - 50+  Gallbladder">3.5</td>
 <td class="gt_row gt_center" headers="Men - 50+  Kidney">4.1</td>
 <td class="gt_row gt_center" headers="Men - 50+  Liver">5.8</td>
 <td class="gt_row gt_center" headers="Men - 50+  MultipleMyeloma">1.5</td>
-<td class="gt_row gt_center" headers="Men - 50+  Oral">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  Oral"></td>
 <td class="gt_row gt_center" headers="Men - 50+  Pancreas">1.7</td>
 <td class="gt_row gt_center" headers="Men - 50+  Thyroid">-</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Men - 50+  variable">Fibre</td>
-<td class="gt_row gt_center" headers="Men - 50+  Breast">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  Breast"></td>
 <td class="gt_row gt_center" headers="Men - 50+  Colorectum">1</td>
-<td class="gt_row gt_center" headers="Men - 50+  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Kidney">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Liver">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  MultipleMyeloma">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Oral">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  Endometrium"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Kidney"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Liver"></td>
+<td class="gt_row gt_center" headers="Men - 50+  MultipleMyeloma"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Oral"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Pancreas"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Thyroid"></td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Men - 50+  variable">Processed Meat</td>
-<td class="gt_row gt_center" headers="Men - 50+  Breast">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  Breast"></td>
 <td class="gt_row gt_center" headers="Men - 50+  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Kidney">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Liver">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  MultipleMyeloma">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Oral">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  Endometrium"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Kidney"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Liver"></td>
+<td class="gt_row gt_center" headers="Men - 50+  MultipleMyeloma"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Oral"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Pancreas"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Thyroid"></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Men - 50+  variable">Red Meat</td>
-<td class="gt_row gt_center" headers="Men - 50+  Breast">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  Breast"></td>
 <td class="gt_row gt_center" headers="Men - 50+  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Kidney">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Liver">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  MultipleMyeloma">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Oral">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  Endometrium"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Kidney"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Liver"></td>
+<td class="gt_row gt_center" headers="Men - 50+  MultipleMyeloma"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Oral"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Pancreas"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Thyroid"></td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Men - 50+  variable">Smoking</td>
-<td class="gt_row gt_center" headers="Men - 50+  Breast">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  Breast"></td>
 <td class="gt_row gt_center" headers="Men - 50+  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Kidney">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  Endometrium"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Kidney"></td>
 <td class="gt_row gt_center" headers="Men - 50+  Liver">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  MultipleMyeloma">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  MultipleMyeloma"></td>
 <td class="gt_row gt_center" headers="Men - 50+  Oral">-</td>
 <td class="gt_row gt_center" headers="Men - 50+  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  Thyroid"></td>
 </tr>
 <tr class="odd gt_group_heading_row">
 <td colspan="11" id="Women - 20-49" class="gt_group_heading" data-quarto-table-cell-role="th" style="font-weight: bold; background-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000" scope="colgroup">Women - 20-49</td>
 </tr>
 <tr class="even gt_row_group_first">
 <td class="gt_row gt_left" headers="Women - 20-49  variable">Alcohol</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Breast">0.4</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Kidney">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Liver">0.5</td>
-<td class="gt_row gt_center" headers="Women - 20-49  MultipleMyeloma">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Oral">2</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Breast">0.2</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Colorectum">0.2</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Endometrium"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Kidney"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Liver">0.7</td>
+<td class="gt_row gt_center" headers="Women - 20-49  MultipleMyeloma"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Oral">1.7</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Pancreas"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Thyroid"></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Women - 20-49  variable">BMI</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Breast">-</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Breast"></td>
 <td class="gt_row gt_center" headers="Women - 20-49  Colorectum">2</td>
 <td class="gt_row gt_center" headers="Women - 20-49  Endometrium">8.1</td>
 <td class="gt_row gt_center" headers="Women - 20-49  Gallbladder">2.8</td>
 <td class="gt_row gt_center" headers="Women - 20-49  Kidney">3.8</td>
 <td class="gt_row gt_center" headers="Women - 20-49  Liver">3.7</td>
 <td class="gt_row gt_center" headers="Women - 20-49  MultipleMyeloma">1</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Oral">-</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Oral"></td>
 <td class="gt_row gt_center" headers="Women - 20-49  Pancreas">1</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Thyroid">0</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Women - 20-49  variable">Fibre</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Breast">-</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Breast"></td>
 <td class="gt_row gt_center" headers="Women - 20-49  Colorectum">0.8</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Kidney">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Liver">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  MultipleMyeloma">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Oral">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Endometrium"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Kidney"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Liver"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  MultipleMyeloma"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Oral"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Pancreas"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Thyroid"></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Women - 20-49  variable">Processed Meat</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Breast">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Colorectum">0.8</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Kidney">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Liver">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  MultipleMyeloma">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Oral">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Breast"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Colorectum">0.4</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Endometrium"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Kidney"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Liver"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  MultipleMyeloma"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Oral"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Pancreas"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Thyroid"></td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Women - 20-49  variable">Red Meat</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Breast">-</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Breast"></td>
 <td class="gt_row gt_center" headers="Women - 20-49  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Kidney">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Liver">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  MultipleMyeloma">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Oral">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Endometrium"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Kidney"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Liver"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  MultipleMyeloma"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Oral"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Pancreas"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Thyroid"></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Women - 20-49  variable">Smoking</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Breast">-</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Breast"></td>
 <td class="gt_row gt_center" headers="Women - 20-49  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Kidney">-</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Endometrium"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Kidney"></td>
 <td class="gt_row gt_center" headers="Women - 20-49  Liver">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  MultipleMyeloma">-</td>
+<td class="gt_row gt_center" headers="Women - 20-49  MultipleMyeloma"></td>
 <td class="gt_row gt_center" headers="Women - 20-49  Oral">-</td>
 <td class="gt_row gt_center" headers="Women - 20-49  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Thyroid"></td>
 </tr>
 <tr class="even gt_group_heading_row">
 <td colspan="11" id="Women - 50+" class="gt_group_heading" data-quarto-table-cell-role="th" style="font-weight: bold; background-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000" scope="colgroup">Women - 50+</td>
 </tr>
 <tr class="odd gt_row_group_first">
 <td class="gt_row gt_left" headers="Women - 50+  variable">Alcohol</td>
-<td class="gt_row gt_center" headers="Women - 50+  Breast">1.9</td>
-<td class="gt_row gt_center" headers="Women - 50+  Colorectum">1</td>
-<td class="gt_row gt_center" headers="Women - 50+  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Kidney">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Liver">1.2</td>
-<td class="gt_row gt_center" headers="Women - 50+  MultipleMyeloma">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Oral">6.9</td>
-<td class="gt_row gt_center" headers="Women - 50+  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Women - 50+  Breast">1.2</td>
+<td class="gt_row gt_center" headers="Women - 50+  Colorectum">1.1</td>
+<td class="gt_row gt_center" headers="Women - 50+  Endometrium"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Kidney"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Liver">1.4</td>
+<td class="gt_row gt_center" headers="Women - 50+  MultipleMyeloma"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Oral">5.2</td>
+<td class="gt_row gt_center" headers="Women - 50+  Pancreas"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Thyroid"></td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Women - 50+  variable">BMI</td>
@@ -1270,61 +2069,61 @@ override using the `.groups` argument.
 <td class="gt_row gt_center" headers="Women - 50+  Kidney">2</td>
 <td class="gt_row gt_center" headers="Women - 50+  Liver">1.9</td>
 <td class="gt_row gt_center" headers="Women - 50+  MultipleMyeloma">0.5</td>
-<td class="gt_row gt_center" headers="Women - 50+  Oral">-</td>
+<td class="gt_row gt_center" headers="Women - 50+  Oral"></td>
 <td class="gt_row gt_center" headers="Women - 50+  Pancreas">0.5</td>
 <td class="gt_row gt_center" headers="Women - 50+  Thyroid">0</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Women - 50+  variable">Fibre</td>
-<td class="gt_row gt_center" headers="Women - 50+  Breast">-</td>
+<td class="gt_row gt_center" headers="Women - 50+  Breast"></td>
 <td class="gt_row gt_center" headers="Women - 50+  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Kidney">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Liver">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  MultipleMyeloma">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Oral">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Women - 50+  Endometrium"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Kidney"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Liver"></td>
+<td class="gt_row gt_center" headers="Women - 50+  MultipleMyeloma"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Oral"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Pancreas"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Thyroid"></td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Women - 50+  variable">Processed Meat</td>
-<td class="gt_row gt_center" headers="Women - 50+  Breast">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Colorectum">0.1</td>
-<td class="gt_row gt_center" headers="Women - 50+  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Kidney">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Liver">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  MultipleMyeloma">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Oral">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Women - 50+  Breast"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Colorectum">-</td>
+<td class="gt_row gt_center" headers="Women - 50+  Endometrium"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Kidney"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Liver"></td>
+<td class="gt_row gt_center" headers="Women - 50+  MultipleMyeloma"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Oral"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Pancreas"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Thyroid"></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Women - 50+  variable">Red Meat</td>
-<td class="gt_row gt_center" headers="Women - 50+  Breast">-</td>
+<td class="gt_row gt_center" headers="Women - 50+  Breast"></td>
 <td class="gt_row gt_center" headers="Women - 50+  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Kidney">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Liver">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  MultipleMyeloma">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Oral">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Women - 50+  Endometrium"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Kidney"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Liver"></td>
+<td class="gt_row gt_center" headers="Women - 50+  MultipleMyeloma"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Oral"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Pancreas"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Thyroid"></td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Women - 50+  variable">Smoking</td>
-<td class="gt_row gt_center" headers="Women - 50+  Breast">-</td>
+<td class="gt_row gt_center" headers="Women - 50+  Breast"></td>
 <td class="gt_row gt_center" headers="Women - 50+  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Kidney">-</td>
+<td class="gt_row gt_center" headers="Women - 50+  Endometrium"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Kidney"></td>
 <td class="gt_row gt_center" headers="Women - 50+  Liver">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  MultipleMyeloma">-</td>
+<td class="gt_row gt_center" headers="Women - 50+  MultipleMyeloma"></td>
 <td class="gt_row gt_center" headers="Women - 50+  Oral">-</td>
 <td class="gt_row gt_center" headers="Women - 50+  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Women - 50+  Thyroid"></td>
 </tr>
 </tbody><tfoot class="gt_footnotes">
 <tr class="even">
@@ -1342,23 +2141,23 @@ override using the `.groups` argument.
 <h2 class="anchored" data-anchor-id="figure-5---pif-future">Figure 5 - PIF (Future)</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div id="rpckguvsfp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rpckguvsfp table {
+<div id="cbqghqgxrs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#cbqghqgxrs table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rpckguvsfp thead, #rpckguvsfp tbody, #rpckguvsfp tfoot, #rpckguvsfp tr, #rpckguvsfp td, #rpckguvsfp th {
+#cbqghqgxrs thead, #cbqghqgxrs tbody, #cbqghqgxrs tfoot, #cbqghqgxrs tr, #cbqghqgxrs td, #cbqghqgxrs th {
   border-style: none;
 }
 
-#rpckguvsfp p {
+#cbqghqgxrs p {
   margin: 0;
   padding: 0;
 }
 
-#rpckguvsfp .gt_table {
+#cbqghqgxrs .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1384,12 +2183,12 @@ override using the `.groups` argument.
   border-left-color: #D3D3D3;
 }
 
-#rpckguvsfp .gt_caption {
+#cbqghqgxrs .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rpckguvsfp .gt_title {
+#cbqghqgxrs .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1401,7 +2200,7 @@ override using the `.groups` argument.
   border-bottom-width: 0;
 }
 
-#rpckguvsfp .gt_subtitle {
+#cbqghqgxrs .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1413,7 +2212,7 @@ override using the `.groups` argument.
   border-top-width: 0;
 }
 
-#rpckguvsfp .gt_heading {
+#cbqghqgxrs .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1425,13 +2224,13 @@ override using the `.groups` argument.
   border-right-color: #D3D3D3;
 }
 
-#rpckguvsfp .gt_bottom_border {
+#cbqghqgxrs .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rpckguvsfp .gt_col_headings {
+#cbqghqgxrs .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1446,7 +2245,7 @@ override using the `.groups` argument.
   border-right-color: #D3D3D3;
 }
 
-#rpckguvsfp .gt_col_heading {
+#cbqghqgxrs .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1466,7 +2265,7 @@ override using the `.groups` argument.
   overflow-x: hidden;
 }
 
-#rpckguvsfp .gt_column_spanner_outer {
+#cbqghqgxrs .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1478,15 +2277,15 @@ override using the `.groups` argument.
   padding-right: 4px;
 }
 
-#rpckguvsfp .gt_column_spanner_outer:first-child {
+#cbqghqgxrs .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rpckguvsfp .gt_column_spanner_outer:last-child {
+#cbqghqgxrs .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rpckguvsfp .gt_column_spanner {
+#cbqghqgxrs .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1498,11 +2297,11 @@ override using the `.groups` argument.
   width: 100%;
 }
 
-#rpckguvsfp .gt_spanner_row {
+#cbqghqgxrs .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rpckguvsfp .gt_group_heading {
+#cbqghqgxrs .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1528,7 +2327,7 @@ override using the `.groups` argument.
   text-align: left;
 }
 
-#rpckguvsfp .gt_empty_group_heading {
+#cbqghqgxrs .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1543,15 +2342,15 @@ override using the `.groups` argument.
   vertical-align: middle;
 }
 
-#rpckguvsfp .gt_from_md > :first-child {
+#cbqghqgxrs .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rpckguvsfp .gt_from_md > :last-child {
+#cbqghqgxrs .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rpckguvsfp .gt_row {
+#cbqghqgxrs .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1570,7 +2369,7 @@ override using the `.groups` argument.
   overflow-x: hidden;
 }
 
-#rpckguvsfp .gt_stub {
+#cbqghqgxrs .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1583,7 +2382,7 @@ override using the `.groups` argument.
   padding-right: 5px;
 }
 
-#rpckguvsfp .gt_stub_row_group {
+#cbqghqgxrs .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1597,15 +2396,15 @@ override using the `.groups` argument.
   vertical-align: top;
 }
 
-#rpckguvsfp .gt_row_group_first td {
+#cbqghqgxrs .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rpckguvsfp .gt_row_group_first th {
+#cbqghqgxrs .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rpckguvsfp .gt_summary_row {
+#cbqghqgxrs .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1615,16 +2414,16 @@ override using the `.groups` argument.
   padding-right: 5px;
 }
 
-#rpckguvsfp .gt_first_summary_row {
+#cbqghqgxrs .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rpckguvsfp .gt_first_summary_row.thick {
+#cbqghqgxrs .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rpckguvsfp .gt_last_summary_row {
+#cbqghqgxrs .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1634,7 +2433,7 @@ override using the `.groups` argument.
   border-bottom-color: #D3D3D3;
 }
 
-#rpckguvsfp .gt_grand_summary_row {
+#cbqghqgxrs .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1644,7 +2443,7 @@ override using the `.groups` argument.
   padding-right: 5px;
 }
 
-#rpckguvsfp .gt_first_grand_summary_row {
+#cbqghqgxrs .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1654,7 +2453,7 @@ override using the `.groups` argument.
   border-top-color: #D3D3D3;
 }
 
-#rpckguvsfp .gt_last_grand_summary_row_top {
+#cbqghqgxrs .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1664,11 +2463,11 @@ override using the `.groups` argument.
   border-bottom-color: #D3D3D3;
 }
 
-#rpckguvsfp .gt_striped {
+#cbqghqgxrs .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rpckguvsfp .gt_table_body {
+#cbqghqgxrs .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1677,7 +2476,7 @@ override using the `.groups` argument.
   border-bottom-color: #D3D3D3;
 }
 
-#rpckguvsfp .gt_footnotes {
+#cbqghqgxrs .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1691,7 +2490,7 @@ override using the `.groups` argument.
   border-right-color: #D3D3D3;
 }
 
-#rpckguvsfp .gt_footnote {
+#cbqghqgxrs .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1700,7 +2499,7 @@ override using the `.groups` argument.
   padding-right: 5px;
 }
 
-#rpckguvsfp .gt_sourcenotes {
+#cbqghqgxrs .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1714,7 +2513,7 @@ override using the `.groups` argument.
   border-right-color: #D3D3D3;
 }
 
-#rpckguvsfp .gt_sourcenote {
+#cbqghqgxrs .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1722,72 +2521,72 @@ override using the `.groups` argument.
   padding-right: 5px;
 }
 
-#rpckguvsfp .gt_left {
+#cbqghqgxrs .gt_left {
   text-align: left;
 }
 
-#rpckguvsfp .gt_center {
+#cbqghqgxrs .gt_center {
   text-align: center;
 }
 
-#rpckguvsfp .gt_right {
+#cbqghqgxrs .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rpckguvsfp .gt_font_normal {
+#cbqghqgxrs .gt_font_normal {
   font-weight: normal;
 }
 
-#rpckguvsfp .gt_font_bold {
+#cbqghqgxrs .gt_font_bold {
   font-weight: bold;
 }
 
-#rpckguvsfp .gt_font_italic {
+#cbqghqgxrs .gt_font_italic {
   font-style: italic;
 }
 
-#rpckguvsfp .gt_super {
+#cbqghqgxrs .gt_super {
   font-size: 65%;
 }
 
-#rpckguvsfp .gt_footnote_marks {
+#cbqghqgxrs .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rpckguvsfp .gt_asterisk {
+#cbqghqgxrs .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rpckguvsfp .gt_indent_1 {
+#cbqghqgxrs .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rpckguvsfp .gt_indent_2 {
+#cbqghqgxrs .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rpckguvsfp .gt_indent_3 {
+#cbqghqgxrs .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rpckguvsfp .gt_indent_4 {
+#cbqghqgxrs .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rpckguvsfp .gt_indent_5 {
+#cbqghqgxrs .gt_indent_5 {
   text-indent: 25px;
 }
 
-#rpckguvsfp .katex-display {
+#cbqghqgxrs .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#rpckguvsfp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#cbqghqgxrs div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1817,162 +2616,162 @@ override using the `.groups` argument.
 </tr>
 <tr class="even gt_row_group_first">
 <td class="gt_row gt_left" headers="Men - 20-49  variable">Alcohol</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Breast">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Breast"></td>
 <td class="gt_row gt_center" headers="Men - 20-49  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Kidney">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Endometrium"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Kidney"></td>
 <td class="gt_row gt_center" headers="Men - 20-49  Liver">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  MultipleMyeloma">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  MultipleMyeloma"></td>
 <td class="gt_row gt_center" headers="Men - 20-49  Oral">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Pancreas"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Thyroid"></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Men - 20-49  variable">BMI</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Breast">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Breast"></td>
 <td class="gt_row gt_center" headers="Men - 20-49  Colorectum">1.7</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Endometrium">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Endometrium"></td>
 <td class="gt_row gt_center" headers="Men - 20-49  Gallbladder">2.4</td>
 <td class="gt_row gt_center" headers="Men - 20-49  Kidney">2.4</td>
 <td class="gt_row gt_center" headers="Men - 20-49  Liver">3.8</td>
 <td class="gt_row gt_center" headers="Men - 20-49  MultipleMyeloma">0.8</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Oral">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Oral"></td>
 <td class="gt_row gt_center" headers="Men - 20-49  Pancreas">1.2</td>
 <td class="gt_row gt_center" headers="Men - 20-49  Thyroid">-</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Men - 20-49  variable">Fibre</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Breast">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Breast"></td>
 <td class="gt_row gt_center" headers="Men - 20-49  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Kidney">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Liver">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  MultipleMyeloma">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Oral">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Endometrium"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Kidney"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Liver"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  MultipleMyeloma"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Oral"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Pancreas"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Thyroid"></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Men - 20-49  variable">Processed Meat</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Breast">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Breast"></td>
 <td class="gt_row gt_center" headers="Men - 20-49  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Kidney">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Liver">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  MultipleMyeloma">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Oral">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Endometrium"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Kidney"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Liver"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  MultipleMyeloma"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Oral"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Pancreas"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Thyroid"></td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Men - 20-49  variable">Red Meat</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Breast">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Breast"></td>
 <td class="gt_row gt_center" headers="Men - 20-49  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Kidney">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Liver">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  MultipleMyeloma">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Oral">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Endometrium"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Kidney"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Liver"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  MultipleMyeloma"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Oral"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Pancreas"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Thyroid"></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Men - 20-49  variable">Smoking</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Breast">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Breast"></td>
 <td class="gt_row gt_center" headers="Men - 20-49  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Kidney">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Endometrium"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Men - 20-49  Kidney"></td>
 <td class="gt_row gt_center" headers="Men - 20-49  Liver">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  MultipleMyeloma">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  MultipleMyeloma"></td>
 <td class="gt_row gt_center" headers="Men - 20-49  Oral">-</td>
 <td class="gt_row gt_center" headers="Men - 20-49  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Men - 20-49  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Men - 20-49  Thyroid"></td>
 </tr>
 <tr class="even gt_group_heading_row">
 <td colspan="11" id="Men - 50+" class="gt_group_heading" data-quarto-table-cell-role="th" style="font-weight: bold; background-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000" scope="colgroup">Men - 50+</td>
 </tr>
 <tr class="odd gt_row_group_first">
 <td class="gt_row gt_left" headers="Men - 50+  variable">Alcohol</td>
-<td class="gt_row gt_center" headers="Men - 50+  Breast">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  Breast"></td>
 <td class="gt_row gt_center" headers="Men - 50+  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Kidney">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  Endometrium"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Kidney"></td>
 <td class="gt_row gt_center" headers="Men - 50+  Liver">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  MultipleMyeloma">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  MultipleMyeloma"></td>
 <td class="gt_row gt_center" headers="Men - 50+  Oral">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  Pancreas"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Thyroid"></td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Men - 50+  variable">BMI</td>
-<td class="gt_row gt_center" headers="Men - 50+  Breast">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  Breast"></td>
 <td class="gt_row gt_center" headers="Men - 50+  Colorectum">0.2</td>
-<td class="gt_row gt_center" headers="Men - 50+  Endometrium">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  Endometrium"></td>
 <td class="gt_row gt_center" headers="Men - 50+  Gallbladder">1.1</td>
 <td class="gt_row gt_center" headers="Men - 50+  Kidney">0.2</td>
 <td class="gt_row gt_center" headers="Men - 50+  Liver">1.3</td>
 <td class="gt_row gt_center" headers="Men - 50+  MultipleMyeloma">0</td>
-<td class="gt_row gt_center" headers="Men - 50+  Oral">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  Oral"></td>
 <td class="gt_row gt_center" headers="Men - 50+  Pancreas">0.5</td>
 <td class="gt_row gt_center" headers="Men - 50+  Thyroid">-</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Men - 50+  variable">Fibre</td>
-<td class="gt_row gt_center" headers="Men - 50+  Breast">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  Breast"></td>
 <td class="gt_row gt_center" headers="Men - 50+  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Kidney">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Liver">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  MultipleMyeloma">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Oral">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  Endometrium"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Kidney"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Liver"></td>
+<td class="gt_row gt_center" headers="Men - 50+  MultipleMyeloma"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Oral"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Pancreas"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Thyroid"></td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Men - 50+  variable">Processed Meat</td>
-<td class="gt_row gt_center" headers="Men - 50+  Breast">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Kidney">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Liver">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  MultipleMyeloma">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Oral">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  Breast"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Colorectum">0.1</td>
+<td class="gt_row gt_center" headers="Men - 50+  Endometrium"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Kidney"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Liver"></td>
+<td class="gt_row gt_center" headers="Men - 50+  MultipleMyeloma"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Oral"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Pancreas"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Thyroid"></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Men - 50+  variable">Red Meat</td>
-<td class="gt_row gt_center" headers="Men - 50+  Breast">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  Breast"></td>
 <td class="gt_row gt_center" headers="Men - 50+  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Kidney">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Liver">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  MultipleMyeloma">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Oral">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  Endometrium"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Kidney"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Liver"></td>
+<td class="gt_row gt_center" headers="Men - 50+  MultipleMyeloma"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Oral"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Pancreas"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Thyroid"></td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Men - 50+  variable">Smoking</td>
-<td class="gt_row gt_center" headers="Men - 50+  Breast">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  Breast"></td>
 <td class="gt_row gt_center" headers="Men - 50+  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Kidney">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  Endometrium"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Men - 50+  Kidney"></td>
 <td class="gt_row gt_center" headers="Men - 50+  Liver">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  MultipleMyeloma">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  MultipleMyeloma"></td>
 <td class="gt_row gt_center" headers="Men - 50+  Oral">-</td>
 <td class="gt_row gt_center" headers="Men - 50+  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Men - 50+  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Men - 50+  Thyroid"></td>
 </tr>
 <tr class="odd gt_group_heading_row">
 <td colspan="11" id="Women - 20-49" class="gt_group_heading" data-quarto-table-cell-role="th" style="font-weight: bold; background-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000" scope="colgroup">Women - 20-49</td>
@@ -1981,79 +2780,79 @@ override using the `.groups` argument.
 <td class="gt_row gt_left" headers="Women - 20-49  variable">Alcohol</td>
 <td class="gt_row gt_center" headers="Women - 20-49  Breast">-</td>
 <td class="gt_row gt_center" headers="Women - 20-49  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Kidney">-</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Endometrium"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Kidney"></td>
 <td class="gt_row gt_center" headers="Women - 20-49  Liver">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  MultipleMyeloma">-</td>
+<td class="gt_row gt_center" headers="Women - 20-49  MultipleMyeloma"></td>
 <td class="gt_row gt_center" headers="Women - 20-49  Oral">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Pancreas"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Thyroid"></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Women - 20-49  variable">BMI</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Breast">-</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Breast"></td>
 <td class="gt_row gt_center" headers="Women - 20-49  Colorectum">2.8</td>
 <td class="gt_row gt_center" headers="Women - 20-49  Endometrium">10.6</td>
 <td class="gt_row gt_center" headers="Women - 20-49  Gallbladder">3.9</td>
 <td class="gt_row gt_center" headers="Women - 20-49  Kidney">5.2</td>
 <td class="gt_row gt_center" headers="Women - 20-49  Liver">5.1</td>
 <td class="gt_row gt_center" headers="Women - 20-49  MultipleMyeloma">1.4</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Oral">-</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Oral"></td>
 <td class="gt_row gt_center" headers="Women - 20-49  Pancreas">1.4</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Thyroid">0</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Women - 20-49  variable">Fibre</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Breast">-</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Breast"></td>
 <td class="gt_row gt_center" headers="Women - 20-49  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Kidney">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Liver">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  MultipleMyeloma">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Oral">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Endometrium"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Kidney"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Liver"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  MultipleMyeloma"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Oral"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Pancreas"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Thyroid"></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Women - 20-49  variable">Processed Meat</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Breast">-</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Breast"></td>
 <td class="gt_row gt_center" headers="Women - 20-49  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Kidney">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Liver">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  MultipleMyeloma">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Oral">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Endometrium"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Kidney"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Liver"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  MultipleMyeloma"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Oral"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Pancreas"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Thyroid"></td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Women - 20-49  variable">Red Meat</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Breast">-</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Breast"></td>
 <td class="gt_row gt_center" headers="Women - 20-49  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Kidney">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Liver">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  MultipleMyeloma">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Oral">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Endometrium"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Kidney"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Liver"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  MultipleMyeloma"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Oral"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Pancreas"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Thyroid"></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Women - 20-49  variable">Smoking</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Breast">-</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Breast"></td>
 <td class="gt_row gt_center" headers="Women - 20-49  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Kidney">-</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Endometrium"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Women - 20-49  Kidney"></td>
 <td class="gt_row gt_center" headers="Women - 20-49  Liver">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  MultipleMyeloma">-</td>
+<td class="gt_row gt_center" headers="Women - 20-49  MultipleMyeloma"></td>
 <td class="gt_row gt_center" headers="Women - 20-49  Oral">-</td>
 <td class="gt_row gt_center" headers="Women - 20-49  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Women - 20-49  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Women - 20-49  Thyroid"></td>
 </tr>
 <tr class="even gt_group_heading_row">
 <td colspan="11" id="Women - 50+" class="gt_group_heading" data-quarto-table-cell-role="th" style="font-weight: bold; background-color: #D3D3D3; border-top-width: 1px; border-top-style: solid; border-top-color: #000000; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000" scope="colgroup">Women - 50+</td>
@@ -2062,14 +2861,14 @@ override using the `.groups` argument.
 <td class="gt_row gt_left" headers="Women - 50+  variable">Alcohol</td>
 <td class="gt_row gt_center" headers="Women - 50+  Breast">0.4</td>
 <td class="gt_row gt_center" headers="Women - 50+  Colorectum">0.2</td>
-<td class="gt_row gt_center" headers="Women - 50+  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Kidney">-</td>
+<td class="gt_row gt_center" headers="Women - 50+  Endometrium"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Kidney"></td>
 <td class="gt_row gt_center" headers="Women - 50+  Liver">0.2</td>
-<td class="gt_row gt_center" headers="Women - 50+  MultipleMyeloma">-</td>
+<td class="gt_row gt_center" headers="Women - 50+  MultipleMyeloma"></td>
 <td class="gt_row gt_center" headers="Women - 50+  Oral">1.2</td>
-<td class="gt_row gt_center" headers="Women - 50+  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Women - 50+  Pancreas"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Thyroid"></td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Women - 50+  variable">BMI</td>
@@ -2080,61 +2879,61 @@ override using the `.groups` argument.
 <td class="gt_row gt_center" headers="Women - 50+  Kidney">2</td>
 <td class="gt_row gt_center" headers="Women - 50+  Liver">2.4</td>
 <td class="gt_row gt_center" headers="Women - 50+  MultipleMyeloma">0.4</td>
-<td class="gt_row gt_center" headers="Women - 50+  Oral">-</td>
+<td class="gt_row gt_center" headers="Women - 50+  Oral"></td>
 <td class="gt_row gt_center" headers="Women - 50+  Pancreas">0.8</td>
 <td class="gt_row gt_center" headers="Women - 50+  Thyroid">-</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Women - 50+  variable">Fibre</td>
-<td class="gt_row gt_center" headers="Women - 50+  Breast">-</td>
+<td class="gt_row gt_center" headers="Women - 50+  Breast"></td>
 <td class="gt_row gt_center" headers="Women - 50+  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Kidney">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Liver">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  MultipleMyeloma">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Oral">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Women - 50+  Endometrium"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Kidney"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Liver"></td>
+<td class="gt_row gt_center" headers="Women - 50+  MultipleMyeloma"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Oral"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Pancreas"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Thyroid"></td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Women - 50+  variable">Processed Meat</td>
-<td class="gt_row gt_center" headers="Women - 50+  Breast">-</td>
+<td class="gt_row gt_center" headers="Women - 50+  Breast"></td>
 <td class="gt_row gt_center" headers="Women - 50+  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Kidney">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Liver">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  MultipleMyeloma">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Oral">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Women - 50+  Endometrium"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Kidney"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Liver"></td>
+<td class="gt_row gt_center" headers="Women - 50+  MultipleMyeloma"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Oral"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Pancreas"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Thyroid"></td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Women - 50+  variable">Red Meat</td>
-<td class="gt_row gt_center" headers="Women - 50+  Breast">-</td>
+<td class="gt_row gt_center" headers="Women - 50+  Breast"></td>
 <td class="gt_row gt_center" headers="Women - 50+  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Kidney">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Liver">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  MultipleMyeloma">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Oral">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Women - 50+  Endometrium"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Kidney"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Liver"></td>
+<td class="gt_row gt_center" headers="Women - 50+  MultipleMyeloma"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Oral"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Pancreas"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Thyroid"></td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Women - 50+  variable">Smoking</td>
-<td class="gt_row gt_center" headers="Women - 50+  Breast">-</td>
+<td class="gt_row gt_center" headers="Women - 50+  Breast"></td>
 <td class="gt_row gt_center" headers="Women - 50+  Colorectum">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Endometrium">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Gallbladder">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Kidney">-</td>
+<td class="gt_row gt_center" headers="Women - 50+  Endometrium"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Gallbladder"></td>
+<td class="gt_row gt_center" headers="Women - 50+  Kidney"></td>
 <td class="gt_row gt_center" headers="Women - 50+  Liver">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  MultipleMyeloma">-</td>
+<td class="gt_row gt_center" headers="Women - 50+  MultipleMyeloma"></td>
 <td class="gt_row gt_center" headers="Women - 50+  Oral">-</td>
 <td class="gt_row gt_center" headers="Women - 50+  Pancreas">-</td>
-<td class="gt_row gt_center" headers="Women - 50+  Thyroid">-</td>
+<td class="gt_row gt_center" headers="Women - 50+  Thyroid"></td>
 </tr>
 </tbody><tfoot class="gt_footnotes">
 <tr class="even">

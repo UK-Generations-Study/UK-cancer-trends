@@ -92,7 +92,7 @@ ghs_data <- ghs_data |>
     
     age = as.numeric(age),
     
-    drating = round(as.numeric(drating)),
+    drating = as.numeric(drating),
     
     weight05 = as.numeric(weight05)
      
