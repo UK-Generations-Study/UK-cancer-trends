@@ -26,12 +26,7 @@ pif_scenario <- function(dataframe) {
       pif3 = 1 + ((.03)/(p1 - p0 - (.03*p1))), #scenario (B): PIF is 3%
       pif5 = 1 + ((.05)/(p1 - p0 - (.05*p1))), #scenario (C): PIF is 5%
       pif10 = 1 + ((.10)/(p1 - p0 - (.10*p1))), #scenario (D): PIF is 10%
-      pif1 = ifelse(pif1<1, "exp decreasing" , pif1),
-      pif3 = ifelse(pif3<1, "exp decreasing", pif3),
-      pif5 = ifelse(pif5<1, "exp decreasing", pif5),
-      pif10 = ifelse(pif10<1, "exp decreasing", pif10), 
       variable = variable_name
-      
     ) %>%
     select(
       variable, level, sex, age_group, p0, p1, pif1, pif3, pif5, pif10
