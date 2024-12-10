@@ -9,8 +9,10 @@ library(tibble)
 library(tidyr)
 library(ggplot2)
 
+
 #loading in and cleaning the datasets 
 riskfactors<- read.csv("../../../Data/Cleaned_Data/clean_rf_data.csv")
+
 
 riskfactors <- riskfactors %>%
   mutate(
@@ -38,12 +40,52 @@ riskfactors <- riskfactors %>%
     variable = if_else(variable == "fibre_consumption", "Fibre", variable),
     variable = if_else(variable == "redmeat_consumption", "RedMeat", variable),
     variable = if_else(variable == "processed_meat_consumption", "ProcessedMeat", variable),
+    SE = sqrt((value*(1-value))/N) #this is to calculate the proportion SE but only for BMI/Smoking/Alcohol
   ) %>%
   filter(
-    year >= 2009 & year <= 2019,
-    exposure %in% c("Light_alcohol", "Medium_alcohol","Heavy_alcohol","BMI_obese_men","BMI_obese_women","BMI_overweight_men","BMI_overweight_women","Current_Smoking_men","Current_Smoking_women","Former_Smoking_men","Former_Smoking_women", "Processed_Meat","Red_Meat", "Fibre")
+    #year >= 2009 & year <= 2019, #selecting the years of interest 
+    exposure %in% c("Light_alcohol", "Medium_alcohol","Heavy_alcohol","Non-Drinker","BMI_obese_men","BMI_obese_women","BMI_overweight_men","BMI_overweight_women","Healthy Weight","Current_Smoking_men","Current_Smoking_women","Former_Smoking_men","Former_Smoking_women","Never", "Processed_Meat","Red_Meat", "Fibre")
+  )%>%
+  dplyr::select(variable, age_group, sex, exposure, year, value, SE)
+
+#organizing and grouping the data correctly for joint point 
+rf_clean <- riskfactors %>%
+  filter(
+    variable %in% c("Alcohol", "Smoking", "BMI")
   ) %>%
-  select(year, age_group, sex, variable, exposure, value)
+  arrange(
+    exposure, age_group, sex
+  )
+dietrf_clean <- riskfactors %>%
+  filter(
+    exposure %in% c("Red_Meat", "Processed_Meat", "Fibre")
+  ) %>%
+  arrange(
+    exposure, age_group, sex
+  )
+
+#saving the data frame for joint point 
+write.table(
+  rf_clean, 
+   file = "../Data/rf_forjointpoint.txt", 
+   sep = "\t", 
+   row.names = FALSE, 
+   quote = FALSE
+ )
+
+write.table(
+  dietrf_clean, 
+  file = "../Data/dietrf_forjointpoint.txt", 
+  sep = "\t", 
+  row.names = FALSE, 
+  quote = FALSE
+)
+
+#joint point settings
+  # Parametric Method
+
+
+
 
 #Grouping the data by age_group, sex, and exposure and fitting a linear model on the value column
 rf_linearmodel <- riskfactors %>%
@@ -101,7 +143,7 @@ sigchange_byage <- rf_linearmodel %>%
   mutate(
     sig = ifelse(p_value < 0.05, 1, 0) #if there is a significant difference (arbitrary cutoff) it will be coded 1, if insignificant it will be coded 0
     ) %>%
-  select(
+  dplyr::select(
     sex, exposure, z_value, p_value,sig 
   )
 
