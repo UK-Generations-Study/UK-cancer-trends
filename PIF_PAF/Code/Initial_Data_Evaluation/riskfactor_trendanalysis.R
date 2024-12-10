@@ -73,13 +73,14 @@ write.table(
    quote = FALSE
  )
 
-write.table(
-  dietrf_clean, 
-  file = "../Data/dietrf_forjointpoint.txt", 
-  sep = "\t", 
-  row.names = FALSE, 
-  quote = FALSE
-)
+#DIET DATA CANT GO ON GITHUB
+# write.table(
+#   dietrf_clean, 
+#   file = "../Data/dietrf_forjointpoint.txt", 
+#   sep = "\t", 
+#   row.names = FALSE, 
+#   quote = FALSE
+# )
 
 #joint point settings
   # Parametric Method
