@@ -384,6 +384,53 @@ ggsave(filename = paste0("../Output/Plots/Figure_1.png"), bg = "white", height =
 
 ```
 
+## Figure 1 - Trends in cancer incidence APC table
+
+Table of the APC of the last joint point
+
+```{r}
+#pulling the relevant data for the table 
+data_joinpoint_last <- data_joinpoint %>%
+  filter(Model == Segment) %>%
+  mutate(
+    APC = round(APC, 2), 
+    APC.95..LCL = round(APC.95..LCL, 2), 
+    APC.95..UCL = round(APC.95..UCL, 2),
+    P.Value = round(P.Value,2),
+    CI = paste0("(", APC.95..LCL, ", ", APC.95..UCL, ")"), 
+    TimePeriod = paste0("(", Segment.Start, ", ", Segment.End, ")")
+    ) %>%
+  select(
+    sex,cancer_site, age_group, TimePeriod, APC, CI, P.Value 
+  )
+
+#table formatting 
+apc_table <- data_joinpoint_last %>%
+  arrange(age_group, APC) %>%
+  gt(groupname_col = "cancer_site") %>% # Specify group column
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  ) %>%
+  tab_style(
+    style = list(
+      cell_text(weight = "bold"),
+      cell_fill(color = "lightgray"),
+      cell_borders(sides = "top"),
+      cell_borders(sides = "bottom")
+    ),
+    locations = cells_row_groups(groups = everything())
+  ) %>%
+  cols_width(
+    everything() ~ px(100) 
+  ) %>%
+  tab_header(
+    title = md("Most recent APC by cancer site, age group , and sex")
+  )
+apc_table
+
+```
+
 ## Figure 2 - Trends in risk factors
 
 ### Trends in risk factors
@@ -498,7 +545,8 @@ alcohol_plot <- ggplot(riskfactors %>% filter(variable == "Alcohol"), aes(x = ye
     values = c(
       "Heavy_alcohol" = "#3d405b",  
       "Medium_alcohol" = "#81b29a", 
-      "Light_alcohol" = "#e07a5f"  
+      "Light_alcohol" = "#e07a5f" , 
+      "Non-Drinker" = "#6c584c"
     )
   ) +
   labs(
@@ -533,7 +581,8 @@ bmi_plot <- ggplot(riskfactors %>% filter(variable == "BMI"), aes(x = year, y = 
       "BMI_obese_men" = "#81b29a",  
       "BMI_overweight_men" = "#e07a5f", 
       "BMI_obese_women" = "#81b29a",  
-      "BMI_overweight_women" = "#e07a5f" 
+      "BMI_overweight_women" = "#e07a5f",
+      "Healthy Weight" = "#6c584c"
     )
   ) +
   labs(
@@ -567,7 +616,8 @@ smoking_plot <- ggplot(riskfactors %>% filter(variable == "Smoking"), aes(x = ye
       "Current_Smoking_men" = "#81b29a",  
       "Former_Smoking_men" = "#e07a5f", 
       "Current_Smoking_women" = "#81b29a",  
-      "Former_Smoking_women" = "#e07a5f" 
+      "Former_Smoking_women" = "#e07a5f", 
+      "Never" = "#6c584c"
     )
   ) +
   labs(
@@ -1314,14 +1364,18 @@ source ("Functions/pifpaf_scenario_generation.R")
 
 pifscenario_table <- pifscenarios_allrf %>%
   mutate(
-    pif1 = ifelse(pif1 <1, NA, pif1),
-    pif3 = ifelse(pif3 <1, NA, pif3),
-    pif5 = ifelse(pif5 <1, NA, pif5),
-    pif10 = ifelse(pif10 <1, NA, pif10), 
     p0 = p0*100, 
     p1 = p1*100, 
     p0 = round(p0, 2), 
-    p1 = round(p1, 2)
+    p1 = round(p1, 2), 
+    pif1 = round(pif1, 2), 
+    pif3 = round(pif3, 2), 
+    pif5 = round(pif5, 2), 
+    pif10 = round(pif10, 2), 
+    pif1 = ifelse(pif1 <1,"-", pif1),
+    pif3 = ifelse(pif3 <1, "-", pif3),
+    pif5 = ifelse(pif5 <1, "-", pif5),
+    pif10 = ifelse(pif10 <1, "-", pif10)
   ) %>%
   rename(
     `2009exp` = p0, 
@@ -1373,7 +1427,13 @@ PAF scenarios for suspected risk factors to predict relative risks. The PAF scen
 pafscenario_table <- pafscenarios_allrf %>%
   mutate(
     value = value *100, 
-    value = round(value, 2)
+    value = round(value, 2), 
+    paf5 = round(paf5, 2), 
+    paf10 = round(paf10, 2), 
+    paf15 = round(paf15, 2), 
+    paf25 = round(paf25, 2),
+    paf35 = round(paf35, 2), 
+    paf50 = round(paf50, 2)
   ) %>%
   rename(
     `2009exp` = value 
@@ -1403,3 +1463,135 @@ pafscenario_table <- pafscenarios_allrf %>%
 # View the resulting table
 pafscenario_table
 ```
+
+#### Air Pollution
+
+These data are sourced from the Department for Environment, Food, & Rural Affairs:
+
+[Nitrogen dioxide (NO2) - GOV.UK](https://www.gov.uk/government/statistics/air-quality-statistics/ntrogen-dioxide#:~:text=Urban%20background%20NO2%20pollution%20has,9%20per%20cent%20since%202022.)
+
+[Particulate matter (PM10/PM2.5) - GOV.UK](https://www.gov.uk/government/statistics/air-quality-statistics/concentrations-of-particulate-matter-pm10-and-pm25)
+
+-   Data had to be downloaded and edited so that the units were removed as the characters are not allowed in R
+
+```{r}
+#loading the air pollution data sets 
+nitrogendioxide <- read.csv("../Data/PotentialExposures/fig01_nitrogen_dioxide_annual.csv") 
+pm25 <- read.csv("../Data/PotentialExposures/fig06_pm25_annual.csv")
+pm10 <- read.csv("../Data/PotentialExposures/fig05_pm10_annual.csv")
+
+#cleaning the data so it is standardized
+nitrogendioxide <- nitrogendioxide %>% 
+  mutate(
+    var = "NO2"
+  ) %>%
+  rename(
+    value = Mean.NO2.concentration
+  ) %>%
+  select(
+    Site.type, Year, var, value
+  )
+pm25<- pm25%>%
+  mutate(
+    var = "PM25"
+  ) %>%
+  rename(
+    value = Mean.PM2.5.concentration
+  ) %>%
+  select(
+    Site.type, Year, var, value
+  )
+pm10<- pm10 %>%
+  mutate(
+    var = "PM10"
+  )%>%
+  rename(
+    value = Mean.PM10.concentration
+  ) %>%
+  select(
+    Site.type, Year, var, value
+  )
+airpol <- rbind(nitrogendioxide, pm25, pm10)
+
+airpol <- airpol %>%
+  mutate(
+    combo = interaction(var, Site.type)
+  )
+
+#creating the graph 
+color <- c(
+  "NO2.Rural Background" = "#072ac8",
+  "NO2.Urban Background" = "#5fa8d3", 
+  "NO2.Urban Traffic" = "#cae9ff",
+  "PM10.Urban Background" = "#6818a5",
+  "PM10.Urban Traffic" = "#d283ff", 
+  "PM25.Urban Background" = "#415d43",
+  "PM25.Urban Traffic" = "#a1cca5"
+)
+airpol_plot <- ggplot(airpol, aes(x = Year, y = value, color = combo)) +
+  geom_line(size = 1) +         
+  geom_point(size = 2) +         
+  labs(
+    title = "England Air Pollution Trends",
+    x = "Year",
+    y = "Mean Levels",
+    color = "Var & Site Type"
+  ) +
+  scale_color_manual(values = color) +
+  theme_minimal() +             
+  theme(
+    legend.position = "right",
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5)
+  )
+print(airpol_plot)
+```
+
+#### Antibiotic Use 
+
+These data are sourced from Table S3 in the Supplementary Materials from [Time trends and geographical variation in prescribing of antibiotics in England 1998-2017](https://pubmed.ncbi.nlm.nih.gov/30239809/)
+
+-   Data had to be copied and pasted into a .csv file and the £ removed from the Total Cost column
+
+```{r}
+#load in the dataset 
+antibiotics <- read.csv("../Data/PotentialExposures/TableS3_SupplementaryMaterials_Curtis2019.csv")
+
+antibiotics <- antibiotics %>% 
+  mutate(
+      presc_rates = Items.per.1.000.STAR.PU %>% 
+      as.character() %>%           # Ensure it's a character string
+      trimws() %>%                 # Remove spaces
+      gsub(",", "", .) %>%         # Remove commas 
+      gsub("[^0-9.]", "", .) %>%   # Remove non-numeric 
+      as.numeric() 
+  )
+
+antibiotics_plot <- ggplot(antibiotics, aes(x = year, y = presc_rates)) +
+  geom_line(size = 1, color = "#6818a5") +         # Line connecting the dots
+  geom_point(size = 2, color = "#6818a5") +         # Dots on the line
+  labs(
+    title = "England Antibiotic Prescription Trends",
+    x = "Year",
+    y = "Prescriptions per 1000 STAR PU"
+  ) +
+  theme_minimal() +             
+  theme(
+    legend.position = "right",
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5)
+  ) +
+  scale_y_continuous(
+    limits = c(0, 1600),       # Set y-axis range
+    expand = c(0, 0)           # Remove extra padding around the limits
+  )
+print(antibiotics_plot)
+```
+
+STAR-PU units stand for Specific Therapeutic Group Age-sex weightings Related Prescribing Units and they account for the variations in age and sex distributions of patients at GP practices.
+
+#### Ultra Processed Food 
+
+#### Sedentary Lifestyle 
+
+#### Sleep Duration 
+
+#### Sweetened Beverages
