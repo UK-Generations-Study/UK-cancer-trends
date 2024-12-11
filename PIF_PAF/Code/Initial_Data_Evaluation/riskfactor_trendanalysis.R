@@ -54,14 +54,14 @@ rf_clean <- riskfactors %>%
     variable %in% c("Alcohol", "Smoking", "BMI")
   ) %>%
   arrange(
-    exposure, age_group, sex
+    exposure, age_group, sex, year
   )
 dietrf_clean <- riskfactors %>%
   filter(
     exposure %in% c("Red_Meat", "Processed_Meat", "Fibre")
   ) %>%
   arrange(
-    exposure, age_group, sex
+    exposure, age_group, sex, year
   )
 
 #saving the data frame for joint point 
@@ -73,40 +73,50 @@ write.table(
    quote = FALSE
  )
 
-#DIET DATA CANT GO ON GITHUB
-# write.table(
-#   dietrf_clean, 
-#   file = "../Data/dietrf_forjointpoint.txt", 
-#   sep = "\t", 
-#   row.names = FALSE, 
-#   quote = FALSE
-# )
-
-#joint point settings
-  # Parametric Method
-
+#****DIET DATA CANT GO ON GITHUB
+write.table(
+  dietrf_clean,
+  file = "../../../Data/Cleaned_Data/dietrf_forjointpoint.txt",
+  sep = "\t",
+  row.names = FALSE,
+  quote = FALSE
+)
 
 
 
 #Grouping the data by age_group, sex, and exposure and fitting a linear model on the value column
-rf_linearmodel <- riskfactors %>%
-  group_by(age_group, sex, exposure) %>%  # Group by age_group, sex, and exposure
-  do({
-    model <- lm(value ~ year, data = .)# Fit the linear model
-    tidy_model <- tidy(model)# Extract coefficients and p-values using broom::tidy()
-    tidy_model #%>% # Return the relevant parts
-     # filter(term == "year")  # Filter for the 'year' coefficient
-  }) %>%
-  ungroup()
-#adding the overarching exposure variable 
-rf_linearmodel <- rf_linearmodel %>%
-  mutate(
-    variable = case_when(
-      exposure %in% riskfactors$exposure ~ 
-        riskfactors$variable[match(exposure, riskfactors$exposure)], # Match exposures
-      TRUE ~ "none"
-    )
+# rf_linearmodel <- riskfactors %>%
+#   group_by(age_group, sex, exposure) %>%  # Group by age_group, sex, and exposure
+#   do({
+#     model <- lm(value ~ year, data = .)# Fit the linear model
+#    tidy_model <- tidy(model)# Extract coefficients and p-values using broom::tidy()
+#     tidy_model #%>% # Return the relevant parts
+#      # filter(term == "year")  # Filter for the 'year' coefficient
+#   }) %>%
+#   ungroup()
+
+#testing for homoscedacity using the Breusch-Pagan test 
+bpresults <- riskfactors %>%
+  group_by(age_group, sex, exposure) %>%  # Group 
+  summarise(
+    bptest_pvalue = {
+      model <- lm(value ~ year, data = cur_data())  # Fit linear model for the group
+      test <- bptest(model)  # Perform Breusch-Pagan test
+      test$p.value  # Extract p-value
+    },
+    .groups = "drop"  # Ungroup the result for a clean output
   )
+
+
+# #adding the overarching exposure variable 
+# rf_linearmodel <- rf_linearmodel %>%
+#   mutate(
+#     variable = case_when(
+#       exposure %in% riskfactors$exposure ~ 
+#         riskfactors$variable[match(exposure, riskfactors$exposure)], # Match exposures
+#       TRUE ~ "none"
+#     )
+#   )
 # write.csv(rf_linearmodel, file = "../Data/riskfactor_lineartrends.csv", row.names = F)
 
 ##Returns list of statistically increasing risk factors
@@ -123,30 +133,30 @@ rf_linearmodel <- rf_linearmodel %>%
 ###Do risk factors change by age group 
 #this is a ztest for a difference in slopes 
 #ztest = difference in slopes/difference in std. errors
-sigchange_byage <- rf_linearmodel %>%
-  group_by(
-    sex, exposure
-    ) %>% # Group by sex and term
- mutate(
-   def = ifelse(age_group == "50+", 2, 1)
- )%>%
-  filter(
-    term == "year"
-  )%>%
-   summarise(
-     estimate_1 = sum(estimate[def == 1]), # Extract estimate for 20-49
-     estimate_2 = sum(estimate[def == 2]), # Extract estimate for 50+
-     std_error_1 = sum(std.error[def == 1]), # Extract std.error for 20-49
-     std_error_2 = sum(std.error[def == 2]), # Extract std.error for 50+
-     z_value = (estimate_1 - estimate_2) / sqrt(std_error_1^2 + std_error_2^2), # Compute z-value
-     p_value = 2 * (1 - pnorm(abs(z_value))) # Compute p-value
-  )%>%
-  mutate(
-    sig = ifelse(p_value < 0.05, 1, 0) #if there is a significant difference (arbitrary cutoff) it will be coded 1, if insignificant it will be coded 0
-    ) %>%
-  dplyr::select(
-    sex, exposure, z_value, p_value,sig 
-  )
+# sigchange_byage <- rf_linearmodel %>%
+#   group_by(
+#     sex, exposure
+#     ) %>% # Group by sex and term
+#  mutate(
+#    def = ifelse(age_group == "50+", 2, 1)
+#  )%>%
+#   filter(
+#     term == "year"
+#   )%>%
+#    summarise(
+#      estimate_1 = sum(estimate[def == 1]), # Extract estimate for 20-49
+#      estimate_2 = sum(estimate[def == 2]), # Extract estimate for 50+
+#      std_error_1 = sum(std.error[def == 1]), # Extract std.error for 20-49
+#      std_error_2 = sum(std.error[def == 2]), # Extract std.error for 50+
+#      z_value = (estimate_1 - estimate_2) / sqrt(std_error_1^2 + std_error_2^2), # Compute z-value
+#      p_value = 2 * (1 - pnorm(abs(z_value))) # Compute p-value
+#   )%>%
+#   mutate(
+#     sig = ifelse(p_value < 0.05, 1, 0) #if there is a significant difference (arbitrary cutoff) it will be coded 1, if insignificant it will be coded 0
+#     ) %>%
+#   dplyr::select(
+#     sex, exposure, z_value, p_value,sig 
+#   )
 
 
 ############trying to graph 
