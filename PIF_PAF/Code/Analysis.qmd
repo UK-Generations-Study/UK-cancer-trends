@@ -106,14 +106,6 @@ Waiting to add:
 -   HSE has measured MET hours/week for 3 years, 2012, 2016, 2021. In order to carry out the analysis needed for this paper we would need to extend this time period significantly.
 -   Brown et al. assumed an equivalence between meeting old guidelines and new MET hour guidelines, we should discuss if this is an appropriate assumption to make for this paper.
 
-8.  Hormone Replacement Therapy
-
--   Possible data source for HRT usage [here](https://pmc.ncbi.nlm.nih.gov/articles/PMC6891893/).
-
-9.  Oral Contraceptives
-
--   Possible data source for OC usage [here](https://srh.bmj.com/content/familyplanning/48/3/193.full.pdf).
-
 **Methodological plan:**
 
 STEP ONE
@@ -180,31 +172,17 @@ General: 
 
 Brown paper: 
 
-1.  How did they treat red and processed meat in calculating PAFs? Seems as though average was applied to whole population. 
+1.  How did they treat red and processed meat in calculating PAFs? Seems as though average was applied to whole population. *EMAIL SENT*
 
 2.  Which year did they use for diet data to get to 2005? They quote 2000/1 but reference NDNS which goes back to 2008. They also seemingly reference incorrect papers for the Fibre prevalence.  
 
-3.  Which data did they use for activity prevalence? Numbers do not seem to line up with quoted values in HSE data. 
+3.  Which data did they use for activity prevalence? Numbers do not seem to line up with quoted values in HSE data.  
 
-Risk factor data availability:  
+Data Availabitlity
 
-1.  Alcohol data stops at 2011, data has been inferred from the General Household Survey 2005 but the alcohol question may not be entirely consistent. This is mostly to do with the classification between non and light drinkers.  
+1.  All diet data stops at 2008 
 
-    -   PREFERED: Could project backwards from HSE values 
-
-    -   Could just use 2005 datapoint with a large caveat 
-
-    -   Could do some mixture of the two 
-
-    -   Could use status variable to potentially ‘fix’ number of non-drinkers 
-
-2.  All diet data stops at 2008 
-
-    -   Similar issue to above. Projecting backwards may be best method. 
-
-3.  Would need to ask for data access for OC and HRT from previous papers written using NHS financial data. 
-
-4.  Montse has suggested industry data for dietary factors, purely for graphic purposes. These should be found where possible. 
+2.  Montse has suggested industry data for dietary factors, purely for graphic purposes. These should be found where possible. 
 
 Relative Risk availability:  
 
