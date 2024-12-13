@@ -725,6 +725,8 @@ ggsave(diettrends,
        width = 10)
 ```
 
+\*Fibre is daily fibre deficiency based on the UK recommendation of consuming 30g/day
+
 ## Figure 2 - Trends in risk factors table 
 
 ```{r}
@@ -1361,7 +1363,11 @@ ggplot(data_childhood_bmi |> filter(level != "Overweight including obese") |> fi
 
 ```
 
-### Suspected Risk Factor RR Scenarios
+### Suspected Risk Factors
+
+#### RR Scenario Example
+
+This example is for Air Pollution only.
 
 PIF scenarios for suspected risk factors to predict relative risks. The PIF scenarios are based on the PIFs calculated for established risk factors (above) for the time period 2009-2019. The scenarios are PIF =
 
@@ -1606,8 +1612,22 @@ STAR-PU units stand for Specific Therapeutic Group Age-sex weightings Related Pr
 
 #### Ultra Processed Food
 
+According to the [OP12 Social inequalities in ultra-processed food intakes in the United Kingdom: A time trend analysis (2008–2018) \| Journal of Epidemiology & Community Health](https://jech.bmj.com/content/76/Suppl_1/A6.2), ultra processed food consumption has increased in the UK from accounting for 57% of the daily energy in 2008 to 63% in 2018. Ultra processed food consumption was higher in younger participants, men, and more deprived groups.
+
+I cannot get access to an article with these findings nor can I see the whole programme pdf.
+
 #### Sedentary Lifestyle
+
+Speak to Rubin about figures in the positions paper for physical activity.
 
 #### Sleep Duration
 
 #### Sweetened Beverages
+
+#### Type 2 Diabetes 
+
+This figure is from [Health Survey England](https://files.digital.nhs.uk/23/6B5DEA/HSE19-Adult-health-rep.pdf) and shows that diabetes (all) is increasing in men and women. Later in the report, it also discusses that there are more adults diagnosed with diabetes in the lowest household income quintile, compared to the highest.
+
+![](images/clipboard-1688306341.png)
+
+#### Metabolic Syndrome 
