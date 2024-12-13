@@ -727,7 +727,7 @@ ggsave(diettrends,
 
 \*Fibre is daily fibre deficiency based on the UK recommendation of consuming 30g/day
 
-## Figure 2 - Trends in risk factors table 
+## Figure 2 - Trends in risk factors table
 
 ```{r}
 
@@ -1624,10 +1624,10 @@ Speak to Rubin about figures in the positions paper for physical activity.
 
 #### Sweetened Beverages
 
-#### Type 2 Diabetes 
+#### Type 2 Diabetes
 
 This figure is from [Health Survey England](https://files.digital.nhs.uk/23/6B5DEA/HSE19-Adult-health-rep.pdf) and shows that diabetes (all) is increasing in men and women. Later in the report, it also discusses that there are more adults diagnosed with diabetes in the lowest household income quintile, compared to the highest.
 
 ![](images/clipboard-1688306341.png)
 
-#### Metabolic Syndrome 
+#### Metabolic Syndrome
