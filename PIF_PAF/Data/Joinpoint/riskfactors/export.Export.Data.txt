@@ -1,0 +1,713 @@
+"age_group"	"sex"	"exposure"	"year"	"value"	"Model"	"Flag"	"APC"	"Joinpoints"	"Final Selected Model"
+20-49	Men	BMI_obese_men	1997	0.15	0.15	NA	9.9333*	1	1
+20-49	Men	BMI_obese_men	1998	0.16	0.16	NA	9.9333*	1	1
+20-49	Men	BMI_obese_men	1999	0.18	0.18	NA	9.9333*	1	1
+20-49	Men	BMI_obese_men	2000	0.20	0.20	Joinpoint 1	NA	1	1
+20-49	Men	BMI_obese_men	2001	0.20	0.20	NA	0.8902*	1	1
+20-49	Men	BMI_obese_men	2002	0.20	0.20	NA	0.8902*	1	1
+20-49	Men	BMI_obese_men	2003	0.20	0.20	NA	0.8902*	1	1
+20-49	Men	BMI_obese_men	2004	0.21	0.21	NA	0.8902*	1	1
+20-49	Men	BMI_obese_men	2005	0.21	0.21	NA	0.8902*	1	1
+20-49	Men	BMI_obese_men	2006	0.22	0.21	NA	0.8902*	1	1
+20-49	Men	BMI_obese_men	2007	0.21	0.21	NA	0.8902*	1	1
+20-49	Men	BMI_obese_men	2008	0.21	0.21	NA	0.8902*	1	1
+20-49	Men	BMI_obese_men	2009	0.18	0.22	NA	0.8902*	1	1
+20-49	Men	BMI_obese_men	2010	0.24	0.22	NA	0.8902*	1	1
+20-49	Men	BMI_obese_men	2011	0.20	0.22	NA	0.8902*	1	1
+20-49	Men	BMI_obese_men	2012	0.21	0.22	NA	0.8902*	1	1
+20-49	Men	BMI_obese_men	2013	0.23	0.22	NA	0.8902*	1	1
+20-49	Men	BMI_obese_men	2014	0.21	0.23	NA	0.8902*	1	1
+20-49	Men	BMI_obese_men	2015	0.23	0.23	NA	0.8902*	1	1
+20-49	Men	BMI_obese_men	2016	0.23	0.23	NA	0.8902*	1	1
+20-49	Men	BMI_obese_men	2017	0.25	0.23	NA	0.8902*	1	1
+50+	Men	BMI_obese_men	1997	0.21	0.21	NA	3.8272*	1	1
+50+	Men	BMI_obese_men	1998	0.21	0.22	NA	3.8272*	1	1
+50+	Men	BMI_obese_men	1999	0.21	0.23	NA	3.8272*	1	1
+50+	Men	BMI_obese_men	2000	0.25	0.23	NA	3.8272*	1	1
+50+	Men	BMI_obese_men	2001	0.25	0.24	NA	3.8272*	1	1
+50+	Men	BMI_obese_men	2002	0.27	0.25	NA	3.8272*	1	1
+50+	Men	BMI_obese_men	2003	0.27	0.26	NA	3.8272*	1	1
+50+	Men	BMI_obese_men	2004	0.28	0.27	NA	3.8272*	1	1
+50+	Men	BMI_obese_men	2005	0.26	0.28	NA	3.8272*	1	1
+50+	Men	BMI_obese_men	2006	0.29	0.29	NA	3.8272*	1	1
+50+	Men	BMI_obese_men	2007	0.30	0.31	Joinpoint 1	NA	1	1
+50+	Men	BMI_obese_men	2008	0.31	0.31	NA	0.6304	1	1
+50+	Men	BMI_obese_men	2009	0.30	0.31	NA	0.6304	1	1
+50+	Men	BMI_obese_men	2010	0.33	0.31	NA	0.6304	1	1
+50+	Men	BMI_obese_men	2011	0.31	0.31	NA	0.6304	1	1
+50+	Men	BMI_obese_men	2012	0.31	0.32	NA	0.6304	1	1
+50+	Men	BMI_obese_men	2013	0.32	0.32	NA	0.6304	1	1
+50+	Men	BMI_obese_men	2014	0.30	0.32	NA	0.6304	1	1
+50+	Men	BMI_obese_men	2015	0.33	0.32	NA	0.6304	1	1
+50+	Men	BMI_obese_men	2016	0.32	0.32	NA	0.6304	1	1
+50+	Men	BMI_obese_men	2017	0.33	0.33	NA	0.6304	1	1
+20-49	Women	BMI_obese_women	1997	0.17	0.18	NA	1.9052*	0	0
+20-49	Women	BMI_obese_women	1998	0.18	0.18	NA	1.9052*	0	0
+20-49	Women	BMI_obese_women	1999	0.18	0.19	NA	1.9052*	0	0
+20-49	Women	BMI_obese_women	2000	0.18	0.19	NA	1.9052*	0	0
+20-49	Women	BMI_obese_women	2001	0.21	0.19	NA	1.9052*	0	0
+20-49	Women	BMI_obese_women	2002	0.21	0.20	NA	1.9052*	0	0
+20-49	Women	BMI_obese_women	2003	0.21	0.20	NA	1.9052*	0	0
+20-49	Women	BMI_obese_women	2004	0.21	0.20	NA	1.9052*	0	0
+20-49	Women	BMI_obese_women	2005	0.22	0.21	NA	1.9052*	0	0
+20-49	Women	BMI_obese_women	2006	0.21	0.21	NA	1.9052*	0	0
+20-49	Women	BMI_obese_women	2007	0.22	0.22	NA	1.9052*	0	0
+20-49	Women	BMI_obese_women	2008	0.22	0.22	NA	1.9052*	0	0
+20-49	Women	BMI_obese_women	2009	0.22	0.22	NA	1.9052*	0	0
+20-49	Women	BMI_obese_women	2010	0.24	0.23	NA	1.9052*	0	0
+20-49	Women	BMI_obese_women	2011	0.23	0.23	NA	1.9052*	0	0
+20-49	Women	BMI_obese_women	2012	0.23	0.24	NA	1.9052*	0	0
+20-49	Women	BMI_obese_women	2013	0.22	0.24	NA	1.9052*	0	0
+20-49	Women	BMI_obese_women	2014	0.24	0.25	NA	1.9052*	0	0
+20-49	Women	BMI_obese_women	2015	0.25	0.25	NA	1.9052*	0	0
+20-49	Women	BMI_obese_women	2016	0.23	0.26	NA	1.9052*	0	0
+20-49	Women	BMI_obese_women	2017	0.29	0.26	NA	1.9052*	0	0
+50+	Women	BMI_obese_women	1997	0.26	0.27	NA	0.9700*	0	0
+50+	Women	BMI_obese_women	1998	0.27	0.27	NA	0.9700*	0	0
+50+	Women	BMI_obese_women	1999	0.27	0.27	NA	0.9700*	0	0
+50+	Women	BMI_obese_women	2000	0.28	0.27	NA	0.9700*	0	0
+50+	Women	BMI_obese_women	2001	0.28	0.28	NA	0.9700*	0	0
+50+	Women	BMI_obese_women	2002	0.27	0.28	NA	0.9700*	0	0
+50+	Women	BMI_obese_women	2003	0.28	0.28	NA	0.9700*	0	0
+50+	Women	BMI_obese_women	2004	0.28	0.29	NA	0.9700*	0	0
+50+	Women	BMI_obese_women	2005	0.29	0.29	NA	0.9700*	0	0
+50+	Women	BMI_obese_women	2006	0.30	0.29	NA	0.9700*	0	0
+50+	Women	BMI_obese_women	2007	0.30	0.29	NA	0.9700*	0	0
+50+	Women	BMI_obese_women	2008	0.31	0.30	NA	0.9700*	0	0
+50+	Women	BMI_obese_women	2009	0.29	0.30	NA	0.9700*	0	0
+50+	Women	BMI_obese_women	2010	0.32	0.30	NA	0.9700*	0	0
+50+	Women	BMI_obese_women	2011	0.33	0.31	NA	0.9700*	0	0
+50+	Women	BMI_obese_women	2012	0.30	0.31	NA	0.9700*	0	0
+50+	Women	BMI_obese_women	2013	0.28	0.31	NA	0.9700*	0	0
+50+	Women	BMI_obese_women	2014	0.32	0.31	NA	0.9700*	0	0
+50+	Women	BMI_obese_women	2015	0.31	0.32	NA	0.9700*	0	0
+50+	Women	BMI_obese_women	2016	0.32	0.32	NA	0.9700*	0	0
+50+	Women	BMI_obese_women	2017	0.33	0.32	NA	0.9700*	0	0
+20-49	Men	BMI_overweight_men	1997	0.45	0.44	NA	-0.5502*	0	0
+20-49	Men	BMI_overweight_men	1998	0.43	0.44	NA	-0.5502*	0	0
+20-49	Men	BMI_overweight_men	1999	0.42	0.44	NA	-0.5502*	0	0
+20-49	Men	BMI_overweight_men	2000	0.43	0.43	NA	-0.5502*	0	0
+20-49	Men	BMI_overweight_men	2001	0.45	0.43	NA	-0.5502*	0	0
+20-49	Men	BMI_overweight_men	2002	0.42	0.43	NA	-0.5502*	0	0
+20-49	Men	BMI_overweight_men	2003	0.42	0.43	NA	-0.5502*	0	0
+20-49	Men	BMI_overweight_men	2004	0.43	0.43	NA	-0.5502*	0	0
+20-49	Men	BMI_overweight_men	2005	0.42	0.42	NA	-0.5502*	0	0
+20-49	Men	BMI_overweight_men	2006	0.44	0.42	NA	-0.5502*	0	0
+20-49	Men	BMI_overweight_men	2007	0.40	0.42	NA	-0.5502*	0	0
+20-49	Men	BMI_overweight_men	2008	0.42	0.42	NA	-0.5502*	0	0
+20-49	Men	BMI_overweight_men	2009	0.43	0.41	NA	-0.5502*	0	0
+20-49	Men	BMI_overweight_men	2010	0.42	0.41	NA	-0.5502*	0	0
+20-49	Men	BMI_overweight_men	2011	0.41	0.41	NA	-0.5502*	0	0
+20-49	Men	BMI_overweight_men	2012	0.43	0.41	NA	-0.5502*	0	0
+20-49	Men	BMI_overweight_men	2013	0.40	0.40	NA	-0.5502*	0	0
+20-49	Men	BMI_overweight_men	2014	0.38	0.40	NA	-0.5502*	0	0
+20-49	Men	BMI_overweight_men	2015	0.40	0.40	NA	-0.5502*	0	0
+20-49	Men	BMI_overweight_men	2016	0.39	0.40	NA	-0.5502*	0	0
+20-49	Men	BMI_overweight_men	2017	0.39	0.40	NA	-0.5502*	0	0
+50+	Men	BMI_overweight_men	1997	0.51	0.52	NA	-0.6909*	0	0
+50+	Men	BMI_overweight_men	1998	0.53	0.51	NA	-0.6909*	0	0
+50+	Men	BMI_overweight_men	1999	0.51	0.51	NA	-0.6909*	0	0
+50+	Men	BMI_overweight_men	2000	0.51	0.51	NA	-0.6909*	0	0
+50+	Men	BMI_overweight_men	2001	0.51	0.50	NA	-0.6909*	0	0
+50+	Men	BMI_overweight_men	2002	0.49	0.50	NA	-0.6909*	0	0
+50+	Men	BMI_overweight_men	2003	0.50	0.49	NA	-0.6909*	0	0
+50+	Men	BMI_overweight_men	2004	0.49	0.49	NA	-0.6909*	0	0
+50+	Men	BMI_overweight_men	2005	0.48	0.49	NA	-0.6909*	0	0
+50+	Men	BMI_overweight_men	2006	0.48	0.48	NA	-0.6909*	0	0
+50+	Men	BMI_overweight_men	2007	0.47	0.48	NA	-0.6909*	0	0
+50+	Men	BMI_overweight_men	2008	0.46	0.48	NA	-0.6909*	0	0
+50+	Men	BMI_overweight_men	2009	0.48	0.47	NA	-0.6909*	0	0
+50+	Men	BMI_overweight_men	2010	0.47	0.47	NA	-0.6909*	0	0
+50+	Men	BMI_overweight_men	2011	0.46	0.47	NA	-0.6909*	0	0
+50+	Men	BMI_overweight_men	2012	0.47	0.46	NA	-0.6909*	0	0
+50+	Men	BMI_overweight_men	2013	0.46	0.46	NA	-0.6909*	0	0
+50+	Men	BMI_overweight_men	2014	0.48	0.46	NA	-0.6909*	0	0
+50+	Men	BMI_overweight_men	2015	0.46	0.46	NA	-0.6909*	0	0
+50+	Men	BMI_overweight_men	2016	0.46	0.45	NA	-0.6909*	0	0
+50+	Men	BMI_overweight_men	2017	0.44	0.45	NA	-0.6909*	0	0
+20-49	Women	BMI_overweight_women	1997	0.29	0.29	NA	-0.0858	0	0
+20-49	Women	BMI_overweight_women	1998	0.29	0.29	NA	-0.0858	0	0
+20-49	Women	BMI_overweight_women	1999	0.30	0.29	NA	-0.0858	0	0
+20-49	Women	BMI_overweight_women	2000	0.29	0.29	NA	-0.0858	0	0
+20-49	Women	BMI_overweight_women	2001	0.29	0.29	NA	-0.0858	0	0
+20-49	Women	BMI_overweight_women	2002	0.30	0.29	NA	-0.0858	0	0
+20-49	Women	BMI_overweight_women	2003	0.29	0.29	NA	-0.0858	0	0
+20-49	Women	BMI_overweight_women	2004	0.30	0.29	NA	-0.0858	0	0
+20-49	Women	BMI_overweight_women	2005	0.29	0.29	NA	-0.0858	0	0
+20-49	Women	BMI_overweight_women	2006	0.29	0.29	NA	-0.0858	0	0
+20-49	Women	BMI_overweight_women	2007	0.30	0.29	NA	-0.0858	0	0
+20-49	Women	BMI_overweight_women	2008	0.29	0.29	NA	-0.0858	0	0
+20-49	Women	BMI_overweight_women	2009	0.29	0.29	NA	-0.0858	0	0
+20-49	Women	BMI_overweight_women	2010	0.28	0.29	NA	-0.0858	0	0
+20-49	Women	BMI_overweight_women	2011	0.30	0.29	NA	-0.0858	0	0
+20-49	Women	BMI_overweight_women	2012	0.28	0.29	NA	-0.0858	0	0
+20-49	Women	BMI_overweight_women	2013	0.31	0.29	NA	-0.0858	0	0
+20-49	Women	BMI_overweight_women	2014	0.29	0.29	NA	-0.0858	0	0
+20-49	Women	BMI_overweight_women	2015	0.29	0.29	NA	-0.0858	0	0
+20-49	Women	BMI_overweight_women	2016	0.28	0.29	NA	-0.0858	0	0
+20-49	Women	BMI_overweight_women	2017	0.28	0.29	NA	-0.0858	0	0
+50+	Women	BMI_overweight_women	1997	0.39	0.40	NA	-0.5406*	0	0
+50+	Women	BMI_overweight_women	1998	0.39	0.40	NA	-0.5406*	0	0
+50+	Women	BMI_overweight_women	1999	0.39	0.40	NA	-0.5406*	0	0
+50+	Women	BMI_overweight_women	2000	0.41	0.39	NA	-0.5406*	0	0
+50+	Women	BMI_overweight_women	2001	0.39	0.39	NA	-0.5406*	0	0
+50+	Women	BMI_overweight_women	2002	0.39	0.39	NA	-0.5406*	0	0
+50+	Women	BMI_overweight_women	2003	0.39	0.39	NA	-0.5406*	0	0
+50+	Women	BMI_overweight_women	2004	0.40	0.39	NA	-0.5406*	0	0
+50+	Women	BMI_overweight_women	2005	0.38	0.38	NA	-0.5406*	0	0
+50+	Women	BMI_overweight_women	2006	0.38	0.38	NA	-0.5406*	0	0
+50+	Women	BMI_overweight_women	2007	0.37	0.38	NA	-0.5406*	0	0
+50+	Women	BMI_overweight_women	2008	0.38	0.38	NA	-0.5406*	0	0
+50+	Women	BMI_overweight_women	2009	0.39	0.38	NA	-0.5406*	0	0
+50+	Women	BMI_overweight_women	2010	0.37	0.37	NA	-0.5406*	0	0
+50+	Women	BMI_overweight_women	2011	0.37	0.37	NA	-0.5406*	0	0
+50+	Women	BMI_overweight_women	2012	0.38	0.37	NA	-0.5406*	0	0
+50+	Women	BMI_overweight_women	2013	0.38	0.37	NA	-0.5406*	0	0
+50+	Women	BMI_overweight_women	2014	0.36	0.37	NA	-0.5406*	0	0
+50+	Women	BMI_overweight_women	2015	0.36	0.36	NA	-0.5406*	0	0
+50+	Women	BMI_overweight_women	2016	0.35	0.36	NA	-0.5406*	0	0
+50+	Women	BMI_overweight_women	2017	0.36	0.36	NA	-0.5406*	0	0
+20-49	Men	Current_Smoking_men	1995	0.35	0.37	NA	-1.6740*	0	0
+20-49	Men	Current_Smoking_men	1996	0.37	0.36	NA	-1.6740*	0	0
+20-49	Men	Current_Smoking_men	1997	0.34	0.36	NA	-1.6740*	0	0
+20-49	Men	Current_Smoking_men	1998	0.34	0.35	NA	-1.6740*	0	0
+20-49	Men	Current_Smoking_men	1999	0.34	0.34	NA	-1.6740*	0	0
+20-49	Men	Current_Smoking_men	2000	0.35	0.34	NA	-1.6740*	0	0
+20-49	Men	Current_Smoking_men	2001	0.33	0.33	NA	-1.6740*	0	0
+20-49	Men	Current_Smoking_men	2002	0.34	0.33	NA	-1.6740*	0	0
+20-49	Men	Current_Smoking_men	2003	0.34	0.32	NA	-1.6740*	0	0
+20-49	Men	Current_Smoking_men	2004	0.30	0.32	NA	-1.6740*	0	0
+20-49	Men	Current_Smoking_men	2005	0.33	0.31	NA	-1.6740*	0	0
+20-49	Men	Current_Smoking_men	2006	0.31	0.31	NA	-1.6740*	0	0
+20-49	Men	Current_Smoking_men	2007	0.30	0.30	NA	-1.6740*	0	0
+20-49	Men	Current_Smoking_men	2008	0.31	0.30	NA	-1.6740*	0	0
+20-49	Men	Current_Smoking_men	2009	0.28	0.29	NA	-1.6740*	0	0
+20-49	Men	Current_Smoking_men	2010	0.28	0.29	NA	-1.6740*	0	0
+20-49	Men	Current_Smoking_men	2011	0.30	0.28	NA	-1.6740*	0	0
+20-49	Men	Current_Smoking_men	2012	0.27	0.28	NA	-1.6740*	0	0
+20-49	Men	Current_Smoking_men	2013	0.30	0.27	NA	-1.6740*	0	0
+20-49	Men	Current_Smoking_men	2014	0.28	0.27	NA	-1.6740*	0	0
+20-49	Men	Current_Smoking_men	2015	0.25	0.26	NA	-1.6740*	0	0
+20-49	Men	Current_Smoking_men	2016	0.26	0.26	NA	-1.6740*	0	0
+20-49	Men	Current_Smoking_men	2017	0.25	0.25	NA	-1.6740*	0	0
+20-49	Men	Current_Smoking_men	2018	0.24	0.25	NA	-1.6740*	0	0
+20-49	Men	Current_Smoking_men	2019	0.24	0.25	NA	-1.6740*	0	0
+50+	Men	Current_Smoking_men	1995	0.20	0.21	NA	-1.9416*	0	0
+50+	Men	Current_Smoking_men	1996	0.21	0.21	NA	-1.9416*	0	0
+50+	Men	Current_Smoking_men	1997	0.22	0.20	NA	-1.9416*	0	0
+50+	Men	Current_Smoking_men	1998	0.20	0.20	NA	-1.9416*	0	0
+50+	Men	Current_Smoking_men	1999	0.19	0.20	NA	-1.9416*	0	0
+50+	Men	Current_Smoking_men	2000	0.19	0.19	NA	-1.9416*	0	0
+50+	Men	Current_Smoking_men	2001	0.19	0.19	NA	-1.9416*	0	0
+50+	Men	Current_Smoking_men	2002	0.18	0.18	NA	-1.9416*	0	0
+50+	Men	Current_Smoking_men	2003	0.17	0.18	NA	-1.9416*	0	0
+50+	Men	Current_Smoking_men	2004	0.16	0.18	NA	-1.9416*	0	0
+50+	Men	Current_Smoking_men	2005	0.18	0.17	NA	-1.9416*	0	0
+50+	Men	Current_Smoking_men	2006	0.17	0.17	NA	-1.9416*	0	0
+50+	Men	Current_Smoking_men	2007	0.17	0.17	NA	-1.9416*	0	0
+50+	Men	Current_Smoking_men	2008	0.15	0.16	NA	-1.9416*	0	0
+50+	Men	Current_Smoking_men	2009	0.18	0.16	NA	-1.9416*	0	0
+50+	Men	Current_Smoking_men	2010	0.16	0.16	NA	-1.9416*	0	0
+50+	Men	Current_Smoking_men	2011	0.15	0.15	NA	-1.9416*	0	0
+50+	Men	Current_Smoking_men	2012	0.16	0.15	NA	-1.9416*	0	0
+50+	Men	Current_Smoking_men	2013	0.17	0.15	NA	-1.9416*	0	0
+50+	Men	Current_Smoking_men	2014	0.15	0.15	NA	-1.9416*	0	0
+50+	Men	Current_Smoking_men	2015	0.13	0.14	NA	-1.9416*	0	0
+50+	Men	Current_Smoking_men	2016	0.15	0.14	NA	-1.9416*	0	0
+50+	Men	Current_Smoking_men	2017	0.15	0.14	NA	-1.9416*	0	0
+50+	Men	Current_Smoking_men	2018	0.12	0.13	NA	-1.9416*	0	0
+50+	Men	Current_Smoking_men	2019	0.12	0.13	NA	-1.9416*	0	0
+20-49	Women	Current_Smoking_women	1995	0.31	0.32	NA	-0.8570	1	1
+20-49	Women	Current_Smoking_women	1996	0.33	0.32	NA	-0.8570	1	1
+20-49	Women	Current_Smoking_women	1997	0.32	0.32	NA	-0.8570	1	1
+20-49	Women	Current_Smoking_women	1998	0.32	0.31	NA	-0.8570	1	1
+20-49	Women	Current_Smoking_women	1999	0.32	0.31	NA	-0.8570	1	1
+20-49	Women	Current_Smoking_women	2000	0.30	0.31	NA	-0.8570	1	1
+20-49	Women	Current_Smoking_women	2001	0.30	0.31	NA	-0.8570	1	1
+20-49	Women	Current_Smoking_women	2002	0.33	0.30	Joinpoint 1	NA	1	1
+20-49	Women	Current_Smoking_women	2003	0.30	0.29	NA	-3.2003*	1	1
+20-49	Women	Current_Smoking_women	2004	0.27	0.28	NA	-3.2003*	1	1
+20-49	Women	Current_Smoking_women	2005	0.30	0.28	NA	-3.2003*	1	1
+20-49	Women	Current_Smoking_women	2006	0.25	0.27	NA	-3.2003*	1	1
+20-49	Women	Current_Smoking_women	2007	0.26	0.26	NA	-3.2003*	1	1
+20-49	Women	Current_Smoking_women	2008	0.24	0.25	NA	-3.2003*	1	1
+20-49	Women	Current_Smoking_women	2009	0.24	0.24	NA	-3.2003*	1	1
+20-49	Women	Current_Smoking_women	2010	0.22	0.23	NA	-3.2003*	1	1
+20-49	Women	Current_Smoking_women	2011	0.23	0.23	NA	-3.2003*	1	1
+20-49	Women	Current_Smoking_women	2012	0.20	0.22	NA	-3.2003*	1	1
+20-49	Women	Current_Smoking_women	2013	0.21	0.21	NA	-3.2003*	1	1
+20-49	Women	Current_Smoking_women	2014	0.20	0.21	NA	-3.2003*	1	1
+20-49	Women	Current_Smoking_women	2015	0.22	0.20	NA	-3.2003*	1	1
+20-49	Women	Current_Smoking_women	2016	0.19	0.19	NA	-3.2003*	1	1
+20-49	Women	Current_Smoking_women	2017	0.19	0.19	NA	-3.2003*	1	1
+20-49	Women	Current_Smoking_women	2018	0.18	0.18	NA	-3.2003*	1	1
+20-49	Women	Current_Smoking_women	2019	0.18	0.17	NA	-3.2003*	1	1
+50+	Women	Current_Smoking_women	1995	0.21	0.21	NA	-2.4870*	0	0
+50+	Women	Current_Smoking_women	1996	0.20	0.20	NA	-2.4870*	0	0
+50+	Women	Current_Smoking_women	1997	0.19	0.20	NA	-2.4870*	0	0
+50+	Women	Current_Smoking_women	1998	0.20	0.19	NA	-2.4870*	0	0
+50+	Women	Current_Smoking_women	1999	0.19	0.19	NA	-2.4870*	0	0
+50+	Women	Current_Smoking_women	2000	0.18	0.18	NA	-2.4870*	0	0
+50+	Women	Current_Smoking_women	2001	0.18	0.18	NA	-2.4870*	0	0
+50+	Women	Current_Smoking_women	2002	0.17	0.17	NA	-2.4870*	0	0
+50+	Women	Current_Smoking_women	2003	0.18	0.17	NA	-2.4870*	0	0
+50+	Women	Current_Smoking_women	2004	0.16	0.17	NA	-2.4870*	0	0
+50+	Women	Current_Smoking_women	2005	0.16	0.16	NA	-2.4870*	0	0
+50+	Women	Current_Smoking_women	2006	0.16	0.16	NA	-2.4870*	0	0
+50+	Women	Current_Smoking_women	2007	0.15	0.15	NA	-2.4870*	0	0
+50+	Women	Current_Smoking_women	2008	0.14	0.15	NA	-2.4870*	0	0
+50+	Women	Current_Smoking_women	2009	0.15	0.15	NA	-2.4870*	0	0
+50+	Women	Current_Smoking_women	2010	0.14	0.14	NA	-2.4870*	0	0
+50+	Women	Current_Smoking_women	2011	0.14	0.14	NA	-2.4870*	0	0
+50+	Women	Current_Smoking_women	2012	0.14	0.14	NA	-2.4870*	0	0
+50+	Women	Current_Smoking_women	2013	0.14	0.13	NA	-2.4870*	0	0
+50+	Women	Current_Smoking_women	2014	0.14	0.13	NA	-2.4870*	0	0
+50+	Women	Current_Smoking_women	2015	0.11	0.13	NA	-2.4870*	0	0
+50+	Women	Current_Smoking_women	2016	0.12	0.12	NA	-2.4870*	0	0
+50+	Women	Current_Smoking_women	2017	0.12	0.12	NA	-2.4870*	0	0
+50+	Women	Current_Smoking_women	2018	0.12	0.12	NA	-2.4870*	0	0
+50+	Women	Current_Smoking_women	2019	0.11	0.11	NA	-2.4870*	0	0
+20-49	Men	Former_Smoking_men	1995	0.19	0.19	NA	-1.0497*	2	2
+20-49	Men	Former_Smoking_men	1996	0.19	0.19	NA	-1.0497*	2	2
+20-49	Men	Former_Smoking_men	1997	0.18	0.19	NA	-1.0497*	2	2
+20-49	Men	Former_Smoking_men	1998	0.19	0.18	NA	-1.0497*	2	2
+20-49	Men	Former_Smoking_men	1999	0.19	0.18	NA	-1.0497*	2	2
+20-49	Men	Former_Smoking_men	2000	0.17	0.18	NA	-1.0497*	2	2
+20-49	Men	Former_Smoking_men	2001	0.19	0.18	NA	-1.0497*	2	2
+20-49	Men	Former_Smoking_men	2002	0.17	0.18	NA	-1.0497*	2	2
+20-49	Men	Former_Smoking_men	2003	0.16	0.18	NA	-1.0497*	2	2
+20-49	Men	Former_Smoking_men	2004	0.18	0.17	NA	-1.0497*	2	2
+20-49	Men	Former_Smoking_men	2005	0.17	0.17	NA	-1.0497*	2	2
+20-49	Men	Former_Smoking_men	2006	0.17	0.17	NA	-1.0497*	2	2
+20-49	Men	Former_Smoking_men	2007	0.17	0.17	NA	-1.0497*	2	2
+20-49	Men	Former_Smoking_men	2008	0.17	0.17	Joinpoint 1	NA	2	2
+20-49	Men	Former_Smoking_men	2009	0.17	0.17	NA	2.5019*	2	2
+20-49	Men	Former_Smoking_men	2010	0.18	0.17	NA	2.5019*	2	2
+20-49	Men	Former_Smoking_men	2011	0.18	0.18	NA	2.5019*	2	2
+20-49	Men	Former_Smoking_men	2012	0.17	0.18	NA	2.5019*	2	2
+20-49	Men	Former_Smoking_men	2013	0.20	0.19	NA	2.5019*	2	2
+20-49	Men	Former_Smoking_men	2014	0.19	0.19	NA	2.5019*	2	2
+20-49	Men	Former_Smoking_men	2015	0.19	0.20	NA	2.5019*	2	2
+20-49	Men	Former_Smoking_men	2016	0.21	0.20	NA	2.5019*	2	2
+20-49	Men	Former_Smoking_men	2017	0.20	0.21	Joinpoint 2	NA	2	2
+20-49	Men	Former_Smoking_men	2018	0.20	0.19	NA	-6.6708	2	2
+20-49	Men	Former_Smoking_men	2019	0.18	0.18	NA	-6.6708	2	2
+50+	Men	Former_Smoking_men	1995	0.51	0.52	NA	-1.1904*	0	0
+50+	Men	Former_Smoking_men	1996	0.49	0.51	NA	-1.1904*	0	0
+50+	Men	Former_Smoking_men	1997	0.51	0.50	NA	-1.1904*	0	0
+50+	Men	Former_Smoking_men	1998	0.50	0.50	NA	-1.1904*	0	0
+50+	Men	Former_Smoking_men	1999	0.47	0.49	NA	-1.1904*	0	0
+50+	Men	Former_Smoking_men	2000	0.48	0.49	NA	-1.1904*	0	0
+50+	Men	Former_Smoking_men	2001	0.49	0.48	NA	-1.1904*	0	0
+50+	Men	Former_Smoking_men	2002	0.46	0.47	NA	-1.1904*	0	0
+50+	Men	Former_Smoking_men	2003	0.48	0.47	NA	-1.1904*	0	0
+50+	Men	Former_Smoking_men	2004	0.48	0.46	NA	-1.1904*	0	0
+50+	Men	Former_Smoking_men	2005	0.45	0.46	NA	-1.1904*	0	0
+50+	Men	Former_Smoking_men	2006	0.45	0.45	NA	-1.1904*	0	0
+50+	Men	Former_Smoking_men	2007	0.46	0.45	NA	-1.1904*	0	0
+50+	Men	Former_Smoking_men	2008	0.45	0.44	NA	-1.1904*	0	0
+50+	Men	Former_Smoking_men	2009	0.44	0.44	NA	-1.1904*	0	0
+50+	Men	Former_Smoking_men	2010	0.45	0.43	NA	-1.1904*	0	0
+50+	Men	Former_Smoking_men	2011	0.45	0.43	NA	-1.1904*	0	0
+50+	Men	Former_Smoking_men	2012	0.41	0.42	NA	-1.1904*	0	0
+50+	Men	Former_Smoking_men	2013	0.41	0.42	NA	-1.1904*	0	0
+50+	Men	Former_Smoking_men	2014	0.39	0.41	NA	-1.1904*	0	0
+50+	Men	Former_Smoking_men	2015	0.41	0.41	NA	-1.1904*	0	0
+50+	Men	Former_Smoking_men	2016	0.39	0.40	NA	-1.1904*	0	0
+50+	Men	Former_Smoking_men	2017	0.38	0.40	NA	-1.1904*	0	0
+50+	Men	Former_Smoking_men	2018	0.40	0.39	NA	-1.1904*	0	0
+50+	Men	Former_Smoking_men	2019	0.39	0.39	NA	-1.1904*	0	0
+20-49	Women	Former_Smoking_women	1995	0.17	0.17	NA	-0.9326	2	2
+20-49	Women	Former_Smoking_women	1996	0.16	0.17	NA	-0.9326	2	2
+20-49	Women	Former_Smoking_women	1997	0.17	0.17	NA	-0.9326	2	2
+20-49	Women	Former_Smoking_women	1998	0.16	0.17	NA	-0.9326	2	2
+20-49	Women	Former_Smoking_women	1999	0.17	0.16	NA	-0.9326	2	2
+20-49	Women	Former_Smoking_women	2000	0.16	0.16	NA	-0.9326	2	2
+20-49	Women	Former_Smoking_women	2001	0.17	0.16	NA	-0.9326	2	2
+20-49	Women	Former_Smoking_women	2002	0.16	0.16	NA	-0.9326	2	2
+20-49	Women	Former_Smoking_women	2003	0.15	0.16	Joinpoint 1	NA	2	2
+20-49	Women	Former_Smoking_women	2004	0.17	0.16	NA	1.4863*	2	2
+20-49	Women	Former_Smoking_women	2005	0.16	0.16	NA	1.4863*	2	2
+20-49	Women	Former_Smoking_women	2006	0.17	0.17	NA	1.4863*	2	2
+20-49	Women	Former_Smoking_women	2007	0.17	0.17	NA	1.4863*	2	2
+20-49	Women	Former_Smoking_women	2008	0.17	0.17	NA	1.4863*	2	2
+20-49	Women	Former_Smoking_women	2009	0.17	0.17	NA	1.4863*	2	2
+20-49	Women	Former_Smoking_women	2010	0.19	0.18	NA	1.4863*	2	2
+20-49	Women	Former_Smoking_women	2011	0.18	0.18	NA	1.4863*	2	2
+20-49	Women	Former_Smoking_women	2012	0.18	0.18	NA	1.4863*	2	2
+20-49	Women	Former_Smoking_women	2013	0.19	0.18	NA	1.4863*	2	2
+20-49	Women	Former_Smoking_women	2014	0.17	0.19	NA	1.4863*	2	2
+20-49	Women	Former_Smoking_women	2015	0.18	0.19	NA	1.4863*	2	2
+20-49	Women	Former_Smoking_women	2016	0.19	0.19	NA	1.4863*	2	2
+20-49	Women	Former_Smoking_women	2017	0.20	0.20	Joinpoint 2	NA	2	2
+20-49	Women	Former_Smoking_women	2018	0.18	0.18	NA	-10.1242	2	2
+20-49	Women	Former_Smoking_women	2019	0.15	0.16	NA	-10.1242	2	2
+50+	Women	Former_Smoking_women	1995	0.28	0.28	NA	0.1538	0	0
+50+	Women	Former_Smoking_women	1996	0.29	0.29	NA	0.1538	0	0
+50+	Women	Former_Smoking_women	1997	0.29	0.29	NA	0.1538	0	0
+50+	Women	Former_Smoking_women	1998	0.29	0.29	NA	0.1538	0	0
+50+	Women	Former_Smoking_women	1999	0.29	0.29	NA	0.1538	0	0
+50+	Women	Former_Smoking_women	2000	0.26	0.29	NA	0.1538	0	0
+50+	Women	Former_Smoking_women	2001	0.30	0.29	NA	0.1538	0	0
+50+	Women	Former_Smoking_women	2002	0.28	0.29	NA	0.1538	0	0
+50+	Women	Former_Smoking_women	2003	0.29	0.29	NA	0.1538	0	0
+50+	Women	Former_Smoking_women	2004	0.30	0.29	NA	0.1538	0	0
+50+	Women	Former_Smoking_women	2005	0.27	0.29	NA	0.1538	0	0
+50+	Women	Former_Smoking_women	2006	0.29	0.29	NA	0.1538	0	0
+50+	Women	Former_Smoking_women	2007	0.29	0.29	NA	0.1538	0	0
+50+	Women	Former_Smoking_women	2008	0.30	0.29	NA	0.1538	0	0
+50+	Women	Former_Smoking_women	2009	0.30	0.29	NA	0.1538	0	0
+50+	Women	Former_Smoking_women	2010	0.30	0.29	NA	0.1538	0	0
+50+	Women	Former_Smoking_women	2011	0.31	0.29	NA	0.1538	0	0
+50+	Women	Former_Smoking_women	2012	0.28	0.29	NA	0.1538	0	0
+50+	Women	Former_Smoking_women	2013	0.30	0.29	NA	0.1538	0	0
+50+	Women	Former_Smoking_women	2014	0.28	0.29	NA	0.1538	0	0
+50+	Women	Former_Smoking_women	2015	0.31	0.29	NA	0.1538	0	0
+50+	Women	Former_Smoking_women	2016	0.29	0.29	NA	0.1538	0	0
+50+	Women	Former_Smoking_women	2017	0.29	0.29	NA	0.1538	0	0
+50+	Women	Former_Smoking_women	2018	0.30	0.29	NA	0.1538	0	0
+50+	Women	Former_Smoking_women	2019	0.28	0.30	NA	0.1538	0	0
+20-49	Men	Healthy Weight	1997	0.40	0.41	NA	-3.6024	1	1
+20-49	Men	Healthy Weight	1998	0.40	0.39	NA	-3.6024	1	1
+20-49	Men	Healthy Weight	1999	0.38	0.38	NA	-3.6024	1	1
+20-49	Men	Healthy Weight	2000	0.37	0.36	NA	-3.6024	1	1
+20-49	Men	Healthy Weight	2001	0.34	0.35	Joinpoint 1	NA	1	1
+20-49	Men	Healthy Weight	2002	0.36	0.35	NA	0.1553	1	1
+20-49	Men	Healthy Weight	2003	0.36	0.35	NA	0.1553	1	1
+20-49	Men	Healthy Weight	2004	0.34	0.35	NA	0.1553	1	1
+20-49	Men	Healthy Weight	2005	0.35	0.35	NA	0.1553	1	1
+20-49	Men	Healthy Weight	2006	0.34	0.35	NA	0.1553	1	1
+20-49	Men	Healthy Weight	2007	0.37	0.35	NA	0.1553	1	1
+20-49	Men	Healthy Weight	2008	0.35	0.36	NA	0.1553	1	1
+20-49	Men	Healthy Weight	2009	0.36	0.36	NA	0.1553	1	1
+20-49	Men	Healthy Weight	2010	0.33	0.36	NA	0.1553	1	1
+20-49	Men	Healthy Weight	2011	0.37	0.36	NA	0.1553	1	1
+20-49	Men	Healthy Weight	2012	0.35	0.36	NA	0.1553	1	1
+20-49	Men	Healthy Weight	2013	0.35	0.36	NA	0.1553	1	1
+20-49	Men	Healthy Weight	2014	0.38	0.36	NA	0.1553	1	1
+20-49	Men	Healthy Weight	2015	0.35	0.36	NA	0.1553	1	1
+20-49	Men	Healthy Weight	2016	0.37	0.36	NA	0.1553	1	1
+20-49	Men	Healthy Weight	2017	0.35	0.36	NA	0.1553	1	1
+20-49	Women	Healthy Weight	1997	0.53	0.51	NA	-0.8790*	0	0
+20-49	Women	Healthy Weight	1998	0.51	0.51	NA	-0.8790*	0	0
+20-49	Women	Healthy Weight	1999	0.51	0.50	NA	-0.8790*	0	0
+20-49	Women	Healthy Weight	2000	0.51	0.50	NA	-0.8790*	0	0
+20-49	Women	Healthy Weight	2001	0.49	0.50	NA	-0.8790*	0	0
+20-49	Women	Healthy Weight	2002	0.47	0.49	NA	-0.8790*	0	0
+20-49	Women	Healthy Weight	2003	0.48	0.49	NA	-0.8790*	0	0
+20-49	Women	Healthy Weight	2004	0.47	0.48	NA	-0.8790*	0	0
+20-49	Women	Healthy Weight	2005	0.47	0.48	NA	-0.8790*	0	0
+20-49	Women	Healthy Weight	2006	0.48	0.47	NA	-0.8790*	0	0
+20-49	Women	Healthy Weight	2007	0.47	0.47	NA	-0.8790*	0	0
+20-49	Women	Healthy Weight	2008	0.47	0.47	NA	-0.8790*	0	0
+20-49	Women	Healthy Weight	2009	0.47	0.46	NA	-0.8790*	0	0
+20-49	Women	Healthy Weight	2010	0.46	0.46	NA	-0.8790*	0	0
+20-49	Women	Healthy Weight	2011	0.45	0.45	NA	-0.8790*	0	0
+20-49	Women	Healthy Weight	2012	0.46	0.45	NA	-0.8790*	0	0
+20-49	Women	Healthy Weight	2013	0.45	0.45	NA	-0.8790*	0	0
+20-49	Women	Healthy Weight	2014	0.45	0.44	NA	-0.8790*	0	0
+20-49	Women	Healthy Weight	2015	0.43	0.44	NA	-0.8790*	0	0
+20-49	Women	Healthy Weight	2016	0.46	0.43	NA	-0.8790*	0	0
+20-49	Women	Healthy Weight	2017	0.40	0.43	NA	-0.8790*	0	0
+50+	Men	Healthy Weight	1997	0.27	0.25	NA	-1.0556*	0	0
+50+	Men	Healthy Weight	1998	0.25	0.25	NA	-1.0556*	0	0
+50+	Men	Healthy Weight	1999	0.28	0.25	NA	-1.0556*	0	0
+50+	Men	Healthy Weight	2000	0.23	0.25	NA	-1.0556*	0	0
+50+	Men	Healthy Weight	2001	0.23	0.24	NA	-1.0556*	0	0
+50+	Men	Healthy Weight	2002	0.24	0.24	NA	-1.0556*	0	0
+50+	Men	Healthy Weight	2003	0.23	0.24	NA	-1.0556*	0	0
+50+	Men	Healthy Weight	2004	0.22	0.24	NA	-1.0556*	0	0
+50+	Men	Healthy Weight	2005	0.25	0.23	NA	-1.0556*	0	0
+50+	Men	Healthy Weight	2006	0.22	0.23	NA	-1.0556*	0	0
+50+	Men	Healthy Weight	2007	0.23	0.23	NA	-1.0556*	0	0
+50+	Men	Healthy Weight	2008	0.22	0.23	NA	-1.0556*	0	0
+50+	Men	Healthy Weight	2009	0.21	0.22	NA	-1.0556*	0	0
+50+	Men	Healthy Weight	2010	0.20	0.22	NA	-1.0556*	0	0
+50+	Men	Healthy Weight	2011	0.24	0.22	NA	-1.0556*	0	0
+50+	Men	Healthy Weight	2012	0.22	0.22	NA	-1.0556*	0	0
+50+	Men	Healthy Weight	2013	0.21	0.21	NA	-1.0556*	0	0
+50+	Men	Healthy Weight	2014	0.21	0.21	NA	-1.0556*	0	0
+50+	Men	Healthy Weight	2015	0.20	0.21	NA	-1.0556*	0	0
+50+	Men	Healthy Weight	2016	0.22	0.21	NA	-1.0556*	0	0
+50+	Men	Healthy Weight	2017	0.22	0.21	NA	-1.0556*	0	0
+50+	Women	Healthy Weight	1997	0.33	0.33	NA	-0.6719*	2	2
+50+	Women	Healthy Weight	1998	0.33	0.33	NA	-0.6719*	2	2
+50+	Women	Healthy Weight	1999	0.32	0.32	NA	-0.6719*	2	2
+50+	Women	Healthy Weight	2000	0.31	0.32	NA	-0.6719*	2	2
+50+	Women	Healthy Weight	2001	0.31	0.32	NA	-0.6719*	2	2
+50+	Women	Healthy Weight	2002	0.32	0.32	NA	-0.6719*	2	2
+50+	Women	Healthy Weight	2003	0.32	0.31	NA	-0.6719*	2	2
+50+	Women	Healthy Weight	2004	0.31	0.31	NA	-0.6719*	2	2
+50+	Women	Healthy Weight	2005	0.31	0.31	NA	-0.6719*	2	2
+50+	Women	Healthy Weight	2006	0.31	0.31	NA	-0.6719*	2	2
+50+	Women	Healthy Weight	2007	0.32	0.31	NA	-0.6719*	2	2
+50+	Women	Healthy Weight	2008	0.30	0.30	NA	-0.6719*	2	2
+50+	Women	Healthy Weight	2009	0.31	0.30	NA	-0.6719*	2	2
+50+	Women	Healthy Weight	2010	0.30	0.30	NA	-0.6719*	2	2
+50+	Women	Healthy Weight	2011	0.29	0.30	Joinpoint 1	NA	2	2
+50+	Women	Healthy Weight	2012	0.31	0.31	NA	3.2230	2	2
+50+	Women	Healthy Weight	2013	0.33	0.32	NA	3.2230	2	2
+50+	Women	Healthy Weight	2014	0.32	0.33	Joinpoint 2	NA	2	2
+50+	Women	Healthy Weight	2015	0.32	0.32	NA	-1.9425	2	2
+50+	Women	Healthy Weight	2016	0.32	0.32	NA	-1.9425	2	2
+50+	Women	Healthy Weight	2017	0.31	0.31	NA	-1.9425	2	2
+20-49	Men	Heavy_alcohol	2005	0.08	0.08	NA	-3.8634*	0	0
+20-49	Men	Heavy_alcohol	2011	0.06	0.07	NA	-3.8634*	0	0
+20-49	Men	Heavy_alcohol	2012	0.07	0.06	NA	-3.8634*	0	0
+20-49	Men	Heavy_alcohol	2013	0.06	0.06	NA	-3.8634*	0	0
+20-49	Men	Heavy_alcohol	2014	0.06	0.06	NA	-3.8634*	0	0
+20-49	Men	Heavy_alcohol	2015	0.05	0.06	NA	-3.8634*	0	0
+20-49	Men	Heavy_alcohol	2016	0.05	0.05	NA	-3.8634*	0	0
+20-49	Men	Heavy_alcohol	2017	0.05	0.05	NA	-3.8634*	0	0
+20-49	Men	Heavy_alcohol	2018	0.06	0.05	NA	-3.8634*	0	0
+20-49	Men	Heavy_alcohol	2019	0.05	0.05	NA	-3.8634*	0	0
+20-49	Women	Heavy_alcohol	2005	0.02	0.02	NA	0.3871	0	0
+20-49	Women	Heavy_alcohol	2011	0.02	0.02	NA	0.3871	0	0
+20-49	Women	Heavy_alcohol	2012	0.03	0.02	NA	0.3871	0	0
+20-49	Women	Heavy_alcohol	2013	0.02	0.02	NA	0.3871	0	0
+20-49	Women	Heavy_alcohol	2014	0.02	0.02	NA	0.3871	0	0
+20-49	Women	Heavy_alcohol	2015	0.02	0.02	NA	0.3871	0	0
+20-49	Women	Heavy_alcohol	2016	0.02	0.02	NA	0.3871	0	0
+20-49	Women	Heavy_alcohol	2017	0.02	0.02	NA	0.3871	0	0
+20-49	Women	Heavy_alcohol	2018	0.02	0.02	NA	0.3871	0	0
+20-49	Women	Heavy_alcohol	2019	0.02	0.02	NA	0.3871	0	0
+50+	Men	Heavy_alcohol	2005	0.06	0.07	NA	0.9781	0	0
+50+	Men	Heavy_alcohol	2011	0.09	0.07	NA	0.9781	0	0
+50+	Men	Heavy_alcohol	2012	0.07	0.07	NA	0.9781	0	0
+50+	Men	Heavy_alcohol	2013	0.08	0.07	NA	0.9781	0	0
+50+	Men	Heavy_alcohol	2014	0.08	0.08	NA	0.9781	0	0
+50+	Men	Heavy_alcohol	2015	0.07	0.08	NA	0.9781	0	0
+50+	Men	Heavy_alcohol	2016	0.08	0.08	NA	0.9781	0	0
+50+	Men	Heavy_alcohol	2017	0.07	0.08	NA	0.9781	0	0
+50+	Men	Heavy_alcohol	2018	0.07	0.08	NA	0.9781	0	0
+50+	Men	Heavy_alcohol	2019	0.08	0.08	NA	0.9781	0	0
+50+	Women	Heavy_alcohol	2005	0.01	0.01	NA	14.9397*	1	1
+50+	Women	Heavy_alcohol	2011	0.02	0.02	NA	14.9397*	1	1
+50+	Women	Heavy_alcohol	2012	0.02	0.02	Joinpoint 1	NA	1	1
+50+	Women	Heavy_alcohol	2013	0.02	0.02	NA	0.1792	1	1
+50+	Women	Heavy_alcohol	2014	0.02	0.02	NA	0.1792	1	1
+50+	Women	Heavy_alcohol	2015	0.02	0.02	NA	0.1792	1	1
+50+	Women	Heavy_alcohol	2016	0.02	0.02	NA	0.1792	1	1
+50+	Women	Heavy_alcohol	2017	0.02	0.02	NA	0.1792	1	1
+50+	Women	Heavy_alcohol	2018	0.02	0.02	NA	0.1792	1	1
+50+	Women	Heavy_alcohol	2019	0.02	0.02	NA	0.1792	1	1
+20-49	Men	Light_alcohol	2005	0.42	0.42	NA	1.2978*	0	0
+20-49	Men	Light_alcohol	2011	0.45	0.46	NA	1.2978*	0	0
+20-49	Men	Light_alcohol	2012	0.46	0.46	NA	1.2978*	0	0
+20-49	Men	Light_alcohol	2013	0.47	0.47	NA	1.2978*	0	0
+20-49	Men	Light_alcohol	2014	0.46	0.47	NA	1.2978*	0	0
+20-49	Men	Light_alcohol	2015	0.51	0.48	NA	1.2978*	0	0
+20-49	Men	Light_alcohol	2016	0.48	0.49	NA	1.2978*	0	0
+20-49	Men	Light_alcohol	2017	0.50	0.49	NA	1.2978*	0	0
+20-49	Men	Light_alcohol	2018	0.50	0.50	NA	1.2978*	0	0
+20-49	Men	Light_alcohol	2019	0.49	0.51	NA	1.2978*	0	0
+20-49	Women	Light_alcohol	2005	0.62	0.61	NA	-0.1898	0	0
+20-49	Women	Light_alcohol	2011	0.59	0.60	NA	-0.1898	0	0
+20-49	Women	Light_alcohol	2012	0.59	0.60	NA	-0.1898	0	0
+20-49	Women	Light_alcohol	2013	0.59	0.60	NA	-0.1898	0	0
+20-49	Women	Light_alcohol	2014	0.60	0.60	NA	-0.1898	0	0
+20-49	Women	Light_alcohol	2015	0.62	0.60	NA	-0.1898	0	0
+20-49	Women	Light_alcohol	2016	0.61	0.60	NA	-0.1898	0	0
+20-49	Women	Light_alcohol	2017	0.61	0.60	NA	-0.1898	0	0
+20-49	Women	Light_alcohol	2018	0.61	0.60	NA	-0.1898	0	0
+20-49	Women	Light_alcohol	2019	0.57	0.60	NA	-0.1898	0	0
+50+	Men	Light_alcohol	2005	0.50	0.48	NA	-0.3930	0	0
+50+	Men	Light_alcohol	2011	0.46	0.46	NA	-0.3930	0	0
+50+	Men	Light_alcohol	2012	0.43	0.46	NA	-0.3930	0	0
+50+	Men	Light_alcohol	2013	0.44	0.46	NA	-0.3930	0	0
+50+	Men	Light_alcohol	2014	0.46	0.46	NA	-0.3930	0	0
+50+	Men	Light_alcohol	2015	0.45	0.46	NA	-0.3930	0	0
+50+	Men	Light_alcohol	2016	0.46	0.45	NA	-0.3930	0	0
+50+	Men	Light_alcohol	2017	0.48	0.45	NA	-0.3930	0	0
+50+	Men	Light_alcohol	2018	0.48	0.45	NA	-0.3930	0	0
+50+	Men	Light_alcohol	2019	0.43	0.45	NA	-0.3930	0	0
+50+	Women	Light_alcohol	2005	0.64	0.64	NA	-1.6392*	1	1
+50+	Women	Light_alcohol	2011	0.57	0.58	NA	-1.6392*	1	1
+50+	Women	Light_alcohol	2012	0.56	0.57	Joinpoint 1	NA	1	1
+50+	Women	Light_alcohol	2013	0.60	0.57	NA	0.4026	1	1
+50+	Women	Light_alcohol	2014	0.57	0.57	NA	0.4026	1	1
+50+	Women	Light_alcohol	2015	0.58	0.58	NA	0.4026	1	1
+50+	Women	Light_alcohol	2016	0.56	0.58	NA	0.4026	1	1
+50+	Women	Light_alcohol	2017	0.59	0.58	NA	0.4026	1	1
+50+	Women	Light_alcohol	2018	0.59	0.58	NA	0.4026	1	1
+50+	Women	Light_alcohol	2019	0.58	0.59	NA	0.4026	1	1
+20-49	Men	Medium_alcohol	2005	0.39	0.40	NA	-2.2782*	0	0
+20-49	Men	Medium_alcohol	2011	0.34	0.34	NA	-2.2782*	0	0
+20-49	Men	Medium_alcohol	2012	0.35	0.34	NA	-2.2782*	0	0
+20-49	Men	Medium_alcohol	2013	0.33	0.33	NA	-2.2782*	0	0
+20-49	Men	Medium_alcohol	2014	0.32	0.32	NA	-2.2782*	0	0
+20-49	Men	Medium_alcohol	2015	0.31	0.31	NA	-2.2782*	0	0
+20-49	Men	Medium_alcohol	2016	0.31	0.31	NA	-2.2782*	0	0
+20-49	Men	Medium_alcohol	2017	0.29	0.30	NA	-2.2782*	0	0
+20-49	Men	Medium_alcohol	2018	0.29	0.29	NA	-2.2782*	0	0
+20-49	Men	Medium_alcohol	2019	0.29	0.29	NA	-2.2782*	0	0
+20-49	Women	Medium_alcohol	2005	0.22	0.23	NA	-2.4825*	0	0
+20-49	Women	Medium_alcohol	2011	0.21	0.20	NA	-2.4825*	0	0
+20-49	Women	Medium_alcohol	2012	0.19	0.19	NA	-2.4825*	0	0
+20-49	Women	Medium_alcohol	2013	0.20	0.19	NA	-2.4825*	0	0
+20-49	Women	Medium_alcohol	2014	0.19	0.18	NA	-2.4825*	0	0
+20-49	Women	Medium_alcohol	2015	0.18	0.18	NA	-2.4825*	0	0
+20-49	Women	Medium_alcohol	2016	0.17	0.17	NA	-2.4825*	0	0
+20-49	Women	Medium_alcohol	2017	0.16	0.17	NA	-2.4825*	0	0
+20-49	Women	Medium_alcohol	2018	0.15	0.17	NA	-2.4825*	0	0
+20-49	Women	Medium_alcohol	2019	0.17	0.16	NA	-2.4825*	0	0
+50+	Men	Medium_alcohol	2005	0.33	0.34	NA	-0.4050	0	0
+50+	Men	Medium_alcohol	2011	0.33	0.34	NA	-0.4050	0	0
+50+	Men	Medium_alcohol	2012	0.37	0.34	NA	-0.4050	0	0
+50+	Men	Medium_alcohol	2013	0.34	0.33	NA	-0.4050	0	0
+50+	Men	Medium_alcohol	2014	0.33	0.33	NA	-0.4050	0	0
+50+	Men	Medium_alcohol	2015	0.36	0.33	NA	-0.4050	0	0
+50+	Men	Medium_alcohol	2016	0.32	0.33	NA	-0.4050	0	0
+50+	Men	Medium_alcohol	2017	0.30	0.33	NA	-0.4050	0	0
+50+	Men	Medium_alcohol	2018	0.32	0.33	NA	-0.4050	0	0
+50+	Men	Medium_alcohol	2019	0.33	0.33	NA	-0.4050	0	0
+50+	Women	Medium_alcohol	2005	0.14	0.14	NA	4.5961*	1	1
+50+	Women	Medium_alcohol	2011	0.18	0.18	NA	4.5961*	1	1
+50+	Women	Medium_alcohol	2012	0.19	0.19	Joinpoint 1	NA	1	1
+50+	Women	Medium_alcohol	2013	0.18	0.19	NA	-0.0946	1	1
+50+	Women	Medium_alcohol	2014	0.19	0.19	NA	-0.0946	1	1
+50+	Women	Medium_alcohol	2015	0.19	0.19	NA	-0.0946	1	1
+50+	Women	Medium_alcohol	2016	0.19	0.19	NA	-0.0946	1	1
+50+	Women	Medium_alcohol	2017	0.18	0.19	NA	-0.0946	1	1
+50+	Women	Medium_alcohol	2018	0.18	0.19	NA	-0.0946	1	1
+50+	Women	Medium_alcohol	2019	0.19	0.19	NA	-0.0946	1	1
+20-49	Men	Never	1995	0.45	0.46	NA	0.8975*	0	0
+20-49	Men	Never	1996	0.44	0.47	NA	0.8975*	0	0
+20-49	Men	Never	1997	0.47	0.47	NA	0.8975*	0	0
+20-49	Men	Never	1998	0.47	0.47	NA	0.8975*	0	0
+20-49	Men	Never	1999	0.48	0.48	NA	0.8975*	0	0
+20-49	Men	Never	2000	0.47	0.48	NA	0.8975*	0	0
+20-49	Men	Never	2001	0.49	0.49	NA	0.8975*	0	0
+20-49	Men	Never	2002	0.49	0.49	NA	0.8975*	0	0
+20-49	Men	Never	2003	0.50	0.50	NA	0.8975*	0	0
+20-49	Men	Never	2004	0.52	0.50	NA	0.8975*	0	0
+20-49	Men	Never	2005	0.50	0.50	NA	0.8975*	0	0
+20-49	Men	Never	2006	0.53	0.51	NA	0.8975*	0	0
+20-49	Men	Never	2007	0.53	0.51	NA	0.8975*	0	0
+20-49	Men	Never	2008	0.53	0.52	NA	0.8975*	0	0
+20-49	Men	Never	2009	0.54	0.52	NA	0.8975*	0	0
+20-49	Men	Never	2010	0.54	0.53	NA	0.8975*	0	0
+20-49	Men	Never	2011	0.53	0.53	NA	0.8975*	0	0
+20-49	Men	Never	2012	0.55	0.54	NA	0.8975*	0	0
+20-49	Men	Never	2013	0.50	0.54	NA	0.8975*	0	0
+20-49	Men	Never	2014	0.53	0.55	NA	0.8975*	0	0
+20-49	Men	Never	2015	0.57	0.55	NA	0.8975*	0	0
+20-49	Men	Never	2016	0.54	0.56	NA	0.8975*	0	0
+20-49	Men	Never	2017	0.55	0.56	NA	0.8975*	0	0
+20-49	Men	Never	2018	0.55	0.57	NA	0.8975*	0	0
+20-49	Men	Never	2019	0.58	0.57	NA	0.8975*	0	0
+20-49	Women	Never	1995	0.52	0.50	NA	1.0487*	0	0
+20-49	Women	Never	1996	0.51	0.51	NA	1.0487*	0	0
+20-49	Women	Never	1997	0.51	0.51	NA	1.0487*	0	0
+20-49	Women	Never	1998	0.52	0.52	NA	1.0487*	0	0
+20-49	Women	Never	1999	0.51	0.52	NA	1.0487*	0	0
+20-49	Women	Never	2000	0.54	0.53	NA	1.0487*	0	0
+20-49	Women	Never	2001	0.52	0.54	NA	1.0487*	0	0
+20-49	Women	Never	2002	0.52	0.54	NA	1.0487*	0	0
+20-49	Women	Never	2003	0.55	0.55	NA	1.0487*	0	0
+20-49	Women	Never	2004	0.56	0.55	NA	1.0487*	0	0
+20-49	Women	Never	2005	0.55	0.56	NA	1.0487*	0	0
+20-49	Women	Never	2006	0.57	0.56	NA	1.0487*	0	0
+20-49	Women	Never	2007	0.58	0.57	NA	1.0487*	0	0
+20-49	Women	Never	2008	0.58	0.58	NA	1.0487*	0	0
+20-49	Women	Never	2009	0.58	0.58	NA	1.0487*	0	0
+20-49	Women	Never	2010	0.60	0.59	NA	1.0487*	0	0
+20-49	Women	Never	2011	0.60	0.59	NA	1.0487*	0	0
+20-49	Women	Never	2012	0.61	0.60	NA	1.0487*	0	0
+20-49	Women	Never	2013	0.60	0.61	NA	1.0487*	0	0
+20-49	Women	Never	2014	0.63	0.61	NA	1.0487*	0	0
+20-49	Women	Never	2015	0.60	0.62	NA	1.0487*	0	0
+20-49	Women	Never	2016	0.62	0.63	NA	1.0487*	0	0
+20-49	Women	Never	2017	0.61	0.63	NA	1.0487*	0	0
+20-49	Women	Never	2018	0.63	0.64	NA	1.0487*	0	0
+20-49	Women	Never	2019	0.66	0.65	NA	1.0487*	0	0
+50+	Men	Never	1995	0.29	0.29	NA	2.2916*	0	0
+50+	Men	Never	1996	0.30	0.29	NA	2.2916*	0	0
+50+	Men	Never	1997	0.28	0.30	NA	2.2916*	0	0
+50+	Men	Never	1998	0.30	0.31	NA	2.2916*	0	0
+50+	Men	Never	1999	0.33	0.31	NA	2.2916*	0	0
+50+	Men	Never	2000	0.33	0.32	NA	2.2916*	0	0
+50+	Men	Never	2001	0.32	0.33	NA	2.2916*	0	0
+50+	Men	Never	2002	0.36	0.34	NA	2.2916*	0	0
+50+	Men	Never	2003	0.34	0.34	NA	2.2916*	0	0
+50+	Men	Never	2004	0.36	0.35	NA	2.2916*	0	0
+50+	Men	Never	2005	0.36	0.36	NA	2.2916*	0	0
+50+	Men	Never	2006	0.39	0.37	NA	2.2916*	0	0
+50+	Men	Never	2007	0.37	0.38	NA	2.2916*	0	0
+50+	Men	Never	2008	0.40	0.39	NA	2.2916*	0	0
+50+	Men	Never	2009	0.38	0.39	NA	2.2916*	0	0
+50+	Men	Never	2010	0.40	0.40	NA	2.2916*	0	0
+50+	Men	Never	2011	0.39	0.41	NA	2.2916*	0	0
+50+	Men	Never	2012	0.43	0.42	NA	2.2916*	0	0
+50+	Men	Never	2013	0.42	0.43	NA	2.2916*	0	0
+50+	Men	Never	2014	0.46	0.44	NA	2.2916*	0	0
+50+	Men	Never	2015	0.46	0.45	NA	2.2916*	0	0
+50+	Men	Never	2016	0.47	0.46	NA	2.2916*	0	0
+50+	Men	Never	2017	0.47	0.47	NA	2.2916*	0	0
+50+	Men	Never	2018	0.48	0.48	NA	2.2916*	0	0
+50+	Men	Never	2019	0.49	0.50	NA	2.2916*	0	0
+50+	Women	Never	1995	0.52	0.51	NA	0.6290*	0	0
+50+	Women	Never	1996	0.51	0.52	NA	0.6290*	0	0
+50+	Women	Never	1997	0.52	0.52	NA	0.6290*	0	0
+50+	Women	Never	1998	0.51	0.52	NA	0.6290*	0	0
+50+	Women	Never	1999	0.52	0.53	NA	0.6290*	0	0
+50+	Women	Never	2000	0.56	0.53	NA	0.6290*	0	0
+50+	Women	Never	2001	0.52	0.53	NA	0.6290*	0	0
+50+	Women	Never	2002	0.55	0.54	NA	0.6290*	0	0
+50+	Women	Never	2003	0.54	0.54	NA	0.6290*	0	0
+50+	Women	Never	2004	0.53	0.54	NA	0.6290*	0	0
+50+	Women	Never	2005	0.57	0.55	NA	0.6290*	0	0
+50+	Women	Never	2006	0.55	0.55	NA	0.6290*	0	0
+50+	Women	Never	2007	0.56	0.55	NA	0.6290*	0	0
+50+	Women	Never	2008	0.55	0.56	NA	0.6290*	0	0
+50+	Women	Never	2009	0.54	0.56	NA	0.6290*	0	0
+50+	Women	Never	2010	0.57	0.56	NA	0.6290*	0	0
+50+	Women	Never	2011	0.55	0.57	NA	0.6290*	0	0
+50+	Women	Never	2012	0.58	0.57	NA	0.6290*	0	0
+50+	Women	Never	2013	0.56	0.57	NA	0.6290*	0	0
+50+	Women	Never	2014	0.58	0.58	NA	0.6290*	0	0
+50+	Women	Never	2015	0.57	0.58	NA	0.6290*	0	0
+50+	Women	Never	2016	0.59	0.59	NA	0.6290*	0	0
+50+	Women	Never	2017	0.59	0.59	NA	0.6290*	0	0
+50+	Women	Never	2018	0.58	0.59	NA	0.6290*	0	0
+50+	Women	Never	2019	0.61	0.60	NA	0.6290*	0	0
+20-49	Men	Non-Drinker	2005	0.10	0.11	NA	3.2303*	0	0
+20-49	Men	Non-Drinker	2011	0.14	0.13	NA	3.2303*	0	0
+20-49	Men	Non-Drinker	2012	0.13	0.13	NA	3.2303*	0	0
+20-49	Men	Non-Drinker	2013	0.14	0.14	NA	3.2303*	0	0
+20-49	Men	Non-Drinker	2014	0.15	0.14	NA	3.2303*	0	0
+20-49	Men	Non-Drinker	2015	0.13	0.15	NA	3.2303*	0	0
+20-49	Men	Non-Drinker	2016	0.17	0.15	NA	3.2303*	0	0
+20-49	Men	Non-Drinker	2017	0.16	0.16	NA	3.2303*	0	0
+20-49	Men	Non-Drinker	2018	0.15	0.16	NA	3.2303*	0	0
+20-49	Men	Non-Drinker	2019	0.16	0.17	NA	3.2303*	0	0
+20-49	Women	Non-Drinker	2005	0.14	0.14	NA	3.2264*	0	0
+20-49	Women	Non-Drinker	2011	0.17	0.17	NA	3.2264*	0	0
+20-49	Women	Non-Drinker	2012	0.19	0.18	NA	3.2264*	0	0
+20-49	Women	Non-Drinker	2013	0.19	0.19	NA	3.2264*	0	0
+20-49	Women	Non-Drinker	2014	0.20	0.19	NA	3.2264*	0	0
+20-49	Women	Non-Drinker	2015	0.19	0.20	NA	3.2264*	0	0
+20-49	Women	Non-Drinker	2016	0.20	0.20	NA	3.2264*	0	0
+20-49	Women	Non-Drinker	2017	0.21	0.21	NA	3.2264*	0	0
+20-49	Women	Non-Drinker	2018	0.21	0.22	NA	3.2264*	0	0
+20-49	Women	Non-Drinker	2019	0.23	0.23	NA	3.2264*	0	0
+50+	Men	Non-Drinker	2005	0.10	0.11	NA	2.0487*	0	0
+50+	Men	Non-Drinker	2011	0.12	0.12	NA	2.0487*	0	0
+50+	Men	Non-Drinker	2012	0.14	0.13	NA	2.0487*	0	0
+50+	Men	Non-Drinker	2013	0.14	0.13	NA	2.0487*	0	0
+50+	Men	Non-Drinker	2014	0.13	0.13	NA	2.0487*	0	0
+50+	Men	Non-Drinker	2015	0.12	0.13	NA	2.0487*	0	0
+50+	Men	Non-Drinker	2016	0.14	0.14	NA	2.0487*	0	0
+50+	Men	Non-Drinker	2017	0.14	0.14	NA	2.0487*	0	0
+50+	Men	Non-Drinker	2018	0.13	0.14	NA	2.0487*	0	0
+50+	Men	Non-Drinker	2019	0.15	0.15	NA	2.0487*	0	0
+50+	Women	Non-Drinker	2005	0.22	0.22	NA	-0.3492	0	0
+50+	Women	Non-Drinker	2011	0.23	0.22	NA	-0.3492	0	0
+50+	Women	Non-Drinker	2012	0.23	0.22	NA	-0.3492	0	0
+50+	Women	Non-Drinker	2013	0.21	0.22	NA	-0.3492	0	0
+50+	Women	Non-Drinker	2014	0.22	0.22	NA	-0.3492	0	0
+50+	Women	Non-Drinker	2015	0.22	0.22	NA	-0.3492	0	0
+50+	Women	Non-Drinker	2016	0.22	0.22	NA	-0.3492	0	0
+50+	Women	Non-Drinker	2017	0.21	0.22	NA	-0.3492	0	0
+50+	Women	Non-Drinker	2018	0.21	0.21	NA	-0.3492	0	0
+50+	Women	Non-Drinker	2019	0.21	0.21	NA	-0.3492	0	0

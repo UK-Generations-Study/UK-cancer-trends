@@ -110,6 +110,7 @@ diet_data_gen_continuous <- function(filepath){
     mutate(
 
       redmeat_total =  beef + lamb + pork + entrails + other,
+      N = sum(weight)
 
     ) |>
     group_by(sex, age_group, year) |>
@@ -121,7 +122,8 @@ diet_data_gen_continuous <- function(filepath){
 
   diet_df_redmeat <- diet_df |>
     mutate(
-      redmeat_total = beef + lamb + pork + entrails + other
+      redmeat_total = beef + lamb + pork + entrails + other, 
+      N = sum(weight)
     ) |>
     group_by(sex, age_group, year) |>
     summarise(

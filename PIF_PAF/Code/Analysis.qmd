@@ -102,12 +102,9 @@ Modifiable Lifestyle Risk Factors:
 Waiting to add:
 
 7.  Physical Activity
-  - HSE has measured MET hours/week for 3 years, 2012, 2016, 2021. In order to carry out the analysis needed for this paper we would need to extend this time period significantly.
-  - Brown et al. assumed an equivalence between meeting old guidelines and new MET hour guidelines, we should discuss if this is an appropriate assumption to make for this paper.
-8.  Hormone Replacement Therapy
-  - Possible data source for HRT usage [here](https://pmc.ncbi.nlm.nih.gov/articles/PMC6891893/).
-9.  Oral Contraceptives
-  - Possible data source for OC usage [here](https://srh.bmj.com/content/familyplanning/48/3/193.full.pdf).
+
+-   HSE has measured MET hours/week for 3 years, 2012, 2016, 2021. In order to carry out the analysis needed for this paper we would need to extend this time period significantly.
+-   Brown et al. assumed an equivalence between meeting old guidelines and new MET hour guidelines, we should discuss if this is an appropriate assumption to make for this paper.
 
 **Methodological plan:**
 
@@ -123,7 +120,7 @@ Risk Factor Data
 
 -   Alcohol, Smoking, BMI: This data were sourced from the ONS and collected via the [Health Survey England (HSE)](https://digital.nhs.uk/data-and-information/publications/statistical/health-survey-for-england). The data were requested from the [UK Data Service](https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=8860) by year.
 
-- Alcohol data via HSE on average drinking is only available back to 2011. Previous to this were the GHS and GLS. As of 29/11/2024, the 2005 GHS datapoint has been used for alcohol usage. Weighting has been used as to replicate sheet 2.17 from Table 2 Drinking (Excel sheet 211Kb) [here](https://webarchive.nationalarchives.gov.uk/ukgwa/20160115220036/http://www.ons.gov.uk/ons/publications/re-reference-tables.html?edition=tcm%3A77-213744). However, as visible in the risk factor plots, the prevelances seem highly suspicious. When contrasting this data with sheet 2.5 [here](https://digital.nhs.uk/data-and-information/publications/statistical/statistics-on-alcohol/2012), we see differences. Between both sources there is a disagreement on number of participants even. The selection criterion for the second table needs to be identified and a choice made between the two.
+-   Alcohol data via HSE on average drinking is only available back to 2011. Previous to this were the GHS and GLS. As of 29/11/2024, the 2005 GHS datapoint has been used for alcohol usage. Weighting has been used as to replicate sheet 2.17 from Table 2 Drinking (Excel sheet 211Kb) [here](https://webarchive.nationalarchives.gov.uk/ukgwa/20160115220036/http://www.ons.gov.uk/ons/publications/re-reference-tables.html?edition=tcm%3A77-213744). However, as visible in the risk factor plots, the prevelances seem highly suspicious. When contrasting this data with sheet 2.5 [here](https://digital.nhs.uk/data-and-information/publications/statistical/statistics-on-alcohol/2012), we see differences. Between both sources there is a disagreement on number of participants even. The selection criterion for the second table needs to be identified and a choice made between the two.
 
 -   Dietary Data: This data were sourced from the [National Diet and Nutrition Survey](https://www.gov.uk/government/collections/national-diet-and-nutrition-survey) and downloaded from the [UK Data Service](https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=6533).
 
@@ -175,31 +172,17 @@ General: 
 
 Brown paper: 
 
-1.  How did they treat red and processed meat in calculating PAFs? Seems as though average was applied to whole population. 
+1.  How did they treat red and processed meat in calculating PAFs? Seems as though average was applied to whole population. *EMAIL SENT*
 
 2.  Which year did they use for diet data to get to 2005? They quote 2000/1 but reference NDNS which goes back to 2008. They also seemingly reference incorrect papers for the Fibre prevalence.  
 
-3.  Which data did they use for activity prevalence? Numbers do not seem to line up with quoted values in HSE data. 
+3.  Which data did they use for activity prevalence? Numbers do not seem to line up with quoted values in HSE data.  
 
-Risk factor data availability:  
+Data Availabitlity
 
-1.  Alcohol data stops at 2011, data has been inferred from the General Household Survey 2005 but the alcohol question may not be entirely consistent. This is mostly to do with the classification between non and light drinkers.  
+1.  All diet data stops at 2008 
 
-    -   PREFERED: Could project backwards from HSE values 
-
-    -   Could just use 2005 datapoint with a large caveat 
-
-    -   Could do some mixture of the two 
-
-    -   Could use status variable to potentially ‘fix’ number of non-drinkers 
-
-2.  All diet data stops at 2008 
-
-    -   Similar issue to above. Projecting backwards may be best method. 
-
-3.  Would need to ask for data access for OC and HRT from previous papers written using NHS financial data. 
-
-4.  Montse has suggested industry data for dietary factors, purely for graphic purposes. These should be found where possible. 
+2.  Montse has suggested industry data for dietary factors, purely for graphic purposes. These should be found where possible. 
 
 Relative Risk availability:  
 
@@ -214,6 +197,7 @@ RR/ risk factor match ups 
 1.  Physical activity has been measured differently over the years, all recent meta analysis are in MET units/week for relative risks but this is not how data were measured and collected historically 
 
 ## Setting up
+
 ### Packages
 
 ```{r}
@@ -228,6 +212,7 @@ library(tibble)
 library(forestplot)
 library(dplyr)
 library(readxl)
+library(ggrepel)
 
 ```
 
@@ -249,14 +234,6 @@ if(Sys.getenv("RSTUDIO") == '1' & !knitr::is_html_output()) { # If using Rstudio
 
 ```
 
-### Functions
-
-```{r}
-
-source("Functions/cancer_incidence_data_generation.R")
-
-```
-
 ### Read in data
 
 ```{r}
@@ -266,6 +243,9 @@ data_rf <- read.csv("../../../Data/Cleaned_Data/clean_rf_data.csv")
 
 # Read in aggregate PAFs
 data_paf <- read.csv("../Data/AggregatePAFs_BestEstimates.csv")
+
+# Read in individual PAFs
+data_paf_individual <- read.csv("../Data/PAF_by_riskfactor.csv")
 
 # Read in PAF samples
 data_paf_comparison <- read.csv(r"(..\Data\paf_comparison.csv)") |>
@@ -277,8 +257,10 @@ data_paf_comparison <- read.csv(r"(..\Data\paf_comparison.csv)") |>
 data_pif <- read.csv("../Data/PIF.csv")
 
 # Reading in cancer incidence data
-data_cancer <- cancer_incidence_data_gen("../Data")
+data_cancer <- read.csv("../Data/incidence_data_clean.csv")
 
+# Reading in JP Analysis
+data_joinpoint <- read.delim("../Data/Joinpoint/export.Export.APC.txt", sep = "\t")
 
 ```
 
@@ -286,138 +268,284 @@ data_cancer <- cancer_incidence_data_gen("../Data")
 
 ```{r, fig.height=16, fig.width=10, warning=F}
 
+# Merge joinpoint data into cancer data
+data_joinpoint_last <- data_joinpoint |>
+  filter(Model == Segment)
+
+data_cancer_plot <- merge(data_cancer, data_joinpoint_last, by = c("sex", "age_group", "cancer_site"), all.x = T) |>
+  mutate(
+    
+    last_segment = between(year, Segment.Start, Segment.End),
+    
+    APC_clean = paste0(round(APC, digits = 2), if_else(APC.Significant == 1, "*", ""))
+    
+  ) |>
+  # Fix Multiple Myeloma
+  mutate(
+    
+    cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site)
+    
+  )
+
+# Need to get rows at join and duplicate with alternate last_segment
+data_cancer_plot_new_rows <- data_cancer_plot |>
+  group_by(sex, age_group, cancer_site) |>
+  filter(last_segment) |>
+  filter(year == min(year)) |>
+  mutate(last_segment = F) |>
+  ungroup()
+
+# Now add back in
+data_cancer_plot <- rbind(data_cancer_plot, data_cancer_plot_new_rows)
+
+# Now create labels
+data_cancer_plot_labels <- data_cancer_plot |>
+  group_by(age_group, cancer_site) |>
+  mutate(
+    count_range = max(count) - min(count)
+  ) |>
+  group_by(sex, age_group, cancer_site) |>
+  filter(last_segment) |>
+  filter(year == max(year)) |>
+  reframe(
+    
+    year = max(year) + 1.8,
+    count = max(count),
+    count_range = count_range[1],
+    APC_clean = APC_clean[1]
+    
+  ) |>
+  distinct() |>
+  # Now attempting to do manual repelling of plots away from each other
+  group_by(age_group, cancer_site) |>
+  mutate(
+    
+    count = case_when(
+      n() == 1 ~ count,
+      max(count) - min(count) < count_range/2 & count == min(count) ~ count - (count_range/2 -  (max(count) - min(count)))/2,
+      max(count) - min(count) < count_range/2 & count == max(count) ~ count + (count_range/2 -  (max(count) - min(count)))/2,
+      TRUE ~ count
+    )
+    
+  )
+
+# Create invisible points to expand y limits
+data_cancer_invisible_points <- data_cancer_plot |>
+  group_by(sex, age_group, cancer_site) |>
+  summarise(
+
+    year = 2001,
+    count = max(count) + (max(count) - min(count))/2
+
+  )
+
 # Removing 2020 as COVID affected cases
-ggplot(data_cancer |> filter(year<2020), aes(x = year, y = count, fill = sex, colour = sex)) +
+ggplot(data_cancer_plot, aes(x = year, y = count, fill = sex, colour = sex)) +
+  xlim(2001, 2021.5) +
   geom_point() +
-  geom_line() +
+  geom_point(data = data_cancer_invisible_points, alpha = 0) +
+  geom_line(aes(linetype = last_segment)) +
+  geom_label(data = data_cancer_plot_labels, aes(label = APC_clean),
+             fill = "white", size = 3, show.legend = F) +
   theme_minimal() +
   geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
             colour = "black", fill = NA, inherit.aes = FALSE) +
   theme(strip.text = element_text(face = "bold")) +
   ylab("Cases") +
   xlab("Year") +
-  labs(colour = "Sex", fill = "Sex") +
+  labs(colour = "Sex", fill = "Sex", linetype = "Last Segment") +
   # scale_x_continuous(breaks = seq(min_year, max_year, by = 2)) +
-  ggtitle(paste0("Trends in Cancer Incidence in England")) +
-  facet_wrap(cancer_site~age_group,  scales = "free_y", nrow = 10)
+  ggtitle("Trends in Cancer Incidence in England") +
+  labs(subtitle = "Labels show APC for most recent trend, * indicates a significant trend") +
+  facet_wrap(~ paste0(cancer_site, " - ", age_group),  scales = "free_y", nrow = 10)
 
 ggsave(filename = paste0("../Output/Plots/Figure_1.png"), bg = "white", height = 16, width = 10)
 
 ```
 
-## Figure 2 - Trends in risk factors
+## Figure 1 - Trends in cancer incidence APC table
 
-```{r, fig.height=6, fig.width=10, warning=F}
+Table of the APC of the last joint point
 
-# Filter to data desired and make formatting choices
-data_rf_trends <- data_rf |>
-  filter(!variable %in% c("fibre_consumption", "fibre_consumption_cat_mean", "processed_meat_consumption", "processed_meat_consumption_cat_mean", "redmeat_consumption", "redmeat_consumption_cat_mean" , "processed_meat_consumption_mean", "redmeat_consumption_mean")) |>
+```{r}
+#pulling the relevant data for the table 
+data_joinpoint_last <- data_joinpoint %>%
+  filter(Model == Segment) %>%
   mutate(
-    
-    level = case_when(
-      grepl(variable, pattern = "\\_consumption_median") ~ gsub("\\sConsumption\\sMedian$", "", str_to_title(gsub("\\_", " ", variable))),
-      TRUE ~ level
-      ),
-    level = case_when(
-      grepl(variable, pattern = "\\_consumption_mean") ~ gsub("\\sConsumption\\sMean$", "", str_to_title(gsub("\\_", " ", variable))),
-      TRUE ~ level
-      ),
-    # Quick fix for poorly named variable
-    level = if_else(level == "Redmeat", "Red Meat", level),
-    level = if_else(level == "Processedmeat", "Processed Meat", level),
-    
-    variable = case_when(
-      grepl(variable, pattern = "\\_consumption_median") | grepl(variable, pattern = "\\_consumption_mean") ~ "diet",
-      TRUE ~ variable
-      ), 
-    
-    value = ifelse(level == "Fibre", 30-value, value)
-
+    APC = round(APC, 2), 
+    APC.95..LCL = round(APC.95..LCL, 2), 
+    APC.95..UCL = round(APC.95..UCL, 2),
+    P.Value = round(P.Value,2),
+    CI = paste0("(", APC.95..LCL, ", ", APC.95..UCL, ")"), 
+    TimePeriod = paste0("(", Segment.Start, ", ", Segment.End, ")")
+    ) %>%
+  select(
+    sex,cancer_site, age_group, TimePeriod, APC, CI, P.Value 
   )
 
-# Loop through variables and make plots
-for(var in unique(data_rf_trends$variable)){
-  
-  # Extract min and max years for nice plots
-  min_year <- min(data_rf_trends |> filter(variable == var) |> pull(year))
-  max_year <- max(data_rf_trends |> filter(variable == var) |> pull(year))
-  
-  # get pretty variable name for the plot header
-  var_title <- case_when(
-    var == "alcohol_amt" ~ "Alcohol Consumption",
-    var == "bmi" ~ "BMI",
-    var == "smoking_status" ~ "Smoking Status",
-    var == "diet" ~ "Daily Food Consumption*",
-    TRUE ~ var
+#table formatting 
+apc_table <- data_joinpoint_last %>%
+  arrange(age_group, APC) %>%
+  gt(groupname_col = "cancer_site") %>% # Specify group column
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  ) %>%
+  tab_style(
+    style = list(
+      cell_text(weight = "bold"),
+      cell_fill(color = "lightgray"),
+      cell_borders(sides = "top"),
+      cell_borders(sides = "bottom")
+    ),
+    locations = cells_row_groups(groups = everything())
+  ) %>%
+  cols_width(
+    everything() ~ px(100) 
+  ) %>%
+  tab_header(
+    title = md("Most recent APC by cancer site, age group , and sex")
   )
-  
-  # Create plot
-  plot <- ggplot(data_rf_trends |> filter(variable == var), aes(x = year, y = value, colour = level, fill = level)) +
-    geom_line() +
-    geom_point() +
-    # geom_smooth(method='lm', se = FALSE) +
-    theme_minimal() +
-    geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
-              colour = "black", fill = NA, inherit.aes = FALSE) +
-    theme(strip.text = element_text(face = "bold")) +
-    ylab(if_else(var == "diet", "Grams (g)", "Percentage (%)")) +
-    xlab("Year") +
-    labs(colour = "Category", fill = "Category") +
-    scale_x_continuous(breaks = seq(min_year, max_year, by = 2)) +
-    ggtitle(paste0("Trends in ", var_title)) +
-    facet_grid(age_group ~ sex)
-  
-  # Add footnote to diet plot
-  if(var == "diet"){
-    plot <- plot +
-      labs(caption = "*Red and Processed Meat uses the median, Fibre Deficiency uses the mean")
-  }
-  
-  print(plot)
-  
-  ggsave(plot, filename = paste0("../Output/Plots/Figure_2-", gsub(" ", "-", var), ".png"), bg = "white", height = 6, width = 10)
-    
-  
-}
-
+apc_table
 
 ```
 
-### Linear trends in risk factors
+## Figure 2 - Trends in risk factors
 
-```{r, linear trends, , fig.height=6, fig.width=10, warning=F}
-source("Initial_Data_Evaluation/riskfactor_trendanalysis.R")
+The APC were calculated with the assumption of homoscedastic random errors.
 
+```{r}
+#read in the APC data 
+rfdata_joinpoint <- read.delim("../Data/Joinpoint/riskfactors/export.Export.APC.txt", sep = "\t")
+dietrfdata_joinpoint <- read.delim("../../../Data/Cleaned_Data/joinpoint_results/export.Export.APC.txt", sep = "\t")
 
-coef_wide_full <- rf_linearmodel %>%
-  pivot_wider(
-    names_from = term,
-    values_from = estimate, 
-    id_cols = c("age_group", "sex", "exposure", "variable")
-    ) %>%
-  rename(
-    intercept = "(Intercept)"
+RFdata_joinpoint <- rbind(rfdata_joinpoint,dietrfdata_joinpoint)
+
+# Merge joinpoint data into cancer data
+rfdata_joinpoint_last <- RFdata_joinpoint |>
+  filter(Model == Segment)
+
+#cleaning the odl risk factior data 
+riskfactors <- data_rf %>% 
+   mutate(
+    level = str_trim(level), 
+    variable = str_trim(variable),
+    value = as.numeric(value),
+    exposure = ifelse(level == "Light Drinker", "Light_alcohol", level), #renaming the risk factor data so that it matches the RR exposure levels 
+    exposure = ifelse(level == "Moderate Drinker", "Medium_alcohol", exposure), 
+    exposure = ifelse(level == "Heavy Drinker", "Heavy_alcohol", exposure), 
+    exposure = ifelse(level == "Obese"& sex == "Men", "BMI_obese_men", exposure), 
+    exposure = ifelse(level == "Obese"& sex == "Women", "BMI_obese_women", exposure), 
+    exposure = ifelse(level == "Overweight"& sex == "Men", "BMI_overweight_men", exposure), 
+    exposure = ifelse(level == "Overweight"& sex == "Women", "BMI_overweight_women", exposure), 
+    exposure = ifelse(level == "Current"& sex == "Men", "Current_Smoking_men", exposure),
+    exposure = ifelse(level == "Current"& sex == "Women", "Current_Smoking_women", exposure), 
+    exposure = ifelse(level == "Previously"& sex == "Men", "Former_Smoking_men", exposure),
+    exposure = ifelse(level == "Previously"& sex == "Women", "Former_Smoking_women", exposure), 
+    exposure = ifelse(variable == "processedmeat_consumption_median", "Processed_Meat", exposure), 
+    exposure = ifelse(variable == "redmeat_consumption_median", "Red_Meat", exposure), 
+    exposure = ifelse(variable == "fibre_consumption_mean", "Fibre", exposure),
+    value = ifelse(exposure =="Fibre", 30-value, value), #calculates fibre deficiency
+    variable = if_else(variable == "alcohol_amt", "Alcohol", variable), 
+    variable = if_else(variable == "bmi", "BMI", variable),
+    variable = if_else(variable == "smoking_status", "Smoking", variable),
+    variable = if_else(variable == "fibre_consumption", "Fibre", variable),
+    variable = if_else(variable == "redmeat_consumption", "RedMeat", variable),
+    variable = if_else(variable == "processed_meat_consumption", "ProcessedMeat", variable)
   ) %>%
-  select(
-    age_group, sex, variable, exposure, intercept, year
+  filter(
+    #year >= 2009 & year <= 2019, #selecting the years of interest 
+    exposure %in% c("Light_alcohol", "Medium_alcohol","Heavy_alcohol","Non-Drinker","BMI_obese_men","BMI_obese_women","BMI_overweight_men","BMI_overweight_women","Healthy Weight","Current_Smoking_men","Current_Smoking_women","Former_Smoking_men","Former_Smoking_women","Never", "Processed_Meat","Red_Meat", "Fibre")
+  )
+
+#merging all of the data together 
+rf_trend_plot <- merge(riskfactors, rfdata_joinpoint_last, by = c("sex", "age_group", "exposure"), all.x = T) |>
+  mutate(
+    
+    last_segment = between(year, Segment.Start, Segment.End),
+    
+    APC_clean = paste0(round(APC, digits = 2), if_else(APC.Significant == 1, "*", ""))
+    
   ) 
 
-#Alcohol
-coef_wide <- coef_wide_full %>%
-  filter(
-    variable == "Alcohol"
+# Need to get rows at join and duplicate with alternate last_segment
+rf_trend_plot_new_rows <- rf_trend_plot |>
+  group_by(sex, age_group, exposure) |>
+  filter(last_segment) |>
+  filter(year == min(year)) |>
+  mutate(last_segment = F) |>
+  ungroup()
+
+# Now add back in
+rf_trend_plot <- rbind(rf_trend_plot, rf_trend_plot_new_rows)
+
+# Now create labels
+rf_trend_plot_labels <- rf_trend_plot |>
+  group_by(age_group, exposure, variable) |>
+  mutate(
+    value_range = max(value) - min(value)
+  ) |>
+  group_by(sex, age_group, exposure, variable) |>
+  filter(last_segment) |>
+  filter(year == max(year)) |>
+  reframe(
+    
+    year = max(year) + 1.8,
+    value = max(value),
+    value_range = value_range[1],
+    APC_clean = APC_clean[1]
+    
+  ) |>
+  distinct() |>
+  # Now attempting to do manual repelling of plots away from each other
+  group_by(age_group, exposure, variable) |>
+  mutate(
+
+    value = case_when(
+      n() == 1 ~ value,
+      max(value) - min(value) < value_range/2 & value == min(value) ~ value - (value_range/2 -  (max(value) - min(value)))/2,
+      max(value) - min(value) < value_range/2 & value == max(value) ~ value + (value_range/2 -  (max(value) - min(value)))/2,
+      TRUE ~ value
+    )
+
   )
-alcohol_plot <- ggplot(riskfactors %>% filter(variable == "Alcohol"), aes(x = year, y = value, color = exposure)) +
+
+#Create invisible points to expand y limits
+rf_trend_plot_invisible_points <- rf_trend_plot |>
+  group_by(sex, age_group, exposure) |>
+  summarise(
+
+    year = 2025,
+    value = .5
+
+  )
+
+#plot
+alcoholtrends <- ggplot(rf_trend_plot %>% filter(variable == "Alcohol"), aes(x = year, y = value, color = exposure)) +
   geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
+  geom_line(aes(linetype = last_segment)) +
+ geom_point(data = rf_trend_plot_invisible_points, alpha = 0) +
+   
   facet_grid(sex ~ age_group) +  # grid by both age_group and sex
-  geom_abline(data = coef_wide, aes(intercept = intercept, slope = year, color = exposure), 
-              linetype = "solid", size = 1) +  # Add regression lines
+  geom_label_repel(
+    data = rf_trend_plot_labels %>% filter(variable == "Alcohol"),
+    aes(label = APC_clean, group = exposure),
+    nudge_x = 3,
+    fill = "white", 
+    size = 3,
+    show.legend = FALSE,
+    max.overlaps = Inf,          # Ensure all labels are plotted
+    box.padding = 0.1,          # Add padding around labels
+    point.padding = 0.5          # Add padding between points and labels
+  ) +
+   
   theme_minimal() +
   scale_color_manual( #fixing the colors 
     values = c(
-      "Heavy_alcohol" = "#3d405b",  
-      "Medium_alcohol" = "#81b29a", 
-      "Light_alcohol" = "#e07a5f"  
+      "Heavy_alcohol" = "#2b9eb3",  
+      "Medium_alcohol" = "#f8333c", 
+      "Light_alcohol" = "#44af69" , 
+      "Non-Drinker" = "#fcab10"
     )
   ) +
   labs(
@@ -429,30 +557,34 @@ alcohol_plot <- ggplot(riskfactors %>% filter(variable == "Alcohol"), aes(x = ye
   geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
               colour = "black", fill = NA, inherit.aes = FALSE) +
     theme(strip.text = element_text(face = "bold"))
-  # theme(
-  #   axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
-  #   panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
-  #   panel.grid.minor = element_blank()
-  # )
 
-
-#BMI 
-coef_wide <- coef_wide_full %>%
-  filter(
-    variable == "BMI"
-  )
-bmi_plot <- ggplot(riskfactors %>% filter(variable == "BMI"), aes(x = year, y = value, color = exposure)) +
+#BMI
+bmitrends <- ggplot(rf_trend_plot %>% filter(variable == "BMI"), aes(x = year, y = value, color = exposure)) +
   geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
+  geom_line(aes(linetype = last_segment)) +
+ geom_point(data = rf_trend_plot_invisible_points, alpha = 0) +
+   
   facet_grid(sex ~ age_group) +  # grid by both age_group and sex
-  geom_abline(data = coef_wide, aes(intercept = intercept, slope = year, color = exposure), 
-              linetype = "solid", size = 1) +  # Add regression lines
+  geom_label_repel(
+    data = rf_trend_plot_labels %>% filter(variable == "BMI"),
+    aes(label = APC_clean, group = exposure),
+    nudge_x = 3,
+    fill = "white", 
+    size = 3,
+    show.legend = FALSE,
+    max.overlaps = Inf,          # Ensure all labels are plotted
+    box.padding = 0.1,          # Add padding around labels
+    point.padding = 0.5          # Add padding between points and labels
+  ) +
+   
   theme_minimal() +
   scale_color_manual( #fixing the colors 
     values = c(
-      "BMI_obese_men" = "#81b29a",  
-      "BMI_overweight_men" = "#e07a5f", 
-      "BMI_obese_women" = "#81b29a",  
-      "BMI_overweight_women" = "#e07a5f" 
+      "BMI_obese_men" = "#2b9eb3",  
+      "BMI_overweight_men" = "#f8333c", 
+      "BMI_obese_women" = "#2b9eb3",  
+      "BMI_overweight_women" = "#f8333c",
+      "Healthy Weight" = "#fcab10"
     )
   ) +
   labs(
@@ -463,30 +595,35 @@ bmi_plot <- ggplot(riskfactors %>% filter(variable == "BMI"), aes(x = year, y = 
   ) +
   geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
               colour = "black", fill = NA, inherit.aes = FALSE) +
-  theme(strip.text = element_text(face = "bold"))
-  # theme(
-  #   axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
-  #   panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
-  #   panel.grid.minor = element_blank()
-  # )
+    theme(strip.text = element_text(face = "bold"))
 
 #Smoking 
-coef_wide <- coef_wide_full %>%
-  filter(
-    variable == "Smoking"
-  )
-smoking_plot <- ggplot(riskfactors %>% filter(variable == "Smoking"), aes(x = year, y = value, color = exposure)) +
+smokingtrends <- ggplot(rf_trend_plot %>% filter(variable == "Smoking"), aes(x = year, y = value, color = exposure)) +
   geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
+  geom_line(aes(linetype = last_segment)) +
+  geom_point(data = rf_trend_plot_invisible_points, alpha = 0) +
+   
   facet_grid(sex ~ age_group) +  # grid by both age_group and sex
-  geom_abline(data = coef_wide, aes(intercept = intercept, slope = year, color = exposure), 
-              linetype = "solid", size = 1) +  # Add regression lines
+    geom_label_repel(
+    data = rf_trend_plot_labels %>% filter(variable == "Smoking"),
+    aes(label = APC_clean, group = exposure),
+    nudge_x = 3, 
+    fill = "white", 
+    size = 3,
+    show.legend = FALSE,
+    max.overlaps = Inf,          # Ensure all labels are plotted
+    box.padding = 0.1,          # Add padding around labels
+    point.padding = 0.5          # Add padding between points and labels
+  ) +
+   
   theme_minimal() +
   scale_color_manual( #fixing the colors 
     values = c(
-      "Current_Smoking_men" = "#81b29a",  
-      "Former_Smoking_men" = "#e07a5f", 
-      "Current_Smoking_women" = "#81b29a",  
-      "Former_Smoking_women" = "#e07a5f" 
+      "Current_Smoking_men" = "#2b9eb3",  
+      "Former_Smoking_men" = "#f8333c", 
+      "Current_Smoking_women" = "#2b9eb3",  
+      "Former_Smoking_women" = "#f8333c", 
+      "Never" = "#fcab10"
     )
   ) +
   labs(
@@ -497,136 +634,126 @@ smoking_plot <- ggplot(riskfactors %>% filter(variable == "Smoking"), aes(x = ye
   ) +
   geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
               colour = "black", fill = NA, inherit.aes = FALSE) +
-  theme(strip.text = element_text(face = "bold"))
-  # theme(
-  #   axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
-  #   panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
-  #   panel.grid.minor = element_blank()
-  # )
+    theme(strip.text = element_text(face = "bold"))
 
-#Fibre
-coef_wide <- coef_wide_full %>%
-  filter(
-    exposure == "Fibre"
-  )
-fibre_plot <- ggplot(riskfactors %>% filter(exposure == "Fibre"), aes(x = year, y = value, color = exposure)) +
+
+
+#Diet
+diettrends <- ggplot(rf_trend_plot %>% filter(exposure %in% c("Red_Meat", "Processed_Meat", "Fibre")), aes(x = year, y = value, color = exposure)) +
   geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
+  geom_line(aes(linetype = last_segment)) +
+ geom_point(data = rf_trend_plot_invisible_points, alpha = 0) +
+   
   facet_grid(sex ~ age_group) +  # grid by both age_group and sex
-  geom_abline(data = coef_wide, aes(intercept = intercept, slope = year, color = exposure), 
-              linetype = "solid", size = 1) +  # Add regression lines
+   geom_label_repel(
+    data = rf_trend_plot_labels %>% filter(exposure %in% c("Red_Meat", "Processed_Meat", "Fibre")),
+    aes(label = APC_clean, group = exposure),
+    nudge_x = 3,
+    fill = "white", 
+    size = 3,
+    show.legend = FALSE,
+    max.overlaps = Inf,          # Ensure all labels are plotted
+    box.padding = 0.1,          # Add padding around labels
+    point.padding = 0.5          # Add padding between points and labels
+  ) +
+   
   theme_minimal() +
   scale_color_manual( #fixing the colors 
     values = c(
-      "Fibre" = "#81b29a"
+      "Red_Meat" = "#2b9eb3", 
+      "Processed_Meat" = "#fcab10",
+      "Fibre" = "#f8333c"
     )
   ) +
   labs(
-    title = "Fibre Deficiency (Based on 30g/day recommendation)",
+    title = "Diet Consumption in England",
     x = "Year",
     y = "Population Prevalence (%)",
-    color = "Exposure"
+    color = "Exposure Category"
   ) +
   geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
               colour = "black", fill = NA, inherit.aes = FALSE) +
     theme(strip.text = element_text(face = "bold"))
-  # theme(
-  #   axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
-  #   panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
-  #   panel.grid.minor = element_blank()
-  # )
 
-#Processed meat
-coef_wide <- coef_wide_full %>%
-  filter(
-    exposure == "Processed_Meat"
-  )
-processedmeat_plot <- ggplot(riskfactors %>% filter(exposure == "Processed_Meat"), aes(x = year, y = value, color = exposure)) +
-  geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
-  facet_grid(sex ~ age_group) +  # grid by both age_group and sex
-  geom_abline(data = coef_wide, aes(intercept = intercept, slope = year, color = exposure), 
-              linetype = "solid", size = 1) +  # Add regression lines
-  theme_minimal() +
-  scale_color_manual( #fixing the colors 
-    values = c(
-      "Processed_Meat" = "#81b29a"
-    )
-  ) +
-  labs(
-    title = "Processed Meat Consumption",
-    x = "Year",
-    y = "Population Prevalence (%)",
-    color = "Sex"
-  ) +
-  geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
-              colour = "black", fill = NA, inherit.aes = FALSE) +
-    theme(strip.text = element_text(face = "bold"))
-  # theme(
-  #   axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
-  #   panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
-  #   panel.grid.minor = element_blank()
-  # )
+#Print the figures
+print(alcoholtrends)
+print(bmitrends)
+print(smokingtrends)
+print(diettrends)
 
-#Red Meat
-coef_wide <- coef_wide_full %>%
-  filter(
-    exposure == "Red_Meat"
-  )
-redmeat_plot <- ggplot(riskfactors %>% filter(exposure == "Red_Meat"), aes(x = year, y = value, color = exposure)) +
-  geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
-  facet_grid(sex ~ age_group) +  # grid by both age_group and sex
-  geom_abline(data = coef_wide, aes(intercept = intercept, slope = year, color = exposure), 
-              linetype = "solid", size = 1) +  # Add regression lines
-  theme_minimal() +
-  scale_color_manual( #fixing the colors 
-    values = c(
-      "Red_Meat" = "#81b29a"
-    )
-  ) +
-  labs(
-    title = "Red Meat Consumption",
-    x = "Year",
-    y = "Population Prevalence (%)",
-    color = "Exposure"
-  ) +
-  geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
-              colour = "black", fill = NA, inherit.aes = FALSE) +
-    theme(strip.text = element_text(face = "bold"))
-  # theme(
-  #   axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
-  #   panel.grid.major = element_line(size = 0.5, linetype = "dotted"),
-  #   panel.grid.minor = element_blank()
-  # )
-
-print(alcohol_plot)
-print(bmi_plot)
-print(smoking_plot)
-print(fibre_plot)
-print(processedmeat_plot)
-print(redmeat_plot)
-
-ggsave(alcohol_plot, filename = paste0("../Output/Plots/alcohol_lineartrend.png"), bg = "white", height = 6, width = 10)
-ggsave(bmi_plot, filename = paste0("../Output/Plots/bmi_lineartrend.png"), bg = "white", height = 6, width = 10)
-ggsave(smoking_plot, filename = paste0("../Output/Plots/smoking_lineartrend.png"), bg = "white", height = 6, width = 10)
-ggsave(fibre_plot, filename = paste0("../Output/Plots/fibre_lineartrend.png"), bg = "white", height = 6, width = 10)
-ggsave(processedmeat_plot, filename = paste0("../Output/Plots/processedmeat_lineartrend.png"), bg = "white", height = 6, width = 10)
-ggsave(redmeat_plot, filename = paste0("../Output/Plots/redmeat_lineartrend.png"), bg = "white", height = 6, width = 10)
-
+ggsave(alcoholtrends, 
+       filename = "../Output/Plots/Figure_2-Alcohol.png", 
+       bg = "white", 
+       height = 16, 
+       width = 10)
+ggsave(bmitrends, 
+       filename = "../Output/Plots/Figure_2-BMI.png", 
+       bg = "white", 
+       height = 16, 
+       width = 10)
+ggsave(smokingtrends, 
+       filename = "../Output/Plots/Figure_2-Smoking.png", 
+       bg = "white", 
+       height = 16, 
+       width = 10)
+ggsave(diettrends, 
+       filename = "../Output/Plots/Figure_2-Diet.png", 
+       bg = "white", 
+       height = 16, 
+       width = 10)
 ```
 
-### Differences in risk factor trends by age
+\*Fibre is daily fibre deficiency based on the UK recommendation of consuming 30g/day
 
-The statistics test used was a z test for a difference in slope looking at the difference in slope coefficients.
+## Figure 2 - Trends in risk factors table
 
-The sub categories of risk factors that are have statistically significantly different trends are:
+```{r}
 
-```{r, rf differences}
-library(knitr)
 
-filtered_table <- sigchange_byage %>%
-  filter(sig == 1)
+rf_table <- rfdata_joinpoint_last %>%
+  filter(Model == Segment) %>%
+  mutate(
+    APC = round(APC, 2), 
+    APC.95..LCL = round(APC.95..LCL, 2), 
+    APC.95..UCL = round(APC.95..UCL, 2),
+    P.Value = round(P.Value,2),
+    CI = paste0("(", APC.95..LCL, ", ", APC.95..UCL, ")"), 
+    TimePeriod = paste0("(", Segment.Start, ", ", Segment.End, ")")
+    ) %>%
+  select(
+   sex,exposure, age_group, TimePeriod, APC, CI, P.Value 
+  ) %>%
+  mutate(
+    exposure = str_replace(exposure, "_women", ""), 
+    exposure = str_replace(exposure, "_men", ""),
+  )
 
-kable(filtered_table, caption = "Risk factor sub categories that have statistically significantly different slope coefficients")
 
+#table formatting 
+rf_apc_table <- rf_table %>%
+  arrange(age_group, APC) %>%
+  gt(groupname_col = "exposure") %>% # Specify group column
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  ) %>%
+  tab_style(
+    style = list(
+      cell_text(weight = "bold"),
+      cell_fill(color = "lightgray"),
+      cell_borders(sides = "top"),
+      cell_borders(sides = "bottom")
+    ),
+    locations = cells_row_groups(groups = everything())
+  ) %>%
+  cols_width(
+    everything() ~ px(100) 
+  ) %>%
+  tab_header(
+    title = md("Most recent APC by Exposure, age group , and sex")
+  )
+
+rf_apc_table
 ```
 
 ## Figure 3 - Current PAFs (2019)
@@ -682,7 +809,162 @@ for(site in unique(data_attr_cases$cancer_site)){
 
 ```
 
-## Figure 4 - Difference in PAFs
+## Figure 3 - Current PAFs (2019) - Table
+
+```{r, fig.width=10, results = "asis"}
+
+# Clean data made above and create gt table for presentation
+data_attr_cases_gt <- data_attr_cases |>
+  filter(year == 2019) |>
+  select(-year) |>
+  mutate(cases_count = paste0(round(cases_count), " (", round(100*cases_count/count), "%)")) |>
+  pivot_wider(names_from = case_group, values_from = cases_count) |>
+  select(-PAF) |>
+  mutate(temp = "") |>
+  relocate(temp) |>
+  group_by(cancer_site) |>
+  gt() |>
+  cols_align(
+    align = "center",
+    columns = everything()
+  ) |>
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = list(
+      cells_column_labels()
+    )
+  ) |>
+  tab_style(
+    style = list(
+      cell_text(weight = "bold"),
+      cell_fill(color = "lightgray"),
+      cell_borders(sides = "top"),
+      cell_borders(sides = "bottom")
+    ),
+    locations = cells_row_groups(groups = everything())
+  ) |>
+  cols_width(
+    temp ~ px(150)
+  ) |>
+  cols_label(
+    temp = "",
+    sex = "Sex",
+    age_group = "Age Group",
+    count = "Total Cases"
+    ) |>
+  tab_spanner(
+    label = md("**Cases (%)**"),
+    columns = c(Attributable, `Non-Attributable`)
+  ) |>
+  tab_header(
+    title = md("Attributable Cases - England, 2019")
+  )
+
+# Print
+print(data_attr_cases_gt)
+
+# Output table
+gtsave(data_attr_cases_gt, "../Output/Plots/Figure_3-Table.html")
+
+
+
+```
+
+## Figure 4 - Current PAFs (2019) - Table by Risk Factor
+
+```{r, fig.width=10, results = "asis"}
+
+# Pivot PAFs longer so we can merge
+data_paf_long_individual <- data_paf_individual |>
+  pivot_longer(cols = colnames(data_paf_individual)[!colnames(data_paf_individual) %in% c("sex", "year", "age_group", "variable")], names_to = "cancer_site", values_to = "PAF") |>
+  mutate(year = year + 10) |> # Broad assumption of 10 year lag period
+  mutate(cancer_site = gsub("PAF$", "", cancer_site))
+
+# Merge and find attributable cases
+data_attr_cases_individual <- merge(data_paf_long_individual, data_cancer, by = c("sex", "year", "age_group", "cancer_site"), all.x = T) |>
+  mutate(
+    
+    attr_cases = PAF*count,
+    non_attr_cases = (1-PAF)*count
+    
+  ) |>
+  pivot_longer(cols = c("attr_cases", "non_attr_cases"), names_to = "case_group", values_to = "cases_count") |>
+  mutate(
+    
+    case_group = factor(case_group, level = c("non_attr_cases", "attr_cases"), labels = c("Non-Attributable", "Attributable"))
+    
+  )
+
+# Loop through variables and output gt table
+for(var in unique(data_attr_cases_individual$variable)[!grepl("\\_mean$|\\_median$", unique(data_attr_cases_individual$variable))]){
+  
+  # Clean data made above and create gt table for presentation
+  data_attr_cases_individual_gt <- data_attr_cases_individual |>
+    filter(variable == var) |>
+    filter(PAF > 0) |>
+    # filter(cases_count != 0 & !is.na(cases_count)) |>
+    filter(year == 2019) |>
+    select(-year) |>
+    select(-variable) |>
+    mutate(cases_count = paste0(round(cases_count), " (", round(100*cases_count/count), "%)")) |>
+    pivot_wider(names_from = case_group, values_from = cases_count) |>
+    select(-PAF) |>
+    mutate(temp = "") |>
+    relocate(temp) |>
+    group_by(cancer_site) |>
+    gt() |>
+    cols_align(
+      align = "center",
+      columns = everything()
+    ) |>
+    tab_style(
+      style = cell_text(weight = "bold"),
+      locations = list(
+        cells_column_labels()
+      )
+    ) |>
+    tab_style(
+      style = list(
+        cell_text(weight = "bold"),
+        cell_fill(color = "lightgray"),
+        cell_borders(sides = "top"),
+        cell_borders(sides = "bottom")
+      ),
+      locations = cells_row_groups(groups = everything())
+    ) |>
+    cols_width(
+      temp ~ px(150)
+    ) |>
+    cols_label(
+      temp = "",
+      sex = "Sex",
+      age_group = "Age Group",
+      count = "Total Cases"
+      ) |>
+    tab_spanner(
+      label = md("**Cases (%)**"),
+      columns = c(Attributable, `Non-Attributable`)
+    ) |>
+    tab_header(
+      title = md(paste0("Cases Attributable to ", var, " - England, 2019"))
+    )
+  
+  # Print
+  print(data_attr_cases_individual_gt)
+  
+  # Output table
+  gtsave(data_attr_cases_individual_gt, paste0("../Output/Plots/Figure_4-Table-", var, ".html"))
+  
+  
+}
+
+
+
+
+
+```
+
+## Figure 5 - Difference in PAFs
 
 ```{r, results="asis"}
 
@@ -843,17 +1125,17 @@ for(var in unique(data_complete_paf_plot$variable_label)){
   rows <- length(plot$labels$Cancer_sites)
 
   # Make forest plot
-  pdf(file=paste0("../Output/Plots/Figure_4-", gsub(" ", "_", var), ".pdf"), width = 15, height = (2/5)*(3 + rows))
+  pdf(file=paste0("../Output/Plots/Figure_5-", gsub(" ", "_", var), ".pdf"), width = 15, height = (2/5)*(3 + rows))
   print(plot)
   dev.off()
   
-  cat(sprintf("- [%s](%s)\n", paste0("**Figure 4: ", var, "**"), paste0("../Output/Plots/Figure_4-", gsub(" ", "_", var), ".pdf")))
+  cat(sprintf("- [%s](%s)\n", paste0("**Figure 4: ", var, "**"), paste0("../Output/Plots/Figure_5-", gsub(" ", "_", var), ".pdf")))
   
 }
 
 ```
 
-## Figure 5 - PIF (Past)
+## Figure 6 - PIF (Past)
 
 ```{r,warning=F}
 
@@ -869,7 +1151,13 @@ data_pif_gt_past <- data_pif |>
     
     PIF = 100*round(PIF_past, digits = 3),
     
-    PIF = if_else(is.na(PIF), "-", as.character(PIF))
+    # PIF = if_else(is.na(PIF), "", as.character(PIF))
+    
+    PIF = case_when(
+      is.na(PIF) ~ "",
+      PIF<0 ~ "-",
+      TRUE ~ as.character(PIF)
+    )
     
   ) |>
   select(-PIF_past, -PIF_future) |>
@@ -907,12 +1195,12 @@ data_pif_gt_past <- data_pif |>
 
 data_pif_gt_past
 
-gtsave(data_pif_gt_past, "../Output/Plots/Figure_5-PIF_Past.html")
+gtsave(data_pif_gt_past, "../Output/Plots/Figure_6-PIF_Past.html")
   
 
 ```
 
-## Figure 5 - PIF (Future)
+## Figure 6 - PIF (Future)
 
 ```{r,warning=F}
 
@@ -928,7 +1216,13 @@ data_pif_gt_future <- data_pif |>
     
     PIF = 100*round(PIF_future, digits = 3),
     
-    PIF = if_else(is.na(PIF), "-", as.character(PIF))
+    # PIF = if_else(is.na(PIF), "-", as.character(PIF))
+    
+    PIF = case_when(
+      is.na(PIF) ~ "",
+      PIF<0 ~ "-",
+      TRUE ~ as.character(PIF)
+    )
     
   ) |>
   select(-PIF_past, -PIF_future) |>
@@ -967,15 +1261,15 @@ data_pif_gt_future <- data_pif |>
 
 data_pif_gt_future
 
-gtsave(data_pif_gt_future, "../Output/Plots/Figure_5-PIF_Future.html")
+gtsave(data_pif_gt_future, "../Output/Plots/Figure_6-PIF_Future.html")
   
 
 ```
 
-
 ## Additional Figures
 
 ### Childhood BMI
+
 ```{r, fig.height=6, fig.width=10, warning=F}
 
 data_childhood_bmi <- suppressMessages(read_excel("../Data/HSE-2022-Overweight-and-obesity-tables.xlsx", sheet = "Table 16"))
@@ -1046,3 +1340,272 @@ ggplot(data_childhood_bmi |> filter(level != "Overweight including obese") |> fi
 
 
 ```
+
+### Suspected Risk Factors
+
+#### RR Scenario Example
+
+This example is for Air Pollution only.
+
+PIF scenarios for suspected risk factors to predict relative risks. The PIF scenarios are based on the PIFs calculated for established risk factors (above) for the time period 2009-2019. The scenarios are PIF =
+
+-   1%
+
+-   3%
+
+-   5%
+
+-   10%
+
+```{r}
+library(gt)
+
+source ("Functions/pifpaf_scenario_generation.R")
+
+pifscenario_table <- pifscenarios_allrf %>%
+  mutate(
+    p0 = p0*100, 
+    p1 = p1*100, 
+    p0 = round(p0, 2), 
+    p1 = round(p1, 2), 
+    pif1 = round(pif1, 2), 
+    pif3 = round(pif3, 2), 
+    pif5 = round(pif5, 2), 
+    pif10 = round(pif10, 2), 
+    pif1 = ifelse(pif1 <1,"-", pif1),
+    pif3 = ifelse(pif3 <1, "-", pif3),
+    pif5 = ifelse(pif5 <1, "-", pif5),
+    pif10 = ifelse(pif10 <1, "-", pif10)
+  ) %>%
+  rename(
+    `2009exp` = p0, 
+    `2019exp` = p1
+  ) %>%
+  arrange(variable, level) %>%
+  gt(groupname_col = "variable") %>% # Specify group column
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  ) %>%
+  tab_style(
+    style = list(
+      cell_text(weight = "bold"),
+      cell_fill(color = "lightgray"),
+      cell_borders(sides = "top"),
+      cell_borders(sides = "bottom")
+    ),
+    locations = cells_row_groups(groups = everything())
+  ) %>%
+  cols_width(
+    everything() ~ px(100) 
+  ) %>%
+  tab_header(
+    title = md("Relative Risk by PIF Scenarios - UK, 2009-2019")
+  )
+
+# View the resulting table
+pifscenario_table
+```
+
+PAF scenarios for suspected risk factors to predict relative risks. The PAF scenarios are based on the PAF calculated for established risk factors (above) for risk factors exposures occurring in 2009. The scenarios are PAF =
+
+-   5%
+
+-   10%
+
+-   15%
+
+-   25%
+
+-   35%
+
+-   50%
+
+```{r}
+#run the previous chunk as well
+
+pafscenario_table <- pafscenarios_allrf %>%
+  mutate(
+    value = value *100, 
+    value = round(value, 2), 
+    paf5 = round(paf5, 2), 
+    paf10 = round(paf10, 2), 
+    paf15 = round(paf15, 2), 
+    paf25 = round(paf25, 2),
+    paf35 = round(paf35, 2), 
+    paf50 = round(paf50, 2)
+  ) %>%
+  rename(
+    `2009exp` = value 
+  )%>%
+  arrange(variable, level) %>%
+  gt(groupname_col = "variable") %>% # Specify group column
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  ) %>%
+  tab_style(
+    style = list(
+      cell_text(weight = "bold"),
+      cell_fill(color = "lightgray"),
+      cell_borders(sides = "top"),
+      cell_borders(sides = "bottom")
+    ),
+    locations = cells_row_groups(groups = everything())
+  ) %>%
+  cols_width(
+    everything() ~ px(100) 
+  ) %>%
+  tab_header(
+    title = md(" Relative Risk by PAF Scenarios - UK, 2009")
+  )
+
+# View the resulting table
+pafscenario_table
+```
+
+#### Air Pollution
+
+These data are sourced from the Department for Environment, Food, & Rural Affairs:
+
+[Nitrogen dioxide (NO2) - GOV.UK](https://www.gov.uk/government/statistics/air-quality-statistics/ntrogen-dioxide#:~:text=Urban%20background%20NO2%20pollution%20has,9%20per%20cent%20since%202022.)
+
+[Particulate matter (PM10/PM2.5) - GOV.UK](https://www.gov.uk/government/statistics/air-quality-statistics/concentrations-of-particulate-matter-pm10-and-pm25)
+
+-   Data had to be downloaded and edited so that the units were removed as the characters are not allowed in R
+
+```{r}
+#loading the air pollution data sets 
+nitrogendioxide <- read.csv("../Data/PotentialExposures/fig01_nitrogen_dioxide_annual.csv") 
+pm25 <- read.csv("../Data/PotentialExposures/fig06_pm25_annual.csv")
+pm10 <- read.csv("../Data/PotentialExposures/fig05_pm10_annual.csv")
+
+#cleaning the data so it is standardized
+nitrogendioxide <- nitrogendioxide %>% 
+  mutate(
+    var = "NO2"
+  ) %>%
+  rename(
+    value = Mean.NO2.concentration
+  ) %>%
+  select(
+    Site.type, Year, var, value
+  )
+pm25<- pm25%>%
+  mutate(
+    var = "PM25"
+  ) %>%
+  rename(
+    value = Mean.PM2.5.concentration
+  ) %>%
+  select(
+    Site.type, Year, var, value
+  )
+pm10<- pm10 %>%
+  mutate(
+    var = "PM10"
+  )%>%
+  rename(
+    value = Mean.PM10.concentration
+  ) %>%
+  select(
+    Site.type, Year, var, value
+  )
+airpol <- rbind(nitrogendioxide, pm25, pm10)
+
+airpol <- airpol %>%
+  mutate(
+    combo = interaction(var, Site.type)
+  )
+
+#creating the graph 
+color <- c(
+  "NO2.Rural Background" = "#072ac8",
+  "NO2.Urban Background" = "#5fa8d3", 
+  "NO2.Urban Traffic" = "#cae9ff",
+  "PM10.Urban Background" = "#6818a5",
+  "PM10.Urban Traffic" = "#d283ff", 
+  "PM25.Urban Background" = "#415d43",
+  "PM25.Urban Traffic" = "#a1cca5"
+)
+airpol_plot <- ggplot(airpol, aes(x = Year, y = value, color = combo)) +
+  geom_line(size = 1) +         
+  geom_point(size = 2) +         
+  labs(
+    title = "England Air Pollution Trends",
+    x = "Year",
+    y = "Mean Levels",
+    color = "Var & Site Type"
+  ) +
+  scale_color_manual(values = color) +
+  theme_minimal() +             
+  theme(
+    legend.position = "right",
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5)
+  )
+print(airpol_plot)
+```
+
+#### Antibiotic Use
+
+These data are sourced from Table S3 in the Supplementary Materials from [Time trends and geographical variation in prescribing of antibiotics in England 1998-2017](https://pubmed.ncbi.nlm.nih.gov/30239809/)
+
+-   Data had to be copied and pasted into a .csv file and the £ removed from the Total Cost column
+
+```{r}
+#load in the dataset 
+antibiotics <- read.csv("../Data/PotentialExposures/TableS3_SupplementaryMaterials_Curtis2019.csv")
+
+antibiotics <- antibiotics %>% 
+  mutate(
+      presc_rates = Items.per.1.000.STAR.PU %>% 
+      as.character() %>%           # Ensure it's a character string
+      trimws() %>%                 # Remove spaces
+      gsub(",", "", .) %>%         # Remove commas 
+      gsub("[^0-9.]", "", .) %>%   # Remove non-numeric 
+      as.numeric() 
+  )
+
+antibiotics_plot <- ggplot(antibiotics, aes(x = year, y = presc_rates)) +
+  geom_line(size = 1, color = "#6818a5") +         # Line connecting the dots
+  geom_point(size = 2, color = "#6818a5") +         # Dots on the line
+  labs(
+    title = "England Antibiotic Prescription Trends",
+    x = "Year",
+    y = "Prescriptions per 1000 STAR PU"
+  ) +
+  theme_minimal() +             
+  theme(
+    legend.position = "right",
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5)
+  ) +
+  scale_y_continuous(
+    limits = c(0, 1600),       # Set y-axis range
+    expand = c(0, 0)           # Remove extra padding around the limits
+  )
+print(antibiotics_plot)
+```
+
+STAR-PU units stand for Specific Therapeutic Group Age-sex weightings Related Prescribing Units and they account for the variations in age and sex distributions of patients at GP practices.
+
+#### Ultra Processed Food
+
+According to the [OP12 Social inequalities in ultra-processed food intakes in the United Kingdom: A time trend analysis (2008–2018) \| Journal of Epidemiology & Community Health](https://jech.bmj.com/content/76/Suppl_1/A6.2), ultra processed food consumption has increased in the UK from accounting for 57% of the daily energy in 2008 to 63% in 2018. Ultra processed food consumption was higher in younger participants, men, and more deprived groups.
+
+I cannot get access to an article with these findings nor can I see the whole programme pdf.
+
+#### Sedentary Lifestyle
+
+Speak to Rubin about figures in the positions paper for physical activity.
+
+#### Sleep Duration
+
+#### Sweetened Beverages
+
+#### Type 2 Diabetes
+
+This figure is from [Health Survey England](https://files.digital.nhs.uk/23/6B5DEA/HSE19-Adult-health-rep.pdf) and shows that diabetes (all) is increasing in men and women. Later in the report, it also discusses that there are more adults diagnosed with diabetes in the lowest household income quintile, compared to the highest.
+
+![](images/clipboard-1688306341.png)
+
+#### Metabolic Syndrome
