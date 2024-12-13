@@ -3,7 +3,10 @@
 ## Overview
 Goal is to combine public sources of information to get an effective view of the trends of cancer incidence/mortality and risk factors in the UK. These will then be plotted in graphs.
 
-## PIFPAF paper 
+# PIFPAF paper 
+## [PIFPAF paper](https://uk-generations-study.github.io/UK-cancer-trends/PIF_PAF/Code/Analysis.html)
+This is the analysis plan and working figures for the PIFPAF paper.
+
 
 ## OLD CONTENTS
 ### [Cancer Mortality](https://uk-generations-study.github.io/UK-cancer-trends/Code/Cancer%20Mortality%20UK.html)
