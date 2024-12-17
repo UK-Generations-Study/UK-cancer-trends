@@ -15,6 +15,18 @@ execute:
   echo: false
 ---
 
+---------------------------------------------------------
+
+MAIN QUESTIONS TO DISCUSS 18/12
+
+-   Cancer incidence vs. cancer rates trends
+
+-   current literature review for Historical risk factors. risk factors by deprivation have screenshot figures. In some cases, data is available for us to make our own graphs - is this necessary?
+
+-   Physical Activity as a risk factor
+
+---------------------------------------------------------
+
 ## Analysis plan
 
 **Main Question:**
@@ -515,12 +527,13 @@ rf_trend_plot_invisible_points <- rf_trend_plot |>
   group_by(sex, age_group, exposure) |>
   summarise(
 
-    year = 2025,
-    value = .5
+    year =  (2026),  
+    value = (0.5)
 
   )
 
 #plot
+#ALCOHOL
 alcoholtrends <- ggplot(rf_trend_plot %>% filter(variable == "Alcohol"), aes(x = year, y = value, color = exposure)) +
   geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
   geom_line(aes(linetype = last_segment)) +
@@ -548,6 +561,10 @@ alcoholtrends <- ggplot(rf_trend_plot %>% filter(variable == "Alcohol"), aes(x =
       "Non-Drinker" = "#fcab10"
     )
   ) +
+    scale_x_continuous(
+    breaks = seq(1995, 2019, by = 3),  # Define the x-axis breaks
+    limits = c(1995, 2026)
+ )+
   labs(
     title = "Alcohol",
     x = "Year",
@@ -556,7 +573,8 @@ alcoholtrends <- ggplot(rf_trend_plot %>% filter(variable == "Alcohol"), aes(x =
   ) +
   geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
               colour = "black", fill = NA, inherit.aes = FALSE) +
-    theme(strip.text = element_text(face = "bold"))
+    theme(strip.text = element_text(face = "bold"), 
+          axis.text.x = element_text(angle = 45, hjust = 1))
 
 #BMI
 bmitrends <- ggplot(rf_trend_plot %>% filter(variable == "BMI"), aes(x = year, y = value, color = exposure)) +
@@ -587,6 +605,10 @@ bmitrends <- ggplot(rf_trend_plot %>% filter(variable == "BMI"), aes(x = year, y
       "Healthy Weight" = "#fcab10"
     )
   ) +
+  scale_x_continuous(
+    breaks = seq(1995, 2019, by = 3),  # Define the x-axis breaks
+    limits = c(1995, 2026)
+ )+
   labs(
     title = "BMI",
     x = "Year",
@@ -595,7 +617,8 @@ bmitrends <- ggplot(rf_trend_plot %>% filter(variable == "BMI"), aes(x = year, y
   ) +
   geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
               colour = "black", fill = NA, inherit.aes = FALSE) +
-    theme(strip.text = element_text(face = "bold"))
+    theme(strip.text = element_text(face = "bold"), 
+          axis.text.x = element_text(angle = 45, hjust = 1))
 
 #Smoking 
 smokingtrends <- ggplot(rf_trend_plot %>% filter(variable == "Smoking"), aes(x = year, y = value, color = exposure)) +
@@ -626,6 +649,10 @@ smokingtrends <- ggplot(rf_trend_plot %>% filter(variable == "Smoking"), aes(x =
       "Never" = "#fcab10"
     )
   ) +
+      scale_x_continuous(
+    breaks = seq(1995, 2019, by = 3),  # Define the x-axis breaks
+    limits = c(1995, 2026)
+ )+
   labs(
     title = "Smoking",
     x = "Year",
@@ -634,7 +661,8 @@ smokingtrends <- ggplot(rf_trend_plot %>% filter(variable == "Smoking"), aes(x =
   ) +
   geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
               colour = "black", fill = NA, inherit.aes = FALSE) +
-    theme(strip.text = element_text(face = "bold"))
+    theme(strip.text = element_text(face = "bold"), 
+          axis.text.x = element_text(angle = 45, hjust = 1))
 
 
 
@@ -665,6 +693,10 @@ diettrends <- ggplot(rf_trend_plot %>% filter(exposure %in% c("Red_Meat", "Proce
       "Fibre" = "#f8333c"
     )
   ) +
+      scale_x_continuous(
+    breaks = seq(1995, 2019, by = 3),  # Define the x-axis breaks
+    limits = c(1995, 2026)
+ )+
   labs(
     title = "Diet Consumption in England",
     x = "Year",
@@ -673,7 +705,8 @@ diettrends <- ggplot(rf_trend_plot %>% filter(exposure %in% c("Red_Meat", "Proce
   ) +
   geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
               colour = "black", fill = NA, inherit.aes = FALSE) +
-    theme(strip.text = element_text(face = "bold"))
+    theme(strip.text = element_text(face = "bold"), 
+          axis.text.x = element_text(angle = 45, hjust = 1))
 
 #Print the figures
 print(alcoholtrends)
@@ -1266,7 +1299,7 @@ gtsave(data_pif_gt_future, "../Output/Plots/Figure_6-PIF_Future.html")
 
 ```
 
-## Additional Figures
+## Historical Risk Factor Trends
 
 ### Childhood BMI
 
@@ -1341,128 +1374,55 @@ ggplot(data_childhood_bmi |> filter(level != "Overweight including obese") |> fi
 
 ```
 
-### Suspected Risk Factors
+### Adult BMI
 
-#### RR Scenario Example
+The [BMI data from Health Survey England ](https://files.digital.nhs.uk/9D/4195D5/HSE19-Overweight-obesity-rep.pdf)only goes back until 1993 in England but it shows increasing trends for overweight (includeing obesity) from 1993-2000, and then steadier trends - more in men than in women. Obesity on its own has been steadily increasing.
 
-This example is for Air Pollution only.
+![](images/clipboard-2771413232.png)
 
-PIF scenarios for suspected risk factors to predict relative risks. The PIF scenarios are based on the PIFs calculated for established risk factors (above) for the time period 2009-2019. The scenarios are PIF =
+### Smoking
 
--   1%
+According to the ONS page on [Adult smoking habits in the UK 2023](https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/healthandlifeexpectancies/bulletins/adultsmokinghabitsingreatbritain/2023), smoking trends have been decreasing across Great Britain from 1974 to now.
 
--   3%
+![](images/clipboard-2519776453.png)
 
--   5%
+### Alcohol 
 
--   10%
+### Red and Processed Meat 
 
-```{r}
-library(gt)
+Cannot find a good source.
 
-source ("Functions/pifpaf_scenario_generation.R")
+## Risk Factors by Deprivation
 
-pifscenario_table <- pifscenarios_allrf %>%
-  mutate(
-    p0 = p0*100, 
-    p1 = p1*100, 
-    p0 = round(p0, 2), 
-    p1 = round(p1, 2), 
-    pif1 = round(pif1, 2), 
-    pif3 = round(pif3, 2), 
-    pif5 = round(pif5, 2), 
-    pif10 = round(pif10, 2), 
-    pif1 = ifelse(pif1 <1,"-", pif1),
-    pif3 = ifelse(pif3 <1, "-", pif3),
-    pif5 = ifelse(pif5 <1, "-", pif5),
-    pif10 = ifelse(pif10 <1, "-", pif10)
-  ) %>%
-  rename(
-    `2009exp` = p0, 
-    `2019exp` = p1
-  ) %>%
-  arrange(variable, level) %>%
-  gt(groupname_col = "variable") %>% # Specify group column
-  tab_style(
-    style = cell_text(weight = "bold"),
-    locations = cells_column_labels()
-  ) %>%
-  tab_style(
-    style = list(
-      cell_text(weight = "bold"),
-      cell_fill(color = "lightgray"),
-      cell_borders(sides = "top"),
-      cell_borders(sides = "bottom")
-    ),
-    locations = cells_row_groups(groups = everything())
-  ) %>%
-  cols_width(
-    everything() ~ px(100) 
-  ) %>%
-  tab_header(
-    title = md("Relative Risk by PIF Scenarios - UK, 2009-2019")
-  )
+### BMI
 
-# View the resulting table
-pifscenario_table
-```
+According the [HSE 2019 report on overweight and obesity](https://digital.nhs.uk/data-and-information/publications/statistical/health-survey-for-england/2019/main-findings#overweight-and-obesity), people in the most deprived quintiles are more likely to be overweight and obese. This pattern is more pronounced in women than in men.
 
-PAF scenarios for suspected risk factors to predict relative risks. The PAF scenarios are based on the PAF calculated for established risk factors (above) for risk factors exposures occurring in 2009. The scenarios are PAF =
+![](images/clipboard-1536373751.png)
 
--   5%
+### Smoking
 
--   10%
+According to the ONS 2021 report on[ Deprivation and Smoking Prevalence](https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/drugusealcoholandsmoking/bulletins/deprivationandtheimpactonsmokingprevalenceenglandandwales/2017to2021#smoking-deprivation-england-and-wales-data), 1/3 of current smokers lived in the 2 most deprived deciles in England in 2021. The difference in smoking prevalence from the most and least deprived deciles was statistically significant.
 
--   15%
+Additionally, the report claims that between 2017 and 2021, smoking prevalence decreased across all deprivation levels in England. In the most deprived neighborhoods,current smoking prevalence dropped statistically significantly from 26.2% in 2017 to 23.8% in 2021. In England's least deprived neighborhoods, current smoking prevalence dropped from 7.6% to 6.8% across the same time period.
 
--   25%
+![](images/clipboard-2503227074.png)
 
--   35%
+### Alcohol 
 
--   50%
+According to the [Health Survey England 2022](https://digital.nhs.uk/data-and-information/publications/statistical/health-survey-for-england/2022-part-1/adult-drinking#:~:text=Adults%20living%20in%20the%20most,%25%20in%20the%20second%20least).) report and [an article using Health Survey England alcohol data from 2002-2006](https://www.jsad.com/doi/abs/10.15288/jsad.2017.78.20), people in the least depraved quintile of the IMD are more likely to drink than those in the most depraved quintile.
 
-```{r}
-#run the previous chunk as well
+Figure from the [Health Survey England report from 2022](https://digital.nhs.uk/data-and-information/publications/statistical/health-survey-for-england/2022-part-1/adult-drinking#:~:text=Adults%20living%20in%20the%20most,%25%20in%20the%20second%20least).):
 
-pafscenario_table <- pafscenarios_allrf %>%
-  mutate(
-    value = value *100, 
-    value = round(value, 2), 
-    paf5 = round(paf5, 2), 
-    paf10 = round(paf10, 2), 
-    paf15 = round(paf15, 2), 
-    paf25 = round(paf25, 2),
-    paf35 = round(paf35, 2), 
-    paf50 = round(paf50, 2)
-  ) %>%
-  rename(
-    `2009exp` = value 
-  )%>%
-  arrange(variable, level) %>%
-  gt(groupname_col = "variable") %>% # Specify group column
-  tab_style(
-    style = cell_text(weight = "bold"),
-    locations = cells_column_labels()
-  ) %>%
-  tab_style(
-    style = list(
-      cell_text(weight = "bold"),
-      cell_fill(color = "lightgray"),
-      cell_borders(sides = "top"),
-      cell_borders(sides = "bottom")
-    ),
-    locations = cells_row_groups(groups = everything())
-  ) %>%
-  cols_width(
-    everything() ~ px(100) 
-  ) %>%
-  tab_header(
-    title = md(" Relative Risk by PAF Scenarios - UK, 2009")
-  )
+![](images/clipboard-4258733467.png)
 
-# View the resulting table
-pafscenario_table
-```
+However, according to the [same article using 2002/6 data,](https://www.jsad.com/doi/abs/10.15288/jsad.2017.78.20) people in the most depraved quintile are more likely to engage in heavy episodic drinking.
+
+### Red and Processed Meat 
+
+Cannot find a good source.
+
+## Suspected Risk Factors
 
 #### Air Pollution
 
@@ -1600,7 +1560,11 @@ Speak to Rubin about figures in the positions paper for physical activity.
 
 #### Sleep Duration
 
+Cannot find a good source.
+
 #### Sweetened Beverages
+
+The NDNS survey asks participants about their sweetened beverage consumption and discussed it in their [most recent report which covered 2016/7-2018](https://assets.publishing.service.gov.uk/media/5fd23324e90e07662b09d91a/NDNS_UK_Y9-11_report.pdf)/9. They reported that over the 11 years of the NDNS (2008-2019), the proportion of adults ages 19-64 who are consuming sweetened beverages has dropped significantly by 20%. This trend is mirrored in children aged under 18 with the proportion of kids ages 1.5-3, 4-10, and 11-18 consuming sweetened beverages dropping significantly by 32, 44, 25 % respectively.
 
 #### Type 2 Diabetes
 
@@ -1609,3 +1573,124 @@ This figure is from [Health Survey England](https://files.digital.nhs.uk/23/6B5D
 ![](images/clipboard-1688306341.png)
 
 #### Metabolic Syndrome
+
+#### RR Scenario Example-will not be used
+
+This example is for Air Pollution only.
+
+PIF scenarios for suspected risk factors to predict relative risks. The PIF scenarios are based on the PIFs calculated for established risk factors (above) for the time period 2009-2019. The scenarios are PIF =
+
+-   1%
+
+-   3%
+
+-   5%
+
+-   10%
+
+```{r}
+library(gt)
+
+source ("Functions/pifpaf_scenario_generation.R")
+
+pifscenario_table <- pifscenarios_allrf %>%
+  mutate(
+    p0 = p0*100, 
+    p1 = p1*100, 
+    p0 = round(p0, 2), 
+    p1 = round(p1, 2), 
+    pif1 = round(pif1, 2), 
+    pif3 = round(pif3, 2), 
+    pif5 = round(pif5, 2), 
+    pif10 = round(pif10, 2), 
+    pif1 = ifelse(pif1 <1,"-", pif1),
+    pif3 = ifelse(pif3 <1, "-", pif3),
+    pif5 = ifelse(pif5 <1, "-", pif5),
+    pif10 = ifelse(pif10 <1, "-", pif10)
+  ) %>%
+  rename(
+    `2009exp` = p0, 
+    `2019exp` = p1
+  ) %>%
+  arrange(variable, level) %>%
+  gt(groupname_col = "variable") %>% # Specify group column
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  ) %>%
+  tab_style(
+    style = list(
+      cell_text(weight = "bold"),
+      cell_fill(color = "lightgray"),
+      cell_borders(sides = "top"),
+      cell_borders(sides = "bottom")
+    ),
+    locations = cells_row_groups(groups = everything())
+  ) %>%
+  cols_width(
+    everything() ~ px(100) 
+  ) %>%
+  tab_header(
+    title = md("Relative Risk by PIF Scenarios - UK, 2009-2019")
+  )
+
+# View the resulting table
+pifscenario_table
+```
+
+PAF scenarios for suspected risk factors to predict relative risks. The PAF scenarios are based on the PAF calculated for established risk factors (above) for risk factors exposures occurring in 2009. The scenarios are PAF =
+
+-   5%
+
+-   10%
+
+-   15%
+
+-   25%
+
+-   35%
+
+-   50%
+
+```{r}
+#run the previous chunk as well
+
+pafscenario_table <- pafscenarios_allrf %>%
+  mutate(
+    value = value *100, 
+    value = round(value, 2), 
+    paf5 = round(paf5, 2), 
+    paf10 = round(paf10, 2), 
+    paf15 = round(paf15, 2), 
+    paf25 = round(paf25, 2),
+    paf35 = round(paf35, 2), 
+    paf50 = round(paf50, 2)
+  ) %>%
+  rename(
+    `2009exp` = value 
+  )%>%
+  arrange(variable, level) %>%
+  gt(groupname_col = "variable") %>% # Specify group column
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  ) %>%
+  tab_style(
+    style = list(
+      cell_text(weight = "bold"),
+      cell_fill(color = "lightgray"),
+      cell_borders(sides = "top"),
+      cell_borders(sides = "bottom")
+    ),
+    locations = cells_row_groups(groups = everything())
+  ) %>%
+  cols_width(
+    everything() ~ px(100) 
+  ) %>%
+  tab_header(
+    title = md(" Relative Risk by PAF Scenarios - UK, 2009")
+  )
+
+# View the resulting table
+pafscenario_table
+```

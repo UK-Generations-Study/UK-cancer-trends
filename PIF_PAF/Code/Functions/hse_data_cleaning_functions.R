@@ -87,7 +87,7 @@ hse_base_variable_cleaning <- function(ukds_data_temp, var_dict, ukds_data_temp_
   # stop if no sex variable documentation found
   if(!sex_doc_found){stop(paste0("No sex variable documentation found for ", ukds_data_temp_year))}
   
-  
+
   
   ## Find and clean weight variable
   weight_doc_found <- F
@@ -115,3 +115,4 @@ hse_base_variable_cleaning <- function(ukds_data_temp, var_dict, ukds_data_temp_
   
 
 }
+
