@@ -43,6 +43,8 @@ data_inc <- rbind(data_inc_u50, data_inc_oe50) |>
     # Simplify age group names
     age_group = if_else(Age_at_Diagnosis == "20 to 24, 25 to 29, 30 to 34, 35 to 39, 40 to 44, 45 to 49", "20-49", "50+"),
     
+    #Looking at age group difference between 50-74 and 75+
+    
     # Change sex labelling
     sex = case_when(Gender == "Male" ~ "Men",
                     Gender == "Female" ~ "Women",
@@ -68,8 +70,9 @@ data_inc <- rbind(data_inc_u50, data_inc_oe50) |>
   filter(!is.na(cancer_site_globocan)) |>
   filter(!(cancer_site_globocan == "Breast" & sex == "Men")) |>
   filter(sex != "All") |>
+  mutate(Rate = ifelse(is.na(Rate), 0, Rate)) |>
   group_by(Year, sex, age_group, cancer_site_globocan) |>
-  summarise(count = sum(Count)) |>
+  summarise(count = sum(Count), Rate = sum(Rate)) |>
   rename(year = Year, cancer_site = cancer_site_globocan) |>
   arrange(sex, age_group, cancer_site, year) |>
   filter(year <= 2019)
