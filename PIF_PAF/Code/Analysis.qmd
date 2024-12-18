@@ -15,17 +15,8 @@ execute:
   echo: false
 ---
 
----------------------------------------------------------
-
-MAIN QUESTIONS TO DISCUSS 18/12
-
--   Cancer incidence vs. cancer rates trends
-
--   current literature review for Historical risk factors. risk factors by deprivation have screenshot figures. In some cases, data is available for us to make our own graphs - is this necessary?
-
--   Physical Activity as a risk factor
-
----------------------------------------------------------
+------------------------------------------------------------------------
+------------------------------------------------------------------------
 
 ## Analysis plan
 
@@ -272,11 +263,13 @@ data_pif <- read.csv("../Data/PIF.csv")
 data_cancer <- read.csv("../Data/incidence_data_clean.csv")
 
 # Reading in JP Analysis
-data_joinpoint <- read.delim("../Data/Joinpoint/export.Export.APC.txt", sep = "\t")
+data_joinpoint <- read.delim("../Data/Joinpoint/cancerrates/export.Export.APC.txt", sep = "\t")
 
 ```
 
 ## Figure 1 - Trends in cancer incidence
+
+These APC trends were calculated using all of the data available (2001, 2019), then the x-axis was cut off from (2009, 2019).
 
 ```{r, fig.height=16, fig.width=10, warning=F}
 
@@ -314,7 +307,7 @@ data_cancer_plot <- rbind(data_cancer_plot, data_cancer_plot_new_rows)
 data_cancer_plot_labels <- data_cancer_plot |>
   group_by(age_group, cancer_site) |>
   mutate(
-    count_range = max(count) - min(count)
+    Rate_range = max(Rate) - min(Rate)
   ) |>
   group_by(sex, age_group, cancer_site) |>
   filter(last_segment) |>
@@ -322,8 +315,8 @@ data_cancer_plot_labels <- data_cancer_plot |>
   reframe(
     
     year = max(year) + 1.8,
-    count = max(count),
-    count_range = count_range[1],
+    Rate = max(Rate),
+    Rate_range = Rate_range[1],
     APC_clean = APC_clean[1]
     
   ) |>
@@ -332,11 +325,11 @@ data_cancer_plot_labels <- data_cancer_plot |>
   group_by(age_group, cancer_site) |>
   mutate(
     
-    count = case_when(
-      n() == 1 ~ count,
-      max(count) - min(count) < count_range/2 & count == min(count) ~ count - (count_range/2 -  (max(count) - min(count)))/2,
-      max(count) - min(count) < count_range/2 & count == max(count) ~ count + (count_range/2 -  (max(count) - min(count)))/2,
-      TRUE ~ count
+    Rate = case_when(
+      n() == 1 ~ Rate,
+      max(Rate) - min(Rate) < Rate_range/2 & Rate == min(Rate) ~ Rate - (Rate_range/2 -  (max(Rate) - min(Rate)))/2,
+      max(Rate) - min(Rate) < Rate_range/2 & Rate == max(Rate) ~ Rate + (Rate_range/2 -  (max(Rate) - min(Rate)))/2,
+      TRUE ~ Rate
     )
     
   )
@@ -347,12 +340,12 @@ data_cancer_invisible_points <- data_cancer_plot |>
   summarise(
 
     year = 2001,
-    count = max(count) + (max(count) - min(count))/2
+    Rate = max(Rate) + (max(Rate) - min(Rate))/2
 
   )
 
 # Removing 2020 as COVID affected cases
-ggplot(data_cancer_plot, aes(x = year, y = count, fill = sex, colour = sex)) +
+ggplot(data_cancer_plot, aes(x = year, y = Rate, fill = sex, colour = sex)) +
   xlim(2001, 2021.5) +
   geom_point() +
   geom_point(data = data_cancer_invisible_points, alpha = 0) +
@@ -362,14 +355,19 @@ ggplot(data_cancer_plot, aes(x = year, y = count, fill = sex, colour = sex)) +
   theme_minimal() +
   geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
             colour = "black", fill = NA, inherit.aes = FALSE) +
-  theme(strip.text = element_text(face = "bold")) +
-  ylab("Cases") +
+  theme(strip.text = element_text(face = "bold"), 
+          axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_x_continuous(
+    breaks = seq(2009, 2019, by = 1),  # Define the x-axis breaks
+    limits = c(2009, 2021)
+    )+
+  ylab("Age Standardized Rates") +
   xlab("Year") +
   labs(colour = "Sex", fill = "Sex", linetype = "Last Segment") +
   # scale_x_continuous(breaks = seq(min_year, max_year, by = 2)) +
   ggtitle("Trends in Cancer Incidence in England") +
   labs(subtitle = "Labels show APC for most recent trend, * indicates a significant trend") +
-  facet_wrap(~ paste0(cancer_site, " - ", age_group),  scales = "free_y", nrow = 10)
+  facet_wrap(~ paste0(cancer_site, " - ", age_group),  scales = "free_y", nrow = 10) 
 
 ggsave(filename = paste0("../Output/Plots/Figure_1.png"), bg = "white", height = 16, width = 10)
 
@@ -1376,7 +1374,7 @@ ggplot(data_childhood_bmi |> filter(level != "Overweight including obese") |> fi
 
 ### Adult BMI
 
-The [BMI data from Health Survey England ](https://files.digital.nhs.uk/9D/4195D5/HSE19-Overweight-obesity-rep.pdf)only goes back until 1993 in England but it shows increasing trends for overweight (includeing obesity) from 1993-2000, and then steadier trends - more in men than in women. Obesity on its own has been steadily increasing.
+The [BMI data from Health Survey England](https://files.digital.nhs.uk/9D/4195D5/HSE19-Overweight-obesity-rep.pdf)only goes back until 1993 in England but it shows increasing trends for overweight (includeing obesity) from 1993-2000, and then steadier trends - more in men than in women. Obesity on its own has been steadily increasing.
 
 ![](images/clipboard-2771413232.png)
 
@@ -1386,9 +1384,9 @@ According to the ONS page on [Adult smoking habits in the UK 2023](https://www.o
 
 ![](images/clipboard-2519776453.png)
 
-### Alcohol 
+### Alcohol
 
-### Red and Processed Meat 
+### Red and Processed Meat
 
 Cannot find a good source.
 
@@ -1402,13 +1400,13 @@ According the [HSE 2019 report on overweight and obesity](https://digital.nhs.uk
 
 ### Smoking
 
-According to the ONS 2021 report on[ Deprivation and Smoking Prevalence](https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/drugusealcoholandsmoking/bulletins/deprivationandtheimpactonsmokingprevalenceenglandandwales/2017to2021#smoking-deprivation-england-and-wales-data), 1/3 of current smokers lived in the 2 most deprived deciles in England in 2021. The difference in smoking prevalence from the most and least deprived deciles was statistically significant.
+According to the ONS 2021 report on[Deprivation and Smoking Prevalence](https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/drugusealcoholandsmoking/bulletins/deprivationandtheimpactonsmokingprevalenceenglandandwales/2017to2021#smoking-deprivation-england-and-wales-data), 1/3 of current smokers lived in the 2 most deprived deciles in England in 2021. The difference in smoking prevalence from the most and least deprived deciles was statistically significant.
 
 Additionally, the report claims that between 2017 and 2021, smoking prevalence decreased across all deprivation levels in England. In the most deprived neighborhoods,current smoking prevalence dropped statistically significantly from 26.2% in 2017 to 23.8% in 2021. In England's least deprived neighborhoods, current smoking prevalence dropped from 7.6% to 6.8% across the same time period.
 
 ![](images/clipboard-2503227074.png)
 
-### Alcohol 
+### Alcohol
 
 According to the [Health Survey England 2022](https://digital.nhs.uk/data-and-information/publications/statistical/health-survey-for-england/2022-part-1/adult-drinking#:~:text=Adults%20living%20in%20the%20most,%25%20in%20the%20second%20least).) report and [an article using Health Survey England alcohol data from 2002-2006](https://www.jsad.com/doi/abs/10.15288/jsad.2017.78.20), people in the least depraved quintile of the IMD are more likely to drink than those in the most depraved quintile.
 
@@ -1418,7 +1416,7 @@ Figure from the [Health Survey England report from 2022](https://digital.nhs.uk/
 
 However, according to the [same article using 2002/6 data,](https://www.jsad.com/doi/abs/10.15288/jsad.2017.78.20) people in the most depraved quintile are more likely to engage in heavy episodic drinking.
 
-### Red and Processed Meat 
+### Red and Processed Meat
 
 Cannot find a good source.
 
