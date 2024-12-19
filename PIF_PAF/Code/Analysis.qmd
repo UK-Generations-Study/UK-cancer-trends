@@ -15,8 +15,7 @@ execute:
   echo: false
 ---
 
-------------------------------------------------------------------------
-------------------------------------------------------------------------
+## ------------------------------------------------------------------------
 
 ## Analysis plan
 
@@ -204,7 +203,6 @@ RR/ risk factor match ups 
 ### Packages
 
 ```{r}
-
 library(stringr)
 library(ggplot2)
 library(gt)
@@ -216,6 +214,7 @@ library(forestplot)
 library(dplyr)
 library(readxl)
 library(ggrepel)
+
 
 ```
 
@@ -838,6 +837,101 @@ for(site in unique(data_attr_cases$cancer_site)){
 }
 
 
+```
+
+## Figure 3 - Current PAFs (2019) - Comparative Bar Chart
+
+```{r}
+
+data_attr_cases_bar <- data_attr_cases %>% 
+  mutate(
+    PAF = PAF *100
+  ) %>%
+  filter(
+    case_group == "Attributable", 
+    year == 2019 
+  ) %>%
+  mutate(
+    cases_count = as.numeric(cases_count)
+  )
+
+data_attr_bar_MEN <- ggplot(data_attr_cases_bar %>% filter(sex == "Men"), aes(x = cancer_site)) +
+  geom_bar(
+    aes(y = PAF, fill = "PAF"), 
+    stat = "identity", 
+    width = 0.8,  # Wider bar for PAF
+    alpha = 0.8
+  ) +
+  geom_bar(
+    aes(y = cases_count/100, fill = "Case Count"),
+    stat = "identity", 
+    width = 0.3,  # Narrower bar for case_count
+    alpha = 1
+  ) +
+  scale_y_continuous(
+    name = "PAFs",
+    limits = c(0, 100),
+    sec.axis = sec_axis(
+      ~ . * 100,  # Adjust the transformation factor as needed
+      name = "Case Count"
+    ) 
+  ) +
+  scale_fill_manual(
+    values = c("PAF" = "#2b9eb3", "Case Count" = "#f8333c"),  # Set custom colors
+    name = "Key"  # Add a legend title
+  ) +
+  labs(
+    title = "Men: PAF and Case Count in England",
+    x = "Cancer Site"
+  ) +
+  facet_wrap(~ age_group, scales = "free_x") +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
+    legend.position = "top"
+  )
+
+data_attr_bar_WOMEN <- ggplot(data_attr_cases_bar %>% filter(sex == "Women"), aes(x = cancer_site)) +
+  geom_bar(
+    aes(y = PAF, fill = "PAF"), 
+    stat = "identity", 
+    width = 0.8,  # Wider bar for PAF
+    alpha = 0.8
+  ) +
+  geom_bar(
+    aes(y = cases_count/100, fill = "Case Count"),
+    stat = "identity", 
+    width = 0.3,  # Narrower bar for case_count
+    alpha = 1
+  ) +
+  scale_y_continuous(
+    name = "PAFs",
+    limits = c(0, 100),
+    sec.axis = sec_axis(
+      ~ . * 100,  # Adjust the transformation factor as needed
+      name = "Case Count"
+    ) 
+  ) +
+  scale_fill_manual(
+    values = c("PAF" = "#2b9eb3", "Case Count" = "#f8333c"),  # Set custom colors
+    name = "Key"  # Add a legend title
+  ) +
+  labs(
+    title = "Women: PAF and Case Count in England",
+    x = "Cancer Site"
+  ) +
+  facet_wrap(~ age_group, scales = "free_x") +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
+    legend.position = "top"
+    )
+
+data_attr_bar_MEN
+data_attr_bar_WOMEN
+
+ggsave("../Output/Plots/Figure_3_Men.png", plot = data_attr_bar_MEN, bg = "white", height = 6, width = 10)
+ggsave("../Output/Plots/Figure_3_Women.png", plot = data_attr_bar_WOMEN, bg = "white", height = 6, width = 10)
 ```
 
 ## Figure 3 - Current PAFs (2019) - Table
@@ -1571,6 +1665,93 @@ This figure is from [Health Survey England](https://files.digital.nhs.uk/23/6B5D
 ![](images/clipboard-1688306341.png)
 
 #### Metabolic Syndrome
+
+## Other Figures
+
+#### Obesity and Colorectal Cancer alternate RR scenario
+
+The reported RR for colorectal and BMI:
+
+-   overweight = 1.22
+
+-   obesity = 1.46
+
+Below are scenarios if the RR for obesity only is:
+
+-   A= 0.1 lower
+
+-   B = 0.05 higher
+
+-   C = 0.10 higher
+
+-   D = 0.20 higher
+
+```{r}
+
+riskfactors <- data_rf %>%
+  filter(
+    level == "Obese", 
+    year <= 2009
+  )
+
+source("Functions/pifpaf_scenario_functions.R")
+
+youngmen_obesescenario <- pif_scenarioBMI(riskfactors %>% filter(sex == "Men", age_group == "20-49"))
+oldmen_obesescenario <- pif_scenarioBMI(riskfactors %>% filter(sex == "Men", age_group == "50+"))
+youngwomen_obesescenario <- pif_scenarioBMI(riskfactors %>% filter(sex == "Women", age_group == "20-49"))
+oldwomen_obesescenario <- pif_scenarioBMI(riskfactors %>% filter(sex == "Women", age_group == "50+"))
+obesescenario <- rbind(youngmen_obesescenario, oldmen_obesescenario, youngwomen_obesescenario, oldwomen_obesescenario) %>%
+  select(-variable) %>%
+  mutate(
+    p0 = p0*100, 
+    p1 = p1*100, 
+    pifActual = pifActual*100, 
+    pifA = pifA *100, 
+    pifB = pifB *100,
+    pifC = pifC *100,
+    pifD = pifD *100,
+    p0 = round(p0, 2), 
+    p1 = round(p1, 2), 
+    pifActual = round(pifActual, 2), 
+    pifA = round(pifA, 2), 
+    pifB = round(pifB, 2),
+    pifC = round(pifC, 2),
+    pifD =round(pifD, 2),
+  )
+
+pifobesescenario_table <- obesescenario %>%
+  select(
+   -level 
+  )%>%
+  rename(
+    `1997 prev` = p0, 
+    `2009 prev` = p1
+  ) %>%
+  arrange(age_group) %>%
+  gt(groupname_col = "sex") %>% # Specify group column
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  ) %>%
+  tab_style(
+    style = list(
+      cell_text(weight = "bold"),
+      cell_fill(color = "lightgray"),
+      cell_borders(sides = "top"),
+      cell_borders(sides = "bottom")
+    ),
+    locations = cells_row_groups(groups = everything())
+  ) %>%
+  cols_width(
+    everything() ~ px(100) 
+  ) %>%
+  tab_header(
+    title = md("Obesity PIF scarios with different RR")
+  )
+
+pifobesescenario_table
+
+```
 
 #### RR Scenario Example-will not be used
 
