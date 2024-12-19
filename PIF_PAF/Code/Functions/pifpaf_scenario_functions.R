@@ -35,6 +35,50 @@ pif_scenario <- function(dataframe) {
     return(cleaned) #return the new scenario dataset 
 }
 
+#PIF scenario function (SPECIFICALLY FOR BMI): 
+##reported RR for colorectal and BMI: 
+  #overweight = 1.22
+  #obesity = 1.46
+
+#this will calculate the scarios if the RR for OBESITY (overweight RR remains constant) is: 
+    #A= 0.1 lower
+    #B = 0.05 higher 
+    #C = 0.10 higher 
+    #D = 0.20 higher 
+
+    
+pif_scenarioBMI <- function(dataframe) {
+  
+  variable_name <- deparse(substitute(dataframe)) #storing the variable
+  
+  cleaned <- dataframe %>% #redefining the input 
+    group_by(level, sex, age_group) %>% #grouping the data by the stratifying variables 
+    mutate(
+      year = as.numeric(year) #ensuring the year variable is numeric  
+    ) %>%
+    summarize(
+      p0 = value[which.min(year)], #the minimum year of the data set 
+      p1 = value[which.max(year)],  #the maximum year of the data set 
+      .groups = "drop" 
+    ) %>% 
+    mutate(
+      p0 = as.numeric(p0), 
+      p1 = as.numeric(p1),
+      pifActual = ((p1-p0)*(1.46-1))/(1 + p1*(1.46-1)), 
+      pifA = ((p1-p0)*(1.36-1))/(1 + p1*(1.36-1)),
+      pifB = ((p1-p0)*(1.51-1))/(1 + p1*(1.51-1)),
+      pifC = ((p1-p0)*(1.56-1))/(1 + p1*(1.56-1)),
+      pifD = ((p1-p0)*(1.66-1))/(1 + p1*(1.66-1)),
+      variable = variable_name
+    ) %>%
+    select(
+      variable, level, sex, age_group, p0, p1,  pifActual, pifA, pifB, pifC, pifD
+    )
+  
+  return(cleaned) #return the new scenario dataset 
+}
+
+
 #PAF scenario function: 
 paf_scenario <- function(dataframe) {
   
