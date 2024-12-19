@@ -1678,13 +1678,13 @@ The reported RR for colorectal and BMI:
 
 Below are scenarios if the RR for obesity only is:
 
--   A= 0.1 lower
+-   A: Actual RR
 
--   B = 0.05 higher
+-   B: RR = 2.0
 
--   C = 0.10 higher
+-   C: RR = 3.0
 
--   D = 0.20 higher
+-   D: RR = 4.0
 
 ```{r}
 
@@ -1705,14 +1705,12 @@ obesescenario <- rbind(youngmen_obesescenario, oldmen_obesescenario, youngwomen_
   mutate(
     p0 = p0*100, 
     p1 = p1*100, 
-    pifActual = pifActual*100, 
     pifA = pifA *100, 
     pifB = pifB *100,
     pifC = pifC *100,
     pifD = pifD *100,
     p0 = round(p0, 2), 
     p1 = round(p1, 2), 
-    pifActual = round(pifActual, 2), 
     pifA = round(pifA, 2), 
     pifB = round(pifB, 2),
     pifC = round(pifC, 2),
@@ -1751,6 +1749,106 @@ pifobesescenario_table <- obesescenario %>%
 
 pifobesescenario_table
 
+```
+
+#### Generic PAF relationship
+
+```{r}
+library(gridExtra)
+#creating a sequence of prevalence 
+prevalencerange <- seq(0, 1, by = 0.01)
+# Define a constant Relative Risk (RR)
+RRconstantlow <- 1.2 # Example RR constant
+RRconstant4 <- 1.5
+RRconstantmed <- 5.0
+RRconstanthigh <- 10.0 
+# Calculate the PAF for each prevalence value
+PAFlow <- (prevalencerange * (RRconstantlow-1)) / (1 + (prevalencerange * (RRconstantlow-1)))
+PAF4 <- (prevalencerange * (RRconstant4-1)) / (1 + (prevalencerange * (RRconstant4-1)))
+PAFmed <- (prevalencerange * (RRconstantmed-1)) / (1 + (prevalencerange * (RRconstantmed-1)))
+PAFhigh <- (prevalencerange * (RRconstanthigh-1)) / (1 + (prevalencerange * (RRconstanthigh-1)))
+# Plot the PAF against the prevalence
+pafplotlow <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFlow), aes(x = prevalence, y = PAF)) +
+  geom_line(color = "blue", size = 1) +
+  labs(title = "RR = 1.2",
+       x = "RF Prevalence",
+       y = "PAF") +
+  ylim(0, 1) +
+  theme_minimal()
+pafplot4 <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAF4), aes(x = prevalence, y = PAF)) +
+  geom_line(color = "blue", size = 1) +
+  labs(title = "RR = 1.5",
+       x = "RF Prevalence",
+       y = "PAF") +
+  ylim(0, 1) +
+  theme_minimal()
+pafplotmed <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFmed), aes(x = prevalence, y = PAF)) +
+  geom_line(color = "blue", size = 1) +
+  labs(title = "RR = 5.0",
+       x = "RF Prevalence",
+       y = "PAF") +
+  ylim(0, 1) +
+  theme_minimal()
+pafplothigh<- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFhigh), aes(x = prevalence, y = PAF)) +
+  geom_line(color = "blue", size = 1) +
+  labs(title = "RR = 10.0",
+       x = "RF Prevalence",
+       y = "PAF") +
+  ylim(0, 1) +
+  theme_minimal() 
+# Showing the plot
+changingpaf <- grid.arrange(pafplotlow, pafplot4, pafplotmed, pafplothigh, ncol=4)
+```
+
+#### Generic PIF relationship 
+
+```{r}
+#creating a sequence of exposure 
+exposurerange1 <- seq(0, .2, by = 0.01)
+exposurerange2 <- seq(0.2, 0.4, by = 0.01)
+exposurerange3 <- seq(0.4, 0.6, by = 0.01)
+exposurerange4 <- seq(0.6, 0.8, by = 0.01)
+# Define a constant Relative Risk (RR)
+RR <- c(1.2, 1.5, 5.0, 10.0) 
+
+######START HERE AND TRYNG TO LOOP TRHOUGH THE DATA FRAME 
+pifscenarios = dataframe
+# Loop through
+PIF1 <- ((exposurerange1(max) - exposurerange1)(RR -1))/(1+(exposurerange1(max)*(RR-1))
+PIF2 <- ((exposurerange2(max) - exposurerange2)(RR -1))/(1+(exposurerange2(max)*(RR-1))
+PIF3 <- ((exposurerange3(max) - exposurerange3)(RR -1))/(1+(exposurerange3(max)*(RR-1))
+PIF4 <- ((exposurerange4(max) - exposurerange4)(RR -1))/(1+(exposurerange4(max)*(RR-1))
+# Plot the PAF against the prevalence
+pifplotlow <- ggplot(data.frame(exposure = exposurerange, PIF = PIFlow), aes(x = exposure, y = PIF)) +
+  geom_line(color = "blue", size = 1) +
+  labs(title = "RR = 1.2",
+       x = "RF Prevalence",
+       y = "PIF") +
+  ylim(0, 1) +
+  theme_minimal()
+pafplot4 <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAF4), aes(x = prevalence, y = PAF)) +
+  geom_line(color = "blue", size = 1) +
+  labs(title = "RR = 1.5",
+       x = "RF Prevalence",
+       y = "PAF") +
+  ylim(0, 1) +
+  theme_minimal()
+pafplotmed <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFmed), aes(x = prevalence, y = PAF)) +
+  geom_line(color = "blue", size = 1) +
+  labs(title = "RR = 5.0",
+       x = "RF Prevalence",
+       y = "PAF") +
+  ylim(0, 1) +
+  theme_minimal()
+pafplothigh<- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFhigh), aes(x = prevalence, y = PAF)) +
+  geom_line(color = "blue", size = 1) +
+  labs(title = "RR = 10.0",
+       x = "RF Prevalence",
+       y = "PAF") +
+  ylim(0, 1) +
+  theme_minimal() 
+# Showing the plot
+changingpaf <- grid.arrange(pafplotlow, pafplot4, pafplotmed, pafplothigh, ncol=4)
 ```
 
 #### RR Scenario Example-will not be used
