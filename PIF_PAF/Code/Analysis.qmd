@@ -986,7 +986,7 @@ data_attr_cases_gt <- data_attr_cases |>
   )
 
 # Print
-print(data_attr_cases_gt)
+data_attr_cases_gt
 
 # Output table
 gtsave(data_attr_cases_gt, "../Output/Plots/Figure_3-Table.html")
@@ -1800,7 +1800,7 @@ pafplothigh<- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFhigh), ae
 changingpaf <- grid.arrange(pafplotlow, pafplot4, pafplotmed, pafplothigh, ncol=4)
 ```
 
-#### Generic PIF relationship 
+#### Generic PIF relationship
 
 ```{r}
 #creating a sequence of exposure 
@@ -1811,45 +1811,61 @@ exposurerange4 <- seq(0.6, 0.8, by = 0.01)
 # Define a constant Relative Risk (RR)
 RR <- c(1.2, 1.5, 5.0, 10.0) 
 
-######START HERE AND TRYNG TO LOOP TRHOUGH THE DATA FRAME 
-pifscenarios = dataframe
-# Loop through
-PIF1 <- ((exposurerange1(max) - exposurerange1)(RR -1))/(1+(exposurerange1(max)*(RR-1))
-PIF2 <- ((exposurerange2(max) - exposurerange2)(RR -1))/(1+(exposurerange2(max)*(RR-1))
-PIF3 <- ((exposurerange3(max) - exposurerange3)(RR -1))/(1+(exposurerange3(max)*(RR-1))
-PIF4 <- ((exposurerange4(max) - exposurerange4)(RR -1))/(1+(exposurerange4(max)*(RR-1))
-# Plot the PAF against the prevalence
-pifplotlow <- ggplot(data.frame(exposure = exposurerange, PIF = PIFlow), aes(x = exposure, y = PIF)) +
-  geom_line(color = "blue", size = 1) +
-  labs(title = "RR = 1.2",
-       x = "RF Prevalence",
-       y = "PIF") +
-  ylim(0, 1) +
-  theme_minimal()
-pafplot4 <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAF4), aes(x = prevalence, y = PAF)) +
-  geom_line(color = "blue", size = 1) +
-  labs(title = "RR = 1.5",
-       x = "RF Prevalence",
-       y = "PAF") +
-  ylim(0, 1) +
-  theme_minimal()
-pafplotmed <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFmed), aes(x = prevalence, y = PAF)) +
-  geom_line(color = "blue", size = 1) +
-  labs(title = "RR = 5.0",
-       x = "RF Prevalence",
-       y = "PAF") +
-  ylim(0, 1) +
-  theme_minimal()
-pafplothigh<- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFhigh), aes(x = prevalence, y = PAF)) +
-  geom_line(color = "blue", size = 1) +
-  labs(title = "RR = 10.0",
-       x = "RF Prevalence",
-       y = "PAF") +
-  ylim(0, 1) +
-  theme_minimal() 
-# Showing the plot
-changingpaf <- grid.arrange(pafplotlow, pafplot4, pafplotmed, pafplothigh, ncol=4)
+#calculating the PIFs 
+calculate_pif_data <- function(exposurerange, pif_label) {
+  pif_data <- sapply(RR, function(rr) {
+    ((max(exposurerange) - exposurerange) * (rr - 1)) / (1 + (max(exposurerange) * (rr - 1)))
+  })
+  colnames(pif_data) <- paste0("RR_", RR)
+  
+  # Reshape into a long format for ggplot
+  pif_df <- as.data.frame(pif_data) %>%
+    mutate(exposure_diff = max(exposurerange) - exposurerange) %>%
+    pivot_longer(
+      cols = starts_with("RR_"),
+      names_to = "RR",
+      values_to = "PIF"
+    ) %>%
+    mutate(PIF_Label = pif_label)  # Add a label for PIF
+  
+  return(pif_df)
+}
+
+# Calculate PIF data for each range
+pif1_data <- calculate_pif_data(exposurerange1, ".20-0")
+pif2_data <- calculate_pif_data(exposurerange2, ".40-.20")
+pif3_data <- calculate_pif_data(exposurerange3, ".60-.40")
+pif4_data <- calculate_pif_data(exposurerange4, ".80-.60")
+
+# Combine all data into one dataframe
+combined_pif_data <- bind_rows(pif1_data, pif2_data, pif3_data, pif4_data) %>%
+  mutate(RR = factor(RR, levels = unique(RR)))
+
+pif_plot <- ggplot(combined_pif_data, aes(x = exposure_diff, y = PIF, color = RR)) +
+  geom_line(size = 1) +
+  facet_grid(PIF_Label ~ RR) +  # Facet by PIF (rows) and RR (columns)
+  labs(
+    title = "Theoretical PIFs with different RR and Exposure Changes",
+    x = "Exposure Change",
+    y = "PIF",
+    color = "Relative Risk"
+  ) +
+  theme_minimal() +
+  theme(
+    strip.text = element_text(size = 10, face = "bold"),
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    legend.position = "top"
+  )
+
+# Display the plot
+pif_plot
+
+
 ```
+
+#### No age groups - PAF/PIF 
+
+These numbers are for BMI/Smoking/Alcohol ONLY
 
 #### RR Scenario Example-will not be used
 
