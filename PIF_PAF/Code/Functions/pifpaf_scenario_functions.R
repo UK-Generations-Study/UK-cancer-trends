@@ -41,10 +41,10 @@ pif_scenario <- function(dataframe) {
   #obesity = 1.46
 
 #this will calculate the scarios if the RR for OBESITY (overweight RR remains constant) is: 
-    #A= 0.1 lower
-    #B = 0.05 higher 
-    #C = 0.10 higher 
-    #D = 0.20 higher 
+    #A= Actual
+    #B = RR 2 
+    #C = RR 3 
+    #D = RR 4
 
     
 pif_scenarioBMI <- function(dataframe) {
@@ -64,15 +64,14 @@ pif_scenarioBMI <- function(dataframe) {
     mutate(
       p0 = as.numeric(p0), 
       p1 = as.numeric(p1),
-      pifActual = ((p1-p0)*(1.46-1))/(1 + p1*(1.46-1)), 
-      pifA = ((p1-p0)*(1.36-1))/(1 + p1*(1.36-1)),
-      pifB = ((p1-p0)*(1.51-1))/(1 + p1*(1.51-1)),
-      pifC = ((p1-p0)*(1.56-1))/(1 + p1*(1.56-1)),
-      pifD = ((p1-p0)*(1.66-1))/(1 + p1*(1.66-1)),
+      pifA = ((p1-p0)*(1.46-1))/(1 + p1*(1.46-1)), 
+      pifB = ((p1-p0)*(2-1))/(1 + p1*(2-1)),
+      pifC = ((p1-p0)*(3-1))/(1 + p1*(3-1)),
+      pifD = ((p1-p0)*(4-1))/(1 + p1*(4-1)),
       variable = variable_name
     ) %>%
     select(
-      variable, level, sex, age_group, p0, p1,  pifActual, pifA, pifB, pifC, pifD
+      variable, level, sex, age_group, p0, p1, pifA, pifB, pifC, pifD
     )
   
   return(cleaned) #return the new scenario dataset 
