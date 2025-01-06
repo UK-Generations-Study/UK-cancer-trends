@@ -786,6 +786,14 @@ rf_apc_table <- rf_table %>%
 rf_apc_table
 ```
 
+## Figure pre 3 - Current PAFs (2019) : all ages
+
+```{r}
+
+#bring in the data 
+
+```
+
 ## Figure 3 - Current PAFs (2019)
 
 ```{r, fig.height=6, fig.width=10, warning=F}
@@ -863,7 +871,7 @@ data_attr_bar_MEN <- ggplot(data_attr_cases_bar %>% filter(sex == "Men"), aes(x 
     alpha = 0.8
   ) +
   geom_bar(
-    aes(y = cases_count/100, fill = "Case Count"),
+    aes(y = cases_count/100, fill = "Attributable Cases"),
     stat = "identity", 
     width = 0.3,  # Narrower bar for case_count
     alpha = 1
@@ -877,7 +885,7 @@ data_attr_bar_MEN <- ggplot(data_attr_cases_bar %>% filter(sex == "Men"), aes(x 
     ) 
   ) +
   scale_fill_manual(
-    values = c("PAF" = "#2b9eb3", "Case Count" = "#f8333c"),  # Set custom colors
+    values = c("PAF" = "#2b9eb3", "Attributable Cases" = "#f8333c"),  # Set custom colors
     name = "Key"  # Add a legend title
   ) +
   labs(
@@ -899,7 +907,7 @@ data_attr_bar_WOMEN <- ggplot(data_attr_cases_bar %>% filter(sex == "Women"), ae
     alpha = 0.8
   ) +
   geom_bar(
-    aes(y = cases_count/100, fill = "Case Count"),
+    aes(y = cases_count/100, fill = "Attributable Cases"),
     stat = "identity", 
     width = 0.3,  # Narrower bar for case_count
     alpha = 1
@@ -1087,6 +1095,94 @@ for(var in unique(data_attr_cases_individual$variable)[!grepl("\\_mean$|\\_media
 
 
 
+```
+
+## Figure 4 - Current PAFs (2019) - Bar chart by Risk Factor
+
+```{r}
+
+data_attr_cases_bar <- data_paf_long_individual %>% 
+  left_join(data_cancer, by = c("year", "sex", "age_group", "cancer_site")) %>%
+  filter(
+    variable %in% c("Smoking", "Alcohol", "BMI", "RedMeat", "ProcessedMeat", "Fibre")
+  )%>%
+  mutate(
+    cases_count = PAF * count,
+    PAF = PAF *100, 
+    PAF = ifelse(cancer_site == "Breast" & sex == "Men", 0, PAF)
+  ) %>% 
+  filter(
+    year == 2019 | (year == 2018 & all(PAF[year == 2019] == 0)) 
+  ) %>%
+  select(
+    -count, - Rate
+  )
+
+generate_plots <- function(data) {
+  # Extract unique combinations of age_group, sex, and variable
+   combinations <- data %>%
+    distinct(age_group, sex, variable)
+  
+  # Loop through each combination and generate plots
+  for (i in seq_len(nrow(combinations))) {
+    # Extract the current combination
+    current_age_group <- combinations$age_group[i]
+    current_sex <- combinations$sex[i]
+    current_variable <- combinations$variable[i]
+    
+    # Filter the data for the current combination
+    filtered_data <- data %>%
+      filter(
+        age_group == current_age_group,
+        sex == current_sex,
+        variable == current_variable
+      )
+    
+    # Generate the plot
+        plot <- ggplot(filtered_data, aes(x = cancer_site)) +
+      geom_bar(
+        aes(y = PAF, fill = "PAF"), 
+        stat = "identity", 
+        width = 0.8,
+        alpha = 0.8
+      ) +
+      geom_bar(
+        aes(y = cases_count / 100, fill = "Attributable Cases"),  # Ensure this uses a proper aesthetic
+        stat = "identity", 
+        width = 0.3,
+        alpha = 1
+      ) +
+      scale_y_continuous(
+        name = "PAFs",
+        limits = c(0, 100),
+        sec.axis = sec_axis(
+          ~ . * 100,
+          name = "Case Count"
+        )
+      ) +
+      scale_fill_manual(
+        values = c("PAF" = "#2b9eb3", "Attributable Cases" = "#f8333c"),  # Ensure color is assigned correctly
+        name = "Key"
+      ) +
+      labs(
+        title = paste(current_variable, "(", current_sex, current_age_group, ") : PAF and Case Count in England"),
+        x = "Cancer Site"
+      ) +
+      facet_wrap(~ sex + variable, scales = "free_y") +  # Stack plots by sex and variable
+      theme_minimal() +
+      theme(
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.position = "top"
+      )
+    
+    # Print the plot
+    print(plot)
+  
+  }
+}
+
+
+generate_plots(data_attr_cases_bar)
 ```
 
 ## Figure 5 - Difference in PAFs
@@ -1672,8 +1768,6 @@ This figure is from [Health Survey England](https://files.digital.nhs.uk/23/6B5D
 
 The reported RR for colorectal and BMI:
 
--   overweight = 1.22
-
 -   obesity = 1.46
 
 Below are scenarios if the RR for obesity only is:
@@ -1863,11 +1957,10 @@ pif_plot
 
 ```
 
-#### No age groups - PAF/PIF 
+```{}
+```
 
-These numbers are for BMI/Smoking/Alcohol ONLY
-
-#### RR Scenario Example-will not be used
+#### RR Scenario Example-will not bes used
 
 This example is for Air Pollution only.
 
