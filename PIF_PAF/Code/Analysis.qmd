@@ -214,6 +214,7 @@ library(forestplot)
 library(dplyr)
 library(readxl)
 library(ggrepel)
+library(patchwork)
 
 
 ```
@@ -263,6 +264,12 @@ data_cancer <- read.csv("../Data/incidence_data_clean.csv")
 
 # Reading in JP Analysis
 data_joinpoint <- read.delim("../Data/Joinpoint/cancerrates/export.Export.APC.txt", sep = "\t")
+
+#Reading in PAF all ages combined data 
+data_PAFallages <- read.csv("../Data/PAF_allages.csv")
+
+#Reading in the PIF all ages data 
+data_PIFallages <- read.csv("../Data/PIF_allages.csv")
 
 ```
 
@@ -786,6 +793,115 @@ rf_apc_table <- rf_table %>%
 rf_apc_table
 ```
 
+## Figure pre 3 - Current PAFs (2019) : all ages
+
+```{r}
+#formatting the PAF all ages to help with join 
+data_PAFallages_long <- data_PAFallages |>
+  pivot_longer(cols = colnames(data_PAFallages)[!colnames(data_PAFallages) %in% c("sex", "year", "age_group", "variable")], names_to = "cancer_site", values_to = "PAF") |>
+  mutate(year = year + 10) |> # Broad assumption of 10 year lag period
+  mutate(cancer_site = gsub("PAF$", "", cancer_site))
+
+#calculating total cancer cases (all ages)
+data_casesallages <- data_cancer %>%
+  group_by(year, sex, cancer_site) %>%
+  summarise(totalcases = sum(count, na.rm = T))%>%
+  ungroup()
+
+#calculating attributable cases to the all ages PAFs 
+PAF_allages <- data_PAFallages_long %>%
+  left_join(data_casesallages, by = c("year", "sex", "cancer_site")) %>% 
+  mutate(
+    attributable_cases = PAF*totalcases, 
+    PAF = PAF*100
+  ) %>% 
+  filter(
+    year == 2019
+  ) %>% select(
+    -totalcases
+  )
+
+#put it in a graph by cancer site bar chart
+# Men 
+PAFallages_bar_MEN <- ggplot(PAF_allages %>% filter(sex == "Men"), aes(x = cancer_site)) +
+  geom_bar(
+    aes(y = PAF, fill = "PAF"), 
+    stat = "identity", 
+    width = 0.8,  # Wider bar for PAF
+    alpha = 0.8
+  ) +
+  geom_bar(
+    aes(y = attributable_cases/60, fill = "Attributable Cases"),
+    stat = "identity", 
+    width = 0.3,  # Narrower bar for case_count
+    alpha = 1
+  ) +
+  scale_y_continuous(
+    name = "PAFs",
+    limits = c(0, 100),
+    sec.axis = sec_axis(
+      ~ . * 60,  # Adjust the transformation factor as needed
+      name = "Case Count"
+    ) 
+  ) +
+  scale_fill_manual(
+    values = c("PAF" = "#2b9eb3", "Attributable Cases" = "#f8333c"),  # Set custom colors
+    name = "Key"  # Add a legend title
+  ) +
+  labs(
+    title = "Men: PAF and Attributable Cases in England 2019 (All ages)",
+    x = "Cancer Site"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
+    legend.position = "top"
+  )
+
+#Women 
+PAFallages_bar_WOMEN <- ggplot(PAF_allages %>% filter(sex == "Women"), aes(x = cancer_site)) +
+  geom_bar(
+    aes(y = PAF, fill = "PAF"), 
+    stat = "identity", 
+    width = 0.8,  # Wider bar for PAF
+    alpha = 0.8
+  ) +
+  geom_bar(
+    aes(y = attributable_cases/60, fill = "Attributable Cases"),
+    stat = "identity", 
+    width = 0.3,  # Narrower bar for case_count
+    alpha = 1
+  ) +
+  scale_y_continuous(
+    name = "PAFs",
+    limits = c(0, 100),
+    sec.axis = sec_axis(
+      ~ . * 60,  # Adjust the transformation factor as needed
+      name = "Case Count"
+    ) 
+  ) +
+  scale_fill_manual(
+    values = c("PAF" = "#2b9eb3", "Attributable Cases" = "#f8333c"),  # Set custom colors
+    name = "Key"  # Add a legend title
+  ) +
+  labs(
+    title = "Women: PAF and Attributable Cases in England 2019 (All ages)",
+    x = "Cancer Site"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
+    legend.position = "top"
+  )
+
+PAFallages_bar_MEN
+PAFallages_bar_WOMEN
+
+ggsave("../Output/Plots/Figure_3_MenAllAges.png", plot = PAFallages_bar_MEN, bg = "white", height = 6, width = 10)
+ggsave("../Output/Plots/Figure_3_WomenAllAges.png", plot = PAFallages_bar_WOMEN, bg = "white", height = 6, width = 10)
+
+```
+
 ## Figure 3 - Current PAFs (2019)
 
 ```{r, fig.height=6, fig.width=10, warning=F}
@@ -863,7 +979,7 @@ data_attr_bar_MEN <- ggplot(data_attr_cases_bar %>% filter(sex == "Men"), aes(x 
     alpha = 0.8
   ) +
   geom_bar(
-    aes(y = cases_count/100, fill = "Case Count"),
+    aes(y = cases_count/100, fill = "Attributable Cases"),
     stat = "identity", 
     width = 0.3,  # Narrower bar for case_count
     alpha = 1
@@ -877,11 +993,11 @@ data_attr_bar_MEN <- ggplot(data_attr_cases_bar %>% filter(sex == "Men"), aes(x 
     ) 
   ) +
   scale_fill_manual(
-    values = c("PAF" = "#2b9eb3", "Case Count" = "#f8333c"),  # Set custom colors
+    values = c("PAF" = "#2b9eb3", "Attributable Cases" = "#f8333c"),  # Set custom colors
     name = "Key"  # Add a legend title
   ) +
   labs(
-    title = "Men: PAF and Case Count in England",
+    title = "Men: PAF and Attributable Cases in England 2019",
     x = "Cancer Site"
   ) +
   facet_wrap(~ age_group, scales = "free_x") +
@@ -899,7 +1015,7 @@ data_attr_bar_WOMEN <- ggplot(data_attr_cases_bar %>% filter(sex == "Women"), ae
     alpha = 0.8
   ) +
   geom_bar(
-    aes(y = cases_count/100, fill = "Case Count"),
+    aes(y = cases_count/100, fill = "Attributable Cases"),
     stat = "identity", 
     width = 0.3,  # Narrower bar for case_count
     alpha = 1
@@ -913,11 +1029,11 @@ data_attr_bar_WOMEN <- ggplot(data_attr_cases_bar %>% filter(sex == "Women"), ae
     ) 
   ) +
   scale_fill_manual(
-    values = c("PAF" = "#2b9eb3", "Case Count" = "#f8333c"),  # Set custom colors
+    values = c("PAF" = "#2b9eb3", "Attributable Cases" = "#f8333c"),  # Set custom colors
     name = "Key"  # Add a legend title
   ) +
   labs(
-    title = "Women: PAF and Case Count in England",
+    title = "Women: PAF and Attributable Cases in England 2019",
     x = "Cancer Site"
   ) +
   facet_wrap(~ age_group, scales = "free_x") +
@@ -1085,6 +1201,144 @@ for(var in unique(data_attr_cases_individual$variable)[!grepl("\\_mean$|\\_media
 
 
 
+
+
+```
+
+## Figure 4 - Current PAFs (2019) - Bar chart by Risk Factor
+
+```{r}
+#reformat the table
+# Pivot PAFs longer so we can merge
+data_paf_long_individual <- data_paf_individual |>
+  pivot_longer(cols = colnames(data_paf_individual)[!colnames(data_paf_individual) %in% c("sex", "year", "age_group", "variable")], names_to = "cancer_site", values_to = "PAF") |>
+  mutate(year = year + 10) |> # Broad assumption of 10 year lag period
+  mutate(cancer_site = gsub("PAF$", "", cancer_site))
+
+#addng the attributable cases 
+data_attr_cases_bar <- data_paf_long_individual %>% 
+  left_join(data_cancer, by = c("year", "sex", "age_group", "cancer_site")) %>%
+  filter(
+    variable %in% c("Smoking", "Alcohol", "BMI", "RedMeat", "ProcessedMeat", "Fibre")
+  )%>%
+  mutate(
+    cases_count = PAF * count,
+    PAF = PAF *100, 
+    PAF = ifelse(cancer_site == "Breast" & sex == "Men", 0, PAF)
+  ) %>% 
+  filter(
+    year == 2019 | (year == 2018 & all(PAF[year == 2019] == 0)) #this includes 2019 PAF or, if there is none due to lack of data, then it pulls the 2018 PAF
+  ) %>%
+  select(
+    -count, - Rate
+  )
+
+generate_plots <- function(data) {
+  # Extract unique combinations of age_group, sex, and variable
+   combinations <- data %>%
+    distinct( sex, variable)
+  
+  # Loop through each combination and generate plots
+  for (i in seq_len(nrow(combinations))) {
+    # Extract the current combination
+    #current_age_group <- combinations$age_group[i]
+    current_sex <- combinations$sex[i]
+    current_variable <- combinations$variable[i]
+    
+    # Filter the data for the current combination
+    filtered_data <- data %>%
+      filter(
+        #age_group == current_age_group,
+        sex == current_sex,
+        variable == current_variable
+      )
+    
+    # Generate the plot
+     plot_20_49 <- ggplot(filtered_data %>% filter(age_group== "20-49"), aes(x = cancer_site)) +
+      geom_bar(
+        aes(y = PAF, fill = "PAF"), 
+        stat = "identity", 
+        width = 0.8,
+        alpha = 0.8
+      ) +
+      geom_bar(
+        aes(y = cases_count / 50, fill = "Attributable Cases"), 
+        stat = "identity", 
+        width = 0.3,
+        alpha = 1
+      ) +
+      scale_y_continuous(
+        name = "PAFs",
+        limits = c(0, 100),
+        sec.axis = sec_axis(
+          ~ . * 50,
+          name = "Case Count"
+        )
+      ) +
+      scale_fill_manual(
+        values = c("PAF" = "#2b9eb3", "Attributable Cases" = "#f8333c"),
+        name = "Key"
+      ) +
+      labs(
+        title = paste("20-49"),
+        x = "Cancer Site"
+      ) +
+      theme_minimal() +
+      theme(
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.position = "top"
+      )
+    
+    plot_50_plus <- ggplot(filtered_data %>% filter(age_group == "50+"), aes(x = cancer_site)) +
+      geom_bar(
+        aes(y = PAF, fill = "PAF"), 
+        stat = "identity", 
+        width = 0.8,
+        alpha = 0.8
+      ) +
+      geom_bar(
+        aes(y = cases_count / 50, fill = "Attributable Cases"), 
+        stat = "identity", 
+        width = 0.3,
+        alpha = 1
+      ) +
+      scale_y_continuous(
+        name = "PAFs",
+        limits = c(0, 100),
+        sec.axis = sec_axis(
+          ~ . * 50,
+          name = "Case Count"
+        )
+      ) +
+      scale_fill_manual(
+        values = c("PAF" = "#2b9eb3", "Attributable Cases" = "#f8333c"),
+        name = "Key"
+      ) +
+      labs(
+        title = paste("50+"),
+        x = "Cancer Site"
+      ) +
+      theme_minimal() +
+      theme(
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.position = "top"
+      )
+    
+    # Combine the two plots vertically
+    combined_plot <- (plot_20_49 | plot_50_plus) +  # Combine plots side by side
+  plot_annotation(
+    title = paste("PAF and Attributable Cases for", current_variable, "-", current_sex),
+    theme = theme(
+      plot.title = element_text(size = 16, face = "bold", hjust = 0.5)
+    )
+  )
+    # Print the combined plot
+    print(combined_plot)
+  }
+}
+
+
+generate_plots(data_attr_cases_bar)
 
 
 ```
@@ -1257,6 +1511,73 @@ for(var in unique(data_complete_paf_plot$variable_label)){
   cat(sprintf("- [%s](%s)\n", paste0("**Figure 4: ", var, "**"), paste0("../Output/Plots/Figure_5-", gsub(" ", "_", var), ".pdf")))
   
 }
+
+```
+
+## Figure pre 6 - PIF
+
+These are PIFs from the oldest data point until current times (Later referred to as PIF (Past)). These are for all ages combined.
+
+```{r}
+#creating the table 
+data_pifallages_past <- data_PIFallages |>
+  mutate(
+    
+    variable = case_when(
+      variable == "ProcessedMeat" ~ "Processed Meat",
+      variable == "RedMeat" ~ "Red Meat",
+      TRUE ~ variable
+    ),
+    
+    
+    PIF = 100*round(PIF_past, digits = 3),
+    
+    # PIF = if_else(is.na(PIF), "", as.character(PIF))
+    
+    PIF = case_when(
+      is.na(PIF) ~ "",
+      PIF<0 ~ "-",
+      TRUE ~ as.character(PIF)
+    )
+    
+  ) |>
+  select(-PIF_past, -PIF_future) |>
+  pivot_wider(names_from = cancer_site, values_from = PIF) |>
+  group_by(sex) |>
+  gt() |>
+  cols_label(
+    variable = "",
+    MultipleMyeloma = "Multiple Myeloma"
+  ) |>
+  cols_align(
+    align = "center",
+    columns = -variable
+  ) |>
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = list(
+      cells_column_labels()
+    )
+  ) |>
+  tab_style(
+    style = list(
+      cell_text(weight = "bold"),
+      cell_fill(color = "lightgray"),
+      cell_borders(sides = "top"),
+      cell_borders(sides = "bottom")
+    ),
+    locations = cells_row_groups(groups = everything())
+  ) |>
+  cols_width(
+    variable ~ px(200)
+  ) |>
+  tab_header("PIF Values from Past* to 2009 : All Ages") |>
+  tab_footnote("*Furthest back datapoint available")
+
+data_pifallages_past
+
+gtsave(data_pifallages_past, "../Output/Plots/Figure_6-PIFallages_Past.html")
+
 
 ```
 
@@ -1672,8 +1993,6 @@ This figure is from [Health Survey England](https://files.digital.nhs.uk/23/6B5D
 
 The reported RR for colorectal and BMI:
 
--   overweight = 1.22
-
 -   obesity = 1.46
 
 Below are scenarios if the RR for obesity only is:
@@ -1863,11 +2182,10 @@ pif_plot
 
 ```
 
-#### No age groups - PAF/PIF 
+```         
+```
 
-These numbers are for BMI/Smoking/Alcohol ONLY
-
-#### RR Scenario Example-will not be used
+#### RR Scenario Example-will not bes used
 
 This example is for Air Pollution only.
 
