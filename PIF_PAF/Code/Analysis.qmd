@@ -268,6 +268,9 @@ data_joinpoint <- read.delim("../Data/Joinpoint/cancerrates/export.Export.APC.tx
 #Reading in PAF all ages combined data 
 data_PAFallages <- read.csv("../Data/PAF_allages.csv")
 
+#Reading in the PIF all ages data 
+data_PIFallages <- read.csv("../Data/PIF_allages.csv")
+
 ```
 
 ## Figure 1 - Trends in cancer incidence
@@ -1508,6 +1511,73 @@ for(var in unique(data_complete_paf_plot$variable_label)){
   cat(sprintf("- [%s](%s)\n", paste0("**Figure 4: ", var, "**"), paste0("../Output/Plots/Figure_5-", gsub(" ", "_", var), ".pdf")))
   
 }
+
+```
+
+## Figure pre 6 - PIF
+
+These are PIFs from the oldest data point until current times (Later referred to as PIF (Past)). These are for all ages combined.
+
+```{r}
+#creating the table 
+data_pifallages_past <- data_PIFallages |>
+  mutate(
+    
+    variable = case_when(
+      variable == "ProcessedMeat" ~ "Processed Meat",
+      variable == "RedMeat" ~ "Red Meat",
+      TRUE ~ variable
+    ),
+    
+    
+    PIF = 100*round(PIF_past, digits = 3),
+    
+    # PIF = if_else(is.na(PIF), "", as.character(PIF))
+    
+    PIF = case_when(
+      is.na(PIF) ~ "",
+      PIF<0 ~ "-",
+      TRUE ~ as.character(PIF)
+    )
+    
+  ) |>
+  select(-PIF_past, -PIF_future) |>
+  pivot_wider(names_from = cancer_site, values_from = PIF) |>
+  group_by(sex) |>
+  gt() |>
+  cols_label(
+    variable = "",
+    MultipleMyeloma = "Multiple Myeloma"
+  ) |>
+  cols_align(
+    align = "center",
+    columns = -variable
+  ) |>
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = list(
+      cells_column_labels()
+    )
+  ) |>
+  tab_style(
+    style = list(
+      cell_text(weight = "bold"),
+      cell_fill(color = "lightgray"),
+      cell_borders(sides = "top"),
+      cell_borders(sides = "bottom")
+    ),
+    locations = cells_row_groups(groups = everything())
+  ) |>
+  cols_width(
+    variable ~ px(200)
+  ) |>
+  tab_header("PIF Values from Past* to 2009 : All Ages") |>
+  tab_footnote("*Furthest back datapoint available")
+
+data_pifallages_past
+
+gtsave(data_pifallages_past, "../Output/Plots/Figure_6-PIFallages_Past.html")
+
 
 ```
 
