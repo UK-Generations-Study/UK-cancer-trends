@@ -1,0 +1,676 @@
+"year","age_group","sex","level","value"
+1995,"11-15 years","All children","Obese",14.7152866714966
+1996,"11-15 years","All children","Obese",15.0153665292779
+1997,"11-15 years","All children","Obese",16.133640647715
+1998,"11-15 years","All children","Obese",17.1899084610967
+1999,"11-15 years","All children","Obese",16.8219146974084
+2000,"11-15 years","All children","Obese",18.7207350876653
+2001,"11-15 years","All children","Obese",18.5056653075491
+2002,"11-15 years","All children","Obese",20.0278578824105
+2003,"11-15 years","All children","Obese",21.308613051469
+2004,"11-15 years","All children","Obese",25.4913080032295
+2005,"11-15 years","All children","Obese",20.8194312620809
+2006,"11-15 years","All children","Obese",17.597367091812
+2007,"11-15 years","All children","Obese",18.7982338443525
+2008,"11-15 years","All children","Obese",19.5073097344139
+2009,"11-15 years","All children","Obese",17.652203254859
+2010,"11-15 years","All children","Obese",18.31717
+2011,"11-15 years","All children","Obese",20.23016
+2012,"11-15 years","All children","Obese",18.709167
+2013,"11-15 years","All children","Obese",19.9137920600756
+2014,"11-15 years","All children","Obese",20.1282212416622
+2015,"11-15 years","All children","Obese",16.3474199754028
+2016,"11-15 years","All children","Obese",23.0963812221412
+2017,"11-15 years","All children","Obese",23.321732815536
+2018,"11-15 years","All children","Obese",17.8615361345924
+2019,"11-15 years","All children","Obese",23.9530056962977
+1995,"11-15 years","All children","Overweight",14.0772040851926
+1996,"11-15 years","All children","Overweight",14.4822295950409
+1997,"11-15 years","All children","Overweight",14.1634323151295
+1998,"11-15 years","All children","Overweight",15.3633495493889
+1999,"11-15 years","All children","Overweight",14.4650220269758
+2000,"11-15 years","All children","Overweight",12.5843055986972
+2001,"11-15 years","All children","Overweight",16.1488632676525
+2002,"11-15 years","All children","Overweight",14.9700363923436
+2003,"11-15 years","All children","Overweight",15.6388700347603
+2004,"11-15 years","All children","Overweight",16.2306199578338
+2005,"11-15 years","All children","Overweight",14.99325544174
+2006,"11-15 years","All children","Overweight",15.8838317932588
+2007,"11-15 years","All children","Overweight",15.3831636228478
+2008,"11-15 years","All children","Overweight",15.6614717034415
+2009,"11-15 years","All children","Overweight",14.6217832095477
+2010,"11-15 years","All children","Overweight",15.5251
+2011,"11-15 years","All children","Overweight",16.836941
+2012,"11-15 years","All children","Overweight",16.444124
+2013,"11-15 years","All children","Overweight",15.9795095653104
+2014,"11-15 years","All children","Overweight",14.746593202953
+2015,"11-15 years","All children","Overweight",16.1192975517203
+2016,"11-15 years","All children","Overweight",13.1739847431245
+2017,"11-15 years","All children","Overweight",13.3213681818905
+2018,"11-15 years","All children","Overweight",15.9059591286169
+2019,"11-15 years","All children","Overweight",15.304593365597
+1995,"11-15 years","All children","Overweight including obese",28.7924907566891
+1996,"11-15 years","All children","Overweight including obese",29.4975961243188
+1997,"11-15 years","All children","Overweight including obese",30.2970729628445
+1998,"11-15 years","All children","Overweight including obese",32.5532580104855
+1999,"11-15 years","All children","Overweight including obese",31.2869367243843
+2000,"11-15 years","All children","Overweight including obese",31.3050406863626
+2001,"11-15 years","All children","Overweight including obese",34.6545285752016
+2002,"11-15 years","All children","Overweight including obese",34.997894274754
+2003,"11-15 years","All children","Overweight including obese",36.9474830862294
+2004,"11-15 years","All children","Overweight including obese",41.7219279610633
+2005,"11-15 years","All children","Overweight including obese",35.8126867038209
+2006,"11-15 years","All children","Overweight including obese",33.4811988850708
+2007,"11-15 years","All children","Overweight including obese",34.1813974672003
+2008,"11-15 years","All children","Overweight including obese",35.1687814378554
+2009,"11-15 years","All children","Overweight including obese",32.2739864644066
+2010,"11-15 years","All children","Overweight including obese",33.84226
+2011,"11-15 years","All children","Overweight including obese",37.067102
+2012,"11-15 years","All children","Overweight including obese",35.153291
+2013,"11-15 years","All children","Overweight including obese",35.8933016253861
+2014,"11-15 years","All children","Overweight including obese",34.8748144446152
+2015,"11-15 years","All children","Overweight including obese",32.4667175271231
+2016,"11-15 years","All children","Overweight including obese",36.2703659652658
+2017,"11-15 years","All children","Overweight including obese",36.6431009974265
+2018,"11-15 years","All children","Overweight including obese",33.7674952632094
+2019,"11-15 years","All children","Overweight including obese",39.2575990618947
+1995,"11-15 years","Boys","Obese",13.9210044544256
+1996,"11-15 years","Boys","Obese",14.2793659106412
+1997,"11-15 years","Boys","Obese",15.9287496397291
+1998,"11-15 years","Boys","Obese",16.6147073759341
+1999,"11-15 years","Boys","Obese",17.9461150404159
+2000,"11-15 years","Boys","Obese",18.8896279124158
+2001,"11-15 years","Boys","Obese",18.9862689963891
+2002,"11-15 years","Boys","Obese",20.2859819738654
+2003,"11-15 years","Boys","Obese",20.4412250312245
+2004,"11-15 years","Boys","Obese",24.2952626779822
+2005,"11-15 years","Boys","Obese",20.5086723082836
+2006,"11-15 years","Boys","Obese",17.9028220633138
+2007,"11-15 years","Boys","Obese",18.1892694677211
+2008,"11-15 years","Boys","Obese",20.6364461940813
+2009,"11-15 years","Boys","Obese",19.733932638778
+2010,"11-15 years","Boys","Obese",19.93061
+2011,"11-15 years","Boys","Obese",23.828486
+2012,"11-15 years","Boys","Obese",19.065217
+2013,"11-15 years","Boys","Obese",20.400645243703
+2014,"11-15 years","Boys","Obese",21.6757068598886
+2015,"11-15 years","Boys","Obese",17.8248399459573
+2016,"11-15 years","Boys","Obese",25.5987696935625
+2017,"11-15 years","Boys","Obese",22.8076585874045
+2018,"11-15 years","Boys","Obese",19.3465888675694
+2019,"11-15 years","Boys","Obese",27.3196460298194
+1995,"11-15 years","Boys","Overweight",13.8694380174358
+1996,"11-15 years","Boys","Overweight",15.1706763899306
+1997,"11-15 years","Boys","Overweight",12.8500273603028
+1998,"11-15 years","Boys","Overweight",14.875280883079
+1999,"11-15 years","Boys","Overweight",15.1782524564134
+2000,"11-15 years","Boys","Overweight",10.3673254479695
+2001,"11-15 years","Boys","Overweight",14.2749455813849
+2002,"11-15 years","Boys","Overweight",14.5256632572228
+2003,"11-15 years","Boys","Overweight",14.498828496245
+2004,"11-15 years","Boys","Overweight",12.9147800586685
+2005,"11-15 years","Boys","Overweight",15.4795907432406
+2006,"11-15 years","Boys","Overweight",15.2832535157789
+2007,"11-15 years","Boys","Overweight",15.7419219748511
+2008,"11-15 years","Boys","Overweight",15.6765272487981
+2009,"11-15 years","Boys","Overweight",14.011139753995
+2010,"11-15 years","Boys","Overweight",14.32883
+2011,"11-15 years","Boys","Overweight",14.581514
+2012,"11-15 years","Boys","Overweight",14.972356
+2013,"11-15 years","Boys","Overweight",15.1562911041803
+2014,"11-15 years","Boys","Overweight",12.5520242032203
+2015,"11-15 years","Boys","Overweight",16.1460535431952
+2016,"11-15 years","Boys","Overweight",9.2831756239463
+2017,"11-15 years","Boys","Overweight",13.6670722243893
+2018,"11-15 years","Boys","Overweight",16.1725207935299
+2019,"11-15 years","Boys","Overweight",14.2482516355143
+1995,"11-15 years","Boys","Overweight including obese",27.7904424718614
+1996,"11-15 years","Boys","Overweight including obese",29.4500423005718
+1997,"11-15 years","Boys","Overweight including obese",28.7787770000319
+1998,"11-15 years","Boys","Overweight including obese",31.489988259013
+1999,"11-15 years","Boys","Overweight including obese",33.1243674968294
+2000,"11-15 years","Boys","Overweight including obese",29.2569533603854
+2001,"11-15 years","Boys","Overweight including obese",33.261214577774
+2002,"11-15 years","Boys","Overweight including obese",34.8116452310881
+2003,"11-15 years","Boys","Overweight including obese",34.9400535274695
+2004,"11-15 years","Boys","Overweight including obese",37.2100427366507
+2005,"11-15 years","Boys","Overweight including obese",35.9882630515242
+2006,"11-15 years","Boys","Overweight including obese",33.1860755790927
+2007,"11-15 years","Boys","Overweight including obese",33.9311914425722
+2008,"11-15 years","Boys","Overweight including obese",36.3129734428795
+2009,"11-15 years","Boys","Overweight including obese",33.745072392773
+2010,"11-15 years","Boys","Overweight including obese",34.25945
+2011,"11-15 years","Boys","Overweight including obese",38.41
+2012,"11-15 years","Boys","Overweight including obese",34.037574
+2013,"11-15 years","Boys","Overweight including obese",35.5569363478833
+2014,"11-15 years","Boys","Overweight including obese",34.2277310631089
+2015,"11-15 years","Boys","Overweight including obese",33.9708934891526
+2016,"11-15 years","Boys","Overweight including obese",34.8819453175088
+2017,"11-15 years","Boys","Overweight including obese",36.4747308117938
+2018,"11-15 years","Boys","Overweight including obese",35.5191096610992
+2019,"11-15 years","Boys","Overweight including obese",41.5678976653337
+1995,"11-15 years","Girls","Obese",15.5379034737857
+1996,"11-15 years","Girls","Obese",15.8251155179926
+1997,"11-15 years","Girls","Obese",16.3528843722673
+1998,"11-15 years","Girls","Obese",17.7536987723141
+1999,"11-15 years","Girls","Obese",15.6217418891196
+2000,"11-15 years","Girls","Obese",18.5585377470913
+2001,"11-15 years","Girls","Obese",18.0151451891005
+2002,"11-15 years","Girls","Obese",19.7627607688486
+2003,"11-15 years","Girls","Obese",22.2374293081755
+2004,"11-15 years","Girls","Obese",26.7302053836668
+2005,"11-15 years","Girls","Obese",21.1457652399055
+2006,"11-15 years","Girls","Obese",17.2767054542696
+2007,"11-15 years","Girls","Obese",19.449860440894
+2008,"11-15 years","Girls","Obese",18.2935433141054
+2009,"11-15 years","Girls","Obese",15.4005237761937
+2010,"11-15 years","Girls","Obese",16.59016
+2011,"11-15 years","Girls","Obese",16.517604
+2012,"11-15 years","Girls","Obese",18.711406
+2013,"11-15 years","Girls","Obese",19.3942307124702
+2014,"11-15 years","Girls","Obese",18.4805004185872
+2015,"11-15 years","Girls","Obese",14.8233939371907
+2016,"11-15 years","Girls","Obese",20.4877685993713
+2017,"11-15 years","Girls","Obese",23.8738879561132
+2018,"11-15 years","Girls","Obese",16.2294156554816
+2019,"11-15 years","Girls","Obese",20.4713723103533
+1995,"11-15 years","Girls","Overweight",14.2923818326091
+1996,"11-15 years","Girls","Overweight",13.7247993948072
+1997,"11-15 years","Girls","Overweight",15.5688419374073
+1998,"11-15 years","Girls","Overweight",15.8417359648049
+1999,"11-15 years","Girls","Overweight",13.7035921156797
+2000,"11-15 years","Girls","Overweight",14.7133971399415
+2001,"11-15 years","Girls","Overweight",18.061446018837
+2002,"11-15 years","Girls","Overweight",15.4264139230145
+2003,"11-15 years","Girls","Overweight",16.8596490743362
+2004,"11-15 years","Girls","Overweight",19.6652601661184
+2005,"11-15 years","Girls","Overweight",14.4825453509902
+2006,"11-15 years","Girls","Overweight",16.5143090547103
+2007,"11-15 years","Girls","Overweight",14.9992717354602
+2008,"11-15 years","Girls","Overweight",15.6452877291867
+2009,"11-15 years","Girls","Overweight",15.2822789244424
+2010,"11-15 years","Girls","Overweight",16.80556
+2011,"11-15 years","Girls","Overweight",19.163969
+2012,"11-15 years","Girls","Overweight",18.028657
+2013,"11-15 years","Girls","Overweight",16.8580341542875
+2014,"11-15 years","Girls","Overweight",17.0833109054922
+2015,"11-15 years","Girls","Overweight",16.0916975270159
+2016,"11-15 years","Girls","Overweight",17.2299552277201
+2017,"11-15 years","Girls","Overweight",12.9500555314239
+2018,"11-15 years","Girls","Overweight",15.6129993282076
+2019,"11-15 years","Girls","Overweight",16.3970161580773
+1995,"11-15 years","Girls","Overweight including obese",29.8302853063948
+1996,"11-15 years","Girls","Overweight including obese",29.5499149127999
+1997,"11-15 years","Girls","Overweight including obese",31.9217263096748
+1998,"11-15 years","Girls","Overweight including obese",33.5954347371191
+1999,"11-15 years","Girls","Overweight including obese",29.3253340047994
+2000,"11-15 years","Girls","Overweight including obese",33.2719348870328
+2001,"11-15 years","Girls","Overweight including obese",36.0765912079375
+2002,"11-15 years","Girls","Overweight including obese",35.1891746918631
+2003,"11-15 years","Girls","Overweight including obese",39.0970783825116
+2004,"11-15 years","Girls","Overweight including obese",46.3954655497852
+2005,"11-15 years","Girls","Overweight including obese",35.6283105908957
+2006,"11-15 years","Girls","Overweight including obese",33.7910145089799
+2007,"11-15 years","Girls","Overweight including obese",34.4491321763542
+2008,"11-15 years","Girls","Overweight including obese",33.9388310432921
+2009,"11-15 years","Girls","Overweight including obese",30.6828027006361
+2010,"11-15 years","Girls","Overweight including obese",33.39572
+2011,"11-15 years","Girls","Overweight including obese",35.681573
+2012,"11-15 years","Girls","Overweight including obese",36.654953
+2013,"11-15 years","Girls","Overweight including obese",36.2522648667578
+2014,"11-15 years","Girls","Overweight including obese",35.5638113240794
+2015,"11-15 years","Girls","Overweight including obese",30.9150914642066
+2016,"11-15 years","Girls","Overweight including obese",37.7177238270914
+2017,"11-15 years","Girls","Overweight including obese",36.8239434875372
+2018,"11-15 years","Girls","Overweight including obese",31.8424149836892
+2019,"11-15 years","Girls","Overweight including obese",36.8683884684306
+1995,"2-10 years","All children","Obese",10.1194623447533
+1996,"2-10 years","All children","Obese",10.883746568511
+1997,"2-10 years","All children","Obese",11.0848877564405
+1998,"2-10 years","All children","Obese",11.905311023761
+1999,"2-10 years","All children","Obese",14.8588676527161
+2000,"2-10 years","All children","Obese",12.0938193036448
+2001,"2-10 years","All children","Obese",13.2815468659309
+2002,"2-10 years","All children","Obese",15.7869212357058
+2003,"2-10 years","All children","Obese",14.0799709111378
+2004,"2-10 years","All children","Obese",14.587708094098
+2005,"2-10 years","All children","Obese",17.255833254195
+2006,"2-10 years","All children","Obese",15.531555469807
+2007,"2-10 years","All children","Obese",15.5491855076763
+2008,"2-10 years","All children","Obese",13.885859164464
+2009,"2-10 years","All children","Obese",14.4371047901018
+2010,"2-10 years","All children","Obese",14.59585
+2011,"2-10 years","All children","Obese",13.940898
+2012,"2-10 years","All children","Obese",10.567033
+2013,"2-10 years","All children","Obese",12.4323285986159
+2014,"2-10 years","All children","Obese",15.4563253605763
+2015,"2-10 years","All children","Obese",12.8030999131125
+2016,"2-10 years","All children","Obese",12.4483232662928
+2017,"2-10 years","All children","Obese",13.3560697755238
+2018,"2-10 years","All children","Obese",13.5093161544159
+2019,"2-10 years","All children","Obese",11.8141674245224
+1995,"2-10 years","All children","Overweight",12.9329778953692
+1996,"2-10 years","All children","Overweight",12.8128174793973
+1997,"2-10 years","All children","Overweight",12.6656037392121
+1998,"2-10 years","All children","Overweight",13.7521975908797
+1999,"2-10 years","All children","Overweight",13.9595302993705
+2000,"2-10 years","All children","Overweight",12.7970957324721
+2001,"2-10 years","All children","Overweight",15.1982974180694
+2002,"2-10 years","All children","Overweight",13.5045512426954
+2003,"2-10 years","All children","Overweight",14.6291926375251
+2004,"2-10 years","All children","Overweight",14.7955328491556
+2005,"2-10 years","All children","Overweight",14.647928445041
+2006,"2-10 years","All children","Overweight",12.7611899096571
+2007,"2-10 years","All children","Overweight",13.6385570595705
+2008,"2-10 years","All children","Overweight",13.4283948565521
+2009,"2-10 years","All children","Overweight",13.8908349612043
+2010,"2-10 years","All children","Overweight",13.61894
+2011,"2-10 years","All children","Overweight",11.885508
+2012,"2-10 years","All children","Overweight",12.807888
+2013,"2-10 years","All children","Overweight",13.1986446622722
+2014,"2-10 years","All children","Overweight",13.7905940142882
+2015,"2-10 years","All children","Overweight",13.2080342986653
+2016,"2-10 years","All children","Overweight",11.040725417292
+2017,"2-10 years","All children","Overweight",12.863937229572
+2018,"2-10 years","All children","Overweight",11.7201787749902
+2019,"2-10 years","All children","Overweight",12.6870582769223
+1995,"2-10 years","All children","Overweight including obese",23.0524402401225
+1996,"2-10 years","All children","Overweight including obese",23.6965640479083
+1997,"2-10 years","All children","Overweight including obese",23.7504914956525
+1998,"2-10 years","All children","Overweight including obese",25.6575086146407
+1999,"2-10 years","All children","Overweight including obese",28.8183979520866
+2000,"2-10 years","All children","Overweight including obese",24.8909150361168
+2001,"2-10 years","All children","Overweight including obese",28.4798442840003
+2002,"2-10 years","All children","Overweight including obese",29.2914724784011
+2003,"2-10 years","All children","Overweight including obese",28.7091635486629
+2004,"2-10 years","All children","Overweight including obese",29.3832409432536
+2005,"2-10 years","All children","Overweight including obese",31.9037616992359
+2006,"2-10 years","All children","Overweight including obese",28.292745379464
+2007,"2-10 years","All children","Overweight including obese",29.1877425672469
+2008,"2-10 years","All children","Overweight including obese",27.3142540210161
+2009,"2-10 years","All children","Overweight including obese",28.3279397513061
+2010,"2-10 years","All children","Overweight including obese",28.2148
+2011,"2-10 years","All children","Overweight including obese",25.826406
+2012,"2-10 years","All children","Overweight including obese",23.374921
+2013,"2-10 years","All children","Overweight including obese",25.6309732608882
+2014,"2-10 years","All children","Overweight including obese",29.2469193748645
+2015,"2-10 years","All children","Overweight including obese",26.0111342117778
+2016,"2-10 years","All children","Overweight including obese",23.4890486835848
+2017,"2-10 years","All children","Overweight including obese",26.2200070050958
+2018,"2-10 years","All children","Overweight including obese",25.2294949294061
+2019,"2-10 years","All children","Overweight including obese",24.5012257014448
+1995,"2-10 years","Boys","Obese",9.65518543769856
+1996,"2-10 years","Boys","Obese",11.0198749386198
+1997,"2-10 years","Boys","Obese",11.3588757445607
+1998,"2-10 years","Boys","Obese",11.8482400676044
+1999,"2-10 years","Boys","Obese",16.5356229673114
+2000,"2-10 years","Boys","Obese",12.3945307214987
+2001,"2-10 years","Boys","Obese",13.599225126156
+2002,"2-10 years","Boys","Obese",15.5184845305625
+2003,"2-10 years","Boys","Obese",15.4271196526408
+2004,"2-10 years","Boys","Obese",16.1868849035236
+2005,"2-10 years","Boys","Obese",17.1257127044196
+2006,"2-10 years","Boys","Obese",17.436203672375
+2007,"2-10 years","Boys","Obese",16.454066318448
+2008,"2-10 years","Boys","Obese",14.4481522416916
+2009,"2-10 years","Boys","Obese",13.7192625121184
+2010,"2-10 years","Boys","Obese",15.33222
+2011,"2-10 years","Boys","Obese",12.414463
+2012,"2-10 years","Boys","Obese",10.821523
+2013,"2-10 years","Boys","Obese",12.8489616848798
+2014,"2-10 years","Boys","Obese",16.8356752326103
+2015,"2-10 years","Boys","Obese",14.1143011520448
+2016,"2-10 years","Boys","Obese",10.9688908936495
+2017,"2-10 years","Boys","Obese",15.1302755281076
+2018,"2-10 years","Boys","Obese",14.6065037825935
+2019,"2-10 years","Boys","Obese",15.4917197380591
+1995,"2-10 years","Boys","Overweight",13.0725918063649
+1996,"2-10 years","Boys","Overweight",14.2864593801964
+1997,"2-10 years","Boys","Overweight",13.2828687004402
+1998,"2-10 years","Boys","Overweight",14.7594357059945
+1999,"2-10 years","Boys","Overweight",14.2988977205202
+2000,"2-10 years","Boys","Overweight",13.7689952211697
+2001,"2-10 years","Boys","Overweight",15.920280870593
+2002,"2-10 years","Boys","Overweight",13.5063261092168
+2003,"2-10 years","Boys","Overweight",15.0797520998024
+2004,"2-10 years","Boys","Overweight",14.5550038922598
+2005,"2-10 years","Boys","Overweight",16.4963476500925
+2006,"2-10 years","Boys","Overweight",12.3853997264618
+2007,"2-10 years","Boys","Overweight",13.3502462690039
+2008,"2-10 years","Boys","Overweight",13.8451817536482
+2009,"2-10 years","Boys","Overweight",16.2279022652851
+2010,"2-10 years","Boys","Overweight",14.272
+2011,"2-10 years","Boys","Overweight",14.938352
+2012,"2-10 years","Boys","Overweight",13.135033
+2013,"2-10 years","Boys","Overweight",13.5684574641016
+2014,"2-10 years","Boys","Overweight",13.5141912597208
+2015,"2-10 years","Boys","Overweight",14.3269654114176
+2016,"2-10 years","Boys","Overweight",10.518970416451
+2017,"2-10 years","Boys","Overweight",13.3678492422129
+2018,"2-10 years","Boys","Overweight",12.9317673532659
+2019,"2-10 years","Boys","Overweight",10.8539678437411
+1995,"2-10 years","Boys","Overweight including obese",22.7277772440635
+1996,"2-10 years","Boys","Overweight including obese",25.3063343188162
+1997,"2-10 years","Boys","Overweight including obese",24.6417444450009
+1998,"2-10 years","Boys","Overweight including obese",26.6076757735989
+1999,"2-10 years","Boys","Overweight including obese",30.8345206878317
+2000,"2-10 years","Boys","Overweight including obese",26.1635259426683
+2001,"2-10 years","Boys","Overweight including obese",29.5195059967489
+2002,"2-10 years","Boys","Overweight including obese",29.0248106397794
+2003,"2-10 years","Boys","Overweight including obese",30.5068717524432
+2004,"2-10 years","Boys","Overweight including obese",30.7418887957834
+2005,"2-10 years","Boys","Overweight including obese",33.6220603545122
+2006,"2-10 years","Boys","Overweight including obese",29.8216033988368
+2007,"2-10 years","Boys","Overweight including obese",29.804312587452
+2008,"2-10 years","Boys","Overweight including obese",28.2933339953398
+2009,"2-10 years","Boys","Overweight including obese",29.9471647774034
+2010,"2-10 years","Boys","Overweight including obese",29.60422
+2011,"2-10 years","Boys","Overweight including obese",27.352815
+2012,"2-10 years","Boys","Overweight including obese",23.956556
+2013,"2-10 years","Boys","Overweight including obese",26.4174191489814
+2014,"2-10 years","Boys","Overweight including obese",30.3498664923311
+2015,"2-10 years","Boys","Overweight including obese",28.4412665634624
+2016,"2-10 years","Boys","Overweight including obese",21.4878613101005
+2017,"2-10 years","Boys","Overweight including obese",28.4981247703205
+2018,"2-10 years","Boys","Overweight including obese",27.5382711358594
+2019,"2-10 years","Boys","Overweight including obese",26.3456875818002
+1995,"2-10 years","Girls","Obese",10.5818041715772
+1996,"2-10 years","Girls","Obese",10.7423292553824
+1997,"2-10 years","Girls","Obese",10.8208970578323
+1998,"2-10 years","Girls","Obese",11.9680830033853
+1999,"2-10 years","Girls","Obese",13.1678628964762
+2000,"2-10 years","Girls","Obese",11.7665559509237
+2001,"2-10 years","Girls","Obese",12.9808541910795
+2002,"2-10 years","Girls","Obese",16.0639797996461
+2003,"2-10 years","Girls","Obese",12.6985012932277
+2004,"2-10 years","Girls","Obese",12.8361700820673
+2005,"2-10 years","Girls","Obese",17.3839590877755
+2006,"2-10 years","Girls","Obese",13.5082266230633
+2007,"2-10 years","Girls","Obese",14.6341426736182
+2008,"2-10 years","Girls","Obese",13.3032765270635
+2009,"2-10 years","Girls","Obese",15.1687972310143
+2010,"2-10 years","Girls","Obese",13.86251
+2011,"2-10 years","Girls","Obese",15.515651
+2012,"2-10 years","Girls","Obese",10.299128
+2013,"2-10 years","Girls","Obese",11.9953062401504
+2014,"2-10 years","Girls","Obese",14.053050958057
+2015,"2-10 years","Girls","Obese",11.4281100573673
+2016,"2-10 years","Girls","Obese",13.9420040104553
+2017,"2-10 years","Girls","Obese",11.6301809567623
+2018,"2-10 years","Girls","Obese",12.3835113948597
+2019,"2-10 years","Girls","Obese",7.94585704501626
+1995,"2-10 years","Girls","Overweight",12.7939458873609
+1996,"2-10 years","Girls","Overweight",11.2819207386355
+1997,"2-10 years","Girls","Overweight",12.0708615774883
+1998,"2-10 years","Girls","Overweight",12.644342830828
+1999,"2-10 years","Girls","Overweight",13.6172788579815
+2000,"2-10 years","Girls","Overweight",11.7393803738432
+2001,"2-10 years","Girls","Overweight",14.5149168953233
+2002,"2-10 years","Girls","Overweight",13.502719369631
+2003,"2-10 years","Girls","Overweight",14.1671544163383
+2004,"2-10 years","Girls","Overweight",15.0589781470825
+2005,"2-10 years","Girls","Overweight",12.8278450541973
+2006,"2-10 years","Girls","Overweight",13.1603959766655
+2007,"2-10 years","Girls","Overweight",13.9301056477922
+2008,"2-10 years","Girls","Overweight",12.9965687865221
+2009,"2-10 years","Girls","Overweight",11.5086759093525
+2010,"2-10 years","Girls","Overweight",12.96858
+2011,"2-10 years","Girls","Overweight",8.736028
+2012,"2-10 years","Girls","Overweight",12.463499
+2013,"2-10 years","Girls","Overweight",12.8107338885612
+2014,"2-10 years","Girls","Overweight",14.0717909159113
+2015,"2-10 years","Girls","Overweight",12.0346683166708
+2016,"2-10 years","Girls","Overweight",11.5675054258532
+2017,"2-10 years","Girls","Overweight",12.3737482495227
+2018,"2-10 years","Girls","Overweight",10.4769892301791
+2019,"2-10 years","Girls","Overweight",14.6152328193067
+1995,"2-10 years","Girls","Overweight including obese",23.375750058938
+1996,"2-10 years","Girls","Overweight including obese",22.0242499940179
+1997,"2-10 years","Girls","Overweight including obese",22.8917586353206
+1998,"2-10 years","Girls","Overweight including obese",24.6124258342133
+1999,"2-10 years","Girls","Overweight including obese",26.7851417544578
+2000,"2-10 years","Girls","Overweight including obese",23.5059363247668
+2001,"2-10 years","Girls","Overweight including obese",27.4957710864028
+2002,"2-10 years","Girls","Overweight including obese",29.5666991692771
+2003,"2-10 years","Girls","Overweight including obese",26.865655709566
+2004,"2-10 years","Girls","Overweight including obese",27.8951482291498
+2005,"2-10 years","Girls","Overweight including obese",30.2118041419728
+2006,"2-10 years","Girls","Overweight including obese",26.6686225997288
+2007,"2-10 years","Girls","Overweight including obese",28.5642483214105
+2008,"2-10 years","Girls","Overweight including obese",26.2998453135856
+2009,"2-10 years","Girls","Overweight including obese",26.6774731403668
+2010,"2-10 years","Girls","Overweight including obese",26.83109
+2011,"2-10 years","Girls","Overweight including obese",24.251679
+2012,"2-10 years","Girls","Overweight including obese",22.762627
+2013,"2-10 years","Girls","Overweight including obese",24.8060401287116
+2014,"2-10 years","Girls","Overweight including obese",28.1248418739682
+2015,"2-10 years","Girls","Overweight including obese",23.4627783740381
+2016,"2-10 years","Girls","Overweight including obese",25.5095094363085
+2017,"2-10 years","Girls","Overweight including obese",24.003929206285
+2018,"2-10 years","Girls","Overweight including obese",22.8605006250388
+2019,"2-10 years","Girls","Overweight including obese",22.561089864323
+1995,"2-15 years","All children","Obese",11.6750880721574
+1996,"2-15 years","All children","Obese",12.2402122476474
+1997,"2-15 years","All children","Obese",12.7675747801066
+1998,"2-15 years","All children","Obese",13.6898118032478
+1999,"2-15 years","All children","Obese",15.5365534382285
+2000,"2-15 years","All children","Obese",14.4998426058863
+2001,"2-15 years","All children","Obese",15.185835013266
+2002,"2-15 years","All children","Obese",17.3522515438093
+2003,"2-15 years","All children","Obese",16.8979252846526
+2004,"2-15 years","All children","Obese",18.9220978382917
+2005,"2-15 years","All children","Obese",18.6449601608515
+2006,"2-15 years","All children","Obese",16.3282661523502
+2007,"2-15 years","All children","Obese",16.7887906754906
+2008,"2-15 years","All children","Obese",16.0430119488342
+2009,"2-15 years","All children","Obese",15.6635080012608
+2010,"2-15 years","All children","Obese",15.97186
+2011,"2-15 years","All children","Obese",16.259238
+2012,"2-15 years","All children","Obese",13.723609
+2013,"2-15 years","All children","Obese",15.2304247703905
+2014,"2-15 years","All children","Obese",17.1055532751222
+2015,"2-15 years","All children","Obese",14.0191639378666
+2016,"2-15 years","All children","Obese",15.9659910387192
+2017,"2-15 years","All children","Obese",16.9274477627561
+2018,"2-15 years","All children","Obese",15.0409375768909
+2019,"2-15 years","All children","Obese",16.3223253324629
+1995,"2-15 years","All children","Overweight",13.3202833214058
+1996,"2-15 years","All children","Overweight",13.3609076379085
+1997,"2-15 years","All children","Overweight",13.1648115163896
+1998,"2-15 years","All children","Overweight",14.2962507491238
+1999,"2-15 years","All children","Overweight",14.1340368449056
+2000,"2-15 years","All children","Overweight",12.7198383721802
+2001,"2-15 years","All children","Overweight",15.5447963156061
+2002,"2-15 years","All children","Overweight",14.0454620159328
+2003,"2-15 years","All children","Overweight",15.0227969662694
+2004,"2-15 years","All children","Overweight",15.366007453664
+2005,"2-15 years","All children","Overweight",14.7825404359692
+2006,"2-15 years","All children","Overweight",13.9654827502636
+2007,"2-15 years","All children","Overweight",14.3041745227608
+2008,"2-15 years","All children","Overweight",14.2853067653272
+2009,"2-15 years","All children","Overweight",14.1696560575986
+2010,"2-15 years","All children","Overweight",14.32377
+2011,"2-15 years","All children","Overweight",13.710699
+2012,"2-15 years","All children","Overweight",14.217599
+2013,"2-15 years","All children","Overweight",14.2386988548106
+2014,"2-15 years","All children","Overweight",14.1280716868135
+2015,"2-15 years","All children","Overweight",14.2068951369669
+2016,"2-15 years","All children","Overweight",11.7454640289548
+2017,"2-15 years","All children","Overweight",13.0278659944951
+2018,"2-15 years","All children","Overweight",13.1932272166109
+2019,"2-15 years","All children","Overweight",13.6591662534128
+1995,"2-15 years","All children","Overweight including obese",24.9953713935632
+1996,"2-15 years","All children","Overweight including obese",25.6011198855558
+1997,"2-15 years","All children","Overweight including obese",25.9323862964962
+1998,"2-15 years","All children","Overweight including obese",27.9860625523715
+1999,"2-15 years","All children","Overweight including obese",29.6705902831339
+2000,"2-15 years","All children","Overweight including obese",27.2196809780665
+2001,"2-15 years","All children","Overweight including obese",30.7306313288723
+2002,"2-15 years","All children","Overweight including obese",31.397713559742
+2003,"2-15 years","All children","Overweight including obese",31.9207222509219
+2004,"2-15 years","All children","Overweight including obese",34.2881052919557
+2005,"2-15 years","All children","Overweight including obese",33.4275005968208
+2006,"2-15 years","All children","Overweight including obese",30.2937489026139
+2007,"2-15 years","All children","Overweight including obese",31.0929651982512
+2008,"2-15 years","All children","Overweight including obese",30.3283187141613
+2009,"2-15 years","All children","Overweight including obese",29.8331640588595
+2010,"2-15 years","All children","Overweight including obese",30.29562
+2011,"2-15 years","All children","Overweight including obese",29.969937
+2012,"2-15 years","All children","Overweight including obese",27.941208
+2013,"2-15 years","All children","Overweight including obese",29.469123625201
+2014,"2-15 years","All children","Overweight including obese",31.2336249619357
+2015,"2-15 years","All children","Overweight including obese",28.2260590748335
+2016,"2-15 years","All children","Overweight including obese",27.711455067674
+2017,"2-15 years","All children","Overweight including obese",29.9553137572512
+2018,"2-15 years","All children","Overweight including obese",28.2341647935018
+2019,"2-15 years","All children","Overweight including obese",29.9814915858758
+1995,"2-15 years","Boys","Obese",11.1177570970721
+1996,"2-15 years","Boys","Obese",12.1100356342371
+1997,"2-15 years","Boys","Obese",12.9352509278056
+1998,"2-15 years","Boys","Obese",13.3980664903191
+1999,"2-15 years","Boys","Obese",17.0315013048913
+2000,"2-15 years","Boys","Obese",14.6606175889896
+2001,"2-15 years","Boys","Obese",15.6105769526837
+2002,"2-15 years","Boys","Obese",17.2754573265414
+2003,"2-15 years","Boys","Obese",17.4070331729864
+2004,"2-15 years","Boys","Obese",19.357793348237
+2005,"2-15 years","Boys","Obese",18.4701877791278
+2006,"2-15 years","Boys","Obese",17.6155244828549
+2007,"2-15 years","Boys","Obese",17.1274804553686
+2008,"2-15 years","Boys","Obese",16.849098721301
+2009,"2-15 years","Boys","Obese",16.0548019752697
+2010,"2-15 years","Boys","Obese",17.07074
+2011,"2-15 years","Boys","Obese",16.622001
+2012,"2-15 years","Boys","Obese",14.038784
+2013,"2-15 years","Boys","Obese",15.6881501586912
+2014,"2-15 years","Boys","Obese",18.5690185489107
+2015,"2-15 years","Boys","Obese",15.3806625983594
+2016,"2-15 years","Boys","Obese",15.8532216015314
+2017,"2-15 years","Boys","Obese",17.9686828233979
+2018,"2-15 years","Boys","Obese",16.3108070635074
+2019,"2-15 years","Boys","Obese",19.8614787758202
+1995,"2-15 years","Boys","Overweight",13.3457971816097
+1996,"2-15 years","Boys","Overweight",14.5821922534219
+1997,"2-15 years","Boys","Overweight",13.1335603469655
+1998,"2-15 years","Boys","Overweight",14.7971029980949
+1999,"2-15 years","Boys","Overweight",14.6080472527243
+2000,"2-15 years","Boys","Overweight",12.5821801552814
+2001,"2-15 years","Boys","Overweight",15.30596470408
+2002,"2-15 years","Boys","Overweight",13.8819839171707
+2003,"2-15 years","Boys","Overweight",14.850363522952
+2004,"2-15 years","Boys","Overweight",13.9135686076906
+2005,"2-15 years","Boys","Overweight",16.0922623288436
+2006,"2-15 years","Boys","Overweight",13.4990409807358
+2007,"2-15 years","Boys","Overweight",14.278430517587
+2008,"2-15 years","Boys","Overweight",14.5557107869096
+2009,"2-15 years","Boys","Overweight",15.3671175145797
+2010,"2-15 years","Boys","Overweight",14.29349
+2011,"2-15 years","Boys","Overweight",14.806811
+2012,"2-15 years","Boys","Overweight",13.852084
+2013,"2-15 years","Boys","Overweight",14.1654314943461
+2014,"2-15 years","Boys","Overweight",13.1696137930881
+2015,"2-15 years","Boys","Overweight",14.9477979118919
+2016,"2-15 years","Boys","Overweight",10.1063880200946
+2017,"2-15 years","Boys","Overweight",13.4784750490756
+2018,"2-15 years","Boys","Overweight",14.0969841419647
+2019,"2-15 years","Boys","Overweight",12.1079663816048
+1995,"2-15 years","Boys","Overweight including obese",24.4635542786817
+1996,"2-15 years","Boys","Overweight including obese",26.692227887659
+1997,"2-15 years","Boys","Overweight including obese",26.0688112747711
+1998,"2-15 years","Boys","Overweight including obese",28.195169488414
+1999,"2-15 years","Boys","Overweight including obese",31.6395485576155
+2000,"2-15 years","Boys","Overweight including obese",27.242797744271
+2001,"2-15 years","Boys","Overweight including obese",30.9165416567636
+2002,"2-15 years","Boys","Overweight including obese",31.1574412437121
+2003,"2-15 years","Boys","Overweight including obese",32.2573966959385
+2004,"2-15 years","Boys","Overweight including obese",33.2713619559275
+2005,"2-15 years","Boys","Overweight including obese",34.5624501079714
+2006,"2-15 years","Boys","Overweight including obese",31.1145654635906
+2007,"2-15 years","Boys","Overweight including obese",31.4059109729557
+2008,"2-15 years","Boys","Overweight including obese",31.4048095082105
+2009,"2-15 years","Boys","Overweight including obese",31.4219194898494
+2010,"2-15 years","Boys","Overweight including obese",31.36423
+2011,"2-15 years","Boys","Overweight including obese",31.428812
+2012,"2-15 years","Boys","Overweight including obese",27.890868
+2013,"2-15 years","Boys","Overweight including obese",29.8535816530373
+2014,"2-15 years","Boys","Overweight including obese",31.7386323419989
+2015,"2-15 years","Boys","Overweight including obese",30.3284605102513
+2016,"2-15 years","Boys","Overweight including obese",25.9596096216261
+2017,"2-15 years","Boys","Overweight including obese",31.4471578724734
+2018,"2-15 years","Boys","Overweight including obese",30.4077912054721
+2019,"2-15 years","Boys","Overweight including obese",31.969445157425
+1995,"2-15 years","Girls","Obese",12.2375141635145
+1996,"2-15 years","Girls","Obese",12.3780165924196
+1997,"2-15 years","Girls","Obese",12.6002708296188
+1998,"2-15 years","Girls","Obese",13.9984421569378
+1999,"2-15 years","Girls","Obese",13.9989864104629
+2000,"2-15 years","Girls","Obese",14.3326430995068
+2001,"2-15 years","Girls","Obese",14.7726013081283
+2002,"2-15 years","Girls","Obese",17.4313673804756
+2003,"2-15 years","Girls","Obese",16.366969199084
+2004,"2-15 years","Girls","Obese",18.4553665934295
+2005,"2-15 years","Girls","Obese",18.8214242881637
+2006,"2-15 years","Girls","Obese",14.967039918174
+2007,"2-15 years","Girls","Obese",16.4388308101062
+2008,"2-15 years","Girls","Obese",15.1959557994983
+2009,"2-15 years","Girls","Obese",15.2555331721421
+2010,"2-15 years","Girls","Obese",14.84791
+2011,"2-15 years","Girls","Obese",15.884979
+2012,"2-15 years","Girls","Obese",13.546771
+2013,"2-15 years","Girls","Obese",14.7471931257338
+2014,"2-15 years","Girls","Obese",15.5925693588699
+2015,"2-15 years","Girls","Obese",12.5994633712685
+2016,"2-15 years","Girls","Obese",16.0810559447942
+2017,"2-15 years","Girls","Obese",15.8779712824345
+2018,"2-15 years","Girls","Obese",13.7060899531261
+2019,"2-15 years","Girls","Obese",12.6230031120582
+1995,"2-15 years","Girls","Overweight",13.2945362136523
+1996,"2-15 years","Girls","Overweight",12.068061543574
+1997,"2-15 years","Girls","Overweight",13.1959933163885
+1998,"2-15 years","Girls","Overweight",13.7664111942233
+1999,"2-15 years","Girls","Overweight",13.6465129719116
+2000,"2-15 years","Girls","Overweight",12.8629973728554
+2001,"2-15 years","Girls","Overweight",15.7771568681583
+2002,"2-15 years","Girls","Overweight",14.2138823348101
+2003,"2-15 years","Girls","Overweight",15.2026303339756
+2004,"2-15 years","Girls","Overweight",16.9219073314309
+2005,"2-15 years","Girls","Overweight",13.4601408178599
+2006,"2-15 years","Girls","Overweight",14.4587270030684
+2007,"2-15 years","Girls","Overweight",14.3307751736232
+2008,"2-15 years","Girls","Overweight",14.0011594537595
+2009,"2-15 years","Girls","Overweight",12.9211468401351
+2010,"2-15 years","Girls","Overweight",14.35474
+2011,"2-15 years","Girls","Overweight",12.579853
+2012,"2-15 years","Girls","Overweight",14.605745
+2013,"2-15 years","Girls","Overweight",14.3160489603582
+2014,"2-15 years","Girls","Overweight",15.1189605063735
+2015,"2-15 years","Girls","Overweight",13.434319944734
+2016,"2-15 years","Girls","Overweight",13.4179041130119
+2017,"2-15 years","Girls","Overweight",12.5736903501303
+2018,"2-15 years","Girls","Overweight",12.2432258212047
+2019,"2-15 years","Girls","Overweight",15.2805675986522
+1995,"2-15 years","Girls","Overweight including obese",25.5320503771667
+1996,"2-15 years","Girls","Overweight including obese",24.4460781359936
+1997,"2-15 years","Girls","Overweight including obese",25.7962641460072
+1998,"2-15 years","Girls","Overweight including obese",27.7648533511611
+1999,"2-15 years","Girls","Overweight including obese",27.6454993823745
+2000,"2-15 years","Girls","Overweight including obese",27.1956404723622
+2001,"2-15 years","Girls","Overweight including obese",30.5497581762866
+2002,"2-15 years","Girls","Overweight including obese",31.6452497152857
+2003,"2-15 years","Girls","Overweight including obese",31.5695995330597
+2004,"2-15 years","Girls","Overweight including obese",35.3772739248604
+2005,"2-15 years","Girls","Overweight including obese",32.2815651060236
+2006,"2-15 years","Girls","Overweight including obese",29.4257669212423
+2007,"2-15 years","Girls","Overweight including obese",30.7696059837294
+2008,"2-15 years","Girls","Overweight including obese",29.1971152532578
+2009,"2-15 years","Girls","Overweight including obese",28.1766800122773
+2010,"2-15 years","Girls","Overweight including obese",29.20266
+2011,"2-15 years","Girls","Overweight including obese",28.464833
+2012,"2-15 years","Girls","Overweight including obese",27.994665
+2013,"2-15 years","Girls","Overweight including obese",29.063242086092
+2014,"2-15 years","Girls","Overweight including obese",30.7115298652434
+2015,"2-15 years","Girls","Overweight including obese",26.0337833160025
+2016,"2-15 years","Girls","Overweight including obese",29.4989600578061
+2017,"2-15 years","Girls","Overweight including obese",28.4516616325649
+2018,"2-15 years","Girls","Overweight including obese",25.9493157743308
+2019,"2-15 years","Girls","Overweight including obese",27.9035707107105
