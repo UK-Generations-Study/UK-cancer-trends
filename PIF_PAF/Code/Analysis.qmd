@@ -184,8 +184,6 @@ Data Availabitlity
 
 1.  All diet data stops at 2008 
 
-2.  Montse has suggested industry data for dietary factors, purely for graphic purposes. These should be found where possible. 
-
 Relative Risk availability:  
 
 1.  Because we are limited to metanalysis, some risk factor/cancer site combinations have causal evidence through many papers, but no meta analysis has been published  
@@ -197,6 +195,15 @@ Relative Risk availability:  
 RR/ risk factor match ups 
 
 1.  Physical activity has been measured differently over the years, all recent meta analysis are in MET units/week for relative risks but this is not how data were measured and collected historically 
+
+### Urgent needed fixes: 
+
+1.  Smoking/Alcohol/BMI by IMD
+2.  Risk factor plots by age (\<30, 30-50, 50-70, 70+)
+3.  WHY is the all ages PAF so different than the PAF split by age
+4.  BMI data is only until 2018 (even in the figure reports)- where is 2019?
+5.  Ultra Processed Foods and Colorectal RR scenario generation
+6.  PHYSICAL ACTIVITY!!
 
 ## Setting up
 
@@ -270,6 +277,118 @@ data_PAFallages <- read.csv("../Data/PAF_allages.csv")
 
 #Reading in the PIF all ages data 
 data_PIFallages <- read.csv("../Data/PIF_allages.csv")
+
+```
+
+## Generic PAF relationship
+
+```{r}
+library(gridExtra)
+#creating a sequence of prevalence 
+prevalencerange <- seq(0, 1, by = 0.01)
+# Define a constant Relative Risk (RR)
+RRconstantlow <- 1.2 # Example RR constant
+RRconstant4 <- 1.5
+RRconstantmed <- 5.0
+RRconstanthigh <- 10.0 
+# Calculate the PAF for each prevalence value
+PAFlow <- (prevalencerange * (RRconstantlow-1)) / (1 + (prevalencerange * (RRconstantlow-1)))
+PAF4 <- (prevalencerange * (RRconstant4-1)) / (1 + (prevalencerange * (RRconstant4-1)))
+PAFmed <- (prevalencerange * (RRconstantmed-1)) / (1 + (prevalencerange * (RRconstantmed-1)))
+PAFhigh <- (prevalencerange * (RRconstanthigh-1)) / (1 + (prevalencerange * (RRconstanthigh-1)))
+# Plot the PAF against the prevalence
+pafplotlow <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFlow), aes(x = prevalence, y = PAF)) +
+  geom_line(color = "blue", size = 1) +
+  labs(title = "RR = 1.2",
+       x = "RF Prevalence",
+       y = "PAF") +
+  ylim(0, 1) +
+  theme_minimal()
+pafplot4 <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAF4), aes(x = prevalence, y = PAF)) +
+  geom_line(color = "blue", size = 1) +
+  labs(title = "RR = 1.5",
+       x = "RF Prevalence",
+       y = "PAF") +
+  ylim(0, 1) +
+  theme_minimal()
+pafplotmed <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFmed), aes(x = prevalence, y = PAF)) +
+  geom_line(color = "blue", size = 1) +
+  labs(title = "RR = 5.0",
+       x = "RF Prevalence",
+       y = "PAF") +
+  ylim(0, 1) +
+  theme_minimal()
+pafplothigh<- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFhigh), aes(x = prevalence, y = PAF)) +
+  geom_line(color = "blue", size = 1) +
+  labs(title = "RR = 10.0",
+       x = "RF Prevalence",
+       y = "PAF") +
+  ylim(0, 1) +
+  theme_minimal() 
+# Showing the plot
+changingpaf <- grid.arrange(pafplotlow, pafplot4, pafplotmed, pafplothigh, ncol=4)
+```
+
+## Generic PIF relationship
+
+```{r}
+#creating a sequence of exposure 
+exposurerange1 <- seq(0, .2, by = 0.01)
+exposurerange2 <- seq(0.2, 0.4, by = 0.01)
+exposurerange3 <- seq(0.4, 0.6, by = 0.01)
+exposurerange4 <- seq(0.6, 0.8, by = 0.01)
+# Define a constant Relative Risk (RR)
+RR <- c(1.2, 1.5, 5.0, 10.0) 
+
+#calculating the PIFs 
+calculate_pif_data <- function(exposurerange, pif_label) {
+  pif_data <- sapply(RR, function(rr) {
+    ((max(exposurerange) - exposurerange) * (rr - 1)) / (1 + (max(exposurerange) * (rr - 1)))
+  })
+  colnames(pif_data) <- paste0("RR_", RR)
+  
+  # Reshape into a long format for ggplot
+  pif_df <- as.data.frame(pif_data) %>%
+    mutate(exposure_diff = max(exposurerange) - exposurerange) %>%
+    pivot_longer(
+      cols = starts_with("RR_"),
+      names_to = "RR",
+      values_to = "PIF"
+    ) %>%
+    mutate(PIF_Label = pif_label)  # Add a label for PIF
+  
+  return(pif_df)
+}
+
+# Calculate PIF data for each range
+pif1_data <- calculate_pif_data(exposurerange1, ".20-0")
+pif2_data <- calculate_pif_data(exposurerange2, ".40-.20")
+pif3_data <- calculate_pif_data(exposurerange3, ".60-.40")
+pif4_data <- calculate_pif_data(exposurerange4, ".80-.60")
+
+# Combine all data into one dataframe
+combined_pif_data <- bind_rows(pif1_data, pif2_data, pif3_data, pif4_data) %>%
+  mutate(RR = factor(RR, levels = unique(RR)))
+
+pif_plot <- ggplot(combined_pif_data, aes(x = exposure_diff, y = PIF, color = RR)) +
+  geom_line(size = 1) +
+  facet_grid(PIF_Label ~ RR) +  # Facet by PIF (rows) and RR (columns)
+  labs(
+    title = "Theoretical PIFs with different RR and Exposure Changes",
+    x = "Exposure Change",
+    y = "PIF",
+    color = "Relative Risk"
+  ) +
+  theme_minimal() +
+  theme(
+    strip.text = element_text(size = 10, face = "bold"),
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    legend.position = "top"
+  )
+
+# Display the plot
+pif_plot
+
 
 ```
 
@@ -742,7 +861,7 @@ ggsave(diettrends,
 
 \*Fibre is daily fibre deficiency based on the UK recommendation of consuming 30g/day
 
-## Figure 2 - Trends in risk factors table
+## Figure 2 - Trends in risk factors APC table
 
 ```{r}
 
@@ -1227,7 +1346,7 @@ data_attr_cases_bar <- data_paf_long_individual %>%
     PAF = ifelse(cancer_site == "Breast" & sex == "Men", 0, PAF)
   ) %>% 
   filter(
-    year == 2019 | (year == 2018 & all(PAF[year == 2019] == 0)) #this includes 2019 PAF or, if there is none due to lack of data, then it pulls the 2018 PAF
+    year == 2019 
   ) %>%
   select(
     -count, - Rate
@@ -1787,6 +1906,169 @@ ggplot(data_childhood_bmi |> filter(level != "Overweight including obese") |> fi
 
 ```
 
+### Childhood BMI - APC trends
+
+```{r}
+
+# Read in joinpoint data 
+data_childhoodbmi_joinpoint <- read.delim("../Data/Joinpoint/childhoodbmi/export.Export.APC.txt", sep = "\t") 
+
+# Clean the childhood bmi data 
+data_childhood_bmi_clean <- data_childhood_bmi |>
+  rename(year = name) |>
+  select (year, age_group, sex, level, value) |>
+  filter(
+    level %in% c("Obese", "Overweight"), 
+    age_group != "2-15 years", 
+    sex != "All children"
+  )
+
+# Merge joinpoint data into cancer data
+data_childhoodbmi_joinpoint_last <- data_childhoodbmi_joinpoint |>
+  filter(Model == Segment)
+
+data_childhoodbmi_plot <- merge(data_childhood_bmi_clean, data_childhoodbmi_joinpoint_last, by = c("sex", "age_group", "level"), all.x = T) |>
+  mutate(
+    
+    last_segment = between(year, Segment.Start, Segment.End),
+    
+    APC_clean = paste0(round(APC, digits = 2), if_else(APC.Significant == 1, "*", ""))
+    
+  ) 
+
+# Need to get rows at join and duplicate with alternate last_segment
+data_childhoodbmi_plot_new_rows <- data_childhoodbmi_plot |>
+  group_by(sex, age_group, level) |>
+  filter(last_segment) |>
+  filter(year == min(year)) |>
+  mutate(last_segment = F) |>
+  ungroup()
+
+# Now add back in
+data_childhoodbmi_plot <- rbind(data_childhoodbmi_plot, data_childhoodbmi_plot_new_rows)
+
+# Now create labels
+data_childhoodbmi_plot_labels <- data_childhoodbmi_plot |>
+  group_by(age_group, level) |>
+  mutate(
+    value_range = max(value) - min(value)
+  ) |>
+  group_by(sex, age_group, level) |>
+  filter(last_segment) |>
+  filter(year == max(year)) |>
+  reframe(
+    
+    year = max(year) + 1.8,
+    value = max(value),
+    value_range = value_range[1],
+    APC_clean = APC_clean[1]
+    
+  ) |>
+  distinct() |>
+  # Now attempting to do manual repelling of plots away from each other
+  group_by(age_group, level) |>
+  mutate(
+    
+    value = case_when(
+      n() == 1 ~ value,
+      max(value) - min(value) < value_range/2 & value == min(value) ~ value - (value_range/2 -  (max(value) - min(value)))/2,
+      max(value) - min(value) < value_range/2 & value == max(value) ~ value + (value_range/2 -  (max(value) - min(value)))/2,
+      TRUE ~ value
+    )
+    
+  )
+
+# Create invisible points to expand y limits
+data_childhoodbmi_invisible_points <- data_childhoodbmi_plot |>
+  group_by(sex, age_group, level) |>
+  summarise(
+
+    year = 2001,
+    value = max(value) + (max(value) - min(value))/2
+
+  )
+
+
+# Removing 2020 as COVID affected cases
+ggplot(data_childhoodbmi_plot, aes(x = year, y = value, fill = sex, colour = sex)) +
+  xlim(1995, 2021.5) +
+  geom_point() +
+  geom_point(data = data_childhoodbmi_invisible_points, alpha = 0) +
+  geom_line(aes(linetype = last_segment)) +
+  geom_label(data = data_childhoodbmi_plot_labels, aes(label = APC_clean),
+             fill = "white", 
+             size = 3, show.legend = F
+             ) +
+  theme_minimal() +
+  ylim(0,30)+
+  geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
+            colour = "black", fill = NA, inherit.aes = FALSE) +
+  theme(strip.text = element_text(face = "bold"), 
+          axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_x_continuous(
+    breaks = seq(1995, 2019, by = 3),  # Define the x-axis breaks
+    limits = c(1995, 2023)
+    )+
+  ylab("Percentage (%)") +
+  xlab("Year") +
+  labs(colour = "Sex", fill = "Sex", linetype = "Last Segment") +
+  ggtitle("Trends in Childhood BMI in England (1995-2019)") +
+  labs(subtitle = "Labels show APC for most recent trend, * indicates a significant trend") +
+  facet_grid(rows = vars(age_group), cols = vars(level), scales = "free_y") 
+
+ggsave(filename = paste0("../Output/Plots/ChildhoodBMI_APC.png"), bg = "white", height = 16, width = 10)
+```
+
+### Childhood BMI - APC table
+
+```{r}
+
+childhoodbmi_table <- data_childhoodbmi_joinpoint_last %>%
+  filter(Model == Segment) %>%
+  mutate(
+    APC = round(APC, 2), 
+    APC.95..LCL = round(APC.95..LCL, 2), 
+    APC.95..UCL = round(APC.95..UCL, 2),
+    P.Value = round(P.Value,2),
+    CI = paste0("(", APC.95..LCL, ", ", APC.95..UCL, ")"), 
+    TimePeriod = paste0("(", Segment.Start, ", ", Segment.End, ")")
+    ) %>%
+  select(
+   sex,level, age_group, TimePeriod, APC, CI, P.Value 
+  ) %>%
+  filter(
+    level %in% c("Obese", "Overweight"), 
+    age_group != "2-15 years", 
+    sex != "All children"
+  )
+
+#table formatting 
+childhoodbmi_apc_table <- childhoodbmi_table %>%
+  arrange(age_group, APC) %>%
+  gt(groupname_col = "level") %>% # Specify group column
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  ) %>%
+  tab_style(
+    style = list(
+      cell_text(weight = "bold"),
+      cell_fill(color = "lightgray"),
+      cell_borders(sides = "top"),
+      cell_borders(sides = "bottom")
+    ),
+    locations = cells_row_groups(groups = everything())
+  ) %>%
+  cols_width(
+    everything() ~ px(100) 
+  ) %>%
+  tab_header(
+    title = md("Most recent APC by Childhood BMI level, age group , and sex")
+  )
+
+childhoodbmi_apc_table
+```
+
 ### Adult BMI
 
 The [BMI data from Health Survey England](https://files.digital.nhs.uk/9D/4195D5/HSE19-Overweight-obesity-rep.pdf)only goes back until 1993 in England but it shows increasing trends for overweight (includeing obesity) from 1993-2000, and then steadier trends - more in men than in women. Obesity on its own has been steadily increasing.
@@ -1812,6 +2094,10 @@ Cannot find a good source.
 According the [HSE 2019 report on overweight and obesity](https://digital.nhs.uk/data-and-information/publications/statistical/health-survey-for-england/2019/main-findings#overweight-and-obesity), people in the most deprived quintiles are more likely to be overweight and obese. This pattern is more pronounced in women than in men.
 
 ![](images/clipboard-1536373751.png)
+
+Additionally in the same 2019 HSE report, childhood BMI varies by equivalised household income (takes number of adults/dependent children along with overall household income).
+
+![](images/clipboard-2065671382.png)
 
 ### Smoking
 
@@ -1987,9 +2273,9 @@ This figure is from [Health Survey England](https://files.digital.nhs.uk/23/6B5D
 
 #### Metabolic Syndrome
 
-## Other Figures
+## RR Scenarios
 
-#### Obesity and Colorectal Cancer alternate RR scenario
+#### Adult Obesity and Colorectal Cancer alternate RR scenario
 
 The reported RR for colorectal and BMI:
 
@@ -2009,16 +2295,15 @@ Below are scenarios if the RR for obesity only is:
 
 riskfactors <- data_rf %>%
   filter(
-    level == "Obese", 
-    year <= 2009
+    level == "Obese"
   )
 
 source("Functions/pifpaf_scenario_functions.R")
 
-youngmen_obesescenario <- pif_scenarioBMI(riskfactors %>% filter(sex == "Men", age_group == "20-49"))
-oldmen_obesescenario <- pif_scenarioBMI(riskfactors %>% filter(sex == "Men", age_group == "50+"))
-youngwomen_obesescenario <- pif_scenarioBMI(riskfactors %>% filter(sex == "Women", age_group == "20-49"))
-oldwomen_obesescenario <- pif_scenarioBMI(riskfactors %>% filter(sex == "Women", age_group == "50+"))
+youngmen_obesescenario <- pif_scenarioBMI(riskfactors %>% filter(sex == "Men", age_group == "20-49"), 1997, 2009)
+oldmen_obesescenario <- pif_scenarioBMI(riskfactors %>% filter(sex == "Men", age_group == "50+"),1997, 2009)
+youngwomen_obesescenario <- pif_scenarioBMI(riskfactors %>% filter(sex == "Women", age_group == "20-49"),1997, 2009)
+oldwomen_obesescenario <- pif_scenarioBMI(riskfactors %>% filter(sex == "Women", age_group == "50+"),1997, 2009)
 obesescenario <- rbind(youngmen_obesescenario, oldmen_obesescenario, youngwomen_obesescenario, oldwomen_obesescenario) %>%
   select(-variable) %>%
   mutate(
@@ -2070,218 +2355,36 @@ pifobesescenario_table
 
 ```
 
-#### Generic PAF relationship
+#### Childhood obesity and Colorectal Cancer alternate RR scenario
+
+There is a 20 year time lag here, meaning that the RR would have to be x if the PAF from childhood obesity in 2019 were \[scenario input\] given the childhood obesity prevalence in 1999.
 
 ```{r}
-library(gridExtra)
-#creating a sequence of prevalence 
-prevalencerange <- seq(0, 1, by = 0.01)
-# Define a constant Relative Risk (RR)
-RRconstantlow <- 1.2 # Example RR constant
-RRconstant4 <- 1.5
-RRconstantmed <- 5.0
-RRconstanthigh <- 10.0 
-# Calculate the PAF for each prevalence value
-PAFlow <- (prevalencerange * (RRconstantlow-1)) / (1 + (prevalencerange * (RRconstantlow-1)))
-PAF4 <- (prevalencerange * (RRconstant4-1)) / (1 + (prevalencerange * (RRconstant4-1)))
-PAFmed <- (prevalencerange * (RRconstantmed-1)) / (1 + (prevalencerange * (RRconstantmed-1)))
-PAFhigh <- (prevalencerange * (RRconstanthigh-1)) / (1 + (prevalencerange * (RRconstanthigh-1)))
-# Plot the PAF against the prevalence
-pafplotlow <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFlow), aes(x = prevalence, y = PAF)) +
-  geom_line(color = "blue", size = 1) +
-  labs(title = "RR = 1.2",
-       x = "RF Prevalence",
-       y = "PAF") +
-  ylim(0, 1) +
-  theme_minimal()
-pafplot4 <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAF4), aes(x = prevalence, y = PAF)) +
-  geom_line(color = "blue", size = 1) +
-  labs(title = "RR = 1.5",
-       x = "RF Prevalence",
-       y = "PAF") +
-  ylim(0, 1) +
-  theme_minimal()
-pafplotmed <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFmed), aes(x = prevalence, y = PAF)) +
-  geom_line(color = "blue", size = 1) +
-  labs(title = "RR = 5.0",
-       x = "RF Prevalence",
-       y = "PAF") +
-  ylim(0, 1) +
-  theme_minimal()
-pafplothigh<- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFhigh), aes(x = prevalence, y = PAF)) +
-  geom_line(color = "blue", size = 1) +
-  labs(title = "RR = 10.0",
-       x = "RF Prevalence",
-       y = "PAF") +
-  ylim(0, 1) +
-  theme_minimal() 
-# Showing the plot
-changingpaf <- grid.arrange(pafplotlow, pafplot4, pafplotmed, pafplothigh, ncol=4)
-```
 
-#### Generic PIF relationship
-
-```{r}
-#creating a sequence of exposure 
-exposurerange1 <- seq(0, .2, by = 0.01)
-exposurerange2 <- seq(0.2, 0.4, by = 0.01)
-exposurerange3 <- seq(0.4, 0.6, by = 0.01)
-exposurerange4 <- seq(0.6, 0.8, by = 0.01)
-# Define a constant Relative Risk (RR)
-RR <- c(1.2, 1.5, 5.0, 10.0) 
-
-#calculating the PIFs 
-calculate_pif_data <- function(exposurerange, pif_label) {
-  pif_data <- sapply(RR, function(rr) {
-    ((max(exposurerange) - exposurerange) * (rr - 1)) / (1 + (max(exposurerange) * (rr - 1)))
-  })
-  colnames(pif_data) <- paste0("RR_", RR)
-  
-  # Reshape into a long format for ggplot
-  pif_df <- as.data.frame(pif_data) %>%
-    mutate(exposure_diff = max(exposurerange) - exposurerange) %>%
-    pivot_longer(
-      cols = starts_with("RR_"),
-      names_to = "RR",
-      values_to = "PIF"
-    ) %>%
-    mutate(PIF_Label = pif_label)  # Add a label for PIF
-  
-  return(pif_df)
-}
-
-# Calculate PIF data for each range
-pif1_data <- calculate_pif_data(exposurerange1, ".20-0")
-pif2_data <- calculate_pif_data(exposurerange2, ".40-.20")
-pif3_data <- calculate_pif_data(exposurerange3, ".60-.40")
-pif4_data <- calculate_pif_data(exposurerange4, ".80-.60")
-
-# Combine all data into one dataframe
-combined_pif_data <- bind_rows(pif1_data, pif2_data, pif3_data, pif4_data) %>%
-  mutate(RR = factor(RR, levels = unique(RR)))
-
-pif_plot <- ggplot(combined_pif_data, aes(x = exposure_diff, y = PIF, color = RR)) +
-  geom_line(size = 1) +
-  facet_grid(PIF_Label ~ RR) +  # Facet by PIF (rows) and RR (columns)
-  labs(
-    title = "Theoretical PIFs with different RR and Exposure Changes",
-    x = "Exposure Change",
-    y = "PIF",
-    color = "Relative Risk"
-  ) +
-  theme_minimal() +
-  theme(
-    strip.text = element_text(size = 10, face = "bold"),
-    axis.text.x = element_text(angle = 45, hjust = 1),
-    legend.position = "top"
+# Extract and format the data 
+data_childhoodbmi_scenario <- data_childhood_bmi_clean %>%
+  filter(
+    level == "Obese"
+  ) %>%
+  mutate(
+    N = 0, 
+    variable = "bmi", 
+    value = value/100
   )
 
-# Display the plot
-pif_plot
+# Calculate RR scenarios via PAF function loaded earlier
+childhoodbmi_2019PAFscenario <- paf_scenario(data_childhoodbmi_scenario, 1999)
 
-
-```
-
-```         
-```
-
-#### RR Scenario Example-will not bes used
-
-This example is for Air Pollution only.
-
-PIF scenarios for suspected risk factors to predict relative risks. The PIF scenarios are based on the PIFs calculated for established risk factors (above) for the time period 2009-2019. The scenarios are PIF =
-
--   1%
-
--   3%
-
--   5%
-
--   10%
-
-```{r}
-library(gt)
-
-source ("Functions/pifpaf_scenario_generation.R")
-
-pifscenario_table <- pifscenarios_allrf %>%
-  mutate(
-    p0 = p0*100, 
-    p1 = p1*100, 
-    p0 = round(p0, 2), 
-    p1 = round(p1, 2), 
-    pif1 = round(pif1, 2), 
-    pif3 = round(pif3, 2), 
-    pif5 = round(pif5, 2), 
-    pif10 = round(pif10, 2), 
-    pif1 = ifelse(pif1 <1,"-", pif1),
-    pif3 = ifelse(pif3 <1, "-", pif3),
-    pif5 = ifelse(pif5 <1, "-", pif5),
-    pif10 = ifelse(pif10 <1, "-", pif10)
-  ) %>%
-  rename(
-    `2009exp` = p0, 
-    `2019exp` = p1
-  ) %>%
-  arrange(variable, level) %>%
-  gt(groupname_col = "variable") %>% # Specify group column
-  tab_style(
-    style = cell_text(weight = "bold"),
-    locations = cells_column_labels()
-  ) %>%
-  tab_style(
-    style = list(
-      cell_text(weight = "bold"),
-      cell_fill(color = "lightgray"),
-      cell_borders(sides = "top"),
-      cell_borders(sides = "bottom")
-    ),
-    locations = cells_row_groups(groups = everything())
-  ) %>%
-  cols_width(
-    everything() ~ px(100) 
-  ) %>%
-  tab_header(
-    title = md("Relative Risk by PIF Scenarios - UK, 2009-2019")
-  )
-
-# View the resulting table
-pifscenario_table
-```
-
-PAF scenarios for suspected risk factors to predict relative risks. The PAF scenarios are based on the PAF calculated for established risk factors (above) for risk factors exposures occurring in 2009. The scenarios are PAF =
-
--   5%
-
--   10%
-
--   15%
-
--   25%
-
--   35%
-
--   50%
-
-```{r}
-#run the previous chunk as well
-
-pafscenario_table <- pafscenarios_allrf %>%
-  mutate(
-    value = value *100, 
-    value = round(value, 2), 
-    paf5 = round(paf5, 2), 
-    paf10 = round(paf10, 2), 
-    paf15 = round(paf15, 2), 
-    paf25 = round(paf25, 2),
-    paf35 = round(paf35, 2), 
-    paf50 = round(paf50, 2)
-  ) %>%
-  rename(
-    `2009exp` = value 
+# Table Formatting
+childhoodbmi_2019PAFscenario_table <- childhoodbmi_2019PAFscenario %>%
+  select(
+   -variable
   )%>%
-  arrange(variable, level) %>%
-  gt(groupname_col = "variable") %>% # Specify group column
+  rename(
+    prevalence = value
+  )%>%
+  arrange(age_group) %>%
+  gt(groupname_col = "sex") %>% # Specify group column
   tab_style(
     style = cell_text(weight = "bold"),
     locations = cells_column_labels()
@@ -2299,9 +2402,14 @@ pafscenario_table <- pafscenarios_allrf %>%
     everything() ~ px(100) 
   ) %>%
   tab_header(
-    title = md(" Relative Risk by PAF Scenarios - UK, 2009")
+    title = md("Childhood Obesity RR based on PAF Scenarios")
   )
 
-# View the resulting table
-pafscenario_table
+childhoodbmi_2019PAFscenario_table
+
+# Calculate projected PIF scenarios from 2019-2039
+# childhoodbmi_PIFscenario <- pif_scenario(data_childhoodbmi_scenario, 1999, 2019)
+
+
+
 ```
