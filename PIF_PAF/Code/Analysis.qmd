@@ -184,8 +184,6 @@ Data Availabitlity
 
 1.  All diet data stops at 2008 
 
-2.  Montse has suggested industry data for dietary factors, purely for graphic purposes. These should be found where possible. 
-
 Relative Risk availability:  
 
 1.  Because we are limited to metanalysis, some risk factor/cancer site combinations have causal evidence through many papers, but no meta analysis has been published  
@@ -197,6 +195,15 @@ Relative Risk availability:  
 RR/ risk factor match ups 
 
 1.  Physical activity has been measured differently over the years, all recent meta analysis are in MET units/week for relative risks but this is not how data were measured and collected historically 
+
+### Urgent needed fixes: 
+
+1.  Smoking/Alcohol/BMI by IMD
+2.  Risk factor plots by age (\<30, 30-50, 50-70, 70+)
+3.  WHY is the all ages PAF so different than the PAF split by age
+4.  BMI data is only until 2018 (even in the figure reports)- where is 2019?
+5.  Ultra Processed Foods and Colorectal RR scenario generation
+6.  PHYSICAL ACTIVITY!!
 
 ## Setting up
 
@@ -1339,7 +1346,7 @@ data_attr_cases_bar <- data_paf_long_individual %>%
     PAF = ifelse(cancer_site == "Breast" & sex == "Men", 0, PAF)
   ) %>% 
   filter(
-    year == 2019 | (year == 2018 & all(PAF[year == 2019] == 0)) #this includes 2019 PAF or, if there is none due to lack of data, then it pulls the 2018 PAF
+    year == 2019 
   ) %>%
   select(
     -count, - Rate
