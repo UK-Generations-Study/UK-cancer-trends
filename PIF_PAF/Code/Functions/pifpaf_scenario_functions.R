@@ -1,11 +1,11 @@
 ###This is the function to move create PIF and PAF scenarios 
 
-#the scenarios will be calculating the RR given the population prevalence if the PIF is: 
+# Scenarios will be calculating the RR given the population prevalence if the PIF is: 
   # A) 1%
   # B) 3%
   # C) 5%
   # D) 10%
-
+# This function takes a dataframe with year, age_group, sex, level, value, N, and variable
 #the timeframe of interest is defined as [lastyear, firstyear]
 #PIF scenario function: 
 pif_scenario <- function(dataframe, firstyear, lastyear) {
@@ -41,6 +41,8 @@ pif_scenario <- function(dataframe, firstyear, lastyear) {
 }
 
 #PIF scenario function (SPECIFICALLY FOR BMI): 
+# This function takes a dataframe with year, age_group, sex, level, value, N, and variable
+
 ##reported RR for colorectal and BMI: 
   #obesity = 1.46
 

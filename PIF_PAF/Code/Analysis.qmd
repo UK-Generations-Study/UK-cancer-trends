@@ -196,13 +196,13 @@ RR/ risk factor match ups 
 
 1.  Physical activity has been measured differently over the years, all recent meta analysis are in MET units/week for relative risks but this is not how data were measured and collected historically 
 
-### Urgent needed fixes: 
+### Urgent needed fixes:
 
 1.  Smoking/Alcohol/BMI by IMD
 2.  Risk factor plots by age (\<30, 30-50, 50-70, 70+)
 3.  WHY is the all ages PAF so different than the PAF split by age
 4.  BMI data is only until 2018 (even in the figure reports)- where is 2019?
-5.  Ultra Processed Foods and Colorectal RR scenario generation
+5.  Ultra Processed Foods and Colorectal RR scenario generation - not sure if valid due to different definition of prevalence
 6.  PHYSICAL ACTIVITY!!
 
 ## Setting up
@@ -2412,4 +2412,58 @@ childhoodbmi_2019PAFscenario_table
 
 
 
+```
+
+#### Ultra Processed Food and Colorectal Cancer alternate RR scenarios 
+
+[Ultra-processed food consumption and indicators of obesity in the United Kingdom population (2008-2016)](https://pmc.ncbi.nlm.nih.gov/articles/PMC7194406/#ad93) published in 2020 looked at Ultra Processed Food (UPF) intake in the UK. From their calculated data, we can run the RR scenarios.
+
+The proportion used for this is the mean proportion of total energy consumed that is from UPF. In this article:
+
+Men had 55.9% of their total energy consumed that was UPF.
+
+Women had 52.8% of their total energy consumed that was UPF.
+
+```{r}
+# Read in the data from the paper 
+data_upf <- read.csv("../Data/UPFprev_Rauber2020.csv")
+
+# Run the scenario
+data_upf_PAFscenario <- paf_scenario(data_upf, 2008)
+
+# Table Formatting
+data_upf_PAFscenario_table <- data_upf_PAFscenario %>%
+  select(
+   -variable, 
+   -age_group, 
+   - level
+  )%>%
+  rename(
+    prevalence = value
+  )%>%
+  mutate(
+    prevalence = prevalence *100
+  ) %>%
+  gt(groupname_col = "sex") %>% # Specify group column
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  ) %>%
+  tab_style(
+    style = list(
+      cell_text(weight = "bold"),
+      cell_fill(color = "lightgray"),
+      cell_borders(sides = "top"),
+      cell_borders(sides = "bottom")
+    ),
+    locations = cells_row_groups(groups = everything())
+  ) %>%
+  cols_width(
+    everything() ~ px(100) 
+  ) %>%
+  tab_header(
+    title = md("Ultra Processed Food RR based on PAF Scenarios")
+  )
+
+data_upf_PAFscenario_table
 ```

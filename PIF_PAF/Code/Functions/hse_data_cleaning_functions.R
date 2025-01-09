@@ -48,7 +48,6 @@ hse_base_variable_cleaning <- function(ukds_data_temp, var_dict, ukds_data_temp_
         
         # For all in range, change new variable to level name
         ukds_data_output_temp[["age_group"]][between(as.numeric(ukds_data_temp[[dict_varname]]), min_cat, max_cat)] <- var_dict$age_group[[i]]$dict[[j]]
-        
       }
       
     }
@@ -56,8 +55,6 @@ hse_base_variable_cleaning <- function(ukds_data_temp, var_dict, ukds_data_temp_
   }
   # stop if no age_group variable documentation found
   if(!age_group_doc_found){stop(paste0("No age_group variable documentation found for ", ukds_data_temp_year))}
-  
-  
   
   ## Find and clean sex variable
   sex_doc_found <- F
