@@ -6,12 +6,17 @@
   # C) 5%
   # D) 10%
 
+#the timeframe of interest is defined as [lastyear, firstyear]
 #PIF scenario function: 
-pif_scenario <- function(dataframe) {
+pif_scenario <- function(dataframe, firstyear, lastyear) {
   
   variable_name <- deparse(substitute(dataframe)) #storing the variable
   
   cleaned <- dataframe %>% #redefining the input 
+    filter(
+      year >= firstyear, 
+      year <= lastyear
+    )%>%
     group_by(level, sex, age_group) %>% #grouping the data by the stratifying variables 
     mutate(
       year = as.numeric(year) #ensuring the year variable is numeric  
@@ -37,21 +42,24 @@ pif_scenario <- function(dataframe) {
 
 #PIF scenario function (SPECIFICALLY FOR BMI): 
 ##reported RR for colorectal and BMI: 
-  #overweight = 1.22
   #obesity = 1.46
 
-#this will calculate the scarios if the RR for OBESITY (overweight RR remains constant) is: 
+#this will calculate the scenarios if the RR for OBESITY (overweight RR remains constant) is: 
     #A= Actual
     #B = RR 2 
     #C = RR 3 
     #D = RR 4
+#the timeframe of interest is defined as [lastyear, firstyear]
 
-    
-pif_scenarioBMI <- function(dataframe) {
+pif_scenarioBMI <- function(dataframe, firstyear, lastyear) {
   
   variable_name <- deparse(substitute(dataframe)) #storing the variable
   
   cleaned <- dataframe %>% #redefining the input 
+    filter(
+      year >= firstyear, 
+      year <= lastyear
+    )%>%
     group_by(level, sex, age_group) %>% #grouping the data by the stratifying variables 
     mutate(
       year = as.numeric(year) #ensuring the year variable is numeric  
@@ -78,8 +86,12 @@ pif_scenarioBMI <- function(dataframe) {
 }
 
 
-#PAF scenario function: 
-paf_scenario <- function(dataframe) {
+# PAF scenario function: 
+# This function takes a dataframe with year, age_group, sex, level, value, N, and variable
+# Run the function with (inputdataframe, riskfactor exposure year)
+# This function will return: scenario RR given the risk factor prevalence if the PAF is 5,10,15,25,35,50% (In other words, what would the RR have to be to affect the outcome x amount through the PAF.)
+
+paf_scenario <- function(dataframe,yr) {
   
   variable_name <- deparse(substitute(dataframe)) #storing the variable
   
@@ -90,10 +102,10 @@ paf_scenario <- function(dataframe) {
       year = as.numeric(year), #ensuring the year variable is numeric  
       ) %>%
     filter(
-      year == 2009
+      year == yr
     )%>%
     mutate(
-      paf5 = 1 + ((.05)/(value - (.05*value))), #scenario (A): PAF is 5%
+      paf5 = 1 + ((.05)/(value - (.05*value))),  #scenario (A): PAF is 5%
       paf10 = 1 + ((.10)/(value - (.10*value))), #scenario (B): PAF is 10%
       paf15 = 1 + ((.15)/(value - (.15*value))), #scenario (C): PAF is 15%
       paf25 = 1 + ((.25)/(value - (.25*value))), #scenario (D): PAF is 25%
