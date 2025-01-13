@@ -24,13 +24,17 @@ suppressMessages(
 )
 
 ## Function
-bmi_data_gen <- function(filepath){
+bmi_data_gen <- function(filepath, user_options){
   
   ## Read in data dictionary
   ukds_dict <- read.csv(paste0(filepath, "/UKDS_Dictionary.csv"))
   
-  ## Read in variable dictionary
-  var_dict <- read_yaml(paste0(filepath, "/hse_variable_documentation.yaml"))
+  ## Read in variable dictionary depending on user options
+  if(user_options$age_groups_indicator){
+    var_dict <- read_yaml(paste0(filepath, "/hse_variable_documentation.yaml"))
+  } else {
+    var_dict <- read_yaml(paste0(filepath, "/hse_variable_documentation_ages_all.yaml"))
+  }
   
   # Filter to HSE datasets and filter to year range for bmi data, then extract UKDS datasets
   needed_ukds_data <- ukds_dict |>
@@ -40,6 +44,10 @@ bmi_data_gen <- function(filepath){
   # Initialise output table
   output_df <- data.frame(year = numeric(0), age_group = character(0), sex = character(0), bmi = character(0), value = numeric(0))
   
+  # If needed - add IMD column
+  if(user_options$imd_stratification){
+    output_df$imd <- character(0)
+  }
   
   ## Read in UKDS Data and extract necessary data
   for(dataset_no in needed_ukds_data){
@@ -60,7 +68,7 @@ bmi_data_gen <- function(filepath){
     if(ukds_data_temp_year == 2002){ukds_data_temp <- filter(ukds_data_temp, samptype == 2)}
     
     ## Find and clean base variables
-    ukds_data_output_temp <- hse_base_variable_cleaning(ukds_data_temp, var_dict, ukds_data_temp_year)
+    ukds_data_output_temp <- hse_base_variable_cleaning(ukds_data_temp, var_dict, ukds_data_temp_year, user_options)
     
     cat(paste0("Extracting data for ", ukds_data_temp_year, "...\n"))
     
@@ -141,13 +149,25 @@ bmi_data_gen <- function(filepath){
       ukds_data_output_temp <- ukds_data_output_temp |>
         na.omit()
       
-      ## Tabulate
-      ukds_data_temp_table <- ukds_data_output_temp |>
-        count(age_group, sex, bmi, wt = weight) |>
-        group_by(age_group, sex) |>
-        mutate(value = n/sum(n),
-               N = sum(n)) |>
-        select(-n)
+      ## Tabulate - depending on if imd is a needed variable or not
+      
+      if(user_options$imd_stratification){
+        ukds_data_temp_table <- ukds_data_output_temp |>
+          filter(imd>=1) |>
+          count(age_group, sex, bmi, imd, wt = weight) |>
+          group_by(age_group, sex) |>
+          mutate(value = n/sum(n),
+                 N = sum(n)) |>
+          select(-n) |>
+          mutate(imd = as.character(imd))
+      } else {
+        ukds_data_temp_table <- ukds_data_output_temp |>
+          count(age_group, sex, bmi, wt = weight) |>
+          group_by(age_group, sex) |>
+          mutate(value = n/sum(n),
+                 N = sum(n)) |>
+          select(-n)
+      }
       
       # Add year on
       ukds_data_temp_table$year <- as.numeric(ukds_data_temp_year)
