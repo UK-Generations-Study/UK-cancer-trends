@@ -288,7 +288,7 @@ library(gridExtra)
 prevalencerange <- seq(0, 1, by = 0.01)
 # Define a constant Relative Risk (RR)
 RRconstantlow <- 1.2 # Example RR constant
-RRconstant4 <- 1.5
+RRconstant4 <- 2
 RRconstantmed <- 5.0
 RRconstanthigh <- 10.0 
 # Calculate the PAF for each prevalence value
@@ -306,7 +306,7 @@ pafplotlow <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFlow), aes
   theme_minimal()
 pafplot4 <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAF4), aes(x = prevalence, y = PAF)) +
   geom_line(color = "blue", size = 1) +
-  labs(title = "RR = 1.5",
+  labs(title = "RR = 2",
        x = "RF Prevalence",
        y = "PAF") +
   ylim(0, 1) +
@@ -338,7 +338,7 @@ exposurerange2 <- seq(0.2, 0.4, by = 0.01)
 exposurerange3 <- seq(0.4, 0.6, by = 0.01)
 exposurerange4 <- seq(0.6, 0.8, by = 0.01)
 # Define a constant Relative Risk (RR)
-RR <- c(1.2, 1.5, 5.0, 10.0) 
+RR <- c(1.2, 2, 5.0, 10.0) 
 
 #calculating the PIFs 
 calculate_pif_data <- function(exposurerange, pif_label) {
@@ -2414,7 +2414,7 @@ childhoodbmi_2019PAFscenario_table
 
 ```
 
-#### Ultra Processed Food and Colorectal Cancer alternate RR scenarios 
+#### Ultra Processed Food and Colorectal Cancer alternate RR scenarios
 
 [Ultra-processed food consumption and indicators of obesity in the United Kingdom population (2008-2016)](https://pmc.ncbi.nlm.nih.gov/articles/PMC7194406/#ad93) published in 2020 looked at Ultra Processed Food (UPF) intake in the UK. From their calculated data, we can run the RR scenarios.
 
