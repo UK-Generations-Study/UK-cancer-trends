@@ -19,7 +19,7 @@ check_year_spec <- function(year, year_spec){
 
 ### AGE/SEX/WEIGHT VARIABLE GENERATION
 
-hse_base_variable_cleaning <- function(ukds_data_temp, var_dict, ukds_data_temp_year){
+hse_base_variable_cleaning <- function(ukds_data_temp, var_dict, ukds_data_temp_year, user_options){
   
   # Initialise empty new dataframe
   ukds_data_output_temp <- as.data.frame(matrix(nrow = nrow(ukds_data_temp), ncol = 0))
@@ -105,6 +105,35 @@ hse_base_variable_cleaning <- function(ukds_data_temp, var_dict, ukds_data_temp_
   }
   # create one with all 1 if no weight variable documentation found
   if(!weight_doc_found){ukds_data_output_temp[["weight"]] <- 1}
+  
+  
+  ## Find and clean IMD variable if desired
+  if(user_options$imd_stratification){
+    
+    imd_doc_found <- F
+    for(i in 1:length(var_dict$imd)){
+      
+      # Check if imd specification is appropriate for the year specified
+      if(check_year_spec(year = ukds_data_temp_year, year_spec = names(var_dict$imd)[i])){
+        
+        imd_doc_found <- T
+        
+        dict_varname <- var_dict$imd[[i]]$varname
+        
+        # Intialise new variable
+        ukds_data_output_temp[["imd"]] <- ukds_data_temp[[dict_varname]]
+        
+      }
+      
+    }
+    
+    # Report if no IMD found
+    if(!imd_doc_found){
+      cat(paste0("No imd variable documentation found for ", ukds_data_temp_year, "\n"))
+      ukds_data_output_temp[["imd"]] <- "All"
+    }
+    
+  }
   
   
   ## Output current dataframe
