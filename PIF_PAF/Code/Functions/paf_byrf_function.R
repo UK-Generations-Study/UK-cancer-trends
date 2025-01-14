@@ -1,12 +1,39 @@
 # This is the PAF calculation function for calculating PAFs by risk factor
 
-# Function: 
+# Function: This function calculates the population attributable fraction by cancer site and risk factor 
 
 # Inputs:
-#   dataframe: 
-#   age_group_of_interest: 
+
+   # dataframe: This is a data frame of risk factor population prevalence data for alcohol, bmi, smoking, fibre, red meat, and processed meat. It has the columns: 
+      #year (numeric)
+      #age_group (string)
+      #sex (string)
+      #level (string) - this is the level of exposure within the exposure category (ex. light, medium, heavy alcohol drinker)
+      #value (numeric) - population prevalence 
+      #N (numeric) - total population
+      #variable (string) - the overall exposure category (ex. alcohol_amt)
+
+   # age_group_of_interest: the group in the age_group variable that is of interest(string)
 
 # Outputs: 
+
+    # a data frame that has the paf by cancer site and risk factor for the aforementioned risk factors. It will have the columns: 
+      #year (numeric)
+      #age_group (string)
+      #variable(string)
+      #sex (string)
+      #OralPAF (numeric)
+      #EncomentriumPAF (numeric)
+      #PancreasPAF (numeric)
+      #GallbladderPAF (numeric)
+      #ColorectumPAF (numeric)
+      #LiverPAF (numeric)
+      #KidneyPAF (numeric)
+      #ThyroidPAF (numeric)
+      #MultipleMyelomaPAF (numeric)
+      #BreastPAF (numeric)
+
+
 
 paf_calculation <- function(dataframe, age_group_of_interest) {
   

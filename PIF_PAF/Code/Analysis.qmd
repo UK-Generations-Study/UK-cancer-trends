@@ -249,18 +249,24 @@ if(Sys.getenv("RSTUDIO") == '1' & !knitr::is_html_output()) { # If using Rstudio
 
 ```
 
-### Read in data
+### Read in Data
 
 ```{r}
 
-# Read in clean risk factor trends
+# Read in clean risk factor trends split by age
 data_rf <- read.csv("../../../Data/Cleaned_Data/clean_rf_data.csv")
 
 # Read in the clean risk factor trends for all ages
 data_rf_allages <- read.csv("../../../Data/Cleaned_Data/clean_rf_data_age_all.csv")
 
-# Reading in cancer incidence data
+# Read in the clean risk factor trends split by IMD (all ages)
+data_rf_imd <- read.csv("../../../Data/Cleaned_Data/clean_rf_data_age_all_imd.csv")
+
+# Read in cancer incidence data
 data_cancer <- read.csv("../Data/incidence_data_clean.csv")
+
+# Read in childhood BMI data 
+data_childhood_bmi <- suppressMessages(read_excel("../Data/HSE-2022-Overweight-and-obesity-tables.xlsx", sheet = "Table 16"))
 
 # Read in PAF samples
 data_paf_comparison <- read.csv(r"(..\Data\paf_comparison.csv)") |>
@@ -269,7 +275,13 @@ data_paf_comparison <- read.csv(r"(..\Data\paf_comparison.csv)") |>
   filter(!(Cancer_sites == "Breast" & sex == "Men"))
 
 # Reading in JP Analysis
+#   Cancer Incidence
 data_joinpoint <- read.delim("../Data/Joinpoint/cancerrates/export.Export.APC.txt", sep = "\t")
+#   Risk Factors
+rfdata_joinpoint <- read.delim("../Data/Joinpoint/riskfactors/export.Export.APC.txt", sep = "\t")
+dietrfdata_joinpoint <- read.delim("../../../Data/Cleaned_Data/joinpoint_results/export.Export.APC.txt", sep = "\t")
+#   Childhood BMI
+data_childhoodbmi_joinpoint <- read.delim("../Data/Joinpoint/childhoodbmi/export.Export.APC.txt", sep = "\t") 
 
 ```
 
@@ -552,9 +564,6 @@ apc_table
 The APC were calculated with the assumption of homoscedastic random errors.
 
 ```{r}
-#read in the APC data 
-rfdata_joinpoint <- read.delim("../Data/Joinpoint/riskfactors/export.Export.APC.txt", sep = "\t")
-dietrfdata_joinpoint <- read.delim("../../../Data/Cleaned_Data/joinpoint_results/export.Export.APC.txt", sep = "\t")
 
 RFdata_joinpoint <- rbind(rfdata_joinpoint,dietrfdata_joinpoint)
 
@@ -912,6 +921,55 @@ rf_apc_table <- rf_table %>%
   )
 
 rf_apc_table
+```
+
+## Figure 2c - Trends in Risk Factors by IMD
+
+```{r}
+# Clean the data
+data_rf_imd_clean <- data_rf_imd %>% 
+  filter(
+    imd != "All", 
+    level != "Underweight"
+  ) %>%
+  mutate(
+    level = trimws(level), 
+    variable = trimws(variable),
+    variable = ifelse(variable == "alcohol_amt","Alcohol", variable ), 
+    variable = ifelse(variable == "bmi","BMI", variable ), 
+    variable = ifelse(variable == "smoking_status","Smoking", variable ), 
+    level = sub(" .*", "", level)
+  )
+
+# Create a list of unique variables
+unique_variables <- unique(data_rf_imd_clean$variable)
+
+# Loop through each variable and create a plot
+for (var in unique_variables) {
+  plot <- ggplot(data_rf_imd_clean %>% filter(variable == var), aes(x = year, y = value, color = as.factor(imd), group = imd)) +
+    geom_line(size = 1) +
+    facet_grid(rows = vars(level), cols = vars(sex)) +
+    labs(
+      title = paste("Population Prevalence by IMD England:", var),
+      x = "Year",
+      y = "Value",
+      color = "IMD Status"
+    ) +
+    scale_color_brewer(palette = "Set1") + 
+    theme_minimal() +
+    scale_x_continuous(
+    breaks = seq(2000, 2019, by = 3),  # Define the x-axis breaks
+    limits = c(2000, 2020))+
+    theme(
+      strip.text = element_text(size = 10),
+      legend.position = "right"
+    )
+  
+  print(plot) 
+  
+  ggsave(filename = paste0("../Output/Plots/Figure2IMDplot_", var, ".png"), plot = plot, width = 8, height = 6)
+}
+
 ```
 
 ## Figure 3a - Current PAFs (2019) : all ages
@@ -1904,8 +1962,6 @@ gtsave(data_pif_gt_future, "../Output/Plots/Figure_6-PIF_Future.html")
 
 ```{r, fig.height=6, fig.width=10, warning=F}
 
-data_childhood_bmi <- suppressMessages(read_excel("../Data/HSE-2022-Overweight-and-obesity-tables.xlsx", sheet = "Table 16"))
-
 colnames(data_childhood_bmi) <- c("group", data_childhood_bmi[3,-1])
 data_childhood_bmi <- data_childhood_bmi[-(1:3),]
 
@@ -1976,9 +2032,6 @@ ggplot(data_childhood_bmi |> filter(level != "Overweight including obese") |> fi
 ### Childhood BMI - APC trends
 
 ```{r}
-
-# Read in joinpoint data 
-data_childhoodbmi_joinpoint <- read.delim("../Data/Joinpoint/childhoodbmi/export.Export.APC.txt", sep = "\t") 
 
 # Clean the childhood bmi data 
 data_childhood_bmi_clean <- data_childhood_bmi |>
