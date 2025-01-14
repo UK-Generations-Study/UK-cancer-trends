@@ -199,11 +199,16 @@ RR/ risk factor match ups 
 ### Urgent needed fixes:
 
 1.  PHYSICAL ACTIVITY!!
+
 2.  WHY is the all ages PAF so different than the PAF split by age
+
 3.  Smoking/Alcohol/BMI by IMD
+
 4.  Risk factor plots by age (\<30, 30-50, 50-70, 70+)
-5.  BMI data is only until 2018 (even in the figure reports)- where is 2019?
-6.  Ultra Processed Foods and Colorectal RR scenario generation - not sure if valid due to different definition of prevalence
+
+    -Ultra Processed Foods and Colorectal RR scenario generation - not sure if valid due to different definition of prevalence (individual prevalence vs. population prevalence). Population prevalence is next to impossible.
+
+    -Cancer APC calculated from 2001, should it be from 2009 to reflect only the time frame of interest
 
 ## Setting up
 
@@ -251,11 +256,11 @@ if(Sys.getenv("RSTUDIO") == '1' & !knitr::is_html_output()) { # If using Rstudio
 # Read in clean risk factor trends
 data_rf <- read.csv("../../../Data/Cleaned_Data/clean_rf_data.csv")
 
-# Read in aggregate PAFs
-data_paf <- read.csv("../Data/AggregatePAFs_BestEstimates.csv")
+# Read in the clean risk factor trends for all ages
+data_rf_allages <- read.csv("../../../Data/Cleaned_Data/clean_rf_data_age_all.csv")
 
-# Read in individual PAFs
-data_paf_individual <- read.csv("../Data/PAF_by_riskfactor.csv")
+# Reading in cancer incidence data
+data_cancer <- read.csv("../Data/incidence_data_clean.csv")
 
 # Read in PAF samples
 data_paf_comparison <- read.csv(r"(..\Data\paf_comparison.csv)") |>
@@ -263,23 +268,20 @@ data_paf_comparison <- read.csv(r"(..\Data\paf_comparison.csv)") |>
   mutate(Cancer_sites = if_else(Cancer_sites == "Breast ", "Breast", Cancer_sites)) |>
   filter(!(Cancer_sites == "Breast" & sex == "Men"))
 
-# Reading in PIFs
-data_pif <- read.csv("../Data/PIF.csv")
-
-# Reading in cancer incidence data
-data_cancer <- read.csv("../Data/incidence_data_clean.csv")
-
 # Reading in JP Analysis
 data_joinpoint <- read.delim("../Data/Joinpoint/cancerrates/export.Export.APC.txt", sep = "\t")
 
-#Reading in PAF all ages combined data 
-data_PAFallages <- read.csv("../Data/PAF_allages.csv")
-
-#Reading in the PIF all ages data 
-data_PIFallages <- read.csv("../Data/PIF_allages.csv")
-
 ```
 
+### Read in Functions 
+```{r}
+# Load in the PAF calculation functions
+source("Functions/paf_byrf_function.R")
+source("Functions/paf_aggregate_function.R")
+
+# Load in PIF calculation functions
+source("Functions/pif_function.R")
+```
 ## Generic PAF relationship
 
 ```{r}
@@ -392,7 +394,7 @@ pif_plot
 
 ```
 
-## Figure 1 - Trends in cancer incidence
+## Figure 1a - Trends in cancer incidence
 
 These APC trends were calculated using all of the data available (2001, 2019), then the x-axis was cut off from (2009, 2019).
 
@@ -483,8 +485,8 @@ ggplot(data_cancer_plot, aes(x = year, y = Rate, fill = sex, colour = sex)) +
   theme(strip.text = element_text(face = "bold"), 
           axis.text.x = element_text(angle = 45, hjust = 1)) +
   scale_x_continuous(
-    breaks = seq(2009, 2019, by = 1),  # Define the x-axis breaks
-    limits = c(2009, 2021)
+    breaks = seq(2000, 2019, by = 1),  # Define the x-axis breaks
+    limits = c(2000, 2021)
     )+
   ylab("Age Standardized Rates") +
   xlab("Year") +
@@ -498,7 +500,7 @@ ggsave(filename = paste0("../Output/Plots/Figure_1.png"), bg = "white", height =
 
 ```
 
-## Figure 1 - Trends in cancer incidence APC table
+## Figure 1b - Trends in cancer incidence APC table
 
 Table of the APC of the last joint point
 
@@ -545,7 +547,7 @@ apc_table
 
 ```
 
-## Figure 2 - Trends in risk factors
+## Figure 2a - Trends in risk factors
 
 The APC were calculated with the assumption of homoscedastic random errors.
 
@@ -861,7 +863,7 @@ ggsave(diettrends,
 
 \*Fibre is daily fibre deficiency based on the UK recommendation of consuming 30g/day
 
-## Figure 2 - Trends in risk factors APC table
+## Figure 2b - Trends in risk factors APC table
 
 ```{r}
 
@@ -912,23 +914,54 @@ rf_apc_table <- rf_table %>%
 rf_apc_table
 ```
 
-## Figure pre 3 - Current PAFs (2019) : all ages
+## Figure 3a - Current PAFs (2019) : all ages
 
 ```{r}
-#formatting the PAF all ages to help with join 
-data_PAFallages_long <- data_PAFallages |>
-  pivot_longer(cols = colnames(data_PAFallages)[!colnames(data_PAFallages) %in% c("sex", "year", "age_group", "variable")], names_to = "cancer_site", values_to = "PAF") |>
+# Calculate the PAFs by risk factor 
+paf_byrf_allages <- paf_calculation(data_rf_allages, "All")
+
+# Calculate aggregate PAFs
+aggregate_pafs_allages <- paf_byrf_allages %>%
+  group_by(year, age_group, sex) %>% #grouping by year/age/sex
+  summarise(
+    Oral = calculate_cumulative_paf(OralPAF),
+    Endometrium = calculate_cumulative_paf(EndometriumPAF),
+    Pancreas = calculate_cumulative_paf(PancreasPAF),
+    Gallbladder = calculate_cumulative_paf(GallbladderPAF),
+    Colorectum = calculate_cumulative_paf(ColorectumPAF),
+    Liver = calculate_cumulative_paf(LiverPAF),
+    Kidney = calculate_cumulative_paf(KidneyPAF),
+    Thyroid = calculate_cumulative_paf(ThyroidPAF),
+    MultipleMyeloma = calculate_cumulative_paf(MultipleMyelomaPAF),
+    Breast = calculate_cumulative_paf(BreastPAF)
+  ) %>% #applying the function
+  ungroup()
+
+# men have values for Breast PAFS due to not have RR by sex for alcohol - these are incorrect and should be 0
+aggregate_pafs_allages <- aggregate_pafs_allages %>%
+  mutate(
+    Breast = ifelse(sex == "Men", 0, Breast)
+  )
+
+# Save the data 
+write.csv(paf_byrf_allages, file = "../Data/PAFs_byriskfactor_AllAges.csv", row.names = F)
+write.csv(aggregate_pafs_allages, file = "../Data/AggregatePAFs_AllAges.csv", row.names = F)
+
+
+# Formatting the PAF all ages to help with join 
+PAFallages_long <- aggregate_pafs_allages |>
+  pivot_longer(cols = colnames(aggregate_pafs_allages)[!colnames(aggregate_pafs_allages) %in% c("sex", "year", "age_group", "variable")], names_to = "cancer_site", values_to = "PAF") |>
   mutate(year = year + 10) |> # Broad assumption of 10 year lag period
   mutate(cancer_site = gsub("PAF$", "", cancer_site))
 
-#calculating total cancer cases (all ages)
+# Calculating total cancer cases (all ages)
 data_casesallages <- data_cancer %>%
   group_by(year, sex, cancer_site) %>%
   summarise(totalcases = sum(count, na.rm = T))%>%
   ungroup()
 
 #calculating attributable cases to the all ages PAFs 
-PAF_allages <- data_PAFallages_long %>%
+PAF_allages <- PAFallages_long %>%
   left_join(data_casesallages, by = c("year", "sex", "cancer_site")) %>% 
   mutate(
     attributable_cases = PAF*totalcases, 
@@ -950,7 +983,7 @@ PAFallages_bar_MEN <- ggplot(PAF_allages %>% filter(sex == "Men"), aes(x = cance
     alpha = 0.8
   ) +
   geom_bar(
-    aes(y = attributable_cases/60, fill = "Attributable Cases"),
+    aes(y = attributable_cases/100, fill = "Attributable Cases"),
     stat = "identity", 
     width = 0.3,  # Narrower bar for case_count
     alpha = 1
@@ -959,7 +992,7 @@ PAFallages_bar_MEN <- ggplot(PAF_allages %>% filter(sex == "Men"), aes(x = cance
     name = "PAFs",
     limits = c(0, 100),
     sec.axis = sec_axis(
-      ~ . * 60,  # Adjust the transformation factor as needed
+      ~ . * 100,  # Adjust the transformation factor as needed
       name = "Case Count"
     ) 
   ) +
@@ -986,7 +1019,7 @@ PAFallages_bar_WOMEN <- ggplot(PAF_allages %>% filter(sex == "Women"), aes(x = c
     alpha = 0.8
   ) +
   geom_bar(
-    aes(y = attributable_cases/60, fill = "Attributable Cases"),
+    aes(y = attributable_cases/100, fill = "Attributable Cases"),
     stat = "identity", 
     width = 0.3,  # Narrower bar for case_count
     alpha = 1
@@ -995,7 +1028,7 @@ PAFallages_bar_WOMEN <- ggplot(PAF_allages %>% filter(sex == "Women"), aes(x = c
     name = "PAFs",
     limits = c(0, 100),
     sec.axis = sec_axis(
-      ~ . * 60,  # Adjust the transformation factor as needed
+      ~ . * 100,  # Adjust the transformation factor as needed
       name = "Case Count"
     ) 
   ) +
@@ -1021,10 +1054,35 @@ ggsave("../Output/Plots/Figure_3_WomenAllAges.png", plot = PAFallages_bar_WOMEN,
 
 ```
 
-## Figure 3 - Current PAFs (2019)
+## Figure 3b - Current PAFs (2019)
 
 ```{r, fig.height=6, fig.width=10, warning=F}
+# Calculate the PAFs by cancer site 
+pafs_byrf_under50<- paf_calculation(data_rf, "20-49")
+pafs_byrf_over50<- paf_calculation(data_rf, "50+")
+data_paf_individual<-rbind(pafs_byrf_under50,pafs_byrf_over50)
 
+# Calculate aggregate PAFs
+data_paf <- data_paf_individual %>%
+  group_by(year, age_group, sex) %>% #grouping by year/age/sex
+  summarise(
+    Oral = calculate_cumulative_paf(OralPAF),
+    Endometrium = calculate_cumulative_paf(EndometriumPAF),
+    Pancreas = calculate_cumulative_paf(PancreasPAF),
+    Gallbladder = calculate_cumulative_paf(GallbladderPAF),
+    Colorectum = calculate_cumulative_paf(ColorectumPAF),
+    Liver = calculate_cumulative_paf(LiverPAF),
+    Kidney = calculate_cumulative_paf(KidneyPAF),
+    Thyroid = calculate_cumulative_paf(ThyroidPAF),
+    MultipleMyeloma = calculate_cumulative_paf(MultipleMyelomaPAF),
+    Breast = calculate_cumulative_paf(BreastPAF)
+  ) %>% #applying the function
+  ungroup()
+
+# Save the data 
+write.csv(data_paf_individual, file = "../Data/PAF_by_riskfactor.csv", row.names = F)
+write.csv(data_paf, file = "../Data/AggregatePAFs_BestEstimates.csv", row.names = F)
+  
 # Pivot PAFs longer so we can merge
 data_paf_long <- data_paf |>
   pivot_longer(cols = colnames(data_paf)[!colnames(data_paf) %in% c("sex", "year", "age_group")], names_to = "cancer_site", values_to = "PAF") |>
@@ -1074,7 +1132,7 @@ for(site in unique(data_attr_cases$cancer_site)){
 
 ```
 
-## Figure 3 - Current PAFs (2019) - Comparative Bar Chart
+## Figure 3c - Current PAFs (2019) - Comparative Bar Chart
 
 ```{r}
 
@@ -1169,7 +1227,7 @@ ggsave("../Output/Plots/Figure_3_Men.png", plot = data_attr_bar_MEN, bg = "white
 ggsave("../Output/Plots/Figure_3_Women.png", plot = data_attr_bar_WOMEN, bg = "white", height = 6, width = 10)
 ```
 
-## Figure 3 - Current PAFs (2019) - Table
+## Figure 3d - Current PAFs (2019) - Table
 
 ```{r, fig.width=10, results = "asis"}
 
@@ -1230,7 +1288,7 @@ gtsave(data_attr_cases_gt, "../Output/Plots/Figure_3-Table.html")
 
 ```
 
-## Figure 4 - Current PAFs (2019) - Table by Risk Factor
+## Figure 4a - Current PAFs (2019) - Table by Risk Factor
 
 ```{r, fig.width=10, results = "asis"}
 
@@ -1324,7 +1382,7 @@ for(var in unique(data_attr_cases_individual$variable)[!grepl("\\_mean$|\\_media
 
 ```
 
-## Figure 4 - Current PAFs (2019) - Bar chart by Risk Factor
+## Figure 4b - Current PAFs (2019) - Bar chart by Risk Factor
 
 ```{r}
 #reformat the table
@@ -1633,13 +1691,17 @@ for(var in unique(data_complete_paf_plot$variable_label)){
 
 ```
 
-## Figure pre 6 - PIF
+## Figure 6a - PIF all ages
 
 These are PIFs from the oldest data point until current times (Later referred to as PIF (Past)). These are for all ages combined.
 
 ```{r}
-#creating the table 
-data_pifallages_past <- data_PIFallages |>
+# Calculate the PIF data 
+PIF_allages <- pif_calculation(paf_byrf_allages)
+write.csv(PIF_allages, file = "../Data/PIF_allages.csv", row.names = F)
+
+# creating the table 
+data_pifallages_past <- PIF_allages |>
   mutate(
     
     variable = case_when(
@@ -1700,11 +1762,16 @@ gtsave(data_pifallages_past, "../Output/Plots/Figure_6-PIFallages_Past.html")
 
 ```
 
-## Figure 6 - PIF (Past)
+## Figure 6b - PIF (Past)
 
 ```{r,warning=F}
+# Calculating the PIFs
+PIF <- pif_calculation(data_paf_individual)
+write.csv(PIF, file = "../Data/Pif.csv", row.names = F)
 
-data_pif_gt_past <- data_pif |>
+
+# Formatting the table 
+data_pif_gt_past <- PIF |>
   mutate(
     
     variable = case_when(
@@ -1765,11 +1832,11 @@ gtsave(data_pif_gt_past, "../Output/Plots/Figure_6-PIF_Past.html")
 
 ```
 
-## Figure 6 - PIF (Future)
+## Figure 6c - PIF (Future)
 
 ```{r,warning=F}
 
-data_pif_gt_future <- data_pif |>
+data_pif_gt_future <- PIF |>
   mutate(
     
     variable = case_when(
@@ -2383,6 +2450,16 @@ childhoodbmi_2019PAFscenario_table <- childhoodbmi_2019PAFscenario %>%
   rename(
     prevalence = value
   )%>%
+  mutate(
+    prevalence = prevalence *100,
+    prevalence = round(prevalence, 2), 
+    paf5 = round(paf5, 2),
+    paf10 = round(paf10, 2),
+    paf15 = round(paf15, 2),
+    paf25 = round(paf25, 2), 
+    paf35 = round(paf35, 2), 
+    paf50 = round(paf50, 2)
+  )%>%
   arrange(age_group) %>%
   gt(groupname_col = "sex") %>% # Specify group column
   tab_style(
@@ -2442,7 +2519,14 @@ data_upf_PAFscenario_table <- data_upf_PAFscenario %>%
     prevalence = value
   )%>%
   mutate(
-    prevalence = prevalence *100
+    prevalence = prevalence *100, 
+    prevalence = round(prevalence, 2), 
+    paf5 = round(paf5, 2),
+    paf10 = round(paf10, 2),
+    paf15 = round(paf15, 2),
+    paf25 = round(paf25, 2), 
+    paf35 = round(paf35, 2), 
+    paf50 = round(paf50, 2)
   ) %>%
   gt(groupname_col = "sex") %>% # Specify group column
   tab_style(

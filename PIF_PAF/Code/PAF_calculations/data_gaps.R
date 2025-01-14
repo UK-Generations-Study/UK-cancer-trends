@@ -30,28 +30,4 @@ riskfactors <- riskfactors %>%
 
 riskfactors <- rbind(riskfactors,riskfactors_alcoholgap) #adding in the new filled in data 
 
-#visual check to ensure interpolation is correct 
-# men_data <- riskfactors_alcoholgap %>%
-#   filter(
-#     sex == "Men",
-#     age_group == "20-49"
-#          )
-# 
-# # Plot the graph
-# ggplot(men_data, aes(x = year, y = value, color = level, group = level)) +
-#   geom_line(size = 1) +
-#   geom_point(size = 2) +
-#   labs(
-#     title = "Alcohol Consumption Over Years",
-#     x = "Year",
-#     y = "Value",
-#     color = "Age Group"
-#   ) +
-#   theme_minimal() +
-#   theme(
-#     legend.position = "top",
-#     plot.title = element_text(hjust = 0.5, size = 16),
-#     axis.title = element_text(size = 12)
-#   )
-# 
 
