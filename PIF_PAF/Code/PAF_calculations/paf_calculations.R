@@ -18,8 +18,14 @@ if(Sys.getenv("RSTUDIO") == '1' & !knitr::is_html_output()) { # If using Rstudio
 }
 
 #read in the data
+
+# Choose which data input to use
+# Must change the input every time you see an '#*****' throughout this code as well as the final save 
 riskfactors<- read.csv("../../../../Data/Cleaned_Data/clean_rf_data.csv")
-rr_under50<-read.csv("../../Data/relativerisk_under50.csv")
+rf_allages <- read.csv("../../../../Data/Cleaned_Data/clean_rf_data_age_all.csv")
+
+# Read in RR data 
+rr_under50<-read.csv("../Data/relativerisk_under50.csv")
 rr_over50<-read.csv("../../Data/relativerisk_over50.csv")
 
 #cleaning the risk factor data so that there are no data gaps 
@@ -43,6 +49,7 @@ rr_under50[-1] <- lapply(rr_under50[-1], function(column) {
 # })
 
 #storing the maximum values for red and processed meat 
+#*****
 over100 <- riskfactors %>%
   mutate(
     exp_low = as.numeric(str_extract(level, "\\d+")),
@@ -90,6 +97,7 @@ err_under50 <- err_under502 %>%
   rename(exposure = Cancer_sites)
 
 #cleaning the risk factors and calculating the (ERR* risk factor prevalence) per risk factor 
+#*****
 rf_under50 <- riskfactors %>% 
   filter(
     #year >= 2005 & year <= 2011, 
@@ -296,6 +304,7 @@ err_over50 <- err_over502 %>%
 
 
 #cleaning the risk factors and calculating the (ERR* risk factor prevalence) per risk factor 
+#*****
 rf_over50 <- riskfactors %>% 
   filter(
     #year >= 2005 & year <= 2011, 
@@ -455,7 +464,7 @@ paf_cancersite_over50 <- subpaf_over50 %>%
 
 #saving the PAF calculations 
 PAF_by_riskfactor <- rbind(paf_cancersite_over50, paf_cancersite_under50)
-write.csv(PAF_by_riskfactor, file = "../../Data/PAF_by_riskfactor.csv", row.names = F)
+#write.csv(PAF_by_riskfactor, file = "../../Data/PAF_by_riskfactor.csv", row.names = F)
 
 #############
 #aggregate PAFS 
@@ -500,7 +509,7 @@ aggregate_pafs <- aggregate_pafs %>%
     Breast = ifelse(sex == "Men", 0, Breast)
     )
 
-write.csv(aggregate_pafs, file = "../../Data/AggregatePAFs_BestEstimates.csv", row.names = F)
+#write.csv(aggregate_pafs, file = "../../Data/AggregatePAFs_BestEstimates.csv", row.names = F)
 
 #Sensitivity Analysis
 

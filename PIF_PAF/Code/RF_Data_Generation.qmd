@@ -19,9 +19,13 @@ library(dplyr)
 user_options <- list()
 
 # Whether to use age groups or just group as 'All'
+#   False - all age groups 
+#   True - Split the ages 20-49, 50+
 user_options$age_groups_indicator <- F
 
 # Whether to further stratify by IMD
+#   False - not split by IMD 
+#   True - Split by IMD
 user_options$imd_stratification  <- T
 
 

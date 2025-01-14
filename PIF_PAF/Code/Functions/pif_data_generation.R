@@ -73,4 +73,4 @@ data_paf <- data_paf |>
   
   
 ## Output PIF
-write.csv(data_paf, file = "../../Data/PIF.csv", row.names = F)
+write.csv(data_paf, file = "../../Data/PIF_allages.csv", row.names = F)
