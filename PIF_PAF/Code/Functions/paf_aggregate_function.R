@@ -1,10 +1,15 @@
 # This is the aggregate PAF calculation function 
 
-# Function: 
+# Function: This function iterates through a column to add the PAFs by cancer site to create an aggregate PAF. This method follows the methodology for aggregate PAFs from Brown et. al. 
 
-# Inputs:
+# Inputs: 
+    # a data frame that has the paf by cancer site and risk factor for the aforementioned risk factors. 
+    # This can be calculated using the function "paf_byrf_function.R" that can be found in this same folder. 
+    #Thisfunction is iterated on the column itself  
+
 
 # Outputs:
+    # This function will iterate through the column and add the pafs by risk factor and return a singlular cummulative paf
 
 calculate_cumulative_paf <- function(paf_values) {
   #setting the base values    
