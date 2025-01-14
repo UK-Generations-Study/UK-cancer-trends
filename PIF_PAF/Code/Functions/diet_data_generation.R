@@ -23,7 +23,7 @@ suppressMessages(
 )
 
 ## Function
-diet_data_gen <- function(filepath){
+diet_data_gen <- function(filepath, user_options){
   
   ## Read in data dictionary
   ukds_dict <- read.csv(paste0(filepath, "/UKDS_Dictionary.csv"))
@@ -65,10 +65,17 @@ diet_data_gen <- function(filepath){
   ## General data cleaning
   diet_df <- diet_df |>
     filter(country == "England") |>
-    filter(age >= 20) |>
+    filter(age >= 20)
+  
+  # Apply age grouping based on user input
+  if(user_options$age_groups_indicator){
+    diet_df <- mutate(diet_df, age_group = if_else(age<50, "20-49", "50+"))
+  } else {
+    diet_df$age_group = "All"
+  }
+  
+  diet_df <- diet_df |>
     mutate(
-      
-      age_group = if_else(age < 50, "20-49", "50+"),
       
       year = surveyyear + 2007,
       
@@ -146,8 +153,10 @@ diet_data_gen <- function(filepath){
   
   diet_df_total <- rbind(diet_df_total, diet_df_processed)
   
-  ## DAIRY
-  # UNDER DEVELOPMENT
+  # Adding IMD variable if needed
+  if(user_options$imd_stratification){
+    diet_df_total$imd <- "All"
+  }
   
   ## Output df
   return(diet_df_total)
