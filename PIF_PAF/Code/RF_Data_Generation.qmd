@@ -26,7 +26,7 @@ user_options$age_groups_indicator <- F
 # Whether to further stratify by IMD
 #   False - not split by IMD 
 #   True - Split by IMD
-user_options$imd_stratification  <- T
+user_options$imd_stratification  <- F
 
 
 ```
@@ -54,6 +54,7 @@ if(Sys.getenv("RSTUDIO") == '1' & !knitr::is_html_output()) { # If using Rstudio
 source("Functions/hse_data_cleaning_functions.R")
 source("Functions/alcohol_data_generation.R")
 source("Functions/bmi_data_generation.R")
+source("Functions/physical_activity_data_generation.R")
 source("Functions/diet_data_generation.R")
 source("Functions/diet_data_generation_continuous.R")
 source("Functions/diet_data_generation_cat_mean.R")
@@ -96,6 +97,14 @@ rf_df <- rbind(rf_df, bmi_df)
 
 smoking_df <- smoking_data_gen(filepath = "../../../Data", user_options)
 rf_df <- rbind(rf_df, smoking_df)
+
+```
+
+### HSE - Physical Activity
+```{r}
+
+activity_df <- physical_activity_data_gen(filepath = "../../../Data", user_options)
+rf_df <- rbind(rf_df, activity_df)
 
 ```
 
