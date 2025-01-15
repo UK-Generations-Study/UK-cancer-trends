@@ -950,6 +950,9 @@ ggsave(diettrends,
 
 
 rf_table <- rfdata_joinpoint_last %>%
+  rename(
+    exposure = level
+  )%>%
   filter(Model == Segment) %>%
   mutate(
     APC = round(APC, 2), 
