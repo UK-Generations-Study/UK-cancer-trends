@@ -1,0 +1,145 @@
+"sex"	"exposure"	"imd"	"Model"
+Men	Current	1	0
+Men	Current	2	1
+Men	Current	3	1
+Men	Current	4	0
+Men	Current	5	1
+Men	Current	All	0
+Women	Current	1	1
+Women	Current	2	1
+Women	Current	3	0
+Women	Current	4	1
+Women	Current	5	1
+Women	Current	All	0
+Men	Healthy Weight	1	1
+Men	Healthy Weight	2	1
+Men	Healthy Weight	3	0
+Men	Healthy Weight	4	0
+Men	Healthy Weight	5	1
+Men	Healthy Weight	All	0
+Women	Healthy Weight	1	1
+Women	Healthy Weight	2	1
+Women	Healthy Weight	3	0
+Women	Healthy Weight	4	1
+Women	Healthy Weight	5	1
+Women	Healthy Weight	All	0
+Men	Heavy Drinker	1	0
+Men	Heavy Drinker	2	1
+Men	Heavy Drinker	3	0
+Men	Heavy Drinker	4	0
+Men	Heavy Drinker	5	0
+Women	Heavy Drinker	1	1
+Women	Heavy Drinker	2	0
+Women	Heavy Drinker	3	0
+Women	Heavy Drinker	4	0
+Women	Heavy Drinker	5	0
+Men	Light Drinker	1	0
+Men	Light Drinker	2	0
+Men	Light Drinker	3	0
+Men	Light Drinker	4	0
+Men	Light Drinker	5	0
+Women	Light Drinker	1	0
+Women	Light Drinker	2	0
+Women	Light Drinker	3	0
+Women	Light Drinker	4	0
+Women	Light Drinker	5	1
+Men	Meets Recommendations	1	0
+Men	Meets Recommendations	2	0
+Men	Meets Recommendations	3	0
+Men	Meets Recommendations	4	0
+Men	Meets Recommendations	5	0
+Women	Meets Recommendations	1	0
+Women	Meets Recommendations	2	0
+Women	Meets Recommendations	3	0
+Women	Meets Recommendations	4	0
+Women	Meets Recommendations	5	0
+Men	Moderate Drinker	1	0
+Men	Moderate Drinker	2	0
+Men	Moderate Drinker	3	0
+Men	Moderate Drinker	4	0
+Men	Moderate Drinker	5	0
+Women	Moderate Drinker	1	0
+Women	Moderate Drinker	2	1
+Women	Moderate Drinker	3	0
+Women	Moderate Drinker	4	0
+Women	Moderate Drinker	5	0
+Men	Never	1	1
+Men	Never	2	1
+Men	Never	3	0
+Men	Never	4	1
+Men	Never	5	1
+Men	Never	All	0
+Women	Never	1	1
+Women	Never	2	1
+Women	Never	3	0
+Women	Never	4	1
+Women	Never	5	1
+Women	Never	All	0
+Men	Non-Drinker	1	0
+Men	Non-Drinker	2	0
+Men	Non-Drinker	3	0
+Men	Non-Drinker	4	0
+Men	Non-Drinker	5	0
+Women	Non-Drinker	1	0
+Women	Non-Drinker	2	0
+Women	Non-Drinker	3	0
+Women	Non-Drinker	4	0
+Women	Non-Drinker	5	0
+Men	Obese	1	1
+Men	Obese	2	1
+Men	Obese	3	1
+Men	Obese	4	0
+Men	Obese	5	1
+Men	Obese	All	0
+Women	Obese	1	1
+Women	Obese	2	1
+Women	Obese	3	0
+Women	Obese	4	0
+Women	Obese	5	1
+Women	Obese	All	0
+Men	Overweight	1	1
+Men	Overweight	2	1
+Men	Overweight	3	0
+Men	Overweight	4	2
+Men	Overweight	5	1
+Men	Overweight	All	0
+Women	Overweight	1	1
+Women	Overweight	2	2
+Women	Overweight	3	0
+Women	Overweight	4	0
+Women	Overweight	5	1
+Women	Overweight	All	0
+Men	PhysicalActivity	1	0
+Men	PhysicalActivity	2	0
+Men	PhysicalActivity	3	0
+Men	PhysicalActivity	4	0
+Men	PhysicalActivity	5	0
+Women	PhysicalActivity	1	0
+Women	PhysicalActivity	2	0
+Women	PhysicalActivity	3	0
+Women	PhysicalActivity	4	0
+Women	PhysicalActivity	5	0
+Men	Previously	1	1
+Men	Previously	2	1
+Men	Previously	3	0
+Men	Previously	4	0
+Men	Previously	5	1
+Men	Previously	All	0
+Women	Previously	1	1
+Women	Previously	2	1
+Women	Previously	3	1
+Women	Previously	4	0
+Women	Previously	5	1
+Women	Previously	All	0
+Men	Underweight	1	0
+Men	Underweight	2	0
+Men	Underweight	3	0
+Men	Underweight	4	0
+Men	Underweight	5	0
+Men	Underweight	All	0
+Women	Underweight	1	0
+Women	Underweight	2	0
+Women	Underweight	3	0
+Women	Underweight	4	0
+Women	Underweight	5	0
+Women	Underweight	All	0
