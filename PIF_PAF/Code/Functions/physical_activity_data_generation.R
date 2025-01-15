@@ -72,7 +72,7 @@ physical_activity_data_gen <- function(filepath, user_options){
     if(ukds_data_temp_year == 2002){ukds_data_temp <- filter(ukds_data_temp, samptype == 2)}
     
     ## Find and clean base variables
-    ukds_data_output_temp <- hse_base_variable_cleaning(ukds_data_temp, var_dict, ukds_data_temp_year, user_options)
+    ukds_data_output_temp <- hse_base_variable_cleaning(ukds_data_temp, var_dict, ukds_data_temp_year, user_options, activity_data_toggle = T)
     
     cat(paste0("Extracting data for ", ukds_data_temp_year, "...\n"))
     
@@ -115,7 +115,7 @@ physical_activity_data_gen <- function(filepath, user_options){
       }
       
     }
-    # warning if no alcohol variable documentation found
+    # warning if no activity variable documentation found
     if(!activity_doc_found){
       
       cat(paste0("No physical_activity variable documentation found for ", ukds_data_temp_year, "\n"))
