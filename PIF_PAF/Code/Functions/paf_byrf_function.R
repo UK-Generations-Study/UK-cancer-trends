@@ -99,7 +99,7 @@ paf_calculation <- function(dataframe, age_group_of_interest) {
       midpoint2 = value
     ) 
   
-  #high estimate rr 
+  #excessive relative risk calculation
   err <- rr %>%
     mutate(
       Fibre = log(1/Fibre)/10,
@@ -117,6 +117,7 @@ paf_calculation <- function(dataframe, age_group_of_interest) {
       BMI_obese_men = (BMI_obese_men-1),
       BMI_overweight_women = (BMI_overweight_women-1),
       BMI_obese_women = (BMI_obese_women-1),
+      PhysicalActivity = (PhysicalActivity-1)
     ) #calculating the excess relative risk for each exposure level 
   #pivoting the table to restructure it correctly 
   err_2 <- t(err)
@@ -147,7 +148,8 @@ paf_calculation <- function(dataframe, age_group_of_interest) {
       exposure = ifelse(level == "Current"& sex == "Men", "Current_Smoking_men", exposure),
       exposure = ifelse(level == "Current"& sex == "Women", "Current_Smoking_women", exposure), 
       exposure = ifelse(level == "Previously"& sex == "Men", "Former_Smoking_men", exposure),
-      exposure = ifelse(level == "Previously"& sex == "Women", "Former_Smoking_women", exposure), 
+      exposure = ifelse(level == "Previously"& sex == "Women", "Former_Smoking_women", exposure),
+      exposure = ifelse(level == "Below Recommendations", "PhysicalActivity", exposure),
       exposure = ifelse(variable == "processed_meat_consumption", "Processed_Meat", exposure), 
       exposure = ifelse(variable == "redmeat_consumption", "Red_Meat", exposure), 
       exposure = ifelse(variable == "fibre_consumption", "Fibre", exposure), 
@@ -210,6 +212,7 @@ paf_calculation <- function(dataframe, age_group_of_interest) {
            variable = if_else(variable == "fibre_consumption", "Fibre", variable),
            variable = if_else(variable == "redmeat_consumption", "RedMeat", variable),
            variable = if_else(variable == "processed_meat_consumption", "ProcessedMeat", variable),
+           variable = if_else(variable == "Below Recommendations", "PhysicalActivity", variable)
     ) #Renaming and cleaning so that the categories are easier to understand
   
   #calculating risk factor PAF by cancer site 
