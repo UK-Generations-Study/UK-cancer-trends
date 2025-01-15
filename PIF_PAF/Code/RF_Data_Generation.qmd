@@ -26,7 +26,7 @@ user_options$age_groups_indicator <- F
 # Whether to further stratify by IMD
 #   False - not split by IMD 
 #   True - Split by IMD
-user_options$imd_stratification  <- F
+user_options$imd_stratification  <- T
 
 
 ```
@@ -79,7 +79,8 @@ if(user_options$imd_stratification){
 ### HSE - Alcohol
 ```{r}
 
-alcohol_df <- alcohol_data_gen(filepath = "../../../Data", user_options)
+alcohol_df <- alcohol_data_gen(filepath = "../../../Data", user_options) |>
+  fix_hse_2004_weighting()
 rf_df <- rbind(rf_df, alcohol_df)
 
 ```
@@ -87,7 +88,8 @@ rf_df <- rbind(rf_df, alcohol_df)
 ### HSE - BMI
 ```{r}
 
-bmi_df <- bmi_data_gen(filepath = "../../../Data", user_options)
+bmi_df <- bmi_data_gen(filepath = "../../../Data", user_options) |>
+  fix_hse_2004_weighting()
 rf_df <- rbind(rf_df, bmi_df)
 
 ```
@@ -95,7 +97,8 @@ rf_df <- rbind(rf_df, bmi_df)
 ### HSE - Smoking
 ```{r}
 
-smoking_df <- smoking_data_gen(filepath = "../../../Data", user_options)
+smoking_df <- smoking_data_gen(filepath = "../../../Data", user_options) |>
+  fix_hse_2004_weighting()
 rf_df <- rbind(rf_df, smoking_df)
 
 ```
@@ -103,7 +106,9 @@ rf_df <- rbind(rf_df, smoking_df)
 ### HSE - Physical Activity
 ```{r}
 
-activity_df <- physical_activity_data_gen(filepath = "../../../Data", user_options)
+activity_df <- physical_activity_data_gen(filepath = "../../../Data", user_options) |>
+  fix_hse_2004_weighting()
+
 rf_df <- rbind(rf_df, activity_df)
 
 ```
