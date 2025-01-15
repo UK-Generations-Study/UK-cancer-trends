@@ -16,10 +16,24 @@ check_year_spec <- function(year, year_spec){
   
 }
 
+### 2004 HSE WEIGHTING FIX FUNCTION
+fix_hse_2004_weighting <- function(data){
+  
+  data <- data |>
+    mutate(N = case_when(
+      year == 2004 ~ N/14.15683,
+      TRUE ~ N
+    ))
+  
+  return(data)
+  
+}
+
 
 ### AGE/SEX/WEIGHT VARIABLE GENERATION
+# activity_data_toggle is used for 2006 activity data which uses a different weighting variable than other variables in the 2004 HSE survey
 
-hse_base_variable_cleaning <- function(ukds_data_temp, var_dict, ukds_data_temp_year, user_options){
+hse_base_variable_cleaning <- function(ukds_data_temp, var_dict, ukds_data_temp_year, user_options, activity_data_toggle = F){
   
   # Initialise empty new dataframe
   ukds_data_output_temp <- as.data.frame(matrix(nrow = nrow(ukds_data_temp), ncol = 0))
@@ -99,6 +113,11 @@ hse_base_variable_cleaning <- function(ukds_data_temp, var_dict, ukds_data_temp_
       
       # Intialise new variable
       ukds_data_output_temp[["weight"]] <- ukds_data_temp[[dict_varname]]
+      
+      # Check for 2006 activity data - need to change weight variable
+      if(activity_data_toggle & ukds_data_temp_year == 2006){
+        ukds_data_output_temp[["weight"]] <- ukds_data_temp[["wt_int_s2"]]
+      }
       
     }
     
