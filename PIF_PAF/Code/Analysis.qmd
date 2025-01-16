@@ -276,16 +276,14 @@ data_paf_comparison <- read.csv(r"(..\Data\paf_comparison.csv)") |>
 
 # Reading in JP Analysis
 #   Cancer Incidence
-data_joinpoint <- read.delim("../Data/Joinpoint/cancerrates/export.Export.APC.txt", sep = "\t")
+data_joinpoint <- read.delim("../Data/Joinpoint_Results/Cancerrates/joinpoint_cancerrates.Export.APC.txt", sep = "\t")
 #   Risk Factors
-rfdata_joinpoint <- read.delim("../Data/Joinpoint/riskfactors/export.Export.APC.txt", sep = "\t") %>%
-  rename(
-    exposure = level
-  )
-rfdata_imd_joinpoint <- read.delim("../Data/Joinpoint/riskfactor_imd/export.Export.APC.txt", sep = "\t") 
-dietrfdata_joinpoint <- read.delim("../../../Data/Cleaned_Data/joinpoint_results/export.Export.APC.txt", sep = "\t")
+rfdata_joinpoint <- read.delim("../Data/Joinpoint_Results/Riskfactor/joinpoint_rf.Export.APC.txt", sep = "\t")%>%
+  rename(variable = level)
+rfdata_imd_joinpoint <- read.delim("../Data/Joinpoint_Results/Riskfactor_by_IMD/joinpoint_rf_imd.Export.APC.txt", sep = "\t") 
+dietrfdata_joinpoint <- read.delim("../Data/Joinpoint_Results/Diet/joinpoint_rfdiet.Export.APC.txt", sep = "\t") 
 #   Childhood BMI
-data_childhoodbmi_joinpoint <- read.delim("../Data/Joinpoint/childhoodbmi/export.Export.APC.txt", sep = "\t") 
+data_childhoodbmi_joinpoint <- read.delim("../Data/Joinpoint_Results/ChildhoodBMI/export.Export.APC.txt", sep = "\t") 
 
 ```
 
@@ -298,6 +296,12 @@ source("Functions/paf_aggregate_function.R")
 # Load in PIF calculation functions
 source("Functions/pif_function.R")
 ```
+
+### Ensuring the Joinpoint input is up to data
+```{r}
+source("Functions/joinpoint_cleaned_generation.R")
+```
+
 ## Generic PAF relationship
 
 ```{r}
@@ -568,19 +572,12 @@ apc_table
 The APC were calculated with the assumption of homoscedastic random errors.
 
 ```{r}
-# Prepare the risk factor data for join point
-  joinpoint <- data_rf %>% 
-    filter(
-    variable %in% c("alcohol_amt", "physical_activity", "bmi", "smoking_status")
-  )%>%
-    arrange(
-      level, sex, age_group, year
-      ) 
-write.csv(joinpoint, paste0("../../../Data/Joinpoint_Cleaned_Data/joinpoint_rf.csv"), row.names = F )
-    
 
 # Make a complete risk factor dataset 
-RFdata_joinpoint <- rbind(rfdata_joinpoint,dietrfdata_joinpoint)
+RFdata_joinpoint <- rbind(rfdata_joinpoint,dietrfdata_joinpoint) %>%
+  rename(
+    exposure = variable
+  )
 
 # Merge joinpoint data into cancer data
 rfdata_joinpoint_last <- RFdata_joinpoint |>
@@ -948,7 +945,6 @@ ggsave(diettrends,
 
 ```{r}
 
-
 rf_table <- rfdata_joinpoint_last %>%
   rename(
     exposure = level
@@ -1001,22 +997,6 @@ rf_apc_table
 ## Figure 2c - Trends in Risk Factors by IMD
 
 ```{r}
-# Prepare the data for Joinpoint 
-  joinpoint_imd <- data_rf_imd %>% 
-  rename(
-    exposure = level 
-  ) %>% 
-  filter(
-    variable %in% c("alcohol_amt", "physical_activity", "bmi", "smoking_status"), 
-    imd != "All"
-  )%>%
-  mutate(
-    exposure = ifelse(exposure == "Below Recommendations", "PhysicalActivity", exposure),
-  )%>%
-    arrange(
-      exposure, sex, age_group, imd, year
-      ) 
-write.csv(joinpoint_imd, paste0("../../../Data/Joinpoint_Cleaned_Data/joinpoint_rf_imd.csv"), row.names = F )
 
 # Clean the data
 data_rf_imd_clean <- data_rf_imd %>% 
@@ -1031,32 +1011,36 @@ data_rf_imd_clean <- data_rf_imd %>%
     variable = ifelse(variable == "bmi","BMI", variable ), 
     variable = ifelse(variable == "smoking_status","Smoking", variable ), 
     variable = ifelse(variable == "physical_activity","PhysicalActivity", variable ),
-    level = sub(" .*", "", level)
+    level = sub(" .*", "", level), 
+    imd = if_else(imd == 1, "1 (least deprived)", imd), 
+    imd = if_else(imd == 5, "5 (most deprived)", imd), 
+    complete = paste(level, variable, sep = " ")
   )
 
 # Create a list of unique variables
-unique_variables <- unique(data_rf_imd_clean$variable)
+unique_level <- unique(data_rf_imd_clean$complete)
 
 # Loop through each variable and create a plot
-for (var in unique_variables) {
-  plot <- ggplot(data_rf_imd_clean %>% filter(variable == var), aes(x = year, y = value, color = as.factor(imd), group = imd)) +
+for (var in unique_level) {
+  plot <- ggplot(data_rf_imd_clean %>% filter(complete == var), aes(x = year, y = value, color = as.factor(imd), group = imd)) +
     geom_line(size = 1) +
-    facet_grid(rows = vars(level), cols = vars(sex)) +
     labs(
       title = paste("Population Prevalence by IMD England:", var),
       x = "Year",
       y = "Value",
       color = "IMD Status"
     ) +
-    scale_color_brewer(palette = "Set1") + 
+    scale_color_brewer(palette = "Set2")   + 
     theme_minimal() +
+    ylim(0, 0.2) +
     scale_x_continuous(
     breaks = seq(2000, 2019, by = 3),  # Define the x-axis breaks
     limits = c(2000, 2020))+
     theme(
       strip.text = element_text(size = 10),
       legend.position = "right"
-    )
+    )+
+    facet_wrap(~sex) 
   
   print(plot) 
   
