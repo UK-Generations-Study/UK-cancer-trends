@@ -38,7 +38,7 @@ physical_activity_data_gen <- function(filepath, user_options){
   } else {
     var_dict <- read_yaml(paste0(filepath, "/hse_variable_documentation_ages_all.yaml"))
   }
- 
+  
   
   # Filter to HSE datasets and filter to year range for data, then extract UKDS datasets
   needed_ukds_data <- ukds_dict |>
@@ -125,14 +125,13 @@ physical_activity_data_gen <- function(filepath, user_options){
       ## Remove NA
       ukds_data_output_temp <- ukds_data_output_temp |>
         na.omit()
-    
-      ## Tabulate - depending on if imd is a needed variable or not
       
+      ## Tabulate - depending on if imd is a needed variable or not
       if(user_options$imd_stratification){
         ukds_data_temp_table <- ukds_data_output_temp |>
           filter(imd>=1) |>
           count(age_group, sex, physical_activity, imd, wt = weight) |>
-          group_by(age_group, sex) |>
+          group_by(age_group, sex, imd) |>
           mutate(value = n/sum(n),
                  N = sum(n)) |>
           select(-n) |>

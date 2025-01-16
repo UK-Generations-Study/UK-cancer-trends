@@ -1,0 +1,25 @@
+"age_group"	"sex"	"variable"	"Model"	"# Joinpoints"	"# Observations"	"# Parameters"	"D.F."	"SSE"	"BIC"	"BIC3"	"Weight"	"WBIC"
+20-49	Men	"fibre_consumption_mean"	1	0	11	2	9	       0.0260458	      -5.6098147	      -5.6098147	       0.0000000	      -5.6098147
+20-49	Men	"fibre_consumption_mean"	2	1	11	4	7	       0.0228008	      -5.3068941	      -5.0889036	       0.1245878	      -5.2797352
+50+	Men	"fibre_consumption_mean"	1	0	11	2	9	       0.0126121	      -6.3350140	      -6.3350140	       0.0000000	      -6.3350140
+50+	Men	"fibre_consumption_mean"	2	1	11	4	7	       0.0104281	      -6.0891798	      -5.8711893	       0.1731622	      -6.0514321
+20-49	Women	"fibre_consumption_mean"	1	0	11	2	9	       0.0165869	      -6.0610588	      -6.0610588	       0.0000000	      -6.0610588
+20-49	Women	"fibre_consumption_mean"	2	1	11	4	7	       0.0042138	      -6.9953273	      -6.7773368	       0.7459564	      -6.8327159
+50+	Women	"fibre_consumption_mean"	1	0	11	2	9	       0.0058647	      -7.1007180	      -7.1007180	       0.0000000	      -7.1007180
+50+	Women	"fibre_consumption_mean"	2	1	11	4	7	       0.0054070	      -6.7459971	      -6.5280066	       0.0780461	      -6.7289838
+20-49	Men	"processedmeat_consumption_median"	1	0	11	2	9	       0.2322445	      -3.4218789	      -3.4218789	       0.0000000	      -3.4218789
+20-49	Men	"processedmeat_consumption_median"	2	1	11	4	7	       0.1932985	      -3.1694530	      -2.9514625	       0.1676939	      -3.1328973
+50+	Men	"processedmeat_consumption_median"	1	0	11	2	9	       0.4496108	      -2.7612873	      -2.7612873	       0.0000000	      -2.7612873
+50+	Men	"processedmeat_consumption_median"	2	1	11	4	7	       0.2501156	      -2.9117653	      -2.6937749	       0.4437064	      -2.8150416
+20-49	Women	"processedmeat_consumption_median"	1	0	11	2	9	       0.4150504	      -2.8412695	      -2.8412695	       0.0000000	      -2.8412695
+20-49	Women	"processedmeat_consumption_median"	2	1	11	4	7	       0.3318322	      -2.6290591	      -2.4110686	       0.2005014	      -2.5853517
+50+	Women	"processedmeat_consumption_median"	1	0	11	2	9	       0.3158442	      -3.1144205	      -3.1144205	       0.0000000	      -3.1144205
+50+	Women	"processedmeat_consumption_median"	2	1	11	4	7	       0.2801063	      -2.7985195	      -2.5805290	       0.1131505	      -2.7738538
+20-49	Men	"redmeat_consumption_median"	1	0	11	2	9	       0.5530111	      -2.5542915	      -2.5542915	       0.0000000	      -2.5542915
+20-49	Men	"redmeat_consumption_median"	2	1	11	4	7	       0.2149313	      -3.0633704	      -2.8453799	       0.6113437	      -2.9301032
+50+	Men	"redmeat_consumption_median"	1	0	11	2	9	       0.2241722	      -3.4572552	      -3.4572552	       0.0000000	      -3.4572552
+50+	Men	"redmeat_consumption_median"	2	1	11	4	7	       0.1054294	      -3.7756470	      -3.5576566	       0.5296945	      -3.6601787
+20-49	Women	"redmeat_consumption_median"	1	0	11	2	9	       0.9404045	      -2.0233595	      -2.0233595	       0.0000000	      -2.0233595
+20-49	Women	"redmeat_consumption_median"	2	1	11	4	7	       0.7100720	      -1.8683223	      -1.6503318	       0.2449292	      -1.8149301
+50+	Women	"redmeat_consumption_median"	1	0	11	2	9	       0.4452437	      -2.7710479	      -2.7710479	       0.0000000	      -2.7710479
+50+	Women	"redmeat_consumption_median"	2	1	11	4	7	       0.3628900	      -2.5395889	      -2.3215984	       0.1849631	      -2.4992687
