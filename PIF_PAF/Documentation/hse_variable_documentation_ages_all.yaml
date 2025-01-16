@@ -1,6 +1,7 @@
-### HSE VARIABLE DOCUMENTATION ###
+### HSE VARIABLE DOCUMENTATION - ALL AGES ###
 
 # This document is designed to describe the structure of the variables in the HSE datasets from 1995-2019
+# It is an alternate version of hse_variable_documentation.yaml that groups all ages together
 # This is so the same variables  can be extracted methodically from the data with minimal intervention
 # Each entry will be a variable of the survey subset by year groups with the following data:
 #   - varname: variable name in the dataset
@@ -12,37 +13,37 @@ age_group:
   1995-2010:
     varname: age
     dict:
-      # "16-120": "All"
-      "20-49": "20-49"
-      "50-120": "50+" # No max age so setting this as maximum - will check if any excluded
+      "20-120": "All"
+      # "20-49": "20-49"
+      # "50-120": "50+" # No max age so setting this as maximum - will check if any excluded
     
   2011-2013:
     varname: Age
     dict:
-      # "16-120": "All"
-      "20-49": "20-49"
-      "50-120": "50+" # No max age so setting this as maximum - will check if any excluded
+      "20-120": "All"
+      # "20-49": "20-49"
+      # "50-120": "50+" # No max age so setting this as maximum - will check if any excluded
     
   2014:
     varname: Age90
     dict:
-      # "16-120": "All"
-      "20-49": "20-49"
-      "50-90": "50+" # 90 is maximum for this dataset
+      "20-90": "All"
+      # "20-49": "20-49"
+      # "50-90": "50+" # 90 is maximum for this dataset
     
   2015-2017:
     varname: Age16g5
     dict:
-      # "1-17": "All"
-      "3-8": "20-49"
-      "9-17": "50+"
+      "3-17": "All"
+      # "3-8": "20-49"
+      # "9-17": "50+"
       
   2018-2019:
     varname: age16g5
     dict:
-      # "1-17": "All"
-      "3-8": "20-49"
-      "9-17": "50+"
+      "3-17": "All"
+      # "3-8": "20-49"
+      # "9-17": "50+"
     
 
 ### SEX      
