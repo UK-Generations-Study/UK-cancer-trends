@@ -155,7 +155,7 @@ bmi_data_gen <- function(filepath, user_options){
         ukds_data_temp_table <- ukds_data_output_temp |>
           filter(imd>=1) |>
           count(age_group, sex, bmi, imd, wt = weight) |>
-          group_by(age_group, sex) |>
+          group_by(age_group, sex, imd) |>
           mutate(value = n/sum(n),
                  N = sum(n)) |>
           select(-n) |>
