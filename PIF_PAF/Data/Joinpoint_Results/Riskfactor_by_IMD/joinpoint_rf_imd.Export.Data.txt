@@ -1,1790 +1,1790 @@
-"age_group"	"sex"	"exposure"	"imd"	"year"	"value"	"Model"	"Flag"	"APC"	"Joinpoints"	"Final Selected Model"
-All	Men	Current	1	2001	0.03	0.04	NA	-3.0788*	0	0
-All	Men	Current	1	2002	0.03	0.04	NA	-3.0788*	0	0
-All	Men	Current	1	2003	0.04	0.03	NA	-3.0788*	0	0
-All	Men	Current	1	2004	0.04	0.03	NA	-3.0788*	0	0
-All	Men	Current	1	2005	0.04	0.03	NA	-3.0788*	0	0
-All	Men	Current	1	2006	0.03	0.03	NA	-3.0788*	0	0
-All	Men	Current	1	2007	0.04	0.03	NA	-3.0788*	0	0
-All	Men	Current	1	2008	0.03	0.03	NA	-3.0788*	0	0
-All	Men	Current	1	2009	0.03	0.03	NA	-3.0788*	0	0
-All	Men	Current	1	2010	0.03	0.03	NA	-3.0788*	0	0
-All	Men	Current	1	2011	0.03	0.03	NA	-3.0788*	0	0
-All	Men	Current	1	2012	0.02	0.03	NA	-3.0788*	0	0
-All	Men	Current	1	2013	0.02	0.02	NA	-3.0788*	0	0
-All	Men	Current	1	2014	0.03	0.02	NA	-3.0788*	0	0
-All	Men	Current	1	2015	0.02	0.02	NA	-3.0788*	0	0
-All	Men	Current	1	2016	0.02	0.02	NA	-3.0788*	0	0
-All	Men	Current	1	2017	0.02	0.02	NA	-3.0788*	0	0
-All	Men	Current	1	2018	0.02	0.02	NA	-3.0788*	0	0
-All	Men	Current	1	2019	0.02	0.02	NA	-3.0788*	0	0
-All	Men	Current	2	2001	0.03	0.03	NA	26.3053	1	1
-All	Men	Current	2	2002	0.04	0.04	NA	26.3053	1	1
-All	Men	Current	2	2003	0.04	0.04	Joinpoint 1	NA	1	1
-All	Men	Current	2	2004	0.04	0.04	NA	-2.8366*	1	1
-All	Men	Current	2	2005	0.05	0.04	NA	-2.8366*	1	1
-All	Men	Current	2	2006	0.04	0.04	NA	-2.8366*	1	1
-All	Men	Current	2	2007	0.04	0.04	NA	-2.8366*	1	1
-All	Men	Current	2	2008	0.04	0.04	NA	-2.8366*	1	1
-All	Men	Current	2	2009	0.04	0.04	NA	-2.8366*	1	1
-All	Men	Current	2	2010	0.04	0.04	NA	-2.8366*	1	1
-All	Men	Current	2	2011	0.04	0.04	NA	-2.8366*	1	1
-All	Men	Current	2	2012	0.04	0.03	NA	-2.8366*	1	1
-All	Men	Current	2	2013	0.04	0.03	NA	-2.8366*	1	1
-All	Men	Current	2	2014	0.03	0.03	NA	-2.8366*	1	1
-All	Men	Current	2	2015	0.02	0.03	NA	-2.8366*	1	1
-All	Men	Current	2	2016	0.03	0.03	NA	-2.8366*	1	1
-All	Men	Current	2	2017	0.03	0.03	NA	-2.8366*	1	1
-All	Men	Current	2	2018	0.03	0.03	NA	-2.8366*	1	1
-All	Men	Current	2	2019	0.03	0.03	NA	-2.8366*	1	1
-All	Men	Current	3	2001	0.04	0.04	NA	14.5920	1	1
-All	Men	Current	3	2002	0.04	0.05	NA	14.5920	1	1
-All	Men	Current	3	2003	0.06	0.05	Joinpoint 1	NA	1	1
-All	Men	Current	3	2004	0.05	0.05	NA	-2.1600*	1	1
-All	Men	Current	3	2005	0.05	0.05	NA	-2.1600*	1	1
-All	Men	Current	3	2006	0.05	0.05	NA	-2.1600*	1	1
-All	Men	Current	3	2007	0.06	0.05	NA	-2.1600*	1	1
-All	Men	Current	3	2008	0.04	0.05	NA	-2.1600*	1	1
-All	Men	Current	3	2009	0.04	0.05	NA	-2.1600*	1	1
-All	Men	Current	3	2010	0.05	0.04	NA	-2.1600*	1	1
-All	Men	Current	3	2011	0.04	0.04	NA	-2.1600*	1	1
-All	Men	Current	3	2012	0.04	0.04	NA	-2.1600*	1	1
-All	Men	Current	3	2013	0.05	0.04	NA	-2.1600*	1	1
-All	Men	Current	3	2014	0.04	0.04	NA	-2.1600*	1	1
-All	Men	Current	3	2015	0.04	0.04	NA	-2.1600*	1	1
-All	Men	Current	3	2016	0.04	0.04	NA	-2.1600*	1	1
-All	Men	Current	3	2017	0.04	0.04	NA	-2.1600*	1	1
-All	Men	Current	3	2018	0.04	0.04	NA	-2.1600*	1	1
-All	Men	Current	3	2019	0.04	0.04	NA	-2.1600*	1	1
-All	Men	Current	4	2001	0.06	0.07	NA	-2.2586*	0	0
-All	Men	Current	4	2002	0.06	0.07	NA	-2.2586*	0	0
-All	Men	Current	4	2003	0.06	0.06	NA	-2.2586*	0	0
-All	Men	Current	4	2004	0.06	0.06	NA	-2.2586*	0	0
-All	Men	Current	4	2005	0.07	0.06	NA	-2.2586*	0	0
-All	Men	Current	4	2006	0.06	0.06	NA	-2.2586*	0	0
-All	Men	Current	4	2007	0.05	0.06	NA	-2.2586*	0	0
-All	Men	Current	4	2008	0.06	0.06	NA	-2.2586*	0	0
-All	Men	Current	4	2009	0.06	0.06	NA	-2.2586*	0	0
-All	Men	Current	4	2010	0.05	0.05	NA	-2.2586*	0	0
-All	Men	Current	4	2011	0.05	0.05	NA	-2.2586*	0	0
-All	Men	Current	4	2012	0.05	0.05	NA	-2.2586*	0	0
-All	Men	Current	4	2013	0.05	0.05	NA	-2.2586*	0	0
-All	Men	Current	4	2014	0.05	0.05	NA	-2.2586*	0	0
-All	Men	Current	4	2015	0.05	0.05	NA	-2.2586*	0	0
-All	Men	Current	4	2016	0.05	0.05	NA	-2.2586*	0	0
-All	Men	Current	4	2017	0.05	0.05	NA	-2.2586*	0	0
-All	Men	Current	4	2018	0.04	0.05	NA	-2.2586*	0	0
-All	Men	Current	4	2019	0.04	0.04	NA	-2.2586*	0	0
-All	Men	Current	5	2001	0.10	0.10	NA	-13.9616	1	1
-All	Men	Current	5	2002	0.10	0.09	NA	-13.9616	1	1
-All	Men	Current	5	2003	0.07	0.08	NA	-13.9616	1	1
-All	Men	Current	5	2004	0.06	0.07	Joinpoint 1	NA	1	1
-All	Men	Current	5	2005	0.07	0.06	NA	-0.4247	1	1
-All	Men	Current	5	2006	0.06	0.06	NA	-0.4247	1	1
-All	Men	Current	5	2007	0.06	0.06	NA	-0.4247	1	1
-All	Men	Current	5	2008	0.07	0.06	NA	-0.4247	1	1
-All	Men	Current	5	2009	0.07	0.06	NA	-0.4247	1	1
-All	Men	Current	5	2010	0.06	0.06	NA	-0.4247	1	1
-All	Men	Current	5	2011	0.08	0.06	NA	-0.4247	1	1
-All	Men	Current	5	2012	0.06	0.06	NA	-0.4247	1	1
-All	Men	Current	5	2013	0.07	0.06	NA	-0.4247	1	1
-All	Men	Current	5	2014	0.06	0.06	NA	-0.4247	1	1
-All	Men	Current	5	2015	0.06	0.06	NA	-0.4247	1	1
-All	Men	Current	5	2016	0.07	0.06	NA	-0.4247	1	1
-All	Men	Current	5	2017	0.06	0.06	NA	-0.4247	1	1
-All	Men	Current	5	2018	0.06	0.06	NA	-0.4247	1	1
-All	Men	Current	5	2019	0.05	0.06	NA	-0.4247	1	1
-All	Women	Current	1	2001	0.03	0.02	NA	13.4617	1	1
-All	Women	Current	1	2002	0.03	0.03	NA	13.4617	1	1
-All	Women	Current	1	2003	0.03	0.03	Joinpoint 1	NA	1	1
-All	Women	Current	1	2004	0.04	0.03	NA	-5.0192*	1	1
-All	Women	Current	1	2005	0.03	0.03	NA	-5.0192*	1	1
-All	Women	Current	1	2006	0.02	0.03	NA	-5.0192*	1	1
-All	Women	Current	1	2007	0.03	0.03	NA	-5.0192*	1	1
-All	Women	Current	1	2008	0.03	0.02	NA	-5.0192*	1	1
-All	Women	Current	1	2009	0.02	0.02	NA	-5.0192*	1	1
-All	Women	Current	1	2010	0.02	0.02	NA	-5.0192*	1	1
-All	Women	Current	1	2011	0.02	0.02	NA	-5.0192*	1	1
-All	Women	Current	1	2012	0.02	0.02	NA	-5.0192*	1	1
-All	Women	Current	1	2013	0.02	0.02	NA	-5.0192*	1	1
-All	Women	Current	1	2014	0.02	0.02	NA	-5.0192*	1	1
-All	Women	Current	1	2015	0.02	0.02	NA	-5.0192*	1	1
-All	Women	Current	1	2016	0.02	0.02	NA	-5.0192*	1	1
-All	Women	Current	1	2017	0.02	0.02	NA	-5.0192*	1	1
-All	Women	Current	1	2018	0.01	0.01	NA	-5.0192*	1	1
-All	Women	Current	1	2019	0.01	0.01	NA	-5.0192*	1	1
-All	Women	Current	2	2001	0.03	0.03	NA	5.5059	1	1
-All	Women	Current	2	2002	0.03	0.03	NA	5.5059	1	1
-All	Women	Current	2	2003	0.03	0.03	NA	5.5059	1	1
-All	Women	Current	2	2004	0.03	0.03	NA	5.5059	1	1
-All	Women	Current	2	2005	0.04	0.04	Joinpoint 1	NA	1	1
-All	Women	Current	2	2006	0.04	0.04	NA	-4.0781*	1	1
-All	Women	Current	2	2007	0.03	0.03	NA	-4.0781*	1	1
-All	Women	Current	2	2008	0.03	0.03	NA	-4.0781*	1	1
-All	Women	Current	2	2009	0.03	0.03	NA	-4.0781*	1	1
-All	Women	Current	2	2010	0.03	0.03	NA	-4.0781*	1	1
-All	Women	Current	2	2011	0.03	0.03	NA	-4.0781*	1	1
-All	Women	Current	2	2012	0.03	0.03	NA	-4.0781*	1	1
-All	Women	Current	2	2013	0.03	0.03	NA	-4.0781*	1	1
-All	Women	Current	2	2014	0.02	0.03	NA	-4.0781*	1	1
-All	Women	Current	2	2015	0.02	0.02	NA	-4.0781*	1	1
-All	Women	Current	2	2016	0.02	0.02	NA	-4.0781*	1	1
-All	Women	Current	2	2017	0.03	0.02	NA	-4.0781*	1	1
-All	Women	Current	2	2018	0.02	0.02	NA	-4.0781*	1	1
-All	Women	Current	2	2019	0.02	0.02	NA	-4.0781*	1	1
-All	Women	Current	3	2001	0.05	0.05	NA	-3.1250*	0	0
-All	Women	Current	3	2002	0.04	0.05	NA	-3.1250*	0	0
-All	Women	Current	3	2003	0.05	0.04	NA	-3.1250*	0	0
-All	Women	Current	3	2004	0.04	0.04	NA	-3.1250*	0	0
-All	Women	Current	3	2005	0.04	0.04	NA	-3.1250*	0	0
-All	Women	Current	3	2006	0.04	0.04	NA	-3.1250*	0	0
-All	Women	Current	3	2007	0.04	0.04	NA	-3.1250*	0	0
-All	Women	Current	3	2008	0.04	0.04	NA	-3.1250*	0	0
-All	Women	Current	3	2009	0.05	0.04	NA	-3.1250*	0	0
-All	Women	Current	3	2010	0.04	0.04	NA	-3.1250*	0	0
-All	Women	Current	3	2011	0.04	0.03	NA	-3.1250*	0	0
-All	Women	Current	3	2012	0.03	0.03	NA	-3.1250*	0	0
-All	Women	Current	3	2013	0.04	0.03	NA	-3.1250*	0	0
-All	Women	Current	3	2014	0.03	0.03	NA	-3.1250*	0	0
-All	Women	Current	3	2015	0.03	0.03	NA	-3.1250*	0	0
-All	Women	Current	3	2016	0.03	0.03	NA	-3.1250*	0	0
-All	Women	Current	3	2017	0.03	0.03	NA	-3.1250*	0	0
-All	Women	Current	3	2018	0.03	0.03	NA	-3.1250*	0	0
-All	Women	Current	3	2019	0.02	0.03	NA	-3.1250*	0	0
-All	Women	Current	4	2001	0.06	0.06	NA	-4.2113*	1	1
-All	Women	Current	4	2002	0.06	0.06	NA	-4.2113*	1	1
-All	Women	Current	4	2003	0.07	0.06	NA	-4.2113*	1	1
-All	Women	Current	4	2004	0.06	0.06	NA	-4.2113*	1	1
-All	Women	Current	4	2005	0.06	0.05	NA	-4.2113*	1	1
-All	Women	Current	4	2006	0.05	0.05	NA	-4.2113*	1	1
-All	Women	Current	4	2007	0.05	0.05	NA	-4.2113*	1	1
-All	Women	Current	4	2008	0.05	0.05	NA	-4.2113*	1	1
-All	Women	Current	4	2009	0.05	0.05	NA	-4.2113*	1	1
-All	Women	Current	4	2010	0.04	0.04	NA	-4.2113*	1	1
-All	Women	Current	4	2011	0.04	0.04	Joinpoint 1	NA	1	1
-All	Women	Current	4	2012	0.04	0.04	NA	-1.3971	1	1
-All	Women	Current	4	2013	0.04	0.04	NA	-1.3971	1	1
-All	Women	Current	4	2014	0.04	0.04	NA	-1.3971	1	1
-All	Women	Current	4	2015	0.04	0.04	NA	-1.3971	1	1
-All	Women	Current	4	2016	0.04	0.04	NA	-1.3971	1	1
-All	Women	Current	4	2017	0.04	0.04	NA	-1.3971	1	1
-All	Women	Current	4	2018	0.04	0.04	NA	-1.3971	1	1
-All	Women	Current	4	2019	0.04	0.04	NA	-1.3971	1	1
-All	Women	Current	5	2001	0.09	0.09	NA	-13.5169*	1	1
-All	Women	Current	5	2002	0.09	0.08	NA	-13.5169*	1	1
-All	Women	Current	5	2003	0.06	0.07	NA	-13.5169*	1	1
-All	Women	Current	5	2004	0.06	0.06	Joinpoint 1	NA	1	1
-All	Women	Current	5	2005	0.06	0.06	NA	-1.2965*	1	1
-All	Women	Current	5	2006	0.06	0.06	NA	-1.2965*	1	1
-All	Women	Current	5	2007	0.06	0.06	NA	-1.2965*	1	1
-All	Women	Current	5	2008	0.06	0.06	NA	-1.2965*	1	1
-All	Women	Current	5	2009	0.05	0.06	NA	-1.2965*	1	1
-All	Women	Current	5	2010	0.05	0.05	NA	-1.2965*	1	1
-All	Women	Current	5	2011	0.06	0.05	NA	-1.2965*	1	1
-All	Women	Current	5	2012	0.05	0.05	NA	-1.2965*	1	1
-All	Women	Current	5	2013	0.05	0.05	NA	-1.2965*	1	1
-All	Women	Current	5	2014	0.05	0.05	NA	-1.2965*	1	1
-All	Women	Current	5	2015	0.06	0.05	NA	-1.2965*	1	1
-All	Women	Current	5	2016	0.05	0.05	NA	-1.2965*	1	1
-All	Women	Current	5	2017	0.05	0.05	NA	-1.2965*	1	1
-All	Women	Current	5	2018	0.05	0.05	NA	-1.2965*	1	1
-All	Women	Current	5	2019	0.05	0.05	NA	-1.2965*	1	1
-All	Men	Healthy Weight	1	2001	0.04	0.04	NA	18.9953	1	1
-All	Men	Healthy Weight	1	2002	0.05	0.05	NA	18.9953	1	1
-All	Men	Healthy Weight	1	2003	0.06	0.06	Joinpoint 1	NA	1	1
-All	Men	Healthy Weight	1	2004	0.06	0.06	NA	-0.8059	1	1
-All	Men	Healthy Weight	1	2005	0.06	0.06	NA	-0.8059	1	1
-All	Men	Healthy Weight	1	2006	0.05	0.06	NA	-0.8059	1	1
-All	Men	Healthy Weight	1	2007	0.07	0.06	NA	-0.8059	1	1
-All	Men	Healthy Weight	1	2008	0.06	0.06	NA	-0.8059	1	1
-All	Men	Healthy Weight	1	2009	0.05	0.06	NA	-0.8059	1	1
-All	Men	Healthy Weight	1	2010	0.06	0.06	NA	-0.8059	1	1
-All	Men	Healthy Weight	1	2011	0.05	0.06	NA	-0.8059	1	1
-All	Men	Healthy Weight	1	2012	0.06	0.06	NA	-0.8059	1	1
-All	Men	Healthy Weight	1	2013	0.05	0.06	NA	-0.8059	1	1
-All	Men	Healthy Weight	1	2014	0.06	0.06	NA	-0.8059	1	1
-All	Men	Healthy Weight	1	2015	0.06	0.06	NA	-0.8059	1	1
-All	Men	Healthy Weight	1	2016	0.05	0.05	NA	-0.8059	1	1
-All	Men	Healthy Weight	1	2017	0.06	0.05	NA	-0.8059	1	1
-All	Men	Healthy Weight	1	2018	0.05	0.05	NA	-0.8059	1	1
-All	Men	Healthy Weight	1	2019	0.06	0.05	NA	-0.8059	1	1
-All	Men	Healthy Weight	2	2001	0.04	0.04	NA	17.2963	1	1
-All	Men	Healthy Weight	2	2002	0.05	0.05	NA	17.2963	1	1
-All	Men	Healthy Weight	2	2003	0.06	0.06	Joinpoint 1	NA	1	1
-All	Men	Healthy Weight	2	2004	0.06	0.06	NA	-0.1499	1	1
-All	Men	Healthy Weight	2	2005	0.07	0.06	NA	-0.1499	1	1
-All	Men	Healthy Weight	2	2006	0.05	0.06	NA	-0.1499	1	1
-All	Men	Healthy Weight	2	2007	0.06	0.06	NA	-0.1499	1	1
-All	Men	Healthy Weight	2	2008	0.05	0.06	NA	-0.1499	1	1
-All	Men	Healthy Weight	2	2009	0.05	0.06	NA	-0.1499	1	1
-All	Men	Healthy Weight	2	2010	0.05	0.06	NA	-0.1499	1	1
-All	Men	Healthy Weight	2	2011	0.06	0.06	NA	-0.1499	1	1
-All	Men	Healthy Weight	2	2012	0.05	0.06	NA	-0.1499	1	1
-All	Men	Healthy Weight	2	2013	0.07	0.06	NA	-0.1499	1	1
-All	Men	Healthy Weight	2	2014	0.05	0.06	NA	-0.1499	1	1
-All	Men	Healthy Weight	2	2015	0.05	0.06	NA	-0.1499	1	1
-All	Men	Healthy Weight	2	2016	0.05	0.06	NA	-0.1499	1	1
-All	Men	Healthy Weight	2	2017	0.07	0.06	NA	-0.1499	1	1
-All	Men	Healthy Weight	2	2018	0.06	0.06	NA	-0.1499	1	1
-All	Men	Healthy Weight	2	2019	0.05	0.06	NA	-0.1499	1	1
-All	Men	Healthy Weight	3	2001	0.05	0.06	NA	0.3499	0	0
-All	Men	Healthy Weight	3	2002	0.06	0.06	NA	0.3499	0	0
-All	Men	Healthy Weight	3	2003	0.06	0.06	NA	0.3499	0	0
-All	Men	Healthy Weight	3	2004	0.05	0.06	NA	0.3499	0	0
-All	Men	Healthy Weight	3	2005	0.06	0.06	NA	0.3499	0	0
-All	Men	Healthy Weight	3	2006	0.06	0.06	NA	0.3499	0	0
-All	Men	Healthy Weight	3	2007	0.07	0.06	NA	0.3499	0	0
-All	Men	Healthy Weight	3	2008	0.06	0.06	NA	0.3499	0	0
-All	Men	Healthy Weight	3	2009	0.06	0.06	NA	0.3499	0	0
-All	Men	Healthy Weight	3	2010	0.06	0.06	NA	0.3499	0	0
-All	Men	Healthy Weight	3	2011	0.06	0.06	NA	0.3499	0	0
-All	Men	Healthy Weight	3	2012	0.06	0.06	NA	0.3499	0	0
-All	Men	Healthy Weight	3	2013	0.06	0.06	NA	0.3499	0	0
-All	Men	Healthy Weight	3	2014	0.05	0.06	NA	0.3499	0	0
-All	Men	Healthy Weight	3	2015	0.06	0.06	NA	0.3499	0	0
-All	Men	Healthy Weight	3	2016	0.07	0.06	NA	0.3499	0	0
-All	Men	Healthy Weight	3	2017	0.07	0.06	NA	0.3499	0	0
-All	Men	Healthy Weight	3	2018	0.07	0.06	NA	0.3499	0	0
-All	Men	Healthy Weight	3	2019	0.05	0.06	NA	0.3499	0	0
-All	Men	Healthy Weight	4	2001	0.06	0.07	NA	-0.4659	0	0
-All	Men	Healthy Weight	4	2002	0.07	0.07	NA	-0.4659	0	0
-All	Men	Healthy Weight	4	2003	0.06	0.07	NA	-0.4659	0	0
-All	Men	Healthy Weight	4	2004	0.07	0.07	NA	-0.4659	0	0
-All	Men	Healthy Weight	4	2005	0.07	0.07	NA	-0.4659	0	0
-All	Men	Healthy Weight	4	2006	0.06	0.06	NA	-0.4659	0	0
-All	Men	Healthy Weight	4	2007	0.06	0.06	NA	-0.4659	0	0
-All	Men	Healthy Weight	4	2008	0.07	0.06	NA	-0.4659	0	0
-All	Men	Healthy Weight	4	2009	0.08	0.06	NA	-0.4659	0	0
-All	Men	Healthy Weight	4	2010	0.06	0.06	NA	-0.4659	0	0
-All	Men	Healthy Weight	4	2011	0.07	0.06	NA	-0.4659	0	0
-All	Men	Healthy Weight	4	2012	0.07	0.06	NA	-0.4659	0	0
-All	Men	Healthy Weight	4	2013	0.07	0.06	NA	-0.4659	0	0
-All	Men	Healthy Weight	4	2014	0.07	0.06	NA	-0.4659	0	0
-All	Men	Healthy Weight	4	2015	0.05	0.06	NA	-0.4659	0	0
-All	Men	Healthy Weight	4	2016	0.06	0.06	NA	-0.4659	0	0
-All	Men	Healthy Weight	4	2017	0.06	0.06	NA	-0.4659	0	0
-All	Men	Healthy Weight	4	2018	0.06	0.06	NA	-0.4659	0	0
-All	Men	Healthy Weight	4	2019	0.06	0.06	NA	-0.4659	0	0
-All	Men	Healthy Weight	5	2001	0.09	0.10	NA	-22.7629	1	1
-All	Men	Healthy Weight	5	2002	0.08	0.07	NA	-22.7629	1	1
-All	Men	Healthy Weight	5	2003	0.06	0.06	Joinpoint 1	NA	1	1
-All	Men	Healthy Weight	5	2004	0.05	0.06	NA	-0.1437	1	1
-All	Men	Healthy Weight	5	2005	0.05	0.06	NA	-0.1437	1	1
-All	Men	Healthy Weight	5	2006	0.06	0.06	NA	-0.1437	1	1
-All	Men	Healthy Weight	5	2007	0.06	0.06	NA	-0.1437	1	1
-All	Men	Healthy Weight	5	2008	0.05	0.06	NA	-0.1437	1	1
-All	Men	Healthy Weight	5	2009	0.05	0.06	NA	-0.1437	1	1
-All	Men	Healthy Weight	5	2010	0.05	0.06	NA	-0.1437	1	1
-All	Men	Healthy Weight	5	2011	0.07	0.06	NA	-0.1437	1	1
-All	Men	Healthy Weight	5	2012	0.06	0.06	NA	-0.1437	1	1
-All	Men	Healthy Weight	5	2013	0.05	0.06	NA	-0.1437	1	1
-All	Men	Healthy Weight	5	2014	0.06	0.06	NA	-0.1437	1	1
-All	Men	Healthy Weight	5	2015	0.06	0.06	NA	-0.1437	1	1
-All	Men	Healthy Weight	5	2016	0.06	0.06	NA	-0.1437	1	1
-All	Men	Healthy Weight	5	2017	0.05	0.06	NA	-0.1437	1	1
-All	Men	Healthy Weight	5	2018	0.05	0.06	NA	-0.1437	1	1
-All	Men	Healthy Weight	5	2019	0.05	0.06	NA	-0.1437	1	1
-All	Women	Healthy Weight	1	2001	0.07	0.07	NA	15.4699	1	1
-All	Women	Healthy Weight	1	2002	0.07	0.08	NA	15.4699	1	1
-All	Women	Healthy Weight	1	2003	0.10	0.09	Joinpoint 1	NA	1	1
-All	Women	Healthy Weight	1	2004	0.10	0.09	NA	-0.4904	1	1
-All	Women	Healthy Weight	1	2005	0.09	0.09	NA	-0.4904	1	1
-All	Women	Healthy Weight	1	2006	0.09	0.09	NA	-0.4904	1	1
-All	Women	Healthy Weight	1	2007	0.09	0.09	NA	-0.4904	1	1
-All	Women	Healthy Weight	1	2008	0.09	0.09	NA	-0.4904	1	1
-All	Women	Healthy Weight	1	2009	0.08	0.09	NA	-0.4904	1	1
-All	Women	Healthy Weight	1	2010	0.10	0.09	NA	-0.4904	1	1
-All	Women	Healthy Weight	1	2011	0.09	0.09	NA	-0.4904	1	1
-All	Women	Healthy Weight	1	2012	0.09	0.09	NA	-0.4904	1	1
-All	Women	Healthy Weight	1	2013	0.09	0.09	NA	-0.4904	1	1
-All	Women	Healthy Weight	1	2014	0.10	0.09	NA	-0.4904	1	1
-All	Women	Healthy Weight	1	2015	0.09	0.09	NA	-0.4904	1	1
-All	Women	Healthy Weight	1	2016	0.09	0.09	NA	-0.4904	1	1
-All	Women	Healthy Weight	1	2017	0.09	0.09	NA	-0.4904	1	1
-All	Women	Healthy Weight	1	2018	0.08	0.09	NA	-0.4904	1	1
-All	Women	Healthy Weight	1	2019	0.09	0.09	NA	-0.4904	1	1
-All	Women	Healthy Weight	2	2001	0.06	0.06	NA	7.6674*	1	1
-All	Women	Healthy Weight	2	2002	0.07	0.07	NA	7.6674*	1	1
-All	Women	Healthy Weight	2	2003	0.08	0.07	NA	7.6674*	1	1
-All	Women	Healthy Weight	2	2004	0.08	0.08	NA	7.6674*	1	1
-All	Women	Healthy Weight	2	2005	0.08	0.09	NA	7.6674*	1	1
-All	Women	Healthy Weight	2	2006	0.09	0.09	Joinpoint 1	NA	1	1
-All	Women	Healthy Weight	2	2007	0.09	0.09	NA	-1.2516*	1	1
-All	Women	Healthy Weight	2	2008	0.08	0.09	NA	-1.2516*	1	1
-All	Women	Healthy Weight	2	2009	0.10	0.09	NA	-1.2516*	1	1
-All	Women	Healthy Weight	2	2010	0.08	0.09	NA	-1.2516*	1	1
-All	Women	Healthy Weight	2	2011	0.09	0.09	NA	-1.2516*	1	1
-All	Women	Healthy Weight	2	2012	0.09	0.09	NA	-1.2516*	1	1
-All	Women	Healthy Weight	2	2013	0.09	0.08	NA	-1.2516*	1	1
-All	Women	Healthy Weight	2	2014	0.08	0.08	NA	-1.2516*	1	1
-All	Women	Healthy Weight	2	2015	0.08	0.08	NA	-1.2516*	1	1
-All	Women	Healthy Weight	2	2016	0.09	0.08	NA	-1.2516*	1	1
-All	Women	Healthy Weight	2	2017	0.09	0.08	NA	-1.2516*	1	1
-All	Women	Healthy Weight	2	2018	0.08	0.08	NA	-1.2516*	1	1
-All	Women	Healthy Weight	2	2019	0.08	0.08	NA	-1.2516*	1	1
-All	Women	Healthy Weight	3	2001	0.08	0.08	NA	-0.7406*	0	0
-All	Women	Healthy Weight	3	2002	0.08	0.08	NA	-0.7406*	0	0
-All	Women	Healthy Weight	3	2003	0.08	0.08	NA	-0.7406*	0	0
-All	Women	Healthy Weight	3	2004	0.07	0.08	NA	-0.7406*	0	0
-All	Women	Healthy Weight	3	2005	0.08	0.08	NA	-0.7406*	0	0
-All	Women	Healthy Weight	3	2006	0.08	0.08	NA	-0.7406*	0	0
-All	Women	Healthy Weight	3	2007	0.09	0.08	NA	-0.7406*	0	0
-All	Women	Healthy Weight	3	2008	0.08	0.08	NA	-0.7406*	0	0
-All	Women	Healthy Weight	3	2009	0.08	0.08	NA	-0.7406*	0	0
-All	Women	Healthy Weight	3	2010	0.08	0.08	NA	-0.7406*	0	0
-All	Women	Healthy Weight	3	2011	0.08	0.08	NA	-0.7406*	0	0
-All	Women	Healthy Weight	3	2012	0.08	0.08	NA	-0.7406*	0	0
-All	Women	Healthy Weight	3	2013	0.09	0.08	NA	-0.7406*	0	0
-All	Women	Healthy Weight	3	2014	0.07	0.08	NA	-0.7406*	0	0
-All	Women	Healthy Weight	3	2015	0.07	0.07	NA	-0.7406*	0	0
-All	Women	Healthy Weight	3	2016	0.09	0.07	NA	-0.7406*	0	0
-All	Women	Healthy Weight	3	2017	0.07	0.07	NA	-0.7406*	0	0
-All	Women	Healthy Weight	3	2018	0.07	0.07	NA	-0.7406*	0	0
-All	Women	Healthy Weight	3	2019	0.07	0.07	NA	-0.7406*	0	0
-All	Women	Healthy Weight	4	2001	0.08	0.09	NA	-2.8337*	1	1
-All	Women	Healthy Weight	4	2002	0.08	0.08	NA	-2.8337*	1	1
-All	Women	Healthy Weight	4	2003	0.08	0.08	NA	-2.8337*	1	1
-All	Women	Healthy Weight	4	2004	0.08	0.08	NA	-2.8337*	1	1
-All	Women	Healthy Weight	4	2005	0.08	0.08	NA	-2.8337*	1	1
-All	Women	Healthy Weight	4	2006	0.08	0.08	NA	-2.8337*	1	1
-All	Women	Healthy Weight	4	2007	0.06	0.07	NA	-2.8337*	1	1
-All	Women	Healthy Weight	4	2008	0.08	0.07	NA	-2.8337*	1	1
-All	Women	Healthy Weight	4	2009	0.07	0.07	NA	-2.8337*	1	1
-All	Women	Healthy Weight	4	2010	0.06	0.07	Joinpoint 1	NA	1	1
-All	Women	Healthy Weight	4	2011	0.06	0.07	NA	1.2343	1	1
-All	Women	Healthy Weight	4	2012	0.07	0.07	NA	1.2343	1	1
-All	Women	Healthy Weight	4	2013	0.08	0.07	NA	1.2343	1	1
-All	Women	Healthy Weight	4	2014	0.08	0.07	NA	1.2343	1	1
-All	Women	Healthy Weight	4	2015	0.07	0.07	NA	1.2343	1	1
-All	Women	Healthy Weight	4	2016	0.07	0.07	NA	1.2343	1	1
-All	Women	Healthy Weight	4	2017	0.06	0.07	NA	1.2343	1	1
-All	Women	Healthy Weight	4	2018	0.08	0.07	NA	1.2343	1	1
-All	Women	Healthy Weight	4	2019	0.08	0.07	NA	1.2343	1	1
-All	Women	Healthy Weight	5	2001	0.10	0.11	NA	-23.0036*	1	1
-All	Women	Healthy Weight	5	2002	0.10	0.09	NA	-23.0036*	1	1
-All	Women	Healthy Weight	5	2003	0.06	0.07	Joinpoint 1	NA	1	1
-All	Women	Healthy Weight	5	2004	0.06	0.07	NA	-0.8613	1	1
-All	Women	Healthy Weight	5	2005	0.07	0.06	NA	-0.8613	1	1
-All	Women	Healthy Weight	5	2006	0.06	0.06	NA	-0.8613	1	1
-All	Women	Healthy Weight	5	2007	0.06	0.06	NA	-0.8613	1	1
-All	Women	Healthy Weight	5	2008	0.07	0.06	NA	-0.8613	1	1
-All	Women	Healthy Weight	5	2009	0.06	0.06	NA	-0.8613	1	1
-All	Women	Healthy Weight	5	2010	0.06	0.06	NA	-0.8613	1	1
-All	Women	Healthy Weight	5	2011	0.06	0.06	NA	-0.8613	1	1
-All	Women	Healthy Weight	5	2012	0.06	0.06	NA	-0.8613	1	1
-All	Women	Healthy Weight	5	2013	0.05	0.06	NA	-0.8613	1	1
-All	Women	Healthy Weight	5	2014	0.06	0.06	NA	-0.8613	1	1
-All	Women	Healthy Weight	5	2015	0.06	0.06	NA	-0.8613	1	1
-All	Women	Healthy Weight	5	2016	0.07	0.06	NA	-0.8613	1	1
-All	Women	Healthy Weight	5	2017	0.05	0.06	NA	-0.8613	1	1
-All	Women	Healthy Weight	5	2018	0.06	0.06	NA	-0.8613	1	1
-All	Women	Healthy Weight	5	2019	0.06	0.06	NA	-0.8613	1	1
-All	Men	Heavy Drinker	1	2011	0.02	0.02	NA	-3.2192	0	0
-All	Men	Heavy Drinker	1	2012	0.02	0.01	NA	-3.2192	0	0
-All	Men	Heavy Drinker	1	2013	0.02	0.01	NA	-3.2192	0	0
-All	Men	Heavy Drinker	1	2014	0.01	0.01	NA	-3.2192	0	0
-All	Men	Heavy Drinker	1	2015	0.01	0.01	NA	-3.2192	0	0
-All	Men	Heavy Drinker	1	2016	0.01	0.01	NA	-3.2192	0	0
-All	Men	Heavy Drinker	1	2017	0.01	0.01	NA	-3.2192	0	0
-All	Men	Heavy Drinker	1	2018	0.01	0.01	NA	-3.2192	0	0
-All	Men	Heavy Drinker	1	2019	0.01	0.01	NA	-3.2192	0	0
-All	Men	Heavy Drinker	2	2011	0.01	0.02	NA	-4.4997*	1	1
-All	Men	Heavy Drinker	2	2012	0.02	0.01	NA	-4.4997*	1	1
-All	Men	Heavy Drinker	2	2013	0.01	0.01	NA	-4.4997*	1	1
-All	Men	Heavy Drinker	2	2014	0.01	0.01	NA	-4.4997*	1	1
-All	Men	Heavy Drinker	2	2015	0.01	0.01	NA	-4.4997*	1	1
-All	Men	Heavy Drinker	2	2016	0.01	0.01	NA	-4.4997*	1	1
-All	Men	Heavy Drinker	2	2017	0.01	0.01	Joinpoint 1	NA	1	1
-All	Men	Heavy Drinker	2	2018	0.01	0.01	NA	11.9006	1	1
-All	Men	Heavy Drinker	2	2019	0.01	0.01	NA	11.9006	1	1
-All	Men	Heavy Drinker	3	2011	0.02	0.01	NA	-1.6772	0	0
-All	Men	Heavy Drinker	3	2012	0.01	0.01	NA	-1.6772	0	0
-All	Men	Heavy Drinker	3	2013	0.01	0.01	NA	-1.6772	0	0
-All	Men	Heavy Drinker	3	2014	0.01	0.01	NA	-1.6772	0	0
-All	Men	Heavy Drinker	3	2015	0.01	0.01	NA	-1.6772	0	0
-All	Men	Heavy Drinker	3	2016	0.01	0.01	NA	-1.6772	0	0
-All	Men	Heavy Drinker	3	2017	0.02	0.01	NA	-1.6772	0	0
-All	Men	Heavy Drinker	3	2018	0.01	0.01	NA	-1.6772	0	0
-All	Men	Heavy Drinker	3	2019	0.01	0.01	NA	-1.6772	0	0
-All	Men	Heavy Drinker	4	2011	0.01	0.01	NA	-1.4718	0	0
-All	Men	Heavy Drinker	4	2012	0.01	0.01	NA	-1.4718	0	0
-All	Men	Heavy Drinker	4	2013	0.01	0.01	NA	-1.4718	0	0
-All	Men	Heavy Drinker	4	2014	0.01	0.01	NA	-1.4718	0	0
-All	Men	Heavy Drinker	4	2015	0.01	0.01	NA	-1.4718	0	0
-All	Men	Heavy Drinker	4	2016	0.01	0.01	NA	-1.4718	0	0
-All	Men	Heavy Drinker	4	2017	0.01	0.01	NA	-1.4718	0	0
-All	Men	Heavy Drinker	4	2018	0.01	0.01	NA	-1.4718	0	0
-All	Men	Heavy Drinker	4	2019	0.01	0.01	NA	-1.4718	0	0
-All	Men	Heavy Drinker	5	2011	0.02	0.01	NA	-0.6236	0	0
-All	Men	Heavy Drinker	5	2012	0.01	0.01	NA	-0.6236	0	0
-All	Men	Heavy Drinker	5	2013	0.01	0.01	NA	-0.6236	0	0
-All	Men	Heavy Drinker	5	2014	0.02	0.01	NA	-0.6236	0	0
-All	Men	Heavy Drinker	5	2015	0.01	0.01	NA	-0.6236	0	0
-All	Men	Heavy Drinker	5	2016	0.01	0.01	NA	-0.6236	0	0
-All	Men	Heavy Drinker	5	2017	0.01	0.01	NA	-0.6236	0	0
-All	Men	Heavy Drinker	5	2018	0.01	0.01	NA	-0.6236	0	0
-All	Men	Heavy Drinker	5	2019	0.02	0.01	NA	-0.6236	0	0
-All	Women	Heavy Drinker	1	2011	0.01	0.01	NA	-34.1513	1	1
-All	Women	Heavy Drinker	1	2012	0.00	0.00	NA	-34.1513	1	1
-All	Women	Heavy Drinker	1	2013	0.00	0.00	Joinpoint 1	NA	1	1
-All	Women	Heavy Drinker	1	2014	0.00	0.00	NA	5.5858	1	1
-All	Women	Heavy Drinker	1	2015	0.00	0.00	NA	5.5858	1	1
-All	Women	Heavy Drinker	1	2016	0.00	0.00	NA	5.5858	1	1
-All	Women	Heavy Drinker	1	2017	0.00	0.00	NA	5.5858	1	1
-All	Women	Heavy Drinker	1	2018	0.00	0.00	NA	5.5858	1	1
-All	Women	Heavy Drinker	1	2019	0.00	0.00	NA	5.5858	1	1
-All	Women	Heavy Drinker	2	2011	0.00	0.00	NA	0.2898	0	0
-All	Women	Heavy Drinker	2	2012	0.01	0.00	NA	0.2898	0	0
-All	Women	Heavy Drinker	2	2013	0.00	0.00	NA	0.2898	0	0
-All	Women	Heavy Drinker	2	2014	0.00	0.00	NA	0.2898	0	0
-All	Women	Heavy Drinker	2	2015	0.00	0.00	NA	0.2898	0	0
-All	Women	Heavy Drinker	2	2016	0.00	0.00	NA	0.2898	0	0
-All	Women	Heavy Drinker	2	2017	0.00	0.00	NA	0.2898	0	0
-All	Women	Heavy Drinker	2	2018	0.01	0.00	NA	0.2898	0	0
-All	Women	Heavy Drinker	2	2019	0.00	0.00	NA	0.2898	0	0
-All	Women	Heavy Drinker	3	2011	0.00	0.00	NA	1.0316	0	0
-All	Women	Heavy Drinker	3	2012	0.00	0.00	NA	1.0316	0	0
-All	Women	Heavy Drinker	3	2013	0.00	0.00	NA	1.0316	0	0
-All	Women	Heavy Drinker	3	2014	0.00	0.00	NA	1.0316	0	0
-All	Women	Heavy Drinker	3	2015	0.00	0.00	NA	1.0316	0	0
-All	Women	Heavy Drinker	3	2016	0.01	0.00	NA	1.0316	0	0
-All	Women	Heavy Drinker	3	2017	0.00	0.00	NA	1.0316	0	0
-All	Women	Heavy Drinker	3	2018	0.00	0.00	NA	1.0316	0	0
-All	Women	Heavy Drinker	3	2019	0.00	0.00	NA	1.0316	0	0
-All	Women	Heavy Drinker	4	2011	0.00	0.00	NA	1.3287	0	0
-All	Women	Heavy Drinker	4	2012	0.00	0.00	NA	1.3287	0	0
-All	Women	Heavy Drinker	4	2013	0.00	0.00	NA	1.3287	0	0
-All	Women	Heavy Drinker	4	2014	0.00	0.00	NA	1.3287	0	0
-All	Women	Heavy Drinker	4	2015	0.00	0.00	NA	1.3287	0	0
-All	Women	Heavy Drinker	4	2016	0.00	0.00	NA	1.3287	0	0
-All	Women	Heavy Drinker	4	2017	0.00	0.00	NA	1.3287	0	0
-All	Women	Heavy Drinker	4	2018	0.01	0.00	NA	1.3287	0	0
-All	Women	Heavy Drinker	4	2019	0.00	0.00	NA	1.3287	0	0
-All	Women	Heavy Drinker	5	2011	0.00	0.00	NA	-4.5302	0	0
-All	Women	Heavy Drinker	5	2012	0.01	0.00	NA	-4.5302	0	0
-All	Women	Heavy Drinker	5	2013	0.00	0.00	NA	-4.5302	0	0
-All	Women	Heavy Drinker	5	2014	0.00	0.00	NA	-4.5302	0	0
-All	Women	Heavy Drinker	5	2015	0.00	0.00	NA	-4.5302	0	0
-All	Women	Heavy Drinker	5	2016	0.00	0.00	NA	-4.5302	0	0
-All	Women	Heavy Drinker	5	2017	0.00	0.00	NA	-4.5302	0	0
-All	Women	Heavy Drinker	5	2018	0.00	0.00	NA	-4.5302	0	0
-All	Women	Heavy Drinker	5	2019	0.00	0.00	NA	-4.5302	0	0
-All	Men	Light Drinker	1	2011	0.09	0.09	NA	0.2603	0	0
-All	Men	Light Drinker	1	2012	0.09	0.09	NA	0.2603	0	0
-All	Men	Light Drinker	1	2013	0.09	0.09	NA	0.2603	0	0
-All	Men	Light Drinker	1	2014	0.11	0.09	NA	0.2603	0	0
-All	Men	Light Drinker	1	2015	0.10	0.09	NA	0.2603	0	0
-All	Men	Light Drinker	1	2016	0.09	0.10	NA	0.2603	0	0
-All	Men	Light Drinker	1	2017	0.10	0.10	NA	0.2603	0	0
-All	Men	Light Drinker	1	2018	0.09	0.10	NA	0.2603	0	0
-All	Men	Light Drinker	1	2019	0.09	0.10	NA	0.2603	0	0
-All	Men	Light Drinker	2	2011	0.10	0.10	NA	-0.2035	0	0
-All	Men	Light Drinker	2	2012	0.09	0.10	NA	-0.2035	0	0
-All	Men	Light Drinker	2	2013	0.10	0.10	NA	-0.2035	0	0
-All	Men	Light Drinker	2	2014	0.09	0.10	NA	-0.2035	0	0
-All	Men	Light Drinker	2	2015	0.11	0.10	NA	-0.2035	0	0
-All	Men	Light Drinker	2	2016	0.08	0.10	NA	-0.2035	0	0
-All	Men	Light Drinker	2	2017	0.11	0.10	NA	-0.2035	0	0
-All	Men	Light Drinker	2	2018	0.10	0.10	NA	-0.2035	0	0
-All	Men	Light Drinker	2	2019	0.09	0.10	NA	-0.2035	0	0
-All	Men	Light Drinker	3	2011	0.09	0.10	NA	0.7541	0	0
-All	Men	Light Drinker	3	2012	0.10	0.10	NA	0.7541	0	0
-All	Men	Light Drinker	3	2013	0.10	0.10	NA	0.7541	0	0
-All	Men	Light Drinker	3	2014	0.09	0.10	NA	0.7541	0	0
-All	Men	Light Drinker	3	2015	0.10	0.10	NA	0.7541	0	0
-All	Men	Light Drinker	3	2016	0.11	0.10	NA	0.7541	0	0
-All	Men	Light Drinker	3	2017	0.10	0.10	NA	0.7541	0	0
-All	Men	Light Drinker	3	2018	0.11	0.10	NA	0.7541	0	0
-All	Men	Light Drinker	3	2019	0.10	0.10	NA	0.7541	0	0
-All	Men	Light Drinker	4	2011	0.09	0.09	NA	2.0350*	0	0
-All	Men	Light Drinker	4	2012	0.09	0.09	NA	2.0350*	0	0
-All	Men	Light Drinker	4	2013	0.09	0.09	NA	2.0350*	0	0
-All	Men	Light Drinker	4	2014	0.09	0.09	NA	2.0350*	0	0
-All	Men	Light Drinker	4	2015	0.10	0.09	NA	2.0350*	0	0
-All	Men	Light Drinker	4	2016	0.10	0.10	NA	2.0350*	0	0
-All	Men	Light Drinker	4	2017	0.09	0.10	NA	2.0350*	0	0
-All	Men	Light Drinker	4	2018	0.11	0.10	NA	2.0350*	0	0
-All	Men	Light Drinker	4	2019	0.10	0.10	NA	2.0350*	0	0
-All	Men	Light Drinker	5	2011	0.08	0.07	NA	1.9978	0	0
-All	Men	Light Drinker	5	2012	0.08	0.08	NA	1.9978	0	0
-All	Men	Light Drinker	5	2013	0.07	0.08	NA	1.9978	0	0
-All	Men	Light Drinker	5	2014	0.08	0.08	NA	1.9978	0	0
-All	Men	Light Drinker	5	2015	0.08	0.08	NA	1.9978	0	0
-All	Men	Light Drinker	5	2016	0.09	0.08	NA	1.9978	0	0
-All	Men	Light Drinker	5	2017	0.09	0.08	NA	1.9978	0	0
-All	Men	Light Drinker	5	2018	0.08	0.09	NA	1.9978	0	0
-All	Men	Light Drinker	5	2019	0.08	0.09	NA	1.9978	0	0
-All	Women	Light Drinker	1	2011	0.13	0.13	NA	-0.8570	0	0
-All	Women	Light Drinker	1	2012	0.13	0.13	NA	-0.8570	0	0
-All	Women	Light Drinker	1	2013	0.13	0.13	NA	-0.8570	0	0
-All	Women	Light Drinker	1	2014	0.13	0.13	NA	-0.8570	0	0
-All	Women	Light Drinker	1	2015	0.13	0.13	NA	-0.8570	0	0
-All	Women	Light Drinker	1	2016	0.12	0.12	NA	-0.8570	0	0
-All	Women	Light Drinker	1	2017	0.13	0.12	NA	-0.8570	0	0
-All	Women	Light Drinker	1	2018	0.12	0.12	NA	-0.8570	0	0
-All	Women	Light Drinker	1	2019	0.12	0.12	NA	-0.8570	0	0
-All	Women	Light Drinker	2	2011	0.13	0.13	NA	-0.4323	0	0
-All	Women	Light Drinker	2	2012	0.12	0.13	NA	-0.4323	0	0
-All	Women	Light Drinker	2	2013	0.13	0.13	NA	-0.4323	0	0
-All	Women	Light Drinker	2	2014	0.12	0.13	NA	-0.4323	0	0
-All	Women	Light Drinker	2	2015	0.13	0.12	NA	-0.4323	0	0
-All	Women	Light Drinker	2	2016	0.12	0.12	NA	-0.4323	0	0
-All	Women	Light Drinker	2	2017	0.13	0.12	NA	-0.4323	0	0
-All	Women	Light Drinker	2	2018	0.13	0.12	NA	-0.4323	0	0
-All	Women	Light Drinker	2	2019	0.11	0.12	NA	-0.4323	0	0
-All	Women	Light Drinker	3	2011	0.13	0.13	NA	-0.6114	0	0
-All	Women	Light Drinker	3	2012	0.12	0.12	NA	-0.6114	0	0
-All	Women	Light Drinker	3	2013	0.13	0.12	NA	-0.6114	0	0
-All	Women	Light Drinker	3	2014	0.12	0.12	NA	-0.6114	0	0
-All	Women	Light Drinker	3	2015	0.12	0.12	NA	-0.6114	0	0
-All	Women	Light Drinker	3	2016	0.13	0.12	NA	-0.6114	0	0
-All	Women	Light Drinker	3	2017	0.11	0.12	NA	-0.6114	0	0
-All	Women	Light Drinker	3	2018	0.13	0.12	NA	-0.6114	0	0
-All	Women	Light Drinker	3	2019	0.12	0.12	NA	-0.6114	0	0
-All	Women	Light Drinker	4	2011	0.11	0.11	NA	1.4362*	0	0
-All	Women	Light Drinker	4	2012	0.12	0.11	NA	1.4362*	0	0
-All	Women	Light Drinker	4	2013	0.11	0.11	NA	1.4362*	0	0
-All	Women	Light Drinker	4	2014	0.12	0.11	NA	1.4362*	0	0
-All	Women	Light Drinker	4	2015	0.12	0.12	NA	1.4362*	0	0
-All	Women	Light Drinker	4	2016	0.11	0.12	NA	1.4362*	0	0
-All	Women	Light Drinker	4	2017	0.12	0.12	NA	1.4362*	0	0
-All	Women	Light Drinker	4	2018	0.13	0.12	NA	1.4362*	0	0
-All	Women	Light Drinker	4	2019	0.12	0.12	NA	1.4362*	0	0
-All	Women	Light Drinker	5	2011	0.09	0.09	NA	4.3315	1	1
-All	Women	Light Drinker	5	2012	0.09	0.09	NA	4.3315	1	1
-All	Women	Light Drinker	5	2013	0.10	0.10	NA	4.3315	1	1
-All	Women	Light Drinker	5	2014	0.10	0.10	NA	4.3315	1	1
-All	Women	Light Drinker	5	2015	0.10	0.11	Joinpoint 1	NA	1	1
-All	Women	Light Drinker	5	2016	0.11	0.10	NA	-0.7143	1	1
-All	Women	Light Drinker	5	2017	0.11	0.10	NA	-0.7143	1	1
-All	Women	Light Drinker	5	2018	0.10	0.10	NA	-0.7143	1	1
-All	Women	Light Drinker	5	2019	0.10	0.10	NA	-0.7143	1	1
-All	Men	Meets Recommendations	1	2003	0.07	0.07	NA	2.8267	0	0
-All	Men	Meets Recommendations	1	2004	0.07	0.07	NA	2.8267	0	0
-All	Men	Meets Recommendations	1	2006	0.07	0.07	NA	2.8267	0	0
-All	Men	Meets Recommendations	1	2008	0.09	0.08	NA	2.8267	0	0
-All	Men	Meets Recommendations	1	2012	0.09	0.09	NA	2.8267	0	0
-All	Men	Meets Recommendations	2	2003	0.07	0.08	NA	1.9288	0	0
-All	Men	Meets Recommendations	2	2004	0.08	0.08	NA	1.9288	0	0
-All	Men	Meets Recommendations	2	2006	0.09	0.08	NA	1.9288	0	0
-All	Men	Meets Recommendations	2	2008	0.08	0.08	NA	1.9288	0	0
-All	Men	Meets Recommendations	2	2012	0.09	0.09	NA	1.9288	0	0
-All	Men	Meets Recommendations	3	2003	0.07	0.08	NA	2.3048	0	0
-All	Men	Meets Recommendations	3	2004	0.08	0.08	NA	2.3048	0	0
-All	Men	Meets Recommendations	3	2006	0.09	0.08	NA	2.3048	0	0
-All	Men	Meets Recommendations	3	2008	0.08	0.09	NA	2.3048	0	0
-All	Men	Meets Recommendations	3	2012	0.09	0.09	NA	2.3048	0	0
-All	Men	Meets Recommendations	4	2003	0.08	0.08	NA	1.3783	0	0
-All	Men	Meets Recommendations	4	2004	0.08	0.08	NA	1.3783	0	0
-All	Men	Meets Recommendations	4	2006	0.09	0.08	NA	1.3783	0	0
-All	Men	Meets Recommendations	4	2008	0.09	0.09	NA	1.3783	0	0
-All	Men	Meets Recommendations	4	2012	0.09	0.09	NA	1.3783	0	0
-All	Men	Meets Recommendations	5	2003	0.06	0.06	NA	0.6405	0	0
-All	Men	Meets Recommendations	5	2004	0.06	0.06	NA	0.6405	0	0
-All	Men	Meets Recommendations	5	2006	0.07	0.06	NA	0.6405	0	0
-All	Men	Meets Recommendations	5	2008	0.07	0.06	NA	0.6405	0	0
-All	Men	Meets Recommendations	5	2012	0.06	0.07	NA	0.6405	0	0
-All	Women	Meets Recommendations	1	2003	0.05	0.05	NA	4.2616*	0	0
-All	Women	Meets Recommendations	1	2004	0.06	0.05	NA	4.2616*	0	0
-All	Women	Meets Recommendations	1	2006	0.06	0.06	NA	4.2616*	0	0
-All	Women	Meets Recommendations	1	2008	0.07	0.06	NA	4.2616*	0	0
-All	Women	Meets Recommendations	1	2012	0.08	0.08	NA	4.2616*	0	0
-All	Women	Meets Recommendations	2	2003	0.05	0.05	NA	3.9799	0	0
-All	Women	Meets Recommendations	2	2004	0.05	0.05	NA	3.9799	0	0
-All	Women	Meets Recommendations	2	2006	0.07	0.06	NA	3.9799	0	0
-All	Women	Meets Recommendations	2	2008	0.06	0.06	NA	3.9799	0	0
-All	Women	Meets Recommendations	2	2012	0.07	0.07	NA	3.9799	0	0
-All	Women	Meets Recommendations	3	2003	0.05	0.05	NA	2.8530	0	0
-All	Women	Meets Recommendations	3	2004	0.05	0.05	NA	2.8530	0	0
-All	Women	Meets Recommendations	3	2006	0.07	0.06	NA	2.8530	0	0
-All	Women	Meets Recommendations	3	2008	0.06	0.06	NA	2.8530	0	0
-All	Women	Meets Recommendations	3	2012	0.06	0.07	NA	2.8530	0	0
-All	Women	Meets Recommendations	4	2003	0.05	0.05	NA	2.8489	0	0
-All	Women	Meets Recommendations	4	2004	0.05	0.05	NA	2.8489	0	0
-All	Women	Meets Recommendations	4	2006	0.06	0.06	NA	2.8489	0	0
-All	Women	Meets Recommendations	4	2008	0.06	0.06	NA	2.8489	0	0
-All	Women	Meets Recommendations	4	2012	0.06	0.07	NA	2.8489	0	0
-All	Women	Meets Recommendations	5	2003	0.04	0.04	NA	2.5970	0	0
-All	Women	Meets Recommendations	5	2004	0.04	0.04	NA	2.5970	0	0
-All	Women	Meets Recommendations	5	2006	0.05	0.05	NA	2.5970	0	0
-All	Women	Meets Recommendations	5	2008	0.05	0.05	NA	2.5970	0	0
-All	Women	Meets Recommendations	5	2012	0.05	0.05	NA	2.5970	0	0
-All	Men	Moderate Drinker	1	2011	0.08	0.08	NA	-2.4357	0	0
-All	Men	Moderate Drinker	1	2012	0.08	0.08	NA	-2.4357	0	0
-All	Men	Moderate Drinker	1	2013	0.07	0.08	NA	-2.4357	0	0
-All	Men	Moderate Drinker	1	2014	0.08	0.07	NA	-2.4357	0	0
-All	Men	Moderate Drinker	1	2015	0.08	0.07	NA	-2.4357	0	0
-All	Men	Moderate Drinker	1	2016	0.06	0.07	NA	-2.4357	0	0
-All	Men	Moderate Drinker	1	2017	0.07	0.07	NA	-2.4357	0	0
-All	Men	Moderate Drinker	1	2018	0.07	0.07	NA	-2.4357	0	0
-All	Men	Moderate Drinker	1	2019	0.07	0.07	NA	-2.4357	0	0
-All	Men	Moderate Drinker	2	2011	0.08	0.08	NA	-1.5042	0	0
-All	Men	Moderate Drinker	2	2012	0.09	0.08	NA	-1.5042	0	0
-All	Men	Moderate Drinker	2	2013	0.08	0.08	NA	-1.5042	0	0
-All	Men	Moderate Drinker	2	2014	0.07	0.08	NA	-1.5042	0	0
-All	Men	Moderate Drinker	2	2015	0.07	0.07	NA	-1.5042	0	0
-All	Men	Moderate Drinker	2	2016	0.07	0.07	NA	-1.5042	0	0
-All	Men	Moderate Drinker	2	2017	0.07	0.07	NA	-1.5042	0	0
-All	Men	Moderate Drinker	2	2018	0.07	0.07	NA	-1.5042	0	0
-All	Men	Moderate Drinker	2	2019	0.07	0.07	NA	-1.5042	0	0
-All	Men	Moderate Drinker	3	2011	0.07	0.07	NA	-1.4708*	0	0
-All	Men	Moderate Drinker	3	2012	0.07	0.07	NA	-1.4708*	0	0
-All	Men	Moderate Drinker	3	2013	0.07	0.07	NA	-1.4708*	0	0
-All	Men	Moderate Drinker	3	2014	0.07	0.07	NA	-1.4708*	0	0
-All	Men	Moderate Drinker	3	2015	0.08	0.07	NA	-1.4708*	0	0
-All	Men	Moderate Drinker	3	2016	0.07	0.07	NA	-1.4708*	0	0
-All	Men	Moderate Drinker	3	2017	0.06	0.07	NA	-1.4708*	0	0
-All	Men	Moderate Drinker	3	2018	0.07	0.07	NA	-1.4708*	0	0
-All	Men	Moderate Drinker	3	2019	0.06	0.07	NA	-1.4708*	0	0
-All	Men	Moderate Drinker	4	2011	0.06	0.06	NA	-1.3129	0	0
-All	Men	Moderate Drinker	4	2012	0.06	0.06	NA	-1.3129	0	0
-All	Men	Moderate Drinker	4	2013	0.06	0.06	NA	-1.3129	0	0
-All	Men	Moderate Drinker	4	2014	0.06	0.06	NA	-1.3129	0	0
-All	Men	Moderate Drinker	4	2015	0.05	0.06	NA	-1.3129	0	0
-All	Men	Moderate Drinker	4	2016	0.06	0.06	NA	-1.3129	0	0
-All	Men	Moderate Drinker	4	2017	0.05	0.06	NA	-1.3129	0	0
-All	Men	Moderate Drinker	4	2018	0.05	0.06	NA	-1.3129	0	0
-All	Men	Moderate Drinker	4	2019	0.06	0.05	NA	-1.3129	0	0
-All	Men	Moderate Drinker	5	2011	0.05	0.05	NA	-2.0513	0	0
-All	Men	Moderate Drinker	5	2012	0.05	0.05	NA	-2.0513	0	0
-All	Men	Moderate Drinker	5	2013	0.05	0.05	NA	-2.0513	0	0
-All	Men	Moderate Drinker	5	2014	0.05	0.05	NA	-2.0513	0	0
-All	Men	Moderate Drinker	5	2015	0.06	0.05	NA	-2.0513	0	0
-All	Men	Moderate Drinker	5	2016	0.05	0.05	NA	-2.0513	0	0
-All	Men	Moderate Drinker	5	2017	0.04	0.05	NA	-2.0513	0	0
-All	Men	Moderate Drinker	5	2018	0.05	0.04	NA	-2.0513	0	0
-All	Men	Moderate Drinker	5	2019	0.04	0.04	NA	-2.0513	0	0
-All	Women	Moderate Drinker	1	2011	0.05	0.05	NA	-2.1302	0	0
-All	Women	Moderate Drinker	1	2012	0.05	0.05	NA	-2.1302	0	0
-All	Women	Moderate Drinker	1	2013	0.04	0.05	NA	-2.1302	0	0
-All	Women	Moderate Drinker	1	2014	0.05	0.05	NA	-2.1302	0	0
-All	Women	Moderate Drinker	1	2015	0.05	0.05	NA	-2.1302	0	0
-All	Women	Moderate Drinker	1	2016	0.05	0.04	NA	-2.1302	0	0
-All	Women	Moderate Drinker	1	2017	0.04	0.04	NA	-2.1302	0	0
-All	Women	Moderate Drinker	1	2018	0.04	0.04	NA	-2.1302	0	0
-All	Women	Moderate Drinker	1	2019	0.04	0.04	NA	-2.1302	0	0
-All	Women	Moderate Drinker	2	2011	0.05	0.05	NA	-5.4290*	1	1
-All	Women	Moderate Drinker	2	2012	0.05	0.05	NA	-5.4290*	1	1
-All	Women	Moderate Drinker	2	2013	0.04	0.04	NA	-5.4290*	1	1
-All	Women	Moderate Drinker	2	2014	0.04	0.04	NA	-5.4290*	1	1
-All	Women	Moderate Drinker	2	2015	0.04	0.04	NA	-5.4290*	1	1
-All	Women	Moderate Drinker	2	2016	0.04	0.04	NA	-5.4290*	1	1
-All	Women	Moderate Drinker	2	2017	0.04	0.04	Joinpoint 1	NA	1	1
-All	Women	Moderate Drinker	2	2018	0.04	0.04	NA	12.8510	1	1
-All	Women	Moderate Drinker	2	2019	0.05	0.05	NA	12.8510	1	1
-All	Women	Moderate Drinker	3	2011	0.05	0.04	NA	-1.8890	0	0
-All	Women	Moderate Drinker	3	2012	0.04	0.04	NA	-1.8890	0	0
-All	Women	Moderate Drinker	3	2013	0.04	0.04	NA	-1.8890	0	0
-All	Women	Moderate Drinker	3	2014	0.03	0.04	NA	-1.8890	0	0
-All	Women	Moderate Drinker	3	2015	0.04	0.04	NA	-1.8890	0	0
-All	Women	Moderate Drinker	3	2016	0.04	0.04	NA	-1.8890	0	0
-All	Women	Moderate Drinker	3	2017	0.04	0.04	NA	-1.8890	0	0
-All	Women	Moderate Drinker	3	2018	0.04	0.04	NA	-1.8890	0	0
-All	Women	Moderate Drinker	3	2019	0.04	0.04	NA	-1.8890	0	0
-All	Women	Moderate Drinker	4	2011	0.03	0.03	NA	-1.4170	0	0
-All	Women	Moderate Drinker	4	2012	0.03	0.03	NA	-1.4170	0	0
-All	Women	Moderate Drinker	4	2013	0.04	0.03	NA	-1.4170	0	0
-All	Women	Moderate Drinker	4	2014	0.03	0.03	NA	-1.4170	0	0
-All	Women	Moderate Drinker	4	2015	0.03	0.03	NA	-1.4170	0	0
-All	Women	Moderate Drinker	4	2016	0.03	0.03	NA	-1.4170	0	0
-All	Women	Moderate Drinker	4	2017	0.03	0.03	NA	-1.4170	0	0
-All	Women	Moderate Drinker	4	2018	0.03	0.03	NA	-1.4170	0	0
-All	Women	Moderate Drinker	4	2019	0.03	0.03	NA	-1.4170	0	0
-All	Women	Moderate Drinker	5	2011	0.03	0.02	NA	0.4445	0	0
-All	Women	Moderate Drinker	5	2012	0.02	0.02	NA	0.4445	0	0
-All	Women	Moderate Drinker	5	2013	0.02	0.02	NA	0.4445	0	0
-All	Women	Moderate Drinker	5	2014	0.02	0.02	NA	0.4445	0	0
-All	Women	Moderate Drinker	5	2015	0.03	0.03	NA	0.4445	0	0
-All	Women	Moderate Drinker	5	2016	0.03	0.03	NA	0.4445	0	0
-All	Women	Moderate Drinker	5	2017	0.02	0.03	NA	0.4445	0	0
-All	Women	Moderate Drinker	5	2018	0.02	0.03	NA	0.4445	0	0
-All	Women	Moderate Drinker	5	2019	0.03	0.03	NA	0.4445	0	0
-All	Men	Never	1	2001	0.07	0.07	NA	24.1601*	1	1
-All	Men	Never	1	2002	0.08	0.09	NA	24.1601*	1	1
-All	Men	Never	1	2003	0.11	0.11	Joinpoint 1	NA	1	1
-All	Men	Never	1	2004	0.11	0.11	NA	0.1276	1	1
-All	Men	Never	1	2005	0.11	0.11	NA	0.1276	1	1
-All	Men	Never	1	2006	0.10	0.11	NA	0.1276	1	1
-All	Men	Never	1	2007	0.12	0.11	NA	0.1276	1	1
-All	Men	Never	1	2008	0.12	0.11	NA	0.1276	1	1
-All	Men	Never	1	2009	0.11	0.11	NA	0.1276	1	1
-All	Men	Never	1	2010	0.12	0.11	NA	0.1276	1	1
-All	Men	Never	1	2011	0.11	0.11	NA	0.1276	1	1
-All	Men	Never	1	2012	0.12	0.11	NA	0.1276	1	1
-All	Men	Never	1	2013	0.10	0.11	NA	0.1276	1	1
-All	Men	Never	1	2014	0.12	0.11	NA	0.1276	1	1
-All	Men	Never	1	2015	0.12	0.11	NA	0.1276	1	1
-All	Men	Never	1	2016	0.10	0.11	NA	0.1276	1	1
-All	Men	Never	1	2017	0.11	0.11	NA	0.1276	1	1
-All	Men	Never	1	2018	0.11	0.11	NA	0.1276	1	1
-All	Men	Never	1	2019	0.11	0.11	NA	0.1276	1	1
-All	Men	Never	2	2001	0.07	0.06	NA	24.0125	1	1
-All	Men	Never	2	2002	0.07	0.08	NA	24.0125	1	1
-All	Men	Never	2	2003	0.09	0.10	Joinpoint 1	NA	1	1
-All	Men	Never	2	2004	0.11	0.10	NA	0.9431*	1	1
-All	Men	Never	2	2005	0.10	0.10	NA	0.9431*	1	1
-All	Men	Never	2	2006	0.10	0.10	NA	0.9431*	1	1
-All	Men	Never	2	2007	0.10	0.10	NA	0.9431*	1	1
-All	Men	Never	2	2008	0.10	0.10	NA	0.9431*	1	1
-All	Men	Never	2	2009	0.10	0.10	NA	0.9431*	1	1
-All	Men	Never	2	2010	0.09	0.10	NA	0.9431*	1	1
-All	Men	Never	2	2011	0.10	0.10	NA	0.9431*	1	1
-All	Men	Never	2	2012	0.11	0.11	NA	0.9431*	1	1
-All	Men	Never	2	2013	0.11	0.11	NA	0.9431*	1	1
-All	Men	Never	2	2014	0.10	0.11	NA	0.9431*	1	1
-All	Men	Never	2	2015	0.12	0.11	NA	0.9431*	1	1
-All	Men	Never	2	2016	0.10	0.11	NA	0.9431*	1	1
-All	Men	Never	2	2017	0.11	0.11	NA	0.9431*	1	1
-All	Men	Never	2	2018	0.12	0.11	NA	0.9431*	1	1
-All	Men	Never	2	2019	0.11	0.11	NA	0.9431*	1	1
-All	Men	Never	3	2001	0.09	0.08	NA	1.7310*	0	0
-All	Men	Never	3	2002	0.08	0.09	NA	1.7310*	0	0
-All	Men	Never	3	2003	0.08	0.09	NA	1.7310*	0	0
-All	Men	Never	3	2004	0.08	0.09	NA	1.7310*	0	0
-All	Men	Never	3	2005	0.09	0.09	NA	1.7310*	0	0
-All	Men	Never	3	2006	0.10	0.09	NA	1.7310*	0	0
-All	Men	Never	3	2007	0.10	0.09	NA	1.7310*	0	0
-All	Men	Never	3	2008	0.10	0.09	NA	1.7310*	0	0
-All	Men	Never	3	2009	0.11	0.10	NA	1.7310*	0	0
-All	Men	Never	3	2010	0.10	0.10	NA	1.7310*	0	0
-All	Men	Never	3	2011	0.10	0.10	NA	1.7310*	0	0
-All	Men	Never	3	2012	0.11	0.10	NA	1.7310*	0	0
-All	Men	Never	3	2013	0.10	0.10	NA	1.7310*	0	0
-All	Men	Never	3	2014	0.10	0.10	NA	1.7310*	0	0
-All	Men	Never	3	2015	0.10	0.11	NA	1.7310*	0	0
-All	Men	Never	3	2016	0.11	0.11	NA	1.7310*	0	0
-All	Men	Never	3	2017	0.11	0.11	NA	1.7310*	0	0
-All	Men	Never	3	2018	0.12	0.11	NA	1.7310*	0	0
-All	Men	Never	3	2019	0.11	0.11	NA	1.7310*	0	0
-All	Men	Never	4	2001	0.08	0.09	NA	-0.3427	1	1
-All	Men	Never	4	2002	0.10	0.09	NA	-0.3427	1	1
-All	Men	Never	4	2003	0.08	0.09	NA	-0.3427	1	1
-All	Men	Never	4	2004	0.08	0.09	NA	-0.3427	1	1
-All	Men	Never	4	2005	0.08	0.09	NA	-0.3427	1	1
-All	Men	Never	4	2006	0.09	0.08	NA	-0.3427	1	1
-All	Men	Never	4	2007	0.08	0.08	NA	-0.3427	1	1
-All	Men	Never	4	2008	0.09	0.08	NA	-0.3427	1	1
-All	Men	Never	4	2009	0.09	0.08	NA	-0.3427	1	1
-All	Men	Never	4	2010	0.08	0.08	NA	-0.3427	1	1
-All	Men	Never	4	2011	0.08	0.08	Joinpoint 1	NA	1	1
-All	Men	Never	4	2012	0.09	0.09	NA	3.2281*	1	1
-All	Men	Never	4	2013	0.09	0.09	NA	3.2281*	1	1
-All	Men	Never	4	2014	0.10	0.09	NA	3.2281*	1	1
-All	Men	Never	4	2015	0.09	0.09	NA	3.2281*	1	1
-All	Men	Never	4	2016	0.10	0.10	NA	3.2281*	1	1
-All	Men	Never	4	2017	0.09	0.10	NA	3.2281*	1	1
-All	Men	Never	4	2018	0.10	0.10	NA	3.2281*	1	1
-All	Men	Never	4	2019	0.12	0.11	NA	3.2281*	1	1
-All	Men	Never	5	2001	0.10	0.11	NA	-22.0974*	1	1
-All	Men	Never	5	2002	0.09	0.08	NA	-22.0974*	1	1
-All	Men	Never	5	2003	0.07	0.06	Joinpoint 1	NA	1	1
-All	Men	Never	5	2004	0.06	0.07	NA	1.7162*	1	1
-All	Men	Never	5	2005	0.06	0.07	NA	1.7162*	1	1
-All	Men	Never	5	2006	0.07	0.07	NA	1.7162*	1	1
-All	Men	Never	5	2007	0.07	0.07	NA	1.7162*	1	1
-All	Men	Never	5	2008	0.07	0.07	NA	1.7162*	1	1
-All	Men	Never	5	2009	0.06	0.07	NA	1.7162*	1	1
-All	Men	Never	5	2010	0.08	0.07	NA	1.7162*	1	1
-All	Men	Never	5	2011	0.07	0.07	NA	1.7162*	1	1
-All	Men	Never	5	2012	0.08	0.08	NA	1.7162*	1	1
-All	Men	Never	5	2013	0.07	0.08	NA	1.7162*	1	1
-All	Men	Never	5	2014	0.08	0.08	NA	1.7162*	1	1
-All	Men	Never	5	2015	0.09	0.08	NA	1.7162*	1	1
-All	Men	Never	5	2016	0.08	0.08	NA	1.7162*	1	1
-All	Men	Never	5	2017	0.08	0.08	NA	1.7162*	1	1
-All	Men	Never	5	2018	0.08	0.08	NA	1.7162*	1	1
-All	Men	Never	5	2019	0.09	0.08	NA	1.7162*	1	1
-All	Women	Never	1	2001	0.09	0.09	NA	21.2323*	1	1
-All	Women	Never	1	2002	0.10	0.11	NA	21.2323*	1	1
-All	Women	Never	1	2003	0.14	0.13	Joinpoint 1	NA	1	1
-All	Women	Never	1	2004	0.13	0.13	NA	0.3838	1	1
-All	Women	Never	1	2005	0.12	0.13	NA	0.3838	1	1
-All	Women	Never	1	2006	0.12	0.13	NA	0.3838	1	1
-All	Women	Never	1	2007	0.13	0.13	NA	0.3838	1	1
-All	Women	Never	1	2008	0.14	0.13	NA	0.3838	1	1
-All	Women	Never	1	2009	0.12	0.13	NA	0.3838	1	1
-All	Women	Never	1	2010	0.14	0.13	NA	0.3838	1	1
-All	Women	Never	1	2011	0.13	0.13	NA	0.3838	1	1
-All	Women	Never	1	2012	0.14	0.13	NA	0.3838	1	1
-All	Women	Never	1	2013	0.13	0.13	NA	0.3838	1	1
-All	Women	Never	1	2014	0.14	0.14	NA	0.3838	1	1
-All	Women	Never	1	2015	0.13	0.14	NA	0.3838	1	1
-All	Women	Never	1	2016	0.14	0.14	NA	0.3838	1	1
-All	Women	Never	1	2017	0.14	0.14	NA	0.3838	1	1
-All	Women	Never	1	2018	0.13	0.14	NA	0.3838	1	1
-All	Women	Never	1	2019	0.14	0.14	NA	0.3838	1	1
-All	Women	Never	2	2001	0.08	0.08	NA	16.3880*	1	1
-All	Women	Never	2	2002	0.08	0.09	NA	16.3880*	1	1
-All	Women	Never	2	2003	0.12	0.11	NA	16.3880*	1	1
-All	Women	Never	2	2004	0.12	0.12	Joinpoint 1	NA	1	1
-All	Women	Never	2	2005	0.13	0.12	NA	0.1430	1	1
-All	Women	Never	2	2006	0.13	0.13	NA	0.1430	1	1
-All	Women	Never	2	2007	0.12	0.13	NA	0.1430	1	1
-All	Women	Never	2	2008	0.12	0.13	NA	0.1430	1	1
-All	Women	Never	2	2009	0.12	0.13	NA	0.1430	1	1
-All	Women	Never	2	2010	0.12	0.13	NA	0.1430	1	1
-All	Women	Never	2	2011	0.13	0.13	NA	0.1430	1	1
-All	Women	Never	2	2012	0.13	0.13	NA	0.1430	1	1
-All	Women	Never	2	2013	0.12	0.13	NA	0.1430	1	1
-All	Women	Never	2	2014	0.12	0.13	NA	0.1430	1	1
-All	Women	Never	2	2015	0.12	0.13	NA	0.1430	1	1
-All	Women	Never	2	2016	0.13	0.13	NA	0.1430	1	1
-All	Women	Never	2	2017	0.13	0.13	NA	0.1430	1	1
-All	Women	Never	2	2018	0.13	0.13	NA	0.1430	1	1
-All	Women	Never	2	2019	0.13	0.13	NA	0.1430	1	1
-All	Women	Never	3	2001	0.10	0.11	NA	1.1346*	0	0
-All	Women	Never	3	2002	0.10	0.11	NA	1.1346*	0	0
-All	Women	Never	3	2003	0.11	0.11	NA	1.1346*	0	0
-All	Women	Never	3	2004	0.10	0.11	NA	1.1346*	0	0
-All	Women	Never	3	2005	0.11	0.11	NA	1.1346*	0	0
-All	Women	Never	3	2006	0.12	0.11	NA	1.1346*	0	0
-All	Women	Never	3	2007	0.13	0.11	NA	1.1346*	0	0
-All	Women	Never	3	2008	0.11	0.11	NA	1.1346*	0	0
-All	Women	Never	3	2009	0.11	0.12	NA	1.1346*	0	0
-All	Women	Never	3	2010	0.11	0.12	NA	1.1346*	0	0
-All	Women	Never	3	2011	0.12	0.12	NA	1.1346*	0	0
-All	Women	Never	3	2012	0.12	0.12	NA	1.1346*	0	0
-All	Women	Never	3	2013	0.13	0.12	NA	1.1346*	0	0
-All	Women	Never	3	2014	0.11	0.12	NA	1.1346*	0	0
-All	Women	Never	3	2015	0.12	0.12	NA	1.1346*	0	0
-All	Women	Never	3	2016	0.13	0.12	NA	1.1346*	0	0
-All	Women	Never	3	2017	0.12	0.13	NA	1.1346*	0	0
-All	Women	Never	3	2018	0.13	0.13	NA	1.1346*	0	0
-All	Women	Never	3	2019	0.13	0.13	NA	1.1346*	0	0
-All	Women	Never	4	2001	0.10	0.11	NA	0.0019	1	1
-All	Women	Never	4	2002	0.11	0.11	NA	0.0019	1	1
-All	Women	Never	4	2003	0.10	0.11	NA	0.0019	1	1
-All	Women	Never	4	2004	0.11	0.11	NA	0.0019	1	1
-All	Women	Never	4	2005	0.12	0.11	NA	0.0019	1	1
-All	Women	Never	4	2006	0.11	0.11	NA	0.0019	1	1
-All	Women	Never	4	2007	0.10	0.11	NA	0.0019	1	1
-All	Women	Never	4	2008	0.10	0.11	NA	0.0019	1	1
-All	Women	Never	4	2009	0.11	0.11	NA	0.0019	1	1
-All	Women	Never	4	2010	0.11	0.11	NA	0.0019	1	1
-All	Women	Never	4	2011	0.11	0.11	NA	0.0019	1	1
-All	Women	Never	4	2012	0.11	0.11	NA	0.0019	1	1
-All	Women	Never	4	2013	0.11	0.11	NA	0.0019	1	1
-All	Women	Never	4	2014	0.12	0.11	NA	0.0019	1	1
-All	Women	Never	4	2015	0.11	0.11	NA	0.0019	1	1
-All	Women	Never	4	2016	0.10	0.11	Joinpoint 1	NA	1	1
-All	Women	Never	4	2017	0.11	0.12	NA	6.8352	1	1
-All	Women	Never	4	2018	0.13	0.12	NA	6.8352	1	1
-All	Women	Never	4	2019	0.13	0.13	NA	6.8352	1	1
-All	Women	Never	5	2001	0.13	0.15	NA	-24.8390*	1	1
-All	Women	Never	5	2002	0.13	0.11	NA	-24.8390*	1	1
-All	Women	Never	5	2003	0.08	0.08	Joinpoint 1	NA	1	1
-All	Women	Never	5	2004	0.08	0.08	NA	1.6418*	1	1
-All	Women	Never	5	2005	0.08	0.09	NA	1.6418*	1	1
-All	Women	Never	5	2006	0.09	0.09	NA	1.6418*	1	1
-All	Women	Never	5	2007	0.09	0.09	NA	1.6418*	1	1
-All	Women	Never	5	2008	0.09	0.09	NA	1.6418*	1	1
-All	Women	Never	5	2009	0.09	0.09	NA	1.6418*	1	1
-All	Women	Never	5	2010	0.10	0.09	NA	1.6418*	1	1
-All	Women	Never	5	2011	0.09	0.09	NA	1.6418*	1	1
-All	Women	Never	5	2012	0.09	0.10	NA	1.6418*	1	1
-All	Women	Never	5	2013	0.09	0.10	NA	1.6418*	1	1
-All	Women	Never	5	2014	0.11	0.10	NA	1.6418*	1	1
-All	Women	Never	5	2015	0.10	0.10	NA	1.6418*	1	1
-All	Women	Never	5	2016	0.11	0.10	NA	1.6418*	1	1
-All	Women	Never	5	2017	0.10	0.10	NA	1.6418*	1	1
-All	Women	Never	5	2018	0.10	0.11	NA	1.6418*	1	1
-All	Women	Never	5	2019	0.11	0.11	NA	1.6418*	1	1
-All	Men	Non-Drinker	1	2011	0.01	0.01	NA	1.0966	0	0
-All	Men	Non-Drinker	1	2012	0.02	0.01	NA	1.0966	0	0
-All	Men	Non-Drinker	1	2013	0.01	0.01	NA	1.0966	0	0
-All	Men	Non-Drinker	1	2014	0.02	0.01	NA	1.0966	0	0
-All	Men	Non-Drinker	1	2015	0.01	0.02	NA	1.0966	0	0
-All	Men	Non-Drinker	1	2016	0.01	0.02	NA	1.0966	0	0
-All	Men	Non-Drinker	1	2017	0.02	0.02	NA	1.0966	0	0
-All	Men	Non-Drinker	1	2018	0.01	0.02	NA	1.0966	0	0
-All	Men	Non-Drinker	1	2019	0.02	0.02	NA	1.0966	0	0
-All	Men	Non-Drinker	2	2011	0.02	0.02	NA	-0.9040	0	0
-All	Men	Non-Drinker	2	2012	0.02	0.02	NA	-0.9040	0	0
-All	Men	Non-Drinker	2	2013	0.02	0.02	NA	-0.9040	0	0
-All	Men	Non-Drinker	2	2014	0.02	0.02	NA	-0.9040	0	0
-All	Men	Non-Drinker	2	2015	0.02	0.02	NA	-0.9040	0	0
-All	Men	Non-Drinker	2	2016	0.02	0.02	NA	-0.9040	0	0
-All	Men	Non-Drinker	2	2017	0.02	0.02	NA	-0.9040	0	0
-All	Men	Non-Drinker	2	2018	0.02	0.02	NA	-0.9040	0	0
-All	Men	Non-Drinker	2	2019	0.02	0.02	NA	-0.9040	0	0
-All	Men	Non-Drinker	3	2011	0.02	0.02	NA	4.9056*	0	0
-All	Men	Non-Drinker	3	2012	0.02	0.02	NA	4.9056*	0	0
-All	Men	Non-Drinker	3	2013	0.02	0.02	NA	4.9056*	0	0
-All	Men	Non-Drinker	3	2014	0.02	0.02	NA	4.9056*	0	0
-All	Men	Non-Drinker	3	2015	0.03	0.03	NA	4.9056*	0	0
-All	Men	Non-Drinker	3	2016	0.03	0.03	NA	4.9056*	0	0
-All	Men	Non-Drinker	3	2017	0.03	0.03	NA	4.9056*	0	0
-All	Men	Non-Drinker	3	2018	0.03	0.03	NA	4.9056*	0	0
-All	Men	Non-Drinker	3	2019	0.03	0.03	NA	4.9056*	0	0
-All	Men	Non-Drinker	4	2011	0.03	0.03	NA	4.1280*	0	0
-All	Men	Non-Drinker	4	2012	0.03	0.03	NA	4.1280*	0	0
-All	Men	Non-Drinker	4	2013	0.03	0.03	NA	4.1280*	0	0
-All	Men	Non-Drinker	4	2014	0.04	0.03	NA	4.1280*	0	0
-All	Men	Non-Drinker	4	2015	0.03	0.03	NA	4.1280*	0	0
-All	Men	Non-Drinker	4	2016	0.04	0.04	NA	4.1280*	0	0
-All	Men	Non-Drinker	4	2017	0.04	0.04	NA	4.1280*	0	0
-All	Men	Non-Drinker	4	2018	0.04	0.04	NA	4.1280*	0	0
-All	Men	Non-Drinker	4	2019	0.04	0.04	NA	4.1280*	0	0
-All	Men	Non-Drinker	5	2011	0.05	0.05	NA	-0.1186	0	0
-All	Men	Non-Drinker	5	2012	0.05	0.05	NA	-0.1186	0	0
-All	Men	Non-Drinker	5	2013	0.05	0.05	NA	-0.1186	0	0
-All	Men	Non-Drinker	5	2014	0.04	0.05	NA	-0.1186	0	0
-All	Men	Non-Drinker	5	2015	0.04	0.05	NA	-0.1186	0	0
-All	Men	Non-Drinker	5	2016	0.06	0.05	NA	-0.1186	0	0
-All	Men	Non-Drinker	5	2017	0.04	0.05	NA	-0.1186	0	0
-All	Men	Non-Drinker	5	2018	0.04	0.05	NA	-0.1186	0	0
-All	Men	Non-Drinker	5	2019	0.05	0.05	NA	-0.1186	0	0
-All	Women	Non-Drinker	1	2011	0.02	0.03	NA	2.0314	0	0
-All	Women	Non-Drinker	1	2012	0.03	0.03	NA	2.0314	0	0
-All	Women	Non-Drinker	1	2013	0.02	0.03	NA	2.0314	0	0
-All	Women	Non-Drinker	1	2014	0.03	0.03	NA	2.0314	0	0
-All	Women	Non-Drinker	1	2015	0.03	0.03	NA	2.0314	0	0
-All	Women	Non-Drinker	1	2016	0.03	0.03	NA	2.0314	0	0
-All	Women	Non-Drinker	1	2017	0.03	0.03	NA	2.0314	0	0
-All	Women	Non-Drinker	1	2018	0.02	0.03	NA	2.0314	0	0
-All	Women	Non-Drinker	1	2019	0.03	0.03	NA	2.0314	0	0
-All	Women	Non-Drinker	2	2011	0.04	0.03	NA	-1.1235	0	0
-All	Women	Non-Drinker	2	2012	0.03	0.03	NA	-1.1235	0	0
-All	Women	Non-Drinker	2	2013	0.03	0.03	NA	-1.1235	0	0
-All	Women	Non-Drinker	2	2014	0.03	0.03	NA	-1.1235	0	0
-All	Women	Non-Drinker	2	2015	0.03	0.03	NA	-1.1235	0	0
-All	Women	Non-Drinker	2	2016	0.04	0.03	NA	-1.1235	0	0
-All	Women	Non-Drinker	2	2017	0.04	0.03	NA	-1.1235	0	0
-All	Women	Non-Drinker	2	2018	0.03	0.03	NA	-1.1235	0	0
-All	Women	Non-Drinker	2	2019	0.03	0.03	NA	-1.1235	0	0
-All	Women	Non-Drinker	3	2011	0.04	0.04	NA	1.3037	0	0
-All	Women	Non-Drinker	3	2012	0.04	0.04	NA	1.3037	0	0
-All	Women	Non-Drinker	3	2013	0.04	0.04	NA	1.3037	0	0
-All	Women	Non-Drinker	3	2014	0.04	0.04	NA	1.3037	0	0
-All	Women	Non-Drinker	3	2015	0.04	0.04	NA	1.3037	0	0
-All	Women	Non-Drinker	3	2016	0.04	0.04	NA	1.3037	0	0
-All	Women	Non-Drinker	3	2017	0.04	0.04	NA	1.3037	0	0
-All	Women	Non-Drinker	3	2018	0.04	0.04	NA	1.3037	0	0
-All	Women	Non-Drinker	3	2019	0.04	0.04	NA	1.3037	0	0
-All	Women	Non-Drinker	4	2011	0.04	0.04	NA	1.6538	0	0
-All	Women	Non-Drinker	4	2012	0.05	0.05	NA	1.6538	0	0
-All	Women	Non-Drinker	4	2013	0.05	0.05	NA	1.6538	0	0
-All	Women	Non-Drinker	4	2014	0.05	0.05	NA	1.6538	0	0
-All	Women	Non-Drinker	4	2015	0.04	0.05	NA	1.6538	0	0
-All	Women	Non-Drinker	4	2016	0.04	0.05	NA	1.6538	0	0
-All	Women	Non-Drinker	4	2017	0.05	0.05	NA	1.6538	0	0
-All	Women	Non-Drinker	4	2018	0.05	0.05	NA	1.6538	0	0
-All	Women	Non-Drinker	4	2019	0.05	0.05	NA	1.6538	0	0
-All	Women	Non-Drinker	5	2011	0.06	0.06	NA	0.8715	0	0
-All	Women	Non-Drinker	5	2012	0.06	0.06	NA	0.8715	0	0
-All	Women	Non-Drinker	5	2013	0.06	0.06	NA	0.8715	0	0
-All	Women	Non-Drinker	5	2014	0.06	0.06	NA	0.8715	0	0
-All	Women	Non-Drinker	5	2015	0.06	0.06	NA	0.8715	0	0
-All	Women	Non-Drinker	5	2016	0.07	0.06	NA	0.8715	0	0
-All	Women	Non-Drinker	5	2017	0.05	0.06	NA	0.8715	0	0
-All	Women	Non-Drinker	5	2018	0.06	0.06	NA	0.8715	0	0
-All	Women	Non-Drinker	5	2019	0.07	0.06	NA	0.8715	0	0
-All	Men	Obese	1	2001	0.03	0.03	NA	24.4081	1	1
-All	Men	Obese	1	2002	0.04	0.04	NA	24.4081	1	1
-All	Men	Obese	1	2003	0.05	0.05	Joinpoint 1	NA	1	1
-All	Men	Obese	1	2004	0.06	0.05	NA	-0.0571	1	1
-All	Men	Obese	1	2005	0.04	0.05	NA	-0.0571	1	1
-All	Men	Obese	1	2006	0.05	0.05	NA	-0.0571	1	1
-All	Men	Obese	1	2007	0.05	0.05	NA	-0.0571	1	1
-All	Men	Obese	1	2008	0.05	0.05	NA	-0.0571	1	1
-All	Men	Obese	1	2009	0.04	0.05	NA	-0.0571	1	1
-All	Men	Obese	1	2010	0.06	0.05	NA	-0.0571	1	1
-All	Men	Obese	1	2011	0.04	0.05	NA	-0.0571	1	1
-All	Men	Obese	1	2012	0.05	0.05	NA	-0.0571	1	1
-All	Men	Obese	1	2013	0.05	0.05	NA	-0.0571	1	1
-All	Men	Obese	1	2014	0.05	0.05	NA	-0.0571	1	1
-All	Men	Obese	1	2015	0.05	0.05	NA	-0.0571	1	1
-All	Men	Obese	1	2016	0.05	0.05	NA	-0.0571	1	1
-All	Men	Obese	1	2017	0.05	0.05	NA	-0.0571	1	1
-All	Men	Obese	1	2018	0.04	0.05	NA	-0.0571	1	1
-All	Men	Obese	1	2019	0.05	0.05	NA	-0.0571	1	1
-All	Men	Obese	2	2001	0.03	0.04	NA	13.1919*	1	1
-All	Men	Obese	2	2002	0.04	0.04	NA	13.1919*	1	1
-All	Men	Obese	2	2003	0.05	0.05	NA	13.1919*	1	1
-All	Men	Obese	2	2004	0.05	0.05	Joinpoint 1	NA	1	1
-All	Men	Obese	2	2005	0.05	0.05	NA	0.2682	1	1
-All	Men	Obese	2	2006	0.05	0.05	NA	0.2682	1	1
-All	Men	Obese	2	2007	0.05	0.05	NA	0.2682	1	1
-All	Men	Obese	2	2008	0.06	0.05	NA	0.2682	1	1
-All	Men	Obese	2	2009	0.06	0.05	NA	0.2682	1	1
-All	Men	Obese	2	2010	0.05	0.05	NA	0.2682	1	1
-All	Men	Obese	2	2011	0.05	0.05	NA	0.2682	1	1
-All	Men	Obese	2	2012	0.05	0.05	NA	0.2682	1	1
-All	Men	Obese	2	2013	0.06	0.05	NA	0.2682	1	1
-All	Men	Obese	2	2014	0.05	0.05	NA	0.2682	1	1
-All	Men	Obese	2	2015	0.05	0.05	NA	0.2682	1	1
-All	Men	Obese	2	2016	0.05	0.05	NA	0.2682	1	1
-All	Men	Obese	2	2017	0.06	0.05	NA	0.2682	1	1
-All	Men	Obese	2	2018	0.06	0.05	NA	0.2682	1	1
-All	Men	Obese	2	2019	0.06	0.05	NA	0.2682	1	1
-All	Men	Obese	3	2001	0.04	0.04	NA	5.8235*	1	1
-All	Men	Obese	3	2002	0.04	0.04	NA	5.8235*	1	1
-All	Men	Obese	3	2003	0.05	0.04	NA	5.8235*	1	1
-All	Men	Obese	3	2004	0.04	0.05	NA	5.8235*	1	1
-All	Men	Obese	3	2005	0.05	0.05	NA	5.8235*	1	1
-All	Men	Obese	3	2006	0.06	0.05	Joinpoint 1	NA	1	1
-All	Men	Obese	3	2007	0.05	0.05	NA	1.0540	1	1
-All	Men	Obese	3	2008	0.05	0.05	NA	1.0540	1	1
-All	Men	Obese	3	2009	0.05	0.05	NA	1.0540	1	1
-All	Men	Obese	3	2010	0.06	0.05	NA	1.0540	1	1
-All	Men	Obese	3	2011	0.05	0.06	NA	1.0540	1	1
-All	Men	Obese	3	2012	0.05	0.06	NA	1.0540	1	1
-All	Men	Obese	3	2013	0.06	0.06	NA	1.0540	1	1
-All	Men	Obese	3	2014	0.06	0.06	NA	1.0540	1	1
-All	Men	Obese	3	2015	0.06	0.06	NA	1.0540	1	1
-All	Men	Obese	3	2016	0.06	0.06	NA	1.0540	1	1
-All	Men	Obese	3	2017	0.05	0.06	NA	1.0540	1	1
-All	Men	Obese	3	2018	0.06	0.06	NA	1.0540	1	1
-All	Men	Obese	3	2019	0.06	0.06	NA	1.0540	1	1
-All	Men	Obese	4	2001	0.05	0.05	NA	0.6908	0	0
-All	Men	Obese	4	2002	0.05	0.05	NA	0.6908	0	0
-All	Men	Obese	4	2003	0.05	0.05	NA	0.6908	0	0
-All	Men	Obese	4	2004	0.05	0.05	NA	0.6908	0	0
-All	Men	Obese	4	2005	0.06	0.05	NA	0.6908	0	0
-All	Men	Obese	4	2006	0.05	0.05	NA	0.6908	0	0
-All	Men	Obese	4	2007	0.05	0.05	NA	0.6908	0	0
-All	Men	Obese	4	2008	0.05	0.05	NA	0.6908	0	0
-All	Men	Obese	4	2009	0.04	0.05	NA	0.6908	0	0
-All	Men	Obese	4	2010	0.06	0.05	NA	0.6908	0	0
-All	Men	Obese	4	2011	0.05	0.05	NA	0.6908	0	0
-All	Men	Obese	4	2012	0.05	0.05	NA	0.6908	0	0
-All	Men	Obese	4	2013	0.06	0.05	NA	0.6908	0	0
-All	Men	Obese	4	2014	0.05	0.05	NA	0.6908	0	0
-All	Men	Obese	4	2015	0.05	0.05	NA	0.6908	0	0
-All	Men	Obese	4	2016	0.06	0.05	NA	0.6908	0	0
-All	Men	Obese	4	2017	0.06	0.06	NA	0.6908	0	0
-All	Men	Obese	4	2018	0.05	0.06	NA	0.6908	0	0
-All	Men	Obese	4	2019	0.06	0.06	NA	0.6908	0	0
-All	Men	Obese	5	2001	0.06	0.07	NA	-26.8280*	1	1
-All	Men	Obese	5	2002	0.06	0.05	NA	-26.8280*	1	1
-All	Men	Obese	5	2003	0.04	0.04	Joinpoint 1	NA	1	1
-All	Men	Obese	5	2004	0.04	0.04	NA	3.0534*	1	1
-All	Men	Obese	5	2005	0.03	0.04	NA	3.0534*	1	1
-All	Men	Obese	5	2006	0.04	0.04	NA	3.0534*	1	1
-All	Men	Obese	5	2007	0.04	0.04	NA	3.0534*	1	1
-All	Men	Obese	5	2008	0.05	0.04	NA	3.0534*	1	1
-All	Men	Obese	5	2009	0.04	0.04	NA	3.0534*	1	1
-All	Men	Obese	5	2010	0.05	0.05	NA	3.0534*	1	1
-All	Men	Obese	5	2011	0.05	0.05	NA	3.0534*	1	1
-All	Men	Obese	5	2012	0.05	0.05	NA	3.0534*	1	1
-All	Men	Obese	5	2013	0.05	0.05	NA	3.0534*	1	1
-All	Men	Obese	5	2014	0.05	0.05	NA	3.0534*	1	1
-All	Men	Obese	5	2015	0.06	0.05	NA	3.0534*	1	1
-All	Men	Obese	5	2016	0.05	0.06	NA	3.0534*	1	1
-All	Men	Obese	5	2017	0.06	0.06	NA	3.0534*	1	1
-All	Men	Obese	5	2018	0.06	0.06	NA	3.0534*	1	1
-All	Men	Obese	5	2019	0.06	0.06	NA	3.0534*	1	1
-All	Women	Obese	1	2001	0.03	0.03	NA	23.4378	1	1
-All	Women	Obese	1	2002	0.03	0.04	NA	23.4378	1	1
-All	Women	Obese	1	2003	0.05	0.04	Joinpoint 1	NA	1	1
-All	Women	Obese	1	2004	0.05	0.04	NA	0.3217	1	1
-All	Women	Obese	1	2005	0.04	0.04	NA	0.3217	1	1
-All	Women	Obese	1	2006	0.04	0.04	NA	0.3217	1	1
-All	Women	Obese	1	2007	0.05	0.04	NA	0.3217	1	1
-All	Women	Obese	1	2008	0.05	0.04	NA	0.3217	1	1
-All	Women	Obese	1	2009	0.04	0.04	NA	0.3217	1	1
-All	Women	Obese	1	2010	0.05	0.04	NA	0.3217	1	1
-All	Women	Obese	1	2011	0.04	0.04	NA	0.3217	1	1
-All	Women	Obese	1	2012	0.05	0.04	NA	0.3217	1	1
-All	Women	Obese	1	2013	0.03	0.04	NA	0.3217	1	1
-All	Women	Obese	1	2014	0.05	0.05	NA	0.3217	1	1
-All	Women	Obese	1	2015	0.04	0.05	NA	0.3217	1	1
-All	Women	Obese	1	2016	0.05	0.05	NA	0.3217	1	1
-All	Women	Obese	1	2017	0.05	0.05	NA	0.3217	1	1
-All	Women	Obese	1	2018	0.04	0.05	NA	0.3217	1	1
-All	Women	Obese	1	2019	0.05	0.05	NA	0.3217	1	1
-All	Women	Obese	2	2001	0.04	0.04	NA	10.1345	1	1
-All	Women	Obese	2	2002	0.04	0.04	NA	10.1345	1	1
-All	Women	Obese	2	2003	0.05	0.04	NA	10.1345	1	1
-All	Women	Obese	2	2004	0.05	0.05	Joinpoint 1	NA	1	1
-All	Women	Obese	2	2005	0.05	0.05	NA	0.6041	1	1
-All	Women	Obese	2	2006	0.05	0.05	NA	0.6041	1	1
-All	Women	Obese	2	2007	0.05	0.05	NA	0.6041	1	1
-All	Women	Obese	2	2008	0.04	0.05	NA	0.6041	1	1
-All	Women	Obese	2	2009	0.04	0.05	NA	0.6041	1	1
-All	Women	Obese	2	2010	0.05	0.05	NA	0.6041	1	1
-All	Women	Obese	2	2011	0.06	0.05	NA	0.6041	1	1
-All	Women	Obese	2	2012	0.05	0.05	NA	0.6041	1	1
-All	Women	Obese	2	2013	0.05	0.05	NA	0.6041	1	1
-All	Women	Obese	2	2014	0.05	0.05	NA	0.6041	1	1
-All	Women	Obese	2	2015	0.05	0.05	NA	0.6041	1	1
-All	Women	Obese	2	2016	0.05	0.05	NA	0.6041	1	1
-All	Women	Obese	2	2017	0.06	0.05	NA	0.6041	1	1
-All	Women	Obese	2	2018	0.06	0.05	NA	0.6041	1	1
-All	Women	Obese	2	2019	0.05	0.05	NA	0.6041	1	1
-All	Women	Obese	3	2001	0.04	0.04	NA	2.1162*	0	0
-All	Women	Obese	3	2002	0.04	0.05	NA	2.1162*	0	0
-All	Women	Obese	3	2003	0.05	0.05	NA	2.1162*	0	0
-All	Women	Obese	3	2004	0.04	0.05	NA	2.1162*	0	0
-All	Women	Obese	3	2005	0.05	0.05	NA	2.1162*	0	0
-All	Women	Obese	3	2006	0.05	0.05	NA	2.1162*	0	0
-All	Women	Obese	3	2007	0.05	0.05	NA	2.1162*	0	0
-All	Women	Obese	3	2008	0.05	0.05	NA	2.1162*	0	0
-All	Women	Obese	3	2009	0.05	0.05	NA	2.1162*	0	0
-All	Women	Obese	3	2010	0.05	0.05	NA	2.1162*	0	0
-All	Women	Obese	3	2011	0.06	0.05	NA	2.1162*	0	0
-All	Women	Obese	3	2012	0.05	0.06	NA	2.1162*	0	0
-All	Women	Obese	3	2013	0.06	0.06	NA	2.1162*	0	0
-All	Women	Obese	3	2014	0.06	0.06	NA	2.1162*	0	0
-All	Women	Obese	3	2015	0.06	0.06	NA	2.1162*	0	0
-All	Women	Obese	3	2016	0.06	0.06	NA	2.1162*	0	0
-All	Women	Obese	3	2017	0.06	0.06	NA	2.1162*	0	0
-All	Women	Obese	3	2018	0.07	0.06	NA	2.1162*	0	0
-All	Women	Obese	3	2019	0.06	0.06	NA	2.1162*	0	0
-All	Women	Obese	4	2001	0.05	0.05	NA	0.8433*	0	0
-All	Women	Obese	4	2002	0.05	0.05	NA	0.8433*	0	0
-All	Women	Obese	4	2003	0.05	0.05	NA	0.8433*	0	0
-All	Women	Obese	4	2004	0.06	0.06	NA	0.8433*	0	0
-All	Women	Obese	4	2005	0.06	0.06	NA	0.8433*	0	0
-All	Women	Obese	4	2006	0.05	0.06	NA	0.8433*	0	0
-All	Women	Obese	4	2007	0.06	0.06	NA	0.8433*	0	0
-All	Women	Obese	4	2008	0.06	0.06	NA	0.8433*	0	0
-All	Women	Obese	4	2009	0.06	0.06	NA	0.8433*	0	0
-All	Women	Obese	4	2010	0.06	0.06	NA	0.8433*	0	0
-All	Women	Obese	4	2011	0.05	0.06	NA	0.8433*	0	0
-All	Women	Obese	4	2012	0.05	0.06	NA	0.8433*	0	0
-All	Women	Obese	4	2013	0.06	0.06	NA	0.8433*	0	0
-All	Women	Obese	4	2014	0.06	0.06	NA	0.8433*	0	0
-All	Women	Obese	4	2015	0.06	0.06	NA	0.8433*	0	0
-All	Women	Obese	4	2016	0.05	0.06	NA	0.8433*	0	0
-All	Women	Obese	4	2017	0.07	0.06	NA	0.8433*	0	0
-All	Women	Obese	4	2018	0.07	0.06	NA	0.8433*	0	0
-All	Women	Obese	4	2019	0.06	0.06	NA	0.8433*	0	0
-All	Women	Obese	5	2001	0.08	0.08	NA	-16.0271*	1	1
-All	Women	Obese	5	2002	0.08	0.07	NA	-16.0271*	1	1
-All	Women	Obese	5	2003	0.05	0.06	NA	-16.0271*	1	1
-All	Women	Obese	5	2004	0.05	0.05	Joinpoint 1	NA	1	1
-All	Women	Obese	5	2005	0.05	0.05	NA	3.1152*	1	1
-All	Women	Obese	5	2006	0.05	0.05	NA	3.1152*	1	1
-All	Women	Obese	5	2007	0.05	0.05	NA	3.1152*	1	1
-All	Women	Obese	5	2008	0.06	0.05	NA	3.1152*	1	1
-All	Women	Obese	5	2009	0.05	0.05	NA	3.1152*	1	1
-All	Women	Obese	5	2010	0.06	0.06	NA	3.1152*	1	1
-All	Women	Obese	5	2011	0.06	0.06	NA	3.1152*	1	1
-All	Women	Obese	5	2012	0.06	0.06	NA	3.1152*	1	1
-All	Women	Obese	5	2013	0.06	0.06	NA	3.1152*	1	1
-All	Women	Obese	5	2014	0.06	0.06	NA	3.1152*	1	1
-All	Women	Obese	5	2015	0.07	0.07	NA	3.1152*	1	1
-All	Women	Obese	5	2016	0.07	0.07	NA	3.1152*	1	1
-All	Women	Obese	5	2017	0.07	0.07	NA	3.1152*	1	1
-All	Women	Obese	5	2018	0.07	0.07	NA	3.1152*	1	1
-All	Women	Obese	5	2019	0.08	0.07	NA	3.1152*	1	1
-All	Men	Overweight	1	2001	0.09	0.08	NA	15.6079	1	1
-All	Men	Overweight	1	2002	0.08	0.10	NA	15.6079	1	1
-All	Men	Overweight	1	2003	0.11	0.11	Joinpoint 1	NA	1	1
-All	Men	Overweight	1	2004	0.11	0.11	NA	-1.4174*	1	1
-All	Men	Overweight	1	2005	0.11	0.11	NA	-1.4174*	1	1
-All	Men	Overweight	1	2006	0.10	0.11	NA	-1.4174*	1	1
-All	Men	Overweight	1	2007	0.11	0.10	NA	-1.4174*	1	1
-All	Men	Overweight	1	2008	0.10	0.10	NA	-1.4174*	1	1
-All	Men	Overweight	1	2009	0.11	0.10	NA	-1.4174*	1	1
-All	Men	Overweight	1	2010	0.10	0.10	NA	-1.4174*	1	1
-All	Men	Overweight	1	2011	0.09	0.10	NA	-1.4174*	1	1
-All	Men	Overweight	1	2012	0.10	0.10	NA	-1.4174*	1	1
-All	Men	Overweight	1	2013	0.10	0.10	NA	-1.4174*	1	1
-All	Men	Overweight	1	2014	0.11	0.09	NA	-1.4174*	1	1
-All	Men	Overweight	1	2015	0.09	0.09	NA	-1.4174*	1	1
-All	Men	Overweight	1	2016	0.08	0.09	NA	-1.4174*	1	1
-All	Men	Overweight	1	2017	0.09	0.09	NA	-1.4174*	1	1
-All	Men	Overweight	1	2018	0.09	0.09	NA	-1.4174*	1	1
-All	Men	Overweight	1	2019	0.09	0.09	NA	-1.4174*	1	1
-All	Men	Overweight	2	2001	0.07	0.07	NA	14.2000*	1	1
-All	Men	Overweight	2	2002	0.08	0.08	NA	14.2000*	1	1
-All	Men	Overweight	2	2003	0.09	0.09	NA	14.2000*	1	1
-All	Men	Overweight	2	2004	0.11	0.10	Joinpoint 1	NA	1	1
-All	Men	Overweight	2	2005	0.11	0.10	NA	-0.8870	1	1
-All	Men	Overweight	2	2006	0.10	0.10	NA	-0.8870	1	1
-All	Men	Overweight	2	2007	0.09	0.10	NA	-0.8870	1	1
-All	Men	Overweight	2	2008	0.09	0.10	NA	-0.8870	1	1
-All	Men	Overweight	2	2009	0.10	0.10	NA	-0.8870	1	1
-All	Men	Overweight	2	2010	0.09	0.10	NA	-0.8870	1	1
-All	Men	Overweight	2	2011	0.10	0.10	NA	-0.8870	1	1
-All	Men	Overweight	2	2012	0.10	0.10	NA	-0.8870	1	1
-All	Men	Overweight	2	2013	0.10	0.10	NA	-0.8870	1	1
-All	Men	Overweight	2	2014	0.09	0.09	NA	-0.8870	1	1
-All	Men	Overweight	2	2015	0.10	0.09	NA	-0.8870	1	1
-All	Men	Overweight	2	2016	0.08	0.09	NA	-0.8870	1	1
-All	Men	Overweight	2	2017	0.10	0.09	NA	-0.8870	1	1
-All	Men	Overweight	2	2018	0.10	0.09	NA	-0.8870	1	1
-All	Men	Overweight	2	2019	0.09	0.09	NA	-0.8870	1	1
-All	Men	Overweight	3	2001	0.10	0.09	NA	-0.2435	0	0
-All	Men	Overweight	3	2002	0.09	0.09	NA	-0.2435	0	0
-All	Men	Overweight	3	2003	0.09	0.09	NA	-0.2435	0	0
-All	Men	Overweight	3	2004	0.08	0.09	NA	-0.2435	0	0
-All	Men	Overweight	3	2005	0.09	0.09	NA	-0.2435	0	0
-All	Men	Overweight	3	2006	0.10	0.09	NA	-0.2435	0	0
-All	Men	Overweight	3	2007	0.10	0.09	NA	-0.2435	0	0
-All	Men	Overweight	3	2008	0.09	0.09	NA	-0.2435	0	0
-All	Men	Overweight	3	2009	0.10	0.09	NA	-0.2435	0	0
-All	Men	Overweight	3	2010	0.09	0.09	NA	-0.2435	0	0
-All	Men	Overweight	3	2011	0.09	0.09	NA	-0.2435	0	0
-All	Men	Overweight	3	2012	0.10	0.09	NA	-0.2435	0	0
-All	Men	Overweight	3	2013	0.09	0.09	NA	-0.2435	0	0
-All	Men	Overweight	3	2014	0.09	0.09	NA	-0.2435	0	0
-All	Men	Overweight	3	2015	0.09	0.09	NA	-0.2435	0	0
-All	Men	Overweight	3	2016	0.10	0.09	NA	-0.2435	0	0
-All	Men	Overweight	3	2017	0.08	0.09	NA	-0.2435	0	0
-All	Men	Overweight	3	2018	0.09	0.09	NA	-0.2435	0	0
-All	Men	Overweight	3	2019	0.09	0.09	NA	-0.2435	0	0
-All	Men	Overweight	4	2001	0.10	0.10	NA	-9.1936	2	2
-All	Men	Overweight	4	2002	0.10	0.09	NA	-9.1936	2	2
-All	Men	Overweight	4	2003	0.08	0.09	Joinpoint 1	NA	2	2
-All	Men	Overweight	4	2004	0.09	0.08	NA	-1.6006*	2	2
-All	Men	Overweight	4	2005	0.08	0.08	NA	-1.6006*	2	2
-All	Men	Overweight	4	2006	0.09	0.08	NA	-1.6006*	2	2
-All	Men	Overweight	4	2007	0.07	0.08	NA	-1.6006*	2	2
-All	Men	Overweight	4	2008	0.08	0.08	NA	-1.6006*	2	2
-All	Men	Overweight	4	2009	0.08	0.08	NA	-1.6006*	2	2
-All	Men	Overweight	4	2010	0.08	0.08	NA	-1.6006*	2	2
-All	Men	Overweight	4	2011	0.07	0.08	NA	-1.6006*	2	2
-All	Men	Overweight	4	2012	0.07	0.07	NA	-1.6006*	2	2
-All	Men	Overweight	4	2013	0.07	0.07	Joinpoint 2	NA	2	2
-All	Men	Overweight	4	2014	0.08	0.07	NA	2.7808*	2	2
-All	Men	Overweight	4	2015	0.08	0.08	NA	2.7808*	2	2
-All	Men	Overweight	4	2016	0.08	0.08	NA	2.7808*	2	2
-All	Men	Overweight	4	2017	0.08	0.08	NA	2.7808*	2	2
-All	Men	Overweight	4	2018	0.09	0.08	NA	2.7808*	2	2
-All	Men	Overweight	4	2019	0.09	0.09	NA	2.7808*	2	2
-All	Men	Overweight	5	2001	0.12	0.13	NA	-20.7842*	1	1
-All	Men	Overweight	5	2002	0.11	0.10	NA	-20.7842*	1	1
-All	Men	Overweight	5	2003	0.07	0.08	NA	-20.7842*	1	1
-All	Men	Overweight	5	2004	0.06	0.06	Joinpoint 1	NA	1	1
-All	Men	Overweight	5	2005	0.06	0.06	NA	1.1612	1	1
-All	Men	Overweight	5	2006	0.07	0.06	NA	1.1612	1	1
-All	Men	Overweight	5	2007	0.06	0.06	NA	1.1612	1	1
-All	Men	Overweight	5	2008	0.08	0.07	NA	1.1612	1	1
-All	Men	Overweight	5	2009	0.06	0.07	NA	1.1612	1	1
-All	Men	Overweight	5	2010	0.08	0.07	NA	1.1612	1	1
-All	Men	Overweight	5	2011	0.07	0.07	NA	1.1612	1	1
-All	Men	Overweight	5	2012	0.07	0.07	NA	1.1612	1	1
-All	Men	Overweight	5	2013	0.06	0.07	NA	1.1612	1	1
-All	Men	Overweight	5	2014	0.07	0.07	NA	1.1612	1	1
-All	Men	Overweight	5	2015	0.07	0.07	NA	1.1612	1	1
-All	Men	Overweight	5	2016	0.08	0.07	NA	1.1612	1	1
-All	Men	Overweight	5	2017	0.07	0.07	NA	1.1612	1	1
-All	Men	Overweight	5	2018	0.06	0.07	NA	1.1612	1	1
-All	Men	Overweight	5	2019	0.08	0.07	NA	1.1612	1	1
-All	Women	Overweight	1	2001	0.05	0.05	NA	22.5875	1	1
-All	Women	Overweight	1	2002	0.06	0.06	NA	22.5875	1	1
-All	Women	Overweight	1	2003	0.08	0.08	Joinpoint 1	NA	1	1
-All	Women	Overweight	1	2004	0.08	0.07	NA	-0.8101	1	1
-All	Women	Overweight	1	2005	0.07	0.07	NA	-0.8101	1	1
-All	Women	Overweight	1	2006	0.07	0.07	NA	-0.8101	1	1
-All	Women	Overweight	1	2007	0.07	0.07	NA	-0.8101	1	1
-All	Women	Overweight	1	2008	0.07	0.07	NA	-0.8101	1	1
-All	Women	Overweight	1	2009	0.07	0.07	NA	-0.8101	1	1
-All	Women	Overweight	1	2010	0.08	0.07	NA	-0.8101	1	1
-All	Women	Overweight	1	2011	0.08	0.07	NA	-0.8101	1	1
-All	Women	Overweight	1	2012	0.07	0.07	NA	-0.8101	1	1
-All	Women	Overweight	1	2013	0.07	0.07	NA	-0.8101	1	1
-All	Women	Overweight	1	2014	0.07	0.07	NA	-0.8101	1	1
-All	Women	Overweight	1	2015	0.07	0.07	NA	-0.8101	1	1
-All	Women	Overweight	1	2016	0.06	0.07	NA	-0.8101	1	1
-All	Women	Overweight	1	2017	0.06	0.07	NA	-0.8101	1	1
-All	Women	Overweight	1	2018	0.06	0.07	NA	-0.8101	1	1
-All	Women	Overweight	1	2019	0.07	0.07	NA	-0.8101	1	1
-All	Women	Overweight	2	2001	0.05	0.05	NA	21.6665*	2	2
-All	Women	Overweight	2	2002	0.06	0.06	NA	21.6665*	2	2
-All	Women	Overweight	2	2003	0.07	0.07	NA	21.6665*	2	2
-All	Women	Overweight	2	2004	0.08	0.09	Joinpoint 1	NA	2	2
-All	Women	Overweight	2	2005	0.08	0.08	NA	-7.5668	2	2
-All	Women	Overweight	2	2006	0.07	0.07	NA	-7.5668	2	2
-All	Women	Overweight	2	2007	0.07	0.07	Joinpoint 2	NA	2	2
-All	Women	Overweight	2	2008	0.07	0.07	NA	-0.0965	2	2
-All	Women	Overweight	2	2009	0.06	0.07	NA	-0.0965	2	2
-All	Women	Overweight	2	2010	0.07	0.07	NA	-0.0965	2	2
-All	Women	Overweight	2	2011	0.07	0.07	NA	-0.0965	2	2
-All	Women	Overweight	2	2012	0.07	0.07	NA	-0.0965	2	2
-All	Women	Overweight	2	2013	0.08	0.07	NA	-0.0965	2	2
-All	Women	Overweight	2	2014	0.07	0.07	NA	-0.0965	2	2
-All	Women	Overweight	2	2015	0.06	0.07	NA	-0.0965	2	2
-All	Women	Overweight	2	2016	0.07	0.07	NA	-0.0965	2	2
-All	Women	Overweight	2	2017	0.07	0.07	NA	-0.0965	2	2
-All	Women	Overweight	2	2018	0.07	0.07	NA	-0.0965	2	2
-All	Women	Overweight	2	2019	0.06	0.07	NA	-0.0965	2	2
-All	Women	Overweight	3	2001	0.07	0.07	NA	0.0234	0	0
-All	Women	Overweight	3	2002	0.07	0.07	NA	0.0234	0	0
-All	Women	Overweight	3	2003	0.07	0.07	NA	0.0234	0	0
-All	Women	Overweight	3	2004	0.06	0.07	NA	0.0234	0	0
-All	Women	Overweight	3	2005	0.07	0.07	NA	0.0234	0	0
-All	Women	Overweight	3	2006	0.08	0.07	NA	0.0234	0	0
-All	Women	Overweight	3	2007	0.07	0.07	NA	0.0234	0	0
-All	Women	Overweight	3	2008	0.07	0.07	NA	0.0234	0	0
-All	Women	Overweight	3	2009	0.07	0.07	NA	0.0234	0	0
-All	Women	Overweight	3	2010	0.06	0.07	NA	0.0234	0	0
-All	Women	Overweight	3	2011	0.07	0.07	NA	0.0234	0	0
-All	Women	Overweight	3	2012	0.07	0.07	NA	0.0234	0	0
-All	Women	Overweight	3	2013	0.07	0.07	NA	0.0234	0	0
-All	Women	Overweight	3	2014	0.07	0.07	NA	0.0234	0	0
-All	Women	Overweight	3	2015	0.07	0.07	NA	0.0234	0	0
-All	Women	Overweight	3	2016	0.07	0.07	NA	0.0234	0	0
-All	Women	Overweight	3	2017	0.06	0.07	NA	0.0234	0	0
-All	Women	Overweight	3	2018	0.07	0.07	NA	0.0234	0	0
-All	Women	Overweight	3	2019	0.07	0.07	NA	0.0234	0	0
-All	Women	Overweight	4	2001	0.08	0.07	NA	-0.8116*	0	0
-All	Women	Overweight	4	2002	0.07	0.07	NA	-0.8116*	0	0
-All	Women	Overweight	4	2003	0.07	0.07	NA	-0.8116*	0	0
-All	Women	Overweight	4	2004	0.06	0.07	NA	-0.8116*	0	0
-All	Women	Overweight	4	2005	0.07	0.07	NA	-0.8116*	0	0
-All	Women	Overweight	4	2006	0.06	0.07	NA	-0.8116*	0	0
-All	Women	Overweight	4	2007	0.06	0.07	NA	-0.8116*	0	0
-All	Women	Overweight	4	2008	0.06	0.07	NA	-0.8116*	0	0
-All	Women	Overweight	4	2009	0.08	0.06	NA	-0.8116*	0	0
-All	Women	Overweight	4	2010	0.07	0.06	NA	-0.8116*	0	0
-All	Women	Overweight	4	2011	0.06	0.06	NA	-0.8116*	0	0
-All	Women	Overweight	4	2012	0.06	0.06	NA	-0.8116*	0	0
-All	Women	Overweight	4	2013	0.06	0.06	NA	-0.8116*	0	0
-All	Women	Overweight	4	2014	0.06	0.06	NA	-0.8116*	0	0
-All	Women	Overweight	4	2015	0.06	0.06	NA	-0.8116*	0	0
-All	Women	Overweight	4	2016	0.06	0.06	NA	-0.8116*	0	0
-All	Women	Overweight	4	2017	0.07	0.06	NA	-0.8116*	0	0
-All	Women	Overweight	4	2018	0.06	0.06	NA	-0.8116*	0	0
-All	Women	Overweight	4	2019	0.06	0.06	NA	-0.8116*	0	0
-All	Women	Overweight	5	2001	0.09	0.10	NA	-26.9330*	1	1
-All	Women	Overweight	5	2002	0.09	0.07	NA	-26.9330*	1	1
-All	Women	Overweight	5	2003	0.05	0.05	Joinpoint 1	NA	1	1
-All	Women	Overweight	5	2004	0.06	0.05	NA	0.2381	1	1
-All	Women	Overweight	5	2005	0.05	0.05	NA	0.2381	1	1
-All	Women	Overweight	5	2006	0.05	0.05	NA	0.2381	1	1
-All	Women	Overweight	5	2007	0.06	0.05	NA	0.2381	1	1
-All	Women	Overweight	5	2008	0.05	0.05	NA	0.2381	1	1
-All	Women	Overweight	5	2009	0.05	0.05	NA	0.2381	1	1
-All	Women	Overweight	5	2010	0.05	0.05	NA	0.2381	1	1
-All	Women	Overweight	5	2011	0.05	0.06	NA	0.2381	1	1
-All	Women	Overweight	5	2012	0.05	0.06	NA	0.2381	1	1
-All	Women	Overweight	5	2013	0.06	0.06	NA	0.2381	1	1
-All	Women	Overweight	5	2014	0.06	0.06	NA	0.2381	1	1
-All	Women	Overweight	5	2015	0.06	0.06	NA	0.2381	1	1
-All	Women	Overweight	5	2016	0.05	0.06	NA	0.2381	1	1
-All	Women	Overweight	5	2017	0.05	0.06	NA	0.2381	1	1
-All	Women	Overweight	5	2018	0.05	0.06	NA	0.2381	1	1
-All	Women	Overweight	5	2019	0.06	0.06	NA	0.2381	1	1
-All	Men	PhysicalActivity	1	2003	0.15	0.15	NA	-2.6702	0	0
-All	Men	PhysicalActivity	1	2004	0.16	0.15	NA	-2.6702	0	0
-All	Men	PhysicalActivity	1	2006	0.12	0.14	NA	-2.6702	0	0
-All	Men	PhysicalActivity	1	2008	0.13	0.13	NA	-2.6702	0	0
-All	Men	PhysicalActivity	1	2012	0.12	0.12	NA	-2.6702	0	0
-All	Men	PhysicalActivity	2	2003	0.13	0.13	NA	-1.4841	0	0
-All	Men	PhysicalActivity	2	2004	0.14	0.13	NA	-1.4841	0	0
-All	Men	PhysicalActivity	2	2006	0.12	0.13	NA	-1.4841	0	0
-All	Men	PhysicalActivity	2	2008	0.12	0.12	NA	-1.4841	0	0
-All	Men	PhysicalActivity	2	2012	0.12	0.12	NA	-1.4841	0	0
-All	Men	PhysicalActivity	3	2003	0.13	0.12	NA	0.0147	0	0
-All	Men	PhysicalActivity	3	2004	0.11	0.12	NA	0.0147	0	0
-All	Men	PhysicalActivity	3	2006	0.13	0.12	NA	0.0147	0	0
-All	Men	PhysicalActivity	3	2008	0.12	0.12	NA	0.0147	0	0
-All	Men	PhysicalActivity	3	2012	0.12	0.12	NA	0.0147	0	0
-All	Men	PhysicalActivity	4	2003	0.13	0.13	NA	-2.2761*	0	0
-All	Men	PhysicalActivity	4	2004	0.13	0.12	NA	-2.2761*	0	0
-All	Men	PhysicalActivity	4	2006	0.11	0.12	NA	-2.2761*	0	0
-All	Men	PhysicalActivity	4	2008	0.11	0.11	NA	-2.2761*	0	0
-All	Men	PhysicalActivity	4	2012	0.10	0.10	NA	-2.2761*	0	0
-All	Men	PhysicalActivity	5	2003	0.11	0.11	NA	1.1857	0	0
-All	Men	PhysicalActivity	5	2004	0.10	0.11	NA	1.1857	0	0
-All	Men	PhysicalActivity	5	2006	0.12	0.11	NA	1.1857	0	0
-All	Men	PhysicalActivity	5	2008	0.11	0.11	NA	1.1857	0	0
-All	Men	PhysicalActivity	5	2012	0.12	0.12	NA	1.1857	0	0
-All	Women	PhysicalActivity	1	2003	0.17	0.16	NA	-2.4914	0	0
-All	Women	PhysicalActivity	1	2004	0.16	0.16	NA	-2.4914	0	0
-All	Women	PhysicalActivity	1	2006	0.13	0.15	NA	-2.4914	0	0
-All	Women	PhysicalActivity	1	2008	0.15	0.14	NA	-2.4914	0	0
-All	Women	PhysicalActivity	1	2012	0.13	0.13	NA	-2.4914	0	0
-All	Women	PhysicalActivity	2	2003	0.15	0.16	NA	-1.4874	0	0
-All	Women	PhysicalActivity	2	2004	0.16	0.15	NA	-1.4874	0	0
-All	Women	PhysicalActivity	2	2006	0.15	0.15	NA	-1.4874	0	0
-All	Women	PhysicalActivity	2	2008	0.14	0.14	NA	-1.4874	0	0
-All	Women	PhysicalActivity	2	2012	0.14	0.14	NA	-1.4874	0	0
-All	Women	PhysicalActivity	3	2003	0.15	0.14	NA	-0.0246	0	0
-All	Women	PhysicalActivity	3	2004	0.13	0.14	NA	-0.0246	0	0
-All	Women	PhysicalActivity	3	2006	0.14	0.14	NA	-0.0246	0	0
-All	Women	PhysicalActivity	3	2008	0.14	0.14	NA	-0.0246	0	0
-All	Women	PhysicalActivity	3	2012	0.14	0.14	NA	-0.0246	0	0
-All	Women	PhysicalActivity	4	2003	0.16	0.16	NA	-1.7841	0	0
-All	Women	PhysicalActivity	4	2004	0.16	0.15	NA	-1.7841	0	0
-All	Women	PhysicalActivity	4	2006	0.14	0.15	NA	-1.7841	0	0
-All	Women	PhysicalActivity	4	2008	0.14	0.14	NA	-1.7841	0	0
-All	Women	PhysicalActivity	4	2012	0.14	0.13	NA	-1.7841	0	0
-All	Women	PhysicalActivity	5	2003	0.13	0.13	NA	-0.4101	0	0
-All	Women	PhysicalActivity	5	2004	0.14	0.13	NA	-0.4101	0	0
-All	Women	PhysicalActivity	5	2006	0.13	0.13	NA	-0.4101	0	0
-All	Women	PhysicalActivity	5	2008	0.13	0.13	NA	-0.4101	0	0
-All	Women	PhysicalActivity	5	2012	0.13	0.13	NA	-0.4101	0	0
-All	Men	Previously	1	2001	0.06	0.06	NA	13.1363	1	1
-All	Men	Previously	1	2002	0.06	0.06	NA	13.1363	1	1
-All	Men	Previously	1	2003	0.07	0.07	Joinpoint 1	NA	1	1
-All	Men	Previously	1	2004	0.08	0.07	NA	-1.1758*	1	1
-All	Men	Previously	1	2005	0.07	0.07	NA	-1.1758*	1	1
-All	Men	Previously	1	2006	0.06	0.07	NA	-1.1758*	1	1
-All	Men	Previously	1	2007	0.07	0.07	NA	-1.1758*	1	1
-All	Men	Previously	1	2008	0.06	0.07	NA	-1.1758*	1	1
-All	Men	Previously	1	2009	0.06	0.07	NA	-1.1758*	1	1
-All	Men	Previously	1	2010	0.07	0.07	NA	-1.1758*	1	1
-All	Men	Previously	1	2011	0.06	0.06	NA	-1.1758*	1	1
-All	Men	Previously	1	2012	0.06	0.06	NA	-1.1758*	1	1
-All	Men	Previously	1	2013	0.07	0.06	NA	-1.1758*	1	1
-All	Men	Previously	1	2014	0.06	0.06	NA	-1.1758*	1	1
-All	Men	Previously	1	2015	0.06	0.06	NA	-1.1758*	1	1
-All	Men	Previously	1	2016	0.06	0.06	NA	-1.1758*	1	1
-All	Men	Previously	1	2017	0.06	0.06	NA	-1.1758*	1	1
-All	Men	Previously	1	2018	0.06	0.06	NA	-1.1758*	1	1
-All	Men	Previously	1	2019	0.06	0.06	NA	-1.1758*	1	1
-All	Men	Previously	2	2001	0.05	0.05	NA	9.8406	1	1
-All	Men	Previously	2	2002	0.05	0.06	NA	9.8406	1	1
-All	Men	Previously	2	2003	0.07	0.06	NA	9.8406	1	1
-All	Men	Previously	2	2004	0.07	0.07	Joinpoint 1	NA	1	1
-All	Men	Previously	2	2005	0.07	0.07	NA	-1.0547*	1	1
-All	Men	Previously	2	2006	0.06	0.07	NA	-1.0547*	1	1
-All	Men	Previously	2	2007	0.06	0.07	NA	-1.0547*	1	1
-All	Men	Previously	2	2008	0.07	0.07	NA	-1.0547*	1	1
-All	Men	Previously	2	2009	0.07	0.07	NA	-1.0547*	1	1
-All	Men	Previously	2	2010	0.06	0.07	NA	-1.0547*	1	1
-All	Men	Previously	2	2011	0.07	0.06	NA	-1.0547*	1	1
-All	Men	Previously	2	2012	0.06	0.06	NA	-1.0547*	1	1
-All	Men	Previously	2	2013	0.07	0.06	NA	-1.0547*	1	1
-All	Men	Previously	2	2014	0.06	0.06	NA	-1.0547*	1	1
-All	Men	Previously	2	2015	0.06	0.06	NA	-1.0547*	1	1
-All	Men	Previously	2	2016	0.05	0.06	NA	-1.0547*	1	1
-All	Men	Previously	2	2017	0.06	0.06	NA	-1.0547*	1	1
-All	Men	Previously	2	2018	0.06	0.06	NA	-1.0547*	1	1
-All	Men	Previously	2	2019	0.06	0.06	NA	-1.0547*	1	1
-All	Men	Previously	3	2001	0.06	0.06	NA	0.2199	0	0
-All	Men	Previously	3	2002	0.06	0.06	NA	0.2199	0	0
-All	Men	Previously	3	2003	0.06	0.06	NA	0.2199	0	0
-All	Men	Previously	3	2004	0.05	0.06	NA	0.2199	0	0
-All	Men	Previously	3	2005	0.07	0.06	NA	0.2199	0	0
-All	Men	Previously	3	2006	0.07	0.06	NA	0.2199	0	0
-All	Men	Previously	3	2007	0.06	0.06	NA	0.2199	0	0
-All	Men	Previously	3	2008	0.06	0.06	NA	0.2199	0	0
-All	Men	Previously	3	2009	0.07	0.06	NA	0.2199	0	0
-All	Men	Previously	3	2010	0.06	0.06	NA	0.2199	0	0
-All	Men	Previously	3	2011	0.07	0.06	NA	0.2199	0	0
-All	Men	Previously	3	2012	0.06	0.06	NA	0.2199	0	0
-All	Men	Previously	3	2013	0.07	0.06	NA	0.2199	0	0
-All	Men	Previously	3	2014	0.06	0.06	NA	0.2199	0	0
-All	Men	Previously	3	2015	0.07	0.06	NA	0.2199	0	0
-All	Men	Previously	3	2016	0.07	0.06	NA	0.2199	0	0
-All	Men	Previously	3	2017	0.06	0.06	NA	0.2199	0	0
-All	Men	Previously	3	2018	0.06	0.06	NA	0.2199	0	0
-All	Men	Previously	3	2019	0.06	0.06	NA	0.2199	0	0
-All	Men	Previously	4	2001	0.07	0.06	NA	-0.6928*	0	0
-All	Men	Previously	4	2002	0.06	0.06	NA	-0.6928*	0	0
-All	Men	Previously	4	2003	0.06	0.06	NA	-0.6928*	0	0
-All	Men	Previously	4	2004	0.06	0.06	NA	-0.6928*	0	0
-All	Men	Previously	4	2005	0.06	0.06	NA	-0.6928*	0	0
-All	Men	Previously	4	2006	0.06	0.06	NA	-0.6928*	0	0
-All	Men	Previously	4	2007	0.06	0.06	NA	-0.6928*	0	0
-All	Men	Previously	4	2008	0.05	0.06	NA	-0.6928*	0	0
-All	Men	Previously	4	2009	0.05	0.06	NA	-0.6928*	0	0
-All	Men	Previously	4	2010	0.06	0.06	NA	-0.6928*	0	0
-All	Men	Previously	4	2011	0.06	0.06	NA	-0.6928*	0	0
-All	Men	Previously	4	2012	0.05	0.06	NA	-0.6928*	0	0
-All	Men	Previously	4	2013	0.05	0.06	NA	-0.6928*	0	0
-All	Men	Previously	4	2014	0.05	0.06	NA	-0.6928*	0	0
-All	Men	Previously	4	2015	0.05	0.05	NA	-0.6928*	0	0
-All	Men	Previously	4	2016	0.06	0.05	NA	-0.6928*	0	0
-All	Men	Previously	4	2017	0.05	0.05	NA	-0.6928*	0	0
-All	Men	Previously	4	2018	0.06	0.05	NA	-0.6928*	0	0
-All	Men	Previously	4	2019	0.05	0.05	NA	-0.6928*	0	0
-All	Men	Previously	5	2001	0.09	0.09	NA	-25.2309*	1	1
-All	Men	Previously	5	2002	0.07	0.07	NA	-25.2309*	1	1
-All	Men	Previously	5	2003	0.04	0.05	NA	-25.2309*	1	1
-All	Men	Previously	5	2004	0.04	0.04	Joinpoint 1	NA	1	1
-All	Men	Previously	5	2005	0.03	0.04	NA	2.2862*	1	1
-All	Men	Previously	5	2006	0.04	0.04	NA	2.2862*	1	1
-All	Men	Previously	5	2007	0.04	0.04	NA	2.2862*	1	1
-All	Men	Previously	5	2008	0.04	0.04	NA	2.2862*	1	1
-All	Men	Previously	5	2009	0.04	0.04	NA	2.2862*	1	1
-All	Men	Previously	5	2010	0.05	0.04	NA	2.2862*	1	1
-All	Men	Previously	5	2011	0.04	0.04	NA	2.2862*	1	1
-All	Men	Previously	5	2012	0.04	0.04	NA	2.2862*	1	1
-All	Men	Previously	5	2013	0.04	0.04	NA	2.2862*	1	1
-All	Men	Previously	5	2014	0.05	0.05	NA	2.2862*	1	1
-All	Men	Previously	5	2015	0.05	0.05	NA	2.2862*	1	1
-All	Men	Previously	5	2016	0.05	0.05	NA	2.2862*	1	1
-All	Men	Previously	5	2017	0.05	0.05	NA	2.2862*	1	1
-All	Men	Previously	5	2018	0.05	0.05	NA	2.2862*	1	1
-All	Men	Previously	5	2019	0.05	0.05	NA	2.2862*	1	1
-All	Women	Previously	1	2001	0.04	0.04	NA	5.0048*	1	1
-All	Women	Previously	1	2002	0.04	0.04	NA	5.0048*	1	1
-All	Women	Previously	1	2003	0.05	0.04	NA	5.0048*	1	1
-All	Women	Previously	1	2004	0.05	0.05	NA	5.0048*	1	1
-All	Women	Previously	1	2005	0.04	0.05	NA	5.0048*	1	1
-All	Women	Previously	1	2006	0.05	0.05	NA	5.0048*	1	1
-All	Women	Previously	1	2007	0.05	0.05	Joinpoint 1	NA	1	1
-All	Women	Previously	1	2008	0.05	0.05	NA	-1.2450	1	1
-All	Women	Previously	1	2009	0.05	0.05	NA	-1.2450	1	1
-All	Women	Previously	1	2010	0.06	0.05	NA	-1.2450	1	1
-All	Women	Previously	1	2011	0.05	0.05	NA	-1.2450	1	1
-All	Women	Previously	1	2012	0.05	0.05	NA	-1.2450	1	1
-All	Women	Previously	1	2013	0.05	0.05	NA	-1.2450	1	1
-All	Women	Previously	1	2014	0.05	0.05	NA	-1.2450	1	1
-All	Women	Previously	1	2015	0.06	0.05	NA	-1.2450	1	1
-All	Women	Previously	1	2016	0.04	0.05	NA	-1.2450	1	1
-All	Women	Previously	1	2017	0.05	0.05	NA	-1.2450	1	1
-All	Women	Previously	1	2018	0.04	0.05	NA	-1.2450	1	1
-All	Women	Previously	1	2019	0.05	0.05	NA	-1.2450	1	1
-All	Women	Previously	2	2001	0.04	0.04	NA	12.1501*	1	1
-All	Women	Previously	2	2002	0.04	0.04	NA	12.1501*	1	1
-All	Women	Previously	2	2003	0.04	0.05	NA	12.1501*	1	1
-All	Women	Previously	2	2004	0.06	0.05	Joinpoint 1	NA	1	1
-All	Women	Previously	2	2005	0.05	0.05	NA	-0.2948	1	1
-All	Women	Previously	2	2006	0.05	0.05	NA	-0.2948	1	1
-All	Women	Previously	2	2007	0.05	0.05	NA	-0.2948	1	1
-All	Women	Previously	2	2008	0.05	0.05	NA	-0.2948	1	1
-All	Women	Previously	2	2009	0.05	0.05	NA	-0.2948	1	1
-All	Women	Previously	2	2010	0.05	0.05	NA	-0.2948	1	1
-All	Women	Previously	2	2011	0.05	0.05	NA	-0.2948	1	1
-All	Women	Previously	2	2012	0.05	0.05	NA	-0.2948	1	1
-All	Women	Previously	2	2013	0.06	0.05	NA	-0.2948	1	1
-All	Women	Previously	2	2014	0.05	0.05	NA	-0.2948	1	1
-All	Women	Previously	2	2015	0.05	0.05	NA	-0.2948	1	1
-All	Women	Previously	2	2016	0.05	0.05	NA	-0.2948	1	1
-All	Women	Previously	2	2017	0.05	0.05	NA	-0.2948	1	1
-All	Women	Previously	2	2018	0.05	0.05	NA	-0.2948	1	1
-All	Women	Previously	2	2019	0.04	0.05	NA	-0.2948	1	1
-All	Women	Previously	3	2001	0.05	0.04	NA	1.6197*	1	1
-All	Women	Previously	3	2002	0.04	0.04	NA	1.6197*	1	1
-All	Women	Previously	3	2003	0.04	0.04	NA	1.6197*	1	1
-All	Women	Previously	3	2004	0.04	0.05	NA	1.6197*	1	1
-All	Women	Previously	3	2005	0.04	0.05	NA	1.6197*	1	1
-All	Women	Previously	3	2006	0.05	0.05	NA	1.6197*	1	1
-All	Women	Previously	3	2007	0.04	0.05	NA	1.6197*	1	1
-All	Women	Previously	3	2008	0.05	0.05	NA	1.6197*	1	1
-All	Women	Previously	3	2009	0.06	0.05	NA	1.6197*	1	1
-All	Women	Previously	3	2010	0.05	0.05	NA	1.6197*	1	1
-All	Women	Previously	3	2011	0.05	0.05	NA	1.6197*	1	1
-All	Women	Previously	3	2012	0.05	0.05	NA	1.6197*	1	1
-All	Women	Previously	3	2013	0.05	0.05	NA	1.6197*	1	1
-All	Women	Previously	3	2014	0.05	0.05	NA	1.6197*	1	1
-All	Women	Previously	3	2015	0.05	0.05	NA	1.6197*	1	1
-All	Women	Previously	3	2016	0.05	0.05	NA	1.6197*	1	1
-All	Women	Previously	3	2017	0.06	0.06	Joinpoint 1	NA	1	1
-All	Women	Previously	3	2018	0.05	0.05	NA	-9.3449	1	1
-All	Women	Previously	3	2019	0.05	0.05	NA	-9.3449	1	1
-All	Women	Previously	4	2001	0.05	0.04	NA	0.2016	0	0
-All	Women	Previously	4	2002	0.04	0.04	NA	0.2016	0	0
-All	Women	Previously	4	2003	0.04	0.04	NA	0.2016	0	0
-All	Women	Previously	4	2004	0.05	0.04	NA	0.2016	0	0
-All	Women	Previously	4	2005	0.04	0.04	NA	0.2016	0	0
-All	Women	Previously	4	2006	0.04	0.04	NA	0.2016	0	0
-All	Women	Previously	4	2007	0.04	0.04	NA	0.2016	0	0
-All	Women	Previously	4	2008	0.05	0.04	NA	0.2016	0	0
-All	Women	Previously	4	2009	0.05	0.04	NA	0.2016	0	0
-All	Women	Previously	4	2010	0.05	0.04	NA	0.2016	0	0
-All	Women	Previously	4	2011	0.04	0.04	NA	0.2016	0	0
-All	Women	Previously	4	2012	0.04	0.04	NA	0.2016	0	0
-All	Women	Previously	4	2013	0.05	0.04	NA	0.2016	0	0
-All	Women	Previously	4	2014	0.04	0.04	NA	0.2016	0	0
-All	Women	Previously	4	2015	0.04	0.04	NA	0.2016	0	0
-All	Women	Previously	4	2016	0.04	0.04	NA	0.2016	0	0
-All	Women	Previously	4	2017	0.05	0.04	NA	0.2016	0	0
-All	Women	Previously	4	2018	0.06	0.04	NA	0.2016	0	0
-All	Women	Previously	4	2019	0.04	0.04	NA	0.2016	0	0
-All	Women	Previously	5	2001	0.06	0.07	NA	-29.4749*	1	1
-All	Women	Previously	5	2002	0.05	0.05	NA	-29.4749*	1	1
-All	Women	Previously	5	2003	0.03	0.03	Joinpoint 1	NA	1	1
-All	Women	Previously	5	2004	0.03	0.03	NA	1.3453*	1	1
-All	Women	Previously	5	2005	0.04	0.03	NA	1.3453*	1	1
-All	Women	Previously	5	2006	0.03	0.03	NA	1.3453*	1	1
-All	Women	Previously	5	2007	0.03	0.03	NA	1.3453*	1	1
-All	Women	Previously	5	2008	0.04	0.03	NA	1.3453*	1	1
-All	Women	Previously	5	2009	0.03	0.04	NA	1.3453*	1	1
-All	Women	Previously	5	2010	0.03	0.04	NA	1.3453*	1	1
-All	Women	Previously	5	2011	0.04	0.04	NA	1.3453*	1	1
-All	Women	Previously	5	2012	0.03	0.04	NA	1.3453*	1	1
-All	Women	Previously	5	2013	0.04	0.04	NA	1.3453*	1	1
-All	Women	Previously	5	2014	0.04	0.04	NA	1.3453*	1	1
-All	Women	Previously	5	2015	0.04	0.04	NA	1.3453*	1	1
-All	Women	Previously	5	2016	0.05	0.04	NA	1.3453*	1	1
-All	Women	Previously	5	2017	0.04	0.04	NA	1.3453*	1	1
-All	Women	Previously	5	2018	0.04	0.04	NA	1.3453*	1	1
-All	Women	Previously	5	2019	0.04	0.04	NA	1.3453*	1	1
-All	Men	Underweight	1	2001	0.00	0.00	NA	0.8318	0	0
-All	Men	Underweight	1	2002	0.00	0.00	NA	0.8318	0	0
-All	Men	Underweight	1	2003	0.00	0.00	NA	0.8318	0	0
-All	Men	Underweight	1	2004	0.00	0.00	NA	0.8318	0	0
-All	Men	Underweight	1	2005	0.00	0.00	NA	0.8318	0	0
-All	Men	Underweight	1	2006	0.00	0.00	NA	0.8318	0	0
-All	Men	Underweight	1	2007	0.00	0.00	NA	0.8318	0	0
-All	Men	Underweight	1	2008	0.00	0.00	NA	0.8318	0	0
-All	Men	Underweight	1	2009	0.00	0.00	NA	0.8318	0	0
-All	Men	Underweight	1	2010	0.00	0.00	NA	0.8318	0	0
-All	Men	Underweight	1	2011	0.00	0.00	NA	0.8318	0	0
-All	Men	Underweight	1	2012	0.00	0.00	NA	0.8318	0	0
-All	Men	Underweight	1	2013	0.00	0.00	NA	0.8318	0	0
-All	Men	Underweight	1	2014	0.00	0.00	NA	0.8318	0	0
-All	Men	Underweight	1	2015	0.00	0.00	NA	0.8318	0	0
-All	Men	Underweight	1	2016	0.00	0.00	NA	0.8318	0	0
-All	Men	Underweight	1	2017	0.00	0.00	NA	0.8318	0	0
-All	Men	Underweight	1	2018	0.00	0.00	NA	0.8318	0	0
-All	Men	Underweight	1	2019	0.00	0.00	NA	0.8318	0	0
-All	Men	Underweight	2	2001	0.00	0.00	NA	4.9194	0	0
-All	Men	Underweight	2	2003	0.00	0.00	NA	4.9194	0	0
-All	Men	Underweight	2	2004	0.00	0.00	NA	4.9194	0	0
-All	Men	Underweight	2	2005	0.00	0.00	NA	4.9194	0	0
-All	Men	Underweight	2	2006	0.00	0.00	NA	4.9194	0	0
-All	Men	Underweight	2	2007	0.00	0.00	NA	4.9194	0	0
-All	Men	Underweight	2	2008	0.00	0.00	NA	4.9194	0	0
-All	Men	Underweight	2	2009	0.00	0.00	NA	4.9194	0	0
-All	Men	Underweight	2	2010	0.00	0.00	NA	4.9194	0	0
-All	Men	Underweight	2	2011	0.00	0.00	NA	4.9194	0	0
-All	Men	Underweight	2	2012	0.00	0.00	NA	4.9194	0	0
-All	Men	Underweight	2	2013	0.00	0.00	NA	4.9194	0	0
-All	Men	Underweight	2	2014	0.00	0.00	NA	4.9194	0	0
-All	Men	Underweight	2	2015	0.00	0.00	NA	4.9194	0	0
-All	Men	Underweight	2	2016	0.00	0.00	NA	4.9194	0	0
-All	Men	Underweight	2	2017	0.00	0.00	NA	4.9194	0	0
-All	Men	Underweight	2	2018	0.00	0.00	NA	4.9194	0	0
-All	Men	Underweight	2	2019	0.00	0.00	NA	4.9194	0	0
-All	Men	Underweight	3	2001	0.00	0.00	NA	-2.3921	0	0
-All	Men	Underweight	3	2002	0.00	0.00	NA	-2.3921	0	0
-All	Men	Underweight	3	2003	0.00	0.00	NA	-2.3921	0	0
-All	Men	Underweight	3	2004	0.00	0.00	NA	-2.3921	0	0
-All	Men	Underweight	3	2005	0.00	0.00	NA	-2.3921	0	0
-All	Men	Underweight	3	2006	0.00	0.00	NA	-2.3921	0	0
-All	Men	Underweight	3	2007	0.00	0.00	NA	-2.3921	0	0
-All	Men	Underweight	3	2008	0.00	0.00	NA	-2.3921	0	0
-All	Men	Underweight	3	2009	0.00	0.00	NA	-2.3921	0	0
-All	Men	Underweight	3	2010	0.00	0.00	NA	-2.3921	0	0
-All	Men	Underweight	3	2011	0.00	0.00	NA	-2.3921	0	0
-All	Men	Underweight	3	2012	0.00	0.00	NA	-2.3921	0	0
-All	Men	Underweight	3	2013	0.00	0.00	NA	-2.3921	0	0
-All	Men	Underweight	3	2014	0.00	0.00	NA	-2.3921	0	0
-All	Men	Underweight	3	2015	0.00	0.00	NA	-2.3921	0	0
-All	Men	Underweight	3	2016	0.00	0.00	NA	-2.3921	0	0
-All	Men	Underweight	3	2017	0.00	0.00	NA	-2.3921	0	0
-All	Men	Underweight	3	2018	0.00	0.00	NA	-2.3921	0	0
-All	Men	Underweight	3	2019	0.00	0.00	NA	-2.3921	0	0
-All	Men	Underweight	4	2001	0.00	0.00	NA	2.8928	0	0
-All	Men	Underweight	4	2002	0.00	0.00	NA	2.8928	0	0
-All	Men	Underweight	4	2003	0.00	0.00	NA	2.8928	0	0
-All	Men	Underweight	4	2004	0.00	0.00	NA	2.8928	0	0
-All	Men	Underweight	4	2005	0.00	0.00	NA	2.8928	0	0
-All	Men	Underweight	4	2006	0.00	0.00	NA	2.8928	0	0
-All	Men	Underweight	4	2007	0.00	0.00	NA	2.8928	0	0
-All	Men	Underweight	4	2008	0.00	0.00	NA	2.8928	0	0
-All	Men	Underweight	4	2009	0.00	0.00	NA	2.8928	0	0
-All	Men	Underweight	4	2010	0.00	0.00	NA	2.8928	0	0
-All	Men	Underweight	4	2011	0.00	0.00	NA	2.8928	0	0
-All	Men	Underweight	4	2012	0.00	0.00	NA	2.8928	0	0
-All	Men	Underweight	4	2013	0.00	0.00	NA	2.8928	0	0
-All	Men	Underweight	4	2014	0.00	0.00	NA	2.8928	0	0
-All	Men	Underweight	4	2015	0.00	0.00	NA	2.8928	0	0
-All	Men	Underweight	4	2016	0.00	0.00	NA	2.8928	0	0
-All	Men	Underweight	4	2017	0.00	0.00	NA	2.8928	0	0
-All	Men	Underweight	4	2018	0.00	0.00	NA	2.8928	0	0
-All	Men	Underweight	4	2019	0.00	0.00	NA	2.8928	0	0
-All	Men	Underweight	5	2001	0.00	0.00	NA	-1.2750	0	0
-All	Men	Underweight	5	2002	0.00	0.00	NA	-1.2750	0	0
-All	Men	Underweight	5	2003	0.00	0.00	NA	-1.2750	0	0
-All	Men	Underweight	5	2004	0.00	0.00	NA	-1.2750	0	0
-All	Men	Underweight	5	2005	0.00	0.00	NA	-1.2750	0	0
-All	Men	Underweight	5	2006	0.00	0.00	NA	-1.2750	0	0
-All	Men	Underweight	5	2007	0.00	0.00	NA	-1.2750	0	0
-All	Men	Underweight	5	2008	0.00	0.00	NA	-1.2750	0	0
-All	Men	Underweight	5	2009	0.01	0.00	NA	-1.2750	0	0
-All	Men	Underweight	5	2010	0.00	0.00	NA	-1.2750	0	0
-All	Men	Underweight	5	2011	0.00	0.00	NA	-1.2750	0	0
-All	Men	Underweight	5	2012	0.00	0.00	NA	-1.2750	0	0
-All	Men	Underweight	5	2013	0.00	0.00	NA	-1.2750	0	0
-All	Men	Underweight	5	2014	0.00	0.00	NA	-1.2750	0	0
-All	Men	Underweight	5	2015	0.00	0.00	NA	-1.2750	0	0
-All	Men	Underweight	5	2016	0.00	0.00	NA	-1.2750	0	0
-All	Men	Underweight	5	2017	0.00	0.00	NA	-1.2750	0	0
-All	Men	Underweight	5	2018	0.00	0.00	NA	-1.2750	0	0
-All	Men	Underweight	5	2019	0.00	0.00	NA	-1.2750	0	0
-All	Women	Underweight	1	2001	0.00	0.00	NA	0.6914	0	0
-All	Women	Underweight	1	2002	0.00	0.00	NA	0.6914	0	0
-All	Women	Underweight	1	2003	0.00	0.00	NA	0.6914	0	0
-All	Women	Underweight	1	2004	0.00	0.00	NA	0.6914	0	0
-All	Women	Underweight	1	2005	0.00	0.00	NA	0.6914	0	0
-All	Women	Underweight	1	2006	0.00	0.00	NA	0.6914	0	0
-All	Women	Underweight	1	2007	0.00	0.00	NA	0.6914	0	0
-All	Women	Underweight	1	2008	0.00	0.00	NA	0.6914	0	0
-All	Women	Underweight	1	2009	0.01	0.00	NA	0.6914	0	0
-All	Women	Underweight	1	2010	0.00	0.00	NA	0.6914	0	0
-All	Women	Underweight	1	2011	0.00	0.00	NA	0.6914	0	0
-All	Women	Underweight	1	2012	0.00	0.00	NA	0.6914	0	0
-All	Women	Underweight	1	2013	0.00	0.00	NA	0.6914	0	0
-All	Women	Underweight	1	2014	0.00	0.00	NA	0.6914	0	0
-All	Women	Underweight	1	2015	0.00	0.00	NA	0.6914	0	0
-All	Women	Underweight	1	2016	0.00	0.00	NA	0.6914	0	0
-All	Women	Underweight	1	2017	0.00	0.00	NA	0.6914	0	0
-All	Women	Underweight	1	2018	0.00	0.00	NA	0.6914	0	0
-All	Women	Underweight	1	2019	0.00	0.00	NA	0.6914	0	0
-All	Women	Underweight	2	2001	0.00	0.00	NA	0.6953	0	0
-All	Women	Underweight	2	2002	0.00	0.00	NA	0.6953	0	0
-All	Women	Underweight	2	2003	0.00	0.00	NA	0.6953	0	0
-All	Women	Underweight	2	2004	0.00	0.00	NA	0.6953	0	0
-All	Women	Underweight	2	2005	0.00	0.00	NA	0.6953	0	0
-All	Women	Underweight	2	2006	0.00	0.00	NA	0.6953	0	0
-All	Women	Underweight	2	2007	0.00	0.00	NA	0.6953	0	0
-All	Women	Underweight	2	2008	0.00	0.00	NA	0.6953	0	0
-All	Women	Underweight	2	2009	0.00	0.00	NA	0.6953	0	0
-All	Women	Underweight	2	2010	0.00	0.00	NA	0.6953	0	0
-All	Women	Underweight	2	2011	0.00	0.00	NA	0.6953	0	0
-All	Women	Underweight	2	2012	0.00	0.00	NA	0.6953	0	0
-All	Women	Underweight	2	2013	0.00	0.00	NA	0.6953	0	0
-All	Women	Underweight	2	2014	0.00	0.00	NA	0.6953	0	0
-All	Women	Underweight	2	2015	0.00	0.00	NA	0.6953	0	0
-All	Women	Underweight	2	2016	0.00	0.00	NA	0.6953	0	0
-All	Women	Underweight	2	2017	0.00	0.00	NA	0.6953	0	0
-All	Women	Underweight	2	2018	0.00	0.00	NA	0.6953	0	0
-All	Women	Underweight	2	2019	0.00	0.00	NA	0.6953	0	0
-All	Women	Underweight	3	2001	0.00	0.00	NA	0.8900	0	0
-All	Women	Underweight	3	2002	0.00	0.00	NA	0.8900	0	0
-All	Women	Underweight	3	2003	0.00	0.00	NA	0.8900	0	0
-All	Women	Underweight	3	2004	0.00	0.00	NA	0.8900	0	0
-All	Women	Underweight	3	2005	0.00	0.00	NA	0.8900	0	0
-All	Women	Underweight	3	2006	0.00	0.00	NA	0.8900	0	0
-All	Women	Underweight	3	2007	0.00	0.00	NA	0.8900	0	0
-All	Women	Underweight	3	2008	0.00	0.00	NA	0.8900	0	0
-All	Women	Underweight	3	2009	0.00	0.00	NA	0.8900	0	0
-All	Women	Underweight	3	2010	0.00	0.00	NA	0.8900	0	0
-All	Women	Underweight	3	2011	0.00	0.00	NA	0.8900	0	0
-All	Women	Underweight	3	2012	0.00	0.00	NA	0.8900	0	0
-All	Women	Underweight	3	2013	0.00	0.00	NA	0.8900	0	0
-All	Women	Underweight	3	2014	0.00	0.00	NA	0.8900	0	0
-All	Women	Underweight	3	2015	0.00	0.00	NA	0.8900	0	0
-All	Women	Underweight	3	2016	0.00	0.00	NA	0.8900	0	0
-All	Women	Underweight	3	2017	0.00	0.00	NA	0.8900	0	0
-All	Women	Underweight	3	2018	0.00	0.00	NA	0.8900	0	0
-All	Women	Underweight	3	2019	0.00	0.00	NA	0.8900	0	0
-All	Women	Underweight	4	2001	0.00	0.00	NA	1.5957	0	0
-All	Women	Underweight	4	2002	0.00	0.00	NA	1.5957	0	0
-All	Women	Underweight	4	2003	0.00	0.00	NA	1.5957	0	0
-All	Women	Underweight	4	2004	0.00	0.00	NA	1.5957	0	0
-All	Women	Underweight	4	2005	0.00	0.00	NA	1.5957	0	0
-All	Women	Underweight	4	2006	0.00	0.00	NA	1.5957	0	0
-All	Women	Underweight	4	2007	0.00	0.00	NA	1.5957	0	0
-All	Women	Underweight	4	2008	0.00	0.00	NA	1.5957	0	0
-All	Women	Underweight	4	2009	0.00	0.00	NA	1.5957	0	0
-All	Women	Underweight	4	2010	0.00	0.00	NA	1.5957	0	0
-All	Women	Underweight	4	2011	0.01	0.00	NA	1.5957	0	0
-All	Women	Underweight	4	2012	0.01	0.00	NA	1.5957	0	0
-All	Women	Underweight	4	2013	0.00	0.00	NA	1.5957	0	0
-All	Women	Underweight	4	2014	0.00	0.00	NA	1.5957	0	0
-All	Women	Underweight	4	2015	0.00	0.00	NA	1.5957	0	0
-All	Women	Underweight	4	2016	0.00	0.00	NA	1.5957	0	0
-All	Women	Underweight	4	2017	0.00	0.00	NA	1.5957	0	0
-All	Women	Underweight	4	2018	0.01	0.00	NA	1.5957	0	0
-All	Women	Underweight	4	2019	0.00	0.00	NA	1.5957	0	0
-All	Women	Underweight	5	2001	0.00	0.00	NA	-0.8475	0	0
-All	Women	Underweight	5	2002	0.00	0.00	NA	-0.8475	0	0
-All	Women	Underweight	5	2003	0.00	0.00	NA	-0.8475	0	0
-All	Women	Underweight	5	2004	0.00	0.00	NA	-0.8475	0	0
-All	Women	Underweight	5	2005	0.00	0.00	NA	-0.8475	0	0
-All	Women	Underweight	5	2006	0.00	0.00	NA	-0.8475	0	0
-All	Women	Underweight	5	2007	0.00	0.00	NA	-0.8475	0	0
-All	Women	Underweight	5	2008	0.00	0.00	NA	-0.8475	0	0
-All	Women	Underweight	5	2009	0.01	0.00	NA	-0.8475	0	0
-All	Women	Underweight	5	2010	0.00	0.00	NA	-0.8475	0	0
-All	Women	Underweight	5	2011	0.00	0.00	NA	-0.8475	0	0
-All	Women	Underweight	5	2012	0.00	0.00	NA	-0.8475	0	0
-All	Women	Underweight	5	2013	0.00	0.00	NA	-0.8475	0	0
-All	Women	Underweight	5	2014	0.00	0.00	NA	-0.8475	0	0
-All	Women	Underweight	5	2015	0.00	0.00	NA	-0.8475	0	0
-All	Women	Underweight	5	2016	0.00	0.00	NA	-0.8475	0	0
-All	Women	Underweight	5	2017	0.00	0.00	NA	-0.8475	0	0
-All	Women	Underweight	5	2018	0.00	0.00	NA	-0.8475	0	0
-All	Women	Underweight	5	2019	0.00	0.00	NA	-0.8475	0	0
+"age_group"	"sex"	"exposure"	"variable"	"imd"	"year"	"value"	"Model"	"Flag"	"APC"	"Joinpoints"	"Final Selected Model"
+0	0	0	0	1	2011	0.08	0.07	NA	-2.3164	0	0
+0	0	0	0	1	2012	0.07	0.07	NA	-2.3164	0	0
+0	0	0	0	1	2013	0.09	0.07	NA	-2.3164	0	0
+0	0	0	0	1	2014	0.05	0.07	NA	-2.3164	0	0
+0	0	0	0	1	2015	0.06	0.07	NA	-2.3164	0	0
+0	0	0	0	1	2016	0.08	0.07	NA	-2.3164	0	0
+0	0	0	0	1	2017	0.05	0.06	NA	-2.3164	0	0
+0	0	0	0	1	2018	0.07	0.06	NA	-2.3164	0	0
+0	0	0	0	1	2019	0.07	0.06	NA	-2.3164	0	0
+0	0	0	0	2	2011	0.07	0.07	NA	-3.5831*	1	1
+0	0	0	0	2	2012	0.07	0.07	NA	-3.5831*	1	1
+0	0	0	0	2	2013	0.07	0.07	NA	-3.5831*	1	1
+0	0	0	0	2	2014	0.07	0.07	NA	-3.5831*	1	1
+0	0	0	0	2	2015	0.06	0.06	NA	-3.5831*	1	1
+0	0	0	0	2	2016	0.06	0.06	NA	-3.5831*	1	1
+0	0	0	0	2	2017	0.06	0.06	Joinpoint 1	NA	1	1
+0	0	0	0	2	2018	0.06	0.07	NA	12.3359	1	1
+0	0	0	0	2	2019	0.08	0.07	NA	12.3359	1	1
+0	0	0	0	3	2011	0.08	0.07	NA	-2.0205	0	0
+0	0	0	0	3	2012	0.06	0.07	NA	-2.0205	0	0
+0	0	0	0	3	2013	0.06	0.06	NA	-2.0205	0	0
+0	0	0	0	3	2014	0.07	0.06	NA	-2.0205	0	0
+0	0	0	0	3	2015	0.05	0.06	NA	-2.0205	0	0
+0	0	0	0	3	2016	0.06	0.06	NA	-2.0205	0	0
+0	0	0	0	3	2017	0.07	0.06	NA	-2.0205	0	0
+0	0	0	0	3	2018	0.06	0.06	NA	-2.0205	0	0
+0	0	0	0	3	2019	0.05	0.06	NA	-2.0205	0	0
+0	0	0	0	4	2011	0.06	0.07	NA	-2.6221	0	0
+0	0	0	0	4	2012	0.07	0.07	NA	-2.6221	0	0
+0	0	0	0	4	2013	0.07	0.07	NA	-2.6221	0	0
+0	0	0	0	4	2014	0.07	0.06	NA	-2.6221	0	0
+0	0	0	0	4	2015	0.05	0.06	NA	-2.6221	0	0
+0	0	0	0	4	2016	0.06	0.06	NA	-2.6221	0	0
+0	0	0	0	4	2017	0.07	0.06	NA	-2.6221	0	0
+0	0	0	0	4	2018	0.07	0.06	NA	-2.6221	0	0
+0	0	0	0	4	2019	0.05	0.06	NA	-2.6221	0	0
+0	0	0	0	5	2011	0.08	0.07	NA	-0.8510	0	0
+0	0	0	0	5	2012	0.06	0.07	NA	-0.8510	0	0
+0	0	0	0	5	2013	0.06	0.07	NA	-0.8510	0	0
+0	0	0	0	5	2014	0.09	0.07	NA	-0.8510	0	0
+0	0	0	0	5	2015	0.07	0.07	NA	-0.8510	0	0
+0	0	0	0	5	2016	0.07	0.07	NA	-0.8510	0	0
+0	0	0	0	5	2017	0.05	0.07	NA	-0.8510	0	0
+0	0	0	0	5	2018	0.07	0.07	NA	-0.8510	0	0
+0	0	0	0	5	2019	0.08	0.07	NA	-0.8510	0	0
+0	1	0	0	1	2011	0.03	0.03	NA	-34.6516	1	1
+0	1	0	0	1	2012	0.02	0.02	NA	-34.6516	1	1
+0	1	0	0	1	2013	0.01	0.01	Joinpoint 1	NA	1	1
+0	1	0	0	1	2014	0.02	0.01	NA	6.8005	1	1
+0	1	0	0	1	2015	0.01	0.02	NA	6.8005	1	1
+0	1	0	0	1	2016	0.01	0.02	NA	6.8005	1	1
+0	1	0	0	1	2017	0.01	0.02	NA	6.8005	1	1
+0	1	0	0	1	2018	0.02	0.02	NA	6.8005	1	1
+0	1	0	0	1	2019	0.02	0.02	NA	6.8005	1	1
+0	1	0	0	2	2011	0.02	0.02	NA	1.1920	0	0
+0	1	0	0	2	2012	0.03	0.02	NA	1.1920	0	0
+0	1	0	0	2	2013	0.02	0.02	NA	1.1920	0	0
+0	1	0	0	2	2014	0.02	0.02	NA	1.1920	0	0
+0	1	0	0	2	2015	0.02	0.02	NA	1.1920	0	0
+0	1	0	0	2	2016	0.02	0.02	NA	1.1920	0	0
+0	1	0	0	2	2017	0.02	0.02	NA	1.1920	0	0
+0	1	0	0	2	2018	0.03	0.02	NA	1.1920	0	0
+0	1	0	0	2	2019	0.03	0.02	NA	1.1920	0	0
+0	1	0	0	3	2011	0.02	0.02	NA	1.5089	0	0
+0	1	0	0	3	2012	0.02	0.02	NA	1.5089	0	0
+0	1	0	0	3	2013	0.01	0.02	NA	1.5089	0	0
+0	1	0	0	3	2014	0.02	0.02	NA	1.5089	0	0
+0	1	0	0	3	2015	0.02	0.02	NA	1.5089	0	0
+0	1	0	0	3	2016	0.03	0.02	NA	1.5089	0	0
+0	1	0	0	3	2017	0.02	0.02	NA	1.5089	0	0
+0	1	0	0	3	2018	0.02	0.02	NA	1.5089	0	0
+0	1	0	0	3	2019	0.02	0.02	NA	1.5089	0	0
+0	1	0	0	4	2011	0.02	0.02	NA	0.2801	0	0
+0	1	0	0	4	2012	0.02	0.02	NA	0.2801	0	0
+0	1	0	0	4	2013	0.02	0.02	NA	0.2801	0	0
+0	1	0	0	4	2014	0.02	0.02	NA	0.2801	0	0
+0	1	0	0	4	2015	0.01	0.02	NA	0.2801	0	0
+0	1	0	0	4	2016	0.02	0.02	NA	0.2801	0	0
+0	1	0	0	4	2017	0.02	0.02	NA	0.2801	0	0
+0	1	0	0	4	2018	0.02	0.02	NA	0.2801	0	0
+0	1	0	0	4	2019	0.02	0.02	NA	0.2801	0	0
+0	1	0	0	5	2011	0.02	0.02	NA	-5.6634	0	0
+0	1	0	0	5	2012	0.03	0.02	NA	-5.6634	0	0
+0	1	0	0	5	2013	0.01	0.02	NA	-5.6634	0	0
+0	1	0	0	5	2014	0.02	0.02	NA	-5.6634	0	0
+0	1	0	0	5	2015	0.02	0.02	NA	-5.6634	0	0
+0	1	0	0	5	2016	0.02	0.02	NA	-5.6634	0	0
+0	1	0	0	5	2017	0.02	0.02	NA	-5.6634	0	0
+0	1	0	0	5	2018	0.02	0.02	NA	-5.6634	0	0
+0	1	0	0	5	2019	0.01	0.02	NA	-5.6634	0	0
+0	0	1	0	1	2011	0.46	0.45	NA	2.2864*	1	1
+0	0	1	0	1	2012	0.45	0.46	NA	2.2864*	1	1
+0	0	1	0	1	2013	0.47	0.47	NA	2.2864*	1	1
+0	0	1	0	1	2014	0.48	0.48	NA	2.2864*	1	1
+0	0	1	0	1	2015	0.50	0.49	NA	2.2864*	1	1
+0	0	1	0	1	2016	0.49	0.50	NA	2.2864*	1	1
+0	0	1	0	1	2017	0.53	0.52	Joinpoint 1	NA	1	1
+0	0	1	0	1	2018	0.49	0.50	NA	-3.5241	1	1
+0	0	1	0	1	2019	0.48	0.48	NA	-3.5241	1	1
+0	0	1	0	2	2011	0.48	0.46	NA	0.6497	0	0
+0	0	1	0	2	2012	0.42	0.47	NA	0.6497	0	0
+0	0	1	0	2	2013	0.47	0.47	NA	0.6497	0	0
+0	0	1	0	2	2014	0.48	0.47	NA	0.6497	0	0
+0	0	1	0	2	2015	0.51	0.48	NA	0.6497	0	0
+0	0	1	0	2	2016	0.46	0.48	NA	0.6497	0	0
+0	0	1	0	2	2017	0.50	0.48	NA	0.6497	0	0
+0	0	1	0	2	2018	0.50	0.49	NA	0.6497	0	0
+0	0	1	0	2	2019	0.46	0.49	NA	0.6497	0	0
+0	0	1	0	3	2011	0.46	0.47	NA	0.4024	0	0
+0	0	1	0	3	2012	0.49	0.47	NA	0.4024	0	0
+0	0	1	0	3	2013	0.48	0.47	NA	0.4024	0	0
+0	0	1	0	3	2014	0.47	0.48	NA	0.4024	0	0
+0	0	1	0	3	2015	0.45	0.48	NA	0.4024	0	0
+0	0	1	0	3	2016	0.48	0.48	NA	0.4024	0	0
+0	0	1	0	3	2017	0.49	0.48	NA	0.4024	0	0
+0	0	1	0	3	2018	0.50	0.48	NA	0.4024	0	0
+0	0	1	0	3	2019	0.47	0.49	NA	0.4024	0	0
+0	0	1	0	4	2011	0.46	0.46	NA	0.8438	0	0
+0	0	1	0	4	2012	0.46	0.46	NA	0.8438	0	0
+0	0	1	0	4	2013	0.46	0.46	NA	0.8438	0	0
+0	0	1	0	4	2014	0.43	0.47	NA	0.8438	0	0
+0	0	1	0	4	2015	0.52	0.47	NA	0.8438	0	0
+0	0	1	0	4	2016	0.46	0.48	NA	0.8438	0	0
+0	0	1	0	4	2017	0.48	0.48	NA	0.8438	0	0
+0	0	1	0	4	2018	0.51	0.48	NA	0.8438	0	0
+0	0	1	0	4	2019	0.47	0.49	NA	0.8438	0	0
+0	0	1	0	5	2011	0.40	0.40	NA	1.7644*	0	0
+0	0	1	0	5	2012	0.41	0.40	NA	1.7644*	0	0
+0	0	1	0	5	2013	0.38	0.41	NA	1.7644*	0	0
+0	0	1	0	5	2014	0.44	0.42	NA	1.7644*	0	0
+0	0	1	0	5	2015	0.43	0.43	NA	1.7644*	0	0
+0	0	1	0	5	2016	0.44	0.43	NA	1.7644*	0	0
+0	0	1	0	5	2017	0.47	0.44	NA	1.7644*	0	0
+0	0	1	0	5	2018	0.45	0.45	NA	1.7644*	0	0
+0	0	1	0	5	2019	0.43	0.46	NA	1.7644*	0	0
+0	1	1	0	1	2011	0.62	0.62	NA	-0.0664	0	0
+0	1	1	0	1	2012	0.61	0.62	NA	-0.0664	0	0
+0	1	1	0	1	2013	0.65	0.62	NA	-0.0664	0	0
+0	1	1	0	1	2014	0.61	0.62	NA	-0.0664	0	0
+0	1	1	0	1	2015	0.61	0.62	NA	-0.0664	0	0
+0	1	1	0	1	2016	0.60	0.62	NA	-0.0664	0	0
+0	1	1	0	1	2017	0.64	0.62	NA	-0.0664	0	0
+0	1	1	0	1	2018	0.65	0.62	NA	-0.0664	0	0
+0	1	1	0	1	2019	0.60	0.62	NA	-0.0664	0	0
+0	1	1	0	2	2011	0.60	0.59	NA	1.3052	1	1
+0	1	1	0	2	2012	0.59	0.60	NA	1.3052	1	1
+0	1	1	0	2	2013	0.61	0.61	NA	1.3052	1	1
+0	1	1	0	2	2014	0.61	0.62	NA	1.3052	1	1
+0	1	1	0	2	2015	0.65	0.63	NA	1.3052	1	1
+0	1	1	0	2	2016	0.61	0.63	NA	1.3052	1	1
+0	1	1	0	2	2017	0.64	0.64	Joinpoint 1	NA	1	1
+0	1	1	0	2	2018	0.64	0.62	NA	-3.2024	1	1
+0	1	1	0	2	2019	0.59	0.60	NA	-3.2024	1	1
+0	1	1	0	3	2011	0.60	0.60	NA	-0.1419	0	0
+0	1	1	0	3	2012	0.58	0.60	NA	-0.1419	0	0
+0	1	1	0	3	2013	0.60	0.60	NA	-0.1419	0	0
+0	1	1	0	3	2014	0.61	0.60	NA	-0.1419	0	0
+0	1	1	0	3	2015	0.60	0.59	NA	-0.1419	0	0
+0	1	1	0	3	2016	0.61	0.59	NA	-0.1419	0	0
+0	1	1	0	3	2017	0.57	0.59	NA	-0.1419	0	0
+0	1	1	0	3	2018	0.61	0.59	NA	-0.1419	0	0
+0	1	1	0	3	2019	0.58	0.59	NA	-0.1419	0	0
+0	1	1	0	4	2011	0.57	0.58	NA	0.3866	0	0
+0	1	1	0	4	2012	0.58	0.58	NA	0.3866	0	0
+0	1	1	0	4	2013	0.56	0.58	NA	0.3866	0	0
+0	1	1	0	4	2014	0.57	0.58	NA	0.3866	0	0
+0	1	1	0	4	2015	0.62	0.58	NA	0.3866	0	0
+0	1	1	0	4	2016	0.61	0.59	NA	0.3866	0	0
+0	1	1	0	4	2017	0.58	0.59	NA	0.3866	0	0
+0	1	1	0	4	2018	0.58	0.59	NA	0.3866	0	0
+0	1	1	0	4	2019	0.60	0.59	NA	0.3866	0	0
+0	1	1	0	5	2011	0.50	0.51	NA	0.5693	0	0
+0	1	1	0	5	2012	0.50	0.52	NA	0.5693	0	0
+0	1	1	0	5	2013	0.54	0.52	NA	0.5693	0	0
+0	1	1	0	5	2014	0.53	0.52	NA	0.5693	0	0
+0	1	1	0	5	2015	0.52	0.52	NA	0.5693	0	0
+0	1	1	0	5	2016	0.51	0.53	NA	0.5693	0	0
+0	1	1	0	5	2017	0.57	0.53	NA	0.5693	0	0
+0	1	1	0	5	2018	0.53	0.53	NA	0.5693	0	0
+0	1	1	0	5	2019	0.52	0.54	NA	0.5693	0	0
+0	0	2	0	1	2011	0.39	0.40	NA	-2.5992*	1	1
+0	0	2	0	1	2012	0.40	0.39	NA	-2.5992*	1	1
+0	0	2	0	1	2013	0.37	0.38	NA	-2.5992*	1	1
+0	0	2	0	1	2014	0.39	0.37	NA	-2.5992*	1	1
+0	0	2	0	1	2015	0.38	0.36	NA	-2.5992*	1	1
+0	0	2	0	1	2016	0.35	0.35	NA	-2.5992*	1	1
+0	0	2	0	1	2017	0.33	0.34	Joinpoint 1	NA	1	1
+0	0	2	0	1	2018	0.36	0.36	NA	3.4030	1	1
+0	0	2	0	1	2019	0.37	0.37	NA	3.4030	1	1
+0	0	2	0	2	2011	0.35	0.37	NA	-0.6621	0	0
+0	0	2	0	2	2012	0.41	0.37	NA	-0.6621	0	0
+0	0	2	0	2	2013	0.36	0.37	NA	-0.6621	0	0
+0	0	2	0	2	2014	0.36	0.36	NA	-0.6621	0	0
+0	0	2	0	2	2015	0.34	0.36	NA	-0.6621	0	0
+0	0	2	0	2	2016	0.37	0.36	NA	-0.6621	0	0
+0	0	2	0	2	2017	0.33	0.36	NA	-0.6621	0	0
+0	0	2	0	2	2018	0.34	0.35	NA	-0.6621	0	0
+0	0	2	0	2	2019	0.38	0.35	NA	-0.6621	0	0
+0	0	2	0	3	2011	0.36	0.36	NA	-1.8148*	0	0
+0	0	2	0	3	2012	0.35	0.35	NA	-1.8148*	0	0
+0	0	2	0	3	2013	0.34	0.35	NA	-1.8148*	0	0
+0	0	2	0	3	2014	0.34	0.34	NA	-1.8148*	0	0
+0	0	2	0	3	2015	0.36	0.33	NA	-1.8148*	0	0
+0	0	2	0	3	2016	0.31	0.33	NA	-1.8148*	0	0
+0	0	2	0	3	2017	0.31	0.32	NA	-1.8148*	0	0
+0	0	2	0	3	2018	0.31	0.32	NA	-1.8148*	0	0
+0	0	2	0	3	2019	0.32	0.31	NA	-1.8148*	0	0
+0	0	2	0	4	2011	0.31	0.32	NA	-2.4651*	0	0
+0	0	2	0	4	2012	0.32	0.31	NA	-2.4651*	0	0
+0	0	2	0	4	2013	0.33	0.31	NA	-2.4651*	0	0
+0	0	2	0	4	2014	0.29	0.30	NA	-2.4651*	0	0
+0	0	2	0	4	2015	0.28	0.29	NA	-2.4651*	0	0
+0	0	2	0	4	2016	0.30	0.28	NA	-2.4651*	0	0
+0	0	2	0	4	2017	0.27	0.28	NA	-2.4651*	0	0
+0	0	2	0	4	2018	0.25	0.27	NA	-2.4651*	0	0
+0	0	2	0	4	2019	0.28	0.26	NA	-2.4651*	0	0
+0	0	2	0	5	2011	0.28	0.28	NA	-2.2755	0	0
+0	0	2	0	5	2012	0.27	0.27	NA	-2.2755	0	0
+0	0	2	0	5	2013	0.26	0.27	NA	-2.2755	0	0
+0	0	2	0	5	2014	0.25	0.26	NA	-2.2755	0	0
+0	0	2	0	5	2015	0.29	0.25	NA	-2.2755	0	0
+0	0	2	0	5	2016	0.22	0.25	NA	-2.2755	0	0
+0	0	2	0	5	2017	0.23	0.24	NA	-2.2755	0	0
+0	0	2	0	5	2018	0.25	0.24	NA	-2.2755	0	0
+0	0	2	0	5	2019	0.22	0.23	NA	-2.2755	0	0
+0	1	2	0	1	2011	0.22	0.24	NA	-1.3498	0	0
+0	1	2	0	1	2012	0.24	0.23	NA	-1.3498	0	0
+0	1	2	0	1	2013	0.22	0.23	NA	-1.3498	0	0
+0	1	2	0	1	2014	0.25	0.23	NA	-1.3498	0	0
+0	1	2	0	1	2015	0.24	0.22	NA	-1.3498	0	0
+0	1	2	0	1	2016	0.24	0.22	NA	-1.3498	0	0
+0	1	2	0	1	2017	0.20	0.22	NA	-1.3498	0	0
+0	1	2	0	1	2018	0.21	0.22	NA	-1.3498	0	0
+0	1	2	0	1	2019	0.21	0.21	NA	-1.3498	0	0
+0	1	2	0	2	2011	0.22	0.24	NA	-4.8278*	1	1
+0	1	2	0	2	2012	0.24	0.23	NA	-4.8278*	1	1
+0	1	2	0	2	2013	0.22	0.21	NA	-4.8278*	1	1
+0	1	2	0	2	2014	0.21	0.20	NA	-4.8278*	1	1
+0	1	2	0	2	2015	0.20	0.19	NA	-4.8278*	1	1
+0	1	2	0	2	2016	0.19	0.19	NA	-4.8278*	1	1
+0	1	2	0	2	2017	0.17	0.18	Joinpoint 1	NA	1	1
+0	1	2	0	2	2018	0.18	0.20	NA	15.2024	1	1
+0	1	2	0	2	2019	0.25	0.23	NA	15.2024	1	1
+0	1	2	0	3	2011	0.22	0.20	NA	-1.4255	0	0
+0	1	2	0	3	2012	0.19	0.20	NA	-1.4255	0	0
+0	1	2	0	3	2013	0.19	0.20	NA	-1.4255	0	0
+0	1	2	0	3	2014	0.18	0.19	NA	-1.4255	0	0
+0	1	2	0	3	2015	0.19	0.19	NA	-1.4255	0	0
+0	1	2	0	3	2016	0.19	0.19	NA	-1.4255	0	0
+0	1	2	0	3	2017	0.20	0.19	NA	-1.4255	0	0
+0	1	2	0	3	2018	0.18	0.18	NA	-1.4255	0	0
+0	1	2	0	3	2019	0.18	0.18	NA	-1.4255	0	0
+0	1	2	0	4	2011	0.17	0.17	NA	-2.4371	0	0
+0	1	2	0	4	2012	0.15	0.17	NA	-2.4371	0	0
+0	1	2	0	4	2013	0.19	0.16	NA	-2.4371	0	0
+0	1	2	0	4	2014	0.17	0.16	NA	-2.4371	0	0
+0	1	2	0	4	2015	0.14	0.15	NA	-2.4371	0	0
+0	1	2	0	4	2016	0.15	0.15	NA	-2.4371	0	0
+0	1	2	0	4	2017	0.14	0.15	NA	-2.4371	0	0
+0	1	2	0	4	2018	0.15	0.14	NA	-2.4371	0	0
+0	1	2	0	4	2019	0.14	0.14	NA	-2.4371	0	0
+0	1	2	0	5	2011	0.15	0.14	NA	-0.7478	0	0
+0	1	2	0	5	2012	0.13	0.14	NA	-0.7478	0	0
+0	1	2	0	5	2013	0.14	0.13	NA	-0.7478	0	0
+0	1	2	0	5	2014	0.13	0.13	NA	-0.7478	0	0
+0	1	2	0	5	2015	0.13	0.13	NA	-0.7478	0	0
+0	1	2	0	5	2016	0.14	0.13	NA	-0.7478	0	0
+0	1	2	0	5	2017	0.12	0.13	NA	-0.7478	0	0
+0	1	2	0	5	2018	0.11	0.13	NA	-0.7478	0	0
+0	1	2	0	5	2019	0.15	0.13	NA	-0.7478	0	0
+0	0	3	0	1	2011	0.07	0.07	NA	2.0397	0	0
+0	0	3	0	1	2012	0.08	0.07	NA	2.0397	0	0
+0	0	3	0	1	2013	0.07	0.07	NA	2.0397	0	0
+0	0	3	0	1	2014	0.07	0.08	NA	2.0397	0	0
+0	0	3	0	1	2015	0.07	0.08	NA	2.0397	0	0
+0	0	3	0	1	2016	0.08	0.08	NA	2.0397	0	0
+0	0	3	0	1	2017	0.09	0.08	NA	2.0397	0	0
+0	0	3	0	1	2018	0.07	0.08	NA	2.0397	0	0
+0	0	3	0	1	2019	0.09	0.08	NA	2.0397	0	0
+0	0	3	0	2	2011	0.09	0.09	NA	-0.0568	0	0
+0	0	3	0	2	2012	0.09	0.09	NA	-0.0568	0	0
+0	0	3	0	2	2013	0.10	0.09	NA	-0.0568	0	0
+0	0	3	0	2	2014	0.10	0.09	NA	-0.0568	0	0
+0	0	3	0	2	2015	0.08	0.09	NA	-0.0568	0	0
+0	0	3	0	2	2016	0.10	0.09	NA	-0.0568	0	0
+0	0	3	0	2	2017	0.11	0.09	NA	-0.0568	0	0
+0	0	3	0	2	2018	0.10	0.09	NA	-0.0568	0	0
+0	0	3	0	2	2019	0.08	0.09	NA	-0.0568	0	0
+0	0	3	0	3	2011	0.10	0.10	NA	4.5394*	0	0
+0	0	3	0	3	2012	0.11	0.11	NA	4.5394*	0	0
+0	0	3	0	3	2013	0.11	0.11	NA	4.5394*	0	0
+0	0	3	0	3	2014	0.12	0.12	NA	4.5394*	0	0
+0	0	3	0	3	2015	0.13	0.12	NA	4.5394*	0	0
+0	0	3	0	3	2016	0.14	0.13	NA	4.5394*	0	0
+0	0	3	0	3	2017	0.13	0.14	NA	4.5394*	0	0
+0	0	3	0	3	2018	0.13	0.14	NA	4.5394*	0	0
+0	0	3	0	3	2019	0.15	0.15	NA	4.5394*	0	0
+0	0	3	0	4	2011	0.16	0.15	NA	2.9123	0	0
+0	0	3	0	4	2012	0.14	0.16	NA	2.9123	0	0
+0	0	3	0	4	2013	0.15	0.16	NA	2.9123	0	0
+0	0	3	0	4	2014	0.21	0.17	NA	2.9123	0	0
+0	0	3	0	4	2015	0.16	0.17	NA	2.9123	0	0
+0	0	3	0	4	2016	0.17	0.18	NA	2.9123	0	0
+0	0	3	0	4	2017	0.19	0.18	NA	2.9123	0	0
+0	0	3	0	4	2018	0.17	0.19	NA	2.9123	0	0
+0	0	3	0	4	2019	0.20	0.19	NA	2.9123	0	0
+0	0	3	0	5	2011	0.24	0.25	NA	-0.3471	0	0
+0	0	3	0	5	2012	0.26	0.25	NA	-0.3471	0	0
+0	0	3	0	5	2013	0.30	0.25	NA	-0.3471	0	0
+0	0	3	0	5	2014	0.22	0.25	NA	-0.3471	0	0
+0	0	3	0	5	2015	0.20	0.25	NA	-0.3471	0	0
+0	0	3	0	5	2016	0.27	0.25	NA	-0.3471	0	0
+0	0	3	0	5	2017	0.24	0.25	NA	-0.3471	0	0
+0	0	3	0	5	2018	0.23	0.24	NA	-0.3471	0	0
+0	0	3	0	5	2019	0.27	0.24	NA	-0.3471	0	0
+0	1	3	0	1	2011	0.12	0.12	NA	2.8451*	0	0
+0	1	3	0	1	2012	0.13	0.12	NA	2.8451*	0	0
+0	1	3	0	1	2013	0.12	0.13	NA	2.8451*	0	0
+0	1	3	0	1	2014	0.13	0.13	NA	2.8451*	0	0
+0	1	3	0	1	2015	0.14	0.14	NA	2.8451*	0	0
+0	1	3	0	1	2016	0.15	0.14	NA	2.8451*	0	0
+0	1	3	0	1	2017	0.14	0.14	NA	2.8451*	0	0
+0	1	3	0	1	2018	0.13	0.15	NA	2.8451*	0	0
+0	1	3	0	1	2019	0.17	0.15	NA	2.8451*	0	0
+0	1	3	0	2	2011	0.16	0.15	NA	-0.2340	0	0
+0	1	3	0	2	2012	0.13	0.15	NA	-0.2340	0	0
+0	1	3	0	2	2013	0.15	0.15	NA	-0.2340	0	0
+0	1	3	0	2	2014	0.17	0.15	NA	-0.2340	0	0
+0	1	3	0	2	2015	0.14	0.15	NA	-0.2340	0	0
+0	1	3	0	2	2016	0.18	0.15	NA	-0.2340	0	0
+0	1	3	0	2	2017	0.17	0.15	NA	-0.2340	0	0
+0	1	3	0	2	2018	0.15	0.15	NA	-0.2340	0	0
+0	1	3	0	2	2019	0.14	0.15	NA	-0.2340	0	0
+0	1	3	0	3	2011	0.16	0.18	NA	1.7823	0	0
+0	1	3	0	3	2012	0.21	0.18	NA	1.7823	0	0
+0	1	3	0	3	2013	0.20	0.19	NA	1.7823	0	0
+0	1	3	0	3	2014	0.19	0.19	NA	1.7823	0	0
+0	1	3	0	3	2015	0.19	0.19	NA	1.7823	0	0
+0	1	3	0	3	2016	0.17	0.20	NA	1.7823	0	0
+0	1	3	0	3	2017	0.21	0.20	NA	1.7823	0	0
+0	1	3	0	3	2018	0.20	0.20	NA	1.7823	0	0
+0	1	3	0	3	2019	0.22	0.21	NA	1.7823	0	0
+0	1	3	0	4	2011	0.24	0.24	NA	0.6019	0	0
+0	1	3	0	4	2012	0.24	0.24	NA	0.6019	0	0
+0	1	3	0	4	2013	0.23	0.24	NA	0.6019	0	0
+0	1	3	0	4	2014	0.24	0.24	NA	0.6019	0	0
+0	1	3	0	4	2015	0.23	0.24	NA	0.6019	0	0
+0	1	3	0	4	2016	0.23	0.24	NA	0.6019	0	0
+0	1	3	0	4	2017	0.26	0.24	NA	0.6019	0	0
+0	1	3	0	4	2018	0.25	0.25	NA	0.6019	0	0
+0	1	3	0	4	2019	0.25	0.25	NA	0.6019	0	0
+0	1	3	0	5	2011	0.33	0.33	NA	-0.3259	0	0
+0	1	3	0	5	2012	0.34	0.32	NA	-0.3259	0	0
+0	1	3	0	5	2013	0.31	0.32	NA	-0.3259	0	0
+0	1	3	0	5	2014	0.32	0.32	NA	-0.3259	0	0
+0	1	3	0	5	2015	0.32	0.32	NA	-0.3259	0	0
+0	1	3	0	5	2016	0.32	0.32	NA	-0.3259	0	0
+0	1	3	0	5	2017	0.29	0.32	NA	-0.3259	0	0
+0	1	3	0	5	2018	0.34	0.32	NA	-0.3259	0	0
+0	1	3	0	5	2019	0.33	0.32	NA	-0.3259	0	0
+0	0	4	1	1	2001	0.26	0.27	NA	0.1346	0	0
+0	0	4	1	1	2002	0.29	0.27	NA	0.1346	0	0
+0	0	4	1	1	2003	0.27	0.27	NA	0.1346	0	0
+0	0	4	1	1	2004	0.26	0.27	NA	0.1346	0	0
+0	0	4	1	1	2005	0.29	0.27	NA	0.1346	0	0
+0	0	4	1	1	2006	0.28	0.27	NA	0.1346	0	0
+0	0	4	1	1	2007	0.29	0.28	NA	0.1346	0	0
+0	0	4	1	1	2008	0.28	0.28	NA	0.1346	0	0
+0	0	4	1	1	2009	0.25	0.28	NA	0.1346	0	0
+0	0	4	1	1	2010	0.26	0.28	NA	0.1346	0	0
+0	0	4	1	1	2011	0.27	0.28	NA	0.1346	0	0
+0	0	4	1	1	2012	0.28	0.28	NA	0.1346	0	0
+0	0	4	1	1	2013	0.26	0.28	NA	0.1346	0	0
+0	0	4	1	1	2014	0.28	0.28	NA	0.1346	0	0
+0	0	4	1	1	2015	0.28	0.28	NA	0.1346	0	0
+0	0	4	1	1	2016	0.28	0.28	NA	0.1346	0	0
+0	0	4	1	1	2017	0.29	0.28	NA	0.1346	0	0
+0	0	4	1	1	2018	0.28	0.28	NA	0.1346	0	0
+0	0	4	1	1	2019	0.29	0.28	NA	0.1346	0	0
+0	0	4	1	2	2001	0.29	0.28	NA	-0.1158	0	0
+0	0	4	1	2	2002	0.28	0.28	NA	-0.1158	0	0
+0	0	4	1	2	2003	0.31	0.28	NA	-0.1158	0	0
+0	0	4	1	2	2004	0.27	0.28	NA	-0.1158	0	0
+0	0	4	1	2	2005	0.29	0.28	NA	-0.1158	0	0
+0	0	4	1	2	2006	0.26	0.28	NA	-0.1158	0	0
+0	0	4	1	2	2007	0.28	0.28	NA	-0.1158	0	0
+0	0	4	1	2	2008	0.27	0.28	NA	-0.1158	0	0
+0	0	4	1	2	2009	0.25	0.28	NA	-0.1158	0	0
+0	0	4	1	2	2010	0.24	0.28	NA	-0.1158	0	0
+0	0	4	1	2	2011	0.29	0.27	NA	-0.1158	0	0
+0	0	4	1	2	2012	0.25	0.27	NA	-0.1158	0	0
+0	0	4	1	2	2013	0.29	0.27	NA	-0.1158	0	0
+0	0	4	1	2	2014	0.28	0.27	NA	-0.1158	0	0
+0	0	4	1	2	2015	0.25	0.27	NA	-0.1158	0	0
+0	0	4	1	2	2016	0.29	0.27	NA	-0.1158	0	0
+0	0	4	1	2	2017	0.30	0.27	NA	-0.1158	0	0
+0	0	4	1	2	2018	0.28	0.27	NA	-0.1158	0	0
+0	0	4	1	2	2019	0.27	0.27	NA	-0.1158	0	0
+0	0	4	1	3	2001	0.28	0.31	NA	-0.9686*	2	2
+0	0	4	1	3	2002	0.30	0.30	NA	-0.9686*	2	2
+0	0	4	1	3	2003	0.30	0.30	NA	-0.9686*	2	2
+0	0	4	1	3	2004	0.29	0.30	NA	-0.9686*	2	2
+0	0	4	1	3	2005	0.31	0.29	NA	-0.9686*	2	2
+0	0	4	1	3	2006	0.28	0.29	NA	-0.9686*	2	2
+0	0	4	1	3	2007	0.31	0.29	NA	-0.9686*	2	2
+0	0	4	1	3	2008	0.30	0.28	NA	-0.9686*	2	2
+0	0	4	1	3	2009	0.28	0.28	NA	-0.9686*	2	2
+0	0	4	1	3	2010	0.27	0.28	NA	-0.9686*	2	2
+0	0	4	1	3	2011	0.29	0.28	NA	-0.9686*	2	2
+0	0	4	1	3	2012	0.27	0.27	NA	-0.9686*	2	2
+0	0	4	1	3	2013	0.26	0.27	NA	-0.9686*	2	2
+0	0	4	1	3	2014	0.27	0.27	Joinpoint 1	NA	2	2
+0	0	4	1	3	2015	0.27	0.29	NA	6.5757	2	2
+0	0	4	1	3	2016	0.31	0.31	NA	6.5757	2	2
+0	0	4	1	3	2017	0.32	0.33	Joinpoint 2	NA	2	2
+0	0	4	1	3	2018	0.32	0.30	NA	-7.5897	2	2
+0	0	4	1	3	2019	0.27	0.28	NA	-7.5897	2	2
+0	0	4	1	4	2001	0.28	0.30	NA	1.8445	1	1
+0	0	4	1	4	2002	0.33	0.30	NA	1.8445	1	1
+0	0	4	1	4	2003	0.31	0.31	NA	1.8445	1	1
+0	0	4	1	4	2004	0.33	0.31	NA	1.8445	1	1
+0	0	4	1	4	2005	0.31	0.32	NA	1.8445	1	1
+0	0	4	1	4	2006	0.31	0.33	NA	1.8445	1	1
+0	0	4	1	4	2007	0.32	0.33	NA	1.8445	1	1
+0	0	4	1	4	2008	0.34	0.34	NA	1.8445	1	1
+0	0	4	1	4	2009	0.38	0.34	Joinpoint 1	NA	1	1
+0	0	4	1	4	2010	0.30	0.34	NA	-1.6350*	1	1
+0	0	4	1	4	2011	0.35	0.33	NA	-1.6350*	1	1
+0	0	4	1	4	2012	0.34	0.33	NA	-1.6350*	1	1
+0	0	4	1	4	2013	0.33	0.32	NA	-1.6350*	1	1
+0	0	4	1	4	2014	0.34	0.32	NA	-1.6350*	1	1
+0	0	4	1	4	2015	0.29	0.31	NA	-1.6350*	1	1
+0	0	4	1	4	2016	0.31	0.31	NA	-1.6350*	1	1
+0	0	4	1	4	2017	0.29	0.30	NA	-1.6350*	1	1
+0	0	4	1	4	2018	0.31	0.30	NA	-1.6350*	1	1
+0	0	4	1	4	2019	0.28	0.29	NA	-1.6350*	1	1
+0	0	4	1	5	2001	0.32	0.35	NA	-0.8848*	0	0
+0	0	4	1	5	2002	0.32	0.34	NA	-0.8848*	0	0
+0	0	4	1	5	2003	0.35	0.34	NA	-0.8848*	0	0
+0	0	4	1	5	2004	0.32	0.34	NA	-0.8848*	0	0
+0	0	4	1	5	2005	0.37	0.33	NA	-0.8848*	0	0
+0	0	4	1	5	2006	0.32	0.33	NA	-0.8848*	0	0
+0	0	4	1	5	2007	0.39	0.33	NA	-0.8848*	0	0
+0	0	4	1	5	2008	0.30	0.33	NA	-0.8848*	0	0
+0	0	4	1	5	2009	0.32	0.32	NA	-0.8848*	0	0
+0	0	4	1	5	2010	0.29	0.32	NA	-0.8848*	0	0
+0	0	4	1	5	2011	0.37	0.32	NA	-0.8848*	0	0
+0	0	4	1	5	2012	0.33	0.31	NA	-0.8848*	0	0
+0	0	4	1	5	2013	0.30	0.31	NA	-0.8848*	0	0
+0	0	4	1	5	2014	0.35	0.31	NA	-0.8848*	0	0
+0	0	4	1	5	2015	0.33	0.31	NA	-0.8848*	0	0
+0	0	4	1	5	2016	0.30	0.30	NA	-0.8848*	0	0
+0	0	4	1	5	2017	0.25	0.30	NA	-0.8848*	0	0
+0	0	4	1	5	2018	0.30	0.30	NA	-0.8848*	0	0
+0	0	4	1	5	2019	0.28	0.30	NA	-0.8848*	0	0
+0	1	4	1	1	2001	0.47	0.45	NA	-0.2314	0	0
+0	1	4	1	1	2002	0.45	0.44	NA	-0.2314	0	0
+0	1	4	1	1	2003	0.45	0.44	NA	-0.2314	0	0
+0	1	4	1	1	2004	0.44	0.44	NA	-0.2314	0	0
+0	1	4	1	1	2005	0.45	0.44	NA	-0.2314	0	0
+0	1	4	1	1	2006	0.43	0.44	NA	-0.2314	0	0
+0	1	4	1	1	2007	0.43	0.44	NA	-0.2314	0	0
+0	1	4	1	1	2008	0.41	0.44	NA	-0.2314	0	0
+0	1	4	1	1	2009	0.42	0.44	NA	-0.2314	0	0
+0	1	4	1	1	2010	0.44	0.44	NA	-0.2314	0	0
+0	1	4	1	1	2011	0.41	0.44	NA	-0.2314	0	0
+0	1	4	1	1	2012	0.42	0.43	NA	-0.2314	0	0
+0	1	4	1	1	2013	0.47	0.43	NA	-0.2314	0	0
+0	1	4	1	1	2014	0.45	0.43	NA	-0.2314	0	0
+0	1	4	1	1	2015	0.42	0.43	NA	-0.2314	0	0
+0	1	4	1	1	2016	0.44	0.43	NA	-0.2314	0	0
+0	1	4	1	1	2017	0.42	0.43	NA	-0.2314	0	0
+0	1	4	1	1	2018	0.43	0.43	NA	-0.2314	0	0
+0	1	4	1	1	2019	0.43	0.43	NA	-0.2314	0	0
+0	1	4	1	2	2001	0.43	0.43	NA	-4.9831	2	2
+0	1	4	1	2	2002	0.40	0.41	NA	-4.9831	2	2
+0	1	4	1	2	2003	0.40	0.39	NA	-4.9831	2	2
+0	1	4	1	2	2004	0.38	0.37	Joinpoint 1	NA	2	2
+0	1	4	1	2	2005	0.36	0.39	NA	6.1422	2	2
+0	1	4	1	2	2006	0.43	0.42	NA	6.1422	2	2
+0	1	4	1	2	2007	0.44	0.44	Joinpoint 2	NA	2	2
+0	1	4	1	2	2008	0.41	0.44	NA	-1.0415*	2	2
+0	1	4	1	2	2009	0.48	0.43	NA	-1.0415*	2	2
+0	1	4	1	2	2010	0.42	0.43	NA	-1.0415*	2	2
+0	1	4	1	2	2011	0.41	0.42	NA	-1.0415*	2	2
+0	1	4	1	2	2012	0.42	0.42	NA	-1.0415*	2	2
+0	1	4	1	2	2013	0.41	0.41	NA	-1.0415*	2	2
+0	1	4	1	2	2014	0.40	0.41	NA	-1.0415*	2	2
+0	1	4	1	2	2015	0.42	0.41	NA	-1.0415*	2	2
+0	1	4	1	2	2016	0.41	0.40	NA	-1.0415*	2	2
+0	1	4	1	2	2017	0.40	0.40	NA	-1.0415*	2	2
+0	1	4	1	2	2018	0.38	0.39	NA	-1.0415*	2	2
+0	1	4	1	2	2019	0.39	0.39	NA	-1.0415*	2	2
+0	1	4	1	3	2001	0.42	0.42	NA	-1.0384*	0	0
+0	1	4	1	3	2002	0.42	0.42	NA	-1.0384*	0	0
+0	1	4	1	3	2003	0.42	0.41	NA	-1.0384*	0	0
+0	1	4	1	3	2004	0.41	0.41	NA	-1.0384*	0	0
+0	1	4	1	3	2005	0.38	0.40	NA	-1.0384*	0	0
+0	1	4	1	3	2006	0.38	0.40	NA	-1.0384*	0	0
+0	1	4	1	3	2007	0.40	0.40	NA	-1.0384*	0	0
+0	1	4	1	3	2008	0.39	0.39	NA	-1.0384*	0	0
+0	1	4	1	3	2009	0.39	0.39	NA	-1.0384*	0	0
+0	1	4	1	3	2010	0.38	0.38	NA	-1.0384*	0	0
+0	1	4	1	3	2011	0.36	0.38	NA	-1.0384*	0	0
+0	1	4	1	3	2012	0.40	0.38	NA	-1.0384*	0	0
+0	1	4	1	3	2013	0.39	0.37	NA	-1.0384*	0	0
+0	1	4	1	3	2014	0.36	0.37	NA	-1.0384*	0	0
+0	1	4	1	3	2015	0.36	0.36	NA	-1.0384*	0	0
+0	1	4	1	3	2016	0.40	0.36	NA	-1.0384*	0	0
+0	1	4	1	3	2017	0.36	0.36	NA	-1.0384*	0	0
+0	1	4	1	3	2018	0.33	0.35	NA	-1.0384*	0	0
+0	1	4	1	3	2019	0.34	0.35	NA	-1.0384*	0	0
+0	1	4	1	4	2001	0.39	0.39	NA	-0.5353	0	0
+0	1	4	1	4	2002	0.38	0.38	NA	-0.5353	0	0
+0	1	4	1	4	2003	0.41	0.38	NA	-0.5353	0	0
+0	1	4	1	4	2004	0.40	0.38	NA	-0.5353	0	0
+0	1	4	1	4	2005	0.39	0.38	NA	-0.5353	0	0
+0	1	4	1	4	2006	0.39	0.38	NA	-0.5353	0	0
+0	1	4	1	4	2007	0.35	0.37	NA	-0.5353	0	0
+0	1	4	1	4	2008	0.39	0.37	NA	-0.5353	0	0
+0	1	4	1	4	2009	0.33	0.37	NA	-0.5353	0	0
+0	1	4	1	4	2010	0.33	0.37	NA	-0.5353	0	0
+0	1	4	1	4	2011	0.33	0.37	NA	-0.5353	0	0
+0	1	4	1	4	2012	0.38	0.36	NA	-0.5353	0	0
+0	1	4	1	4	2013	0.38	0.36	NA	-0.5353	0	0
+0	1	4	1	4	2014	0.38	0.36	NA	-0.5353	0	0
+0	1	4	1	4	2015	0.39	0.36	NA	-0.5353	0	0
+0	1	4	1	4	2016	0.38	0.36	NA	-0.5353	0	0
+0	1	4	1	4	2017	0.30	0.35	NA	-0.5353	0	0
+0	1	4	1	4	2018	0.37	0.35	NA	-0.5353	0	0
+0	1	4	1	4	2019	0.37	0.35	NA	-0.5353	0	0
+0	1	4	1	5	2001	0.37	0.39	NA	-1.3343*	0	0
+0	1	4	1	5	2002	0.37	0.38	NA	-1.3343*	0	0
+0	1	4	1	5	2003	0.36	0.38	NA	-1.3343*	0	0
+0	1	4	1	5	2004	0.35	0.37	NA	-1.3343*	0	0
+0	1	4	1	5	2005	0.43	0.37	NA	-1.3343*	0	0
+0	1	4	1	5	2006	0.37	0.36	NA	-1.3343*	0	0
+0	1	4	1	5	2007	0.37	0.36	NA	-1.3343*	0	0
+0	1	4	1	5	2008	0.36	0.35	NA	-1.3343*	0	0
+0	1	4	1	5	2009	0.36	0.35	NA	-1.3343*	0	0
+0	1	4	1	5	2010	0.34	0.34	NA	-1.3343*	0	0
+0	1	4	1	5	2011	0.35	0.34	NA	-1.3343*	0	0
+0	1	4	1	5	2012	0.33	0.34	NA	-1.3343*	0	0
+0	1	4	1	5	2013	0.31	0.33	NA	-1.3343*	0	0
+0	1	4	1	5	2014	0.33	0.33	NA	-1.3343*	0	0
+0	1	4	1	5	2015	0.31	0.32	NA	-1.3343*	0	0
+0	1	4	1	5	2016	0.34	0.32	NA	-1.3343*	0	0
+0	1	4	1	5	2017	0.30	0.31	NA	-1.3343*	0	0
+0	1	4	1	5	2018	0.34	0.31	NA	-1.3343*	0	0
+0	1	4	1	5	2019	0.29	0.31	NA	-1.3343*	0	0
+0	0	5	1	1	2001	0.20	0.21	NA	1.0607*	0	0
+0	0	5	1	1	2002	0.21	0.22	NA	1.0607*	0	0
+0	0	5	1	1	2003	0.22	0.22	NA	1.0607*	0	0
+0	0	5	1	1	2004	0.24	0.22	NA	1.0607*	0	0
+0	0	5	1	1	2005	0.20	0.22	NA	1.0607*	0	0
+0	0	5	1	1	2006	0.23	0.22	NA	1.0607*	0	0
+0	0	5	1	1	2007	0.22	0.23	NA	1.0607*	0	0
+0	0	5	1	1	2008	0.25	0.23	NA	1.0607*	0	0
+0	0	5	1	1	2009	0.21	0.23	NA	1.0607*	0	0
+0	0	5	1	1	2010	0.27	0.23	NA	1.0607*	0	0
+0	0	5	1	1	2011	0.23	0.24	NA	1.0607*	0	0
+0	0	5	1	1	2012	0.25	0.24	NA	1.0607*	0	0
+0	0	5	1	1	2013	0.25	0.24	NA	1.0607*	0	0
+0	0	5	1	1	2014	0.23	0.24	NA	1.0607*	0	0
+0	0	5	1	1	2015	0.25	0.25	NA	1.0607*	0	0
+0	0	5	1	1	2016	0.26	0.25	NA	1.0607*	0	0
+0	0	5	1	1	2017	0.28	0.25	NA	1.0607*	0	0
+0	0	5	1	1	2018	0.23	0.25	NA	1.0607*	0	0
+0	0	5	1	1	2019	0.24	0.26	NA	1.0607*	0	0
+0	0	5	1	2	2001	0.23	0.24	NA	0.6329*	0	0
+0	0	5	1	2	2002	0.26	0.24	NA	0.6329*	0	0
+0	0	5	1	2	2003	0.23	0.24	NA	0.6329*	0	0
+0	0	5	1	2	2004	0.23	0.24	NA	0.6329*	0	0
+0	0	5	1	2	2005	0.23	0.25	NA	0.6329*	0	0
+0	0	5	1	2	2006	0.25	0.25	NA	0.6329*	0	0
+0	0	5	1	2	2007	0.26	0.25	NA	0.6329*	0	0
+0	0	5	1	2	2008	0.28	0.25	NA	0.6329*	0	0
+0	0	5	1	2	2009	0.26	0.25	NA	0.6329*	0	0
+0	0	5	1	2	2010	0.28	0.25	NA	0.6329*	0	0
+0	0	5	1	2	2011	0.24	0.26	NA	0.6329*	0	0
+0	0	5	1	2	2012	0.25	0.26	NA	0.6329*	0	0
+0	0	5	1	2	2013	0.24	0.26	NA	0.6329*	0	0
+0	0	5	1	2	2014	0.25	0.26	NA	0.6329*	0	0
+0	0	5	1	2	2015	0.26	0.26	NA	0.6329*	0	0
+0	0	5	1	2	2016	0.27	0.26	NA	0.6329*	0	0
+0	0	5	1	2	2017	0.27	0.27	NA	0.6329*	0	0
+0	0	5	1	2	2018	0.26	0.27	NA	0.6329*	0	0
+0	0	5	1	2	2019	0.28	0.27	NA	0.6329*	0	0
+0	0	5	1	3	2001	0.21	0.22	NA	1.4981*	0	0
+0	0	5	1	3	2002	0.22	0.23	NA	1.4981*	0	0
+0	0	5	1	3	2003	0.24	0.23	NA	1.4981*	0	0
+0	0	5	1	3	2004	0.24	0.23	NA	1.4981*	0	0
+0	0	5	1	3	2005	0.23	0.24	NA	1.4981*	0	0
+0	0	5	1	3	2006	0.26	0.24	NA	1.4981*	0	0
+0	0	5	1	3	2007	0.25	0.24	NA	1.4981*	0	0
+0	0	5	1	3	2008	0.25	0.25	NA	1.4981*	0	0
+0	0	5	1	3	2009	0.24	0.25	NA	1.4981*	0	0
+0	0	5	1	3	2010	0.28	0.25	NA	1.4981*	0	0
+0	0	5	1	3	2011	0.25	0.26	NA	1.4981*	0	0
+0	0	5	1	3	2012	0.25	0.26	NA	1.4981*	0	0
+0	0	5	1	3	2013	0.30	0.27	NA	1.4981*	0	0
+0	0	5	1	3	2014	0.30	0.27	NA	1.4981*	0	0
+0	0	5	1	3	2015	0.30	0.27	NA	1.4981*	0	0
+0	0	5	1	3	2016	0.26	0.28	NA	1.4981*	0	0
+0	0	5	1	3	2017	0.26	0.28	NA	1.4981*	0	0
+0	0	5	1	3	2018	0.26	0.29	NA	1.4981*	0	0
+0	0	5	1	3	2019	0.29	0.29	NA	1.4981*	0	0
+0	0	5	1	4	2001	0.23	0.24	NA	0.9753*	0	0
+0	0	5	1	4	2002	0.22	0.24	NA	0.9753*	0	0
+0	0	5	1	4	2003	0.27	0.25	NA	0.9753*	0	0
+0	0	5	1	4	2004	0.25	0.25	NA	0.9753*	0	0
+0	0	5	1	4	2005	0.28	0.25	NA	0.9753*	0	0
+0	0	5	1	4	2006	0.25	0.25	NA	0.9753*	0	0
+0	0	5	1	4	2007	0.29	0.26	NA	0.9753*	0	0
+0	0	5	1	4	2008	0.25	0.26	NA	0.9753*	0	0
+0	0	5	1	4	2009	0.20	0.26	NA	0.9753*	0	0
+0	0	5	1	4	2010	0.29	0.26	NA	0.9753*	0	0
+0	0	5	1	4	2011	0.26	0.27	NA	0.9753*	0	0
+0	0	5	1	4	2012	0.26	0.27	NA	0.9753*	0	0
+0	0	5	1	4	2013	0.29	0.27	NA	0.9753*	0	0
+0	0	5	1	4	2014	0.26	0.27	NA	0.9753*	0	0
+0	0	5	1	4	2015	0.28	0.28	NA	0.9753*	0	0
+0	0	5	1	4	2016	0.28	0.28	NA	0.9753*	0	0
+0	0	5	1	4	2017	0.31	0.28	NA	0.9753*	0	0
+0	0	5	1	4	2018	0.26	0.28	NA	0.9753*	0	0
+0	0	5	1	4	2019	0.29	0.29	NA	0.9753*	0	0
+0	0	5	1	5	2001	0.22	0.22	NA	1.8900*	0	0
+0	0	5	1	5	2002	0.24	0.23	NA	1.8900*	0	0
+0	0	5	1	5	2003	0.21	0.23	NA	1.8900*	0	0
+0	0	5	1	5	2004	0.26	0.24	NA	1.8900*	0	0
+0	0	5	1	5	2005	0.22	0.24	NA	1.8900*	0	0
+0	0	5	1	5	2006	0.26	0.25	NA	1.8900*	0	0
+0	0	5	1	5	2007	0.24	0.25	NA	1.8900*	0	0
+0	0	5	1	5	2008	0.26	0.26	NA	1.8900*	0	0
+0	0	5	1	5	2009	0.26	0.26	NA	1.8900*	0	0
+0	0	5	1	5	2010	0.28	0.27	NA	1.8900*	0	0
+0	0	5	1	5	2011	0.26	0.27	NA	1.8900*	0	0
+0	0	5	1	5	2012	0.28	0.28	NA	1.8900*	0	0
+0	0	5	1	5	2013	0.30	0.28	NA	1.8900*	0	0
+0	0	5	1	5	2014	0.24	0.29	NA	1.8900*	0	0
+0	0	5	1	5	2015	0.29	0.29	NA	1.8900*	0	0
+0	0	5	1	5	2016	0.27	0.30	NA	1.8900*	0	0
+0	0	5	1	5	2017	0.33	0.30	NA	1.8900*	0	0
+0	0	5	1	5	2018	0.34	0.31	NA	1.8900*	0	0
+0	0	5	1	5	2019	0.31	0.31	NA	1.8900*	0	0
+0	1	5	1	1	2001	0.19	0.20	NA	0.8520*	0	0
+0	1	5	1	1	2002	0.18	0.20	NA	0.8520*	0	0
+0	1	5	1	1	2003	0.20	0.20	NA	0.8520*	0	0
+0	1	5	1	1	2004	0.21	0.20	NA	0.8520*	0	0
+0	1	5	1	1	2005	0.21	0.20	NA	0.8520*	0	0
+0	1	5	1	1	2006	0.20	0.20	NA	0.8520*	0	0
+0	1	5	1	1	2007	0.22	0.21	NA	0.8520*	0	0
+0	1	5	1	1	2008	0.23	0.21	NA	0.8520*	0	0
+0	1	5	1	1	2009	0.20	0.21	NA	0.8520*	0	0
+0	1	5	1	1	2010	0.20	0.21	NA	0.8520*	0	0
+0	1	5	1	1	2011	0.20	0.21	NA	0.8520*	0	0
+0	1	5	1	1	2012	0.21	0.21	NA	0.8520*	0	0
+0	1	5	1	1	2013	0.17	0.22	NA	0.8520*	0	0
+0	1	5	1	1	2014	0.23	0.22	NA	0.8520*	0	0
+0	1	5	1	1	2015	0.21	0.22	NA	0.8520*	0	0
+0	1	5	1	1	2016	0.22	0.22	NA	0.8520*	0	0
+0	1	5	1	1	2017	0.25	0.22	NA	0.8520*	0	0
+0	1	5	1	1	2018	0.22	0.23	NA	0.8520*	0	0
+0	1	5	1	1	2019	0.24	0.23	NA	0.8520*	0	0
+0	1	5	1	2	2001	0.24	0.22	NA	0.7893*	0	0
+0	1	5	1	2	2002	0.23	0.22	NA	0.7893*	0	0
+0	1	5	1	2	2003	0.23	0.23	NA	0.7893*	0	0
+0	1	5	1	2	2004	0.21	0.23	NA	0.7893*	0	0
+0	1	5	1	2	2005	0.25	0.23	NA	0.7893*	0	0
+0	1	5	1	2	2006	0.24	0.23	NA	0.7893*	0	0
+0	1	5	1	2	2007	0.23	0.23	NA	0.7893*	0	0
+0	1	5	1	2	2008	0.22	0.23	NA	0.7893*	0	0
+0	1	5	1	2	2009	0.20	0.24	NA	0.7893*	0	0
+0	1	5	1	2	2010	0.23	0.24	NA	0.7893*	0	0
+0	1	5	1	2	2011	0.26	0.24	NA	0.7893*	0	0
+0	1	5	1	2	2012	0.24	0.24	NA	0.7893*	0	0
+0	1	5	1	2	2013	0.21	0.24	NA	0.7893*	0	0
+0	1	5	1	2	2014	0.25	0.25	NA	0.7893*	0	0
+0	1	5	1	2	2015	0.26	0.25	NA	0.7893*	0	0
+0	1	5	1	2	2016	0.24	0.25	NA	0.7893*	0	0
+0	1	5	1	2	2017	0.26	0.25	NA	0.7893*	0	0
+0	1	5	1	2	2018	0.28	0.25	NA	0.7893*	0	0
+0	1	5	1	2	2019	0.27	0.26	NA	0.7893*	0	0
+0	1	5	1	3	2001	0.22	0.22	NA	1.8098*	0	0
+0	1	5	1	3	2002	0.22	0.23	NA	1.8098*	0	0
+0	1	5	1	3	2003	0.24	0.23	NA	1.8098*	0	0
+0	1	5	1	3	2004	0.24	0.24	NA	1.8098*	0	0
+0	1	5	1	3	2005	0.26	0.24	NA	1.8098*	0	0
+0	1	5	1	3	2006	0.25	0.24	NA	1.8098*	0	0
+0	1	5	1	3	2007	0.24	0.25	NA	1.8098*	0	0
+0	1	5	1	3	2008	0.25	0.25	NA	1.8098*	0	0
+0	1	5	1	3	2009	0.25	0.26	NA	1.8098*	0	0
+0	1	5	1	3	2010	0.28	0.26	NA	1.8098*	0	0
+0	1	5	1	3	2011	0.30	0.27	NA	1.8098*	0	0
+0	1	5	1	3	2012	0.25	0.27	NA	1.8098*	0	0
+0	1	5	1	3	2013	0.26	0.28	NA	1.8098*	0	0
+0	1	5	1	3	2014	0.28	0.28	NA	1.8098*	0	0
+0	1	5	1	3	2015	0.29	0.29	NA	1.8098*	0	0
+0	1	5	1	3	2016	0.26	0.29	NA	1.8098*	0	0
+0	1	5	1	3	2017	0.31	0.30	NA	1.8098*	0	0
+0	1	5	1	3	2018	0.33	0.30	NA	1.8098*	0	0
+0	1	5	1	3	2019	0.31	0.31	NA	1.8098*	0	0
+0	1	5	1	4	2001	0.25	0.26	NA	1.1334*	0	0
+0	1	5	1	4	2002	0.25	0.26	NA	1.1334*	0	0
+0	1	5	1	4	2003	0.25	0.27	NA	1.1334*	0	0
+0	1	5	1	4	2004	0.28	0.27	NA	1.1334*	0	0
+0	1	5	1	4	2005	0.28	0.27	NA	1.1334*	0	0
+0	1	5	1	4	2006	0.28	0.28	NA	1.1334*	0	0
+0	1	5	1	4	2007	0.31	0.28	NA	1.1334*	0	0
+0	1	5	1	4	2008	0.29	0.28	NA	1.1334*	0	0
+0	1	5	1	4	2009	0.30	0.29	NA	1.1334*	0	0
+0	1	5	1	4	2010	0.32	0.29	NA	1.1334*	0	0
+0	1	5	1	4	2011	0.29	0.29	NA	1.1334*	0	0
+0	1	5	1	4	2012	0.28	0.30	NA	1.1334*	0	0
+0	1	5	1	4	2013	0.28	0.30	NA	1.1334*	0	0
+0	1	5	1	4	2014	0.31	0.30	NA	1.1334*	0	0
+0	1	5	1	4	2015	0.30	0.31	NA	1.1334*	0	0
+0	1	5	1	4	2016	0.29	0.31	NA	1.1334*	0	0
+0	1	5	1	4	2017	0.36	0.31	NA	1.1334*	0	0
+0	1	5	1	4	2018	0.32	0.32	NA	1.1334*	0	0
+0	1	5	1	4	2019	0.29	0.32	NA	1.1334*	0	0
+0	1	5	1	5	2001	0.27	0.27	NA	1.9600*	0	0
+0	1	5	1	5	2002	0.28	0.28	NA	1.9600*	0	0
+0	1	5	1	5	2003	0.30	0.28	NA	1.9600*	0	0
+0	1	5	1	5	2004	0.27	0.29	NA	1.9600*	0	0
+0	1	5	1	5	2005	0.27	0.29	NA	1.9600*	0	0
+0	1	5	1	5	2006	0.30	0.30	NA	1.9600*	0	0
+0	1	5	1	5	2007	0.30	0.30	NA	1.9600*	0	0
+0	1	5	1	5	2008	0.33	0.31	NA	1.9600*	0	0
+0	1	5	1	5	2009	0.30	0.32	NA	1.9600*	0	0
+0	1	5	1	5	2010	0.36	0.32	NA	1.9600*	0	0
+0	1	5	1	5	2011	0.31	0.33	NA	1.9600*	0	0
+0	1	5	1	5	2012	0.34	0.34	NA	1.9600*	0	0
+0	1	5	1	5	2013	0.33	0.34	NA	1.9600*	0	0
+0	1	5	1	5	2014	0.33	0.35	NA	1.9600*	0	0
+0	1	5	1	5	2015	0.34	0.36	NA	1.9600*	0	0
+0	1	5	1	5	2016	0.37	0.36	NA	1.9600*	0	0
+0	1	5	1	5	2017	0.38	0.37	NA	1.9600*	0	0
+0	1	5	1	5	2018	0.37	0.38	NA	1.9600*	0	0
+0	1	5	1	5	2019	0.40	0.38	NA	1.9600*	0	0
+0	0	6	1	1	2001	0.53	0.51	NA	-0.5857*	0	0
+0	0	6	1	1	2002	0.49	0.51	NA	-0.5857*	0	0
+0	0	6	1	1	2003	0.51	0.50	NA	-0.5857*	0	0
+0	0	6	1	1	2004	0.49	0.50	NA	-0.5857*	0	0
+0	0	6	1	1	2005	0.50	0.50	NA	-0.5857*	0	0
+0	0	6	1	1	2006	0.49	0.49	NA	-0.5857*	0	0
+0	0	6	1	1	2007	0.48	0.49	NA	-0.5857*	0	0
+0	0	6	1	1	2008	0.47	0.49	NA	-0.5857*	0	0
+0	0	6	1	1	2009	0.53	0.48	NA	-0.5857*	0	0
+0	0	6	1	1	2010	0.46	0.48	NA	-0.5857*	0	0
+0	0	6	1	1	2011	0.50	0.48	NA	-0.5857*	0	0
+0	0	6	1	1	2012	0.46	0.48	NA	-0.5857*	0	0
+0	0	6	1	1	2013	0.49	0.47	NA	-0.5857*	0	0
+0	0	6	1	1	2014	0.48	0.47	NA	-0.5857*	0	0
+0	0	6	1	1	2015	0.46	0.47	NA	-0.5857*	0	0
+0	0	6	1	1	2016	0.45	0.47	NA	-0.5857*	0	0
+0	0	6	1	1	2017	0.43	0.46	NA	-0.5857*	0	0
+0	0	6	1	1	2018	0.48	0.46	NA	-0.5857*	0	0
+0	0	6	1	1	2019	0.47	0.46	NA	-0.5857*	0	0
+0	0	6	1	2	2001	0.47	0.48	NA	-0.3478*	0	0
+0	0	6	1	2	2002	0.46	0.48	NA	-0.3478*	0	0
+0	0	6	1	2	2003	0.46	0.48	NA	-0.3478*	0	0
+0	0	6	1	2	2004	0.49	0.47	NA	-0.3478*	0	0
+0	0	6	1	2	2005	0.47	0.47	NA	-0.3478*	0	0
+0	0	6	1	2	2006	0.49	0.47	NA	-0.3478*	0	0
+0	0	6	1	2	2007	0.46	0.47	NA	-0.3478*	0	0
+0	0	6	1	2	2008	0.45	0.47	NA	-0.3478*	0	0
+0	0	6	1	2	2009	0.48	0.47	NA	-0.3478*	0	0
+0	0	6	1	2	2010	0.47	0.46	NA	-0.3478*	0	0
+0	0	6	1	2	2011	0.46	0.46	NA	-0.3478*	0	0
+0	0	6	1	2	2012	0.50	0.46	NA	-0.3478*	0	0
+0	0	6	1	2	2013	0.46	0.46	NA	-0.3478*	0	0
+0	0	6	1	2	2014	0.46	0.46	NA	-0.3478*	0	0
+0	0	6	1	2	2015	0.48	0.46	NA	-0.3478*	0	0
+0	0	6	1	2	2016	0.43	0.45	NA	-0.3478*	0	0
+0	0	6	1	2	2017	0.43	0.45	NA	-0.3478*	0	0
+0	0	6	1	2	2018	0.46	0.45	NA	-0.3478*	0	0
+0	0	6	1	2	2019	0.44	0.45	NA	-0.3478*	0	0
+0	0	6	1	3	2001	0.50	0.48	NA	-0.7330*	0	0
+0	0	6	1	3	2002	0.48	0.47	NA	-0.7330*	0	0
+0	0	6	1	3	2003	0.45	0.47	NA	-0.7330*	0	0
+0	0	6	1	3	2004	0.46	0.47	NA	-0.7330*	0	0
+0	0	6	1	3	2005	0.45	0.46	NA	-0.7330*	0	0
+0	0	6	1	3	2006	0.46	0.46	NA	-0.7330*	0	0
+0	0	6	1	3	2007	0.44	0.46	NA	-0.7330*	0	0
+0	0	6	1	3	2008	0.44	0.45	NA	-0.7330*	0	0
+0	0	6	1	3	2009	0.46	0.45	NA	-0.7330*	0	0
+0	0	6	1	3	2010	0.45	0.45	NA	-0.7330*	0	0
+0	0	6	1	3	2011	0.45	0.44	NA	-0.7330*	0	0
+0	0	6	1	3	2012	0.49	0.44	NA	-0.7330*	0	0
+0	0	6	1	3	2013	0.43	0.44	NA	-0.7330*	0	0
+0	0	6	1	3	2014	0.43	0.43	NA	-0.7330*	0	0
+0	0	6	1	3	2015	0.42	0.43	NA	-0.7330*	0	0
+0	0	6	1	3	2016	0.42	0.43	NA	-0.7330*	0	0
+0	0	6	1	3	2017	0.41	0.42	NA	-0.7330*	0	0
+0	0	6	1	3	2018	0.42	0.42	NA	-0.7330*	0	0
+0	0	6	1	3	2019	0.43	0.42	NA	-0.7330*	0	0
+0	0	6	1	4	2001	0.49	0.48	NA	-7.1886	2	2
+0	0	6	1	4	2002	0.44	0.45	NA	-7.1886	2	2
+0	0	6	1	4	2003	0.41	0.42	Joinpoint 1	NA	2	2
+0	0	6	1	4	2004	0.42	0.41	NA	-0.8356	2	2
+0	0	6	1	4	2005	0.40	0.41	NA	-0.8356	2	2
+0	0	6	1	4	2006	0.43	0.40	NA	-0.8356	2	2
+0	0	6	1	4	2007	0.39	0.40	NA	-0.8356	2	2
+0	0	6	1	4	2008	0.40	0.40	NA	-0.8356	2	2
+0	0	6	1	4	2009	0.40	0.39	NA	-0.8356	2	2
+0	0	6	1	4	2010	0.40	0.39	NA	-0.8356	2	2
+0	0	6	1	4	2011	0.38	0.39	NA	-0.8356	2	2
+0	0	6	1	4	2012	0.38	0.38	NA	-0.8356	2	2
+0	0	6	1	4	2013	0.37	0.38	Joinpoint 2	NA	2	2
+0	0	6	1	4	2014	0.38	0.39	NA	1.4677	2	2
+0	0	6	1	4	2015	0.42	0.39	NA	1.4677	2	2
+0	0	6	1	4	2016	0.40	0.40	NA	1.4677	2	2
+0	0	6	1	4	2017	0.39	0.40	NA	1.4677	2	2
+0	0	6	1	4	2018	0.42	0.41	NA	1.4677	2	2
+0	0	6	1	4	2019	0.41	0.42	NA	1.4677	2	2
+0	0	6	1	5	2001	0.44	0.41	NA	-0.5623*	0	0
+0	0	6	1	5	2002	0.42	0.41	NA	-0.5623*	0	0
+0	0	6	1	5	2003	0.42	0.41	NA	-0.5623*	0	0
+0	0	6	1	5	2004	0.41	0.41	NA	-0.5623*	0	0
+0	0	6	1	5	2005	0.40	0.41	NA	-0.5623*	0	0
+0	0	6	1	5	2006	0.41	0.40	NA	-0.5623*	0	0
+0	0	6	1	5	2007	0.35	0.40	NA	-0.5623*	0	0
+0	0	6	1	5	2008	0.42	0.40	NA	-0.5623*	0	0
+0	0	6	1	5	2009	0.38	0.40	NA	-0.5623*	0	0
+0	0	6	1	5	2010	0.41	0.39	NA	-0.5623*	0	0
+0	0	6	1	5	2011	0.35	0.39	NA	-0.5623*	0	0
+0	0	6	1	5	2012	0.38	0.39	NA	-0.5623*	0	0
+0	0	6	1	5	2013	0.38	0.39	NA	-0.5623*	0	0
+0	0	6	1	5	2014	0.38	0.39	NA	-0.5623*	0	0
+0	0	6	1	5	2015	0.37	0.38	NA	-0.5623*	0	0
+0	0	6	1	5	2016	0.41	0.38	NA	-0.5623*	0	0
+0	0	6	1	5	2017	0.41	0.38	NA	-0.5623*	0	0
+0	0	6	1	5	2018	0.35	0.38	NA	-0.5623*	0	0
+0	0	6	1	5	2019	0.40	0.37	NA	-0.5623*	0	0
+0	1	6	1	1	2001	0.33	0.33	NA	0.5582	1	1
+0	1	6	1	1	2002	0.35	0.34	NA	0.5582	1	1
+0	1	6	1	1	2003	0.34	0.34	NA	0.5582	1	1
+0	1	6	1	1	2004	0.34	0.34	NA	0.5582	1	1
+0	1	6	1	1	2005	0.33	0.34	NA	0.5582	1	1
+0	1	6	1	1	2006	0.34	0.34	NA	0.5582	1	1
+0	1	6	1	1	2007	0.35	0.34	NA	0.5582	1	1
+0	1	6	1	1	2008	0.34	0.35	NA	0.5582	1	1
+0	1	6	1	1	2009	0.34	0.35	NA	0.5582	1	1
+0	1	6	1	1	2010	0.34	0.35	NA	0.5582	1	1
+0	1	6	1	1	2011	0.38	0.35	Joinpoint 1	NA	1	1
+0	1	6	1	1	2012	0.35	0.35	NA	-1.3875*	1	1
+0	1	6	1	1	2013	0.35	0.34	NA	-1.3875*	1	1
+0	1	6	1	1	2014	0.31	0.34	NA	-1.3875*	1	1
+0	1	6	1	1	2015	0.35	0.33	NA	-1.3875*	1	1
+0	1	6	1	1	2016	0.31	0.33	NA	-1.3875*	1	1
+0	1	6	1	1	2017	0.32	0.32	NA	-1.3875*	1	1
+0	1	6	1	1	2018	0.33	0.32	NA	-1.3875*	1	1
+0	1	6	1	1	2019	0.32	0.32	NA	-1.3875*	1	1
+0	1	6	1	2	2001	0.31	0.35	NA	-0.3950	0	0
+0	1	6	1	2	2002	0.36	0.35	NA	-0.3950	0	0
+0	1	6	1	2	2003	0.36	0.34	NA	-0.3950	0	0
+0	1	6	1	2	2004	0.39	0.34	NA	-0.3950	0	0
+0	1	6	1	2	2005	0.37	0.34	NA	-0.3950	0	0
+0	1	6	1	2	2006	0.32	0.34	NA	-0.3950	0	0
+0	1	6	1	2	2007	0.31	0.34	NA	-0.3950	0	0
+0	1	6	1	2	2008	0.36	0.34	NA	-0.3950	0	0
+0	1	6	1	2	2009	0.31	0.34	NA	-0.3950	0	0
+0	1	6	1	2	2010	0.33	0.33	NA	-0.3950	0	0
+0	1	6	1	2	2011	0.30	0.33	NA	-0.3950	0	0
+0	1	6	1	2	2012	0.33	0.33	NA	-0.3950	0	0
+0	1	6	1	2	2013	0.36	0.33	NA	-0.3950	0	0
+0	1	6	1	2	2014	0.34	0.33	NA	-0.3950	0	0
+0	1	6	1	2	2015	0.31	0.33	NA	-0.3950	0	0
+0	1	6	1	2	2016	0.33	0.33	NA	-0.3950	0	0
+0	1	6	1	2	2017	0.34	0.33	NA	-0.3950	0	0
+0	1	6	1	2	2018	0.33	0.32	NA	-0.3950	0	0
+0	1	6	1	2	2019	0.33	0.32	NA	-0.3950	0	0
+0	1	6	1	3	2001	0.34	0.35	NA	-0.2768*	0	0
+0	1	6	1	3	2002	0.34	0.34	NA	-0.2768*	0	0
+0	1	6	1	3	2003	0.33	0.34	NA	-0.2768*	0	0
+0	1	6	1	3	2004	0.34	0.34	NA	-0.2768*	0	0
+0	1	6	1	3	2005	0.34	0.34	NA	-0.2768*	0	0
+0	1	6	1	3	2006	0.36	0.34	NA	-0.2768*	0	0
+0	1	6	1	3	2007	0.35	0.34	NA	-0.2768*	0	0
+0	1	6	1	3	2008	0.35	0.34	NA	-0.2768*	0	0
+0	1	6	1	3	2009	0.34	0.34	NA	-0.2768*	0	0
+0	1	6	1	3	2010	0.32	0.34	NA	-0.2768*	0	0
+0	1	6	1	3	2011	0.32	0.34	NA	-0.2768*	0	0
+0	1	6	1	3	2012	0.33	0.33	NA	-0.2768*	0	0
+0	1	6	1	3	2013	0.34	0.33	NA	-0.2768*	0	0
+0	1	6	1	3	2014	0.35	0.33	NA	-0.2768*	0	0
+0	1	6	1	3	2015	0.33	0.33	NA	-0.2768*	0	0
+0	1	6	1	3	2016	0.32	0.33	NA	-0.2768*	0	0
+0	1	6	1	3	2017	0.31	0.33	NA	-0.2768*	0	0
+0	1	6	1	3	2018	0.33	0.33	NA	-0.2768*	0	0
+0	1	6	1	3	2019	0.34	0.33	NA	-0.2768*	0	0
+0	1	6	1	4	2001	0.35	0.34	NA	-0.5263	0	0
+0	1	6	1	4	2002	0.35	0.34	NA	-0.5263	0	0
+0	1	6	1	4	2003	0.34	0.33	NA	-0.5263	0	0
+0	1	6	1	4	2004	0.30	0.33	NA	-0.5263	0	0
+0	1	6	1	4	2005	0.32	0.33	NA	-0.5263	0	0
+0	1	6	1	4	2006	0.32	0.33	NA	-0.5263	0	0
+0	1	6	1	4	2007	0.32	0.33	NA	-0.5263	0	0
+0	1	6	1	4	2008	0.30	0.33	NA	-0.5263	0	0
+0	1	6	1	4	2009	0.37	0.32	NA	-0.5263	0	0
+0	1	6	1	4	2010	0.34	0.32	NA	-0.5263	0	0
+0	1	6	1	4	2011	0.35	0.32	NA	-0.5263	0	0
+0	1	6	1	4	2012	0.31	0.32	NA	-0.5263	0	0
+0	1	6	1	4	2013	0.32	0.32	NA	-0.5263	0	0
+0	1	6	1	4	2014	0.31	0.31	NA	-0.5263	0	0
+0	1	6	1	4	2015	0.29	0.31	NA	-0.5263	0	0
+0	1	6	1	4	2016	0.31	0.31	NA	-0.5263	0	0
+0	1	6	1	4	2017	0.33	0.31	NA	-0.5263	0	0
+0	1	6	1	4	2018	0.29	0.31	NA	-0.5263	0	0
+0	1	6	1	4	2019	0.31	0.31	NA	-0.5263	0	0
+0	1	6	1	5	2001	0.34	0.32	NA	-0.5282	0	0
+0	1	6	1	5	2002	0.33	0.32	NA	-0.5282	0	0
+0	1	6	1	5	2003	0.31	0.32	NA	-0.5282	0	0
+0	1	6	1	5	2004	0.36	0.32	NA	-0.5282	0	0
+0	1	6	1	5	2005	0.28	0.32	NA	-0.5282	0	0
+0	1	6	1	5	2006	0.31	0.31	NA	-0.5282	0	0
+0	1	6	1	5	2007	0.32	0.31	NA	-0.5282	0	0
+0	1	6	1	5	2008	0.29	0.31	NA	-0.5282	0	0
+0	1	6	1	5	2009	0.31	0.31	NA	-0.5282	0	0
+0	1	6	1	5	2010	0.28	0.31	NA	-0.5282	0	0
+0	1	6	1	5	2011	0.31	0.31	NA	-0.5282	0	0
+0	1	6	1	5	2012	0.31	0.30	NA	-0.5282	0	0
+0	1	6	1	5	2013	0.34	0.30	NA	-0.5282	0	0
+0	1	6	1	5	2014	0.32	0.30	NA	-0.5282	0	0
+0	1	6	1	5	2015	0.33	0.30	NA	-0.5282	0	0
+0	1	6	1	5	2016	0.28	0.30	NA	-0.5282	0	0
+0	1	6	1	5	2017	0.30	0.30	NA	-0.5282	0	0
+0	1	6	1	5	2018	0.27	0.30	NA	-0.5282	0	0
+0	1	6	1	5	2019	0.30	0.29	NA	-0.5282	0	0
+0	0	7	1	1	2001	0.01	0.00	NA	0.9462	0	0
+0	0	7	1	1	2002	0.00	0.00	NA	0.9462	0	0
+0	0	7	1	1	2003	0.00	0.00	NA	0.9462	0	0
+0	0	7	1	1	2004	0.01	0.00	NA	0.9462	0	0
+0	0	7	1	1	2005	0.00	0.00	NA	0.9462	0	0
+0	0	7	1	1	2006	0.00	0.00	NA	0.9462	0	0
+0	0	7	1	1	2007	0.01	0.00	NA	0.9462	0	0
+0	0	7	1	1	2008	0.00	0.00	NA	0.9462	0	0
+0	0	7	1	1	2009	0.00	0.00	NA	0.9462	0	0
+0	0	7	1	1	2010	0.00	0.01	NA	0.9462	0	0
+0	0	7	1	1	2011	0.00	0.01	NA	0.9462	0	0
+0	0	7	1	1	2012	0.00	0.01	NA	0.9462	0	0
+0	0	7	1	1	2013	0.01	0.01	NA	0.9462	0	0
+0	0	7	1	1	2014	0.01	0.01	NA	0.9462	0	0
+0	0	7	1	1	2015	0.01	0.01	NA	0.9462	0	0
+0	0	7	1	1	2016	0.01	0.01	NA	0.9462	0	0
+0	0	7	1	1	2017	0.00	0.01	NA	0.9462	0	0
+0	0	7	1	1	2018	0.01	0.01	NA	0.9462	0	0
+0	0	7	1	1	2019	0.01	0.01	NA	0.9462	0	0
+0	0	7	1	2	2001	0.00	0.00	NA	4.4370	0	0
+0	0	7	1	2	2003	0.01	0.00	NA	4.4370	0	0
+0	0	7	1	2	2004	0.01	0.00	NA	4.4370	0	0
+0	0	7	1	2	2005	0.01	0.00	NA	4.4370	0	0
+0	0	7	1	2	2006	0.00	0.00	NA	4.4370	0	0
+0	0	7	1	2	2007	0.00	0.00	NA	4.4370	0	0
+0	0	7	1	2	2008	0.00	0.00	NA	4.4370	0	0
+0	0	7	1	2	2009	0.01	0.01	NA	4.4370	0	0
+0	0	7	1	2	2010	0.01	0.01	NA	4.4370	0	0
+0	0	7	1	2	2011	0.00	0.01	NA	4.4370	0	0
+0	0	7	1	2	2012	0.00	0.01	NA	4.4370	0	0
+0	0	7	1	2	2013	0.01	0.01	NA	4.4370	0	0
+0	0	7	1	2	2014	0.01	0.01	NA	4.4370	0	0
+0	0	7	1	2	2015	0.01	0.01	NA	4.4370	0	0
+0	0	7	1	2	2016	0.00	0.01	NA	4.4370	0	0
+0	0	7	1	2	2017	0.01	0.01	NA	4.4370	0	0
+0	0	7	1	2	2018	0.00	0.01	NA	4.4370	0	0
+0	0	7	1	2	2019	0.02	0.01	NA	4.4370	0	0
+0	0	7	1	3	2001	0.01	0.01	NA	-2.8710	0	0
+0	0	7	1	3	2002	0.00	0.01	NA	-2.8710	0	0
+0	0	7	1	3	2003	0.01	0.01	NA	-2.8710	0	0
+0	0	7	1	3	2004	0.01	0.01	NA	-2.8710	0	0
+0	0	7	1	3	2005	0.01	0.01	NA	-2.8710	0	0
+0	0	7	1	3	2006	0.01	0.01	NA	-2.8710	0	0
+0	0	7	1	3	2007	0.01	0.01	NA	-2.8710	0	0
+0	0	7	1	3	2008	0.01	0.01	NA	-2.8710	0	0
+0	0	7	1	3	2009	0.02	0.01	NA	-2.8710	0	0
+0	0	7	1	3	2010	0.00	0.01	NA	-2.8710	0	0
+0	0	7	1	3	2011	0.00	0.01	NA	-2.8710	0	0
+0	0	7	1	3	2012	0.00	0.01	NA	-2.8710	0	0
+0	0	7	1	3	2013	0.01	0.01	NA	-2.8710	0	0
+0	0	7	1	3	2014	0.01	0.00	NA	-2.8710	0	0
+0	0	7	1	3	2015	0.01	0.00	NA	-2.8710	0	0
+0	0	7	1	3	2016	0.00	0.00	NA	-2.8710	0	0
+0	0	7	1	3	2017	0.01	0.00	NA	-2.8710	0	0
+0	0	7	1	3	2018	0.00	0.00	NA	-2.8710	0	0
+0	0	7	1	3	2019	0.00	0.00	NA	-2.8710	0	0
+0	0	7	1	4	2001	0.01	0.01	NA	3.1834	0	0
+0	0	7	1	4	2002	0.01	0.01	NA	3.1834	0	0
+0	0	7	1	4	2003	0.01	0.01	NA	3.1834	0	0
+0	0	7	1	4	2004	0.01	0.01	NA	3.1834	0	0
+0	0	7	1	4	2005	0.01	0.01	NA	3.1834	0	0
+0	0	7	1	4	2006	0.00	0.01	NA	3.1834	0	0
+0	0	7	1	4	2007	0.01	0.01	NA	3.1834	0	0
+0	0	7	1	4	2008	0.01	0.01	NA	3.1834	0	0
+0	0	7	1	4	2009	0.02	0.01	NA	3.1834	0	0
+0	0	7	1	4	2010	0.01	0.01	NA	3.1834	0	0
+0	0	7	1	4	2011	0.02	0.01	NA	3.1834	0	0
+0	0	7	1	4	2012	0.02	0.01	NA	3.1834	0	0
+0	0	7	1	4	2013	0.01	0.01	NA	3.1834	0	0
+0	0	7	1	4	2014	0.01	0.01	NA	3.1834	0	0
+0	0	7	1	4	2015	0.02	0.01	NA	3.1834	0	0
+0	0	7	1	4	2016	0.01	0.01	NA	3.1834	0	0
+0	0	7	1	4	2017	0.01	0.01	NA	3.1834	0	0
+0	0	7	1	4	2018	0.01	0.01	NA	3.1834	0	0
+0	0	7	1	4	2019	0.01	0.01	NA	3.1834	0	0
+0	0	7	1	5	2001	0.01	0.02	NA	-0.8528	0	0
+0	0	7	1	5	2002	0.02	0.02	NA	-0.8528	0	0
+0	0	7	1	5	2003	0.02	0.02	NA	-0.8528	0	0
+0	0	7	1	5	2004	0.01	0.02	NA	-0.8528	0	0
+0	0	7	1	5	2005	0.01	0.02	NA	-0.8528	0	0
+0	0	7	1	5	2006	0.01	0.02	NA	-0.8528	0	0
+0	0	7	1	5	2007	0.02	0.02	NA	-0.8528	0	0
+0	0	7	1	5	2008	0.02	0.02	NA	-0.8528	0	0
+0	0	7	1	5	2009	0.04	0.02	NA	-0.8528	0	0
+0	0	7	1	5	2010	0.02	0.02	NA	-0.8528	0	0
+0	0	7	1	5	2011	0.02	0.02	NA	-0.8528	0	0
+0	0	7	1	5	2012	0.01	0.02	NA	-0.8528	0	0
+0	0	7	1	5	2013	0.02	0.01	NA	-0.8528	0	0
+0	0	7	1	5	2014	0.02	0.01	NA	-0.8528	0	0
+0	0	7	1	5	2015	0.02	0.01	NA	-0.8528	0	0
+0	0	7	1	5	2016	0.02	0.01	NA	-0.8528	0	0
+0	0	7	1	5	2017	0.01	0.01	NA	-0.8528	0	0
+0	0	7	1	5	2018	0.01	0.01	NA	-0.8528	0	0
+0	0	7	1	5	2019	0.01	0.01	NA	-0.8528	0	0
+0	1	7	1	1	2001	0.01	0.01	NA	0.2707	0	0
+0	1	7	1	1	2002	0.01	0.01	NA	0.2707	0	0
+0	1	7	1	1	2003	0.02	0.01	NA	0.2707	0	0
+0	1	7	1	1	2004	0.01	0.01	NA	0.2707	0	0
+0	1	7	1	1	2005	0.02	0.01	NA	0.2707	0	0
+0	1	7	1	1	2006	0.02	0.01	NA	0.2707	0	0
+0	1	7	1	1	2007	0.01	0.01	NA	0.2707	0	0
+0	1	7	1	1	2008	0.01	0.01	NA	0.2707	0	0
+0	1	7	1	1	2009	0.03	0.01	NA	0.2707	0	0
+0	1	7	1	1	2010	0.01	0.01	NA	0.2707	0	0
+0	1	7	1	1	2011	0.01	0.01	NA	0.2707	0	0
+0	1	7	1	1	2012	0.02	0.01	NA	0.2707	0	0
+0	1	7	1	1	2013	0.01	0.01	NA	0.2707	0	0
+0	1	7	1	1	2014	0.01	0.01	NA	0.2707	0	0
+0	1	7	1	1	2015	0.02	0.01	NA	0.2707	0	0
+0	1	7	1	1	2016	0.02	0.01	NA	0.2707	0	0
+0	1	7	1	1	2017	0.01	0.01	NA	0.2707	0	0
+0	1	7	1	1	2018	0.02	0.01	NA	0.2707	0	0
+0	1	7	1	1	2019	0.01	0.01	NA	0.2707	0	0
+0	1	7	1	2	2001	0.02	0.01	NA	0.0829	0	0
+0	1	7	1	2	2002	0.01	0.01	NA	0.0829	0	0
+0	1	7	1	2	2003	0.01	0.01	NA	0.0829	0	0
+0	1	7	1	2	2004	0.01	0.01	NA	0.0829	0	0
+0	1	7	1	2	2005	0.02	0.01	NA	0.0829	0	0
+0	1	7	1	2	2006	0.02	0.01	NA	0.0829	0	0
+0	1	7	1	2	2007	0.02	0.01	NA	0.0829	0	0
+0	1	7	1	2	2008	0.02	0.01	NA	0.0829	0	0
+0	1	7	1	2	2009	0.01	0.01	NA	0.0829	0	0
+0	1	7	1	2	2010	0.01	0.01	NA	0.0829	0	0
+0	1	7	1	2	2011	0.02	0.01	NA	0.0829	0	0
+0	1	7	1	2	2012	0.01	0.01	NA	0.0829	0	0
+0	1	7	1	2	2013	0.02	0.01	NA	0.0829	0	0
+0	1	7	1	2	2014	0.01	0.01	NA	0.0829	0	0
+0	1	7	1	2	2015	0.01	0.01	NA	0.0829	0	0
+0	1	7	1	2	2016	0.02	0.01	NA	0.0829	0	0
+0	1	7	1	2	2017	0.01	0.01	NA	0.0829	0	0
+0	1	7	1	2	2018	0.01	0.01	NA	0.0829	0	0
+0	1	7	1	2	2019	0.02	0.01	NA	0.0829	0	0
+0	1	7	1	3	2001	0.01	0.01	NA	0.5873	0	0
+0	1	7	1	3	2002	0.02	0.01	NA	0.5873	0	0
+0	1	7	1	3	2003	0.01	0.01	NA	0.5873	0	0
+0	1	7	1	3	2004	0.01	0.01	NA	0.5873	0	0
+0	1	7	1	3	2005	0.01	0.01	NA	0.5873	0	0
+0	1	7	1	3	2006	0.01	0.01	NA	0.5873	0	0
+0	1	7	1	3	2007	0.01	0.01	NA	0.5873	0	0
+0	1	7	1	3	2008	0.01	0.01	NA	0.5873	0	0
+0	1	7	1	3	2009	0.02	0.01	NA	0.5873	0	0
+0	1	7	1	3	2010	0.02	0.01	NA	0.5873	0	0
+0	1	7	1	3	2011	0.02	0.01	NA	0.5873	0	0
+0	1	7	1	3	2012	0.01	0.01	NA	0.5873	0	0
+0	1	7	1	3	2013	0.01	0.01	NA	0.5873	0	0
+0	1	7	1	3	2014	0.01	0.01	NA	0.5873	0	0
+0	1	7	1	3	2015	0.02	0.01	NA	0.5873	0	0
+0	1	7	1	3	2016	0.02	0.01	NA	0.5873	0	0
+0	1	7	1	3	2017	0.02	0.01	NA	0.5873	0	0
+0	1	7	1	3	2018	0.01	0.01	NA	0.5873	0	0
+0	1	7	1	3	2019	0.01	0.01	NA	0.5873	0	0
+0	1	7	1	4	2001	0.01	0.01	NA	1.8880	0	0
+0	1	7	1	4	2002	0.02	0.01	NA	1.8880	0	0
+0	1	7	1	4	2003	0.01	0.01	NA	1.8880	0	0
+0	1	7	1	4	2004	0.02	0.01	NA	1.8880	0	0
+0	1	7	1	4	2005	0.02	0.01	NA	1.8880	0	0
+0	1	7	1	4	2006	0.01	0.02	NA	1.8880	0	0
+0	1	7	1	4	2007	0.02	0.02	NA	1.8880	0	0
+0	1	7	1	4	2008	0.02	0.02	NA	1.8880	0	0
+0	1	7	1	4	2009	0.01	0.02	NA	1.8880	0	0
+0	1	7	1	4	2010	0.01	0.02	NA	1.8880	0	0
+0	1	7	1	4	2011	0.03	0.02	NA	1.8880	0	0
+0	1	7	1	4	2012	0.03	0.02	NA	1.8880	0	0
+0	1	7	1	4	2013	0.02	0.02	NA	1.8880	0	0
+0	1	7	1	4	2014	0.01	0.02	NA	1.8880	0	0
+0	1	7	1	4	2015	0.02	0.02	NA	1.8880	0	0
+0	1	7	1	4	2016	0.02	0.02	NA	1.8880	0	0
+0	1	7	1	4	2017	0.01	0.02	NA	1.8880	0	0
+0	1	7	1	4	2018	0.03	0.02	NA	1.8880	0	0
+0	1	7	1	4	2019	0.02	0.02	NA	1.8880	0	0
+0	1	7	1	5	2001	0.02	0.02	NA	-0.1762	0	0
+0	1	7	1	5	2002	0.01	0.02	NA	-0.1762	0	0
+0	1	7	1	5	2003	0.03	0.02	NA	-0.1762	0	0
+0	1	7	1	5	2004	0.03	0.02	NA	-0.1762	0	0
+0	1	7	1	5	2005	0.01	0.02	NA	-0.1762	0	0
+0	1	7	1	5	2006	0.02	0.02	NA	-0.1762	0	0
+0	1	7	1	5	2007	0.02	0.02	NA	-0.1762	0	0
+0	1	7	1	5	2008	0.02	0.02	NA	-0.1762	0	0
+0	1	7	1	5	2009	0.03	0.02	NA	-0.1762	0	0
+0	1	7	1	5	2010	0.02	0.02	NA	-0.1762	0	0
+0	1	7	1	5	2011	0.02	0.02	NA	-0.1762	0	0
+0	1	7	1	5	2012	0.02	0.02	NA	-0.1762	0	0
+0	1	7	1	5	2013	0.02	0.02	NA	-0.1762	0	0
+0	1	7	1	5	2014	0.02	0.02	NA	-0.1762	0	0
+0	1	7	1	5	2015	0.02	0.02	NA	-0.1762	0	0
+0	1	7	1	5	2016	0.01	0.02	NA	-0.1762	0	0
+0	1	7	1	5	2017	0.02	0.02	NA	-0.1762	0	0
+0	1	7	1	5	2018	0.02	0.02	NA	-0.1762	0	0
+0	1	7	1	5	2019	0.02	0.02	NA	-0.1762	0	0
+0	0	8	2	1	2003	0.31	0.31	NA	3.6412*	0	0
+0	0	8	2	1	2004	0.32	0.32	NA	3.6412*	0	0
+0	0	8	2	1	2006	0.35	0.35	NA	3.6412*	0	0
+0	0	8	2	1	2008	0.40	0.37	NA	3.6412*	0	0
+0	0	8	2	1	2012	0.41	0.43	NA	3.6412*	0	0
+0	0	8	2	2	2003	0.35	0.36	NA	2.1962*	0	0
+0	0	8	2	2	2004	0.36	0.37	NA	2.1962*	0	0
+0	0	8	2	2	2006	0.40	0.38	NA	2.1962*	0	0
+0	0	8	2	2	2008	0.41	0.40	NA	2.1962*	0	0
+0	0	8	2	2	2012	0.42	0.43	NA	2.1962*	0	0
+0	0	8	2	3	2003	0.37	0.39	NA	1.4044	0	0
+0	0	8	2	3	2004	0.42	0.39	NA	1.4044	0	0
+0	0	8	2	3	2006	0.40	0.41	NA	1.4044	0	0
+0	0	8	2	3	2008	0.41	0.42	NA	1.4044	0	0
+0	0	8	2	3	2012	0.44	0.44	NA	1.4044	0	0
+0	0	8	2	4	2003	0.38	0.38	NA	2.2543*	0	0
+0	0	8	2	4	2004	0.37	0.39	NA	2.2543*	0	0
+0	0	8	2	4	2006	0.43	0.41	NA	2.2543*	0	0
+0	0	8	2	4	2008	0.45	0.43	NA	2.2543*	0	0
+0	0	8	2	4	2012	0.45	0.47	NA	2.2543*	0	0
+0	0	8	2	5	2003	0.36	0.36	NA	-0.2763	0	0
+0	0	8	2	5	2004	0.36	0.36	NA	-0.2763	0	0
+0	0	8	2	5	2006	0.35	0.36	NA	-0.2763	0	0
+0	0	8	2	5	2008	0.38	0.36	NA	-0.2763	0	0
+0	0	8	2	5	2012	0.34	0.35	NA	-0.2763	0	0
+0	1	8	2	1	2003	0.23	0.24	NA	4.9292*	0	0
+0	1	8	2	1	2004	0.26	0.25	NA	4.9292*	0	0
+0	1	8	2	1	2006	0.27	0.27	NA	4.9292*	0	0
+0	1	8	2	1	2008	0.31	0.30	NA	4.9292*	0	0
+0	1	8	2	1	2012	0.36	0.37	NA	4.9292*	0	0
+0	1	8	2	2	2003	0.24	0.25	NA	4.0084*	0	0
+0	1	8	2	2	2004	0.25	0.26	NA	4.0084*	0	0
+0	1	8	2	2	2006	0.29	0.28	NA	4.0084*	0	0
+0	1	8	2	2	2008	0.31	0.30	NA	4.0084*	0	0
+0	1	8	2	2	2012	0.34	0.35	NA	4.0084*	0	0
+0	1	8	2	3	2003	0.26	0.27	NA	2.1354*	0	0
+0	1	8	2	3	2004	0.27	0.27	NA	2.1354*	0	0
+0	1	8	2	3	2006	0.29	0.29	NA	2.1354*	0	0
+0	1	8	2	3	2008	0.30	0.30	NA	2.1354*	0	0
+0	1	8	2	3	2012	0.32	0.32	NA	2.1354*	0	0
+0	1	8	2	4	2003	0.24	0.25	NA	3.4788*	0	0
+0	1	8	2	4	2004	0.24	0.25	NA	3.4788*	0	0
+0	1	8	2	4	2006	0.30	0.27	NA	3.4788*	0	0
+0	1	8	2	4	2008	0.30	0.29	NA	3.4788*	0	0
+0	1	8	2	4	2012	0.32	0.33	NA	3.4788*	0	0
+0	1	8	2	5	2003	0.24	0.23	NA	2.3439	0	0
+0	1	8	2	5	2004	0.23	0.24	NA	2.3439	0	0
+0	1	8	2	5	2006	0.26	0.25	NA	2.3439	0	0
+0	1	8	2	5	2008	0.28	0.26	NA	2.3439	0	0
+0	1	8	2	5	2012	0.28	0.29	NA	2.3439	0	0
+0	0	9	2	1	2003	0.69	0.69	NA	-1.9990*	0	0
+0	0	9	2	1	2004	0.68	0.68	NA	-1.9990*	0	0
+0	0	9	2	1	2006	0.65	0.65	NA	-1.9990*	0	0
+0	0	9	2	1	2008	0.60	0.62	NA	-1.9990*	0	0
+0	0	9	2	1	2012	0.59	0.57	NA	-1.9990*	0	0
+0	0	9	2	2	2003	0.65	0.64	NA	-1.3623*	0	0
+0	0	9	2	2	2004	0.64	0.63	NA	-1.3623*	0	0
+0	0	9	2	2	2006	0.60	0.62	NA	-1.3623*	0	0
+0	0	9	2	2	2008	0.59	0.60	NA	-1.3623*	0	0
+0	0	9	2	2	2012	0.58	0.57	NA	-1.3623*	0	0
+0	0	9	2	3	2003	0.63	0.61	NA	-0.9593	0	0
+0	0	9	2	3	2004	0.58	0.61	NA	-0.9593	0	0
+0	0	9	2	3	2006	0.60	0.59	NA	-0.9593	0	0
+0	0	9	2	3	2008	0.59	0.58	NA	-0.9593	0	0
+0	0	9	2	3	2012	0.56	0.56	NA	-0.9593	0	0
+0	0	9	2	4	2003	0.62	0.62	NA	-1.5737*	0	0
+0	0	9	2	4	2004	0.63	0.61	NA	-1.5737*	0	0
+0	0	9	2	4	2006	0.57	0.59	NA	-1.5737*	0	0
+0	0	9	2	4	2008	0.55	0.57	NA	-1.5737*	0	0
+0	0	9	2	4	2012	0.55	0.53	NA	-1.5737*	0	0
+0	0	9	2	5	2003	0.64	0.64	NA	0.1428	0	0
+0	0	9	2	5	2004	0.64	0.64	NA	0.1428	0	0
+0	0	9	2	5	2006	0.65	0.64	NA	0.1428	0	0
+0	0	9	2	5	2008	0.62	0.64	NA	0.1428	0	0
+0	0	9	2	5	2012	0.66	0.65	NA	0.1428	0	0
+0	1	9	2	1	2003	0.77	0.77	NA	-2.0080*	0	0
+0	1	9	2	1	2004	0.74	0.75	NA	-2.0080*	0	0
+0	1	9	2	1	2006	0.73	0.72	NA	-2.0080*	0	0
+0	1	9	2	1	2008	0.69	0.69	NA	-2.0080*	0	0
+0	1	9	2	1	2012	0.64	0.64	NA	-2.0080*	0	0
+0	1	9	2	2	2003	0.76	0.76	NA	-1.5865*	0	0
+0	1	9	2	2	2004	0.75	0.74	NA	-1.5865*	0	0
+0	1	9	2	2	2006	0.71	0.72	NA	-1.5865*	0	0
+0	1	9	2	2	2008	0.69	0.70	NA	-1.5865*	0	0
+0	1	9	2	2	2012	0.66	0.65	NA	-1.5865*	0	0
+0	1	9	2	3	2003	0.74	0.73	NA	-0.8634*	0	0
+0	1	9	2	3	2004	0.73	0.73	NA	-0.8634*	0	0
+0	1	9	2	3	2006	0.71	0.71	NA	-0.8634*	0	0
+0	1	9	2	3	2008	0.70	0.70	NA	-0.8634*	0	0
+0	1	9	2	3	2012	0.68	0.68	NA	-0.8634*	0	0
+0	1	9	2	4	2003	0.76	0.75	NA	-1.3137*	0	0
+0	1	9	2	4	2004	0.76	0.74	NA	-1.3137*	0	0
+0	1	9	2	4	2006	0.70	0.73	NA	-1.3137*	0	0
+0	1	9	2	4	2008	0.70	0.71	NA	-1.3137*	0	0
+0	1	9	2	4	2012	0.68	0.67	NA	-1.3137*	0	0
+0	1	9	2	5	2003	0.76	0.77	NA	-0.7868	0	0
+0	1	9	2	5	2004	0.77	0.76	NA	-0.7868	0	0
+0	1	9	2	5	2006	0.74	0.75	NA	-0.7868	0	0
+0	1	9	2	5	2008	0.72	0.74	NA	-0.7868	0	0
+0	1	9	2	5	2012	0.72	0.71	NA	-0.7868	0	0
+0	0	10	3	1	2001	0.19	0.18	NA	-3.0443*	0	0
+0	0	10	3	1	2002	0.17	0.18	NA	-3.0443*	0	0
+0	0	10	3	1	2003	0.17	0.17	NA	-3.0443*	0	0
+0	0	10	3	1	2004	0.16	0.17	NA	-3.0443*	0	0
+0	0	10	3	1	2005	0.17	0.16	NA	-3.0443*	0	0
+0	0	10	3	1	2006	0.15	0.16	NA	-3.0443*	0	0
+0	0	10	3	1	2007	0.16	0.15	NA	-3.0443*	0	0
+0	0	10	3	1	2008	0.15	0.15	NA	-3.0443*	0	0
+0	0	10	3	1	2009	0.14	0.14	NA	-3.0443*	0	0
+0	0	10	3	1	2010	0.12	0.14	NA	-3.0443*	0	0
+0	0	10	3	1	2011	0.13	0.13	NA	-3.0443*	0	0
+0	0	10	3	1	2012	0.12	0.13	NA	-3.0443*	0	0
+0	0	10	3	1	2013	0.13	0.12	NA	-3.0443*	0	0
+0	0	10	3	1	2014	0.15	0.12	NA	-3.0443*	0	0
+0	0	10	3	1	2015	0.10	0.12	NA	-3.0443*	0	0
+0	0	10	3	1	2016	0.11	0.11	NA	-3.0443*	0	0
+0	0	10	3	1	2017	0.12	0.11	NA	-3.0443*	0	0
+0	0	10	3	1	2018	0.11	0.11	NA	-3.0443*	0	0
+0	0	10	3	1	2019	0.10	0.10	NA	-3.0443*	0	0
+0	0	10	3	2	2001	0.19	0.21	NA	-2.2838*	0	0
+0	0	10	3	2	2002	0.21	0.21	NA	-2.2838*	0	0
+0	0	10	3	2	2003	0.20	0.20	NA	-2.2838*	0	0
+0	0	10	3	2	2004	0.19	0.20	NA	-2.2838*	0	0
+0	0	10	3	2	2005	0.21	0.20	NA	-2.2838*	0	0
+0	0	10	3	2	2006	0.20	0.19	NA	-2.2838*	0	0
+0	0	10	3	2	2007	0.19	0.19	NA	-2.2838*	0	0
+0	0	10	3	2	2008	0.18	0.18	NA	-2.2838*	0	0
+0	0	10	3	2	2009	0.18	0.18	NA	-2.2838*	0	0
+0	0	10	3	2	2010	0.18	0.17	NA	-2.2838*	0	0
+0	0	10	3	2	2011	0.19	0.17	NA	-2.2838*	0	0
+0	0	10	3	2	2012	0.18	0.17	NA	-2.2838*	0	0
+0	0	10	3	2	2013	0.17	0.16	NA	-2.2838*	0	0
+0	0	10	3	2	2014	0.17	0.16	NA	-2.2838*	0	0
+0	0	10	3	2	2015	0.12	0.15	NA	-2.2838*	0	0
+0	0	10	3	2	2016	0.15	0.15	NA	-2.2838*	0	0
+0	0	10	3	2	2017	0.16	0.15	NA	-2.2838*	0	0
+0	0	10	3	2	2018	0.12	0.14	NA	-2.2838*	0	0
+0	0	10	3	2	2019	0.15	0.14	NA	-2.2838*	0	0
+0	0	10	3	3	2001	0.21	0.21	NA	10.6455	1	1
+0	0	10	3	3	2002	0.24	0.24	NA	10.6455	1	1
+0	0	10	3	3	2003	0.28	0.26	Joinpoint 1	NA	1	1
+0	0	10	3	3	2004	0.25	0.25	NA	-2.5921*	1	1
+0	0	10	3	3	2005	0.25	0.25	NA	-2.5921*	1	1
+0	0	10	3	3	2006	0.23	0.24	NA	-2.5921*	1	1
+0	0	10	3	3	2007	0.26	0.24	NA	-2.5921*	1	1
+0	0	10	3	3	2008	0.20	0.23	NA	-2.5921*	1	1
+0	0	10	3	3	2009	0.20	0.22	NA	-2.5921*	1	1
+0	0	10	3	3	2010	0.23	0.22	NA	-2.5921*	1	1
+0	0	10	3	3	2011	0.19	0.21	NA	-2.5921*	1	1
+0	0	10	3	3	2012	0.20	0.21	NA	-2.5921*	1	1
+0	0	10	3	3	2013	0.24	0.20	NA	-2.5921*	1	1
+0	0	10	3	3	2014	0.21	0.20	NA	-2.5921*	1	1
+0	0	10	3	3	2015	0.20	0.19	NA	-2.5921*	1	1
+0	0	10	3	3	2016	0.17	0.19	NA	-2.5921*	1	1
+0	0	10	3	3	2017	0.18	0.18	NA	-2.5921*	1	1
+0	0	10	3	3	2018	0.18	0.18	NA	-2.5921*	1	1
+0	0	10	3	3	2019	0.17	0.17	NA	-2.5921*	1	1
+0	0	10	3	4	2001	0.30	0.30	NA	0.1871	1	1
+0	0	10	3	4	2002	0.28	0.30	NA	0.1871	1	1
+0	0	10	3	4	2003	0.31	0.30	NA	0.1871	1	1
+0	0	10	3	4	2004	0.30	0.30	NA	0.1871	1	1
+0	0	10	3	4	2005	0.33	0.30	NA	0.1871	1	1
+0	0	10	3	4	2006	0.30	0.30	NA	0.1871	1	1
+0	0	10	3	4	2007	0.28	0.30	NA	0.1871	1	1
+0	0	10	3	4	2008	0.30	0.30	NA	0.1871	1	1
+0	0	10	3	4	2009	0.31	0.30	Joinpoint 1	NA	1	1
+0	0	10	3	4	2010	0.28	0.29	NA	-3.5463*	1	1
+0	0	10	3	4	2011	0.27	0.28	NA	-3.5463*	1	1
+0	0	10	3	4	2012	0.28	0.27	NA	-3.5463*	1	1
+0	0	10	3	4	2013	0.27	0.26	NA	-3.5463*	1	1
+0	0	10	3	4	2014	0.26	0.25	NA	-3.5463*	1	1
+0	0	10	3	4	2015	0.25	0.24	NA	-3.5463*	1	1
+0	0	10	3	4	2016	0.23	0.23	NA	-3.5463*	1	1
+0	0	10	3	4	2017	0.24	0.23	NA	-3.5463*	1	1
+0	0	10	3	4	2018	0.20	0.22	NA	-3.5463*	1	1
+0	0	10	3	4	2019	0.20	0.21	NA	-3.5463*	1	1
+0	0	10	3	5	2001	0.34	0.39	NA	-1.1828*	0	0
+0	0	10	3	5	2002	0.38	0.39	NA	-1.1828*	0	0
+0	0	10	3	5	2003	0.39	0.38	NA	-1.1828*	0	0
+0	0	10	3	5	2004	0.35	0.38	NA	-1.1828*	0	0
+0	0	10	3	5	2005	0.41	0.37	NA	-1.1828*	0	0
+0	0	10	3	5	2006	0.36	0.37	NA	-1.1828*	0	0
+0	0	10	3	5	2007	0.35	0.36	NA	-1.1828*	0	0
+0	0	10	3	5	2008	0.38	0.36	NA	-1.1828*	0	0
+0	0	10	3	5	2009	0.40	0.36	NA	-1.1828*	0	0
+0	0	10	3	5	2010	0.32	0.35	NA	-1.1828*	0	0
+0	0	10	3	5	2011	0.40	0.35	NA	-1.1828*	0	0
+0	0	10	3	5	2012	0.35	0.34	NA	-1.1828*	0	0
+0	0	10	3	5	2013	0.41	0.34	NA	-1.1828*	0	0
+0	0	10	3	5	2014	0.31	0.33	NA	-1.1828*	0	0
+0	0	10	3	5	2015	0.31	0.33	NA	-1.1828*	0	0
+0	0	10	3	5	2016	0.35	0.33	NA	-1.1828*	0	0
+0	0	10	3	5	2017	0.30	0.32	NA	-1.1828*	0	0
+0	0	10	3	5	2018	0.32	0.32	NA	-1.1828*	0	0
+0	0	10	3	5	2019	0.28	0.32	NA	-1.1828*	0	0
+0	1	10	3	1	2001	0.17	0.17	NA	-4.6328*	0	0
+0	1	10	3	1	2002	0.16	0.16	NA	-4.6328*	0	0
+0	1	10	3	1	2003	0.15	0.15	NA	-4.6328*	0	0
+0	1	10	3	1	2004	0.16	0.14	NA	-4.6328*	0	0
+0	1	10	3	1	2005	0.16	0.14	NA	-4.6328*	0	0
+0	1	10	3	1	2006	0.11	0.13	NA	-4.6328*	0	0
+0	1	10	3	1	2007	0.13	0.13	NA	-4.6328*	0	0
+0	1	10	3	1	2008	0.12	0.12	NA	-4.6328*	0	0
+0	1	10	3	1	2009	0.12	0.11	NA	-4.6328*	0	0
+0	1	10	3	1	2010	0.10	0.11	NA	-4.6328*	0	0
+0	1	10	3	1	2011	0.11	0.10	NA	-4.6328*	0	0
+0	1	10	3	1	2012	0.08	0.10	NA	-4.6328*	0	0
+0	1	10	3	1	2013	0.09	0.09	NA	-4.6328*	0	0
+0	1	10	3	1	2014	0.09	0.09	NA	-4.6328*	0	0
+0	1	10	3	1	2015	0.09	0.09	NA	-4.6328*	0	0
+0	1	10	3	1	2016	0.08	0.08	NA	-4.6328*	0	0
+0	1	10	3	1	2017	0.08	0.08	NA	-4.6328*	0	0
+0	1	10	3	1	2018	0.08	0.07	NA	-4.6328*	0	0
+0	1	10	3	1	2019	0.07	0.07	NA	-4.6328*	0	0
+0	1	10	3	2	2001	0.19	0.20	NA	-3.4150*	0	0
+0	1	10	3	2	2002	0.21	0.19	NA	-3.4150*	0	0
+0	1	10	3	2	2003	0.17	0.18	NA	-3.4150*	0	0
+0	1	10	3	2	2004	0.16	0.18	NA	-3.4150*	0	0
+0	1	10	3	2	2005	0.19	0.17	NA	-3.4150*	0	0
+0	1	10	3	2	2006	0.17	0.16	NA	-3.4150*	0	0
+0	1	10	3	2	2007	0.14	0.16	NA	-3.4150*	0	0
+0	1	10	3	2	2008	0.14	0.15	NA	-3.4150*	0	0
+0	1	10	3	2	2009	0.16	0.15	NA	-3.4150*	0	0
+0	1	10	3	2	2010	0.13	0.14	NA	-3.4150*	0	0
+0	1	10	3	2	2011	0.14	0.14	NA	-3.4150*	0	0
+0	1	10	3	2	2012	0.15	0.13	NA	-3.4150*	0	0
+0	1	10	3	2	2013	0.13	0.13	NA	-3.4150*	0	0
+0	1	10	3	2	2014	0.12	0.12	NA	-3.4150*	0	0
+0	1	10	3	2	2015	0.12	0.12	NA	-3.4150*	0	0
+0	1	10	3	2	2016	0.11	0.12	NA	-3.4150*	0	0
+0	1	10	3	2	2017	0.12	0.11	NA	-3.4150*	0	0
+0	1	10	3	2	2018	0.10	0.11	NA	-3.4150*	0	0
+0	1	10	3	2	2019	0.11	0.11	NA	-3.4150*	0	0
+0	1	10	3	3	2001	0.23	0.24	NA	-3.4728*	0	0
+0	1	10	3	3	2002	0.23	0.23	NA	-3.4728*	0	0
+0	1	10	3	3	2003	0.24	0.23	NA	-3.4728*	0	0
+0	1	10	3	3	2004	0.20	0.22	NA	-3.4728*	0	0
+0	1	10	3	3	2005	0.21	0.21	NA	-3.4728*	0	0
+0	1	10	3	3	2006	0.20	0.20	NA	-3.4728*	0	0
+0	1	10	3	3	2007	0.21	0.20	NA	-3.4728*	0	0
+0	1	10	3	3	2008	0.18	0.19	NA	-3.4728*	0	0
+0	1	10	3	3	2009	0.22	0.18	NA	-3.4728*	0	0
+0	1	10	3	3	2010	0.19	0.18	NA	-3.4728*	0	0
+0	1	10	3	3	2011	0.17	0.17	NA	-3.4728*	0	0
+0	1	10	3	3	2012	0.15	0.16	NA	-3.4728*	0	0
+0	1	10	3	3	2013	0.16	0.16	NA	-3.4728*	0	0
+0	1	10	3	3	2014	0.16	0.15	NA	-3.4728*	0	0
+0	1	10	3	3	2015	0.14	0.15	NA	-3.4728*	0	0
+0	1	10	3	3	2016	0.13	0.14	NA	-3.4728*	0	0
+0	1	10	3	3	2017	0.13	0.14	NA	-3.4728*	0	0
+0	1	10	3	3	2018	0.15	0.13	NA	-3.4728*	0	0
+0	1	10	3	3	2019	0.12	0.13	NA	-3.4728*	0	0
+0	1	10	3	4	2001	0.29	0.29	NA	-2.7001*	0	0
+0	1	10	3	4	2002	0.28	0.29	NA	-2.7001*	0	0
+0	1	10	3	4	2003	0.31	0.28	NA	-2.7001*	0	0
+0	1	10	3	4	2004	0.27	0.27	NA	-2.7001*	0	0
+0	1	10	3	4	2005	0.26	0.26	NA	-2.7001*	0	0
+0	1	10	3	4	2006	0.26	0.26	NA	-2.7001*	0	0
+0	1	10	3	4	2007	0.25	0.25	NA	-2.7001*	0	0
+0	1	10	3	4	2008	0.25	0.24	NA	-2.7001*	0	0
+0	1	10	3	4	2009	0.23	0.24	NA	-2.7001*	0	0
+0	1	10	3	4	2010	0.22	0.23	NA	-2.7001*	0	0
+0	1	10	3	4	2011	0.20	0.22	NA	-2.7001*	0	0
+0	1	10	3	4	2012	0.22	0.22	NA	-2.7001*	0	0
+0	1	10	3	4	2013	0.21	0.21	NA	-2.7001*	0	0
+0	1	10	3	4	2014	0.22	0.21	NA	-2.7001*	0	0
+0	1	10	3	4	2015	0.19	0.20	NA	-2.7001*	0	0
+0	1	10	3	4	2016	0.23	0.20	NA	-2.7001*	0	0
+0	1	10	3	4	2017	0.19	0.19	NA	-2.7001*	0	0
+0	1	10	3	4	2018	0.17	0.18	NA	-2.7001*	0	0
+0	1	10	3	4	2019	0.19	0.18	NA	-2.7001*	0	0
+0	1	10	3	5	2001	0.31	0.35	NA	-1.7826*	0	0
+0	1	10	3	5	2002	0.34	0.34	NA	-1.7826*	0	0
+0	1	10	3	5	2003	0.35	0.34	NA	-1.7826*	0	0
+0	1	10	3	5	2004	0.35	0.33	NA	-1.7826*	0	0
+0	1	10	3	5	2005	0.35	0.33	NA	-1.7826*	0	0
+0	1	10	3	5	2006	0.32	0.32	NA	-1.7826*	0	0
+0	1	10	3	5	2007	0.33	0.31	NA	-1.7826*	0	0
+0	1	10	3	5	2008	0.30	0.31	NA	-1.7826*	0	0
+0	1	10	3	5	2009	0.29	0.30	NA	-1.7826*	0	0
+0	1	10	3	5	2010	0.27	0.30	NA	-1.7826*	0	0
+0	1	10	3	5	2011	0.33	0.29	NA	-1.7826*	0	0
+0	1	10	3	5	2012	0.29	0.29	NA	-1.7826*	0	0
+0	1	10	3	5	2013	0.29	0.28	NA	-1.7826*	0	0
+0	1	10	3	5	2014	0.27	0.28	NA	-1.7826*	0	0
+0	1	10	3	5	2015	0.29	0.27	NA	-1.7826*	0	0
+0	1	10	3	5	2016	0.24	0.27	NA	-1.7826*	0	0
+0	1	10	3	5	2017	0.25	0.26	NA	-1.7826*	0	0
+0	1	10	3	5	2018	0.27	0.26	NA	-1.7826*	0	0
+0	1	10	3	5	2019	0.24	0.25	NA	-1.7826*	0	0
+0	0	11	3	1	2001	0.46	0.46	NA	2.5229*	1	1
+0	0	11	3	1	2002	0.49	0.47	NA	2.5229*	1	1
+0	0	11	3	1	2003	0.49	0.49	NA	2.5229*	1	1
+0	0	11	3	1	2004	0.48	0.50	NA	2.5229*	1	1
+0	0	11	3	1	2005	0.51	0.51	NA	2.5229*	1	1
+0	0	11	3	1	2006	0.53	0.52	NA	2.5229*	1	1
+0	0	11	3	1	2007	0.53	0.54	NA	2.5229*	1	1
+0	0	11	3	1	2008	0.55	0.55	Joinpoint 1	NA	1	1
+0	0	11	3	1	2009	0.57	0.55	NA	0.4393	1	1
+0	0	11	3	1	2010	0.56	0.55	NA	0.4393	1	1
+0	0	11	3	1	2011	0.55	0.56	NA	0.4393	1	1
+0	0	11	3	1	2012	0.57	0.56	NA	0.4393	1	1
+0	0	11	3	1	2013	0.53	0.56	NA	0.4393	1	1
+0	0	11	3	1	2014	0.55	0.56	NA	0.4393	1	1
+0	0	11	3	1	2015	0.59	0.57	NA	0.4393	1	1
+0	0	11	3	1	2016	0.57	0.57	NA	0.4393	1	1
+0	0	11	3	1	2017	0.57	0.57	NA	0.4393	1	1
+0	0	11	3	1	2018	0.58	0.57	NA	0.4393	1	1
+0	0	11	3	1	2019	0.58	0.58	NA	0.4393	1	1
+0	0	11	3	2	2001	0.44	0.45	NA	1.2562*	0	0
+0	0	11	3	2	2002	0.45	0.46	NA	1.2562*	0	0
+0	0	11	3	2	2003	0.47	0.46	NA	1.2562*	0	0
+0	0	11	3	2	2004	0.49	0.47	NA	1.2562*	0	0
+0	0	11	3	2	2005	0.46	0.47	NA	1.2562*	0	0
+0	0	11	3	2	2006	0.50	0.48	NA	1.2562*	0	0
+0	0	11	3	2	2007	0.49	0.49	NA	1.2562*	0	0
+0	0	11	3	2	2008	0.49	0.49	NA	1.2562*	0	0
+0	0	11	3	2	2009	0.49	0.50	NA	1.2562*	0	0
+0	0	11	3	2	2010	0.48	0.50	NA	1.2562*	0	0
+0	0	11	3	2	2011	0.49	0.51	NA	1.2562*	0	0
+0	0	11	3	2	2012	0.53	0.52	NA	1.2562*	0	0
+0	0	11	3	2	2013	0.50	0.52	NA	1.2562*	0	0
+0	0	11	3	2	2014	0.53	0.53	NA	1.2562*	0	0
+0	0	11	3	2	2015	0.59	0.54	NA	1.2562*	0	0
+0	0	11	3	2	2016	0.55	0.54	NA	1.2562*	0	0
+0	0	11	3	2	2017	0.54	0.55	NA	1.2562*	0	0
+0	0	11	3	2	2018	0.57	0.56	NA	1.2562*	0	0
+0	0	11	3	2	2019	0.55	0.56	NA	1.2562*	0	0
+0	0	11	3	3	2001	0.46	0.43	NA	1.1404*	0	0
+0	0	11	3	3	2002	0.45	0.43	NA	1.1404*	0	0
+0	0	11	3	3	2003	0.41	0.44	NA	1.1404*	0	0
+0	0	11	3	3	2004	0.45	0.44	NA	1.1404*	0	0
+0	0	11	3	3	2005	0.42	0.45	NA	1.1404*	0	0
+0	0	11	3	3	2006	0.46	0.45	NA	1.1404*	0	0
+0	0	11	3	3	2007	0.44	0.46	NA	1.1404*	0	0
+0	0	11	3	3	2008	0.48	0.47	NA	1.1404*	0	0
+0	0	11	3	3	2009	0.48	0.47	NA	1.1404*	0	0
+0	0	11	3	3	2010	0.48	0.48	NA	1.1404*	0	0
+0	0	11	3	3	2011	0.50	0.48	NA	1.1404*	0	0
+0	0	11	3	3	2012	0.51	0.49	NA	1.1404*	0	0
+0	0	11	3	3	2013	0.45	0.49	NA	1.1404*	0	0
+0	0	11	3	3	2014	0.49	0.50	NA	1.1404*	0	0
+0	0	11	3	3	2015	0.47	0.50	NA	1.1404*	0	0
+0	0	11	3	3	2016	0.52	0.51	NA	1.1404*	0	0
+0	0	11	3	3	2017	0.52	0.52	NA	1.1404*	0	0
+0	0	11	3	3	2018	0.53	0.52	NA	1.1404*	0	0
+0	0	11	3	3	2019	0.55	0.53	NA	1.1404*	0	0
+0	0	11	3	4	2001	0.38	0.39	NA	1.4218*	0	0
+0	0	11	3	4	2002	0.44	0.40	NA	1.4218*	0	0
+0	0	11	3	4	2003	0.41	0.40	NA	1.4218*	0	0
+0	0	11	3	4	2004	0.40	0.41	NA	1.4218*	0	0
+0	0	11	3	4	2005	0.40	0.41	NA	1.4218*	0	0
+0	0	11	3	4	2006	0.43	0.42	NA	1.4218*	0	0
+0	0	11	3	4	2007	0.42	0.43	NA	1.4218*	0	0
+0	0	11	3	4	2008	0.44	0.43	NA	1.4218*	0	0
+0	0	11	3	4	2009	0.43	0.44	NA	1.4218*	0	0
+0	0	11	3	4	2010	0.43	0.44	NA	1.4218*	0	0
+0	0	11	3	4	2011	0.43	0.45	NA	1.4218*	0	0
+0	0	11	3	4	2012	0.45	0.46	NA	1.4218*	0	0
+0	0	11	3	4	2013	0.46	0.46	NA	1.4218*	0	0
+0	0	11	3	4	2014	0.48	0.47	NA	1.4218*	0	0
+0	0	11	3	4	2015	0.47	0.48	NA	1.4218*	0	0
+0	0	11	3	4	2016	0.50	0.48	NA	1.4218*	0	0
+0	0	11	3	4	2017	0.48	0.49	NA	1.4218*	0	0
+0	0	11	3	4	2018	0.48	0.50	NA	1.4218*	0	0
+0	0	11	3	4	2019	0.55	0.50	NA	1.4218*	0	0
+0	0	11	3	5	2001	0.35	0.37	NA	1.0075*	0	0
+0	0	11	3	5	2002	0.35	0.37	NA	1.0075*	0	0
+0	0	11	3	5	2003	0.37	0.37	NA	1.0075*	0	0
+0	0	11	3	5	2004	0.40	0.38	NA	1.0075*	0	0
+0	0	11	3	5	2005	0.39	0.38	NA	1.0075*	0	0
+0	0	11	3	5	2006	0.41	0.39	NA	1.0075*	0	0
+0	0	11	3	5	2007	0.41	0.39	NA	1.0075*	0	0
+0	0	11	3	5	2008	0.38	0.39	NA	1.0075*	0	0
+0	0	11	3	5	2009	0.37	0.40	NA	1.0075*	0	0
+0	0	11	3	5	2010	0.43	0.40	NA	1.0075*	0	0
+0	0	11	3	5	2011	0.38	0.40	NA	1.0075*	0	0
+0	0	11	3	5	2012	0.42	0.41	NA	1.0075*	0	0
+0	0	11	3	5	2013	0.37	0.41	NA	1.0075*	0	0
+0	0	11	3	5	2014	0.44	0.42	NA	1.0075*	0	0
+0	0	11	3	5	2015	0.44	0.42	NA	1.0075*	0	0
+0	0	11	3	5	2016	0.40	0.43	NA	1.0075*	0	0
+0	0	11	3	5	2017	0.45	0.43	NA	1.0075*	0	0
+0	0	11	3	5	2018	0.43	0.43	NA	1.0075*	0	0
+0	0	11	3	5	2019	0.45	0.44	NA	1.0075*	0	0
+0	1	11	3	1	2001	0.58	0.60	NA	0.8424*	0	0
+0	1	11	3	1	2002	0.61	0.60	NA	0.8424*	0	0
+0	1	11	3	1	2003	0.62	0.61	NA	0.8424*	0	0
+0	1	11	3	1	2004	0.62	0.61	NA	0.8424*	0	0
+0	1	11	3	1	2005	0.61	0.62	NA	0.8424*	0	0
+0	1	11	3	1	2006	0.62	0.62	NA	0.8424*	0	0
+0	1	11	3	1	2007	0.63	0.63	NA	0.8424*	0	0
+0	1	11	3	1	2008	0.65	0.63	NA	0.8424*	0	0
+0	1	11	3	1	2009	0.63	0.64	NA	0.8424*	0	0
+0	1	11	3	1	2010	0.65	0.64	NA	0.8424*	0	0
+0	1	11	3	1	2011	0.64	0.65	NA	0.8424*	0	0
+0	1	11	3	1	2012	0.67	0.66	NA	0.8424*	0	0
+0	1	11	3	1	2013	0.68	0.66	NA	0.8424*	0	0
+0	1	11	3	1	2014	0.67	0.67	NA	0.8424*	0	0
+0	1	11	3	1	2015	0.64	0.67	NA	0.8424*	0	0
+0	1	11	3	1	2016	0.70	0.68	NA	0.8424*	0	0
+0	1	11	3	1	2017	0.67	0.68	NA	0.8424*	0	0
+0	1	11	3	1	2018	0.69	0.69	NA	0.8424*	0	0
+0	1	11	3	1	2019	0.69	0.70	NA	0.8424*	0	0
+0	1	11	3	2	2001	0.56	0.56	NA	0.8172*	0	0
+0	1	11	3	2	2002	0.53	0.57	NA	0.8172*	0	0
+0	1	11	3	2	2003	0.60	0.57	NA	0.8172*	0	0
+0	1	11	3	2	2004	0.57	0.58	NA	0.8172*	0	0
+0	1	11	3	2	2005	0.59	0.58	NA	0.8172*	0	0
+0	1	11	3	2	2006	0.60	0.59	NA	0.8172*	0	0
+0	1	11	3	2	2007	0.60	0.59	NA	0.8172*	0	0
+0	1	11	3	2	2008	0.60	0.60	NA	0.8172*	0	0
+0	1	11	3	2	2009	0.59	0.60	NA	0.8172*	0	0
+0	1	11	3	2	2010	0.63	0.61	NA	0.8172*	0	0
+0	1	11	3	2	2011	0.61	0.61	NA	0.8172*	0	0
+0	1	11	3	2	2012	0.63	0.61	NA	0.8172*	0	0
+0	1	11	3	2	2013	0.60	0.62	NA	0.8172*	0	0
+0	1	11	3	2	2014	0.63	0.63	NA	0.8172*	0	0
+0	1	11	3	2	2015	0.62	0.63	NA	0.8172*	0	0
+0	1	11	3	2	2016	0.65	0.64	NA	0.8172*	0	0
+0	1	11	3	2	2017	0.62	0.64	NA	0.8172*	0	0
+0	1	11	3	2	2018	0.63	0.65	NA	0.8172*	0	0
+0	1	11	3	2	2019	0.66	0.65	NA	0.8172*	0	0
+0	1	11	3	3	2001	0.53	0.54	NA	0.7715*	0	0
+0	1	11	3	3	2002	0.55	0.54	NA	0.7715*	0	0
+0	1	11	3	3	2003	0.54	0.55	NA	0.7715*	0	0
+0	1	11	3	3	2004	0.55	0.55	NA	0.7715*	0	0
+0	1	11	3	3	2005	0.57	0.55	NA	0.7715*	0	0
+0	1	11	3	3	2006	0.57	0.56	NA	0.7715*	0	0
+0	1	11	3	3	2007	0.59	0.56	NA	0.7715*	0	0
+0	1	11	3	3	2008	0.57	0.57	NA	0.7715*	0	0
+0	1	11	3	3	2009	0.52	0.57	NA	0.7715*	0	0
+0	1	11	3	3	2010	0.55	0.58	NA	0.7715*	0	0
+0	1	11	3	3	2011	0.58	0.58	NA	0.7715*	0	0
+0	1	11	3	3	2012	0.61	0.58	NA	0.7715*	0	0
+0	1	11	3	3	2013	0.59	0.59	NA	0.7715*	0	0
+0	1	11	3	3	2014	0.59	0.59	NA	0.7715*	0	0
+0	1	11	3	3	2015	0.60	0.60	NA	0.7715*	0	0
+0	1	11	3	3	2016	0.62	0.60	NA	0.7715*	0	0
+0	1	11	3	3	2017	0.58	0.61	NA	0.7715*	0	0
+0	1	11	3	3	2018	0.61	0.61	NA	0.7715*	0	0
+0	1	11	3	3	2019	0.65	0.62	NA	0.7715*	0	0
+0	1	11	3	4	2001	0.49	0.50	NA	0.9323*	0	0
+0	1	11	3	4	2002	0.52	0.51	NA	0.9323*	0	0
+0	1	11	3	4	2003	0.49	0.51	NA	0.9323*	0	0
+0	1	11	3	4	2004	0.51	0.52	NA	0.9323*	0	0
+0	1	11	3	4	2005	0.56	0.52	NA	0.9323*	0	0
+0	1	11	3	4	2006	0.53	0.53	NA	0.9323*	0	0
+0	1	11	3	4	2007	0.53	0.53	NA	0.9323*	0	0
+0	1	11	3	4	2008	0.52	0.54	NA	0.9323*	0	0
+0	1	11	3	4	2009	0.54	0.54	NA	0.9323*	0	0
+0	1	11	3	4	2010	0.54	0.55	NA	0.9323*	0	0
+0	1	11	3	4	2011	0.57	0.55	NA	0.9323*	0	0
+0	1	11	3	4	2012	0.55	0.56	NA	0.9323*	0	0
+0	1	11	3	4	2013	0.55	0.56	NA	0.9323*	0	0
+0	1	11	3	4	2014	0.58	0.57	NA	0.9323*	0	0
+0	1	11	3	4	2015	0.59	0.57	NA	0.9323*	0	0
+0	1	11	3	4	2016	0.53	0.58	NA	0.9323*	0	0
+0	1	11	3	4	2017	0.57	0.58	NA	0.9323*	0	0
+0	1	11	3	4	2018	0.57	0.59	NA	0.9323*	0	0
+0	1	11	3	4	2019	0.63	0.59	NA	0.9323*	0	0
+0	1	11	3	5	2001	0.47	0.46	NA	0.9217*	0	0
+0	1	11	3	5	2002	0.48	0.47	NA	0.9217*	0	0
+0	1	11	3	5	2003	0.46	0.47	NA	0.9217*	0	0
+0	1	11	3	5	2004	0.47	0.48	NA	0.9217*	0	0
+0	1	11	3	5	2005	0.44	0.48	NA	0.9217*	0	0
+0	1	11	3	5	2006	0.49	0.48	NA	0.9217*	0	0
+0	1	11	3	5	2007	0.48	0.49	NA	0.9217*	0	0
+0	1	11	3	5	2008	0.50	0.49	NA	0.9217*	0	0
+0	1	11	3	5	2009	0.54	0.50	NA	0.9217*	0	0
+0	1	11	3	5	2010	0.55	0.50	NA	0.9217*	0	0
+0	1	11	3	5	2011	0.48	0.51	NA	0.9217*	0	0
+0	1	11	3	5	2012	0.52	0.51	NA	0.9217*	0	0
+0	1	11	3	5	2013	0.49	0.52	NA	0.9217*	0	0
+0	1	11	3	5	2014	0.55	0.52	NA	0.9217*	0	0
+0	1	11	3	5	2015	0.50	0.53	NA	0.9217*	0	0
+0	1	11	3	5	2016	0.52	0.53	NA	0.9217*	0	0
+0	1	11	3	5	2017	0.55	0.54	NA	0.9217*	0	0
+0	1	11	3	5	2018	0.53	0.54	NA	0.9217*	0	0
+0	1	11	3	5	2019	0.56	0.55	NA	0.9217*	0	0
+0	0	12	3	1	2001	0.35	0.36	NA	-2.2242*	1	1
+0	0	12	3	1	2002	0.35	0.35	NA	-2.2242*	1	1
+0	0	12	3	1	2003	0.34	0.34	NA	-2.2242*	1	1
+0	0	12	3	1	2004	0.36	0.33	NA	-2.2242*	1	1
+0	0	12	3	1	2005	0.32	0.33	NA	-2.2242*	1	1
+0	0	12	3	1	2006	0.32	0.32	NA	-2.2242*	1	1
+0	0	12	3	1	2007	0.31	0.31	NA	-2.2242*	1	1
+0	0	12	3	1	2008	0.30	0.31	Joinpoint 1	NA	1	1
+0	0	12	3	1	2009	0.29	0.31	NA	0.3713	1	1
+0	0	12	3	1	2010	0.32	0.31	NA	0.3713	1	1
+0	0	12	3	1	2011	0.32	0.31	NA	0.3713	1	1
+0	0	12	3	1	2012	0.31	0.31	NA	0.3713	1	1
+0	0	12	3	1	2013	0.34	0.31	NA	0.3713	1	1
+0	0	12	3	1	2014	0.30	0.31	NA	0.3713	1	1
+0	0	12	3	1	2015	0.31	0.31	NA	0.3713	1	1
+0	0	12	3	1	2016	0.32	0.31	NA	0.3713	1	1
+0	0	12	3	1	2017	0.31	0.32	NA	0.3713	1	1
+0	0	12	3	1	2018	0.31	0.32	NA	0.3713	1	1
+0	0	12	3	1	2019	0.32	0.32	NA	0.3713	1	1
+0	0	12	3	2	2001	0.37	0.34	NA	-0.7701*	0	0
+0	0	12	3	2	2002	0.33	0.34	NA	-0.7701*	0	0
+0	0	12	3	2	2003	0.33	0.34	NA	-0.7701*	0	0
+0	0	12	3	2	2004	0.32	0.33	NA	-0.7701*	0	0
+0	0	12	3	2	2005	0.34	0.33	NA	-0.7701*	0	0
+0	0	12	3	2	2006	0.30	0.33	NA	-0.7701*	0	0
+0	0	12	3	2	2007	0.32	0.32	NA	-0.7701*	0	0
+0	0	12	3	2	2008	0.33	0.32	NA	-0.7701*	0	0
+0	0	12	3	2	2009	0.33	0.32	NA	-0.7701*	0	0
+0	0	12	3	2	2010	0.33	0.32	NA	-0.7701*	0	0
+0	0	12	3	2	2011	0.33	0.31	NA	-0.7701*	0	0
+0	0	12	3	2	2012	0.28	0.31	NA	-0.7701*	0	0
+0	0	12	3	2	2013	0.34	0.31	NA	-0.7701*	0	0
+0	0	12	3	2	2014	0.30	0.31	NA	-0.7701*	0	0
+0	0	12	3	2	2015	0.29	0.31	NA	-0.7701*	0	0
+0	0	12	3	2	2016	0.30	0.30	NA	-0.7701*	0	0
+0	0	12	3	2	2017	0.30	0.30	NA	-0.7701*	0	0
+0	0	12	3	2	2018	0.31	0.30	NA	-0.7701*	0	0
+0	0	12	3	2	2019	0.30	0.30	NA	-0.7701*	0	0
+0	0	12	3	3	2001	0.33	0.31	NA	-0.0966	1	1
+0	0	12	3	3	2002	0.31	0.31	NA	-0.0966	1	1
+0	0	12	3	3	2003	0.30	0.31	NA	-0.0966	1	1
+0	0	12	3	3	2004	0.29	0.31	NA	-0.0966	1	1
+0	0	12	3	3	2005	0.32	0.31	NA	-0.0966	1	1
+0	0	12	3	3	2006	0.31	0.31	NA	-0.0966	1	1
+0	0	12	3	3	2007	0.30	0.31	NA	-0.0966	1	1
+0	0	12	3	3	2008	0.32	0.31	NA	-0.0966	1	1
+0	0	12	3	3	2009	0.32	0.31	NA	-0.0966	1	1
+0	0	12	3	3	2010	0.29	0.31	NA	-0.0966	1	1
+0	0	12	3	3	2011	0.32	0.31	NA	-0.0966	1	1
+0	0	12	3	3	2012	0.30	0.31	NA	-0.0966	1	1
+0	0	12	3	3	2013	0.30	0.31	NA	-0.0966	1	1
+0	0	12	3	3	2014	0.30	0.31	NA	-0.0966	1	1
+0	0	12	3	3	2015	0.33	0.31	NA	-0.0966	1	1
+0	0	12	3	3	2016	0.31	0.31	NA	-0.0966	1	1
+0	0	12	3	3	2017	0.30	0.31	Joinpoint 1	NA	1	1
+0	0	12	3	3	2018	0.29	0.29	NA	-5.7553	1	1
+0	0	12	3	3	2019	0.27	0.27	NA	-5.7553	1	1
+0	0	12	3	4	2001	0.32	0.29	NA	-0.4215	0	0
+0	0	12	3	4	2002	0.28	0.29	NA	-0.4215	0	0
+0	0	12	3	4	2003	0.28	0.29	NA	-0.4215	0	0
+0	0	12	3	4	2004	0.30	0.29	NA	-0.4215	0	0
+0	0	12	3	4	2005	0.27	0.29	NA	-0.4215	0	0
+0	0	12	3	4	2006	0.28	0.29	NA	-0.4215	0	0
+0	0	12	3	4	2007	0.30	0.28	NA	-0.4215	0	0
+0	0	12	3	4	2008	0.26	0.28	NA	-0.4215	0	0
+0	0	12	3	4	2009	0.26	0.28	NA	-0.4215	0	0
+0	0	12	3	4	2010	0.30	0.28	NA	-0.4215	0	0
+0	0	12	3	4	2011	0.31	0.28	NA	-0.4215	0	0
+0	0	12	3	4	2012	0.27	0.28	NA	-0.4215	0	0
+0	0	12	3	4	2013	0.27	0.28	NA	-0.4215	0	0
+0	0	12	3	4	2014	0.26	0.28	NA	-0.4215	0	0
+0	0	12	3	4	2015	0.28	0.28	NA	-0.4215	0	0
+0	0	12	3	4	2016	0.27	0.27	NA	-0.4215	0	0
+0	0	12	3	4	2017	0.27	0.27	NA	-0.4215	0	0
+0	0	12	3	4	2018	0.31	0.27	NA	-0.4215	0	0
+0	0	12	3	4	2019	0.25	0.27	NA	-0.4215	0	0
+0	0	12	3	5	2001	0.30	0.29	NA	-7.1634*	1	1
+0	0	12	3	5	2002	0.27	0.27	NA	-7.1634*	1	1
+0	0	12	3	5	2003	0.24	0.25	NA	-7.1634*	1	1
+0	0	12	3	5	2004	0.24	0.24	NA	-7.1634*	1	1
+0	0	12	3	5	2005	0.20	0.22	Joinpoint 1	NA	1	1
+0	0	12	3	5	2006	0.23	0.22	NA	1.2552*	1	1
+0	0	12	3	5	2007	0.24	0.22	NA	1.2552*	1	1
+0	0	12	3	5	2008	0.24	0.23	NA	1.2552*	1	1
+0	0	12	3	5	2009	0.23	0.23	NA	1.2552*	1	1
+0	0	12	3	5	2010	0.26	0.23	NA	1.2552*	1	1
+0	0	12	3	5	2011	0.22	0.24	NA	1.2552*	1	1
+0	0	12	3	5	2012	0.23	0.24	NA	1.2552*	1	1
+0	0	12	3	5	2013	0.22	0.24	NA	1.2552*	1	1
+0	0	12	3	5	2014	0.25	0.24	NA	1.2552*	1	1
+0	0	12	3	5	2015	0.25	0.25	NA	1.2552*	1	1
+0	0	12	3	5	2016	0.25	0.25	NA	1.2552*	1	1
+0	0	12	3	5	2017	0.25	0.25	NA	1.2552*	1	1
+0	0	12	3	5	2018	0.25	0.26	NA	1.2552*	1	1
+0	0	12	3	5	2019	0.27	0.26	NA	1.2552*	1	1
+0	1	12	3	1	2001	0.25	0.24	NA	0.0001	0	0
+0	1	12	3	1	2002	0.23	0.24	NA	0.0001	0	0
+0	1	12	3	1	2003	0.23	0.24	NA	0.0001	0	0
+0	1	12	3	1	2004	0.22	0.24	NA	0.0001	0	0
+0	1	12	3	1	2005	0.23	0.24	NA	0.0001	0	0
+0	1	12	3	1	2006	0.27	0.24	NA	0.0001	0	0
+0	1	12	3	1	2007	0.25	0.24	NA	0.0001	0	0
+0	1	12	3	1	2008	0.23	0.24	NA	0.0001	0	0
+0	1	12	3	1	2009	0.26	0.24	NA	0.0001	0	0
+0	1	12	3	1	2010	0.26	0.24	NA	0.0001	0	0
+0	1	12	3	1	2011	0.24	0.24	NA	0.0001	0	0
+0	1	12	3	1	2012	0.25	0.24	NA	0.0001	0	0
+0	1	12	3	1	2013	0.24	0.24	NA	0.0001	0	0
+0	1	12	3	1	2014	0.24	0.24	NA	0.0001	0	0
+0	1	12	3	1	2015	0.27	0.24	NA	0.0001	0	0
+0	1	12	3	1	2016	0.22	0.24	NA	0.0001	0	0
+0	1	12	3	1	2017	0.25	0.24	NA	0.0001	0	0
+0	1	12	3	1	2018	0.23	0.24	NA	0.0001	0	0
+0	1	12	3	1	2019	0.24	0.24	NA	0.0001	0	0
+0	1	12	3	2	2001	0.25	0.24	NA	0.0889	0	0
+0	1	12	3	2	2002	0.26	0.25	NA	0.0889	0	0
+0	1	12	3	2	2003	0.23	0.25	NA	0.0889	0	0
+0	1	12	3	2	2004	0.27	0.25	NA	0.0889	0	0
+0	1	12	3	2	2005	0.22	0.25	NA	0.0889	0	0
+0	1	12	3	2	2006	0.23	0.25	NA	0.0889	0	0
+0	1	12	3	2	2007	0.26	0.25	NA	0.0889	0	0
+0	1	12	3	2	2008	0.26	0.25	NA	0.0889	0	0
+0	1	12	3	2	2009	0.25	0.25	NA	0.0889	0	0
+0	1	12	3	2	2010	0.24	0.25	NA	0.0889	0	0
+0	1	12	3	2	2011	0.25	0.25	NA	0.0889	0	0
+0	1	12	3	2	2012	0.22	0.25	NA	0.0889	0	0
+0	1	12	3	2	2013	0.27	0.25	NA	0.0889	0	0
+0	1	12	3	2	2014	0.25	0.25	NA	0.0889	0	0
+0	1	12	3	2	2015	0.26	0.25	NA	0.0889	0	0
+0	1	12	3	2	2016	0.24	0.25	NA	0.0889	0	0
+0	1	12	3	2	2017	0.26	0.25	NA	0.0889	0	0
+0	1	12	3	2	2018	0.27	0.25	NA	0.0889	0	0
+0	1	12	3	2	2019	0.23	0.25	NA	0.0889	0	0
+0	1	12	3	3	2001	0.23	0.23	NA	0.7289*	0	0
+0	1	12	3	3	2002	0.22	0.23	NA	0.7289*	0	0
+0	1	12	3	3	2003	0.21	0.23	NA	0.7289*	0	0
+0	1	12	3	3	2004	0.25	0.23	NA	0.7289*	0	0
+0	1	12	3	3	2005	0.22	0.23	NA	0.7289*	0	0
+0	1	12	3	3	2006	0.23	0.23	NA	0.7289*	0	0
+0	1	12	3	3	2007	0.20	0.24	NA	0.7289*	0	0
+0	1	12	3	3	2008	0.25	0.24	NA	0.7289*	0	0
+0	1	12	3	3	2009	0.26	0.24	NA	0.7289*	0	0
+0	1	12	3	3	2010	0.26	0.24	NA	0.7289*	0	0
+0	1	12	3	3	2011	0.25	0.24	NA	0.7289*	0	0
+0	1	12	3	3	2012	0.24	0.25	NA	0.7289*	0	0
+0	1	12	3	3	2013	0.25	0.25	NA	0.7289*	0	0
+0	1	12	3	3	2014	0.25	0.25	NA	0.7289*	0	0
+0	1	12	3	3	2015	0.26	0.25	NA	0.7289*	0	0
+0	1	12	3	3	2016	0.25	0.25	NA	0.7289*	0	0
+0	1	12	3	3	2017	0.29	0.25	NA	0.7289*	0	0
+0	1	12	3	3	2018	0.24	0.26	NA	0.7289*	0	0
+0	1	12	3	3	2019	0.23	0.26	NA	0.7289*	0	0
+0	1	12	3	4	2001	0.23	0.21	NA	0.5491	0	0
+0	1	12	3	4	2002	0.20	0.21	NA	0.5491	0	0
+0	1	12	3	4	2003	0.19	0.21	NA	0.5491	0	0
+0	1	12	3	4	2004	0.22	0.21	NA	0.5491	0	0
+0	1	12	3	4	2005	0.18	0.21	NA	0.5491	0	0
+0	1	12	3	4	2006	0.21	0.21	NA	0.5491	0	0
+0	1	12	3	4	2007	0.21	0.22	NA	0.5491	0	0
+0	1	12	3	4	2008	0.23	0.22	NA	0.5491	0	0
+0	1	12	3	4	2009	0.23	0.22	NA	0.5491	0	0
+0	1	12	3	4	2010	0.24	0.22	NA	0.5491	0	0
+0	1	12	3	4	2011	0.22	0.22	NA	0.5491	0	0
+0	1	12	3	4	2012	0.22	0.22	NA	0.5491	0	0
+0	1	12	3	4	2013	0.24	0.22	NA	0.5491	0	0
+0	1	12	3	4	2014	0.20	0.22	NA	0.5491	0	0
+0	1	12	3	4	2015	0.22	0.23	NA	0.5491	0	0
+0	1	12	3	4	2016	0.24	0.23	NA	0.5491	0	0
+0	1	12	3	4	2017	0.24	0.23	NA	0.5491	0	0
+0	1	12	3	4	2018	0.26	0.23	NA	0.5491	0	0
+0	1	12	3	4	2019	0.18	0.23	NA	0.5491	0	0
+0	1	12	3	5	2001	0.22	0.19	NA	0.3489	0	0
+0	1	12	3	5	2002	0.18	0.19	NA	0.3489	0	0
+0	1	12	3	5	2003	0.19	0.19	NA	0.3489	0	0
+0	1	12	3	5	2004	0.18	0.19	NA	0.3489	0	0
+0	1	12	3	5	2005	0.21	0.19	NA	0.3489	0	0
+0	1	12	3	5	2006	0.19	0.19	NA	0.3489	0	0
+0	1	12	3	5	2007	0.19	0.19	NA	0.3489	0	0
+0	1	12	3	5	2008	0.20	0.20	NA	0.3489	0	0
+0	1	12	3	5	2009	0.17	0.20	NA	0.3489	0	0
+0	1	12	3	5	2010	0.19	0.20	NA	0.3489	0	0
+0	1	12	3	5	2011	0.20	0.20	NA	0.3489	0	0
+0	1	12	3	5	2012	0.19	0.20	NA	0.3489	0	0
+0	1	12	3	5	2013	0.22	0.20	NA	0.3489	0	0
+0	1	12	3	5	2014	0.18	0.20	NA	0.3489	0	0
+0	1	12	3	5	2015	0.21	0.20	NA	0.3489	0	0
+0	1	12	3	5	2016	0.24	0.20	NA	0.3489	0	0
+0	1	12	3	5	2017	0.19	0.20	NA	0.3489	0	0
+0	1	12	3	5	2018	0.20	0.20	NA	0.3489	0	0
+0	1	12	3	5	2019	0.20	0.20	NA	0.3489	0	0

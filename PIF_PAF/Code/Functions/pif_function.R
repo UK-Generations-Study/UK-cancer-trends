@@ -41,6 +41,8 @@ pif_calculation <- function(dataframe) {
   data_paf <- data_paf |>
     # mutate(year = year + 10) |>
     filter(!grepl("\\_mean$|\\_median$", variable)) |>
+    # Removing other physical_activity variable
+    filter(variable != "physical_activity") |>
     group_by(variable, sex, age_group) |>
     mutate(
       
