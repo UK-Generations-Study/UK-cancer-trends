@@ -822,14 +822,14 @@ smokingtrends <- ggplot(rf_trend_plot %>% filter(variable == "Smoking"), aes(x =
           axis.text.x = element_text(angle = 45, hjust = 1))
 
 #PHYSICIAL ACTIVITY
-PAtrends <- ggplot(rf_trend_plot %>% filter(level == "PhysicalActivity"), aes(x = year, y = value, color = exposure)) +
+PAtrends <- ggplot(rf_trend_plot %>% filter(level == "PhysicalActivity") |> filter(variable != "physical_activity"), aes(x = year, y = value, color = exposure)) +
   geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
   geom_line(aes(linetype = last_segment)) +
  geom_point(data = rf_trend_plot_invisible_points, alpha = 0) +
    
   facet_grid(sex ~ age_group) +  # grid by both age_group and sex
   geom_label_repel(
-    data = rf_trend_plot_labels %>% filter(exposure == "PhysicalActivity"),
+    data = rf_trend_plot_labels %>% filter(exposure == "PhysicalActivity") |> filter(variable != "physical_activity"),
     aes(label = APC_clean, group = exposure),
     nudge_x = 3,
     fill = "white", 
