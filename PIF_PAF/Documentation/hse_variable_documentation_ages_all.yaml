@@ -1,0 +1,269 @@
+### HSE VARIABLE DOCUMENTATION - ALL AGES ###
+
+# This document is designed to describe the structure of the variables in the HSE datasets from 1995-2019
+# It is an alternate version of hse_variable_documentation.yaml that groups all ages together
+# This is so the same variables  can be extracted methodically from the data with minimal intervention
+# Each entry will be a variable of the survey subset by year groups with the following data:
+#   - varname: variable name in the dataset
+#   - dict: dictionary descibing what levels go to what output
+
+### AGE GROUP
+age_group:
+
+  1995-2010:
+    varname: age
+    dict:
+      "20-120": "All"
+      # "20-49": "20-49"
+      # "50-120": "50+" # No max age so setting this as maximum - will check if any excluded
+    
+  2011-2013:
+    varname: Age
+    dict:
+      "20-120": "All"
+      # "20-49": "20-49"
+      # "50-120": "50+" # No max age so setting this as maximum - will check if any excluded
+    
+  2014:
+    varname: Age90
+    dict:
+      "20-90": "All"
+      # "20-49": "20-49"
+      # "50-90": "50+" # 90 is maximum for this dataset
+    
+  2015-2017:
+    varname: Age16g5
+    dict:
+      "3-17": "All"
+      # "3-8": "20-49"
+      # "9-17": "50+"
+      
+  2018-2019:
+    varname: age16g5
+    dict:
+      "3-17": "All"
+      # "3-8": "20-49"
+      # "9-17": "50+"
+    
+
+### SEX      
+sex:
+
+  1995-2010:
+    varname: sex
+    dict:
+      1: "Men"
+      2: "Women"
+      
+  2011-2019:
+    varname: Sex
+    dict:
+      1: "Men"
+      2: "Women"
+
+### WEIGHTING    
+weight:
+
+  # 2002:
+    # varname: tablewt
+    # dict:
+      # - NULL
+        
+  2003:
+    varname: int_wt
+    dict:
+      - NULL
+      
+  2004-2019:
+    varname: wt_int
+    dict:
+      - NULL
+
+### SMOKING STATUS   
+smoking_status:
+
+  1995-1996:
+    varname: fagsta
+    dict:
+      1: "Never"
+      2: "Previously"
+      3: "Current"
+      4: "Current"
+    
+  1997-1999:
+    varname: cigst1
+    dict:
+      1: "Never"
+      2: "Never"
+      3: "Previously"
+      4: "Current"
+    
+  2000-2018:
+    varname: cigsta3
+    dict:
+      1: "Current"
+      2: "Previously"
+      3: "Never"
+
+  2019:
+    varname: cigsta3_19
+    dict:
+      1: "Current"
+      2: "Previously"
+      3: "Never"
+      
+### ALCOHOL CONSUMPTION      
+alcohol_amt:
+
+  2011-2018:
+    varname: totalwu
+    dict:
+      "0-11": "Light Drinker"
+      "11-44": "Moderate Drinker"
+      "44-9999": "Heavy Drinker" # Applied 9999 as this should be 44+
+      0: "Non-Drinker" # Slightly messy - this condition is applied last so instead of 0 going to light drinker it goes to non drinker
+  
+  2019:
+    varname: totalwu_19
+    dict:
+      "0-11": "Light Drinker"
+      "11-44": "Moderate Drinker"
+      "44-9999": "Heavy Drinker"
+      0: "Non-Drinker"
+      
+### BMI
+bmi:
+
+  1995-1996:
+    varname: bmi
+    dict:
+      "0-18.5": "Underweight"
+      "18.5-25": "Healthy Weight"
+      "25-30": "Overweight"
+      "30-999": "Obese"
+      
+  1997-2011:
+    varname: bmival
+    dict:
+      "0-18.5": "Underweight"
+      "18.5-25": "Healthy Weight"
+      "25-30": "Overweight"
+      "30-999": "Obese"
+      
+  2012:
+    varname: bmival2
+    dict:
+      "0-18.5": "Underweight"
+      "18.5-25": "Healthy Weight"
+      "25-30": "Overweight"
+      "30-999": "Obese"
+
+  2013-2017:
+    varname: BMIval2
+    dict:
+      "0-18.5": "Underweight"
+      "18.5-25": "Healthy Weight"
+      "25-30": "Overweight"
+      "30-999": "Obese"
+      
+  2018-2019:
+    varname: BMIVal2
+    dict:
+      "0-18.5": "Underweight"
+      "18.5-25": "Healthy Weight"
+      "25-30": "Overweight"
+      "30-999": "Obese"
+      
+### BMI VALID
+# 1995 and 1996 don't have bmi variables checked for validity - so we manually do it
+bmi_valid:
+
+  1995-1996:
+    varname: bmiok
+    dict:
+      1: "Valid"
+      
+### PHYSICAL ACTIVITY - OLD
+physical_activity_old:
+  
+  2003-2004:
+    varname: adtot30
+    dict:
+      "0-20": "Below Recommendations"
+      "20-999": "Meets Recommendations"
+      
+  2006:
+    varname: a30to06
+    dict:
+      "0-20": "Below Recommendations"
+      "20-999": "Meets Recommendations"
+  
+  2008:
+    varname: a30to06
+    dict:
+      "0-20": "Below Recommendations"
+      "20-999": "Meets Recommendations"
+      
+  2012:
+    varname: a30to06
+    dict:
+      "0-20": "Below Recommendations"
+      "20-999": "Meets Recommendations"
+      
+### PHYSICAL ACTIVITY
+physical_activity:
+
+  2012:
+    varname: mins10tot12wkg
+    dict:
+      2-4: "Below Recommendations"
+      1: "Meets Recommendations"
+      
+  2016:
+    varname: mins10tot12wkg
+    dict:
+      2-4: "Below Recommendations"
+      1: "Meets Recommendations"
+      
+### IMD
+imd:
+
+  2001-2002:
+    varname: nimd
+    dict:
+      - NULL
+      
+  2003-2006:
+    varname: imd2004
+    dict:
+      - NULL
+      
+  2007:
+    varname: imd2007
+    dict:
+      - NULL
+  
+  2008:
+    varname: qimd
+    dict:
+      - NULL
+      
+  2009:
+    varname: IMD2007
+    dict:
+      - NULL
+      
+  2010:
+    varname: imd2007
+    dict:
+      - NULL
+      
+  2011-2018:
+    varname: qimd
+    dict:
+      - NULL
+      
+  2019:
+    varname: qimd19
+    dict:
+      - NULL

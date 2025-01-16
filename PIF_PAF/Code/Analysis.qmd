@@ -615,7 +615,7 @@ riskfactors <- data_rf %>%
     value = ifelse(exposure =="Fibre", 30-value, value), #calculates fibre deficiency
     variable = if_else(variable == "alcohol_amt", "Alcohol", variable), 
     variable = if_else(variable == "bmi", "BMI", variable),
-    variable = if_else(variable == "physical_activity", "PhysicalActivity", variable),
+    variable = if_else(variable == "physical_activity_old", "PhysicalActivity", variable),
     variable = if_else(variable == "smoking_status", "Smoking", variable),
     variable = if_else(variable == "fibre_consumption", "Fibre", variable),
     variable = if_else(variable == "redmeat_consumption", "RedMeat", variable),
@@ -867,7 +867,7 @@ PAtrends <- ggplot(rf_trend_plot %>% filter(variable == "PhysicalActivity"), aes
 diettrends <- ggplot(rf_trend_plot %>% filter(exposure %in% c("Red_Meat", "Processed_Meat", "Fibre")), aes(x = year, y = value, color = exposure)) +
   geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
   geom_line(aes(linetype = last_segment)) +
- geom_point(data = rf_trend_plot_invisible_points, alpha = 0) +
+  geom_point(data = rf_trend_plot_invisible_points, alpha = 0) +
    
   facet_grid(sex ~ age_group) +  # grid by both age_group and sex
    geom_label_repel(
@@ -1010,7 +1010,7 @@ data_rf_imd_clean <- data_rf_imd %>%
     variable = ifelse(variable == "alcohol_amt","Alcohol", variable ), 
     variable = ifelse(variable == "bmi","BMI", variable ), 
     variable = ifelse(variable == "smoking_status","Smoking", variable ), 
-    variable = ifelse(variable == "physical_activity","PhysicalActivity", variable ),
+    variable = ifelse(variable == "physical_activity_old","PhysicalActivity", variable ),
     level = sub(" .*", "", level), 
     imd = if_else(imd == 1, "1 (least deprived)", imd), 
     imd = if_else(imd == 5, "5 (most deprived)", imd), 
@@ -1032,7 +1032,7 @@ for (var in unique_level) {
     ) +
     scale_color_brewer(palette = "Set2")   + 
     theme_minimal() +
-    ylim(0, 0.2) +
+    ylim(0, 0.75) +
     scale_x_continuous(
     breaks = seq(2000, 2019, by = 3),  # Define the x-axis breaks
     limits = c(2000, 2020))+
@@ -1449,7 +1449,7 @@ data_attr_cases_individual <- merge(data_paf_long_individual, data_cancer, by = 
   )
 
 # Loop through variables and output gt table
-for(var in unique(data_attr_cases_individual$variable)[!grepl("\\_mean$|\\_median$", unique(data_attr_cases_individual$variable))]){
+for(var in unique(data_attr_cases_individual$variable)[!grepl("\\_mean$|\\_median$", unique(data_attr_cases_individual$variable)) & (unique(data_attr_cases_individual$variable) != "physical_activity")]){
   
   # Clean data made above and create gt table for presentation
   data_attr_cases_individual_gt <- data_attr_cases_individual |>
@@ -1531,7 +1531,7 @@ data_paf_long_individual <- data_paf_individual |>
 data_attr_cases_bar <- data_paf_long_individual %>% 
   left_join(data_cancer, by = c("year", "sex", "age_group", "cancer_site")) %>%
   filter(
-    variable %in% c("Smoking", "Alcohol", "BMI", "RedMeat", "ProcessedMeat", "Fibre")
+    variable %in% c("Smoking", "Alcohol", "BMI", "RedMeat", "ProcessedMeat", "Fibre", "physical_activity_old")
   )%>%
   mutate(
     cases_count = PAF * count,

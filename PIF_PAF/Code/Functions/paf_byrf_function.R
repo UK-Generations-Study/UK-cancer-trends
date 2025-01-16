@@ -83,7 +83,7 @@ paf_calculation <- function(dataframe, age_group_of_interest) {
   #Data Gap2: Physical activity only has 3 time points 
   riskfactors_pagap<- dataframe %>%
     filter(
-      variable == "physical_activity"
+      variable == "physical_activity_old"
     )
   
   # Group by age_group, sex, and level, then interpolate
@@ -92,12 +92,12 @@ paf_calculation <- function(dataframe, age_group_of_interest) {
     group_modify(~ gap_function(.x)) %>%
     ungroup() %>%
     mutate(
-      variable = "physical_activity"
+      variable = "physical_activity_old"
     )
   
   riskfactors <- riskfactors %>%
     filter(
-      !(variable == "physical_activity")
+      !(variable == "physical_activity_old")
     ) #taking out the old physical activity data 
   
   riskfactors <- rbind(riskfactors,riskfactors_pagap) #adding in the new filled in data 

@@ -157,8 +157,16 @@ bmi:
       "25-30": "Overweight"
       "30-999": "Obese"
 
-  2013-2019:
+  2013-2017:
     varname: BMIval2
+    dict:
+      "0-18.5": "Underweight"
+      "18.5-25": "Healthy Weight"
+      "25-30": "Overweight"
+      "30-999": "Obese"
+      
+  2018-2019:
+    varname: BMIVal2
     dict:
       "0-18.5": "Underweight"
       "18.5-25": "Healthy Weight"
@@ -173,3 +181,88 @@ bmi_valid:
     varname: bmiok
     dict:
       1: "Valid"
+      
+### PHYSICAL ACTIVITY - OLD
+physical_activity_old:
+  
+  2003-2004:
+    varname: adtot30
+    dict:
+      "0-20": "Below Recommendations"
+      "20-999": "Meets Recommendations"
+      
+  2006:
+    varname: a30to06
+    dict:
+      "0-20": "Below Recommendations"
+      "20-999": "Meets Recommendations"
+  
+  2008:
+    varname: a30to06
+    dict:
+      "0-20": "Below Recommendations"
+      "20-999": "Meets Recommendations"
+      
+  2012:
+    varname: a30to06
+    dict:
+      "0-20": "Below Recommendations"
+      "20-999": "Meets Recommendations"
+      
+### PHYSICAL ACTIVITY
+physical_activity:
+
+  2012:
+    varname: mins10tot12wkg
+    dict:
+      2-4: "Below Recommendations"
+      1: "Meets Recommendations"
+      
+  2016:
+    varname: mins10tot12wkg
+    dict:
+      2-4: "Below Recommendations"
+      1: "Meets Recommendations"
+      
+### IMD
+imd:
+
+  2001-2002:
+    varname: nimd
+    dict:
+      - NULL
+      
+  2003-2006:
+    varname: imd2004
+    dict:
+      - NULL
+      
+  2007:
+    varname: imd2007
+    dict:
+      - NULL
+  
+  2008:
+    varname: qimd
+    dict:
+      - NULL
+      
+  2009:
+    varname: IMD2007
+    dict:
+      - NULL
+      
+  2010:
+    varname: imd2007
+    dict:
+      - NULL
+      
+  2011-2018:
+    varname: qimd
+    dict:
+      - NULL
+      
+  2019:
+    varname: qimd19
+    dict:
+      - NULL
