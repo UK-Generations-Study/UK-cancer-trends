@@ -1125,7 +1125,7 @@ PAFallages_bar_MEN <- ggplot(PAF_allages %>% filter(sex == "Men"), aes(x = cance
   ) +
   scale_y_continuous(
     name = "PAFs",
-    limits = c(0, 100),
+    limits = c(0, 110),
     sec.axis = sec_axis(
       ~ . * 100,  # Adjust the transformation factor as needed
       name = "Case Count"
@@ -1161,7 +1161,7 @@ PAFallages_bar_WOMEN <- ggplot(PAF_allages %>% filter(sex == "Women"), aes(x = c
   ) +
   scale_y_continuous(
     name = "PAFs",
-    limits = c(0, 100),
+    limits = c(0, 110),
     sec.axis = sec_axis(
       ~ . * 100,  # Adjust the transformation factor as needed
       name = "Case Count"
@@ -1298,7 +1298,7 @@ data_attr_bar_MEN <- ggplot(data_attr_cases_bar %>% filter(sex == "Men"), aes(x 
   ) +
   scale_y_continuous(
     name = "PAFs",
-    limits = c(0, 100),
+    limits = c(0, 110),
     sec.axis = sec_axis(
       ~ . * 100,  # Adjust the transformation factor as needed
       name = "Case Count"
@@ -1334,7 +1334,7 @@ data_attr_bar_WOMEN <- ggplot(data_attr_cases_bar %>% filter(sex == "Women"), ae
   ) +
   scale_y_continuous(
     name = "PAFs",
-    limits = c(0, 100),
+    limits = c(0, 110),
     sec.axis = sec_axis(
       ~ . * 100,  # Adjust the transformation factor as needed
       name = "Case Count"
