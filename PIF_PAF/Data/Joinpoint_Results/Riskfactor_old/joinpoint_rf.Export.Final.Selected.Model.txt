@@ -1,0 +1,53 @@
+"age_group"	"sex"	"level"	"Model"
+20-49	Men	Below Recommendations	0
+50+	Men	Below Recommendations	0
+20-49	Women	Below Recommendations	0
+50+	Women	Below Recommendations	0
+20-49	Men	Current	0
+50+	Men	Current	0
+20-49	Women	Current	1
+50+	Women	Current	0
+20-49	Men	Healthy Weight	1
+50+	Men	Healthy Weight	0
+20-49	Women	Healthy Weight	0
+50+	Women	Healthy Weight	2
+20-49	Men	Heavy Drinker	0
+50+	Men	Heavy Drinker	0
+20-49	Women	Heavy Drinker	0
+50+	Women	Heavy Drinker	1
+20-49	Men	Light Drinker	0
+50+	Men	Light Drinker	0
+20-49	Women	Light Drinker	0
+50+	Women	Light Drinker	1
+20-49	Men	Meets Recommendations	0
+50+	Men	Meets Recommendations	0
+20-49	Women	Meets Recommendations	0
+50+	Women	Meets Recommendations	0
+20-49	Men	Moderate Drinker	0
+50+	Men	Moderate Drinker	0
+20-49	Women	Moderate Drinker	0
+50+	Women	Moderate Drinker	1
+20-49	Men	Never	0
+50+	Men	Never	0
+20-49	Women	Never	0
+50+	Women	Never	0
+20-49	Men	Non-Drinker	0
+50+	Men	Non-Drinker	0
+20-49	Women	Non-Drinker	0
+50+	Women	Non-Drinker	0
+20-49	Men	Obese	1
+50+	Men	Obese	1
+20-49	Women	Obese	0
+50+	Women	Obese	0
+20-49	Men	Overweight	0
+50+	Men	Overweight	0
+20-49	Women	Overweight	0
+50+	Women	Overweight	1
+20-49	Men	Previously	2
+50+	Men	Previously	0
+20-49	Women	Previously	2
+50+	Women	Previously	0
+20-49	Men	Underweight	0
+50+	Men	Underweight	0
+20-49	Women	Underweight	0
+50+	Women	Underweight	0
