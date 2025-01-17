@@ -24,18 +24,12 @@ joinpoint_diet <- data_rf %>%
 
 # risk factor IMD data 
 joinpoint_imd <- data_rf_imd %>% 
-  rename(
-    exposure = level 
-  ) %>% 
   filter(
     variable %in% c("alcohol_amt", "physical_activity_old", "bmi", "smoking_status"), 
     imd != "All"
   )%>%
-  mutate(
-    exposure = ifelse(exposure == "Below Recommendations", "PhysicalActivity", exposure),
-  )%>%
   arrange(
-    variable, exposure, sex, age_group, imd, year
+    variable, level, sex, age_group, imd, year
   ) 
 
 #childhood BMI
