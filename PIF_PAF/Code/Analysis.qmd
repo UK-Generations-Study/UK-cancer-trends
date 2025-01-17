@@ -16,36 +16,35 @@ execute:
 ---
 
 ## ------------------------------------------------------------------------
-
 ## Analysis plan
 
 **Main Question:**
-
-How can the trends in modifiable lifestyle cancer risk factors in England explain trends in the cancer incidence in cancer sites with which they are causally associated?
-
-**Sub Questions:**
-
-1.  What are the cancer incidence trends in England for the chosen cancer sites? overall and split by age (50-year cutoff)?
-
-<!-- -->
-
-2.  How does the exposure of the English population to the modifiable lifestyle risk factors causally associated with the chosen cancer sites vary over time? Overall and split by age (50-year cutoff)?
-
-<!-- -->
-
-3.  How do the aggregate population attributable fractions (PAFs) by cancer site change at study period end points? And the attributable incidence cases? Overall and split by age (50-year cutoff)?
-
-<!-- -->
-
-4.  For the risk factors that are increasing, what are the population impact fractions (PIFs) at study period end points? Overall and split by age (50-year cutoff)? 
-
-**Inclusion/Exclusion Criteria:**
-
-The cancer sites in this analysis were included based on the analysis done in the Early Onset paper by Martina. Cancer sites were included if incident cases were found to be statistically significantly increasing in the population under 50 and who had modifiable lifestyle risk factors causally associated to them by IARC (group 1) or WCRF (strong evidence).
+  
+  How can the trends in modifiable lifestyle cancer risk factors in England explain trends in the cancer incidence in cancer sites with which they are causally associated?
+  
+  **Sub Questions:**
+  
+  1.  What are the cancer incidence trends in England for the chosen cancer sites? overall and split by age (50-year cutoff)?
+  
+  <!-- -->
+  
+  2.  How does the exposure of the English population to the modifiable lifestyle risk factors vary over time? Overall and split by age (50-year cutoff)?
+  
+  <!-- -->
+  
+  3.  What are the aggregate population attributable fractions (PAFs) by cancer sites for today (2019)? And the attributable incidence cases? Overall and split by age (50-year cutoff)?
+  
+  <!-- -->
+  
+  4.  For the risk factors that are increasing, what are the population impact fractions (PIFs) to explain past cancer incidence trends (past - 2019) and how can we expect population exposures to affect cancer cases in the future (2019-2029)? Overall and split by age (50-year cutoff)? 
+  
+  **Inclusion/Exclusion Criteria:**
+  
+  The cancer sites in this analysis were included based on the analysis done in the Early Onset paper by Martina. Cancer sites were included if incident cases were found to be statistically significantly increasing in the population under 50 and who had modifiable lifestyle risk factors causally associated to them by IARC (group 1) or WCRF (strong evidence).
 
 Cancer Sites:
-
-1.  Oral
+  
+  1.  Oral
 
 2.  Endometrium
 
@@ -65,62 +64,59 @@ Cancer Sites:
 
 10. Breast
 
-    The cancer sites that met initial inclusion criteria but were excluded from the study were: Leukemia, Prostate, Hodgkin Lymphoma, Brain and CNS, Melanoma of skin, and Cervix.
+The cancer sites that met initial inclusion criteria but were excluded from the study were: Leukemia, Prostate, Hodgkin Lymphoma, Brain and CNS, Melanoma of skin, and Cervix.
 
 Modifiable Lifestyle Risk Factors:
+  
+  1.  Smoking
 
-1.  Smoking
+Current Smoking
 
-    Current Smoking
-
-    Former Smoking
+Former Smoking
 
 2.  BMI
 
-    Obese(30+ BMI)
+Obese(30+ BMI)
 
-    Overweight(25-30 BMI)
+Overweight(25-30 BMI)
 
 3.  Alcohol
 
-    Light (\<12g/day)Drinking
+Light (\<12g/day)Drinking
 
-    Medium(12-50g/day)Drinking
+Medium(12-50g/day)Drinking
 
-    Heavy (\>50g/day) Drinking
+Heavy (\>50g/day) Drinking
 
 4.  Red Meat
 
-    Consuming any based on UK recommendations
+Consuming any based on UK recommendations
 
 5.  Processed Meat
 
-    Consuming any based on UK recommendations
+Consuming any based on UK recommendations
 
 6.  Fibre
 
-    Consuming less than the UK recommended 30g/day
-
-Waiting to add:
-
+Consuming less than the UK recommended 30g/day
+  
 7.  Physical Activity
 
--   HSE has measured MET hours/week for 3 years, 2012, 2016, 2021. In order to carry out the analysis needed for this paper we would need to extend this time period significantly.
--   Brown et al. assumed an equivalence between meeting old guidelines and new MET hour guidelines, we should discuss if this is an appropriate assumption to make for this paper.
+Meeting UK guidelines
 
 **Methodological plan:**
-
-STEP ONE
+  
+  STEP ONE
 
 Source relative risk, risk factor, and cancer incidence data. These were sourced from:
-
-Relative Risk
+  
+  Relative Risk
 
 -   These data were sourced from published peer-reviewed meta analysis. The papers are stored in a Mendeley folder as well as in Teams: Descriptive Epidemiology/PAF/PIF/RiskFactorInclusion.xlsx
 
 Risk Factor Data
 
--   Alcohol, Smoking, BMI: This data were sourced from the ONS and collected via the [Health Survey England (HSE)](https://digital.nhs.uk/data-and-information/publications/statistical/health-survey-for-england). The data were requested from the [UK Data Service](https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=8860) by year.
+-   Alcohol, Smoking, BMI, Physical Activity: This data were sourced from the ONS and collected via the [Health Survey England (HSE)](https://digital.nhs.uk/data-and-information/publications/statistical/health-survey-for-england). The data were requested from the [UK Data Service](https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=8860) by year.
 
 -   Alcohol data via HSE on average drinking is only available back to 2011. Previous to this were the GHS and GLS. As of 29/11/2024, the 2005 GHS datapoint has been used for alcohol usage. Weighting has been used as to replicate sheet 2.17 from Table 2 Drinking (Excel sheet 211Kb) [here](https://webarchive.nationalarchives.gov.uk/ukgwa/20160115220036/http://www.ons.gov.uk/ons/publications/re-reference-tables.html?edition=tcm%3A77-213744). However, as visible in the risk factor plots, the prevelances seem highly suspicious. When contrasting this data with sheet 2.5 [here](https://digital.nhs.uk/data-and-information/publications/statistical/statistics-on-alcohol/2012), we see differences. Between both sources there is a disagreement on number of participants even. The selection criterion for the second table needs to be identified and a choice made between the two.
 
@@ -133,26 +129,26 @@ Cancer Incidence Data
 Cancer incidence and risk factor trends will be examined from as far back as data are available to 2019 (present day). These trends will be shown overall, and by age split (50-year cutoff).
 
 *Goal Figures:*
-
-1.  For both cancer incidence and risk factors, line graphs for overall population, \<50, and \>50 that show the trends over time with the cancer site/risk factors differentiated by colour.
+  
+  1.  For both cancer incidence and risk factors, line graphs for overall population, \<50, and \>50 that show the trends over time with the cancer site/risk factors differentiated by colour.
 
 STEP TWO
 
-Assuming a 10-year time lag from risk factor exposure and cancer incidence, aggregate PAFs will be calculated for three sets of years: 2009, the oldest, and the most recent. These PAFs will be calculated overall, and by age split (50-year cutoff).
+Assuming a 10-year time lag from risk factor exposure and cancer incidence, aggregate PAFs will be calculated for 2009 which would correspond to 2019 attributable cases. These PAFs will be calculated overall, and by age split (50-year cutoff).
 
 *Goal Figures:*
+  
+  1.  For \<50 and \>50, a bar chart with cancer site on the x axis and PAFs on the y axis. Each cancer site has 2 bars corresponding to PAF and atributable cases so magnitude can be understood easily. 
 
-1.  For \<50 and \>50, a bar chart with cancer site on the x axis and PAFs on the y axis. Each cancer site has 2 bars corresponding to the 2 years calculated which can be compared easily.
-
-2.  For overall population, \<50, and \>50, the PAFs by cancer site and individual risk factor for both timepoints will be shown in a table.  (Appendix)
+2.  For overall population, \<50, and \>50, the PAFs by cancer site and individual risk factor will be shown in a table.  (Appendix)
 
 STEP THREE
 
 Assuming a 10-year time lag from exposure to a risk factor and cancer incidence, incident cancer cases that are attributable to the modifiable lifestyle factors will be calculated for 2019. These attributable cases will be calculated overall, and by age split (50-year cutoff).
 
 *Goal Figures:*
-
-1.  For \<50 and \>50, a stacked bar chart with total incidence cases and attributable cases by cancer site for each age group at 2019.
+  
+  1.  For \<50 and \>50, a stacked bar chart with total incidence cases and attributable cases by cancer site for each age group at 2019.
 
 2.  For overall population, \<50, and \>50, total cases, attributable cases, and change in attributable cases for each time point will be shown in a table. (Appendix)  
 
@@ -161,54 +157,51 @@ STEP FOUR
 For any risk factors that were observed to be increasing at Step 2 – either overall or by age split – a PIF will be calculated for the proportion of cases attributable to the change in risk factor exposure. 
 
 *Goal Figures:*
+  
+  1.  PIFs will be shown in a table for the relevant cancer sites and risk factors.  
 
-1.  PIFs will be shown in a table for the relevant cancer sites and risk factors.  
+STEP FIVE
 
-## Ongoing analysis questions 
+Suspected risk factor trends will be investigated for increasing/decreasing trends. RR scenarios may also be carried out to estimate what the RR would have to be to explain a certain amount of the cancer incidence increase.
+
+## Ongoing broad analysis questions (for discussion) 
 
 General: 
+  
+1.  10 year latency creates gap between “what’s going on right now” r.e. risk factors and what is actually causing changes in cancer incidence. When we discuss how risk factors need to be changed we are talking about effects that will happen 10 years from now. 
 
-1.  10 year latency creates gap between “what’s going on right now” r.e. risk factors and what is actually causing changes in cancer incidence. When we discuss how risk factors need to be changed we are talking about effects that will happen 10 years from now. 
+2.  Is there a disconnect r.e. age groups for rates and for incidence? The age group 20-49 for e.g. alcohol consumption will be 30-69 when we evaluate cancer incidence from that consumption. This is relevant to the overall question of “what can we attribute rise in EO cancers to”. If we are defining EO as 20-49 then, with a latency of 10 years, this cohort was exposed to risks as a 10-39 age group.
 
-2.  Is there a disconnect r.e. age groups for rates and for incidence? The age group 20-49 for e.g. alcohol consumption will be 30-69 when we evaluate cancer incidence from that consumption. This is relevant to the overall question of “what can we attribute rise in EO cancers to”. If we are defining EO as 20-49 then, with a latency of 10 years, this cohort was exposed to risks as a 10-39 age group. I (Reuben) need to think about how RR’s are defined in order to think about this a little more. I still think the method is effective in as much as the general trends should be captured, but may be something worth thinking about. 
 
 Brown paper: 
-
-1.  How did they treat red and processed meat in calculating PAFs? Seems as though average was applied to whole population. *EMAIL SENT*
-
-2.  Which year did they use for diet data to get to 2005? They quote 2000/1 but reference NDNS which goes back to 2008. They also seemingly reference incorrect papers for the Fibre prevalence.  
+  
+  1.  How did they treat red and processed meat in calculating PAFs? Seems as though average was applied to whole population. *EMAIL SENT*
+  
+  2.  Which year did they use for diet data to get to 2005? They quote 2000/1 but reference NDNS which goes back to 2008. They also seemingly reference incorrect papers for the Fibre prevalence.  
 
 3.  Which data did they use for activity prevalence? Numbers do not seem to line up with quoted values in HSE data.  
 
-Data Availabitlity
+Data Availability
 
-1.  All diet data stops at 2008 
+1. Data is available at different levels for each risk factor. Smoking has consistent data from 1995-2019 whereas physical activity only has 4 data points with the same physical activity definitions 
 
 Relative Risk availability:  
+  
+  1.  Because we are limited to metanalysis, some risk factor/cancer site combinations have causal evidence through many papers, but no meta analysis has been published  
 
-1.  Because we are limited to metanalysis, some risk factor/cancer site combinations have causal evidence through many papers, but no meta analysis has been published  
+-   Oral cancer and BMI   
 
-    -   Oral cancer and BMI   
 
-2.  Physical Activity RR need to be consistent across the cancer sites – the paper that covers all of the sites splits colon and rectal cancer. I put in the numbers for rectal cancer because it is the most prevalent in England according to CRUK. The RR reported for colon and rectal cancer are not super different from each other.  
+### Analysis specific notes :
 
-RR/ risk factor match ups 
+-Ultra Processed Foods and Colorectal RR scenario generation - not sure if valid due to different definition of prevalence (individual prevalence vs. population prevalence). Population prevalence is next to impossible.
 
-1.  Physical activity has been measured differently over the years, all recent meta analysis are in MET units/week for relative risks but this is not how data were measured and collected historically 
 
-### Urgent needed fixes:
+### Discussion Topics
 
-1.  PHYSICAL ACTIVITY!!
-
-2.  WHY is the all ages PAF so different than the PAF split by age
-
-3.  Smoking/Alcohol/BMI by IMD
-
-4.  Risk factor plots by age (\<30, 30-50, 50-70, 70+)
-
-    -Ultra Processed Foods and Colorectal RR scenario generation - not sure if valid due to different definition of prevalence (individual prevalence vs. population prevalence). Population prevalence is next to impossible.
-
-    -Cancer APC calculated from 2001, should it be from 2009 to reflect only the time frame of interest
+Cancer APC calculated from 2001, should it be from 2009 to reflect only the time frame of interest
+Colon vs. Colorectal Cancer and physical activity 
+PIF for alcohol - it is increasing? 
 
 ## Setting up
 
@@ -303,6 +296,8 @@ source("Functions/joinpoint_cleaned_generation.R")
 
 ## Generic PAF relationship
 
+This is how the PAF changes as population exposure changes given 4 different relative risks (RR). In this project, RR are usually not higher than 2. This shows that even with high levels of population exposure, a single risk factor does not explain a high percentage of cases. 
+
 ```{r}
 library(gridExtra)
 #creating a sequence of prevalence 
@@ -351,6 +346,8 @@ changingpaf <- grid.arrange(pafplotlow, pafplot4, pafplotmed, pafplothigh, ncol=
 ```
 
 ## Generic PIF relationship
+
+This is how the PIF changes as population exposure to a risk factor increases by 20% given 4 different relative risks (RR) as well as 4 starting population exposures. In this project, RR are usually not higher than 2. This shows that even with high levels of population exposure, a single risk factor does not explain a high percentage of cases. 
 
 ```{r}
 #creating a sequence of exposure 
@@ -414,6 +411,8 @@ pif_plot
 ```
 
 ## Figure 1a - Trends in cancer incidence
+
+Looking at cancer incidence from 2001 - 2019 by sex and age. APCs calculated using Joinpoint software on the most recent trends to investigate which cancer sites have incident rates that are currently increasing (rather than historically increasing).  
 
 These APC trends were calculated using all of the data available (2001, 2019), then the x-axis was cut off from (2009, 2019).
 
@@ -568,7 +567,7 @@ apc_table
 
 ## Figure 2a - Trends in risk factors
 
-The APC were calculated with the assumption of homoscedastic random errors.
+This risk factor APC were calculated in Joinpoint software. Overall takeaway is that only obesity and light alcohol consumption are increasing over time. All the other risk factors are decreasing. 
 
 ```{r}
 
@@ -957,6 +956,8 @@ rf_apc_table
 
 ## Figure 2c - Trends in Risk Factors by IMD
 
+These are the risk factors by IMD to investigate whether the risk factors are decreasing across all socioeconomic sub groups or if there are groups of the English population who have been undergoing an increase in risk factor exposure. 
+
 ```{r}
 
 # Merge joinpoint data into cancer data
@@ -1107,6 +1108,8 @@ for(var in unique(paste0(rf_imd_trend_plot$variable, "-", rf_imd_trend_plot$leve
 ```
 
 ## Figure 3a - Current PAFs (2019) : all ages
+
+These PAFs are for the entire English population by sex. They use risk factor exposure data from 2009 and apply the PAF to cancer cases in 2019. This assumes a 10 year time lag between risk factor exposure and corresponding cancer incidence. The 10 year assumption is based on previous literature. 
 
 ```{r}
 # Calculate the PAFs by risk factor 
