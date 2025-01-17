@@ -278,8 +278,7 @@ data_paf_comparison <- read.csv(r"(..\Data\paf_comparison.csv)") |>
 #   Cancer Incidence
 data_joinpoint <- read.delim("../Data/Joinpoint_Results/Cancerrates/joinpoint_cancerrates.Export.APC.txt", sep = "\t")
 #   Risk Factors
-rfdata_joinpoint <- read.delim("../Data/Joinpoint_Results/Riskfactor/joinpoint_rf.Export.APC.txt", sep = "\t")%>%
-  rename(variable = level)
+rfdata_joinpoint <- read.delim("../Data/Joinpoint_Results/Riskfactor/joinpoint_rf.Export.APC.txt", sep = "\t")
 rfdata_imd_joinpoint <- read.delim("../Data/Joinpoint_Results/Riskfactor_by_IMD/joinpoint_rf_imd.Export.APC.txt", sep = "\t") 
 dietrfdata_joinpoint <- read.delim("../Data/Joinpoint_Results/Diet/joinpoint_rfdiet.Export.APC.txt", sep = "\t") 
 #   Childhood BMI
@@ -574,61 +573,15 @@ The APC were calculated with the assumption of homoscedastic random errors.
 ```{r}
 
 # Make a complete risk factor dataset 
-RFdata_joinpoint <- rbind(rfdata_joinpoint,dietrfdata_joinpoint) %>%
-  rename(
-    exposure = variable
-  )
+rfdata_joinpoint_complete <- rbind(rfdata_joinpoint,dietrfdata_joinpoint)
 
 # Merge joinpoint data into cancer data
-rfdata_joinpoint_last <- RFdata_joinpoint |>
-  filter(Model == Segment) |>
-  mutate(
-    exposure = ifelse(exposure == "Below Recommendations", "PhysicalActivity", exposure)
-  ) %>%
-  rename(
-    level = exposure
-  )
+rfdata_joinpoint_last <- rfdata_joinpoint_complete |>
+  filter(Model == Segment)
 
-#cleaning the odl risk factior data 
-riskfactors <- data_rf %>% 
-   mutate(
-    level = str_trim(level), 
-    variable = str_trim(variable),
-    value = as.numeric(value),
-    level = ifelse(level == "Below Recommendations", "PhysicalActivity", level),
-
-    exposure = ifelse(level == "Light Drinker", "Light_alcohol", level), #renaming the risk factor data so that it matches the RR exposure levels 
-    exposure = ifelse(level == "Moderate Drinker", "Medium_alcohol", exposure), 
-    exposure = ifelse(level == "Heavy Drinker", "Heavy_alcohol", exposure), 
-    exposure = ifelse(level == "Obese"& sex == "Men", "BMI_obese_men", exposure), 
-    exposure = ifelse(level == "Obese"& sex == "Women", "BMI_obese_women", exposure), 
-    exposure = ifelse(level == "Overweight"& sex == "Men", "BMI_overweight_men", exposure), 
-    exposure = ifelse(level == "Overweight"& sex == "Women", "BMI_overweight_women", exposure), 
-   # exposure = ifelse(level == "Below Recommendations", "PhysicalActivity", exposure),
-    exposure = ifelse(level == "Current"& sex == "Men", "Current_Smoking_men", exposure),
-    exposure = ifelse(level == "Current"& sex == "Women", "Current_Smoking_women", exposure), 
-    exposure = ifelse(level == "Previously"& sex == "Men", "Former_Smoking_men", exposure),
-    exposure = ifelse(level == "Previously"& sex == "Women", "Former_Smoking_women", exposure), 
-    exposure = ifelse(variable == "processedmeat_consumption_median", "Processed_Meat", exposure),
-    exposure = ifelse(variable == "redmeat_consumption_median", "Red_Meat", exposure), 
-    exposure = ifelse(variable == "fibre_consumption_mean", "Fibre", exposure),
-    value = ifelse(exposure =="Fibre", 30-value, value), #calculates fibre deficiency
-    variable = if_else(variable == "alcohol_amt", "Alcohol", variable), 
-    variable = if_else(variable == "bmi", "BMI", variable),
-    variable = if_else(variable == "physical_activity_old", "PhysicalActivity", variable),
-    variable = if_else(variable == "smoking_status", "Smoking", variable),
-    variable = if_else(variable == "fibre_consumption", "Fibre", variable),
-    variable = if_else(variable == "redmeat_consumption", "RedMeat", variable),
-    variable = if_else(variable == "processed_meat_consumption", "ProcessedMeat", variable), 
-    level = if_else(exposure %in% c("Fibre","Red_Meat", "Processed_Meat"), variable, level)
-  ) %>%
-  filter(
-    #year >= 2009 & year <= 2019, #selecting the years of interest 
-    exposure %in% c("Light_alcohol", "Medium_alcohol","Heavy_alcohol","Non-Drinker","BMI_obese_men","BMI_obese_women","BMI_overweight_men","BMI_overweight_women","Healthy Weight","Current_Smoking_men","Current_Smoking_women","Former_Smoking_men","Former_Smoking_women","Never", "Processed_Meat","Red_Meat", "Fibre", "PhysicalActivity")
-  )
 
 #merging all of the data together 
-rf_trend_plot <- merge(riskfactors, rfdata_joinpoint_last, by = c("sex", "age_group", "level"), all.x = T) |>
+rf_trend_plot <- merge(data_rf, rfdata_joinpoint_last, by = c("sex", "age_group", "level", "variable"), all.x = T) |>
   mutate(
     
     last_segment = between(year, Segment.Start, Segment.End),
@@ -639,7 +592,7 @@ rf_trend_plot <- merge(riskfactors, rfdata_joinpoint_last, by = c("sex", "age_gr
 
 # Need to get rows at join and duplicate with alternate last_segment
 rf_trend_plot_new_rows <- rf_trend_plot |>
-  group_by(sex, age_group, exposure) |>
+  group_by(sex, age_group, variable, level) |>
   filter(last_segment) |>
   filter(year == min(year)) |>
   mutate(last_segment = F) |>
@@ -650,11 +603,11 @@ rf_trend_plot <- rbind(rf_trend_plot, rf_trend_plot_new_rows)
 
 # Now create labels
 rf_trend_plot_labels <- rf_trend_plot |>
-  group_by(age_group, exposure, variable) |>
+  group_by(age_group, level, variable) |>
   mutate(
     value_range = max(value) - min(value)
   ) |>
-  group_by(sex, age_group, exposure, variable) |>
+  group_by(sex, age_group, level, variable) |>
   filter(last_segment) |>
   filter(year == max(year)) |>
   reframe(
@@ -667,7 +620,7 @@ rf_trend_plot_labels <- rf_trend_plot |>
   ) |>
   distinct() |>
   # Now attempting to do manual repelling of plots away from each other
-  group_by(age_group, exposure, variable) |>
+  group_by(age_group, level, variable) |>
   mutate(
 
     value = case_when(
@@ -681,7 +634,7 @@ rf_trend_plot_labels <- rf_trend_plot |>
 
 #Create invisible points to expand y limits
 rf_trend_plot_invisible_points <- rf_trend_plot |>
-  group_by(sex, age_group, exposure) |>
+  group_by(sex, age_group, level, variable) |>
   summarise(
 
     year =  (2026),  
@@ -691,15 +644,14 @@ rf_trend_plot_invisible_points <- rf_trend_plot |>
 
 #plot
 #ALCOHOL
-alcoholtrends <- ggplot(rf_trend_plot %>% filter(variable == "Alcohol"), aes(x = year, y = value, color = exposure)) +
+alcoholtrends <- ggplot(rf_trend_plot %>% filter(variable == "alcohol_amt"), aes(x = year, y = value, color = level)) +
   geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
   geom_line(aes(linetype = last_segment)) +
- geom_point(data = rf_trend_plot_invisible_points, alpha = 0) +
-   
+  geom_point(data = rf_trend_plot_invisible_points, alpha = 0) +
   facet_grid(sex ~ age_group) +  # grid by both age_group and sex
   geom_label_repel(
-    data = rf_trend_plot_labels %>% filter(variable == "Alcohol"),
-    aes(label = APC_clean, group = exposure),
+    data = rf_trend_plot_labels %>% filter(variable == "alcohol_amt"),
+    aes(label = APC_clean, group = level),
     nudge_x = 3,
     fill = "white", 
     size = 3,
@@ -710,11 +662,11 @@ alcoholtrends <- ggplot(rf_trend_plot %>% filter(variable == "Alcohol"), aes(x =
   ) +
    
   theme_minimal() +
-  scale_color_manual( #fixing the colors 
+  scale_color_manual( #fixing the colors
     values = c(
-      "Heavy_alcohol" = "#2b9eb3",  
-      "Medium_alcohol" = "#f8333c", 
-      "Light_alcohol" = "#44af69" , 
+      "Heavy Drinker" = "#2b9eb3",
+      "Moderate Drinker" = "#f8333c",
+      "Light Drinker" = "#44af69" ,
       "Non-Drinker" = "#fcab10"
     )
   ) +
@@ -734,15 +686,15 @@ alcoholtrends <- ggplot(rf_trend_plot %>% filter(variable == "Alcohol"), aes(x =
           axis.text.x = element_text(angle = 45, hjust = 1))
 
 #BMI
-bmitrends <- ggplot(rf_trend_plot %>% filter(variable == "BMI"), aes(x = year, y = value, color = exposure)) +
+bmitrends <- ggplot(rf_trend_plot %>% filter(variable == "bmi"), aes(x = year, y = value, color = level)) +
   geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
   geom_line(aes(linetype = last_segment)) +
- geom_point(data = rf_trend_plot_invisible_points, alpha = 0) +
+  geom_point(data = rf_trend_plot_invisible_points, alpha = 0) +
    
   facet_grid(sex ~ age_group) +  # grid by both age_group and sex
   geom_label_repel(
-    data = rf_trend_plot_labels %>% filter(variable == "BMI"),
-    aes(label = APC_clean, group = exposure),
+    data = rf_trend_plot_labels %>% filter(variable == "bmi"),
+    aes(label = APC_clean, group = level),
     nudge_x = 3,
     fill = "white", 
     size = 3,
@@ -755,11 +707,10 @@ bmitrends <- ggplot(rf_trend_plot %>% filter(variable == "BMI"), aes(x = year, y
   theme_minimal() +
   scale_color_manual( #fixing the colors 
     values = c(
-      "BMI_obese_men" = "#2b9eb3",  
-      "BMI_overweight_men" = "#f8333c", 
-      "BMI_obese_women" = "#2b9eb3",  
-      "BMI_overweight_women" = "#f8333c",
-      "Healthy Weight" = "#fcab10"
+      "Obese" = "#2b9eb3",  
+      "Overweight" = "#f8333c", 
+      "Healthy Weight" = "#44af69",
+      "Underweight" = "#fcab10" 
     )
   ) +
   scale_x_continuous(
@@ -778,15 +729,15 @@ bmitrends <- ggplot(rf_trend_plot %>% filter(variable == "BMI"), aes(x = year, y
           axis.text.x = element_text(angle = 45, hjust = 1))
 
 #Smoking 
-smokingtrends <- ggplot(rf_trend_plot %>% filter(variable == "Smoking"), aes(x = year, y = value, color = exposure)) +
+smokingtrends <- ggplot(rf_trend_plot %>% filter(variable == "smoking_status"), aes(x = year, y = value, color = level)) +
   geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
   geom_line(aes(linetype = last_segment)) +
   geom_point(data = rf_trend_plot_invisible_points, alpha = 0) +
    
   facet_grid(sex ~ age_group) +  # grid by both age_group and sex
     geom_label_repel(
-    data = rf_trend_plot_labels %>% filter(variable == "Smoking"),
-    aes(label = APC_clean, group = exposure),
+    data = rf_trend_plot_labels %>% filter(variable == "smoking_status"),
+    aes(label = APC_clean, group = level),
     nudge_x = 3, 
     fill = "white", 
     size = 3,
@@ -799,14 +750,12 @@ smokingtrends <- ggplot(rf_trend_plot %>% filter(variable == "Smoking"), aes(x =
   theme_minimal() +
   scale_color_manual( #fixing the colors 
     values = c(
-      "Current_Smoking_men" = "#2b9eb3",  
-      "Former_Smoking_men" = "#f8333c", 
-      "Current_Smoking_women" = "#2b9eb3",  
-      "Former_Smoking_women" = "#f8333c", 
+      "Current" = "#2b9eb3",  
+      "Previously" = "#f8333c", 
       "Never" = "#fcab10"
     )
   ) +
-      scale_x_continuous(
+    scale_x_continuous(
     breaks = seq(1995, 2019, by = 3),  # Define the x-axis breaks
     limits = c(1995, 2026)
  )+
@@ -821,16 +770,15 @@ smokingtrends <- ggplot(rf_trend_plot %>% filter(variable == "Smoking"), aes(x =
     theme(strip.text = element_text(face = "bold"), 
           axis.text.x = element_text(angle = 45, hjust = 1))
 
-#PHYSICIAL ACTIVITY
-PAtrends <- ggplot(rf_trend_plot %>% filter(level == "PhysicalActivity"), aes(x = year, y = value, color = exposure)) +
-  geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
-  geom_line(aes(linetype = last_segment)) +
- geom_point(data = rf_trend_plot_invisible_points, alpha = 0) +
-   
+#PHYSICAL ACTIVITY
+PAtrends <- ggplot(rf_trend_plot %>% filter(variable %in% c("physical_activity", "physical_activity_old")) |> filter(level == "Below Recommendations") |> mutate(last_segment = if_else(variable == "physical_activity", FALSE, last_segment)), aes(x = year, y = value)) +
+  geom_point(alpha = 0.6, size = 2, aes(colour = variable)) +  # Scatter plot for the original data
+  geom_line(aes(linetype = last_segment, colour = variable)) +
+  geom_point(data = rf_trend_plot_invisible_points, alpha = 0) +
   facet_grid(sex ~ age_group) +  # grid by both age_group and sex
   geom_label_repel(
-    data = rf_trend_plot_labels %>% filter(exposure == "PhysicalActivity"),
-    aes(label = APC_clean, group = exposure),
+    data = rf_trend_plot_labels %>% filter(variable %in% c("physical_activity", "physical_activity_old")) |> filter(level == "Below Recommendations"),
+    aes(label = APC_clean, group = variable),
     nudge_x = 3,
     fill = "white", 
     size = 3,
@@ -843,7 +791,8 @@ PAtrends <- ggplot(rf_trend_plot %>% filter(level == "PhysicalActivity"), aes(x 
   theme_minimal() +
   scale_color_manual( #fixing the colors 
     values = c(
-      "PhysicalActivity" = "#2b9eb3"
+      "physical_activity" = "#2b9eb3",
+      "physical_activity_old" = "#f8333c"
     )
   ) +
     scale_x_continuous(
@@ -864,15 +813,14 @@ PAtrends <- ggplot(rf_trend_plot %>% filter(level == "PhysicalActivity"), aes(x 
 
 
 #Diet
-diettrends <- ggplot(rf_trend_plot %>% filter(exposure %in% c("Red_Meat", "Processed_Meat", "Fibre")), aes(x = year, y = value, color = exposure)) +
+diettrends <- ggplot(rf_trend_plot %>% filter(variable %in% c("redmeat_consumption_median", "processedmeat_consumption_median", "fibre_consumption_mean")), aes(x = year, y = value, color = variable)) +
   geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
   geom_line(aes(linetype = last_segment)) +
   geom_point(data = rf_trend_plot_invisible_points, alpha = 0) +
-   
   facet_grid(sex ~ age_group) +  # grid by both age_group and sex
    geom_label_repel(
-    data = rf_trend_plot_labels %>% filter(exposure %in% c("Red_Meat", "Processed_Meat", "Fibre")),
-    aes(label = APC_clean, group = exposure),
+    data = rf_trend_plot_labels %>% filter(variable %in% c("redmeat_consumption_median", "processedmeat_consumption_median", "fibre_consumption_mean")),
+    aes(label = APC_clean, group = variable),
     nudge_x = 3,
     fill = "white", 
     size = 3,
@@ -885,9 +833,9 @@ diettrends <- ggplot(rf_trend_plot %>% filter(exposure %in% c("Red_Meat", "Proce
   theme_minimal() +
   scale_color_manual( #fixing the colors 
     values = c(
-      "Red_Meat" = "#2b9eb3", 
-      "Processed_Meat" = "#fcab10",
-      "Fibre" = "#f8333c"
+      "redmeat_consumption_median" = "#2b9eb3", 
+      "processedmeat_consumption_median" = "#fcab10",
+      "fibre_consumption_mean" = "#f8333c"
     )
   ) +
       scale_x_continuous(
@@ -959,18 +907,31 @@ rf_table <- rfdata_joinpoint_last %>%
     TimePeriod = paste0("(", Segment.Start, ", ", Segment.End, ")")
     ) %>%
   select(
-   sex,exposure, age_group, TimePeriod, APC, CI, P.Value 
+   sex,variable, exposure, age_group, TimePeriod, APC, CI, P.Value 
   ) %>%
   mutate(
     exposure = str_replace(exposure, "_women", ""), 
     exposure = str_replace(exposure, "_men", ""),
+    
+    variable = case_when(
+      variable == "redmeat_consumption_median" ~ "Red Meat Consumption",
+      variable == "smoking_status" ~ "Smoking Status",
+      variable == "processedmeat_consumption_median" ~ "Processed Meat Consumption",
+      variable == "fibre_consumption_mean" ~ "Fibre Consumption",
+      variable == "alcohol_amt" ~ "Alcohol Consumption",
+      variable == "physical_activity_old" ~ "Physical Activity",
+      variable == "bmi" ~ "BMI",
+      TRUE ~ variable
+    )
+    
   )
 
 
 #table formatting 
 rf_apc_table <- rf_table %>%
   arrange(age_group, APC) %>%
-  gt(groupname_col = "exposure") %>% # Specify group column
+  group_by(variable, exposure) |>
+  gt() %>% # Specify group column
   tab_style(
     style = cell_text(weight = "bold"),
     locations = cells_column_labels()
@@ -988,7 +949,7 @@ rf_apc_table <- rf_table %>%
     everything() ~ px(100) 
   ) %>%
   tab_header(
-    title = md("Most recent APC by Exposure, age group , and sex")
+    title = md("Most recent APC by Exposure, age group, and sex")
   )
 
 rf_apc_table
@@ -998,44 +959,140 @@ rf_apc_table
 
 ```{r}
 
-# Clean the data
-data_rf_imd_clean <- data_rf_imd %>% 
-  filter(
-    imd != "All", 
-    level != "Underweight"
-  ) %>%
+# Merge joinpoint data into cancer data
+rfdata_imd_joinpoint_last <- rfdata_imd_joinpoint |>
+  filter(Model == Segment)
+
+
+#merging all of the data together 
+rf_imd_trend_plot <- merge(data_rf_imd, rfdata_imd_joinpoint_last, by = c("sex", "age_group", "level", "variable", "imd"), all.x = T) |>
   mutate(
-    level = trimws(level), 
-    variable = trimws(variable),
-    variable = ifelse(variable == "alcohol_amt","Alcohol", variable ), 
-    variable = ifelse(variable == "bmi","BMI", variable ), 
-    variable = ifelse(variable == "smoking_status","Smoking", variable ), 
-    variable = ifelse(variable == "physical_activity_old","PhysicalActivity", variable ),
-    level = sub(" .*", "", level), 
-    imd = if_else(imd == 1, "1 (least deprived)", imd), 
-    imd = if_else(imd == 5, "5 (most deprived)", imd), 
-    complete = paste(level, variable, sep = " ")
+    
+    last_segment = between(year, Segment.Start, Segment.End),
+    
+    APC_clean = paste0(round(APC, digits = 2), if_else(APC.Significant == 1, "*", ""))
+    
+  ) 
+
+# Need to get rows at join and duplicate with alternate last_segment
+rf_imd_trend_plot_new_rows <- rf_imd_trend_plot |>
+  group_by(sex, age_group, variable, level, imd) |>
+  filter(last_segment) |>
+  filter(year == min(year)) |>
+  mutate(last_segment = F) |>
+  ungroup()
+
+# Now add back in
+rf_imd_trend_plot <- rbind(rf_imd_trend_plot, rf_imd_trend_plot_new_rows)
+
+# Now create labels
+rf_imd_trend_plot_labels <- rf_imd_trend_plot |>
+  group_by(age_group, level, variable) |>
+  mutate(
+    value_range = max(value) - min(value)
+  ) |>
+  group_by(sex, age_group, level, variable, imd) |>
+  filter(last_segment) |>
+  filter(year == max(year)) |>
+  reframe(
+    
+    year = max(year) + 1.8,
+    value = max(value),
+    value_range = value_range[1],
+    APC_clean = APC_clean[1]
+    
+  ) |>
+  distinct() |>
+  # Now attempting to do manual repelling of plots away from each other
+  group_by(age_group, level, variable) |>
+  mutate(
+
+    value = case_when(
+      n() == 1 ~ value,
+      max(value) - min(value) < value_range/2 & value == min(value) ~ value - (value_range/2 -  (max(value) - min(value)))/2,
+      max(value) - min(value) < value_range/2 & value == max(value) ~ value + (value_range/2 -  (max(value) - min(value)))/2,
+      TRUE ~ value
+    )
+
+  )
+
+#Create invisible points to expand y limits
+rf_imd_trend_plot_invisible_points <- rf_imd_trend_plot |>
+  group_by(sex, age_group, level, variable, imd) |>
+  summarise(
+
+    year =  (2026),  
+    value = (0.5)
+
+  )
+
+
+# Clean the data
+# data_rf_imd_clean <- data_rf_imd %>% 
+#   filter(
+#     imd != "All", 
+#     level != "Underweight"
+#   ) %>%
+#   mutate(
+#     level = trimws(level), 
+#     variable = trimws(variable),
+#     variable = ifelse(variable == "alcohol_amt","Alcohol", variable ), 
+#     variable = ifelse(variable == "bmi","BMI", variable ), 
+#     variable = ifelse(variable == "smoking_status","Smoking", variable ), 
+#     variable = ifelse(variable == "physical_activity_old","PhysicalActivity", variable ),
+#     level = sub(" .*", "", level), 
+#     imd = if_else(imd == 1, "1 (least deprived)", imd), 
+#     imd = if_else(imd == 5, "5 (most deprived)", imd), 
+#     complete = paste(level, variable, sep = " ")
+#   )
+
+rf_imd_trend_plot <- rf_imd_trend_plot |>
+  filter(
+    imd != "All",
+    level != "Underweight"
   )
 
 # Create a list of unique variables
-unique_level <- unique(data_rf_imd_clean$complete)
+# unique_level <- unique(data_rf_imd_clean$complete)
 
 # Loop through each variable and create a plot
-for (var in unique_level) {
-  plot <- ggplot(data_rf_imd_clean %>% filter(complete == var), aes(x = year, y = value, color = as.factor(imd), group = imd)) +
+# for (var in unique_level) {
+for(var in unique(paste0(rf_imd_trend_plot$variable, "-", rf_imd_trend_plot$level))){
+  
+  variable_clean <- case_when(
+    var == "Meets physical_activity" ~ "Meets PA Guidelines (NEW)",
+    var == "Meets PhysicalActivity" ~ "Meets PA Guidelines",
+    var == "Below physical_activity" ~ "Below PA Guidelines (NEW)",
+    var == "Below PhysicalActivity" ~ "Below PA Guidelines",
+    TRUE ~ var
+  )
+  
+  plot <- ggplot(rf_imd_trend_plot |> mutate(complete = paste0(variable, "-", level)) |> filter(complete == var), aes(x = year, y = value, color = as.factor(imd), group = imd)) +
     geom_line(size = 1) +
     labs(
-      title = paste("Population Prevalence by IMD England:", var),
+      title = paste("Population Prevalence by IMD England:", variable_clean),
       x = "Year",
       y = "Value",
       color = "IMD Status"
     ) +
+    geom_label_repel(
+      data = rf_imd_trend_plot_labels |> mutate(complete = paste0(variable, "-", level)) |> filter(complete == var),
+      aes(label = APC_clean, group = imd),
+      nudge_x = 3,
+      fill = "white", 
+      size = 3,
+      show.legend = FALSE,
+      max.overlaps = Inf,          # Ensure all labels are plotted
+      box.padding = 0.1,          # Add padding around labels
+      point.padding = 0.5          # Add padding between points and labels
+    ) + 
     scale_color_brewer(palette = "Set2")   + 
     theme_minimal() +
-    ylim(0, 0.75) +
+    # ylim(0, 0.75) +
     scale_x_continuous(
     breaks = seq(2000, 2019, by = 3),  # Define the x-axis breaks
-    limits = c(2000, 2020))+
+    # limits = c(2000, 2020)
+    )+
     theme(
       strip.text = element_text(size = 10),
       legend.position = "right"
@@ -1125,7 +1182,7 @@ PAFallages_bar_MEN <- ggplot(PAF_allages %>% filter(sex == "Men"), aes(x = cance
   ) +
   scale_y_continuous(
     name = "PAFs",
-    limits = c(0, 100),
+    limits = c(0, 110),
     sec.axis = sec_axis(
       ~ . * 100,  # Adjust the transformation factor as needed
       name = "Case Count"
@@ -1161,7 +1218,7 @@ PAFallages_bar_WOMEN <- ggplot(PAF_allages %>% filter(sex == "Women"), aes(x = c
   ) +
   scale_y_continuous(
     name = "PAFs",
-    limits = c(0, 100),
+    limits = c(0, 110),
     sec.axis = sec_axis(
       ~ . * 100,  # Adjust the transformation factor as needed
       name = "Case Count"
@@ -1298,7 +1355,7 @@ data_attr_bar_MEN <- ggplot(data_attr_cases_bar %>% filter(sex == "Men"), aes(x 
   ) +
   scale_y_continuous(
     name = "PAFs",
-    limits = c(0, 100),
+    limits = c(0, 110),
     sec.axis = sec_axis(
       ~ . * 100,  # Adjust the transformation factor as needed
       name = "Case Count"
@@ -1334,7 +1391,7 @@ data_attr_bar_WOMEN <- ggplot(data_attr_cases_bar %>% filter(sex == "Women"), ae
   ) +
   scale_y_continuous(
     name = "PAFs",
-    limits = c(0, 100),
+    limits = c(0, 110),
     sec.axis = sec_axis(
       ~ . * 100,  # Adjust the transformation factor as needed
       name = "Case Count"
@@ -1451,6 +1508,13 @@ data_attr_cases_individual <- merge(data_paf_long_individual, data_cancer, by = 
 # Loop through variables and output gt table
 for(var in unique(data_attr_cases_individual$variable)[!grepl("\\_mean$|\\_median$", unique(data_attr_cases_individual$variable)) & (unique(data_attr_cases_individual$variable) != "physical_activity")]){
   
+  variable_clean <- case_when(
+      var == "ProcessedMeat" ~ "Processed Meat",
+      var == "RedMeat" ~ "Red Meat",
+      var == "physical_activity_old" ~ "Physical Activity",
+      TRUE ~ var
+    )
+  
   # Clean data made above and create gt table for presentation
   data_attr_cases_individual_gt <- data_attr_cases_individual |>
     filter(variable == var) |>
@@ -1499,7 +1563,7 @@ for(var in unique(data_attr_cases_individual$variable)[!grepl("\\_mean$|\\_media
       columns = c(Attributable, `Non-Attributable`)
     ) |>
     tab_header(
-      title = md(paste0("Cases Attributable to ", var, " - England, 2019"))
+      title = md(paste0("Cases Attributable to ", variable_clean, " - England, 2019"))
     )
   
   # Print
@@ -1533,6 +1597,15 @@ data_attr_cases_bar <- data_paf_long_individual %>%
   filter(
     variable %in% c("Smoking", "Alcohol", "BMI", "RedMeat", "ProcessedMeat", "Fibre", "physical_activity_old")
   )%>%
+  mutate(
+    
+    variable = case_when(
+      variable == "ProcessedMeat" ~ "Processed Meat",
+      variable == "RedMeat" ~ "Red Meat",
+      variable == "physical_activity_old" ~ "Physical Activity",
+      TRUE ~ variable
+    )
+  ) |>
   mutate(
     cases_count = PAF * count,
     PAF = PAF *100, 
@@ -1659,170 +1732,170 @@ generate_plots(data_attr_cases_bar)
 
 ```{r, results="asis"}
 
-# Calculate p-values
-# Now compare empirically between the years
-data_complete_paf_test <- data_paf_comparison |>
-  group_by(Cancer_sites, age_group, sex, variable) |>
-  mutate(
-
-    type = case_when(
-      year == min(year) ~ "Past",
-      year == max(year) ~ "Future",
-      TRUE ~ "Current"
-    ),
-
-  ) |>
-  ungroup() |>
-  group_by(Cancer_sites, age_group, sex, variable, type) |>
-  mutate(
-
-    in_type_no = row_number()
-
-  ) |>
-  ungroup() |>
-  pivot_wider(id_cols = c("Cancer_sites", "age_group", "sex", "variable", "in_type_no"), names_from = type, values_from = PAF) |>
-  group_by(Cancer_sites, age_group, sex, variable) |>
-  # Calculate estimates for p values
-  summarise(PAF_diff_Past = sum(Past > Current)/n(),
-            PAF_diff_Future = sum(Current > Future)/n()
-  )
-
-
-# Calculate mean and CI for each point
-data_complete_paf_plot <- data_paf_comparison |>
-  group_by(Cancer_sites, age_group, sex, variable) |>
-  mutate(
-    
-    year_cat = case_when(
-      year == min(year) ~ "Past",
-      year == max(year) ~ "Future",
-      TRUE ~ "Current"
-    ),
-    
-  ) |>
-  ungroup() |>
-  group_by(Cancer_sites, age_group, sex, variable, year_cat) |>
-  summarise(
-    
-    mean = mean(PAF),
-    
-    CI_low = quantile(PAF, 0.025),
-    
-    CI_high = quantile(PAF, 0.975),
-    
-    category = paste0(variable[1], " | ", sex[1], " | ", age_group[1]),
-    
-  ) |>
-  merge(data_complete_paf_test) |>
-  mutate(
-    
-    # Cleaning variable label for plotting purposes
-    variable_label = case_when(
-      variable == "alcohol_amt" ~ "Alcohol",
-      variable == "bmi" ~ "BMI",
-      variable == "fibre_consumption" ~ "Fibre",
-      variable == "processed_meat_consumption" ~ "Processed Meat",
-      variable == "redmeat_consumption" ~ "Red Meat",
-      variable == "smoking_status" ~ "Smoking Status",
-      TRUE ~ NA
-    ),
-    
-    # Categorising
-    year_cat = factor(year_cat, levels = c("Past", "Current", "Future"))
-    
-  )
-
-
-# Loop through risk factors generating a different plot for each one
-for(var in unique(data_complete_paf_plot$variable_label)){
-  
-  # Filter to specific plot data
-  data_complete_paf_plot_var <- data_complete_paf_plot |>
-    filter(variable_label == var)
-  
-  # Initialise plot
-  plot <- data_complete_paf_plot_var |>
-    group_by(year_cat) |>
-    arrange(Cancer_sites, sex, age_group) |>
-    mutate(
-      
-      Cancer_sites = ""
-      
-    ) |>
-    forestplot(
-      labeltext = c(Cancer_sites, sex, age_group, PAF_diff_Past, PAF_diff_Future),
-      boxsize = 0.2,
-      mean = mean,
-      lower = CI_low,
-      upper = CI_high,
-      xlab = "PAF",
-      title = paste0("PAF Values for ", var, " by Time Point"),
-      line.margin = 0.2,
-      xticks = c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-      colgap = unit(0.03, "npc")
-    )
-  
-  
-  
-  # Loop through cancer sites in the data and add summary row for it
-  start <- 1
-  for(site in sort(unique(data_complete_paf_plot_var$Cancer_sites))){
-
-    # Add row
-    plot <- plot |>
-      fp_insert_row(
-                    position = start,
-                    Cancer_sites = site,
-                    sex = "",
-                    age_group = "",
-                    PAF_diff_Past = "",
-                    PAF_diff_Future = "",
-                    mean = NULL,
-                    lower = NULL,
-                    upper = NULL,
-                    is.summary = TRUE,
-                    boxsize = NA
-      )
-
-    # Count number of instances
-    no_instances <- sum(data_complete_paf_plot_var$Cancer_sites == site)/3
-
-    # Now add to start
-    start <- start + no_instances + 1
-
-  }
-
-  # Adding thematic elements to the plot
-  plot <- plot |>
-    fp_set_style(box = "black",
-                 line = "black") |>
-    fp_add_header(
-                  Cancer_sites = c("", ""),
-                  sex = c("", "Sex"),
-                  age_group = c("", "Age Group"),
-                  PAF_diff_Past = c("Past < Present", "P Value"),
-                  PAF_diff_Future = c("Present < Future", "P Value")) |>
-    fp_decorate_graph(graph.pos = 4) |>
-    fp_set_zebra_style("#EFEFEF") |>
-    fp_set_style(box = c("red", "blue", "yellow") |> lapply(function(x) gpar(fill = x, col = "#555555")),
-                 default = gpar(vertices = TRUE),
-                 line = "grey20",
-                 summary =  "black",
-                 align = "lrrrrr",
-                 hrz_lines =  "#999999",
-                 txt_gp = fpTxtGp(label = gpar(cex = 0.8)))
-  
-  # Find appropriate height for plot based on number of rows
-  rows <- length(plot$labels$Cancer_sites)
-
-  # Make forest plot
-  pdf(file=paste0("../Output/Plots/Figure_5-", gsub(" ", "_", var), ".pdf"), width = 15, height = (2/5)*(3 + rows))
-  print(plot)
-  dev.off()
-  
-  cat(sprintf("- [%s](%s)\n", paste0("**Figure 4: ", var, "**"), paste0("../Output/Plots/Figure_5-", gsub(" ", "_", var), ".pdf")))
-  
-}
+# # Calculate p-values
+# # Now compare empirically between the years
+# data_complete_paf_test <- data_paf_comparison |>
+#   group_by(Cancer_sites, age_group, sex, variable) |>
+#   mutate(
+# 
+#     type = case_when(
+#       year == min(year) ~ "Past",
+#       year == max(year) ~ "Future",
+#       TRUE ~ "Current"
+#     ),
+# 
+#   ) |>
+#   ungroup() |>
+#   group_by(Cancer_sites, age_group, sex, variable, type) |>
+#   mutate(
+# 
+#     in_type_no = row_number()
+# 
+#   ) |>
+#   ungroup() |>
+#   pivot_wider(id_cols = c("Cancer_sites", "age_group", "sex", "variable", "in_type_no"), names_from = type, values_from = PAF) |>
+#   group_by(Cancer_sites, age_group, sex, variable) |>
+#   # Calculate estimates for p values
+#   summarise(PAF_diff_Past = sum(Past > Current)/n(),
+#             PAF_diff_Future = sum(Current > Future)/n()
+#   )
+# 
+# 
+# # Calculate mean and CI for each point
+# data_complete_paf_plot <- data_paf_comparison |>
+#   group_by(Cancer_sites, age_group, sex, variable) |>
+#   mutate(
+#     
+#     year_cat = case_when(
+#       year == min(year) ~ "Past",
+#       year == max(year) ~ "Future",
+#       TRUE ~ "Current"
+#     ),
+#     
+#   ) |>
+#   ungroup() |>
+#   group_by(Cancer_sites, age_group, sex, variable, year_cat) |>
+#   summarise(
+#     
+#     mean = mean(PAF),
+#     
+#     CI_low = quantile(PAF, 0.025),
+#     
+#     CI_high = quantile(PAF, 0.975),
+#     
+#     category = paste0(variable[1], " | ", sex[1], " | ", age_group[1]),
+#     
+#   ) |>
+#   merge(data_complete_paf_test) |>
+#   mutate(
+#     
+#     # Cleaning variable label for plotting purposes
+#     variable_label = case_when(
+#       variable == "alcohol_amt" ~ "Alcohol",
+#       variable == "bmi" ~ "BMI",
+#       variable == "fibre_consumption" ~ "Fibre",
+#       variable == "processed_meat_consumption" ~ "Processed Meat",
+#       variable == "redmeat_consumption" ~ "Red Meat",
+#       variable == "smoking_status" ~ "Smoking Status",
+#       TRUE ~ NA
+#     ),
+#     
+#     # Categorising
+#     year_cat = factor(year_cat, levels = c("Past", "Current", "Future"))
+#     
+#   )
+# 
+# 
+# # Loop through risk factors generating a different plot for each one
+# for(var in unique(data_complete_paf_plot$variable_label)){
+#   
+#   # Filter to specific plot data
+#   data_complete_paf_plot_var <- data_complete_paf_plot |>
+#     filter(variable_label == var)
+#   
+#   # Initialise plot
+#   plot <- data_complete_paf_plot_var |>
+#     group_by(year_cat) |>
+#     arrange(Cancer_sites, sex, age_group) |>
+#     mutate(
+#       
+#       Cancer_sites = ""
+#       
+#     ) |>
+#     forestplot(
+#       labeltext = c(Cancer_sites, sex, age_group, PAF_diff_Past, PAF_diff_Future),
+#       boxsize = 0.2,
+#       mean = mean,
+#       lower = CI_low,
+#       upper = CI_high,
+#       xlab = "PAF",
+#       title = paste0("PAF Values for ", var, " by Time Point"),
+#       line.margin = 0.2,
+#       xticks = c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+#       colgap = unit(0.03, "npc")
+#     )
+#   
+#   
+#   
+#   # Loop through cancer sites in the data and add summary row for it
+#   start <- 1
+#   for(site in sort(unique(data_complete_paf_plot_var$Cancer_sites))){
+# 
+#     # Add row
+#     plot <- plot |>
+#       fp_insert_row(
+#                     position = start,
+#                     Cancer_sites = site,
+#                     sex = "",
+#                     age_group = "",
+#                     PAF_diff_Past = "",
+#                     PAF_diff_Future = "",
+#                     mean = NULL,
+#                     lower = NULL,
+#                     upper = NULL,
+#                     is.summary = TRUE,
+#                     boxsize = NA
+#       )
+# 
+#     # Count number of instances
+#     no_instances <- sum(data_complete_paf_plot_var$Cancer_sites == site)/3
+# 
+#     # Now add to start
+#     start <- start + no_instances + 1
+# 
+#   }
+# 
+#   # Adding thematic elements to the plot
+#   plot <- plot |>
+#     fp_set_style(box = "black",
+#                  line = "black") |>
+#     fp_add_header(
+#                   Cancer_sites = c("", ""),
+#                   sex = c("", "Sex"),
+#                   age_group = c("", "Age Group"),
+#                   PAF_diff_Past = c("Past < Present", "P Value"),
+#                   PAF_diff_Future = c("Present < Future", "P Value")) |>
+#     fp_decorate_graph(graph.pos = 4) |>
+#     fp_set_zebra_style("#EFEFEF") |>
+#     fp_set_style(box = c("red", "blue", "yellow") |> lapply(function(x) gpar(fill = x, col = "#555555")),
+#                  default = gpar(vertices = TRUE),
+#                  line = "grey20",
+#                  summary =  "black",
+#                  align = "lrrrrr",
+#                  hrz_lines =  "#999999",
+#                  txt_gp = fpTxtGp(label = gpar(cex = 0.8)))
+#   
+#   # Find appropriate height for plot based on number of rows
+#   rows <- length(plot$labels$Cancer_sites)
+# 
+#   # Make forest plot
+#   pdf(file=paste0("../Output/Plots/Figure_5-", gsub(" ", "_", var), ".pdf"), width = 15, height = (2/5)*(3 + rows))
+#   print(plot)
+#   dev.off()
+#   
+#   cat(sprintf("- [%s](%s)\n", paste0("**Figure 4: ", var, "**"), paste0("../Output/Plots/Figure_5-", gsub(" ", "_", var), ".pdf")))
+#   
+# }
 
 ```
 
@@ -1842,6 +1915,7 @@ data_pifallages_past <- PIF_allages |>
     variable = case_when(
       variable == "ProcessedMeat" ~ "Processed Meat",
       variable == "RedMeat" ~ "Red Meat",
+      variable == "physical_activity_old" ~ "Physical Activity",
       TRUE ~ variable
     ),
     
@@ -1912,6 +1986,7 @@ data_pif_gt_past <- PIF |>
     variable = case_when(
       variable == "ProcessedMeat" ~ "Processed Meat",
       variable == "RedMeat" ~ "Red Meat",
+      variable == "physical_activity_old" ~ "Physical Activity",
       TRUE ~ variable
     ),
     
@@ -1977,6 +2052,7 @@ data_pif_gt_future <- PIF |>
     variable = case_when(
       variable == "ProcessedMeat" ~ "Processed Meat",
       variable == "RedMeat" ~ "Red Meat",
+      variable == "physical_activity_old" ~ "Physical Activity",
       TRUE ~ variable
     ),
     
