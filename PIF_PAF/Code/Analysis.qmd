@@ -817,7 +817,6 @@ diettrends <- ggplot(rf_trend_plot %>% filter(variable %in% c("redmeat_consumpti
   geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
   geom_line(aes(linetype = last_segment)) +
   geom_point(data = rf_trend_plot_invisible_points, alpha = 0) +
-   
   facet_grid(sex ~ age_group) +  # grid by both age_group and sex
    geom_label_repel(
     data = rf_trend_plot_labels %>% filter(variable %in% c("redmeat_consumption_median", "processedmeat_consumption_median", "fibre_consumption_mean")),
@@ -918,6 +917,7 @@ rf_table <- rfdata_joinpoint_last %>%
       variable == "redmeat_consumption_median" ~ "Red Meat Consumption",
       variable == "smoking_status" ~ "Smoking Status",
       variable == "processedmeat_consumption_median" ~ "Processed Meat Consumption",
+      variable == "fibre_consumption_mean" ~ "Fibre Consumption",
       variable == "alcohol_amt" ~ "Alcohol Consumption",
       variable == "physical_activity_old" ~ "Physical Activity",
       variable == "bmi" ~ "BMI",
@@ -959,30 +959,105 @@ rf_apc_table
 
 ```{r}
 
-# Clean the data
-data_rf_imd_clean <- data_rf_imd %>% 
-  filter(
-    imd != "All", 
-    level != "Underweight"
-  ) %>%
+# Merge joinpoint data into cancer data
+rfdata_imd_joinpoint_last <- rfdata_imd_joinpoint |>
+  filter(Model == Segment)
+
+
+#merging all of the data together 
+rf_imd_trend_plot <- merge(data_rf_imd, rfdata_imd_joinpoint_last, by = c("sex", "age_group", "level", "variable", "imd"), all.x = T) |>
   mutate(
-    level = trimws(level), 
-    variable = trimws(variable),
-    variable = ifelse(variable == "alcohol_amt","Alcohol", variable ), 
-    variable = ifelse(variable == "bmi","BMI", variable ), 
-    variable = ifelse(variable == "smoking_status","Smoking", variable ), 
-    variable = ifelse(variable == "physical_activity_old","PhysicalActivity", variable ),
-    level = sub(" .*", "", level), 
-    imd = if_else(imd == 1, "1 (least deprived)", imd), 
-    imd = if_else(imd == 5, "5 (most deprived)", imd), 
-    complete = paste(level, variable, sep = " ")
+    
+    last_segment = between(year, Segment.Start, Segment.End),
+    
+    APC_clean = paste0(round(APC, digits = 2), if_else(APC.Significant == 1, "*", ""))
+    
+  ) 
+
+# Need to get rows at join and duplicate with alternate last_segment
+rf_imd_trend_plot_new_rows <- rf_imd_trend_plot |>
+  group_by(sex, age_group, variable, level, imd) |>
+  filter(last_segment) |>
+  filter(year == min(year)) |>
+  mutate(last_segment = F) |>
+  ungroup()
+
+# Now add back in
+rf_imd_trend_plot <- rbind(rf_imd_trend_plot, rf_imd_trend_plot_new_rows)
+
+# Now create labels
+rf_imd_trend_plot_labels <- rf_imd_trend_plot |>
+  group_by(age_group, level, variable) |>
+  mutate(
+    value_range = max(value) - min(value)
+  ) |>
+  group_by(sex, age_group, level, variable, imd) |>
+  filter(last_segment) |>
+  filter(year == max(year)) |>
+  reframe(
+    
+    year = max(year) + 1.8,
+    value = max(value),
+    value_range = value_range[1],
+    APC_clean = APC_clean[1]
+    
+  ) |>
+  distinct() |>
+  # Now attempting to do manual repelling of plots away from each other
+  group_by(age_group, level, variable) |>
+  mutate(
+
+    value = case_when(
+      n() == 1 ~ value,
+      max(value) - min(value) < value_range/2 & value == min(value) ~ value - (value_range/2 -  (max(value) - min(value)))/2,
+      max(value) - min(value) < value_range/2 & value == max(value) ~ value + (value_range/2 -  (max(value) - min(value)))/2,
+      TRUE ~ value
+    )
+
+  )
+
+#Create invisible points to expand y limits
+rf_imd_trend_plot_invisible_points <- rf_imd_trend_plot |>
+  group_by(sex, age_group, level, variable, imd) |>
+  summarise(
+
+    year =  (2026),  
+    value = (0.5)
+
+  )
+
+
+# Clean the data
+# data_rf_imd_clean <- data_rf_imd %>% 
+#   filter(
+#     imd != "All", 
+#     level != "Underweight"
+#   ) %>%
+#   mutate(
+#     level = trimws(level), 
+#     variable = trimws(variable),
+#     variable = ifelse(variable == "alcohol_amt","Alcohol", variable ), 
+#     variable = ifelse(variable == "bmi","BMI", variable ), 
+#     variable = ifelse(variable == "smoking_status","Smoking", variable ), 
+#     variable = ifelse(variable == "physical_activity_old","PhysicalActivity", variable ),
+#     level = sub(" .*", "", level), 
+#     imd = if_else(imd == 1, "1 (least deprived)", imd), 
+#     imd = if_else(imd == 5, "5 (most deprived)", imd), 
+#     complete = paste(level, variable, sep = " ")
+#   )
+
+rf_imd_trend_plot <- rf_imd_trend_plot |>
+  filter(
+    imd != "All",
+    level != "Underweight"
   )
 
 # Create a list of unique variables
-unique_level <- unique(data_rf_imd_clean$complete)
+# unique_level <- unique(data_rf_imd_clean$complete)
 
 # Loop through each variable and create a plot
-for (var in unique_level) {
+# for (var in unique_level) {
+for(var in unique(paste0(rf_imd_trend_plot$variable, "-", rf_imd_trend_plot$level))){
   
   variable_clean <- case_when(
     var == "Meets physical_activity" ~ "Meets PA Guidelines (NEW)",
@@ -992,7 +1067,7 @@ for (var in unique_level) {
     TRUE ~ var
   )
   
-  plot <- ggplot(data_rf_imd_clean %>% filter(complete == var), aes(x = year, y = value, color = as.factor(imd), group = imd)) +
+  plot <- ggplot(rf_imd_trend_plot |> mutate(complete = paste0(variable, "-", level)) |> filter(complete == var), aes(x = year, y = value, color = as.factor(imd), group = imd)) +
     geom_line(size = 1) +
     labs(
       title = paste("Population Prevalence by IMD England:", variable_clean),
@@ -1000,12 +1075,24 @@ for (var in unique_level) {
       y = "Value",
       color = "IMD Status"
     ) +
+    geom_label_repel(
+      data = rf_imd_trend_plot_labels |> mutate(complete = paste0(variable, "-", level)) |> filter(complete == var),
+      aes(label = APC_clean, group = imd),
+      nudge_x = 3,
+      fill = "white", 
+      size = 3,
+      show.legend = FALSE,
+      max.overlaps = Inf,          # Ensure all labels are plotted
+      box.padding = 0.1,          # Add padding around labels
+      point.padding = 0.5          # Add padding between points and labels
+    ) + 
     scale_color_brewer(palette = "Set2")   + 
     theme_minimal() +
-    ylim(0, 0.75) +
+    # ylim(0, 0.75) +
     scale_x_continuous(
     breaks = seq(2000, 2019, by = 3),  # Define the x-axis breaks
-    limits = c(2000, 2020))+
+    # limits = c(2000, 2020)
+    )+
     theme(
       strip.text = element_text(size = 10),
       legend.position = "right"
