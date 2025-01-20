@@ -169,40 +169,33 @@ Suspected risk factor trends will be investigated for increasing/decreasing tren
 
 General: 
 
-- Is there a disconnect r.e. age groups for rates and for incidence? The age group 20-49 for e.g. alcohol consumption will be 30-69 when we evaluate cancer incidence from that consumption. This is relevant to the overall question of “what can we attribute rise in EO cancers to”. If we are defining EO as 20-49 then, with a latency of 10 years, this cohort was exposed to risks as a 10-39 age group.
+-   Is there a disconnect r.e. age groups for rates and for incidence? The age group 20-49 for e.g. alcohol consumption will be 30-69 when we evaluate cancer incidence from that consumption. This is relevant to the overall question of “what can we attribute rise in EO cancers to”. If we are defining EO as 20-49 then, with a latency of 10 years, this cohort was exposed to risks as a 10-39 age group.
 
-- We are assuming a constant 10 year time lag for all risk factor/cancer site combinations (in adults). This is likely not the case. If necessary we could cite the paper [insert here] that looked at these lags varying and came to the conclusion of not altering any of them.
+-   We are assuming a constant 10 year time lag for all risk factor/cancer site combinations (in adults). This is likely not the case. If necessary we could cite the paper \[insert here\] that looked at these lags varying and came to the conclusion of not altering any of them.
 
-- IMD (Index of Multiple Deprivation) is not a perfect statistic, and does not capture many of the important aspects of deprivation that may cause risk factor trends to vary between individuals.
+-   IMD (Index of Multiple Deprivation) is not a perfect statistic, and does not capture many of the important aspects of deprivation that may cause risk factor trends to vary between individuals namely ethnicity, migrant status, individuality(this is a regional score), etc.
 
-- We have not (to some extent) measured the uncertainty in many of the values we are presenting. This feeds into a larger point concerning lack of data availability - it is hard to come to a conclusion detailing what is causing increases in early onset cancers when the data used to do so carries so much uncertainty.
+-   We have not (to some extent) measured the uncertainty in many of the values we are presenting. This feeds into a larger point concerning lack of data availability - it is hard to come to a conclusion detailing what is causing increases in early onset cancers when the data used to do so carries so much uncertainty.
 
 Data Availability:
 
-- We are limited in how far back into the past we can look at data on some variables. This makes establishing trends harder and limits the extent to which we can calculate PAFs into the past, especially when considering a time lag.
+-   We are limited in how far back into the past we can look at data on some variables. This makes establishing trends harder and limits the extent to which we can calculate PAFs into the past, especially when considering a time lag.
 
-- The units used to measure risk factors can vary over time. We have been 'forced' to make a sub-optimal conversion from activity measurements to MET hours. This makes the PAF estimate more unreliable, but is necessary as the needed data to calculate MET hours more rigorously was only collected past a certain point.
+-   The lack of data availability also prevents our ability to understand when the exposure to the risk factors (in most cases) begins to decrease which could allow us to better understand how risk factors and cancer incidence trends are linked.
 
-- Because we have limited our RR search to meta-analysis, some combinations of risk factor and cancer site have been left out of our analysis. (Endometrial + Activity, Oral + BMI)
+-   The units used to measure risk factors can vary over time. We have been 'forced' to make a sub-optimal conversion from activity measurements to MET hours. This makes the PAF estimate more unreliable, but is necessary as the needed data to calculate MET hours more rigorously was only collected past a certain point.
+
+-   Because we have limited our RR search to meta-analysis, some combinations of risk factor and cancer site have been left out of our analysis. (Endometrial + Activity, Oral + BMI)
 
 Methodology:
 
-- We have not accounted for correlation between risk factors when calculating joint PAF values. We have instead assumed they are all independently distributed throughout the population.
+-   We have not accounted for correlation between risk factors when calculating joint PAF values. We have instead assumed they are all independently distributed throughout the population.
 
-- PAF assumes the risk factors are completely removeable. We know for some this is not the case such as smoking, where a current smoker can only become a former smoker and not a never-smoker. Similar issues are present with analysis of BMI as a risk factors.
-
+-   PAF assumes the risk factors are completely removeable. We know for some this is not the case such as smoking, where a current smoker can only become a former smoker and not a never-smoker. Similar issues are present with analysis of BMI as a risk factors.
 
 ### Analysis specific notes :
 
-- Ultra Processed Foods and Colorectal RR scenario generation - not sure if valid due to different definition of prevalence (individual prevalence vs. population prevalence). Population prevalence is next to impossible.
-
-### Discussion Topics
-
-Cancer APC calculated from 2001, should it be from 2009 to reflect only the time frame of interest
-
-Colon vs. Colorectal Cancer and physical activity
-
-PIF for alcohol - it is increasing?
+-   Ultra Processed Foods and Colorectal RR scenario generation - not sure if valid due to different definition of prevalence (individual prevalence vs. population prevalence). Population prevalence is next to impossible.
 
 ## Setting up
 
@@ -2491,7 +2484,7 @@ airpol_plot <- ggplot(airpol, aes(x = Year, y = value, color = combo)) +
 print(airpol_plot)
 ```
 
-When looking at air pollution by IMD in England, [a study out of York University ](https://pubs.rsc.org/en/content/articlelanding/2023/va/d3va00054k)found that the English population in the most deprived areas according to IMD typically live in places with the highest air pollution.
+When looking at air pollution by IMD in England, [a study out of York University](https://pubs.rsc.org/en/content/articlelanding/2023/va/d3va00054k)found that the English population in the most deprived areas according to IMD typically live in places with the highest air pollution.
 
 This is not looking at how trends differ by IMD status, not sure that that data exists.
 
