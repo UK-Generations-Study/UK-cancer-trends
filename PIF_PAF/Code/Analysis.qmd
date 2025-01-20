@@ -165,35 +165,36 @@ STEP FIVE
 
 Suspected risk factor trends will be investigated for increasing/decreasing trends. RR scenarios may also be carried out to estimate what the RR would have to be to explain a certain amount of the cancer incidence increase.
 
-## Ongoing broad analysis questions (for discussion) 
+## Limitations
 
 General: 
 
-1.  10 year latency creates gap between “what’s going on right now” r.e. risk factors and what is actually causing changes in cancer incidence. When we discuss how risk factors need to be changed we are talking about effects that will happen 10 years from now.
+- Is there a disconnect r.e. age groups for rates and for incidence? The age group 20-49 for e.g. alcohol consumption will be 30-69 when we evaluate cancer incidence from that consumption. This is relevant to the overall question of “what can we attribute rise in EO cancers to”. If we are defining EO as 20-49 then, with a latency of 10 years, this cohort was exposed to risks as a 10-39 age group.
 
-2.  Is there a disconnect r.e. age groups for rates and for incidence? The age group 20-49 for e.g. alcohol consumption will be 30-69 when we evaluate cancer incidence from that consumption. This is relevant to the overall question of “what can we attribute rise in EO cancers to”. If we are defining EO as 20-49 then, with a latency of 10 years, this cohort was exposed to risks as a 10-39 age group.
+- We are assuming a constant 10 year time lag for all risk factor/cancer site combinations (in adults). This is likely not the case. If necessary we could cite the paper [insert here] that looked at these lags varying and came to the conclusion of not altering any of them.
 
-Brown paper: 
+- IMD (Index of Multiple Deprivation) is not a perfect statistic, and does not capture many of the important aspects of deprivation that may cause risk factor trends to vary between individuals.
 
-1.  How did they treat red and processed meat in calculating PAFs? Seems as though average was applied to whole population. *EMAIL SENT*
+- We have not (to some extent) measured the uncertainty in many of the values we are presenting. This feeds into a larger point concerning lack of data availability - it is hard to come to a conclusion detailing what is causing increases in early onset cancers when the data used to do so carries so much uncertainty.
 
-2.  Which year did they use for diet data to get to 2005? They quote 2000/1 but reference NDNS which goes back to 2008. They also seemingly reference incorrect papers for the Fibre prevalence.  
+Data Availability:
 
-3.  Which data did they use for activity prevalence? Numbers do not seem to line up with quoted values in HSE data.  
+- We are limited in how far back into the past we can look at data on some variables. This makes establishing trends harder and limits the extent to which we can calculate PAFs into the past, especially when considering a time lag.
 
-Data Availability
+- The units used to measure risk factors can vary over time. We have been 'forced' to make a sub-optimal conversion from activity measurements to MET hours. This makes the PAF estimate more unreliable, but is necessary as the needed data to calculate MET hours more rigorously was only collected past a certain point.
 
-1.  Data is available at different levels for each risk factor. Smoking has consistent data from 1995-2019 whereas physical activity only has 4 data points with the same physical activity definitions
+- Because we have limited our RR search to meta-analysis, some combinations of risk factor and cancer site have been left out of our analysis. (Endometrial + Activity, Oral + BMI)
 
-Relative Risk availability:  
+Methodology:
 
-1.  Because we are limited to metanalysis, some risk factor/cancer site combinations have causal evidence through many papers, but no meta analysis has been published  
+- We have not accounted for correlation between risk factors when calculating joint PAF values. We have instead assumed they are all independently distributed throughout the population.
 
--   Oral cancer and BMI   
+- PAF assumes the risk factors are completely removeable. We know for some this is not the case such as smoking, where a current smoker can only become a former smoker and not a never-smoker. Similar issues are present with analysis of BMI as a risk factors.
+
 
 ### Analysis specific notes :
 
--Ultra Processed Foods and Colorectal RR scenario generation - not sure if valid due to different definition of prevalence (individual prevalence vs. population prevalence). Population prevalence is next to impossible.
+- Ultra Processed Foods and Colorectal RR scenario generation - not sure if valid due to different definition of prevalence (individual prevalence vs. population prevalence). Population prevalence is next to impossible.
 
 ### Discussion Topics
 
