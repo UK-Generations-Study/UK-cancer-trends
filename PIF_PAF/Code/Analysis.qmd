@@ -1161,40 +1161,44 @@ data_casesallages <- data_cancer %>%
 PAF_allages <- PAFallages_long %>%
   left_join(data_casesallages, by = c("year", "sex", "cancer_site")) %>% 
   mutate(
-    attributable_cases = PAF*totalcases, 
+    attributable_cases = PAF*totalcases,
+    non_attributable_cases = (1-PAF)*totalcases,
     PAF = PAF*100
   ) %>% 
   filter(
     year == 2019
   ) %>% select(
     -totalcases
-  )
+  ) |>
+  pivot_longer(cols = c("attributable_cases", "non_attributable_cases"), values_to = "cases") |>
+  mutate(name = factor(name, levels = c("non_attributable_cases", "attributable_cases"), labels = c("Non-Attributable", "Attributable")))
 
 #put it in a graph by cancer site bar chart
 # Men 
 PAFallages_bar_MEN <- ggplot(PAF_allages %>% filter(sex == "Men"), aes(x = cancer_site)) +
   geom_bar(
-    aes(y = PAF, fill = "PAF"), 
+    aes(y = PAF/2, fill = "PAF"), 
     stat = "identity", 
     width = 0.8,  # Wider bar for PAF
     alpha = 0.8
   ) +
   geom_bar(
-    aes(y = attributable_cases/100, fill = "Attributable Cases"),
+    aes(y = cases/250, fill = name),
+    position = "stack",
     stat = "identity", 
     width = 0.3,  # Narrower bar for case_count
     alpha = 1
   ) +
   scale_y_continuous(
     name = "PAFs",
-    limits = c(0, 110),
+    limits = c(0, 100),
     sec.axis = sec_axis(
-      ~ . * 100,  # Adjust the transformation factor as needed
+      ~ . * 250,  # Adjust the transformation factor as needed
       name = "Case Count"
     ) 
   ) +
   scale_fill_manual(
-    values = c("PAF" = "#2b9eb3", "Attributable Cases" = "#f8333c"),  # Set custom colors
+    values = c("PAF" = "#2b9eb3", "Attributable" = "#f8333c","Non-Attributable" = "#ff9933"),  # Set custom colors
     name = "Key"  # Add a legend title
   ) +
   labs(
@@ -1210,27 +1214,28 @@ PAFallages_bar_MEN <- ggplot(PAF_allages %>% filter(sex == "Men"), aes(x = cance
 #Women 
 PAFallages_bar_WOMEN <- ggplot(PAF_allages %>% filter(sex == "Women"), aes(x = cancer_site)) +
   geom_bar(
-    aes(y = PAF, fill = "PAF"), 
+    aes(y = PAF/2, fill = "PAF"), 
     stat = "identity", 
     width = 0.8,  # Wider bar for PAF
     alpha = 0.8
   ) +
   geom_bar(
-    aes(y = attributable_cases/100, fill = "Attributable Cases"),
+    aes(y = cases/500, fill = name),
+    position = "stack",
     stat = "identity", 
     width = 0.3,  # Narrower bar for case_count
     alpha = 1
   ) +
   scale_y_continuous(
     name = "PAFs",
-    limits = c(0, 110),
+    limits = c(0, 100),
     sec.axis = sec_axis(
-      ~ . * 100,  # Adjust the transformation factor as needed
+      ~ . * 500,  # Adjust the transformation factor as needed
       name = "Case Count"
     ) 
   ) +
   scale_fill_manual(
-    values = c("PAF" = "#2b9eb3", "Attributable Cases" = "#f8333c"),  # Set custom colors
+    values = c("PAF" = "#2b9eb3", "Attributable" = "#f8333c", "Non-Attributable" = "#ff9933"),  # Set custom colors
     name = "Key"  # Add a legend title
   ) +
   labs(
@@ -1338,7 +1343,7 @@ data_attr_cases_bar <- data_attr_cases %>%
     PAF = PAF *100
   ) %>%
   filter(
-    case_group == "Attributable", 
+    # case_group == "Attributable", 
     year == 2019 
   ) %>%
   mutate(
@@ -1353,21 +1358,22 @@ data_attr_bar_MEN <- ggplot(data_attr_cases_bar %>% filter(sex == "Men"), aes(x 
     alpha = 0.8
   ) +
   geom_bar(
-    aes(y = cases_count/100, fill = "Attributable Cases"),
-    stat = "identity", 
+    aes(y = cases_count/250, fill = case_group),
+    stat = "identity",
+    position = "stack",
     width = 0.3,  # Narrower bar for case_count
     alpha = 1
   ) +
   scale_y_continuous(
     name = "PAFs",
-    limits = c(0, 110),
+    limits = c(0, 100),
     sec.axis = sec_axis(
-      ~ . * 100,  # Adjust the transformation factor as needed
+      ~ . * 250,  # Adjust the transformation factor as needed
       name = "Case Count"
     ) 
   ) +
   scale_fill_manual(
-    values = c("PAF" = "#2b9eb3", "Attributable Cases" = "#f8333c"),  # Set custom colors
+    values = c("PAF" = "#2b9eb3", "Attributable" = "#f8333c", "Non-Attributable" = "#ff9933"),  # Set custom colors
     name = "Key"  # Add a legend title
   ) +
   labs(
@@ -1383,27 +1389,28 @@ data_attr_bar_MEN <- ggplot(data_attr_cases_bar %>% filter(sex == "Men"), aes(x 
 
 data_attr_bar_WOMEN <- ggplot(data_attr_cases_bar %>% filter(sex == "Women"), aes(x = cancer_site)) +
   geom_bar(
-    aes(y = PAF, fill = "PAF"), 
+    aes(y = PAF/2, fill = "PAF"), 
     stat = "identity", 
     width = 0.8,  # Wider bar for PAF
     alpha = 0.8
   ) +
   geom_bar(
-    aes(y = cases_count/100, fill = "Attributable Cases"),
+    aes(y = cases_count/450, fill = case_group),
     stat = "identity", 
+    position = "stack",
     width = 0.3,  # Narrower bar for case_count
     alpha = 1
   ) +
   scale_y_continuous(
     name = "PAFs",
-    limits = c(0, 110),
+    limits = c(0, 100),
     sec.axis = sec_axis(
-      ~ . * 100,  # Adjust the transformation factor as needed
+      ~ . * 450,  # Adjust the transformation factor as needed
       name = "Case Count"
     ) 
   ) +
   scale_fill_manual(
-    values = c("PAF" = "#2b9eb3", "Attributable Cases" = "#f8333c"),  # Set custom colors
+    values = c("PAF" = "#2b9eb3", "Attributable" = "#f8333c", "Non-Attributable" = "#ff9933"),  # Set custom colors
     name = "Key"  # Add a legend title
   ) +
   labs(
@@ -1423,6 +1430,8 @@ data_attr_bar_WOMEN
 ggsave("../Output/Plots/Figure_3_Men.png", plot = data_attr_bar_MEN, bg = "white", height = 6, width = 10)
 ggsave("../Output/Plots/Figure_3_Women.png", plot = data_attr_bar_WOMEN, bg = "white", height = 6, width = 10)
 ```
+
+
 
 ## Figure 3d - Current PAFs (2019) - Table
 
