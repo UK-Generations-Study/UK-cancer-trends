@@ -35,7 +35,7 @@ joinpoint_imd <- data_rf_imd %>%
 #childhood BMI
 
 #Cancerrates 
-joinpoint_cancer <- data_cancer %>%
+joinpoint_cancer <- data_ALLcancer %>%
   arrange(
     sex, age_group, cancer_site, year
   )

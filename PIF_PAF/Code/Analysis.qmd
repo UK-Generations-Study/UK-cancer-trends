@@ -250,7 +250,10 @@ data_rf_allages <- read.csv("../../../Data/Cleaned_Data/clean_rf_data_age_all.cs
 data_rf_imd <- read.csv("../../../Data/Cleaned_Data/clean_rf_data_age_all_imd.csv")
 
 # Read in cancer incidence data
-data_cancer <- read.csv("../Data/incidence_data_clean.csv")
+#data_cancer <- read.csv("../Data/incidence_data_clean.csv")
+
+#Read in all cancer incidence data 
+data_ALLcancer <- read.csv("../Data/all_incidence_joinpoint.csv")
 
 # Read in childhood BMI data 
 data_childhood_bmi <- suppressMessages(read_excel("../Data/HSE-2022-Overweight-and-obesity-tables.xlsx", sheet = "Table 16"))
@@ -263,7 +266,8 @@ data_paf_comparison <- read.csv(r"(..\Data\paf_comparison.csv)") |>
 
 # Reading in JP Analysis
 #   Cancer Incidence
-data_joinpoint <- read.delim("../Data/Joinpoint_Results/Cancerrates/joinpoint_cancerrates.Export.APC.txt", sep = "\t")
+data_joinpoint <- read.delim("../Data/Joinpoint_Results/Cancerrates_All/joinpoint_cancerrates_all.Export.APC.txt", sep = "\t")
+data_joinpoint_AAPC <- read.delim("../Data/Joinpoint_Results/Cancerrates_All/joinpoint_cancerrates_all.Export.AAPC.txt", sep = "\t")
 #   Risk Factors
 rfdata_joinpoint <- read.delim("../Data/Joinpoint_Results/Riskfactor/joinpoint_rf.Export.APC.txt", sep = "\t")
 rfdata_imd_joinpoint <- read.delim("../Data/Joinpoint_Results/Riskfactor_by_IMD/joinpoint_rf_imd.Export.APC.txt", sep = "\t") 
@@ -284,7 +288,7 @@ source("Functions/paf_aggregate_function.R")
 source("Functions/pif_function.R")
 ```
 
-### Ensuring the Joinpoint input is up to data
+### Ensuring the Joinpoint input is up to date
 
 ```{r}
 source("Functions/joinpoint_cleaned_generation.R")
@@ -406,6 +410,126 @@ pif_plot
 
 ```
 
+## ALL Cancer AAPC
+
+```{r, fig.height=16, fig.width=10, warning=F}
+
+data_cancer_plot <- merge(data_ALLcancer, data_joinpoint_AAPC, by = c("sex", "age_group", "cancer_site"), all.x = T) |>
+  mutate(
+    
+    last_segment = between(year, Start.Obs , End.Obs),
+    
+    AAPC_clean = paste0(round(AAPC, digits = 2), if_else(Statistically.Significant..0.No..1.Yes. == 1, "*", ""))
+    
+  ) |>
+  # Fix Multiple Myeloma
+  mutate(
+    
+    cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site)
+    
+  )
+
+# Need to get rows at join and duplicate with alternate last_segment
+data_cancer_plot_new_rows <- data_cancer_plot |>
+  group_by(sex, age_group, cancer_site) |>
+  filter(last_segment) |>
+  filter(year == min(year)) |>
+  mutate(last_segment = F) |>
+  ungroup()
+
+# Now add back in
+data_cancer_plot <- rbind(data_cancer_plot, data_cancer_plot_new_rows)
+
+# Now create labels
+data_cancer_plot_labels <- data_cancer_plot |>
+  group_by(age_group, cancer_site) |>
+  mutate(
+    rate_range = max(rate) - min(rate)
+  ) |>
+  group_by(sex, age_group, cancer_site) |>
+  filter(last_segment) |>
+  filter(year == max(year)) |>
+  reframe(
+    
+    year = max(year) + 1.8,
+    rate = max(rate),
+    rate_range = rate_range[1],
+    AAPC_clean = AAPC_clean[1]
+    
+  ) |>
+  distinct() |>
+  # Now attempting to do manual repelling of plots away from each other
+  group_by(age_group, cancer_site) |>
+  mutate(
+    
+    rate = case_when(
+      n() == 1 ~ rate,
+      max(rate) - min(rate) < rate_range/2 & rate == min(rate) ~ rate - (rate_range/2 -  (max(rate) - min(rate)))/2,
+      max(rate) - min(rate) < rate_range/2 & rate == max(rate) ~ rate + (rate_range/2 -  (max(rate) - min(rate)))/2,
+      TRUE ~ rate
+    )
+    
+  )
+
+# Create invisible points to expand y limits
+data_cancer_invisible_points <- data_cancer_plot |>
+  group_by(sex, age_group, cancer_site) |>
+  summarise(
+
+    year = 2001,
+    rate = max(rate) + (max(rate) - min(rate))/2
+
+  )
+
+
+# Get unique age groups
+age_groups <- unique(data_cancer_plot$age_group) 
+
+# Create an empty list to store the plots
+plots <- list()
+
+# Loop through each age group and generate a plot
+for (group in age_groups) {
+  # Filter data for the current age group
+  data_subset <- data_cancer_plot %>% filter(age_group == group)
+  data_invisible <- data_cancer_invisible_points %>% filter(age_group == group)
+  data_label <- data_cancer_plot_labels %>% filter(age_group == group)
+  
+  # Generate the plot for the current subset
+  plot <- ggplot(data_subset, aes(x = year, y = rate, fill = sex, colour = sex)) +
+    xlim(2001, 2021.5) +
+    geom_point() +
+    geom_point(data = data_invisible, alpha = 0) +
+    geom_line(aes(linetype = last_segment)) +
+    geom_label(data = data_label %>% filter(age_group == group),
+               aes(label = AAPC_clean), fill = "white", size = 3, show.legend = F) +
+    theme_minimal() +
+    geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
+              colour = "black", fill = NA, inherit.aes = FALSE) +
+    theme(strip.text = element_text(face = "bold"), 
+          axis.text.x = element_text(angle = 45, hjust = 1),
+          panel.spacing = unit(2, "lines")) + 
+    scale_x_continuous(
+      breaks = seq(2000, 2019, by = 2),  # Define the x-axis breaks
+      limits = c(2000, 2021)
+    ) +
+    ylab("Age Standardized rates") +
+    xlab("Year") +
+    labs(colour = "Sex", fill = "Sex") +
+    ggtitle(paste("Trends in Cancer Incidence in England -", group)) +
+    labs(subtitle = "Labels show AAPC for most recent trend, * indicates a significant trend") +
+    facet_wrap(~cancer_site, scales = "free_y", ncol = 2) 
+  
+  # Add the plot to the list
+  plots[[group]] <- plot
+}
+
+# Display each plot separately
+for (group in age_groups) {
+  print(plots[[group]]) # Print each plot individually
+}
+```
+
 ## Figure 1a - Trends in cancer incidence
 
 Looking at cancer incidence from 2001 - 2019 by sex and age. APCs calculated using Joinpoint software on the most recent trends to investigate which cancer sites have incident rates that are currently increasing (rather than historically increasing).
@@ -413,6 +537,12 @@ Looking at cancer incidence from 2001 - 2019 by sex and age. APCs calculated usi
 These APC trends were calculated using all of the data available (2001, 2019), then the x-axis was cut off from (2009, 2019).
 
 ```{r, fig.height=16, fig.width=10, warning=F}
+
+# Filter data to only the cancer sites that are increasing 
+data_cancer <- data_ALLcancer %>%
+  filter(
+    cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "Multiple Myeloma", "Breast")
+  )
 
 # Merge joinpoint data into cancer data
 data_joinpoint_last <- data_joinpoint |>
@@ -448,7 +578,7 @@ data_cancer_plot <- rbind(data_cancer_plot, data_cancer_plot_new_rows)
 data_cancer_plot_labels <- data_cancer_plot |>
   group_by(age_group, cancer_site) |>
   mutate(
-    Rate_range = max(Rate) - min(Rate)
+    rate_range = max(rate) - min(rate)
   ) |>
   group_by(sex, age_group, cancer_site) |>
   filter(last_segment) |>
@@ -456,8 +586,8 @@ data_cancer_plot_labels <- data_cancer_plot |>
   reframe(
     
     year = max(year) + 1.8,
-    Rate = max(Rate),
-    Rate_range = Rate_range[1],
+    rate = max(rate),
+    rate_range = rate_range[1],
     APC_clean = APC_clean[1]
     
   ) |>
@@ -466,11 +596,11 @@ data_cancer_plot_labels <- data_cancer_plot |>
   group_by(age_group, cancer_site) |>
   mutate(
     
-    Rate = case_when(
-      n() == 1 ~ Rate,
-      max(Rate) - min(Rate) < Rate_range/2 & Rate == min(Rate) ~ Rate - (Rate_range/2 -  (max(Rate) - min(Rate)))/2,
-      max(Rate) - min(Rate) < Rate_range/2 & Rate == max(Rate) ~ Rate + (Rate_range/2 -  (max(Rate) - min(Rate)))/2,
-      TRUE ~ Rate
+    rate = case_when(
+      n() == 1 ~ rate,
+      max(rate) - min(rate) < rate_range/2 & rate == min(rate) ~ rate - (rate_range/2 -  (max(rate) - min(rate)))/2,
+      max(rate) - min(rate) < rate_range/2 & rate == max(rate) ~ rate + (rate_range/2 -  (max(rate) - min(rate)))/2,
+      TRUE ~ rate
     )
     
   )
@@ -481,12 +611,12 @@ data_cancer_invisible_points <- data_cancer_plot |>
   summarise(
 
     year = 2001,
-    Rate = max(Rate) + (max(Rate) - min(Rate))/2
+    rate = max(rate) + (max(rate) - min(rate))/2
 
   )
 
 # Removing 2020 as COVID affected cases
-ggplot(data_cancer_plot, aes(x = year, y = Rate, fill = sex, colour = sex)) +
+ggplot(data_cancer_plot, aes(x = year, y = rate, fill = sex, colour = sex)) +
   xlim(2001, 2021.5) +
   geom_point() +
   geom_point(data = data_cancer_invisible_points, alpha = 0) +
@@ -502,7 +632,7 @@ ggplot(data_cancer_plot, aes(x = year, y = Rate, fill = sex, colour = sex)) +
     breaks = seq(2000, 2019, by = 1),  # Define the x-axis breaks
     limits = c(2000, 2021)
     )+
-  ylab("Age Standardized Rates") +
+  ylab("Age Standardized rates") +
   xlab("Year") +
   labs(colour = "Sex", fill = "Sex", linetype = "Last Segment") +
   # scale_x_continuous(breaks = seq(min_year, max_year, by = 2)) +
@@ -1163,7 +1293,7 @@ PAF_allages <- PAFallages_long %>%
     year == 2019
   ) %>% select(
     -totalcases
-  ) |>
+  )|>
   pivot_longer(cols = c("attributable_cases", "non_attributable_cases"), values_to = "cases") |>
   mutate(name = factor(name, levels = c("non_attributable_cases", "attributable_cases"), labels = c("Non-Attributable", "Attributable")))
 

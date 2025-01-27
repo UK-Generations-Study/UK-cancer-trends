@@ -4,8 +4,9 @@
 library(dplyr)
 
 # Read in data
-data_u50 <- read.csv(r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\PAF\UK-cancer-trends\PIF_PAF\Data\Incidence_data_for_England_2024-10-30.csv)")
-data_oe50 <- read.csv(r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\PAF\UK-cancer-trends\PIF_PAF\Data\Incidence_data_for_England_2024-10-30 (1).csv)")
+# Assumed working directory is same relationship as is set up in the Github
+data_u50 <- read.csv(r"(..\Data\Incidence_data_for_England_2024-10-30.csv)")
+data_oe50 <- read.csv(r"(..\Data\Incidence_data_for_England_2024-10-30 (1).csv)")
 
 # Format data
 data <- rbind(data_u50 |>
@@ -53,13 +54,14 @@ data <- data |>
   filter(!is.na(cancer_site)) |>
   filter(Gender != "Persons") |>
   filter(Year <= 2019) |>
-  select(year = Year, sex = Gender, age_group, cancer_site, Rate) |>
+  select(year = Year, sex = Gender, age_group, cancer_site, Rate, Count) |>
   group_by(year, sex, age_group, cancer_site) |>
-  summarise(rate = sum(as.numeric(Rate))) |>
+  summarise(rate = sum(as.numeric(Rate)), 
+            count = sum(as.numeric(Count))) |>
   arrange(
     sex, age_group, cancer_site, year
   )
 
 
 # Output
-write.csv(data, r"(C:\Users\rfrost\OneDrive - The Institute of Cancer Research\Documents\PAF\UK-cancer-trends\PIF_PAF\Data\all_incidence_joinpoint.csv)", row.names = F)
+write.csv(data, r"(..\Data\all_incidence_joinpoint.csv)", row.names = F)
