@@ -1,1407 +1,1407 @@
-"year","sex","age_group","cancer_site","rate"
-2001,"Female","20-49","Bladder",0.8
-2002,"Female","20-49","Bladder",0.6
-2003,"Female","20-49","Bladder",0.5
-2004,"Female","20-49","Bladder",0.7
-2005,"Female","20-49","Bladder",0.8
-2006,"Female","20-49","Bladder",0.6
-2007,"Female","20-49","Bladder",0.7
-2008,"Female","20-49","Bladder",0.7
-2009,"Female","20-49","Bladder",0.6
-2010,"Female","20-49","Bladder",0.6
-2011,"Female","20-49","Bladder",0.6
-2012,"Female","20-49","Bladder",0.6
-2013,"Female","20-49","Bladder",0.7
-2014,"Female","20-49","Bladder",0.7
-2015,"Female","20-49","Bladder",0.6
-2016,"Female","20-49","Bladder",0.6
-2017,"Female","20-49","Bladder",0.5
-2018,"Female","20-49","Bladder",0.6
-2019,"Female","20-49","Bladder",0.6
-2001,"Female","20-49","Brain and CNS",3.1
-2002,"Female","20-49","Brain and CNS",3
-2003,"Female","20-49","Brain and CNS",2.9
-2004,"Female","20-49","Brain and CNS",2.9
-2005,"Female","20-49","Brain and CNS",3.1
-2006,"Female","20-49","Brain and CNS",3
-2007,"Female","20-49","Brain and CNS",3.3
-2008,"Female","20-49","Brain and CNS",3.4
-2009,"Female","20-49","Brain and CNS",3.1
-2010,"Female","20-49","Brain and CNS",3.3
-2011,"Female","20-49","Brain and CNS",3.2
-2012,"Female","20-49","Brain and CNS",3.2
-2013,"Female","20-49","Brain and CNS",3.5
-2014,"Female","20-49","Brain and CNS",3.9
-2015,"Female","20-49","Brain and CNS",3.9
-2016,"Female","20-49","Brain and CNS",3.9
-2017,"Female","20-49","Brain and CNS",3.8
-2018,"Female","20-49","Brain and CNS",3.6
-2019,"Female","20-49","Brain and CNS",3.4
-2001,"Female","20-49","Breast",66.3
-2002,"Female","20-49","Breast",65.2
-2003,"Female","20-49","Breast",68.6
-2004,"Female","20-49","Breast",69.7
-2005,"Female","20-49","Breast",70.6
-2006,"Female","20-49","Breast",70.3
-2007,"Female","20-49","Breast",69.6
-2008,"Female","20-49","Breast",72.5
-2009,"Female","20-49","Breast",74.3
-2010,"Female","20-49","Breast",78
-2011,"Female","20-49","Breast",76.2
-2012,"Female","20-49","Breast",77.9
-2013,"Female","20-49","Breast",80.2
-2014,"Female","20-49","Breast",78.2
-2015,"Female","20-49","Breast",77.9
-2016,"Female","20-49","Breast",78.1
-2017,"Female","20-49","Breast",77
-2018,"Female","20-49","Breast",76.9
-2019,"Female","20-49","Breast",77.7
-2001,"Female","20-49","Cervix",12.7
-2002,"Female","20-49","Cervix",12
-2003,"Female","20-49","Cervix",11.9
-2004,"Female","20-49","Cervix",12.1
-2005,"Female","20-49","Cervix",12.3
-2006,"Female","20-49","Cervix",12.9
-2007,"Female","20-49","Cervix",12.7
-2008,"Female","20-49","Cervix",13.6
-2009,"Female","20-49","Cervix",16.4
-2010,"Female","20-49","Cervix",13
-2011,"Female","20-49","Cervix",14.3
-2012,"Female","20-49","Cervix",14.1
-2013,"Female","20-49","Cervix",14.9
-2014,"Female","20-49","Cervix",15
-2015,"Female","20-49","Cervix",14.7
-2016,"Female","20-49","Cervix",14.7
-2017,"Female","20-49","Cervix",14.6
-2018,"Female","20-49","Cervix",14.8
-2019,"Female","20-49","Cervix",15.1
-2001,"Female","20-49","Colorectum",6.5
-2002,"Female","20-49","Colorectum",6.7
-2003,"Female","20-49","Colorectum",6.6
-2004,"Female","20-49","Colorectum",6.6
-2005,"Female","20-49","Colorectum",7.3
-2006,"Female","20-49","Colorectum",7.6
-2007,"Female","20-49","Colorectum",7.6
-2008,"Female","20-49","Colorectum",7.4
-2009,"Female","20-49","Colorectum",8.1
-2010,"Female","20-49","Colorectum",8.4
-2011,"Female","20-49","Colorectum",8.7
-2012,"Female","20-49","Colorectum",9.9
-2013,"Female","20-49","Colorectum",9.9
-2014,"Female","20-49","Colorectum",9.7
-2015,"Female","20-49","Colorectum",10.8
-2016,"Female","20-49","Colorectum",10.9
-2017,"Female","20-49","Colorectum",10.3
-2018,"Female","20-49","Colorectum",10.5
-2019,"Female","20-49","Colorectum",11.2
-2001,"Female","20-49","Endometrium",2.9
-2002,"Female","20-49","Endometrium",2.6
-2003,"Female","20-49","Endometrium",3.2
-2004,"Female","20-49","Endometrium",3.2
-2005,"Female","20-49","Endometrium",3.4
-2006,"Female","20-49","Endometrium",3.6
-2007,"Female","20-49","Endometrium",3.9
-2008,"Female","20-49","Endometrium",4.2
-2009,"Female","20-49","Endometrium",3.9
-2010,"Female","20-49","Endometrium",4
-2011,"Female","20-49","Endometrium",3.9
-2012,"Female","20-49","Endometrium",4.2
-2013,"Female","20-49","Endometrium",4.5
-2014,"Female","20-49","Endometrium",4.8
-2015,"Female","20-49","Endometrium",4.1
-2016,"Female","20-49","Endometrium",4.5
-2017,"Female","20-49","Endometrium",4.7
-2018,"Female","20-49","Endometrium",4.9
-2019,"Female","20-49","Endometrium",5
-2001,"Female","20-49","Gallbladder",0.2
-2002,"Female","20-49","Gallbladder",0.2
-2003,"Female","20-49","Gallbladder",0.2
-2004,"Female","20-49","Gallbladder",0.3
-2005,"Female","20-49","Gallbladder",0.2
-2006,"Female","20-49","Gallbladder",0.2
-2007,"Female","20-49","Gallbladder",0.3
-2008,"Female","20-49","Gallbladder",0.2
-2009,"Female","20-49","Gallbladder",0.3
-2010,"Female","20-49","Gallbladder",0.3
-2011,"Female","20-49","Gallbladder",0.3
-2012,"Female","20-49","Gallbladder",0.3
-2013,"Female","20-49","Gallbladder",0.4
-2014,"Female","20-49","Gallbladder",0.3
-2015,"Female","20-49","Gallbladder",0.4
-2016,"Female","20-49","Gallbladder",0.3
-2017,"Female","20-49","Gallbladder",0.3
-2018,"Female","20-49","Gallbladder",0.3
-2019,"Female","20-49","Gallbladder",0.4
-2001,"Female","20-49","Hodgkin Lymphoma",2.7
-2002,"Female","20-49","Hodgkin Lymphoma",2.3
-2003,"Female","20-49","Hodgkin Lymphoma",2.5
-2004,"Female","20-49","Hodgkin Lymphoma",2.7
-2005,"Female","20-49","Hodgkin Lymphoma",2.4
-2006,"Female","20-49","Hodgkin Lymphoma",2.7
-2007,"Female","20-49","Hodgkin Lymphoma",2.8
-2008,"Female","20-49","Hodgkin Lymphoma",3.1
-2009,"Female","20-49","Hodgkin Lymphoma",3
-2010,"Female","20-49","Hodgkin Lymphoma",3.1
-2011,"Female","20-49","Hodgkin Lymphoma",3
-2012,"Female","20-49","Hodgkin Lymphoma",3
-2013,"Female","20-49","Hodgkin Lymphoma",3.1
-2014,"Female","20-49","Hodgkin Lymphoma",3.1
-2015,"Female","20-49","Hodgkin Lymphoma",3
-2016,"Female","20-49","Hodgkin Lymphoma",3.1
-2017,"Female","20-49","Hodgkin Lymphoma",3.3
-2018,"Female","20-49","Hodgkin Lymphoma",3.1
-2019,"Female","20-49","Hodgkin Lymphoma",3.3
-2001,"Female","20-49","Kidney",1.4
-2002,"Female","20-49","Kidney",1.5
-2003,"Female","20-49","Kidney",1.7
-2004,"Female","20-49","Kidney",1.8
-2005,"Female","20-49","Kidney",1.9
-2006,"Female","20-49","Kidney",1.6
-2007,"Female","20-49","Kidney",1.8
-2008,"Female","20-49","Kidney",2.2
-2009,"Female","20-49","Kidney",2.2
-2010,"Female","20-49","Kidney",2
-2011,"Female","20-49","Kidney",2.4
-2012,"Female","20-49","Kidney",2.4
-2013,"Female","20-49","Kidney",2.9
-2014,"Female","20-49","Kidney",2.9
-2015,"Female","20-49","Kidney",3
-2016,"Female","20-49","Kidney",3.1
-2017,"Female","20-49","Kidney",2.9
-2018,"Female","20-49","Kidney",2.9
-2019,"Female","20-49","Kidney",3.1
-2001,"Female","20-49","Larynx",0.3
-2002,"Female","20-49","Larynx",0.2
-2003,"Female","20-49","Larynx",0.3
-2004,"Female","20-49","Larynx",0.2
-2005,"Female","20-49","Larynx",0.3
-2006,"Female","20-49","Larynx",0.3
-2007,"Female","20-49","Larynx",0.2
-2008,"Female","20-49","Larynx",0.2
-2009,"Female","20-49","Larynx",0.3
-2010,"Female","20-49","Larynx",0.2
-2011,"Female","20-49","Larynx",0.2
-2012,"Female","20-49","Larynx",0.3
-2013,"Female","20-49","Larynx",0.2
-2014,"Female","20-49","Larynx",0.2
-2015,"Female","20-49","Larynx",0.2
-2016,"Female","20-49","Larynx",0.2
-2017,"Female","20-49","Larynx",0.3
-2018,"Female","20-49","Larynx",0.3
-2019,"Female","20-49","Larynx",0.2
-2001,"Female","20-49","Leukaemia",2.5
-2002,"Female","20-49","Leukaemia",2.5
-2003,"Female","20-49","Leukaemia",3
-2004,"Female","20-49","Leukaemia",2.5
-2005,"Female","20-49","Leukaemia",2.8
-2006,"Female","20-49","Leukaemia",2.7
-2007,"Female","20-49","Leukaemia",2.9
-2008,"Female","20-49","Leukaemia",2.8
-2009,"Female","20-49","Leukaemia",3
-2010,"Female","20-49","Leukaemia",2.8
-2011,"Female","20-49","Leukaemia",2.8
-2012,"Female","20-49","Leukaemia",3.1
-2013,"Female","20-49","Leukaemia",3
-2014,"Female","20-49","Leukaemia",3.3
-2015,"Female","20-49","Leukaemia",3.4
-2016,"Female","20-49","Leukaemia",3.1
-2017,"Female","20-49","Leukaemia",3.3
-2018,"Female","20-49","Leukaemia",3.4
-2019,"Female","20-49","Leukaemia",3.2
-2001,"Female","20-49","Liver",0.3
-2002,"Female","20-49","Liver",0.4
-2003,"Female","20-49","Liver",0.4
-2004,"Female","20-49","Liver",0.5
-2005,"Female","20-49","Liver",0.5
-2006,"Female","20-49","Liver",0.5
-2007,"Female","20-49","Liver",0.6
-2008,"Female","20-49","Liver",0.7
-2009,"Female","20-49","Liver",0.7
-2010,"Female","20-49","Liver",0.6
-2011,"Female","20-49","Liver",0.6
-2012,"Female","20-49","Liver",0.6
-2013,"Female","20-49","Liver",0.7
-2014,"Female","20-49","Liver",0.7
-2015,"Female","20-49","Liver",0.7
-2016,"Female","20-49","Liver",0.6
-2017,"Female","20-49","Liver",0.7
-2018,"Female","20-49","Liver",0.7
-2019,"Female","20-49","Liver",0.8
-2001,"Female","20-49","Lung",4.4
-2002,"Female","20-49","Lung",4.2
-2003,"Female","20-49","Lung",4.7
-2004,"Female","20-49","Lung",4.3
-2005,"Female","20-49","Lung",4.4
-2006,"Female","20-49","Lung",4.3
-2007,"Female","20-49","Lung",4.2
-2008,"Female","20-49","Lung",4.3
-2009,"Female","20-49","Lung",4.8
-2010,"Female","20-49","Lung",4.6
-2011,"Female","20-49","Lung",3.9
-2012,"Female","20-49","Lung",4.7
-2013,"Female","20-49","Lung",4.1
-2014,"Female","20-49","Lung",4.5
-2015,"Female","20-49","Lung",4.7
-2016,"Female","20-49","Lung",4.1
-2017,"Female","20-49","Lung",3.8
-2018,"Female","20-49","Lung",4.6
-2019,"Female","20-49","Lung",4.3
-2001,"Female","20-49","Melanoma",12.4
-2002,"Female","20-49","Melanoma",11.7
-2003,"Female","20-49","Melanoma",12.2
-2004,"Female","20-49","Melanoma",13.7
-2005,"Female","20-49","Melanoma",14.5
-2006,"Female","20-49","Melanoma",15.3
-2007,"Female","20-49","Melanoma",14.3
-2008,"Female","20-49","Melanoma",15.7
-2009,"Female","20-49","Melanoma",15.7
-2010,"Female","20-49","Melanoma",15.9
-2011,"Female","20-49","Melanoma",15.7
-2012,"Female","20-49","Melanoma",16.1
-2013,"Female","20-49","Melanoma",16.9
-2014,"Female","20-49","Melanoma",17.3
-2015,"Female","20-49","Melanoma",16.4
-2016,"Female","20-49","Melanoma",17.3
-2017,"Female","20-49","Melanoma",15.8
-2018,"Female","20-49","Melanoma",17
-2019,"Female","20-49","Melanoma",17
-2001,"Female","20-49","Multiple Myeloma",0.6
-2002,"Female","20-49","Multiple Myeloma",0.6
-2003,"Female","20-49","Multiple Myeloma",0.5
-2004,"Female","20-49","Multiple Myeloma",0.7
-2005,"Female","20-49","Multiple Myeloma",0.6
-2006,"Female","20-49","Multiple Myeloma",0.7
-2007,"Female","20-49","Multiple Myeloma",0.7
-2008,"Female","20-49","Multiple Myeloma",0.9
-2009,"Female","20-49","Multiple Myeloma",0.8
-2010,"Female","20-49","Multiple Myeloma",0.9
-2011,"Female","20-49","Multiple Myeloma",0.9
-2012,"Female","20-49","Multiple Myeloma",1
-2013,"Female","20-49","Multiple Myeloma",1.4
-2014,"Female","20-49","Multiple Myeloma",1.3
-2015,"Female","20-49","Multiple Myeloma",1.2
-2016,"Female","20-49","Multiple Myeloma",1.2
-2017,"Female","20-49","Multiple Myeloma",1.5
-2018,"Female","20-49","Multiple Myeloma",1.5
-2019,"Female","20-49","Multiple Myeloma",1.3
-2001,"Female","20-49","Non-Hodgkin Lymphoma",4.7
-2002,"Female","20-49","Non-Hodgkin Lymphoma",4.2
-2003,"Female","20-49","Non-Hodgkin Lymphoma",4.5
-2004,"Female","20-49","Non-Hodgkin Lymphoma",4.7
-2005,"Female","20-49","Non-Hodgkin Lymphoma",4.3
-2006,"Female","20-49","Non-Hodgkin Lymphoma",4.3
-2007,"Female","20-49","Non-Hodgkin Lymphoma",4.7
-2008,"Female","20-49","Non-Hodgkin Lymphoma",4.5
-2009,"Female","20-49","Non-Hodgkin Lymphoma",5
-2010,"Female","20-49","Non-Hodgkin Lymphoma",5.1
-2011,"Female","20-49","Non-Hodgkin Lymphoma",5.3
-2012,"Female","20-49","Non-Hodgkin Lymphoma",5.1
-2013,"Female","20-49","Non-Hodgkin Lymphoma",4.7
-2014,"Female","20-49","Non-Hodgkin Lymphoma",4.9
-2015,"Female","20-49","Non-Hodgkin Lymphoma",4.7
-2016,"Female","20-49","Non-Hodgkin Lymphoma",4.8
-2017,"Female","20-49","Non-Hodgkin Lymphoma",4.6
-2018,"Female","20-49","Non-Hodgkin Lymphoma",4.3
-2019,"Female","20-49","Non-Hodgkin Lymphoma",5.2
-2001,"Female","20-49","Oesophagus",0.8
-2002,"Female","20-49","Oesophagus",0.6
-2003,"Female","20-49","Oesophagus",0.7
-2004,"Female","20-49","Oesophagus",0.6
-2005,"Female","20-49","Oesophagus",0.6
-2006,"Female","20-49","Oesophagus",0.7
-2007,"Female","20-49","Oesophagus",0.5
-2008,"Female","20-49","Oesophagus",0.7
-2009,"Female","20-49","Oesophagus",0.6
-2010,"Female","20-49","Oesophagus",0.5
-2011,"Female","20-49","Oesophagus",0.5
-2012,"Female","20-49","Oesophagus",0.6
-2013,"Female","20-49","Oesophagus",0.7
-2014,"Female","20-49","Oesophagus",0.6
-2015,"Female","20-49","Oesophagus",0.5
-2016,"Female","20-49","Oesophagus",0.5
-2017,"Female","20-49","Oesophagus",0.4
-2018,"Female","20-49","Oesophagus",0.7
-2019,"Female","20-49","Oesophagus",0.5
-2001,"Female","20-49","Oral",2.3
-2002,"Female","20-49","Oral",2
-2003,"Female","20-49","Oral",2.3
-2004,"Female","20-49","Oral",2
-2005,"Female","20-49","Oral",2.3
-2006,"Female","20-49","Oral",2.5
-2007,"Female","20-49","Oral",2.5
-2008,"Female","20-49","Oral",2.9
-2009,"Female","20-49","Oral",2.9
-2010,"Female","20-49","Oral",2.8
-2011,"Female","20-49","Oral",2.6
-2012,"Female","20-49","Oral",3.1
-2013,"Female","20-49","Oral",2.9
-2014,"Female","20-49","Oral",3
-2015,"Female","20-49","Oral",3
-2016,"Female","20-49","Oral",3.2
-2017,"Female","20-49","Oral",2.9
-2018,"Female","20-49","Oral",3.1
-2019,"Female","20-49","Oral",3
-2001,"Female","20-49","Ovary",8.4
-2002,"Female","20-49","Ovary",8.2
-2003,"Female","20-49","Ovary",8.5
-2004,"Female","20-49","Ovary",8.1
-2005,"Female","20-49","Ovary",8
-2006,"Female","20-49","Ovary",8.8
-2007,"Female","20-49","Ovary",9.4
-2008,"Female","20-49","Ovary",9.3
-2009,"Female","20-49","Ovary",9.3
-2010,"Female","20-49","Ovary",9.5
-2011,"Female","20-49","Ovary",9.4
-2012,"Female","20-49","Ovary",9.9
-2013,"Female","20-49","Ovary",9.8
-2014,"Female","20-49","Ovary",9.9
-2015,"Female","20-49","Ovary",9.3
-2016,"Female","20-49","Ovary",9.9
-2017,"Female","20-49","Ovary",9.4
-2018,"Female","20-49","Ovary",9.6
-2019,"Female","20-49","Ovary",9.4
-2001,"Female","20-49","Pancreas",0.9
-2002,"Female","20-49","Pancreas",1.1
-2003,"Female","20-49","Pancreas",0.8
-2004,"Female","20-49","Pancreas",0.8
-2005,"Female","20-49","Pancreas",1
-2006,"Female","20-49","Pancreas",1.2
-2007,"Female","20-49","Pancreas",1.1
-2008,"Female","20-49","Pancreas",1.1
-2009,"Female","20-49","Pancreas",1.1
-2010,"Female","20-49","Pancreas",1.1
-2011,"Female","20-49","Pancreas",1.2
-2012,"Female","20-49","Pancreas",1.2
-2013,"Female","20-49","Pancreas",1.4
-2014,"Female","20-49","Pancreas",1.3
-2015,"Female","20-49","Pancreas",1.4
-2016,"Female","20-49","Pancreas",1.4
-2017,"Female","20-49","Pancreas",1.3
-2018,"Female","20-49","Pancreas",1.4
-2019,"Female","20-49","Pancreas",1.5
-2001,"Female","50+","Bladder",27.7
-2002,"Female","50+","Bladder",26.3
-2003,"Female","50+","Bladder",26.7
-2004,"Female","50+","Bladder",25.3
-2005,"Female","50+","Bladder",25.8
-2006,"Female","50+","Bladder",26
-2007,"Female","50+","Bladder",25.4
-2008,"Female","50+","Bladder",26.1
-2009,"Female","50+","Bladder",24.5
-2010,"Female","50+","Bladder",25
-2011,"Female","50+","Bladder",25.5
-2012,"Female","50+","Bladder",24.7
-2013,"Female","50+","Bladder",23.9
-2014,"Female","50+","Bladder",22
-2015,"Female","50+","Bladder",22.4
-2016,"Female","50+","Bladder",21.9
-2017,"Female","50+","Bladder",21.9
-2018,"Female","50+","Bladder",20.8
-2019,"Female","50+","Bladder",21.5
-2001,"Female","50+","Brain and CNS",12.8
-2002,"Female","50+","Brain and CNS",12.7
-2003,"Female","50+","Brain and CNS",12.6
-2004,"Female","50+","Brain and CNS",12.7
-2005,"Female","50+","Brain and CNS",12.3
-2006,"Female","50+","Brain and CNS",13.3
-2007,"Female","50+","Brain and CNS",13.5
-2008,"Female","50+","Brain and CNS",14.2
-2009,"Female","50+","Brain and CNS",14.7
-2010,"Female","50+","Brain and CNS",13.9
-2011,"Female","50+","Brain and CNS",14.9
-2012,"Female","50+","Brain and CNS",13.9
-2013,"Female","50+","Brain and CNS",14.9
-2014,"Female","50+","Brain and CNS",13.8
-2015,"Female","50+","Brain and CNS",14.1
-2016,"Female","50+","Brain and CNS",13.9
-2017,"Female","50+","Brain and CNS",13.9
-2018,"Female","50+","Brain and CNS",13.3
-2019,"Female","50+","Brain and CNS",13.7
-2001,"Female","50+","Breast",323.2
-2002,"Female","50+","Breast",321.5
-2003,"Female","50+","Breast",339.1
-2004,"Female","50+","Breast",338.4
-2005,"Female","50+","Breast",344.8
-2006,"Female","50+","Breast",342.4
-2007,"Female","50+","Breast",339.7
-2008,"Female","50+","Breast",352
-2009,"Female","50+","Breast",344.8
-2010,"Female","50+","Breast",347.2
-2011,"Female","50+","Breast",345.6
-2012,"Female","50+","Breast",350.1
-2013,"Female","50+","Breast",360.2
-2014,"Female","50+","Breast",369.2
-2015,"Female","50+","Breast",360.5
-2016,"Female","50+","Breast",353.2
-2017,"Female","50+","Breast",349.8
-2018,"Female","50+","Breast",362
-2019,"Female","50+","Breast",358.4
-2001,"Female","50+","Cervix",13.2
-2002,"Female","50+","Cervix",12.2
-2003,"Female","50+","Cervix",12.6
-2004,"Female","50+","Cervix",11
-2005,"Female","50+","Cervix",10.9
-2006,"Female","50+","Cervix",11.1
-2007,"Female","50+","Cervix",10.5
-2008,"Female","50+","Cervix",10.1
-2009,"Female","50+","Cervix",10.4
-2010,"Female","50+","Cervix",9.8
-2011,"Female","50+","Cervix",10.1
-2012,"Female","50+","Cervix",10.1
-2013,"Female","50+","Cervix",10.4
-2014,"Female","50+","Cervix",9.3
-2015,"Female","50+","Cervix",8.8
-2016,"Female","50+","Cervix",9.6
-2017,"Female","50+","Cervix",9.5
-2018,"Female","50+","Cervix",9.8
-2019,"Female","50+","Cervix",9.8
-2001,"Female","50+","Colorectum",143.2
-2002,"Female","50+","Colorectum",141.1
-2003,"Female","50+","Colorectum",141.7
-2004,"Female","50+","Colorectum",145
-2005,"Female","50+","Colorectum",145.8
-2006,"Female","50+","Colorectum",148.5
-2007,"Female","50+","Colorectum",151.6
-2008,"Female","50+","Colorectum",153.6
-2009,"Female","50+","Colorectum",153.7
-2010,"Female","50+","Colorectum",152.3
-2011,"Female","50+","Colorectum",155.7
-2012,"Female","50+","Colorectum",153
-2013,"Female","50+","Colorectum",148.2
-2014,"Female","50+","Colorectum",147.9
-2015,"Female","50+","Colorectum",149.2
-2016,"Female","50+","Colorectum",144.4
-2017,"Female","50+","Colorectum",143
-2018,"Female","50+","Colorectum",144.8
-2019,"Female","50+","Colorectum",149.3
-2001,"Female","50+","Endometrium",50.6
-2002,"Female","50+","Endometrium",50.4
-2003,"Female","50+","Endometrium",53.9
-2004,"Female","50+","Endometrium",53.2
-2005,"Female","50+","Endometrium",57
-2006,"Female","50+","Endometrium",59.2
-2007,"Female","50+","Endometrium",61.2
-2008,"Female","50+","Endometrium",62.1
-2009,"Female","50+","Endometrium",62.5
-2010,"Female","50+","Endometrium",65.5
-2011,"Female","50+","Endometrium",66.8
-2012,"Female","50+","Endometrium",67.2
-2013,"Female","50+","Endometrium",68.4
-2014,"Female","50+","Endometrium",69.4
-2015,"Female","50+","Endometrium",66.5
-2016,"Female","50+","Endometrium",69.5
-2017,"Female","50+","Endometrium",67.7
-2018,"Female","50+","Endometrium",70.2
-2019,"Female","50+","Endometrium",68.5
-2001,"Female","50+","Gallbladder",6.6
-2002,"Female","50+","Gallbladder",6.3
-2003,"Female","50+","Gallbladder",6.3
-2004,"Female","50+","Gallbladder",6.5
-2005,"Female","50+","Gallbladder",7
-2006,"Female","50+","Gallbladder",7.8
-2007,"Female","50+","Gallbladder",7.8
-2008,"Female","50+","Gallbladder",7.9
-2009,"Female","50+","Gallbladder",8.3
-2010,"Female","50+","Gallbladder",9.2
-2011,"Female","50+","Gallbladder",8.8
-2012,"Female","50+","Gallbladder",9.3
-2013,"Female","50+","Gallbladder",9.8
-2014,"Female","50+","Gallbladder",9.6
-2015,"Female","50+","Gallbladder",9.6
-2016,"Female","50+","Gallbladder",10.1
-2017,"Female","50+","Gallbladder",9.8
-2018,"Female","50+","Gallbladder",11.4
-2019,"Female","50+","Gallbladder",11
-2001,"Female","50+","Hodgkin Lymphoma",2.1
-2002,"Female","50+","Hodgkin Lymphoma",2
-2003,"Female","50+","Hodgkin Lymphoma",2
-2004,"Female","50+","Hodgkin Lymphoma",2.2
-2005,"Female","50+","Hodgkin Lymphoma",2.5
-2006,"Female","50+","Hodgkin Lymphoma",2.7
-2007,"Female","50+","Hodgkin Lymphoma",2.4
-2008,"Female","50+","Hodgkin Lymphoma",2.5
-2009,"Female","50+","Hodgkin Lymphoma",2.9
-2010,"Female","50+","Hodgkin Lymphoma",2.7
-2011,"Female","50+","Hodgkin Lymphoma",2.8
-2012,"Female","50+","Hodgkin Lymphoma",2.9
-2013,"Female","50+","Hodgkin Lymphoma",3.1
-2014,"Female","50+","Hodgkin Lymphoma",3.3
-2015,"Female","50+","Hodgkin Lymphoma",3.3
-2016,"Female","50+","Hodgkin Lymphoma",3
-2017,"Female","50+","Hodgkin Lymphoma",2.8
-2018,"Female","50+","Hodgkin Lymphoma",3
-2019,"Female","50+","Hodgkin Lymphoma",3.2
-2001,"Female","50+","Kidney",17.7
-2002,"Female","50+","Kidney",18.3
-2003,"Female","50+","Kidney",19.3
-2004,"Female","50+","Kidney",19.2
-2005,"Female","50+","Kidney",19.7
-2006,"Female","50+","Kidney",22.1
-2007,"Female","50+","Kidney",22.3
-2008,"Female","50+","Kidney",24.7
-2009,"Female","50+","Kidney",24.7
-2010,"Female","50+","Kidney",26.7
-2011,"Female","50+","Kidney",26.8
-2012,"Female","50+","Kidney",27.2
-2013,"Female","50+","Kidney",30.3
-2014,"Female","50+","Kidney",31.4
-2015,"Female","50+","Kidney",29.9
-2016,"Female","50+","Kidney",29.9
-2017,"Female","50+","Kidney",30.4
-2018,"Female","50+","Kidney",28.7
-2019,"Female","50+","Kidney",31
-2001,"Female","50+","Larynx",3.4
-2002,"Female","50+","Larynx",3.2
-2003,"Female","50+","Larynx",3.3
-2004,"Female","50+","Larynx",2.9
-2005,"Female","50+","Larynx",3
-2006,"Female","50+","Larynx",3.1
-2007,"Female","50+","Larynx",2.9
-2008,"Female","50+","Larynx",3
-2009,"Female","50+","Larynx",3
-2010,"Female","50+","Larynx",3.1
-2011,"Female","50+","Larynx",3.2
-2012,"Female","50+","Larynx",3.5
-2013,"Female","50+","Larynx",2.7
-2014,"Female","50+","Larynx",2.8
-2015,"Female","50+","Larynx",3.3
-2016,"Female","50+","Larynx",2.6
-2017,"Female","50+","Larynx",2.7
-2018,"Female","50+","Larynx",2.7
-2019,"Female","50+","Larynx",2.6
-2001,"Female","50+","Leukaemia",25.8
-2002,"Female","50+","Leukaemia",24.9
-2003,"Female","50+","Leukaemia",24
-2004,"Female","50+","Leukaemia",25.1
-2005,"Female","50+","Leukaemia",25.6
-2006,"Female","50+","Leukaemia",26.3
-2007,"Female","50+","Leukaemia",25
-2008,"Female","50+","Leukaemia",27.2
-2009,"Female","50+","Leukaemia",29
-2010,"Female","50+","Leukaemia",28.3
-2011,"Female","50+","Leukaemia",29.2
-2012,"Female","50+","Leukaemia",28.9
-2013,"Female","50+","Leukaemia",31.8
-2014,"Female","50+","Leukaemia",29.9
-2015,"Female","50+","Leukaemia",31.3
-2016,"Female","50+","Leukaemia",29.3
-2017,"Female","50+","Leukaemia",29.9
-2018,"Female","50+","Leukaemia",26.3
-2019,"Female","50+","Leukaemia",26.3
-2001,"Female","50+","Liver",9.1
-2002,"Female","50+","Liver",9.1
-2003,"Female","50+","Liver",8.7
-2004,"Female","50+","Liver",9.5
-2005,"Female","50+","Liver",10.1
-2006,"Female","50+","Liver",10.7
-2007,"Female","50+","Liver",11.4
-2008,"Female","50+","Liver",11.2
-2009,"Female","50+","Liver",13.1
-2010,"Female","50+","Liver",13.9
-2011,"Female","50+","Liver",13.7
-2012,"Female","50+","Liver",14.8
-2013,"Female","50+","Liver",16.2
-2014,"Female","50+","Liver",15.6
-2015,"Female","50+","Liver",16.3
-2016,"Female","50+","Liver",16.3
-2017,"Female","50+","Liver",16
-2018,"Female","50+","Liver",15.1
-2019,"Female","50+","Liver",17.9
-2001,"Female","50+","Lung",133.7
-2002,"Female","50+","Lung",131.4
-2003,"Female","50+","Lung",135.4
-2004,"Female","50+","Lung",135.4
-2005,"Female","50+","Lung",140.9
-2006,"Female","50+","Lung",146.7
-2007,"Female","50+","Lung",149.1
-2008,"Female","50+","Lung",155.6
-2009,"Female","50+","Lung",154.9
-2010,"Female","50+","Lung",157.1
-2011,"Female","50+","Lung",162.6
-2012,"Female","50+","Lung",167.8
-2013,"Female","50+","Lung",169.1
-2014,"Female","50+","Lung",168.6
-2015,"Female","50+","Lung",168.9
-2016,"Female","50+","Lung",169.2
-2017,"Female","50+","Lung",173.4
-2018,"Female","50+","Lung",170.8
-2019,"Female","50+","Lung",171.5
-2001,"Female","50+","Melanoma",26.2
-2002,"Female","50+","Melanoma",28.2
-2003,"Female","50+","Melanoma",28.7
-2004,"Female","50+","Melanoma",30.5
-2005,"Female","50+","Melanoma",32.2
-2006,"Female","50+","Melanoma",34.4
-2007,"Female","50+","Melanoma",35.3
-2008,"Female","50+","Melanoma",37.8
-2009,"Female","50+","Melanoma",37.7
-2010,"Female","50+","Melanoma",40.3
-2011,"Female","50+","Melanoma",41.5
-2012,"Female","50+","Melanoma",42.2
-2013,"Female","50+","Melanoma",45.7
-2014,"Female","50+","Melanoma",46.6
-2015,"Female","50+","Melanoma",46.9
-2016,"Female","50+","Melanoma",49.5
-2017,"Female","50+","Melanoma",48
-2018,"Female","50+","Melanoma",51.2
-2019,"Female","50+","Melanoma",50.7
-2001,"Female","50+","Multiple Myeloma",17
-2002,"Female","50+","Multiple Myeloma",16.6
-2003,"Female","50+","Multiple Myeloma",17.5
-2004,"Female","50+","Multiple Myeloma",17
-2005,"Female","50+","Multiple Myeloma",18
-2006,"Female","50+","Multiple Myeloma",18.1
-2007,"Female","50+","Multiple Myeloma",18.4
-2008,"Female","50+","Multiple Myeloma",20.1
-2009,"Female","50+","Multiple Myeloma",19.6
-2010,"Female","50+","Multiple Myeloma",19.3
-2011,"Female","50+","Multiple Myeloma",19.3
-2012,"Female","50+","Multiple Myeloma",20.1
-2013,"Female","50+","Multiple Myeloma",25
-2014,"Female","50+","Multiple Myeloma",24.8
-2015,"Female","50+","Multiple Myeloma",23.5
-2016,"Female","50+","Multiple Myeloma",23.8
-2017,"Female","50+","Multiple Myeloma",24.1
-2018,"Female","50+","Multiple Myeloma",23.3
-2019,"Female","50+","Multiple Myeloma",25.1
-2001,"Female","50+","Non-Hodgkin Lymphoma",37.2
-2002,"Female","50+","Non-Hodgkin Lymphoma",37
-2003,"Female","50+","Non-Hodgkin Lymphoma",38.8
-2004,"Female","50+","Non-Hodgkin Lymphoma",39.8
-2005,"Female","50+","Non-Hodgkin Lymphoma",39.5
-2006,"Female","50+","Non-Hodgkin Lymphoma",40.9
-2007,"Female","50+","Non-Hodgkin Lymphoma",41.4
-2008,"Female","50+","Non-Hodgkin Lymphoma",45.1
-2009,"Female","50+","Non-Hodgkin Lymphoma",45.2
-2010,"Female","50+","Non-Hodgkin Lymphoma",44.4
-2011,"Female","50+","Non-Hodgkin Lymphoma",46.1
-2012,"Female","50+","Non-Hodgkin Lymphoma",46.8
-2013,"Female","50+","Non-Hodgkin Lymphoma",45.6
-2014,"Female","50+","Non-Hodgkin Lymphoma",42.9
-2015,"Female","50+","Non-Hodgkin Lymphoma",43.4
-2016,"Female","50+","Non-Hodgkin Lymphoma",43.6
-2017,"Female","50+","Non-Hodgkin Lymphoma",42.9
-2018,"Female","50+","Non-Hodgkin Lymphoma",41.7
-2019,"Female","50+","Non-Hodgkin Lymphoma",42
-2001,"Female","50+","Oesophagus",25.1
-2002,"Female","50+","Oesophagus",24.4
-2003,"Female","50+","Oesophagus",24.6
-2004,"Female","50+","Oesophagus",23.6
-2005,"Female","50+","Oesophagus",24.5
-2006,"Female","50+","Oesophagus",24.3
-2007,"Female","50+","Oesophagus",24
-2008,"Female","50+","Oesophagus",23.4
-2009,"Female","50+","Oesophagus",23
-2010,"Female","50+","Oesophagus",23.7
-2011,"Female","50+","Oesophagus",22.7
-2012,"Female","50+","Oesophagus",23.9
-2013,"Female","50+","Oesophagus",23.4
-2014,"Female","50+","Oesophagus",22.9
-2015,"Female","50+","Oesophagus",22.8
-2016,"Female","50+","Oesophagus",21.6
-2017,"Female","50+","Oesophagus",21
-2018,"Female","50+","Oesophagus",21.1
-2019,"Female","50+","Oesophagus",21.1
-2001,"Female","50+","Oral",14.4
-2002,"Female","50+","Oral",13.6
-2003,"Female","50+","Oral",14.7
-2004,"Female","50+","Oral",15.2
-2005,"Female","50+","Oral",15.4
-2006,"Female","50+","Oral",16.3
-2007,"Female","50+","Oral",16.2
-2008,"Female","50+","Oral",17.9
-2009,"Female","50+","Oral",18.1
-2010,"Female","50+","Oral",19.5
-2011,"Female","50+","Oral",19.4
-2012,"Female","50+","Oral",20.2
-2013,"Female","50+","Oral",20.2
-2014,"Female","50+","Oral",20.5
-2015,"Female","50+","Oral",20.5
-2016,"Female","50+","Oral",21
-2017,"Female","50+","Oral",20.8
-2018,"Female","50+","Oral",22.2
-2019,"Female","50+","Oral",22.6
-2001,"Female","50+","Ovary",57.3
-2002,"Female","50+","Ovary",54.9
-2003,"Female","50+","Ovary",54.8
-2004,"Female","50+","Ovary",52.3
-2005,"Female","50+","Ovary",52.8
-2006,"Female","50+","Ovary",52
-2007,"Female","50+","Ovary",51.2
-2008,"Female","50+","Ovary",49.5
-2009,"Female","50+","Ovary",51.7
-2010,"Female","50+","Ovary",50.1
-2011,"Female","50+","Ovary",50.3
-2012,"Female","50+","Ovary",48.2
-2013,"Female","50+","Ovary",49.8
-2014,"Female","50+","Ovary",48.8
-2015,"Female","50+","Ovary",46.4
-2016,"Female","50+","Ovary",46.3
-2017,"Female","50+","Ovary",43.8
-2018,"Female","50+","Ovary",43.4
-2019,"Female","50+","Ovary",44.8
-2001,"Female","50+","Pancreas",33.6
-2002,"Female","50+","Pancreas",32.9
-2003,"Female","50+","Pancreas",33.8
-2004,"Female","50+","Pancreas",35.2
-2005,"Female","50+","Pancreas",35.6
-2006,"Female","50+","Pancreas",36.5
-2007,"Female","50+","Pancreas",36.1
-2008,"Female","50+","Pancreas",37.3
-2009,"Female","50+","Pancreas",37.8
-2010,"Female","50+","Pancreas",37.3
-2011,"Female","50+","Pancreas",38.1
-2012,"Female","50+","Pancreas",38.6
-2013,"Female","50+","Pancreas",39.8
-2014,"Female","50+","Pancreas",39
-2015,"Female","50+","Pancreas",39.7
-2016,"Female","50+","Pancreas",38.7
-2017,"Female","50+","Pancreas",39.4
-2018,"Female","50+","Pancreas",38.4
-2019,"Female","50+","Pancreas",39.7
-2001,"Male","20-49","Bladder",1.7
-2002,"Male","20-49","Bladder",1.6
-2003,"Male","20-49","Bladder",1.4
-2004,"Male","20-49","Bladder",1.5
-2005,"Male","20-49","Bladder",1.4
-2006,"Male","20-49","Bladder",1.3
-2007,"Male","20-49","Bladder",1.2
-2008,"Male","20-49","Bladder",1.5
-2009,"Male","20-49","Bladder",1.5
-2010,"Male","20-49","Bladder",1.4
-2011,"Male","20-49","Bladder",1.3
-2012,"Male","20-49","Bladder",1.3
-2013,"Male","20-49","Bladder",1.3
-2014,"Male","20-49","Bladder",1.3
-2015,"Male","20-49","Bladder",1.2
-2016,"Male","20-49","Bladder",1.1
-2017,"Male","20-49","Bladder",1
-2018,"Male","20-49","Bladder",1
-2019,"Male","20-49","Bladder",1.2
-2001,"Male","20-49","Brain and CNS",4.7
-2002,"Male","20-49","Brain and CNS",4.7
-2003,"Male","20-49","Brain and CNS",4.3
-2004,"Male","20-49","Brain and CNS",4.5
-2005,"Male","20-49","Brain and CNS",4.8
-2006,"Male","20-49","Brain and CNS",4.9
-2007,"Male","20-49","Brain and CNS",4.8
-2008,"Male","20-49","Brain and CNS",4.9
-2009,"Male","20-49","Brain and CNS",4.9
-2010,"Male","20-49","Brain and CNS",4.6
-2011,"Male","20-49","Brain and CNS",5.1
-2012,"Male","20-49","Brain and CNS",4.8
-2013,"Male","20-49","Brain and CNS",5
-2014,"Male","20-49","Brain and CNS",4.9
-2015,"Male","20-49","Brain and CNS",5.2
-2016,"Male","20-49","Brain and CNS",5.2
-2017,"Male","20-49","Brain and CNS",5.1
-2018,"Male","20-49","Brain and CNS",5.1
-2019,"Male","20-49","Brain and CNS",5
-2001,"Male","20-49","Breast",0.2
-2002,"Male","20-49","Breast",0.1
-2003,"Male","20-49","Breast",0.2
-2004,"Male","20-49","Breast",0.2
-2005,"Male","20-49","Breast",0.2
-2006,"Male","20-49","Breast",0.2
-2007,"Male","20-49","Breast",0.1
-2008,"Male","20-49","Breast",0.2
-2009,"Male","20-49","Breast",0.2
-2010,"Male","20-49","Breast",0.2
-2011,"Male","20-49","Breast",0.2
-2012,"Male","20-49","Breast",0.2
-2013,"Male","20-49","Breast",0.2
-2014,"Male","20-49","Breast",0.2
-2015,"Male","20-49","Breast",0.2
-2016,"Male","20-49","Breast",0.2
-2017,"Male","20-49","Breast",0.2
-2018,"Male","20-49","Breast",0.2
-2019,"Male","20-49","Breast",0.3
-2001,"Male","20-49","Colorectum",6.7
-2002,"Male","20-49","Colorectum",7.1
-2003,"Male","20-49","Colorectum",7.2
-2004,"Male","20-49","Colorectum",7.9
-2005,"Male","20-49","Colorectum",8.1
-2006,"Male","20-49","Colorectum",8.3
-2007,"Male","20-49","Colorectum",7.8
-2008,"Male","20-49","Colorectum",8.4
-2009,"Male","20-49","Colorectum",8.8
-2010,"Male","20-49","Colorectum",8.3
-2011,"Male","20-49","Colorectum",9.3
-2012,"Male","20-49","Colorectum",9.9
-2013,"Male","20-49","Colorectum",9.8
-2014,"Male","20-49","Colorectum",10.2
-2015,"Male","20-49","Colorectum",9.8
-2016,"Male","20-49","Colorectum",10.8
-2017,"Male","20-49","Colorectum",10.2
-2018,"Male","20-49","Colorectum",10.7
-2019,"Male","20-49","Colorectum",11.2
-2001,"Male","20-49","Gallbladder",0.1
-2002,"Male","20-49","Gallbladder",0.2
-2003,"Male","20-49","Gallbladder",0.2
-2004,"Male","20-49","Gallbladder",0.3
-2005,"Male","20-49","Gallbladder",0.2
-2006,"Male","20-49","Gallbladder",0.2
-2007,"Male","20-49","Gallbladder",0.2
-2008,"Male","20-49","Gallbladder",0.2
-2009,"Male","20-49","Gallbladder",0.3
-2010,"Male","20-49","Gallbladder",0.2
-2011,"Male","20-49","Gallbladder",0.3
-2012,"Male","20-49","Gallbladder",0.2
-2013,"Male","20-49","Gallbladder",0.2
-2014,"Male","20-49","Gallbladder",0.4
-2015,"Male","20-49","Gallbladder",0.3
-2016,"Male","20-49","Gallbladder",0.3
-2017,"Male","20-49","Gallbladder",0.3
-2018,"Male","20-49","Gallbladder",0.2
-2019,"Male","20-49","Gallbladder",0.3
-2001,"Male","20-49","Hodgkin Lymphoma",3.7
-2002,"Male","20-49","Hodgkin Lymphoma",3.8
-2003,"Male","20-49","Hodgkin Lymphoma",3.3
-2004,"Male","20-49","Hodgkin Lymphoma",3.5
-2005,"Male","20-49","Hodgkin Lymphoma",3.5
-2006,"Male","20-49","Hodgkin Lymphoma",3.7
-2007,"Male","20-49","Hodgkin Lymphoma",3.9
-2008,"Male","20-49","Hodgkin Lymphoma",3.7
-2009,"Male","20-49","Hodgkin Lymphoma",3.9
-2010,"Male","20-49","Hodgkin Lymphoma",4.1
-2011,"Male","20-49","Hodgkin Lymphoma",4.1
-2012,"Male","20-49","Hodgkin Lymphoma",3.7
-2013,"Male","20-49","Hodgkin Lymphoma",3.8
-2014,"Male","20-49","Hodgkin Lymphoma",4
-2015,"Male","20-49","Hodgkin Lymphoma",4.4
-2016,"Male","20-49","Hodgkin Lymphoma",4
-2017,"Male","20-49","Hodgkin Lymphoma",4.5
-2018,"Male","20-49","Hodgkin Lymphoma",4.2
-2019,"Male","20-49","Hodgkin Lymphoma",4.1
-2001,"Male","20-49","Kidney",2.7
-2002,"Male","20-49","Kidney",3.1
-2003,"Male","20-49","Kidney",3
-2004,"Male","20-49","Kidney",2.8
-2005,"Male","20-49","Kidney",3
-2006,"Male","20-49","Kidney",3.3
-2007,"Male","20-49","Kidney",3.6
-2008,"Male","20-49","Kidney",3.6
-2009,"Male","20-49","Kidney",3.8
-2010,"Male","20-49","Kidney",4.3
-2011,"Male","20-49","Kidney",4.2
-2012,"Male","20-49","Kidney",4.6
-2013,"Male","20-49","Kidney",5
-2014,"Male","20-49","Kidney",5.5
-2015,"Male","20-49","Kidney",5.4
-2016,"Male","20-49","Kidney",5.6
-2017,"Male","20-49","Kidney",5.9
-2018,"Male","20-49","Kidney",5.5
-2019,"Male","20-49","Kidney",5.5
-2001,"Male","20-49","Larynx",0.9
-2002,"Male","20-49","Larynx",0.8
-2003,"Male","20-49","Larynx",0.9
-2004,"Male","20-49","Larynx",0.7
-2005,"Male","20-49","Larynx",0.8
-2006,"Male","20-49","Larynx",0.9
-2007,"Male","20-49","Larynx",0.8
-2008,"Male","20-49","Larynx",1
-2009,"Male","20-49","Larynx",0.8
-2010,"Male","20-49","Larynx",0.8
-2011,"Male","20-49","Larynx",0.9
-2012,"Male","20-49","Larynx",0.8
-2013,"Male","20-49","Larynx",0.8
-2014,"Male","20-49","Larynx",0.7
-2015,"Male","20-49","Larynx",0.8
-2016,"Male","20-49","Larynx",0.6
-2017,"Male","20-49","Larynx",0.6
-2018,"Male","20-49","Larynx",0.8
-2019,"Male","20-49","Larynx",0.7
-2001,"Male","20-49","Leukaemia",3.9
-2002,"Male","20-49","Leukaemia",3.5
-2003,"Male","20-49","Leukaemia",3.9
-2004,"Male","20-49","Leukaemia",3.7
-2005,"Male","20-49","Leukaemia",3.9
-2006,"Male","20-49","Leukaemia",3.8
-2007,"Male","20-49","Leukaemia",3.6
-2008,"Male","20-49","Leukaemia",4.2
-2009,"Male","20-49","Leukaemia",4.3
-2010,"Male","20-49","Leukaemia",4.3
-2011,"Male","20-49","Leukaemia",4.2
-2012,"Male","20-49","Leukaemia",4
-2013,"Male","20-49","Leukaemia",4.4
-2014,"Male","20-49","Leukaemia",5
-2015,"Male","20-49","Leukaemia",4.6
-2016,"Male","20-49","Leukaemia",4.5
-2017,"Male","20-49","Leukaemia",4.7
-2018,"Male","20-49","Leukaemia",4.6
-2019,"Male","20-49","Leukaemia",4.3
-2001,"Male","20-49","Liver",1
-2002,"Male","20-49","Liver",0.9
-2003,"Male","20-49","Liver",1
-2004,"Male","20-49","Liver",0.9
-2005,"Male","20-49","Liver",1
-2006,"Male","20-49","Liver",1.1
-2007,"Male","20-49","Liver",1
-2008,"Male","20-49","Liver",1.3
-2009,"Male","20-49","Liver",1.5
-2010,"Male","20-49","Liver",1.4
-2011,"Male","20-49","Liver",1
-2012,"Male","20-49","Liver",1.3
-2013,"Male","20-49","Liver",1.3
-2014,"Male","20-49","Liver",1.5
-2015,"Male","20-49","Liver",1.3
-2016,"Male","20-49","Liver",1.4
-2017,"Male","20-49","Liver",1.3
-2018,"Male","20-49","Liver",1.1
-2019,"Male","20-49","Liver",1.2
-2001,"Male","20-49","Lung",5.3
-2002,"Male","20-49","Lung",4.9
-2003,"Male","20-49","Lung",4.4
-2004,"Male","20-49","Lung",4.8
-2005,"Male","20-49","Lung",4.8
-2006,"Male","20-49","Lung",4.8
-2007,"Male","20-49","Lung",4.5
-2008,"Male","20-49","Lung",4.5
-2009,"Male","20-49","Lung",4.5
-2010,"Male","20-49","Lung",4.8
-2011,"Male","20-49","Lung",4.4
-2012,"Male","20-49","Lung",4.4
-2013,"Male","20-49","Lung",4.4
-2014,"Male","20-49","Lung",4.3
-2015,"Male","20-49","Lung",4.2
-2016,"Male","20-49","Lung",4.7
-2017,"Male","20-49","Lung",4
-2018,"Male","20-49","Lung",4.5
-2019,"Male","20-49","Lung",4.2
-2001,"Male","20-49","Melanoma",7.7
-2002,"Male","20-49","Melanoma",7.8
-2003,"Male","20-49","Melanoma",7.5
-2004,"Male","20-49","Melanoma",9.2
-2005,"Male","20-49","Melanoma",9.1
-2006,"Male","20-49","Melanoma",9.7
-2007,"Male","20-49","Melanoma",9.2
-2008,"Male","20-49","Melanoma",9.5
-2009,"Male","20-49","Melanoma",10.2
-2010,"Male","20-49","Melanoma",9.8
-2011,"Male","20-49","Melanoma",9.9
-2012,"Male","20-49","Melanoma",10
-2013,"Male","20-49","Melanoma",10.6
-2014,"Male","20-49","Melanoma",11.1
-2015,"Male","20-49","Melanoma",10.7
-2016,"Male","20-49","Melanoma",10.1
-2017,"Male","20-49","Melanoma",10
-2018,"Male","20-49","Melanoma",9.6
-2019,"Male","20-49","Melanoma",9.3
-2001,"Male","20-49","Multiple Myeloma",0.9
-2002,"Male","20-49","Multiple Myeloma",0.9
-2003,"Male","20-49","Multiple Myeloma",1.2
-2004,"Male","20-49","Multiple Myeloma",1
-2005,"Male","20-49","Multiple Myeloma",1.1
-2006,"Male","20-49","Multiple Myeloma",1.1
-2007,"Male","20-49","Multiple Myeloma",1
-2008,"Male","20-49","Multiple Myeloma",1.2
-2009,"Male","20-49","Multiple Myeloma",1.5
-2010,"Male","20-49","Multiple Myeloma",1.1
-2011,"Male","20-49","Multiple Myeloma",1.3
-2012,"Male","20-49","Multiple Myeloma",1.5
-2013,"Male","20-49","Multiple Myeloma",2
-2014,"Male","20-49","Multiple Myeloma",1.7
-2015,"Male","20-49","Multiple Myeloma",1.6
-2016,"Male","20-49","Multiple Myeloma",1.6
-2017,"Male","20-49","Multiple Myeloma",1.8
-2018,"Male","20-49","Multiple Myeloma",1.7
-2019,"Male","20-49","Multiple Myeloma",1.6
-2001,"Male","20-49","Non-Hodgkin Lymphoma",6.5
-2002,"Male","20-49","Non-Hodgkin Lymphoma",6.2
-2003,"Male","20-49","Non-Hodgkin Lymphoma",6.5
-2004,"Male","20-49","Non-Hodgkin Lymphoma",6.4
-2005,"Male","20-49","Non-Hodgkin Lymphoma",7.1
-2006,"Male","20-49","Non-Hodgkin Lymphoma",6.8
-2007,"Male","20-49","Non-Hodgkin Lymphoma",7.2
-2008,"Male","20-49","Non-Hodgkin Lymphoma",7.3
-2009,"Male","20-49","Non-Hodgkin Lymphoma",7.3
-2010,"Male","20-49","Non-Hodgkin Lymphoma",7.5
-2011,"Male","20-49","Non-Hodgkin Lymphoma",7.3
-2012,"Male","20-49","Non-Hodgkin Lymphoma",7.7
-2013,"Male","20-49","Non-Hodgkin Lymphoma",6.9
-2014,"Male","20-49","Non-Hodgkin Lymphoma",6.7
-2015,"Male","20-49","Non-Hodgkin Lymphoma",6.8
-2016,"Male","20-49","Non-Hodgkin Lymphoma",6.9
-2017,"Male","20-49","Non-Hodgkin Lymphoma",6.6
-2018,"Male","20-49","Non-Hodgkin Lymphoma",6.5
-2019,"Male","20-49","Non-Hodgkin Lymphoma",6.4
-2001,"Male","20-49","Oesophagus",1.9
-2002,"Male","20-49","Oesophagus",2
-2003,"Male","20-49","Oesophagus",1.9
-2004,"Male","20-49","Oesophagus",2
-2005,"Male","20-49","Oesophagus",1.6
-2006,"Male","20-49","Oesophagus",1.8
-2007,"Male","20-49","Oesophagus",2.1
-2008,"Male","20-49","Oesophagus",1.9
-2009,"Male","20-49","Oesophagus",2
-2010,"Male","20-49","Oesophagus",2.1
-2011,"Male","20-49","Oesophagus",1.6
-2012,"Male","20-49","Oesophagus",2
-2013,"Male","20-49","Oesophagus",1.7
-2014,"Male","20-49","Oesophagus",1.7
-2015,"Male","20-49","Oesophagus",1.6
-2016,"Male","20-49","Oesophagus",1.9
-2017,"Male","20-49","Oesophagus",1.8
-2018,"Male","20-49","Oesophagus",1.7
-2019,"Male","20-49","Oesophagus",1.7
-2001,"Male","20-49","Oral",4.1
-2002,"Male","20-49","Oral",4.4
-2003,"Male","20-49","Oral",4.4
-2004,"Male","20-49","Oral",4.5
-2005,"Male","20-49","Oral",4.6
-2006,"Male","20-49","Oral",5
-2007,"Male","20-49","Oral",5
-2008,"Male","20-49","Oral",5.2
-2009,"Male","20-49","Oral",5.2
-2010,"Male","20-49","Oral",5.4
-2011,"Male","20-49","Oral",5.6
-2012,"Male","20-49","Oral",5.8
-2013,"Male","20-49","Oral",6
-2014,"Male","20-49","Oral",5.8
-2015,"Male","20-49","Oral",5.6
-2016,"Male","20-49","Oral",5.4
-2017,"Male","20-49","Oral",5.7
-2018,"Male","20-49","Oral",5.3
-2019,"Male","20-49","Oral",5.2
-2001,"Male","20-49","Pancreas",1.5
-2002,"Male","20-49","Pancreas",1.2
-2003,"Male","20-49","Pancreas",1.3
-2004,"Male","20-49","Pancreas",1.2
-2005,"Male","20-49","Pancreas",1.4
-2006,"Male","20-49","Pancreas",1.3
-2007,"Male","20-49","Pancreas",1.4
-2008,"Male","20-49","Pancreas",1.5
-2009,"Male","20-49","Pancreas",1.6
-2010,"Male","20-49","Pancreas",1.6
-2011,"Male","20-49","Pancreas",1.5
-2012,"Male","20-49","Pancreas",1.6
-2013,"Male","20-49","Pancreas",1.7
-2014,"Male","20-49","Pancreas",1.8
-2015,"Male","20-49","Pancreas",1.5
-2016,"Male","20-49","Pancreas",1.8
-2017,"Male","20-49","Pancreas",1.6
-2018,"Male","20-49","Pancreas",1.8
-2019,"Male","20-49","Pancreas",1.7
-2001,"Male","50+","Bladder",82.7
-2002,"Male","50+","Bladder",77.5
-2003,"Male","50+","Bladder",77
-2004,"Male","50+","Bladder",74.4
-2005,"Male","50+","Bladder",76.9
-2006,"Male","50+","Bladder",75.1
-2007,"Male","50+","Bladder",77.6
-2008,"Male","50+","Bladder",77
-2009,"Male","50+","Bladder",76.4
-2010,"Male","50+","Bladder",72.7
-2011,"Male","50+","Bladder",73.7
-2012,"Male","50+","Bladder",73.3
-2013,"Male","50+","Bladder",71.5
-2014,"Male","50+","Bladder",68.4
-2015,"Male","50+","Bladder",66.2
-2016,"Male","50+","Bladder",64.3
-2017,"Male","50+","Bladder",65.2
-2018,"Male","50+","Bladder",64.4
-2019,"Male","50+","Bladder",64.5
-2001,"Male","50+","Brain and CNS",19.5
-2002,"Male","50+","Brain and CNS",19.6
-2003,"Male","50+","Brain and CNS",19.6
-2004,"Male","50+","Brain and CNS",19.7
-2005,"Male","50+","Brain and CNS",20.6
-2006,"Male","50+","Brain and CNS",20
-2007,"Male","50+","Brain and CNS",20.4
-2008,"Male","50+","Brain and CNS",21
-2009,"Male","50+","Brain and CNS",21.6
-2010,"Male","50+","Brain and CNS",20.6
-2011,"Male","50+","Brain and CNS",20.4
-2012,"Male","50+","Brain and CNS",21.5
-2013,"Male","50+","Brain and CNS",22.2
-2014,"Male","50+","Brain and CNS",20.1
-2015,"Male","50+","Brain and CNS",21.1
-2016,"Male","50+","Brain and CNS",21.4
-2017,"Male","50+","Brain and CNS",21.4
-2018,"Male","50+","Brain and CNS",20.1
-2019,"Male","50+","Brain and CNS",20.5
-2001,"Male","50+","Breast",2.9
-2002,"Male","50+","Breast",3.1
-2003,"Male","50+","Breast",3.5
-2004,"Male","50+","Breast",3.1
-2005,"Male","50+","Breast",2.6
-2006,"Male","50+","Breast",3.1
-2007,"Male","50+","Breast",2.8
-2008,"Male","50+","Breast",3.1
-2009,"Male","50+","Breast",3
-2010,"Male","50+","Breast",3.5
-2011,"Male","50+","Breast",3.2
-2012,"Male","50+","Breast",3
-2013,"Male","50+","Breast",3
-2014,"Male","50+","Breast",3.4
-2015,"Male","50+","Breast",3.1
-2016,"Male","50+","Breast",3
-2017,"Male","50+","Breast",3.1
-2018,"Male","50+","Breast",3.2
-2019,"Male","50+","Breast",3.1
-2001,"Male","50+","Colorectum",195.7
-2002,"Male","50+","Colorectum",194.2
-2003,"Male","50+","Colorectum",196.8
-2004,"Male","50+","Colorectum",201.4
-2005,"Male","50+","Colorectum",202.9
-2006,"Male","50+","Colorectum",205.4
-2007,"Male","50+","Colorectum",207.2
-2008,"Male","50+","Colorectum",215.4
-2009,"Male","50+","Colorectum",215.7
-2010,"Male","50+","Colorectum",216.9
-2011,"Male","50+","Colorectum",217
-2012,"Male","50+","Colorectum",217.3
-2013,"Male","50+","Colorectum",206.3
-2014,"Male","50+","Colorectum",199.2
-2015,"Male","50+","Colorectum",200.8
-2016,"Male","50+","Colorectum",200.2
-2017,"Male","50+","Colorectum",195.4
-2018,"Male","50+","Colorectum",198.1
-2019,"Male","50+","Colorectum",202.5
-2001,"Male","50+","Gallbladder",5.5
-2002,"Male","50+","Gallbladder",5.2
-2003,"Male","50+","Gallbladder",5.3
-2004,"Male","50+","Gallbladder",5.3
-2005,"Male","50+","Gallbladder",5.6
-2006,"Male","50+","Gallbladder",6.5
-2007,"Male","50+","Gallbladder",6.7
-2008,"Male","50+","Gallbladder",7.3
-2009,"Male","50+","Gallbladder",6.5
-2010,"Male","50+","Gallbladder",7.3
-2011,"Male","50+","Gallbladder",7.4
-2012,"Male","50+","Gallbladder",7.4
-2013,"Male","50+","Gallbladder",8.5
-2014,"Male","50+","Gallbladder",7.5
-2015,"Male","50+","Gallbladder",7.8
-2016,"Male","50+","Gallbladder",7.9
-2017,"Male","50+","Gallbladder",7.7
-2018,"Male","50+","Gallbladder",8.9
-2019,"Male","50+","Gallbladder",8.8
-2001,"Male","50+","Hodgkin Lymphoma",3.2
-2002,"Male","50+","Hodgkin Lymphoma",3.4
-2003,"Male","50+","Hodgkin Lymphoma",3.2
-2004,"Male","50+","Hodgkin Lymphoma",3.4
-2005,"Male","50+","Hodgkin Lymphoma",3.8
-2006,"Male","50+","Hodgkin Lymphoma",3.7
-2007,"Male","50+","Hodgkin Lymphoma",4
-2008,"Male","50+","Hodgkin Lymphoma",3.8
-2009,"Male","50+","Hodgkin Lymphoma",4.3
-2010,"Male","50+","Hodgkin Lymphoma",4.2
-2011,"Male","50+","Hodgkin Lymphoma",3.9
-2012,"Male","50+","Hodgkin Lymphoma",4.5
-2013,"Male","50+","Hodgkin Lymphoma",4.6
-2014,"Male","50+","Hodgkin Lymphoma",5.2
-2015,"Male","50+","Hodgkin Lymphoma",4.9
-2016,"Male","50+","Hodgkin Lymphoma",4.5
-2017,"Male","50+","Hodgkin Lymphoma",4.7
-2018,"Male","50+","Hodgkin Lymphoma",4.8
-2019,"Male","50+","Hodgkin Lymphoma",4.6
-2001,"Male","50+","Kidney",34.3
-2002,"Male","50+","Kidney",35.7
-2003,"Male","50+","Kidney",35
-2004,"Male","50+","Kidney",37.5
-2005,"Male","50+","Kidney",39
-2006,"Male","50+","Kidney",41.5
-2007,"Male","50+","Kidney",43.4
-2008,"Male","50+","Kidney",44.6
-2009,"Male","50+","Kidney",45
-2010,"Male","50+","Kidney",45.9
-2011,"Male","50+","Kidney",48.3
-2012,"Male","50+","Kidney",50.5
-2013,"Male","50+","Kidney",57.4
-2014,"Male","50+","Kidney",58.2
-2015,"Male","50+","Kidney",57
-2016,"Male","50+","Kidney",57.3
-2017,"Male","50+","Kidney",54.3
-2018,"Male","50+","Kidney",56.9
-2019,"Male","50+","Kidney",59.5
-2001,"Male","50+","Larynx",18.8
-2002,"Male","50+","Larynx",17.1
-2003,"Male","50+","Larynx",17.1
-2004,"Male","50+","Larynx",17.8
-2005,"Male","50+","Larynx",17.4
-2006,"Male","50+","Larynx",17.2
-2007,"Male","50+","Larynx",17.5
-2008,"Male","50+","Larynx",17.5
-2009,"Male","50+","Larynx",17.2
-2010,"Male","50+","Larynx",17.3
-2011,"Male","50+","Larynx",16.8
-2012,"Male","50+","Larynx",16.7
-2013,"Male","50+","Larynx",16.2
-2014,"Male","50+","Larynx",16
-2015,"Male","50+","Larynx",15.5
-2016,"Male","50+","Larynx",15
-2017,"Male","50+","Larynx",14.9
-2018,"Male","50+","Larynx",13.7
-2019,"Male","50+","Larynx",14
-2001,"Male","50+","Leukaemia",39
-2002,"Male","50+","Leukaemia",37.7
-2003,"Male","50+","Leukaemia",39.1
-2004,"Male","50+","Leukaemia",39.5
-2005,"Male","50+","Leukaemia",39.8
-2006,"Male","50+","Leukaemia",42
-2007,"Male","50+","Leukaemia",40.3
-2008,"Male","50+","Leukaemia",43.5
-2009,"Male","50+","Leukaemia",46.5
-2010,"Male","50+","Leukaemia",44.7
-2011,"Male","50+","Leukaemia",45.6
-2012,"Male","50+","Leukaemia",48.3
-2013,"Male","50+","Leukaemia",54
-2014,"Male","50+","Leukaemia",50.3
-2015,"Male","50+","Leukaemia",51.4
-2016,"Male","50+","Leukaemia",49.8
-2017,"Male","50+","Leukaemia",49.4
-2018,"Male","50+","Leukaemia",43.8
-2019,"Male","50+","Leukaemia",43.3
-2001,"Male","50+","Liver",15.2
-2002,"Male","50+","Liver",16.9
-2003,"Male","50+","Liver",16.7
-2004,"Male","50+","Liver",17.2
-2005,"Male","50+","Liver",19.3
-2006,"Male","50+","Liver",20.9
-2007,"Male","50+","Liver",21.9
-2008,"Male","50+","Liver",22.6
-2009,"Male","50+","Liver",24.3
-2010,"Male","50+","Liver",25.9
-2011,"Male","50+","Liver",26.6
-2012,"Male","50+","Liver",29.2
-2013,"Male","50+","Liver",32.4
-2014,"Male","50+","Liver",32.7
-2015,"Male","50+","Liver",32.4
-2016,"Male","50+","Liver",34.7
-2017,"Male","50+","Liver",34
-2018,"Male","50+","Liver",34.3
-2019,"Male","50+","Liver",36.5
-2001,"Male","50+","Lung",243.9
-2002,"Male","50+","Lung",233
-2003,"Male","50+","Lung",227.3
-2004,"Male","50+","Lung",231.3
-2005,"Male","50+","Lung",226.3
-2006,"Male","50+","Lung",232
-2007,"Male","50+","Lung",227.4
-2008,"Male","50+","Lung",229.3
-2009,"Male","50+","Lung",222.4
-2010,"Male","50+","Lung",222.5
-2011,"Male","50+","Lung",223.4
-2012,"Male","50+","Lung",225.7
-2013,"Male","50+","Lung",222.2
-2014,"Male","50+","Lung",218.7
-2015,"Male","50+","Lung",213.9
-2016,"Male","50+","Lung",215.8
-2017,"Male","50+","Lung",209
-2018,"Male","50+","Lung",205.4
-2019,"Male","50+","Lung",204.3
-2001,"Male","50+","Melanoma",27.1
-2002,"Male","50+","Melanoma",28.4
-2003,"Male","50+","Melanoma",30.2
-2004,"Male","50+","Melanoma",32.4
-2005,"Male","50+","Melanoma",35.9
-2006,"Male","50+","Melanoma",39.5
-2007,"Male","50+","Melanoma",41.1
-2008,"Male","50+","Melanoma",46.5
-2009,"Male","50+","Melanoma",46.3
-2010,"Male","50+","Melanoma",50.4
-2011,"Male","50+","Melanoma",51.9
-2012,"Male","50+","Melanoma",53.1
-2013,"Male","50+","Melanoma",57.7
-2014,"Male","50+","Melanoma",60.6
-2015,"Male","50+","Melanoma",63.1
-2016,"Male","50+","Melanoma",62
-2017,"Male","50+","Melanoma",62.6
-2018,"Male","50+","Melanoma",66.9
-2019,"Male","50+","Melanoma",67.6
-2001,"Male","50+","Multiple Myeloma",22.8
-2002,"Male","50+","Multiple Myeloma",22.9
-2003,"Male","50+","Multiple Myeloma",24.1
-2004,"Male","50+","Multiple Myeloma",24.5
-2005,"Male","50+","Multiple Myeloma",24
-2006,"Male","50+","Multiple Myeloma",25.2
-2007,"Male","50+","Multiple Myeloma",25.7
-2008,"Male","50+","Multiple Myeloma",28.1
-2009,"Male","50+","Multiple Myeloma",28.5
-2010,"Male","50+","Multiple Myeloma",27.5
-2011,"Male","50+","Multiple Myeloma",27.6
-2012,"Male","50+","Multiple Myeloma",28.9
-2013,"Male","50+","Multiple Myeloma",36.1
-2014,"Male","50+","Multiple Myeloma",34.2
-2015,"Male","50+","Multiple Myeloma",34.1
-2016,"Male","50+","Multiple Myeloma",34.4
-2017,"Male","50+","Multiple Myeloma",36.1
-2018,"Male","50+","Multiple Myeloma",35.4
-2019,"Male","50+","Multiple Myeloma",37.4
-2001,"Male","50+","Non-Hodgkin Lymphoma",47.8
-2002,"Male","50+","Non-Hodgkin Lymphoma",46.8
-2003,"Male","50+","Non-Hodgkin Lymphoma",47.9
-2004,"Male","50+","Non-Hodgkin Lymphoma",50.2
-2005,"Male","50+","Non-Hodgkin Lymphoma",50.3
-2006,"Male","50+","Non-Hodgkin Lymphoma",52.5
-2007,"Male","50+","Non-Hodgkin Lymphoma",53.4
-2008,"Male","50+","Non-Hodgkin Lymphoma",55.2
-2009,"Male","50+","Non-Hodgkin Lymphoma",58.8
-2010,"Male","50+","Non-Hodgkin Lymphoma",58.2
-2011,"Male","50+","Non-Hodgkin Lymphoma",60.9
-2012,"Male","50+","Non-Hodgkin Lymphoma",61.1
-2013,"Male","50+","Non-Hodgkin Lymphoma",59.8
-2014,"Male","50+","Non-Hodgkin Lymphoma",59.5
-2015,"Male","50+","Non-Hodgkin Lymphoma",58.8
-2016,"Male","50+","Non-Hodgkin Lymphoma",59.7
-2017,"Male","50+","Non-Hodgkin Lymphoma",58.1
-2018,"Male","50+","Non-Hodgkin Lymphoma",57.1
-2019,"Male","50+","Non-Hodgkin Lymphoma",59.4
-2001,"Male","50+","Oesophagus",48.2
-2002,"Male","50+","Oesophagus",48.5
-2003,"Male","50+","Oesophagus",49.1
-2004,"Male","50+","Oesophagus",49.1
-2005,"Male","50+","Oesophagus",50.3
-2006,"Male","50+","Oesophagus",50.2
-2007,"Male","50+","Oesophagus",51.1
-2008,"Male","50+","Oesophagus",53.7
-2009,"Male","50+","Oesophagus",51.9
-2010,"Male","50+","Oesophagus",52.8
-2011,"Male","50+","Oesophagus",52.6
-2012,"Male","50+","Oesophagus",54.3
-2013,"Male","50+","Oesophagus",53
-2014,"Male","50+","Oesophagus",52.1
-2015,"Male","50+","Oesophagus",54.4
-2016,"Male","50+","Oesophagus",53.4
-2017,"Male","50+","Oesophagus",52.9
-2018,"Male","50+","Oesophagus",53.8
-2019,"Male","50+","Oesophagus",52.6
-2001,"Male","50+","Oral",30.3
-2002,"Male","50+","Oral",28.4
-2003,"Male","50+","Oral",31.7
-2004,"Male","50+","Oral",31
-2005,"Male","50+","Oral",31.8
-2006,"Male","50+","Oral",35.2
-2007,"Male","50+","Oral",34.7
-2008,"Male","50+","Oral",37.5
-2009,"Male","50+","Oral",39.3
-2010,"Male","50+","Oral",39.9
-2011,"Male","50+","Oral",40.7
-2012,"Male","50+","Oral",43.4
-2013,"Male","50+","Oral",44.6
-2014,"Male","50+","Oral",44
-2015,"Male","50+","Oral",46.7
-2016,"Male","50+","Oral",46.9
-2017,"Male","50+","Oral",45.9
-2018,"Male","50+","Oral",47.4
-2019,"Male","50+","Oral",50.5
-2001,"Male","50+","Pancreas",36.1
-2002,"Male","50+","Pancreas",37.2
-2003,"Male","50+","Pancreas",36.3
-2004,"Male","50+","Pancreas",38.5
-2005,"Male","50+","Pancreas",38.1
-2006,"Male","50+","Pancreas",39.5
-2007,"Male","50+","Pancreas",38.4
-2008,"Male","50+","Pancreas",41.1
-2009,"Male","50+","Pancreas",40.6
-2010,"Male","50+","Pancreas",40.9
-2011,"Male","50+","Pancreas",41.1
-2012,"Male","50+","Pancreas",42.9
-2013,"Male","50+","Pancreas",44.5
-2014,"Male","50+","Pancreas",43.4
-2015,"Male","50+","Pancreas",44.2
-2016,"Male","50+","Pancreas",45.5
-2017,"Male","50+","Pancreas",46.3
-2018,"Male","50+","Pancreas",45.5
-2019,"Male","50+","Pancreas",45.9
+"year","sex","age_group","cancer_site","Rate","count"
+2001,"Men","20-49","Bladder",1.7,180
+2002,"Men","20-49","Bladder",1.6,161
+2003,"Men","20-49","Bladder",1.4,145
+2004,"Men","20-49","Bladder",1.5,161
+2005,"Men","20-49","Bladder",1.4,153
+2006,"Men","20-49","Bladder",1.3,137
+2007,"Men","20-49","Bladder",1.2,132
+2008,"Men","20-49","Bladder",1.5,159
+2009,"Men","20-49","Bladder",1.5,162
+2010,"Men","20-49","Bladder",1.4,154
+2011,"Men","20-49","Bladder",1.3,141
+2012,"Men","20-49","Bladder",1.3,145
+2013,"Men","20-49","Bladder",1.3,139
+2014,"Men","20-49","Bladder",1.3,144
+2015,"Men","20-49","Bladder",1.2,133
+2016,"Men","20-49","Bladder",1.1,124
+2017,"Men","20-49","Bladder",1,111
+2018,"Men","20-49","Bladder",1,114
+2019,"Men","20-49","Bladder",1.2,137
+2001,"Men","20-49","Brain and CNS",4.7,485
+2002,"Men","20-49","Brain and CNS",4.7,488
+2003,"Men","20-49","Brain and CNS",4.3,444
+2004,"Men","20-49","Brain and CNS",4.5,466
+2005,"Men","20-49","Brain and CNS",4.8,503
+2006,"Men","20-49","Brain and CNS",4.9,522
+2007,"Men","20-49","Brain and CNS",4.8,520
+2008,"Men","20-49","Brain and CNS",4.9,530
+2009,"Men","20-49","Brain and CNS",4.9,528
+2010,"Men","20-49","Brain and CNS",4.6,502
+2011,"Men","20-49","Brain and CNS",5.1,554
+2012,"Men","20-49","Brain and CNS",4.8,530
+2013,"Men","20-49","Brain and CNS",5,557
+2014,"Men","20-49","Brain and CNS",4.9,538
+2015,"Men","20-49","Brain and CNS",5.2,575
+2016,"Men","20-49","Brain and CNS",5.2,572
+2017,"Men","20-49","Brain and CNS",5.1,570
+2018,"Men","20-49","Brain and CNS",5.1,565
+2019,"Men","20-49","Brain and CNS",5,552
+2001,"Men","20-49","Breast",0.2,16
+2002,"Men","20-49","Breast",0.1,15
+2003,"Men","20-49","Breast",0.2,19
+2004,"Men","20-49","Breast",0.2,24
+2005,"Men","20-49","Breast",0.2,16
+2006,"Men","20-49","Breast",0.2,23
+2007,"Men","20-49","Breast",0.1,13
+2008,"Men","20-49","Breast",0.2,27
+2009,"Men","20-49","Breast",0.2,24
+2010,"Men","20-49","Breast",0.2,25
+2011,"Men","20-49","Breast",0.2,21
+2012,"Men","20-49","Breast",0.2,19
+2013,"Men","20-49","Breast",0.2,18
+2014,"Men","20-49","Breast",0.2,17
+2015,"Men","20-49","Breast",0.2,25
+2016,"Men","20-49","Breast",0.2,17
+2017,"Men","20-49","Breast",0.2,20
+2018,"Men","20-49","Breast",0.2,25
+2019,"Men","20-49","Breast",0.3,28
+2001,"Men","20-49","Colorectum",6.7,689
+2002,"Men","20-49","Colorectum",7.1,733
+2003,"Men","20-49","Colorectum",7.2,752
+2004,"Men","20-49","Colorectum",7.9,822
+2005,"Men","20-49","Colorectum",8.1,852
+2006,"Men","20-49","Colorectum",8.3,893
+2007,"Men","20-49","Colorectum",7.8,846
+2008,"Men","20-49","Colorectum",8.4,914
+2009,"Men","20-49","Colorectum",8.8,952
+2010,"Men","20-49","Colorectum",8.3,912
+2011,"Men","20-49","Colorectum",9.3,1024
+2012,"Men","20-49","Colorectum",9.9,1097
+2013,"Men","20-49","Colorectum",9.8,1083
+2014,"Men","20-49","Colorectum",10.2,1117
+2015,"Men","20-49","Colorectum",9.8,1078
+2016,"Men","20-49","Colorectum",10.8,1190
+2017,"Men","20-49","Colorectum",10.2,1131
+2018,"Men","20-49","Colorectum",10.7,1186
+2019,"Men","20-49","Colorectum",11.2,1237
+2001,"Men","20-49","Gallbladder",0.1,13
+2002,"Men","20-49","Gallbladder",0.2,26
+2003,"Men","20-49","Gallbladder",0.2,24
+2004,"Men","20-49","Gallbladder",0.3,27
+2005,"Men","20-49","Gallbladder",0.2,23
+2006,"Men","20-49","Gallbladder",0.2,25
+2007,"Men","20-49","Gallbladder",0.2,28
+2008,"Men","20-49","Gallbladder",0.2,27
+2009,"Men","20-49","Gallbladder",0.3,32
+2010,"Men","20-49","Gallbladder",0.2,25
+2011,"Men","20-49","Gallbladder",0.3,31
+2012,"Men","20-49","Gallbladder",0.2,26
+2013,"Men","20-49","Gallbladder",0.2,24
+2014,"Men","20-49","Gallbladder",0.4,44
+2015,"Men","20-49","Gallbladder",0.3,36
+2016,"Men","20-49","Gallbladder",0.3,33
+2017,"Men","20-49","Gallbladder",0.3,37
+2018,"Men","20-49","Gallbladder",0.2,26
+2019,"Men","20-49","Gallbladder",0.3,37
+2001,"Men","20-49","Hodgkin Lymphoma",3.7,382
+2002,"Men","20-49","Hodgkin Lymphoma",3.8,397
+2003,"Men","20-49","Hodgkin Lymphoma",3.3,340
+2004,"Men","20-49","Hodgkin Lymphoma",3.5,365
+2005,"Men","20-49","Hodgkin Lymphoma",3.5,376
+2006,"Men","20-49","Hodgkin Lymphoma",3.7,390
+2007,"Men","20-49","Hodgkin Lymphoma",3.9,418
+2008,"Men","20-49","Hodgkin Lymphoma",3.7,403
+2009,"Men","20-49","Hodgkin Lymphoma",3.9,420
+2010,"Men","20-49","Hodgkin Lymphoma",4.1,447
+2011,"Men","20-49","Hodgkin Lymphoma",4.1,449
+2012,"Men","20-49","Hodgkin Lymphoma",3.7,411
+2013,"Men","20-49","Hodgkin Lymphoma",3.8,416
+2014,"Men","20-49","Hodgkin Lymphoma",4,441
+2015,"Men","20-49","Hodgkin Lymphoma",4.4,489
+2016,"Men","20-49","Hodgkin Lymphoma",4,448
+2017,"Men","20-49","Hodgkin Lymphoma",4.5,500
+2018,"Men","20-49","Hodgkin Lymphoma",4.2,468
+2019,"Men","20-49","Hodgkin Lymphoma",4.1,456
+2001,"Men","20-49","Kidney",2.7,283
+2002,"Men","20-49","Kidney",3.1,318
+2003,"Men","20-49","Kidney",3,315
+2004,"Men","20-49","Kidney",2.8,298
+2005,"Men","20-49","Kidney",3,315
+2006,"Men","20-49","Kidney",3.3,357
+2007,"Men","20-49","Kidney",3.6,390
+2008,"Men","20-49","Kidney",3.6,394
+2009,"Men","20-49","Kidney",3.8,412
+2010,"Men","20-49","Kidney",4.3,470
+2011,"Men","20-49","Kidney",4.2,463
+2012,"Men","20-49","Kidney",4.6,504
+2013,"Men","20-49","Kidney",5,547
+2014,"Men","20-49","Kidney",5.5,607
+2015,"Men","20-49","Kidney",5.4,592
+2016,"Men","20-49","Kidney",5.6,622
+2017,"Men","20-49","Kidney",5.9,652
+2018,"Men","20-49","Kidney",5.5,610
+2019,"Men","20-49","Kidney",5.5,609
+2001,"Men","20-49","Larynx",0.9,94
+2002,"Men","20-49","Larynx",0.8,87
+2003,"Men","20-49","Larynx",0.9,92
+2004,"Men","20-49","Larynx",0.7,75
+2005,"Men","20-49","Larynx",0.8,82
+2006,"Men","20-49","Larynx",0.9,97
+2007,"Men","20-49","Larynx",0.8,81
+2008,"Men","20-49","Larynx",1,104
+2009,"Men","20-49","Larynx",0.8,90
+2010,"Men","20-49","Larynx",0.8,92
+2011,"Men","20-49","Larynx",0.9,95
+2012,"Men","20-49","Larynx",0.8,88
+2013,"Men","20-49","Larynx",0.8,92
+2014,"Men","20-49","Larynx",0.7,80
+2015,"Men","20-49","Larynx",0.8,89
+2016,"Men","20-49","Larynx",0.6,68
+2017,"Men","20-49","Larynx",0.6,71
+2018,"Men","20-49","Larynx",0.8,85
+2019,"Men","20-49","Larynx",0.7,74
+2001,"Men","20-49","Leukaemia",3.9,404
+2002,"Men","20-49","Leukaemia",3.5,366
+2003,"Men","20-49","Leukaemia",3.9,408
+2004,"Men","20-49","Leukaemia",3.7,385
+2005,"Men","20-49","Leukaemia",3.9,418
+2006,"Men","20-49","Leukaemia",3.8,407
+2007,"Men","20-49","Leukaemia",3.6,391
+2008,"Men","20-49","Leukaemia",4.2,460
+2009,"Men","20-49","Leukaemia",4.3,463
+2010,"Men","20-49","Leukaemia",4.3,475
+2011,"Men","20-49","Leukaemia",4.2,457
+2012,"Men","20-49","Leukaemia",4,438
+2013,"Men","20-49","Leukaemia",4.4,479
+2014,"Men","20-49","Leukaemia",5,549
+2015,"Men","20-49","Leukaemia",4.6,510
+2016,"Men","20-49","Leukaemia",4.5,500
+2017,"Men","20-49","Leukaemia",4.7,516
+2018,"Men","20-49","Leukaemia",4.6,503
+2019,"Men","20-49","Leukaemia",4.3,476
+2001,"Men","20-49","Liver",1,100
+2002,"Men","20-49","Liver",0.9,90
+2003,"Men","20-49","Liver",1,101
+2004,"Men","20-49","Liver",0.9,97
+2005,"Men","20-49","Liver",1,110
+2006,"Men","20-49","Liver",1.1,121
+2007,"Men","20-49","Liver",1,110
+2008,"Men","20-49","Liver",1.3,145
+2009,"Men","20-49","Liver",1.5,159
+2010,"Men","20-49","Liver",1.4,157
+2011,"Men","20-49","Liver",1,111
+2012,"Men","20-49","Liver",1.3,144
+2013,"Men","20-49","Liver",1.3,144
+2014,"Men","20-49","Liver",1.5,170
+2015,"Men","20-49","Liver",1.3,145
+2016,"Men","20-49","Liver",1.4,155
+2017,"Men","20-49","Liver",1.3,146
+2018,"Men","20-49","Liver",1.1,126
+2019,"Men","20-49","Liver",1.2,130
+2001,"Men","20-49","Lung",5.3,547
+2002,"Men","20-49","Lung",4.9,502
+2003,"Men","20-49","Lung",4.4,462
+2004,"Men","20-49","Lung",4.8,507
+2005,"Men","20-49","Lung",4.8,504
+2006,"Men","20-49","Lung",4.8,509
+2007,"Men","20-49","Lung",4.5,486
+2008,"Men","20-49","Lung",4.5,484
+2009,"Men","20-49","Lung",4.5,489
+2010,"Men","20-49","Lung",4.8,529
+2011,"Men","20-49","Lung",4.4,489
+2012,"Men","20-49","Lung",4.4,489
+2013,"Men","20-49","Lung",4.4,483
+2014,"Men","20-49","Lung",4.3,471
+2015,"Men","20-49","Lung",4.2,463
+2016,"Men","20-49","Lung",4.7,518
+2017,"Men","20-49","Lung",4,437
+2018,"Men","20-49","Lung",4.5,495
+2019,"Men","20-49","Lung",4.2,464
+2001,"Men","20-49","Melanoma",7.7,797
+2002,"Men","20-49","Melanoma",7.8,804
+2003,"Men","20-49","Melanoma",7.5,779
+2004,"Men","20-49","Melanoma",9.2,966
+2005,"Men","20-49","Melanoma",9.1,968
+2006,"Men","20-49","Melanoma",9.7,1040
+2007,"Men","20-49","Melanoma",9.2,987
+2008,"Men","20-49","Melanoma",9.5,1035
+2009,"Men","20-49","Melanoma",10.2,1109
+2010,"Men","20-49","Melanoma",9.8,1066
+2011,"Men","20-49","Melanoma",9.9,1086
+2012,"Men","20-49","Melanoma",10,1106
+2013,"Men","20-49","Melanoma",10.6,1162
+2014,"Men","20-49","Melanoma",11.1,1217
+2015,"Men","20-49","Melanoma",10.7,1179
+2016,"Men","20-49","Melanoma",10.1,1120
+2017,"Men","20-49","Melanoma",10,1105
+2018,"Men","20-49","Melanoma",9.6,1065
+2019,"Men","20-49","Melanoma",9.3,1023
+2001,"Men","20-49","Multiple Myeloma",0.9,93
+2002,"Men","20-49","Multiple Myeloma",0.9,90
+2003,"Men","20-49","Multiple Myeloma",1.2,127
+2004,"Men","20-49","Multiple Myeloma",1,102
+2005,"Men","20-49","Multiple Myeloma",1.1,124
+2006,"Men","20-49","Multiple Myeloma",1.1,118
+2007,"Men","20-49","Multiple Myeloma",1,108
+2008,"Men","20-49","Multiple Myeloma",1.2,127
+2009,"Men","20-49","Multiple Myeloma",1.5,156
+2010,"Men","20-49","Multiple Myeloma",1.1,128
+2011,"Men","20-49","Multiple Myeloma",1.3,146
+2012,"Men","20-49","Multiple Myeloma",1.5,160
+2013,"Men","20-49","Multiple Myeloma",2,215
+2014,"Men","20-49","Multiple Myeloma",1.7,182
+2015,"Men","20-49","Multiple Myeloma",1.6,184
+2016,"Men","20-49","Multiple Myeloma",1.6,184
+2017,"Men","20-49","Multiple Myeloma",1.8,201
+2018,"Men","20-49","Multiple Myeloma",1.7,188
+2019,"Men","20-49","Multiple Myeloma",1.6,177
+2001,"Men","20-49","Non-Hodgkin Lymphoma",6.5,670
+2002,"Men","20-49","Non-Hodgkin Lymphoma",6.2,638
+2003,"Men","20-49","Non-Hodgkin Lymphoma",6.5,671
+2004,"Men","20-49","Non-Hodgkin Lymphoma",6.4,668
+2005,"Men","20-49","Non-Hodgkin Lymphoma",7.1,755
+2006,"Men","20-49","Non-Hodgkin Lymphoma",6.8,724
+2007,"Men","20-49","Non-Hodgkin Lymphoma",7.2,775
+2008,"Men","20-49","Non-Hodgkin Lymphoma",7.3,785
+2009,"Men","20-49","Non-Hodgkin Lymphoma",7.3,793
+2010,"Men","20-49","Non-Hodgkin Lymphoma",7.5,828
+2011,"Men","20-49","Non-Hodgkin Lymphoma",7.3,807
+2012,"Men","20-49","Non-Hodgkin Lymphoma",7.7,845
+2013,"Men","20-49","Non-Hodgkin Lymphoma",6.9,765
+2014,"Men","20-49","Non-Hodgkin Lymphoma",6.7,741
+2015,"Men","20-49","Non-Hodgkin Lymphoma",6.8,755
+2016,"Men","20-49","Non-Hodgkin Lymphoma",6.9,760
+2017,"Men","20-49","Non-Hodgkin Lymphoma",6.6,726
+2018,"Men","20-49","Non-Hodgkin Lymphoma",6.5,721
+2019,"Men","20-49","Non-Hodgkin Lymphoma",6.4,704
+2001,"Men","20-49","Oesophagus",1.9,192
+2002,"Men","20-49","Oesophagus",2,207
+2003,"Men","20-49","Oesophagus",1.9,197
+2004,"Men","20-49","Oesophagus",2,206
+2005,"Men","20-49","Oesophagus",1.6,174
+2006,"Men","20-49","Oesophagus",1.8,192
+2007,"Men","20-49","Oesophagus",2.1,221
+2008,"Men","20-49","Oesophagus",1.9,202
+2009,"Men","20-49","Oesophagus",2,221
+2010,"Men","20-49","Oesophagus",2.1,233
+2011,"Men","20-49","Oesophagus",1.6,181
+2012,"Men","20-49","Oesophagus",2,225
+2013,"Men","20-49","Oesophagus",1.7,192
+2014,"Men","20-49","Oesophagus",1.7,191
+2015,"Men","20-49","Oesophagus",1.6,178
+2016,"Men","20-49","Oesophagus",1.9,209
+2017,"Men","20-49","Oesophagus",1.8,200
+2018,"Men","20-49","Oesophagus",1.7,189
+2019,"Men","20-49","Oesophagus",1.7,186
+2001,"Men","20-49","Oral",4.1,424
+2002,"Men","20-49","Oral",4.4,454
+2003,"Men","20-49","Oral",4.4,453
+2004,"Men","20-49","Oral",4.5,474
+2005,"Men","20-49","Oral",4.6,487
+2006,"Men","20-49","Oral",5,532
+2007,"Men","20-49","Oral",5,540
+2008,"Men","20-49","Oral",5.2,566
+2009,"Men","20-49","Oral",5.2,562
+2010,"Men","20-49","Oral",5.4,593
+2011,"Men","20-49","Oral",5.6,621
+2012,"Men","20-49","Oral",5.8,639
+2013,"Men","20-49","Oral",6,656
+2014,"Men","20-49","Oral",5.8,634
+2015,"Men","20-49","Oral",5.6,613
+2016,"Men","20-49","Oral",5.4,601
+2017,"Men","20-49","Oral",5.7,627
+2018,"Men","20-49","Oral",5.3,588
+2019,"Men","20-49","Oral",5.2,575
+2001,"Men","20-49","Pancreas",1.5,159
+2002,"Men","20-49","Pancreas",1.2,129
+2003,"Men","20-49","Pancreas",1.3,138
+2004,"Men","20-49","Pancreas",1.2,121
+2005,"Men","20-49","Pancreas",1.4,145
+2006,"Men","20-49","Pancreas",1.3,138
+2007,"Men","20-49","Pancreas",1.4,153
+2008,"Men","20-49","Pancreas",1.5,166
+2009,"Men","20-49","Pancreas",1.6,179
+2010,"Men","20-49","Pancreas",1.6,170
+2011,"Men","20-49","Pancreas",1.5,168
+2012,"Men","20-49","Pancreas",1.6,179
+2013,"Men","20-49","Pancreas",1.7,185
+2014,"Men","20-49","Pancreas",1.8,199
+2015,"Men","20-49","Pancreas",1.5,168
+2016,"Men","20-49","Pancreas",1.8,200
+2017,"Men","20-49","Pancreas",1.6,178
+2018,"Men","20-49","Pancreas",1.8,199
+2019,"Men","20-49","Pancreas",1.7,187
+2001,"Men","50+","Bladder",82.7,6242
+2002,"Men","50+","Bladder",77.5,5910
+2003,"Men","50+","Bladder",77,5928
+2004,"Men","50+","Bladder",74.4,5777
+2005,"Men","50+","Bladder",76.9,6041
+2006,"Men","50+","Bladder",75.1,5968
+2007,"Men","50+","Bladder",77.6,6242
+2008,"Men","50+","Bladder",77,6300
+2009,"Men","50+","Bladder",76.4,6351
+2010,"Men","50+","Bladder",72.7,6154
+2011,"Men","50+","Bladder",73.7,6349
+2012,"Men","50+","Bladder",73.3,6444
+2013,"Men","50+","Bladder",71.5,6402
+2014,"Men","50+","Bladder",68.4,6255
+2015,"Men","50+","Bladder",66.2,6177
+2016,"Men","50+","Bladder",64.3,6111
+2017,"Men","50+","Bladder",65.2,6311
+2018,"Men","50+","Bladder",64.4,6335
+2019,"Men","50+","Bladder",64.5,6448
+2001,"Men","50+","Brain and CNS",19.5,1473
+2002,"Men","50+","Brain and CNS",19.6,1498
+2003,"Men","50+","Brain and CNS",19.6,1502
+2004,"Men","50+","Brain and CNS",19.7,1529
+2005,"Men","50+","Brain and CNS",20.6,1620
+2006,"Men","50+","Brain and CNS",20,1589
+2007,"Men","50+","Brain and CNS",20.4,1645
+2008,"Men","50+","Brain and CNS",21,1717
+2009,"Men","50+","Brain and CNS",21.6,1797
+2010,"Men","50+","Brain and CNS",20.6,1745
+2011,"Men","50+","Brain and CNS",20.4,1758
+2012,"Men","50+","Brain and CNS",21.5,1887
+2013,"Men","50+","Brain and CNS",22.2,1986
+2014,"Men","50+","Brain and CNS",20.1,1836
+2015,"Men","50+","Brain and CNS",21.1,1963
+2016,"Men","50+","Brain and CNS",21.4,2029
+2017,"Men","50+","Brain and CNS",21.4,2068
+2018,"Men","50+","Brain and CNS",20.1,1970
+2019,"Men","50+","Brain and CNS",20.5,2049
+2001,"Men","50+","Breast",2.9,217
+2002,"Men","50+","Breast",3.1,233
+2003,"Men","50+","Breast",3.5,270
+2004,"Men","50+","Breast",3.1,242
+2005,"Men","50+","Breast",2.6,207
+2006,"Men","50+","Breast",3.1,244
+2007,"Men","50+","Breast",2.8,224
+2008,"Men","50+","Breast",3.1,254
+2009,"Men","50+","Breast",3,252
+2010,"Men","50+","Breast",3.5,295
+2011,"Men","50+","Breast",3.2,279
+2012,"Men","50+","Breast",3,266
+2013,"Men","50+","Breast",3,270
+2014,"Men","50+","Breast",3.4,315
+2015,"Men","50+","Breast",3.1,292
+2016,"Men","50+","Breast",3,290
+2017,"Men","50+","Breast",3.1,301
+2018,"Men","50+","Breast",3.2,312
+2019,"Men","50+","Breast",3.1,313
+2001,"Men","50+","Colorectum",195.7,14760
+2002,"Men","50+","Colorectum",194.2,14796
+2003,"Men","50+","Colorectum",196.8,15139
+2004,"Men","50+","Colorectum",201.4,15642
+2005,"Men","50+","Colorectum",202.9,15941
+2006,"Men","50+","Colorectum",205.4,16320
+2007,"Men","50+","Colorectum",207.2,16679
+2008,"Men","50+","Colorectum",215.4,17622
+2009,"Men","50+","Colorectum",215.7,17935
+2010,"Men","50+","Colorectum",216.9,18359
+2011,"Men","50+","Colorectum",217,18703
+2012,"Men","50+","Colorectum",217.3,19095
+2013,"Men","50+","Colorectum",206.3,18486
+2014,"Men","50+","Colorectum",199.2,18228
+2015,"Men","50+","Colorectum",200.8,18733
+2016,"Men","50+","Colorectum",200.2,19043
+2017,"Men","50+","Colorectum",195.4,18917
+2018,"Men","50+","Colorectum",198.1,19480
+2019,"Men","50+","Colorectum",202.5,20255
+2001,"Men","50+","Gallbladder",5.5,418
+2002,"Men","50+","Gallbladder",5.2,392
+2003,"Men","50+","Gallbladder",5.3,407
+2004,"Men","50+","Gallbladder",5.3,414
+2005,"Men","50+","Gallbladder",5.6,440
+2006,"Men","50+","Gallbladder",6.5,517
+2007,"Men","50+","Gallbladder",6.7,536
+2008,"Men","50+","Gallbladder",7.3,595
+2009,"Men","50+","Gallbladder",6.5,534
+2010,"Men","50+","Gallbladder",7.3,620
+2011,"Men","50+","Gallbladder",7.4,634
+2012,"Men","50+","Gallbladder",7.4,648
+2013,"Men","50+","Gallbladder",8.5,764
+2014,"Men","50+","Gallbladder",7.5,688
+2015,"Men","50+","Gallbladder",7.8,730
+2016,"Men","50+","Gallbladder",7.9,756
+2017,"Men","50+","Gallbladder",7.7,750
+2018,"Men","50+","Gallbladder",8.9,879
+2019,"Men","50+","Gallbladder",8.8,880
+2001,"Men","50+","Hodgkin Lymphoma",3.2,241
+2002,"Men","50+","Hodgkin Lymphoma",3.4,261
+2003,"Men","50+","Hodgkin Lymphoma",3.2,250
+2004,"Men","50+","Hodgkin Lymphoma",3.4,264
+2005,"Men","50+","Hodgkin Lymphoma",3.8,301
+2006,"Men","50+","Hodgkin Lymphoma",3.7,295
+2007,"Men","50+","Hodgkin Lymphoma",4,318
+2008,"Men","50+","Hodgkin Lymphoma",3.8,314
+2009,"Men","50+","Hodgkin Lymphoma",4.3,360
+2010,"Men","50+","Hodgkin Lymphoma",4.2,353
+2011,"Men","50+","Hodgkin Lymphoma",3.9,339
+2012,"Men","50+","Hodgkin Lymphoma",4.5,395
+2013,"Men","50+","Hodgkin Lymphoma",4.6,411
+2014,"Men","50+","Hodgkin Lymphoma",5.2,478
+2015,"Men","50+","Hodgkin Lymphoma",4.9,454
+2016,"Men","50+","Hodgkin Lymphoma",4.5,425
+2017,"Men","50+","Hodgkin Lymphoma",4.7,457
+2018,"Men","50+","Hodgkin Lymphoma",4.8,470
+2019,"Men","50+","Hodgkin Lymphoma",4.6,461
+2001,"Men","50+","Kidney",34.3,2586
+2002,"Men","50+","Kidney",35.7,2720
+2003,"Men","50+","Kidney",35,2697
+2004,"Men","50+","Kidney",37.5,2912
+2005,"Men","50+","Kidney",39,3064
+2006,"Men","50+","Kidney",41.5,3299
+2007,"Men","50+","Kidney",43.4,3492
+2008,"Men","50+","Kidney",44.6,3649
+2009,"Men","50+","Kidney",45,3744
+2010,"Men","50+","Kidney",45.9,3882
+2011,"Men","50+","Kidney",48.3,4166
+2012,"Men","50+","Kidney",50.5,4439
+2013,"Men","50+","Kidney",57.4,5144
+2014,"Men","50+","Kidney",58.2,5324
+2015,"Men","50+","Kidney",57,5319
+2016,"Men","50+","Kidney",57.3,5446
+2017,"Men","50+","Kidney",54.3,5252
+2018,"Men","50+","Kidney",56.9,5593
+2019,"Men","50+","Kidney",59.5,5951
+2001,"Men","50+","Larynx",18.8,1415
+2002,"Men","50+","Larynx",17.1,1306
+2003,"Men","50+","Larynx",17.1,1315
+2004,"Men","50+","Larynx",17.8,1381
+2005,"Men","50+","Larynx",17.4,1365
+2006,"Men","50+","Larynx",17.2,1365
+2007,"Men","50+","Larynx",17.5,1405
+2008,"Men","50+","Larynx",17.5,1429
+2009,"Men","50+","Larynx",17.2,1430
+2010,"Men","50+","Larynx",17.3,1461
+2011,"Men","50+","Larynx",16.8,1447
+2012,"Men","50+","Larynx",16.7,1471
+2013,"Men","50+","Larynx",16.2,1450
+2014,"Men","50+","Larynx",16,1463
+2015,"Men","50+","Larynx",15.5,1445
+2016,"Men","50+","Larynx",15,1423
+2017,"Men","50+","Larynx",14.9,1439
+2018,"Men","50+","Larynx",13.7,1350
+2019,"Men","50+","Larynx",14,1399
+2001,"Men","50+","Leukaemia",39,2945
+2002,"Men","50+","Leukaemia",37.7,2870
+2003,"Men","50+","Leukaemia",39.1,3007
+2004,"Men","50+","Leukaemia",39.5,3068
+2005,"Men","50+","Leukaemia",39.8,3125
+2006,"Men","50+","Leukaemia",42,3341
+2007,"Men","50+","Leukaemia",40.3,3240
+2008,"Men","50+","Leukaemia",43.5,3560
+2009,"Men","50+","Leukaemia",46.5,3868
+2010,"Men","50+","Leukaemia",44.7,3783
+2011,"Men","50+","Leukaemia",45.6,3933
+2012,"Men","50+","Leukaemia",48.3,4247
+2013,"Men","50+","Leukaemia",54,4836
+2014,"Men","50+","Leukaemia",50.3,4605
+2015,"Men","50+","Leukaemia",51.4,4797
+2016,"Men","50+","Leukaemia",49.8,4736
+2017,"Men","50+","Leukaemia",49.4,4785
+2018,"Men","50+","Leukaemia",43.8,4304
+2019,"Men","50+","Leukaemia",43.3,4329
+2001,"Men","50+","Liver",15.2,1144
+2002,"Men","50+","Liver",16.9,1289
+2003,"Men","50+","Liver",16.7,1287
+2004,"Men","50+","Liver",17.2,1336
+2005,"Men","50+","Liver",19.3,1514
+2006,"Men","50+","Liver",20.9,1662
+2007,"Men","50+","Liver",21.9,1762
+2008,"Men","50+","Liver",22.6,1848
+2009,"Men","50+","Liver",24.3,2017
+2010,"Men","50+","Liver",25.9,2192
+2011,"Men","50+","Liver",26.6,2292
+2012,"Men","50+","Liver",29.2,2565
+2013,"Men","50+","Liver",32.4,2899
+2014,"Men","50+","Liver",32.7,2989
+2015,"Men","50+","Liver",32.4,3024
+2016,"Men","50+","Liver",34.7,3297
+2017,"Men","50+","Liver",34,3289
+2018,"Men","50+","Liver",34.3,3377
+2019,"Men","50+","Liver",36.5,3645
+2001,"Men","50+","Lung",243.9,18403
+2002,"Men","50+","Lung",233,17758
+2003,"Men","50+","Lung",227.3,17489
+2004,"Men","50+","Lung",231.3,17965
+2005,"Men","50+","Lung",226.3,17778
+2006,"Men","50+","Lung",232,18439
+2007,"Men","50+","Lung",227.4,18305
+2008,"Men","50+","Lung",229.3,18758
+2009,"Men","50+","Lung",222.4,18496
+2010,"Men","50+","Lung",222.5,18836
+2011,"Men","50+","Lung",223.4,19253
+2012,"Men","50+","Lung",225.7,19836
+2013,"Men","50+","Lung",222.2,19907
+2014,"Men","50+","Lung",218.7,20010
+2015,"Men","50+","Lung",213.9,19959
+2016,"Men","50+","Lung",215.8,20522
+2017,"Men","50+","Lung",209,20234
+2018,"Men","50+","Lung",205.4,20209
+2019,"Men","50+","Lung",204.3,20428
+2001,"Men","50+","Melanoma",27.1,2046
+2002,"Men","50+","Melanoma",28.4,2168
+2003,"Men","50+","Melanoma",30.2,2327
+2004,"Men","50+","Melanoma",32.4,2519
+2005,"Men","50+","Melanoma",35.9,2817
+2006,"Men","50+","Melanoma",39.5,3136
+2007,"Men","50+","Melanoma",41.1,3306
+2008,"Men","50+","Melanoma",46.5,3805
+2009,"Men","50+","Melanoma",46.3,3853
+2010,"Men","50+","Melanoma",50.4,4262
+2011,"Men","50+","Melanoma",51.9,4475
+2012,"Men","50+","Melanoma",53.1,4669
+2013,"Men","50+","Melanoma",57.7,5173
+2014,"Men","50+","Melanoma",60.6,5543
+2015,"Men","50+","Melanoma",63.1,5891
+2016,"Men","50+","Melanoma",62,5894
+2017,"Men","50+","Melanoma",62.6,6056
+2018,"Men","50+","Melanoma",66.9,6578
+2019,"Men","50+","Melanoma",67.6,6762
+2001,"Men","50+","Multiple Myeloma",22.8,1722
+2002,"Men","50+","Multiple Myeloma",22.9,1747
+2003,"Men","50+","Multiple Myeloma",24.1,1848
+2004,"Men","50+","Multiple Myeloma",24.5,1903
+2005,"Men","50+","Multiple Myeloma",24,1886
+2006,"Men","50+","Multiple Myeloma",25.2,2002
+2007,"Men","50+","Multiple Myeloma",25.7,2068
+2008,"Men","50+","Multiple Myeloma",28.1,2305
+2009,"Men","50+","Multiple Myeloma",28.5,2367
+2010,"Men","50+","Multiple Myeloma",27.5,2335
+2011,"Men","50+","Multiple Myeloma",27.6,2384
+2012,"Men","50+","Multiple Myeloma",28.9,2542
+2013,"Men","50+","Multiple Myeloma",36.1,3228
+2014,"Men","50+","Multiple Myeloma",34.2,3129
+2015,"Men","50+","Multiple Myeloma",34.1,3174
+2016,"Men","50+","Multiple Myeloma",34.4,3274
+2017,"Men","50+","Multiple Myeloma",36.1,3487
+2018,"Men","50+","Multiple Myeloma",35.4,3486
+2019,"Men","50+","Multiple Myeloma",37.4,3739
+2001,"Men","50+","Non-Hodgkin Lymphoma",47.8,3605
+2002,"Men","50+","Non-Hodgkin Lymphoma",46.8,3568
+2003,"Men","50+","Non-Hodgkin Lymphoma",47.9,3687
+2004,"Men","50+","Non-Hodgkin Lymphoma",50.2,3901
+2005,"Men","50+","Non-Hodgkin Lymphoma",50.3,3956
+2006,"Men","50+","Non-Hodgkin Lymphoma",52.5,4174
+2007,"Men","50+","Non-Hodgkin Lymphoma",53.4,4299
+2008,"Men","50+","Non-Hodgkin Lymphoma",55.2,4514
+2009,"Men","50+","Non-Hodgkin Lymphoma",58.8,4891
+2010,"Men","50+","Non-Hodgkin Lymphoma",58.2,4930
+2011,"Men","50+","Non-Hodgkin Lymphoma",60.9,5251
+2012,"Men","50+","Non-Hodgkin Lymphoma",61.1,5373
+2013,"Men","50+","Non-Hodgkin Lymphoma",59.8,5355
+2014,"Men","50+","Non-Hodgkin Lymphoma",59.5,5445
+2015,"Men","50+","Non-Hodgkin Lymphoma",58.8,5492
+2016,"Men","50+","Non-Hodgkin Lymphoma",59.7,5673
+2017,"Men","50+","Non-Hodgkin Lymphoma",58.1,5633
+2018,"Men","50+","Non-Hodgkin Lymphoma",57.1,5616
+2019,"Men","50+","Non-Hodgkin Lymphoma",59.4,5936
+2001,"Men","50+","Oesophagus",48.2,3636
+2002,"Men","50+","Oesophagus",48.5,3698
+2003,"Men","50+","Oesophagus",49.1,3777
+2004,"Men","50+","Oesophagus",49.1,3813
+2005,"Men","50+","Oesophagus",50.3,3948
+2006,"Men","50+","Oesophagus",50.2,3988
+2007,"Men","50+","Oesophagus",51.1,4113
+2008,"Men","50+","Oesophagus",53.7,4393
+2009,"Men","50+","Oesophagus",51.9,4312
+2010,"Men","50+","Oesophagus",52.8,4468
+2011,"Men","50+","Oesophagus",52.6,4530
+2012,"Men","50+","Oesophagus",54.3,4776
+2013,"Men","50+","Oesophagus",53,4747
+2014,"Men","50+","Oesophagus",52.1,4769
+2015,"Men","50+","Oesophagus",54.4,5077
+2016,"Men","50+","Oesophagus",53.4,5076
+2017,"Men","50+","Oesophagus",52.9,5123
+2018,"Men","50+","Oesophagus",53.8,5296
+2019,"Men","50+","Oesophagus",52.6,5263
+2001,"Men","50+","Oral",30.3,2285
+2002,"Men","50+","Oral",28.4,2162
+2003,"Men","50+","Oral",31.7,2436
+2004,"Men","50+","Oral",31,2409
+2005,"Men","50+","Oral",31.8,2501
+2006,"Men","50+","Oral",35.2,2801
+2007,"Men","50+","Oral",34.7,2791
+2008,"Men","50+","Oral",37.5,3067
+2009,"Men","50+","Oral",39.3,3269
+2010,"Men","50+","Oral",39.9,3374
+2011,"Men","50+","Oral",40.7,3510
+2012,"Men","50+","Oral",43.4,3812
+2013,"Men","50+","Oral",44.6,3994
+2014,"Men","50+","Oral",44,4025
+2015,"Men","50+","Oral",46.7,4361
+2016,"Men","50+","Oral",46.9,4460
+2017,"Men","50+","Oral",45.9,4445
+2018,"Men","50+","Oral",47.4,4658
+2019,"Men","50+","Oral",50.5,5045
+2001,"Men","50+","Pancreas",36.1,2723
+2002,"Men","50+","Pancreas",37.2,2832
+2003,"Men","50+","Pancreas",36.3,2796
+2004,"Men","50+","Pancreas",38.5,2988
+2005,"Men","50+","Pancreas",38.1,2990
+2006,"Men","50+","Pancreas",39.5,3136
+2007,"Men","50+","Pancreas",38.4,3094
+2008,"Men","50+","Pancreas",41.1,3366
+2009,"Men","50+","Pancreas",40.6,3379
+2010,"Men","50+","Pancreas",40.9,3461
+2011,"Men","50+","Pancreas",41.1,3542
+2012,"Men","50+","Pancreas",42.9,3769
+2013,"Men","50+","Pancreas",44.5,3988
+2014,"Men","50+","Pancreas",43.4,3969
+2015,"Men","50+","Pancreas",44.2,4123
+2016,"Men","50+","Pancreas",45.5,4323
+2017,"Men","50+","Pancreas",46.3,4483
+2018,"Men","50+","Pancreas",45.5,4473
+2019,"Men","50+","Pancreas",45.9,4588
+2001,"Women","20-49","Bladder",0.8,80
+2002,"Women","20-49","Bladder",0.6,67
+2003,"Women","20-49","Bladder",0.5,52
+2004,"Women","20-49","Bladder",0.7,72
+2005,"Women","20-49","Bladder",0.8,85
+2006,"Women","20-49","Bladder",0.6,64
+2007,"Women","20-49","Bladder",0.7,75
+2008,"Women","20-49","Bladder",0.7,75
+2009,"Women","20-49","Bladder",0.6,69
+2010,"Women","20-49","Bladder",0.6,68
+2011,"Women","20-49","Bladder",0.6,70
+2012,"Women","20-49","Bladder",0.6,70
+2013,"Women","20-49","Bladder",0.7,78
+2014,"Women","20-49","Bladder",0.7,76
+2015,"Women","20-49","Bladder",0.6,64
+2016,"Women","20-49","Bladder",0.6,66
+2017,"Women","20-49","Bladder",0.5,50
+2018,"Women","20-49","Bladder",0.6,67
+2019,"Women","20-49","Bladder",0.6,68
+2001,"Women","20-49","Brain and CNS",3.1,318
+2002,"Women","20-49","Brain and CNS",3,310
+2003,"Women","20-49","Brain and CNS",2.9,307
+2004,"Women","20-49","Brain and CNS",2.9,297
+2005,"Women","20-49","Brain and CNS",3.1,325
+2006,"Women","20-49","Brain and CNS",3,323
+2007,"Women","20-49","Brain and CNS",3.3,362
+2008,"Women","20-49","Brain and CNS",3.4,371
+2009,"Women","20-49","Brain and CNS",3.1,334
+2010,"Women","20-49","Brain and CNS",3.3,357
+2011,"Women","20-49","Brain and CNS",3.2,348
+2012,"Women","20-49","Brain and CNS",3.2,345
+2013,"Women","20-49","Brain and CNS",3.5,385
+2014,"Women","20-49","Brain and CNS",3.9,428
+2015,"Women","20-49","Brain and CNS",3.9,431
+2016,"Women","20-49","Brain and CNS",3.9,432
+2017,"Women","20-49","Brain and CNS",3.8,405
+2018,"Women","20-49","Brain and CNS",3.6,398
+2019,"Women","20-49","Brain and CNS",3.4,372
+2001,"Women","20-49","Breast",66.3,6885
+2002,"Women","20-49","Breast",65.2,6804
+2003,"Women","20-49","Breast",68.6,7178
+2004,"Women","20-49","Breast",69.7,7345
+2005,"Women","20-49","Breast",70.6,7534
+2006,"Women","20-49","Breast",70.3,7569
+2007,"Women","20-49","Breast",69.6,7546
+2008,"Women","20-49","Breast",72.5,7916
+2009,"Women","20-49","Breast",74.3,8147
+2010,"Women","20-49","Breast",78,8593
+2011,"Women","20-49","Breast",76.2,8435
+2012,"Women","20-49","Breast",77.9,8622
+2013,"Women","20-49","Breast",80.2,8871
+2014,"Women","20-49","Breast",78.2,8636
+2015,"Women","20-49","Breast",77.9,8604
+2016,"Women","20-49","Breast",78.1,8612
+2017,"Women","20-49","Breast",77,8473
+2018,"Women","20-49","Breast",76.9,8448
+2019,"Women","20-49","Breast",77.7,8504
+2001,"Women","20-49","Cervix",12.7,1315
+2002,"Women","20-49","Cervix",12,1253
+2003,"Women","20-49","Cervix",11.9,1246
+2004,"Women","20-49","Cervix",12.1,1271
+2005,"Women","20-49","Cervix",12.3,1310
+2006,"Women","20-49","Cervix",12.9,1392
+2007,"Women","20-49","Cervix",12.7,1380
+2008,"Women","20-49","Cervix",13.6,1481
+2009,"Women","20-49","Cervix",16.4,1803
+2010,"Women","20-49","Cervix",13,1437
+2011,"Women","20-49","Cervix",14.3,1580
+2012,"Women","20-49","Cervix",14.1,1561
+2013,"Women","20-49","Cervix",14.9,1642
+2014,"Women","20-49","Cervix",15,1656
+2015,"Women","20-49","Cervix",14.7,1623
+2016,"Women","20-49","Cervix",14.7,1616
+2017,"Women","20-49","Cervix",14.6,1610
+2018,"Women","20-49","Cervix",14.8,1623
+2019,"Women","20-49","Cervix",15.1,1655
+2001,"Women","20-49","Colorectum",6.5,678
+2002,"Women","20-49","Colorectum",6.7,697
+2003,"Women","20-49","Colorectum",6.6,686
+2004,"Women","20-49","Colorectum",6.6,692
+2005,"Women","20-49","Colorectum",7.3,779
+2006,"Women","20-49","Colorectum",7.6,817
+2007,"Women","20-49","Colorectum",7.6,824
+2008,"Women","20-49","Colorectum",7.4,808
+2009,"Women","20-49","Colorectum",8.1,890
+2010,"Women","20-49","Colorectum",8.4,919
+2011,"Women","20-49","Colorectum",8.7,960
+2012,"Women","20-49","Colorectum",9.9,1091
+2013,"Women","20-49","Colorectum",9.9,1086
+2014,"Women","20-49","Colorectum",9.7,1067
+2015,"Women","20-49","Colorectum",10.8,1190
+2016,"Women","20-49","Colorectum",10.9,1195
+2017,"Women","20-49","Colorectum",10.3,1127
+2018,"Women","20-49","Colorectum",10.5,1154
+2019,"Women","20-49","Colorectum",11.2,1219
+2001,"Women","20-49","Endometrium",2.9,301
+2002,"Women","20-49","Endometrium",2.6,270
+2003,"Women","20-49","Endometrium",3.2,338
+2004,"Women","20-49","Endometrium",3.2,337
+2005,"Women","20-49","Endometrium",3.4,361
+2006,"Women","20-49","Endometrium",3.6,392
+2007,"Women","20-49","Endometrium",3.9,424
+2008,"Women","20-49","Endometrium",4.2,462
+2009,"Women","20-49","Endometrium",3.9,427
+2010,"Women","20-49","Endometrium",4,442
+2011,"Women","20-49","Endometrium",3.9,436
+2012,"Women","20-49","Endometrium",4.2,463
+2013,"Women","20-49","Endometrium",4.5,499
+2014,"Women","20-49","Endometrium",4.8,528
+2015,"Women","20-49","Endometrium",4.1,455
+2016,"Women","20-49","Endometrium",4.5,494
+2017,"Women","20-49","Endometrium",4.7,517
+2018,"Women","20-49","Endometrium",4.9,537
+2019,"Women","20-49","Endometrium",5,543
+2001,"Women","20-49","Gallbladder",0.2,25
+2002,"Women","20-49","Gallbladder",0.2,20
+2003,"Women","20-49","Gallbladder",0.2,26
+2004,"Women","20-49","Gallbladder",0.3,25
+2005,"Women","20-49","Gallbladder",0.2,27
+2006,"Women","20-49","Gallbladder",0.2,27
+2007,"Women","20-49","Gallbladder",0.3,29
+2008,"Women","20-49","Gallbladder",0.2,28
+2009,"Women","20-49","Gallbladder",0.3,28
+2010,"Women","20-49","Gallbladder",0.3,38
+2011,"Women","20-49","Gallbladder",0.3,40
+2012,"Women","20-49","Gallbladder",0.3,33
+2013,"Women","20-49","Gallbladder",0.4,37
+2014,"Women","20-49","Gallbladder",0.3,32
+2015,"Women","20-49","Gallbladder",0.4,35
+2016,"Women","20-49","Gallbladder",0.3,41
+2017,"Women","20-49","Gallbladder",0.3,42
+2018,"Women","20-49","Gallbladder",0.3,35
+2019,"Women","20-49","Gallbladder",0.4,41
+2001,"Women","20-49","Hodgkin Lymphoma",2.7,277
+2002,"Women","20-49","Hodgkin Lymphoma",2.3,239
+2003,"Women","20-49","Hodgkin Lymphoma",2.5,260
+2004,"Women","20-49","Hodgkin Lymphoma",2.7,284
+2005,"Women","20-49","Hodgkin Lymphoma",2.4,260
+2006,"Women","20-49","Hodgkin Lymphoma",2.7,292
+2007,"Women","20-49","Hodgkin Lymphoma",2.8,303
+2008,"Women","20-49","Hodgkin Lymphoma",3.1,341
+2009,"Women","20-49","Hodgkin Lymphoma",3,330
+2010,"Women","20-49","Hodgkin Lymphoma",3.1,347
+2011,"Women","20-49","Hodgkin Lymphoma",3,330
+2012,"Women","20-49","Hodgkin Lymphoma",3,329
+2013,"Women","20-49","Hodgkin Lymphoma",3.1,340
+2014,"Women","20-49","Hodgkin Lymphoma",3.1,342
+2015,"Women","20-49","Hodgkin Lymphoma",3,332
+2016,"Women","20-49","Hodgkin Lymphoma",3.1,341
+2017,"Women","20-49","Hodgkin Lymphoma",3.3,358
+2018,"Women","20-49","Hodgkin Lymphoma",3.1,338
+2019,"Women","20-49","Hodgkin Lymphoma",3.3,366
+2001,"Women","20-49","Kidney",1.4,145
+2002,"Women","20-49","Kidney",1.5,153
+2003,"Women","20-49","Kidney",1.7,181
+2004,"Women","20-49","Kidney",1.8,194
+2005,"Women","20-49","Kidney",1.9,205
+2006,"Women","20-49","Kidney",1.6,176
+2007,"Women","20-49","Kidney",1.8,196
+2008,"Women","20-49","Kidney",2.2,241
+2009,"Women","20-49","Kidney",2.2,241
+2010,"Women","20-49","Kidney",2,216
+2011,"Women","20-49","Kidney",2.4,261
+2012,"Women","20-49","Kidney",2.4,271
+2013,"Women","20-49","Kidney",2.9,318
+2014,"Women","20-49","Kidney",2.9,321
+2015,"Women","20-49","Kidney",3,328
+2016,"Women","20-49","Kidney",3.1,341
+2017,"Women","20-49","Kidney",2.9,322
+2018,"Women","20-49","Kidney",2.9,319
+2019,"Women","20-49","Kidney",3.1,344
+2001,"Women","20-49","Larynx",0.3,26
+2002,"Women","20-49","Larynx",0.2,22
+2003,"Women","20-49","Larynx",0.3,27
+2004,"Women","20-49","Larynx",0.2,17
+2005,"Women","20-49","Larynx",0.3,29
+2006,"Women","20-49","Larynx",0.3,27
+2007,"Women","20-49","Larynx",0.2,17
+2008,"Women","20-49","Larynx",0.2,25
+2009,"Women","20-49","Larynx",0.3,31
+2010,"Women","20-49","Larynx",0.2,21
+2011,"Women","20-49","Larynx",0.2,26
+2012,"Women","20-49","Larynx",0.3,30
+2013,"Women","20-49","Larynx",0.2,27
+2014,"Women","20-49","Larynx",0.2,24
+2015,"Women","20-49","Larynx",0.2,25
+2016,"Women","20-49","Larynx",0.2,25
+2017,"Women","20-49","Larynx",0.3,37
+2018,"Women","20-49","Larynx",0.3,29
+2019,"Women","20-49","Larynx",0.2,19
+2001,"Women","20-49","Leukaemia",2.5,262
+2002,"Women","20-49","Leukaemia",2.5,263
+2003,"Women","20-49","Leukaemia",3,309
+2004,"Women","20-49","Leukaemia",2.5,264
+2005,"Women","20-49","Leukaemia",2.8,295
+2006,"Women","20-49","Leukaemia",2.7,291
+2007,"Women","20-49","Leukaemia",2.9,319
+2008,"Women","20-49","Leukaemia",2.8,310
+2009,"Women","20-49","Leukaemia",3,326
+2010,"Women","20-49","Leukaemia",2.8,314
+2011,"Women","20-49","Leukaemia",2.8,314
+2012,"Women","20-49","Leukaemia",3.1,344
+2013,"Women","20-49","Leukaemia",3,336
+2014,"Women","20-49","Leukaemia",3.3,369
+2015,"Women","20-49","Leukaemia",3.4,376
+2016,"Women","20-49","Leukaemia",3.1,337
+2017,"Women","20-49","Leukaemia",3.3,362
+2018,"Women","20-49","Leukaemia",3.4,371
+2019,"Women","20-49","Leukaemia",3.2,346
+2001,"Women","20-49","Liver",0.3,32
+2002,"Women","20-49","Liver",0.4,45
+2003,"Women","20-49","Liver",0.4,43
+2004,"Women","20-49","Liver",0.5,49
+2005,"Women","20-49","Liver",0.5,49
+2006,"Women","20-49","Liver",0.5,59
+2007,"Women","20-49","Liver",0.6,62
+2008,"Women","20-49","Liver",0.7,72
+2009,"Women","20-49","Liver",0.7,76
+2010,"Women","20-49","Liver",0.6,61
+2011,"Women","20-49","Liver",0.6,66
+2012,"Women","20-49","Liver",0.6,66
+2013,"Women","20-49","Liver",0.7,73
+2014,"Women","20-49","Liver",0.7,80
+2015,"Women","20-49","Liver",0.7,79
+2016,"Women","20-49","Liver",0.6,66
+2017,"Women","20-49","Liver",0.7,75
+2018,"Women","20-49","Liver",0.7,82
+2019,"Women","20-49","Liver",0.8,89
+2001,"Women","20-49","Lung",4.4,454
+2002,"Women","20-49","Lung",4.2,433
+2003,"Women","20-49","Lung",4.7,496
+2004,"Women","20-49","Lung",4.3,455
+2005,"Women","20-49","Lung",4.4,464
+2006,"Women","20-49","Lung",4.3,467
+2007,"Women","20-49","Lung",4.2,458
+2008,"Women","20-49","Lung",4.3,474
+2009,"Women","20-49","Lung",4.8,528
+2010,"Women","20-49","Lung",4.6,503
+2011,"Women","20-49","Lung",3.9,434
+2012,"Women","20-49","Lung",4.7,517
+2013,"Women","20-49","Lung",4.1,449
+2014,"Women","20-49","Lung",4.5,495
+2015,"Women","20-49","Lung",4.7,517
+2016,"Women","20-49","Lung",4.1,448
+2017,"Women","20-49","Lung",3.8,418
+2018,"Women","20-49","Lung",4.6,501
+2019,"Women","20-49","Lung",4.3,470
+2001,"Women","20-49","Melanoma",12.4,1292
+2002,"Women","20-49","Melanoma",11.7,1225
+2003,"Women","20-49","Melanoma",12.2,1282
+2004,"Women","20-49","Melanoma",13.7,1438
+2005,"Women","20-49","Melanoma",14.5,1543
+2006,"Women","20-49","Melanoma",15.3,1649
+2007,"Women","20-49","Melanoma",14.3,1548
+2008,"Women","20-49","Melanoma",15.7,1718
+2009,"Women","20-49","Melanoma",15.7,1717
+2010,"Women","20-49","Melanoma",15.9,1753
+2011,"Women","20-49","Melanoma",15.7,1740
+2012,"Women","20-49","Melanoma",16.1,1786
+2013,"Women","20-49","Melanoma",16.9,1872
+2014,"Women","20-49","Melanoma",17.3,1907
+2015,"Women","20-49","Melanoma",16.4,1805
+2016,"Women","20-49","Melanoma",17.3,1911
+2017,"Women","20-49","Melanoma",15.8,1742
+2018,"Women","20-49","Melanoma",17,1868
+2019,"Women","20-49","Melanoma",17,1864
+2001,"Women","20-49","Multiple Myeloma",0.6,63
+2002,"Women","20-49","Multiple Myeloma",0.6,67
+2003,"Women","20-49","Multiple Myeloma",0.5,55
+2004,"Women","20-49","Multiple Myeloma",0.7,71
+2005,"Women","20-49","Multiple Myeloma",0.6,65
+2006,"Women","20-49","Multiple Myeloma",0.7,76
+2007,"Women","20-49","Multiple Myeloma",0.7,77
+2008,"Women","20-49","Multiple Myeloma",0.9,101
+2009,"Women","20-49","Multiple Myeloma",0.8,90
+2010,"Women","20-49","Multiple Myeloma",0.9,99
+2011,"Women","20-49","Multiple Myeloma",0.9,98
+2012,"Women","20-49","Multiple Myeloma",1,117
+2013,"Women","20-49","Multiple Myeloma",1.4,156
+2014,"Women","20-49","Multiple Myeloma",1.3,150
+2015,"Women","20-49","Multiple Myeloma",1.2,131
+2016,"Women","20-49","Multiple Myeloma",1.2,139
+2017,"Women","20-49","Multiple Myeloma",1.5,159
+2018,"Women","20-49","Multiple Myeloma",1.5,163
+2019,"Women","20-49","Multiple Myeloma",1.3,147
+2001,"Women","20-49","Non-Hodgkin Lymphoma",4.7,487
+2002,"Women","20-49","Non-Hodgkin Lymphoma",4.2,438
+2003,"Women","20-49","Non-Hodgkin Lymphoma",4.5,472
+2004,"Women","20-49","Non-Hodgkin Lymphoma",4.7,501
+2005,"Women","20-49","Non-Hodgkin Lymphoma",4.3,450
+2006,"Women","20-49","Non-Hodgkin Lymphoma",4.3,465
+2007,"Women","20-49","Non-Hodgkin Lymphoma",4.7,516
+2008,"Women","20-49","Non-Hodgkin Lymphoma",4.5,499
+2009,"Women","20-49","Non-Hodgkin Lymphoma",5,552
+2010,"Women","20-49","Non-Hodgkin Lymphoma",5.1,562
+2011,"Women","20-49","Non-Hodgkin Lymphoma",5.3,593
+2012,"Women","20-49","Non-Hodgkin Lymphoma",5.1,570
+2013,"Women","20-49","Non-Hodgkin Lymphoma",4.7,526
+2014,"Women","20-49","Non-Hodgkin Lymphoma",4.9,533
+2015,"Women","20-49","Non-Hodgkin Lymphoma",4.7,526
+2016,"Women","20-49","Non-Hodgkin Lymphoma",4.8,537
+2017,"Women","20-49","Non-Hodgkin Lymphoma",4.6,497
+2018,"Women","20-49","Non-Hodgkin Lymphoma",4.3,475
+2019,"Women","20-49","Non-Hodgkin Lymphoma",5.2,560
+2001,"Women","20-49","Oesophagus",0.8,78
+2002,"Women","20-49","Oesophagus",0.6,64
+2003,"Women","20-49","Oesophagus",0.7,76
+2004,"Women","20-49","Oesophagus",0.6,65
+2005,"Women","20-49","Oesophagus",0.6,63
+2006,"Women","20-49","Oesophagus",0.7,73
+2007,"Women","20-49","Oesophagus",0.5,58
+2008,"Women","20-49","Oesophagus",0.7,74
+2009,"Women","20-49","Oesophagus",0.6,63
+2010,"Women","20-49","Oesophagus",0.5,59
+2011,"Women","20-49","Oesophagus",0.5,58
+2012,"Women","20-49","Oesophagus",0.6,65
+2013,"Women","20-49","Oesophagus",0.7,72
+2014,"Women","20-49","Oesophagus",0.6,61
+2015,"Women","20-49","Oesophagus",0.5,58
+2016,"Women","20-49","Oesophagus",0.5,58
+2017,"Women","20-49","Oesophagus",0.4,49
+2018,"Women","20-49","Oesophagus",0.7,76
+2019,"Women","20-49","Oesophagus",0.5,51
+2001,"Women","20-49","Oral",2.3,244
+2002,"Women","20-49","Oral",2,208
+2003,"Women","20-49","Oral",2.3,238
+2004,"Women","20-49","Oral",2,213
+2005,"Women","20-49","Oral",2.3,246
+2006,"Women","20-49","Oral",2.5,268
+2007,"Women","20-49","Oral",2.5,272
+2008,"Women","20-49","Oral",2.9,317
+2009,"Women","20-49","Oral",2.9,322
+2010,"Women","20-49","Oral",2.8,305
+2011,"Women","20-49","Oral",2.6,283
+2012,"Women","20-49","Oral",3.1,339
+2013,"Women","20-49","Oral",2.9,317
+2014,"Women","20-49","Oral",3,328
+2015,"Women","20-49","Oral",3,333
+2016,"Women","20-49","Oral",3.2,356
+2017,"Women","20-49","Oral",2.9,322
+2018,"Women","20-49","Oral",3.1,344
+2019,"Women","20-49","Oral",3,327
+2001,"Women","20-49","Ovary",8.4,874
+2002,"Women","20-49","Ovary",8.2,857
+2003,"Women","20-49","Ovary",8.5,892
+2004,"Women","20-49","Ovary",8.1,857
+2005,"Women","20-49","Ovary",8,858
+2006,"Women","20-49","Ovary",8.8,952
+2007,"Women","20-49","Ovary",9.4,1019
+2008,"Women","20-49","Ovary",9.3,1011
+2009,"Women","20-49","Ovary",9.3,1018
+2010,"Women","20-49","Ovary",9.5,1043
+2011,"Women","20-49","Ovary",9.4,1038
+2012,"Women","20-49","Ovary",9.9,1098
+2013,"Women","20-49","Ovary",9.8,1085
+2014,"Women","20-49","Ovary",9.9,1097
+2015,"Women","20-49","Ovary",9.3,1032
+2016,"Women","20-49","Ovary",9.9,1088
+2017,"Women","20-49","Ovary",9.4,1034
+2018,"Women","20-49","Ovary",9.6,1055
+2019,"Women","20-49","Ovary",9.4,1024
+2001,"Women","20-49","Pancreas",0.9,95
+2002,"Women","20-49","Pancreas",1.1,112
+2003,"Women","20-49","Pancreas",0.8,89
+2004,"Women","20-49","Pancreas",0.8,87
+2005,"Women","20-49","Pancreas",1,104
+2006,"Women","20-49","Pancreas",1.2,131
+2007,"Women","20-49","Pancreas",1.1,116
+2008,"Women","20-49","Pancreas",1.1,116
+2009,"Women","20-49","Pancreas",1.1,121
+2010,"Women","20-49","Pancreas",1.1,126
+2011,"Women","20-49","Pancreas",1.2,134
+2012,"Women","20-49","Pancreas",1.2,137
+2013,"Women","20-49","Pancreas",1.4,156
+2014,"Women","20-49","Pancreas",1.3,140
+2015,"Women","20-49","Pancreas",1.4,155
+2016,"Women","20-49","Pancreas",1.4,152
+2017,"Women","20-49","Pancreas",1.3,141
+2018,"Women","20-49","Pancreas",1.4,157
+2019,"Women","20-49","Pancreas",1.5,165
+2001,"Women","50+","Bladder",27.7,2465
+2002,"Women","50+","Bladder",26.3,2347
+2003,"Women","50+","Bladder",26.7,2396
+2004,"Women","50+","Bladder",25.3,2289
+2005,"Women","50+","Bladder",25.8,2340
+2006,"Women","50+","Bladder",26,2380
+2007,"Women","50+","Bladder",25.4,2346
+2008,"Women","50+","Bladder",26.1,2434
+2009,"Women","50+","Bladder",24.5,2316
+2010,"Women","50+","Bladder",25,2389
+2011,"Women","50+","Bladder",25.5,2473
+2012,"Women","50+","Bladder",24.7,2434
+2013,"Women","50+","Bladder",23.9,2395
+2014,"Women","50+","Bladder",22,2244
+2015,"Women","50+","Bladder",22.4,2320
+2016,"Women","50+","Bladder",21.9,2315
+2017,"Women","50+","Bladder",21.9,2350
+2018,"Women","50+","Bladder",20.8,2260
+2019,"Women","50+","Bladder",21.5,2377
+2001,"Women","50+","Brain and CNS",12.8,1138
+2002,"Women","50+","Brain and CNS",12.7,1132
+2003,"Women","50+","Brain and CNS",12.6,1131
+2004,"Women","50+","Brain and CNS",12.7,1148
+2005,"Women","50+","Brain and CNS",12.3,1124
+2006,"Women","50+","Brain and CNS",13.3,1220
+2007,"Women","50+","Brain and CNS",13.5,1252
+2008,"Women","50+","Brain and CNS",14.2,1330
+2009,"Women","50+","Brain and CNS",14.7,1390
+2010,"Women","50+","Brain and CNS",13.9,1330
+2011,"Women","50+","Brain and CNS",14.9,1437
+2012,"Women","50+","Brain and CNS",13.9,1362
+2013,"Women","50+","Brain and CNS",14.9,1494
+2014,"Women","50+","Brain and CNS",13.8,1404
+2015,"Women","50+","Brain and CNS",14.1,1464
+2016,"Women","50+","Brain and CNS",13.9,1477
+2017,"Women","50+","Brain and CNS",13.9,1489
+2018,"Women","50+","Brain and CNS",13.3,1455
+2019,"Women","50+","Brain and CNS",13.7,1510
+2001,"Women","50+","Breast",323.2,28711
+2002,"Women","50+","Breast",321.5,28737
+2003,"Women","50+","Breast",339.1,30473
+2004,"Women","50+","Breast",338.4,30570
+2005,"Women","50+","Breast",344.8,31331
+2006,"Women","50+","Breast",342.4,31326
+2007,"Women","50+","Breast",339.7,31357
+2008,"Women","50+","Breast",352,32838
+2009,"Women","50+","Breast",344.8,32537
+2010,"Women","50+","Breast",347.2,33192
+2011,"Women","50+","Breast",345.6,33526
+2012,"Women","50+","Breast",350.1,34513
+2013,"Women","50+","Breast",360.2,36091
+2014,"Women","50+","Breast",369.2,37683
+2015,"Women","50+","Breast",360.5,37405
+2016,"Women","50+","Breast",353.2,37278
+2017,"Women","50+","Breast",349.8,37494
+2018,"Women","50+","Breast",362,39365
+2019,"Women","50+","Breast",358.4,39584
+2001,"Women","50+","Cervix",13.2,1169
+2002,"Women","50+","Cervix",12.2,1089
+2003,"Women","50+","Cervix",12.6,1131
+2004,"Women","50+","Cervix",11,995
+2005,"Women","50+","Cervix",10.9,986
+2006,"Women","50+","Cervix",11.1,1011
+2007,"Women","50+","Cervix",10.5,972
+2008,"Women","50+","Cervix",10.1,944
+2009,"Women","50+","Cervix",10.4,980
+2010,"Women","50+","Cervix",9.8,933
+2011,"Women","50+","Cervix",10.1,981
+2012,"Women","50+","Cervix",10.1,995
+2013,"Women","50+","Cervix",10.4,1042
+2014,"Women","50+","Cervix",9.3,954
+2015,"Women","50+","Cervix",8.8,918
+2016,"Women","50+","Cervix",9.6,1011
+2017,"Women","50+","Cervix",9.5,1020
+2018,"Women","50+","Cervix",9.8,1070
+2019,"Women","50+","Cervix",9.8,1079
+2001,"Women","50+","Colorectum",143.2,12721
+2002,"Women","50+","Colorectum",141.1,12617
+2003,"Women","50+","Colorectum",141.7,12730
+2004,"Women","50+","Colorectum",145,13102
+2005,"Women","50+","Colorectum",145.8,13246
+2006,"Women","50+","Colorectum",148.5,13582
+2007,"Women","50+","Colorectum",151.6,13994
+2008,"Women","50+","Colorectum",153.6,14324
+2009,"Women","50+","Colorectum",153.7,14512
+2010,"Women","50+","Colorectum",152.3,14562
+2011,"Women","50+","Colorectum",155.7,15105
+2012,"Women","50+","Colorectum",153,15082
+2013,"Women","50+","Colorectum",148.2,14849
+2014,"Women","50+","Colorectum",147.9,15097
+2015,"Women","50+","Colorectum",149.2,15480
+2016,"Women","50+","Colorectum",144.4,15246
+2017,"Women","50+","Colorectum",143,15328
+2018,"Women","50+","Colorectum",144.8,15747
+2019,"Women","50+","Colorectum",149.3,16482
+2001,"Women","50+","Endometrium",50.6,4497
+2002,"Women","50+","Endometrium",50.4,4504
+2003,"Women","50+","Endometrium",53.9,4844
+2004,"Women","50+","Endometrium",53.2,4810
+2005,"Women","50+","Endometrium",57,5182
+2006,"Women","50+","Endometrium",59.2,5419
+2007,"Women","50+","Endometrium",61.2,5649
+2008,"Women","50+","Endometrium",62.1,5791
+2009,"Women","50+","Endometrium",62.5,5898
+2010,"Women","50+","Endometrium",65.5,6258
+2011,"Women","50+","Endometrium",66.8,6480
+2012,"Women","50+","Endometrium",67.2,6625
+2013,"Women","50+","Endometrium",68.4,6854
+2014,"Women","50+","Endometrium",69.4,7087
+2015,"Women","50+","Endometrium",66.5,6897
+2016,"Women","50+","Endometrium",69.5,7339
+2017,"Women","50+","Endometrium",67.7,7261
+2018,"Women","50+","Endometrium",70.2,7633
+2019,"Women","50+","Endometrium",68.5,7565
+2001,"Women","50+","Gallbladder",6.6,587
+2002,"Women","50+","Gallbladder",6.3,567
+2003,"Women","50+","Gallbladder",6.3,561
+2004,"Women","50+","Gallbladder",6.5,583
+2005,"Women","50+","Gallbladder",7,641
+2006,"Women","50+","Gallbladder",7.8,716
+2007,"Women","50+","Gallbladder",7.8,716
+2008,"Women","50+","Gallbladder",7.9,739
+2009,"Women","50+","Gallbladder",8.3,785
+2010,"Women","50+","Gallbladder",9.2,881
+2011,"Women","50+","Gallbladder",8.8,854
+2012,"Women","50+","Gallbladder",9.3,924
+2013,"Women","50+","Gallbladder",9.8,982
+2014,"Women","50+","Gallbladder",9.6,985
+2015,"Women","50+","Gallbladder",9.6,995
+2016,"Women","50+","Gallbladder",10.1,1062
+2017,"Women","50+","Gallbladder",9.8,1051
+2018,"Women","50+","Gallbladder",11.4,1245
+2019,"Women","50+","Gallbladder",11,1221
+2001,"Women","50+","Hodgkin Lymphoma",2.1,189
+2002,"Women","50+","Hodgkin Lymphoma",2,180
+2003,"Women","50+","Hodgkin Lymphoma",2,176
+2004,"Women","50+","Hodgkin Lymphoma",2.2,196
+2005,"Women","50+","Hodgkin Lymphoma",2.5,227
+2006,"Women","50+","Hodgkin Lymphoma",2.7,250
+2007,"Women","50+","Hodgkin Lymphoma",2.4,219
+2008,"Women","50+","Hodgkin Lymphoma",2.5,236
+2009,"Women","50+","Hodgkin Lymphoma",2.9,273
+2010,"Women","50+","Hodgkin Lymphoma",2.7,258
+2011,"Women","50+","Hodgkin Lymphoma",2.8,270
+2012,"Women","50+","Hodgkin Lymphoma",2.9,289
+2013,"Women","50+","Hodgkin Lymphoma",3.1,309
+2014,"Women","50+","Hodgkin Lymphoma",3.3,332
+2015,"Women","50+","Hodgkin Lymphoma",3.3,342
+2016,"Women","50+","Hodgkin Lymphoma",3,319
+2017,"Women","50+","Hodgkin Lymphoma",2.8,297
+2018,"Women","50+","Hodgkin Lymphoma",3,327
+2019,"Women","50+","Hodgkin Lymphoma",3.2,354
+2001,"Women","50+","Kidney",17.7,1571
+2002,"Women","50+","Kidney",18.3,1632
+2003,"Women","50+","Kidney",19.3,1736
+2004,"Women","50+","Kidney",19.2,1734
+2005,"Women","50+","Kidney",19.7,1788
+2006,"Women","50+","Kidney",22.1,2024
+2007,"Women","50+","Kidney",22.3,2062
+2008,"Women","50+","Kidney",24.7,2307
+2009,"Women","50+","Kidney",24.7,2329
+2010,"Women","50+","Kidney",26.7,2557
+2011,"Women","50+","Kidney",26.8,2598
+2012,"Women","50+","Kidney",27.2,2681
+2013,"Women","50+","Kidney",30.3,3038
+2014,"Women","50+","Kidney",31.4,3203
+2015,"Women","50+","Kidney",29.9,3098
+2016,"Women","50+","Kidney",29.9,3160
+2017,"Women","50+","Kidney",30.4,3264
+2018,"Women","50+","Kidney",28.7,3122
+2019,"Women","50+","Kidney",31,3419
+2001,"Women","50+","Larynx",3.4,302
+2002,"Women","50+","Larynx",3.2,288
+2003,"Women","50+","Larynx",3.3,295
+2004,"Women","50+","Larynx",2.9,262
+2005,"Women","50+","Larynx",3,273
+2006,"Women","50+","Larynx",3.1,286
+2007,"Women","50+","Larynx",2.9,266
+2008,"Women","50+","Larynx",3,284
+2009,"Women","50+","Larynx",3,280
+2010,"Women","50+","Larynx",3.1,298
+2011,"Women","50+","Larynx",3.2,314
+2012,"Women","50+","Larynx",3.5,347
+2013,"Women","50+","Larynx",2.7,270
+2014,"Women","50+","Larynx",2.8,285
+2015,"Women","50+","Larynx",3.3,340
+2016,"Women","50+","Larynx",2.6,274
+2017,"Women","50+","Larynx",2.7,294
+2018,"Women","50+","Larynx",2.7,291
+2019,"Women","50+","Larynx",2.6,285
+2001,"Women","50+","Leukaemia",25.8,2288
+2002,"Women","50+","Leukaemia",24.9,2224
+2003,"Women","50+","Leukaemia",24,2161
+2004,"Women","50+","Leukaemia",25.1,2265
+2005,"Women","50+","Leukaemia",25.6,2325
+2006,"Women","50+","Leukaemia",26.3,2404
+2007,"Women","50+","Leukaemia",25,2306
+2008,"Women","50+","Leukaemia",27.2,2536
+2009,"Women","50+","Leukaemia",29,2733
+2010,"Women","50+","Leukaemia",28.3,2701
+2011,"Women","50+","Leukaemia",29.2,2828
+2012,"Women","50+","Leukaemia",28.9,2850
+2013,"Women","50+","Leukaemia",31.8,3188
+2014,"Women","50+","Leukaemia",29.9,3051
+2015,"Women","50+","Leukaemia",31.3,3252
+2016,"Women","50+","Leukaemia",29.3,3096
+2017,"Women","50+","Leukaemia",29.9,3209
+2018,"Women","50+","Leukaemia",26.3,2863
+2019,"Women","50+","Leukaemia",26.3,2899
+2001,"Women","50+","Liver",9.1,811
+2002,"Women","50+","Liver",9.1,814
+2003,"Women","50+","Liver",8.7,778
+2004,"Women","50+","Liver",9.5,856
+2005,"Women","50+","Liver",10.1,914
+2006,"Women","50+","Liver",10.7,981
+2007,"Women","50+","Liver",11.4,1051
+2008,"Women","50+","Liver",11.2,1048
+2009,"Women","50+","Liver",13.1,1240
+2010,"Women","50+","Liver",13.9,1331
+2011,"Women","50+","Liver",13.7,1328
+2012,"Women","50+","Liver",14.8,1462
+2013,"Women","50+","Liver",16.2,1620
+2014,"Women","50+","Liver",15.6,1596
+2015,"Women","50+","Liver",16.3,1692
+2016,"Women","50+","Liver",16.3,1722
+2017,"Women","50+","Liver",16,1711
+2018,"Women","50+","Liver",15.1,1642
+2019,"Women","50+","Liver",17.9,1973
+2001,"Women","50+","Lung",133.7,11874
+2002,"Women","50+","Lung",131.4,11748
+2003,"Women","50+","Lung",135.4,12167
+2004,"Women","50+","Lung",135.4,12234
+2005,"Women","50+","Lung",140.9,12805
+2006,"Women","50+","Lung",146.7,13417
+2007,"Women","50+","Lung",149.1,13765
+2008,"Women","50+","Lung",155.6,14516
+2009,"Women","50+","Lung",154.9,14623
+2010,"Women","50+","Lung",157.1,15022
+2011,"Women","50+","Lung",162.6,15772
+2012,"Women","50+","Lung",167.8,16542
+2013,"Women","50+","Lung",169.1,16944
+2014,"Women","50+","Lung",168.6,17210
+2015,"Women","50+","Lung",168.9,17524
+2016,"Women","50+","Lung",169.2,17863
+2017,"Women","50+","Lung",173.4,18584
+2018,"Women","50+","Lung",170.8,18573
+2019,"Women","50+","Lung",171.5,18944
+2001,"Women","50+","Melanoma",26.2,2330
+2002,"Women","50+","Melanoma",28.2,2517
+2003,"Women","50+","Melanoma",28.7,2582
+2004,"Women","50+","Melanoma",30.5,2757
+2005,"Women","50+","Melanoma",32.2,2929
+2006,"Women","50+","Melanoma",34.4,3143
+2007,"Women","50+","Melanoma",35.3,3257
+2008,"Women","50+","Melanoma",37.8,3530
+2009,"Women","50+","Melanoma",37.7,3556
+2010,"Women","50+","Melanoma",40.3,3848
+2011,"Women","50+","Melanoma",41.5,4026
+2012,"Women","50+","Melanoma",42.2,4164
+2013,"Women","50+","Melanoma",45.7,4576
+2014,"Women","50+","Melanoma",46.6,4757
+2015,"Women","50+","Melanoma",46.9,4867
+2016,"Women","50+","Melanoma",49.5,5220
+2017,"Women","50+","Melanoma",48,5147
+2018,"Women","50+","Melanoma",51.2,5564
+2019,"Women","50+","Melanoma",50.7,5599
+2001,"Women","50+","Multiple Myeloma",17,1509
+2002,"Women","50+","Multiple Myeloma",16.6,1483
+2003,"Women","50+","Multiple Myeloma",17.5,1570
+2004,"Women","50+","Multiple Myeloma",17,1532
+2005,"Women","50+","Multiple Myeloma",18,1637
+2006,"Women","50+","Multiple Myeloma",18.1,1651
+2007,"Women","50+","Multiple Myeloma",18.4,1698
+2008,"Women","50+","Multiple Myeloma",20.1,1871
+2009,"Women","50+","Multiple Myeloma",19.6,1843
+2010,"Women","50+","Multiple Myeloma",19.3,1849
+2011,"Women","50+","Multiple Myeloma",19.3,1872
+2012,"Women","50+","Multiple Myeloma",20.1,1974
+2013,"Women","50+","Multiple Myeloma",25,2499
+2014,"Women","50+","Multiple Myeloma",24.8,2530
+2015,"Women","50+","Multiple Myeloma",23.5,2436
+2016,"Women","50+","Multiple Myeloma",23.8,2508
+2017,"Women","50+","Multiple Myeloma",24.1,2584
+2018,"Women","50+","Multiple Myeloma",23.3,2533
+2019,"Women","50+","Multiple Myeloma",25.1,2777
+2001,"Women","50+","Non-Hodgkin Lymphoma",37.2,3305
+2002,"Women","50+","Non-Hodgkin Lymphoma",37,3312
+2003,"Women","50+","Non-Hodgkin Lymphoma",38.8,3487
+2004,"Women","50+","Non-Hodgkin Lymphoma",39.8,3595
+2005,"Women","50+","Non-Hodgkin Lymphoma",39.5,3588
+2006,"Women","50+","Non-Hodgkin Lymphoma",40.9,3741
+2007,"Women","50+","Non-Hodgkin Lymphoma",41.4,3820
+2008,"Women","50+","Non-Hodgkin Lymphoma",45.1,4213
+2009,"Women","50+","Non-Hodgkin Lymphoma",45.2,4266
+2010,"Women","50+","Non-Hodgkin Lymphoma",44.4,4243
+2011,"Women","50+","Non-Hodgkin Lymphoma",46.1,4475
+2012,"Women","50+","Non-Hodgkin Lymphoma",46.8,4615
+2013,"Women","50+","Non-Hodgkin Lymphoma",45.6,4563
+2014,"Women","50+","Non-Hodgkin Lymphoma",42.9,4378
+2015,"Women","50+","Non-Hodgkin Lymphoma",43.4,4499
+2016,"Women","50+","Non-Hodgkin Lymphoma",43.6,4611
+2017,"Women","50+","Non-Hodgkin Lymphoma",42.9,4598
+2018,"Women","50+","Non-Hodgkin Lymphoma",41.7,4538
+2019,"Women","50+","Non-Hodgkin Lymphoma",42,4630
+2001,"Women","50+","Oesophagus",25.1,2230
+2002,"Women","50+","Oesophagus",24.4,2184
+2003,"Women","50+","Oesophagus",24.6,2213
+2004,"Women","50+","Oesophagus",23.6,2131
+2005,"Women","50+","Oesophagus",24.5,2224
+2006,"Women","50+","Oesophagus",24.3,2226
+2007,"Women","50+","Oesophagus",24,2215
+2008,"Women","50+","Oesophagus",23.4,2184
+2009,"Women","50+","Oesophagus",23,2168
+2010,"Women","50+","Oesophagus",23.7,2266
+2011,"Women","50+","Oesophagus",22.7,2198
+2012,"Women","50+","Oesophagus",23.9,2355
+2013,"Women","50+","Oesophagus",23.4,2343
+2014,"Women","50+","Oesophagus",22.9,2339
+2015,"Women","50+","Oesophagus",22.8,2361
+2016,"Women","50+","Oesophagus",21.6,2278
+2017,"Women","50+","Oesophagus",21,2250
+2018,"Women","50+","Oesophagus",21.1,2298
+2019,"Women","50+","Oesophagus",21.1,2333
+2001,"Women","50+","Oral",14.4,1278
+2002,"Women","50+","Oral",13.6,1214
+2003,"Women","50+","Oral",14.7,1322
+2004,"Women","50+","Oral",15.2,1371
+2005,"Women","50+","Oral",15.4,1398
+2006,"Women","50+","Oral",16.3,1494
+2007,"Women","50+","Oral",16.2,1491
+2008,"Women","50+","Oral",17.9,1674
+2009,"Women","50+","Oral",18.1,1711
+2010,"Women","50+","Oral",19.5,1863
+2011,"Women","50+","Oral",19.4,1884
+2012,"Women","50+","Oral",20.2,1996
+2013,"Women","50+","Oral",20.2,2023
+2014,"Women","50+","Oral",20.5,2092
+2015,"Women","50+","Oral",20.5,2130
+2016,"Women","50+","Oral",21,2216
+2017,"Women","50+","Oral",20.8,2232
+2018,"Women","50+","Oral",22.2,2409
+2019,"Women","50+","Oral",22.6,2491
+2001,"Women","50+","Ovary",57.3,5087
+2002,"Women","50+","Ovary",54.9,4903
+2003,"Women","50+","Ovary",54.8,4928
+2004,"Women","50+","Ovary",52.3,4727
+2005,"Women","50+","Ovary",52.8,4801
+2006,"Women","50+","Ovary",52,4755
+2007,"Women","50+","Ovary",51.2,4725
+2008,"Women","50+","Ovary",49.5,4614
+2009,"Women","50+","Ovary",51.7,4878
+2010,"Women","50+","Ovary",50.1,4790
+2011,"Women","50+","Ovary",50.3,4879
+2012,"Women","50+","Ovary",48.2,4751
+2013,"Women","50+","Ovary",49.8,4994
+2014,"Women","50+","Ovary",48.8,4977
+2015,"Women","50+","Ovary",46.4,4812
+2016,"Women","50+","Ovary",46.3,4890
+2017,"Women","50+","Ovary",43.8,4697
+2018,"Women","50+","Ovary",43.4,4715
+2019,"Women","50+","Ovary",44.8,4943
+2001,"Women","50+","Pancreas",33.6,2987
+2002,"Women","50+","Pancreas",32.9,2943
+2003,"Women","50+","Pancreas",33.8,3037
+2004,"Women","50+","Pancreas",35.2,3179
+2005,"Women","50+","Pancreas",35.6,3238
+2006,"Women","50+","Pancreas",36.5,3339
+2007,"Women","50+","Pancreas",36.1,3332
+2008,"Women","50+","Pancreas",37.3,3477
+2009,"Women","50+","Pancreas",37.8,3568
+2010,"Women","50+","Pancreas",37.3,3566
+2011,"Women","50+","Pancreas",38.1,3694
+2012,"Women","50+","Pancreas",38.6,3809
+2013,"Women","50+","Pancreas",39.8,3990
+2014,"Women","50+","Pancreas",39,3985
+2015,"Women","50+","Pancreas",39.7,4122
+2016,"Women","50+","Pancreas",38.7,4080
+2017,"Women","50+","Pancreas",39.4,4226
+2018,"Women","50+","Pancreas",38.4,4173
+2019,"Women","50+","Pancreas",39.7,4387
