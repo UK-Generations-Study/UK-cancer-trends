@@ -444,7 +444,7 @@ data_cancer_plot <- rbind(data_cancer_plot, data_cancer_plot_new_rows)
 data_cancer_plot_labels <- data_cancer_plot |>
   group_by(age_group, cancer_site) |>
   mutate(
-    rate_range = max(rate) - min(rate)
+    Rate_range = max(Rate) - min(Rate)
   ) |>
   group_by(sex, age_group, cancer_site) |>
   filter(last_segment) |>
@@ -452,8 +452,8 @@ data_cancer_plot_labels <- data_cancer_plot |>
   reframe(
     
     year = max(year) + 1.8,
-    rate = max(rate),
-    rate_range = rate_range[1],
+    Rate = max(Rate),
+    Rate_range = Rate_range[1],
     AAPC_clean = AAPC_clean[1]
     
   ) |>
@@ -462,11 +462,11 @@ data_cancer_plot_labels <- data_cancer_plot |>
   group_by(age_group, cancer_site) |>
   mutate(
     
-    rate = case_when(
-      n() == 1 ~ rate,
-      max(rate) - min(rate) < rate_range/2 & rate == min(rate) ~ rate - (rate_range/2 -  (max(rate) - min(rate)))/2,
-      max(rate) - min(rate) < rate_range/2 & rate == max(rate) ~ rate + (rate_range/2 -  (max(rate) - min(rate)))/2,
-      TRUE ~ rate
+    Rate = case_when(
+      n() == 1 ~ Rate,
+      max(Rate) - min(Rate) < Rate_range/2 & Rate == min(Rate) ~ Rate - (Rate_range/2 -  (max(Rate) - min(Rate)))/2,
+      max(Rate) - min(Rate) < Rate_range/2 & Rate == max(Rate) ~ Rate + (Rate_range/2 -  (max(Rate) - min(Rate)))/2,
+      TRUE ~ Rate
     )
     
   )
@@ -477,7 +477,7 @@ data_cancer_invisible_points <- data_cancer_plot |>
   summarise(
 
     year = 2001,
-    rate = max(rate) + (max(rate) - min(rate))/2
+    Rate = max(Rate) + (max(Rate) - min(Rate))/2
 
   )
 
@@ -488,15 +488,15 @@ age_groups <- unique(data_cancer_plot$age_group)
 # Create an empty list to store the plots
 plots <- list()
 
-# Loop through each age group and generate a plot
+# Loop through each age group and geneRate a plot
 for (group in age_groups) {
   # Filter data for the current age group
   data_subset <- data_cancer_plot %>% filter(age_group == group)
   data_invisible <- data_cancer_invisible_points %>% filter(age_group == group)
   data_label <- data_cancer_plot_labels %>% filter(age_group == group)
   
-  # Generate the plot for the current subset
-  plot <- ggplot(data_subset, aes(x = year, y = rate, fill = sex, colour = sex)) +
+  # GeneRate the plot for the current subset
+  plot <- ggplot(data_subset, aes(x = year, y = Rate, fill = sex, colour = sex)) +
     xlim(2001, 2021.5) +
     geom_point() +
     geom_point(data = data_invisible, alpha = 0) +
@@ -513,7 +513,7 @@ for (group in age_groups) {
       breaks = seq(2000, 2019, by = 2),  # Define the x-axis breaks
       limits = c(2000, 2021)
     ) +
-    ylab("Age Standardized rates") +
+    ylab("Age Standardized Rates") +
     xlab("Year") +
     labs(colour = "Sex", fill = "Sex") +
     ggtitle(paste("Trends in Cancer Incidence in England -", group)) +
@@ -524,7 +524,7 @@ for (group in age_groups) {
   plots[[group]] <- plot
 }
 
-# Display each plot separately
+# Display each plot sepaRately
 for (group in age_groups) {
   print(plots[[group]]) # Print each plot individually
 }
@@ -578,7 +578,7 @@ data_cancer_plot <- rbind(data_cancer_plot, data_cancer_plot_new_rows)
 data_cancer_plot_labels <- data_cancer_plot |>
   group_by(age_group, cancer_site) |>
   mutate(
-    rate_range = max(rate) - min(rate)
+    Rate_range = max(Rate) - min(Rate)
   ) |>
   group_by(sex, age_group, cancer_site) |>
   filter(last_segment) |>
@@ -586,8 +586,8 @@ data_cancer_plot_labels <- data_cancer_plot |>
   reframe(
     
     year = max(year) + 1.8,
-    rate = max(rate),
-    rate_range = rate_range[1],
+    Rate = max(Rate),
+    Rate_range = Rate_range[1],
     APC_clean = APC_clean[1]
     
   ) |>
@@ -596,11 +596,11 @@ data_cancer_plot_labels <- data_cancer_plot |>
   group_by(age_group, cancer_site) |>
   mutate(
     
-    rate = case_when(
-      n() == 1 ~ rate,
-      max(rate) - min(rate) < rate_range/2 & rate == min(rate) ~ rate - (rate_range/2 -  (max(rate) - min(rate)))/2,
-      max(rate) - min(rate) < rate_range/2 & rate == max(rate) ~ rate + (rate_range/2 -  (max(rate) - min(rate)))/2,
-      TRUE ~ rate
+    Rate = case_when(
+      n() == 1 ~ Rate,
+      max(Rate) - min(Rate) < Rate_range/2 & Rate == min(Rate) ~ Rate - (Rate_range/2 -  (max(Rate) - min(Rate)))/2,
+      max(Rate) - min(Rate) < Rate_range/2 & Rate == max(Rate) ~ Rate + (Rate_range/2 -  (max(Rate) - min(Rate)))/2,
+      TRUE ~ Rate
     )
     
   )
@@ -611,12 +611,12 @@ data_cancer_invisible_points <- data_cancer_plot |>
   summarise(
 
     year = 2001,
-    rate = max(rate) + (max(rate) - min(rate))/2
+    Rate = max(Rate) + (max(Rate) - min(Rate))/2
 
   )
 
 # Removing 2020 as COVID affected cases
-ggplot(data_cancer_plot, aes(x = year, y = rate, fill = sex, colour = sex)) +
+ggplot(data_cancer_plot, aes(x = year, y = Rate, fill = sex, colour = sex)) +
   xlim(2001, 2021.5) +
   geom_point() +
   geom_point(data = data_cancer_invisible_points, alpha = 0) +
@@ -632,7 +632,7 @@ ggplot(data_cancer_plot, aes(x = year, y = rate, fill = sex, colour = sex)) +
     breaks = seq(2000, 2019, by = 1),  # Define the x-axis breaks
     limits = c(2000, 2021)
     )+
-  ylab("Age Standardized rates") +
+  ylab("Age Standardized Rates") +
   xlab("Year") +
   labs(colour = "Sex", fill = "Sex", linetype = "Last Segment") +
   # scale_x_continuous(breaks = seq(min_year, max_year, by = 2)) +
