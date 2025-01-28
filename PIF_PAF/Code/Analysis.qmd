@@ -1279,7 +1279,10 @@ PAFallages_long <- aggregate_pafs_allages |>
 data_casesallages <- data_cancer %>%
   group_by(year, sex, cancer_site) %>%
   summarise(totalcases = sum(count, na.rm = T))%>%
-  ungroup()
+  ungroup() %>%
+  mutate(
+     totalcases = ifelse(sex == "Men" & cancer_site == "Breast", 0, totalcases) # Removing cases of male breast cancer 
+  )
 
 #calculating attributable cases to the all ages PAFs 
 PAF_allages <- PAFallages_long %>%
@@ -1425,7 +1428,8 @@ data_attr_cases <- merge(data_paf_long, data_cancer, by = c("sex", "year", "age_
   pivot_longer(cols = c("attr_cases", "non_attr_cases"), names_to = "case_group", values_to = "cases_count") |>
   mutate(
     
-    case_group = factor(case_group, level = c("non_attr_cases", "attr_cases"), labels = c("Non-Attributable", "Attributable"))
+    case_group = factor(case_group, level = c("non_attr_cases", "attr_cases"), labels = c("Non-Attributable", "Attributable")), 
+    cases_count = ifelse(sex == "Men" & cancer_site == "Breast", 0, cases_count)
     
   )
 
@@ -1471,12 +1475,12 @@ data_attr_cases_bar <- data_attr_cases %>%
     year == 2019 
   ) %>%
   mutate(
-    cases_count = as.numeric(cases_count)
+    cases_count = as.numeric(cases_count) 
   )
 
-data_attr_bar_MEN <- ggplot(data_attr_cases_bar %>% filter(sex == "Men"), aes(x = cancer_site)) +
+data_attr_bar_MEN <- ggplot(data_attr_cases_bar %>% filter(sex == "Men", cancer_site != "Breast"), aes(x = cancer_site)) +
   geom_bar(
-    aes(y = PAF, fill = "PAF"), 
+    aes(y = PAF/2, fill = "PAF"), 
     stat = "identity", 
     width = 0.8,  # Wider bar for PAF
     alpha = 0.8
