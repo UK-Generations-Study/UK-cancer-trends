@@ -1431,7 +1431,7 @@ data_attr_cases <- merge(data_paf_long, data_cancer, by = c("sex", "year", "age_
     case_group = factor(case_group, level = c("non_attr_cases", "attr_cases"), labels = c("Non-Attributable", "Attributable")), 
     cases_count = ifelse(sex == "Men" & cancer_site == "Breast", 0, cases_count)
     
-  )
+  ) 
 
 
 # Make plots
