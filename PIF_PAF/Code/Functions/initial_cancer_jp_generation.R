@@ -3,10 +3,23 @@
 # Packages
 library(dplyr)
 
+# Set working directory
+# Setting up wd for relative file paths
+# This sets wd to wherever the document is saved - this should be the github desktop folder
+if(Sys.getenv("RSTUDIO") == '1' & !knitr::is_html_output()) { # If using Rstudio and not rendering
+  setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+} else if(Sys.getenv("RSTUDIO") != '1'){ # If using Rscript
+  initial.options <- commandArgs(trailingOnly = FALSE)
+  file.arg.name <- "--file="
+  script.name <- sub(file.arg.name, "", initial.options[grep(file.arg.name, initial.options)])
+  script.basename <- dirname(script.name)
+  setwd(file.path(getwd(), script.basename))
+}
+
 # Read in data
 # Assumed working directory is same relationship as is set up in the Github
-data_u50 <- read.csv(r"(..\Data\Incidence_data_for_England_2024-10-30.csv)")
-data_oe50 <- read.csv(r"(..\Data\Incidence_data_for_England_2024-10-30 (1).csv)")
+data_u50 <- read.csv(r"(..\..\Data\Incidence_data_for_England_2024-10-30.csv)")
+data_oe50 <- read.csv(r"(..\..\Data\Incidence_data_for_England_2024-10-30 (1).csv)")
 
 # Format data
 data <- rbind(data_u50 |>
@@ -54,9 +67,14 @@ data <- data |>
   filter(!is.na(cancer_site)) |>
   filter(Gender != "Persons") |>
   filter(Year <= 2019) |>
+  mutate(
+    
+    Gender = if_else(Gender == "Male", "Men", "Women")
+    
+  ) |>
   select(year = Year, sex = Gender, age_group, cancer_site, Rate, Count) |>
   group_by(year, sex, age_group, cancer_site) |>
-  summarise(rate = sum(as.numeric(Rate)), 
+  summarise(Rate = sum(as.numeric(Rate)), 
             count = sum(as.numeric(Count))) |>
   arrange(
     sex, age_group, cancer_site, year
@@ -64,4 +82,4 @@ data <- data |>
 
 
 # Output
-write.csv(data, r"(..\Data\all_incidence_joinpoint.csv)", row.names = F)
+write.csv(data, r"(..\..\Data\all_incidence_joinpoint.csv)", row.names = F)
