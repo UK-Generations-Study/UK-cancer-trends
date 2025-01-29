@@ -96,6 +96,9 @@ PIF_allages.csv
 
 PIF.csv
 	Description - These are calculated Population Impact Fraction (PIFs) for all of the increasing PAFs for each cancer site divided by sex and by age (i.e. split by 20-49, 50+ and men,women) calculated in the "../Analysis.qmd"
+	
+all_incidence_joinpoint.csv 
+	Description - These are incidence numbers and rates for all cancers considered in the UK/US section of the early onset analysis. It is derived from "../Functions/initial_cancer_jp_generation.R"
 
 
 **FOLDERS
