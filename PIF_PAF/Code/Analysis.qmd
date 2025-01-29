@@ -253,21 +253,24 @@ data_rf_imd <- read.csv("../../../Data/Cleaned_Data/clean_rf_data_age_all_imd.cs
 #data_cancer <- read.csv("../Data/incidence_data_clean.csv")
 
 #Read in all cancer incidence data 
-data_ALLcancer <- read.csv("../Data/all_incidence_joinpoint.csv")
+data_ALLcancer <- read.csv("../Data/all_incidence_joinpoint.csv") |>
+  filter(!(sex == "Men" & cancer_site == "Breast"))
 
 # Read in childhood BMI data 
 data_childhood_bmi <- suppressMessages(read_excel("../Data/HSE-2022-Overweight-and-obesity-tables.xlsx", sheet = "Table 16"))
 
-# Read in PAF samples
-data_paf_comparison <- read.csv(r"(..\Data\paf_comparison.csv)") |>
-  # TEMPORARY CODE
-  mutate(Cancer_sites = if_else(Cancer_sites == "Breast ", "Breast", Cancer_sites)) |>
-  filter(!(Cancer_sites == "Breast" & sex == "Men"))
+# # Read in PAF samples
+# data_paf_comparison <- read.csv(r"(..\Data\paf_comparison.csv)") |>
+#   # TEMPORARY CODE
+#   mutate(Cancer_sites = if_else(Cancer_sites == "Breast ", "Breast", Cancer_sites)) |>
+#   filter(!(Cancer_sites == "Breast" & sex == "Men"))
 
 # Reading in JP Analysis
 #   Cancer Incidence
-data_joinpoint <- read.delim("../Data/Joinpoint_Results/Cancerrates_All/joinpoint_cancerrates_all.Export.APC.txt", sep = "\t")
-data_joinpoint_AAPC <- read.delim("../Data/Joinpoint_Results/Cancerrates_All/joinpoint_cancerrates_all.Export.AAPC.txt", sep = "\t")
+data_joinpoint <- read.delim("../Data/Joinpoint_Results/Cancerrates_All/joinpoint_cancerrates_all.Export.APC.txt", sep = "\t") |>
+  filter(!(sex == "Men" & cancer_site == "Breast"))
+data_joinpoint_AAPC <- read.delim("../Data/Joinpoint_Results/Cancerrates_All/joinpoint_cancerrates_all.Export.AAPC.txt", sep = "\t") |>
+  filter(!(sex == "Men" & cancer_site == "Breast"))
 #   Risk Factors
 rfdata_joinpoint <- read.delim("../Data/Joinpoint_Results/Riskfactor/joinpoint_rf.Export.APC.txt", sep = "\t")
 rfdata_imd_joinpoint <- read.delim("../Data/Joinpoint_Results/Riskfactor_by_IMD/joinpoint_rf_imd.Export.APC.txt", sep = "\t") 
@@ -464,6 +467,8 @@ data_cancer_plot_labels <- data_cancer_plot |>
     
     Rate = case_when(
       n() == 1 ~ Rate,
+      max(Rate) - min(Rate) < Rate_range/2 & Rate == min(Rate) & Rate == max(Rate) & sex == "Men" ~  Rate - (Rate_range/2 -  (max(Rate) - min(Rate)))/2,
+      max(Rate) - min(Rate) < Rate_range/2 & Rate == min(Rate) & Rate == max(Rate) & sex == "Women" ~  Rate + (Rate_range/2 -  (max(Rate) - min(Rate)))/2,
       max(Rate) - min(Rate) < Rate_range/2 & Rate == min(Rate) ~ Rate - (Rate_range/2 -  (max(Rate) - min(Rate)))/2,
       max(Rate) - min(Rate) < Rate_range/2 & Rate == max(Rate) ~ Rate + (Rate_range/2 -  (max(Rate) - min(Rate)))/2,
       TRUE ~ Rate
@@ -541,7 +546,7 @@ These APC trends were calculated using all of the data available (2001, 2019), t
 # Filter data to only the cancer sites that are increasing 
 data_cancer <- data_ALLcancer %>%
   filter(
-    cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "Multiple Myeloma", "Breast")
+    cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid")
   )
 
 # Merge joinpoint data into cancer data
@@ -598,6 +603,8 @@ data_cancer_plot_labels <- data_cancer_plot |>
     
     Rate = case_when(
       n() == 1 ~ Rate,
+      max(Rate) - min(Rate) < Rate_range/2 & Rate == min(Rate) & Rate == max(Rate) & sex == "Men" ~  Rate - (Rate_range/2 -  (max(Rate) - min(Rate)))/2,
+      max(Rate) - min(Rate) < Rate_range/2 & Rate == min(Rate) & Rate == max(Rate) & sex == "Women" ~  Rate + (Rate_range/2 -  (max(Rate) - min(Rate)))/2,
       max(Rate) - min(Rate) < Rate_range/2 & Rate == min(Rate) ~ Rate - (Rate_range/2 -  (max(Rate) - min(Rate)))/2,
       max(Rate) - min(Rate) < Rate_range/2 & Rate == max(Rate) ~ Rate + (Rate_range/2 -  (max(Rate) - min(Rate)))/2,
       TRUE ~ Rate
@@ -1431,7 +1438,7 @@ data_attr_cases <- merge(data_paf_long, data_cancer, by = c("sex", "year", "age_
     case_group = factor(case_group, level = c("non_attr_cases", "attr_cases"), labels = c("Non-Attributable", "Attributable")), 
     cases_count = ifelse(sex == "Men" & cancer_site == "Breast", 0, cases_count)
     
-  )
+  ) 
 
 
 # Make plots
@@ -2848,6 +2855,8 @@ childhoodbmi_2019PAFscenario_table
 ```
 
 #### Ultra Processed Food and Colorectal Cancer alternate RR scenarios
+
+I DONT THINK THAT THIS IS VALID/CAN BE USED - it is looking at individual prevalence of UPF consumption instead of looking at population prevalence. I therefore do not believe that these calculations have the right input numbers. 
 
 [Ultra-processed food consumption and indicators of obesity in the United Kingdom population (2008-2016)](https://pmc.ncbi.nlm.nih.gov/articles/PMC7194406/#ad93) published in 2020 looked at Ultra Processed Food (UPF) intake in the UK. From their calculated data, we can run the RR scenarios.
 
