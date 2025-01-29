@@ -467,6 +467,8 @@ data_cancer_plot_labels <- data_cancer_plot |>
     
     Rate = case_when(
       n() == 1 ~ Rate,
+      max(Rate) - min(Rate) < Rate_range/2 & Rate == min(Rate) & Rate == max(Rate) & sex == "Men" ~  Rate - (Rate_range/2 -  (max(Rate) - min(Rate)))/2,
+      max(Rate) - min(Rate) < Rate_range/2 & Rate == min(Rate) & Rate == max(Rate) & sex == "Women" ~  Rate + (Rate_range/2 -  (max(Rate) - min(Rate)))/2,
       max(Rate) - min(Rate) < Rate_range/2 & Rate == min(Rate) ~ Rate - (Rate_range/2 -  (max(Rate) - min(Rate)))/2,
       max(Rate) - min(Rate) < Rate_range/2 & Rate == max(Rate) ~ Rate + (Rate_range/2 -  (max(Rate) - min(Rate)))/2,
       TRUE ~ Rate
@@ -2853,6 +2855,8 @@ childhoodbmi_2019PAFscenario_table
 ```
 
 #### Ultra Processed Food and Colorectal Cancer alternate RR scenarios
+
+I DONT THINK THAT THIS IS VALID/CAN BE USED - it is looking at individual prevalence of UPF consumption instead of looking at population prevalence. I therefore do not believe that these calculations have the right input numbers. 
 
 [Ultra-processed food consumption and indicators of obesity in the United Kingdom population (2008-2016)](https://pmc.ncbi.nlm.nih.gov/articles/PMC7194406/#ad93) published in 2020 looked at Ultra Processed Food (UPF) intake in the UK. From their calculated data, we can run the RR scenarios.
 
