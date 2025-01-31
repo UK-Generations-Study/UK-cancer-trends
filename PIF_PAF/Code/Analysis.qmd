@@ -1826,6 +1826,60 @@ ggsave("../Output/Plots/Figure_3_Men.png", plot = data_attr_bar_MEN, bg = "white
 ggsave("../Output/Plots/Figure_3_Women.png", plot = data_attr_bar_WOMEN, bg = "white", height = 6, width = 10)
 ```
 
+## Figure 3c Alternate - PAF
+```{r}
+
+# Ordering cancer site by PAF
+data_attr_cases_bar_alt <- data_attr_cases_bar |>
+  arrange(desc(PAF)) |>
+  mutate(
+    
+    cancer_site = factor(cancer_site, levels = unique(cancer_site))
+    
+  ) |>
+  select(-case_group, -cases_count) |>
+  distinct()
+
+# PAF Plot
+data_attr_bar_paf <- ggplot(data_attr_cases_bar_alt, aes(x = cancer_site, y = PAF, fill = age_group)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  ) +
+  labs(
+    title = "PAFs in England 2019",
+    fill = "Age Group",
+    x = "Cancer Site"
+  )+
+  facet_wrap(~sex)
+  
+data_attr_bar_paf
+
+ggsave("../Output/Plots/Figure_3_PAF.png", plot = data_attr_bar_paf, bg = "white", height = 6, width = 10)
+
+# Cases Plot
+data_attr_bar_cases <- ggplot(data_attr_cases_bar_alt, aes(x = cancer_site, y = count, fill = age_group)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  ) +
+  labs(
+    title = "Cases in England 2019",
+    fill = "Age Group",
+    x = "Cancer Site",
+    y = "Cases"
+  )+
+  facet_wrap(~sex)
+  
+data_attr_bar_cases
+
+ggsave("../Output/Plots/Figure_3_Cases.png", plot = data_attr_bar_cases, bg = "white", height = 6, width = 10)
+
+
+```
+
 ## Figure 3d - Current PAFs (2019) - Table
 
 ```{r, fig.width=10, results = "asis"}
