@@ -1,0 +1,131 @@
+"age_group"	"sex"	"level"	"imd"	"variable"	"Model"
+All	Men	Heavy Drinker	1	"alcohol_amt"	0
+All	Men	Heavy Drinker	2	"alcohol_amt"	1
+All	Men	Heavy Drinker	3	"alcohol_amt"	0
+All	Men	Heavy Drinker	4	"alcohol_amt"	0
+All	Men	Heavy Drinker	5	"alcohol_amt"	0
+All	Women	Heavy Drinker	1	"alcohol_amt"	1
+All	Women	Heavy Drinker	2	"alcohol_amt"	0
+All	Women	Heavy Drinker	3	"alcohol_amt"	0
+All	Women	Heavy Drinker	4	"alcohol_amt"	0
+All	Women	Heavy Drinker	5	"alcohol_amt"	0
+All	Men	Light Drinker	1	"alcohol_amt"	1
+All	Men	Light Drinker	2	"alcohol_amt"	0
+All	Men	Light Drinker	3	"alcohol_amt"	0
+All	Men	Light Drinker	4	"alcohol_amt"	0
+All	Men	Light Drinker	5	"alcohol_amt"	0
+All	Women	Light Drinker	1	"alcohol_amt"	0
+All	Women	Light Drinker	2	"alcohol_amt"	1
+All	Women	Light Drinker	3	"alcohol_amt"	0
+All	Women	Light Drinker	4	"alcohol_amt"	0
+All	Women	Light Drinker	5	"alcohol_amt"	0
+All	Men	Moderate Drinker	1	"alcohol_amt"	1
+All	Men	Moderate Drinker	2	"alcohol_amt"	0
+All	Men	Moderate Drinker	3	"alcohol_amt"	0
+All	Men	Moderate Drinker	4	"alcohol_amt"	0
+All	Men	Moderate Drinker	5	"alcohol_amt"	0
+All	Women	Moderate Drinker	1	"alcohol_amt"	0
+All	Women	Moderate Drinker	2	"alcohol_amt"	1
+All	Women	Moderate Drinker	3	"alcohol_amt"	0
+All	Women	Moderate Drinker	4	"alcohol_amt"	0
+All	Women	Moderate Drinker	5	"alcohol_amt"	0
+All	Men	Non-Drinker	1	"alcohol_amt"	0
+All	Men	Non-Drinker	2	"alcohol_amt"	0
+All	Men	Non-Drinker	3	"alcohol_amt"	0
+All	Men	Non-Drinker	4	"alcohol_amt"	0
+All	Men	Non-Drinker	5	"alcohol_amt"	0
+All	Women	Non-Drinker	1	"alcohol_amt"	0
+All	Women	Non-Drinker	2	"alcohol_amt"	0
+All	Women	Non-Drinker	3	"alcohol_amt"	0
+All	Women	Non-Drinker	4	"alcohol_amt"	0
+All	Women	Non-Drinker	5	"alcohol_amt"	0
+All	Men	Healthy Weight	1	"bmi"	0
+All	Men	Healthy Weight	2	"bmi"	0
+All	Men	Healthy Weight	3	"bmi"	2
+All	Men	Healthy Weight	4	"bmi"	1
+All	Men	Healthy Weight	5	"bmi"	0
+All	Women	Healthy Weight	1	"bmi"	0
+All	Women	Healthy Weight	2	"bmi"	2
+All	Women	Healthy Weight	3	"bmi"	0
+All	Women	Healthy Weight	4	"bmi"	0
+All	Women	Healthy Weight	5	"bmi"	0
+All	Men	Obese	1	"bmi"	0
+All	Men	Obese	2	"bmi"	0
+All	Men	Obese	3	"bmi"	0
+All	Men	Obese	4	"bmi"	0
+All	Men	Obese	5	"bmi"	0
+All	Women	Obese	1	"bmi"	0
+All	Women	Obese	2	"bmi"	0
+All	Women	Obese	3	"bmi"	0
+All	Women	Obese	4	"bmi"	0
+All	Women	Obese	5	"bmi"	0
+All	Men	Overweight	1	"bmi"	0
+All	Men	Overweight	2	"bmi"	0
+All	Men	Overweight	3	"bmi"	0
+All	Men	Overweight	4	"bmi"	2
+All	Men	Overweight	5	"bmi"	0
+All	Women	Overweight	1	"bmi"	1
+All	Women	Overweight	2	"bmi"	0
+All	Women	Overweight	3	"bmi"	0
+All	Women	Overweight	4	"bmi"	0
+All	Women	Overweight	5	"bmi"	0
+All	Men	Underweight	1	"bmi"	0
+All	Men	Underweight	2	"bmi"	0
+All	Men	Underweight	3	"bmi"	0
+All	Men	Underweight	4	"bmi"	0
+All	Men	Underweight	5	"bmi"	0
+All	Women	Underweight	1	"bmi"	0
+All	Women	Underweight	2	"bmi"	0
+All	Women	Underweight	3	"bmi"	0
+All	Women	Underweight	4	"bmi"	0
+All	Women	Underweight	5	"bmi"	0
+All	Men	Below Recommendations	1	"physical_activity_old"	0
+All	Men	Below Recommendations	2	"physical_activity_old"	0
+All	Men	Below Recommendations	3	"physical_activity_old"	0
+All	Men	Below Recommendations	4	"physical_activity_old"	0
+All	Men	Below Recommendations	5	"physical_activity_old"	0
+All	Women	Below Recommendations	1	"physical_activity_old"	0
+All	Women	Below Recommendations	2	"physical_activity_old"	0
+All	Women	Below Recommendations	3	"physical_activity_old"	0
+All	Women	Below Recommendations	4	"physical_activity_old"	0
+All	Women	Below Recommendations	5	"physical_activity_old"	0
+All	Men	Meets Recommendations	1	"physical_activity_old"	0
+All	Men	Meets Recommendations	2	"physical_activity_old"	0
+All	Men	Meets Recommendations	3	"physical_activity_old"	0
+All	Men	Meets Recommendations	4	"physical_activity_old"	0
+All	Men	Meets Recommendations	5	"physical_activity_old"	0
+All	Women	Meets Recommendations	1	"physical_activity_old"	0
+All	Women	Meets Recommendations	2	"physical_activity_old"	0
+All	Women	Meets Recommendations	3	"physical_activity_old"	0
+All	Women	Meets Recommendations	4	"physical_activity_old"	0
+All	Women	Meets Recommendations	5	"physical_activity_old"	0
+All	Men	Current	1	"smoking_status"	0
+All	Men	Current	2	"smoking_status"	0
+All	Men	Current	3	"smoking_status"	1
+All	Men	Current	4	"smoking_status"	1
+All	Men	Current	5	"smoking_status"	0
+All	Women	Current	1	"smoking_status"	0
+All	Women	Current	2	"smoking_status"	0
+All	Women	Current	3	"smoking_status"	0
+All	Women	Current	4	"smoking_status"	0
+All	Women	Current	5	"smoking_status"	0
+All	Men	Never	1	"smoking_status"	1
+All	Men	Never	2	"smoking_status"	0
+All	Men	Never	3	"smoking_status"	0
+All	Men	Never	4	"smoking_status"	0
+All	Men	Never	5	"smoking_status"	0
+All	Women	Never	1	"smoking_status"	0
+All	Women	Never	2	"smoking_status"	0
+All	Women	Never	3	"smoking_status"	0
+All	Women	Never	4	"smoking_status"	0
+All	Women	Never	5	"smoking_status"	0
+All	Men	Previously	1	"smoking_status"	1
+All	Men	Previously	2	"smoking_status"	0
+All	Men	Previously	3	"smoking_status"	1
+All	Men	Previously	4	"smoking_status"	0
+All	Men	Previously	5	"smoking_status"	1
+All	Women	Previously	1	"smoking_status"	0
+All	Women	Previously	2	"smoking_status"	0
+All	Women	Previously	3	"smoking_status"	0
+All	Women	Previously	4	"smoking_status"	0
+All	Women	Previously	5	"smoking_status"	0

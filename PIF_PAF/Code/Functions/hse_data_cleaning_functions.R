@@ -16,10 +16,24 @@ check_year_spec <- function(year, year_spec){
   
 }
 
+### 2004 HSE WEIGHTING FIX FUNCTION
+fix_hse_2004_weighting <- function(data){
+  
+  data <- data |>
+    mutate(N = case_when(
+      year == 2004 ~ N/14.15683,
+      TRUE ~ N
+    ))
+  
+  return(data)
+  
+}
+
 
 ### AGE/SEX/WEIGHT VARIABLE GENERATION
+# activity_data_toggle is used for 2006 activity data which uses a different weighting variable than other variables in the 2004 HSE survey
 
-hse_base_variable_cleaning <- function(ukds_data_temp, var_dict, ukds_data_temp_year){
+hse_base_variable_cleaning <- function(ukds_data_temp, var_dict, ukds_data_temp_year, user_options, activity_data_toggle = F){
   
   # Initialise empty new dataframe
   ukds_data_output_temp <- as.data.frame(matrix(nrow = nrow(ukds_data_temp), ncol = 0))
@@ -48,7 +62,6 @@ hse_base_variable_cleaning <- function(ukds_data_temp, var_dict, ukds_data_temp_
         
         # For all in range, change new variable to level name
         ukds_data_output_temp[["age_group"]][between(as.numeric(ukds_data_temp[[dict_varname]]), min_cat, max_cat)] <- var_dict$age_group[[i]]$dict[[j]]
-        
       }
       
     }
@@ -56,8 +69,6 @@ hse_base_variable_cleaning <- function(ukds_data_temp, var_dict, ukds_data_temp_
   }
   # stop if no age_group variable documentation found
   if(!age_group_doc_found){stop(paste0("No age_group variable documentation found for ", ukds_data_temp_year))}
-  
-  
   
   ## Find and clean sex variable
   sex_doc_found <- F
@@ -87,7 +98,7 @@ hse_base_variable_cleaning <- function(ukds_data_temp, var_dict, ukds_data_temp_
   # stop if no sex variable documentation found
   if(!sex_doc_found){stop(paste0("No sex variable documentation found for ", ukds_data_temp_year))}
   
-  
+
   
   ## Find and clean weight variable
   weight_doc_found <- F
@@ -103,6 +114,11 @@ hse_base_variable_cleaning <- function(ukds_data_temp, var_dict, ukds_data_temp_
       # Intialise new variable
       ukds_data_output_temp[["weight"]] <- ukds_data_temp[[dict_varname]]
       
+      # Check for 2006 activity data - need to change weight variable
+      if(activity_data_toggle & ukds_data_temp_year == 2006){
+        ukds_data_output_temp[["weight"]] <- ukds_data_temp[["wt_int_s2"]]
+      }
+      
     }
     
   }
@@ -110,8 +126,38 @@ hse_base_variable_cleaning <- function(ukds_data_temp, var_dict, ukds_data_temp_
   if(!weight_doc_found){ukds_data_output_temp[["weight"]] <- 1}
   
   
+  ## Find and clean IMD variable if desired
+  if(user_options$imd_stratification){
+    
+    imd_doc_found <- F
+    for(i in 1:length(var_dict$imd)){
+      
+      # Check if imd specification is appropriate for the year specified
+      if(check_year_spec(year = ukds_data_temp_year, year_spec = names(var_dict$imd)[i])){
+        
+        imd_doc_found <- T
+        
+        dict_varname <- var_dict$imd[[i]]$varname
+        
+        # Intialise new variable
+        ukds_data_output_temp[["imd"]] <- ukds_data_temp[[dict_varname]]
+        
+      }
+      
+    }
+    
+    # Report if no IMD found
+    if(!imd_doc_found){
+      cat(paste0("No imd variable documentation found for ", ukds_data_temp_year, "\n"))
+      ukds_data_output_temp[["imd"]] <- "All"
+    }
+    
+  }
+  
+  
   ## Output current dataframe
   return(ukds_data_output_temp)
   
 
 }
+

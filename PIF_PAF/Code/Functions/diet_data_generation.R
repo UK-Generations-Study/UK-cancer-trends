@@ -23,7 +23,7 @@ suppressMessages(
 )
 
 ## Function
-diet_data_gen <- function(filepath){
+diet_data_gen <- function(filepath, user_options){
   
   ## Read in data dictionary
   ukds_dict <- read.csv(paste0(filepath, "/UKDS_Dictionary.csv"))
@@ -65,10 +65,17 @@ diet_data_gen <- function(filepath){
   ## General data cleaning
   diet_df <- diet_df |>
     filter(country == "England") |>
-    filter(age >= 20) |>
+    filter(age >= 20)
+  
+  # Apply age grouping based on user input
+  if(user_options$age_groups_indicator){
+    diet_df <- mutate(diet_df, age_group = if_else(age<50, "20-49", "50+"))
+  } else {
+    diet_df$age_group = "All"
+  }
+  
+  diet_df <- diet_df |>
     mutate(
-      
-      age_group = if_else(age < 50, "20-49", "50+"),
       
       year = surveyyear + 2007,
       
@@ -87,7 +94,7 @@ diet_data_gen <- function(filepath){
   ## Data cleaning by variable
   
   # Initialise empty df
-  diet_df_total <- data.frame(sex = character(0), age_group = character(0), year = numeric(0), level = character(0), value = numeric(0))
+  diet_df_total <- data.frame(sex = character(0), age_group = character(0), year = numeric(0), level = character(0), value = numeric(0), N = numeric(0))
   
   ## FIBRE
   diet_df_fibre <- diet_df |>
@@ -96,11 +103,13 @@ diet_data_gen <- function(filepath){
       fibre_cat = cut(aoac_fibre, breaks = c(seq(0,30), Inf), right = F)
       
     ) |>
-    group_by(sex, age_group, year) |>
+    group_by(sex, age_group, year) |>    
     mutate(total_weight = sum(weight)) |>
+
     ungroup() |>
     group_by(sex, age_group, year, fibre_cat) |>
-    summarise(value = sum(weight)/total_weight[1]) |>
+    summarise(value = sum(weight)/total_weight[1],
+              N = total_weight[1]) |>
     mutate(variable = "fibre_consumption") |>
     rename(level = fibre_cat)
   
@@ -118,7 +127,8 @@ diet_data_gen <- function(filepath){
     mutate(total_weight = sum(weight)) |>
     ungroup() |>
     group_by(sex, age_group, year, redmeat_cat) |>
-    summarise(value = sum(weight)/total_weight[1]) |>
+    summarise(value = sum(weight)/total_weight[1],
+              N = total_weight[1]) |>
     mutate(variable = "redmeat_consumption") |>
     rename(level = redmeat_cat)
   
@@ -136,14 +146,17 @@ diet_data_gen <- function(filepath){
     mutate(total_weight = sum(weight)) |>
     ungroup() |>
     group_by(sex, age_group, year, processed_cat) |>
-    summarise(value = sum(weight)/total_weight[1]) |>
+    summarise(value = sum(weight)/total_weight[1],
+              N = total_weight[1]) |>
     mutate(variable = "processed_meat_consumption") |>
     rename(level = processed_cat)
   
   diet_df_total <- rbind(diet_df_total, diet_df_processed)
   
-  ## DAIRY
-  # UNDER DEVELOPMENT
+  # Adding IMD variable if needed
+  if(user_options$imd_stratification){
+    diet_df_total$imd <- "All"
+  }
   
   ## Output df
   return(diet_df_total)

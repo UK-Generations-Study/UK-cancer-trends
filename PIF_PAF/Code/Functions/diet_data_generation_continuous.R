@@ -23,7 +23,7 @@ suppressMessages(
 )
 
 ## Function
-diet_data_gen_continuous <- function(filepath){
+diet_data_gen_continuous <- function(filepath, user_options){
   
   ## Read in data dictionary
   ukds_dict <- read.csv(paste0(filepath, "/UKDS_Dictionary.csv"))
@@ -65,10 +65,17 @@ diet_data_gen_continuous <- function(filepath){
   ## General data cleaning
   diet_df <- diet_df |>
     filter(country == "England") |>
-    filter(age >= 20) |>
+    filter(age >= 20)
+  
+  # Apply age grouping based on user input
+  if(user_options$age_groups_indicator){
+    diet_df <- mutate(diet_df, age_group = if_else(age<50, "20-49", "50+"))
+  } else {
+    diet_df$age_group = "All"
+  }
+  
+  diet_df <- diet_df |>
     mutate(
-      
-      age_group = if_else(age < 50, "20-49", "50+"),
       
       year = surveyyear + 2007,
       
@@ -87,14 +94,15 @@ diet_data_gen_continuous <- function(filepath){
   ## Data cleaning by variable
   
   # Initialise empty df
-  diet_df_total <- data.frame(sex = character(0), age_group = character(0), year = numeric(0), level = character(0), value = numeric(0))
+  diet_df_total <- data.frame(sex = character(0), age_group = character(0), year = numeric(0), level = character(0), value = numeric(0), N = numeric(0))
   
   ## FIBRE
   diet_df_fibre <- diet_df |>
     group_by(sex, age_group, year) |>
     summarise(
       
-      fibre = sum(aoac_fibre*weight)/sum(weight)
+      fibre = sum(aoac_fibre*weight)/sum(weight),
+      N = sum(weight)
       
     ) |>
     mutate(variable = "fibre_consumption_mean",
@@ -104,37 +112,69 @@ diet_data_gen_continuous <- function(filepath){
   diet_df_total <- rbind(diet_df_total, diet_df_fibre)
   
   ## RED MEAT
-  diet_df_redmeat <- diet_df |>
+
+  diet_df_redmeat_mean <- diet_df |>
     mutate(
-      
+
       redmeat_total =  beef + lamb + pork + entrails + other,
+      N = sum(weight)
 
     ) |>
     group_by(sex, age_group, year) |>
-    summarise(redmeat = sum(redmeat_total*weight)/sum(weight)) |>
+    summarise(redmeat = sum(redmeat_total*weight)/sum(weight),,
+              N = sum(weight)) |>
     mutate(variable = "redmeat_consumption_mean",
            level = "mean") |>
     rename(value = redmeat)
+
+  diet_df_redmeat <- diet_df |>
+    mutate(
+      redmeat_total = beef + lamb + pork + entrails + other, 
+      N = sum(weight)
+    ) |>
+    group_by(sex, age_group, year) |>
+    summarise(
+      redmeat_median = weightedMedian(redmeat_total, weight, na.rm = TRUE)
+    ) |>
+    mutate(variable = "redmeat_consumption_median",
+           level = "median") |>
+    rename(value = redmeat_median)
   
-  diet_df_total <- rbind(diet_df_total, diet_df_redmeat)
+  diet_df_total <- rbind(diet_df_total, diet_df_redmeat, diet_df_redmeat_mean)
   
   ## PROCESSED MEAT
-  diet_df_processed <- diet_df |>
+  
+  diet_df_processed_mean <- diet_df |>
     mutate(
-      
+
       processed_meat_total =  processed.redmeat + processed.poultry + burgers + sausages,
 
     ) |>
     group_by(sex, age_group, year) |>
-    summarise(processed_meat = sum(processed_meat_total*weight)/sum(weight)) |>
+    summarise(processed_meat = sum(processed_meat_total*weight)/sum(weight),
+              N = sum(weight)) |>
     mutate(variable = "processed_meat_consumption_mean",
            level = "mean") |>
     rename(value = processed_meat)
   
-  diet_df_total <- rbind(diet_df_total, diet_df_processed)
+  diet_df_processed <- diet_df |>
+    mutate(
+      processed_meat_total =  processed.redmeat + processed.poultry + burgers + sausages,
+    ) |>
+    group_by(sex, age_group, year) |>
+    summarise(
+      processedmeat_median = weightedMedian(processed_meat_total, weight, na.rm = TRUE)
+    ) |>
+    mutate(variable = "processedmeat_consumption_median",
+           level = "median") |>
+    rename(value = processedmeat_median)
   
-  ## DAIRY
-  # UNDER DEVELOPMENT
+  diet_df_total <- rbind(diet_df_total, diet_df_processed, diet_df_processed_mean)
+  
+  # Adding IMD variable if needed
+  if(user_options$imd_stratification){
+    diet_df_total$imd <- "All"
+  }
   
   ## Output df
   return(diet_df_total)

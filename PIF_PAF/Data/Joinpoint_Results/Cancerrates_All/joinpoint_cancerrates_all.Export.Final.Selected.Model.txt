@@ -1,0 +1,87 @@
+"sex"	"age_group"	"cancer_site"	"Model"
+Men	20-49	Bladder	0
+Men	20-49	Brain and CNS	0
+Men	20-49	Breast	0
+Men	20-49	Colorectum	0
+Men	20-49	Gallbladder	0
+Men	20-49	Hodgkin Lymphoma	0
+Men	20-49	Kidney	2
+Men	20-49	Larynx	0
+Men	20-49	Leukaemia	0
+Men	20-49	Liver	1
+Men	20-49	Lung	0
+Men	20-49	Melanoma	1
+Men	20-49	MultipleMyeloma	0
+Men	20-49	Non-Hodgkin Lymphoma	1
+Men	20-49	Oesophagus	0
+Men	20-49	Oral	1
+Men	20-49	Pancreas	0
+Men	20-49	Prostate	1
+Men	20-49	Stomach	0
+Men	20-49	Testis	0
+Men	20-49	Thyroid	1
+Men	50+	Bladder	2
+Men	50+	Brain and CNS	1
+Men	50+	Breast	0
+Men	50+	Colorectum	2
+Men	50+	Gallbladder	0
+Men	50+	Hodgkin Lymphoma	1
+Men	50+	Kidney	1
+Men	50+	Larynx	1
+Men	50+	Leukaemia	1
+Men	50+	Liver	1
+Men	50+	Lung	2
+Men	50+	Melanoma	2
+Men	50+	MultipleMyeloma	0
+Men	50+	Non-Hodgkin Lymphoma	1
+Men	50+	Oesophagus	1
+Men	50+	Oral	1
+Men	50+	Pancreas	0
+Men	50+	Prostate	0
+Men	50+	Stomach	0
+Men	50+	Testis	0
+Men	50+	Thyroid	1
+Women	20-49	Bladder	0
+Women	20-49	Brain and CNS	2
+Women	20-49	Breast	1
+Women	20-49	Cervix	0
+Women	20-49	Colorectum	0
+Women	20-49	Endometrium	1
+Women	20-49	Gallbladder	0
+Women	20-49	Hodgkin Lymphoma	0
+Women	20-49	Kidney	0
+Women	20-49	Larynx	0
+Women	20-49	Leukaemia	0
+Women	20-49	Liver	1
+Women	20-49	Lung	0
+Women	20-49	Melanoma	1
+Women	20-49	MultipleMyeloma	0
+Women	20-49	Non-Hodgkin Lymphoma	0
+Women	20-49	Oesophagus	0
+Women	20-49	Oral	2
+Women	20-49	Ovary	2
+Women	20-49	Pancreas	0
+Women	20-49	Stomach	0
+Women	20-49	Thyroid	1
+Women	50+	Bladder	1
+Women	50+	Brain and CNS	2
+Women	50+	Breast	1
+Women	50+	Cervix	1
+Women	50+	Colorectum	2
+Women	50+	Endometrium	1
+Women	50+	Gallbladder	0
+Women	50+	Hodgkin Lymphoma	1
+Women	50+	Kidney	1
+Women	50+	Larynx	0
+Women	50+	Leukaemia	1
+Women	50+	Liver	2
+Women	50+	Lung	1
+Women	50+	Melanoma	1
+Women	50+	MultipleMyeloma	0
+Women	50+	Non-Hodgkin Lymphoma	1
+Women	50+	Oesophagus	1
+Women	50+	Oral	1
+Women	50+	Ovary	0
+Women	50+	Pancreas	1
+Women	50+	Stomach	1
+Women	50+	Thyroid	1

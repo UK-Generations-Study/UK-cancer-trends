@@ -8,7 +8,26 @@ editor:
 ## Packages
 ```{r}
 
+library(matrixStats)
 library(dplyr)
+
+```
+
+## Options
+```{r}
+# Initialise options list
+user_options <- list()
+
+# Whether to use age groups or just group as 'All'
+#   False - all age groups 
+#   True - Split the ages 20-49, 50+
+user_options$age_groups_indicator <- F
+
+# Whether to further stratify by IMD
+#   False - not split by IMD 
+#   True - Split by IMD
+user_options$imd_stratification  <- F
+
 
 ```
 
@@ -35,6 +54,8 @@ if(Sys.getenv("RSTUDIO") == '1' & !knitr::is_html_output()) { # If using Rstudio
 source("Functions/hse_data_cleaning_functions.R")
 source("Functions/alcohol_data_generation.R")
 source("Functions/bmi_data_generation.R")
+source("Functions/physical_activity_old_data_generation.R")
+source("Functions/physical_activity_data_generation.R")
 source("Functions/diet_data_generation.R")
 source("Functions/diet_data_generation_continuous.R")
 source("Functions/diet_data_generation_cat_mean.R")
@@ -45,7 +66,12 @@ source("Functions/smoking_data_generation.R")
 ## Initialising empty dataset
 ```{r}
 
-rf_df <- data.frame(variable = numeric(0), year = numeric(0), age_group = character(0), sex = character(0), level = character(0), value = numeric(0))
+rf_df <- data.frame(variable = numeric(0), year = numeric(0), age_group = character(0), sex = character(0), level = character(0), value = numeric(0), N = numeric(0))
+
+# If desired - add IMD column
+if(user_options$imd_stratification){
+  rf_df$imd <- character(0)
+}
 
 ```
 
@@ -54,7 +80,8 @@ rf_df <- data.frame(variable = numeric(0), year = numeric(0), age_group = charac
 ### HSE - Alcohol
 ```{r}
 
-alcohol_df <- alcohol_data_gen(filepath = "../../../Data")
+alcohol_df <- alcohol_data_gen(filepath = "../../../Data", user_options) |>
+  fix_hse_2004_weighting()
 rf_df <- rbind(rf_df, alcohol_df)
 
 ```
@@ -62,7 +89,8 @@ rf_df <- rbind(rf_df, alcohol_df)
 ### HSE - BMI
 ```{r}
 
-bmi_df <- bmi_data_gen(filepath = "../../../Data")
+bmi_df <- bmi_data_gen(filepath = "../../../Data", user_options) |>
+  fix_hse_2004_weighting()
 rf_df <- rbind(rf_df, bmi_df)
 
 ```
@@ -70,8 +98,28 @@ rf_df <- rbind(rf_df, bmi_df)
 ### HSE - Smoking
 ```{r}
 
-smoking_df <- smoking_data_gen(filepath = "../../../Data")
+smoking_df <- smoking_data_gen(filepath = "../../../Data", user_options) |>
+  fix_hse_2004_weighting()
 rf_df <- rbind(rf_df, smoking_df)
+
+```
+### HSE - Physical Activity (Old)
+```{r}
+
+activity_old_df <- physical_activity_old_data_gen(filepath = "../../../Data", user_options) |>
+  fix_hse_2004_weighting()
+
+rf_df <- rbind(rf_df, activity_old_df)
+
+```
+
+### HSE - Physical Activity
+```{r}
+
+activity_df <- physical_activity_data_gen(filepath = "../../../Data", user_options) |>
+  fix_hse_2004_weighting()
+
+rf_df <- rbind(rf_df, activity_df)
 
 ```
 
@@ -91,21 +139,18 @@ ghs_data <- ghs_data |>
     
     age = as.numeric(age),
     
-    drating = round(as.numeric(drating)),
+    drating = as.numeric(drating),
     
     weight05 = as.numeric(weight05)
      
   ) |>
   filter(drating >= 0) |>
   filter(age >= 20) |>
+  # filter(age >= 16) |>
   filter(country == 1) |>
   mutate(
     
     sex = if_else(sex == 1, "Men", "Women"),
-    
-    age_group = if_else(age<50, "20-49", "50+"),
-    # age_group = cut(as.numeric(age), breaks = c(16, 25, 45, 65, Inf), right = F),
-    # age_group = "All",
 
     alcohol_cat = case_when(
       drating == 0 ~ "Non-Drinker",
@@ -114,19 +159,29 @@ ghs_data <- ghs_data |>
       TRUE ~ "Heavy Drinker")
     
     # alcohol_cat = case_when(
-    #   round(drating, digits = 0) > 50 ~ "HEAVY",
-    #   TRUE ~ "LIGHT"
+    #   round(drating, digits = 0) == 0 ~ "NON-DRINKER",
+    #   TRUE ~ "DRINKER"
     # )
     
-  ) |>
+  )
+
+# Apply age grouping based on user input
+if(user_options$age_groups_indicator){
+  ghs_data <- mutate(ghs_data, age_group = if_else(age<50, "20-49", "50+"))
+} else {
+  ghs_data$age_group = "All"
+}
+
+ghs_data <- ghs_data |>
   group_by(sex, age_group) |>
-  mutate(total_weight = sum(weight05), 
+  mutate(total_weight = sum(weight05)/744.0531, 
          # total_weight_adj = sum(weight05)/744.0531, 
          # total = n()
          ) |>
   ungroup() |>
   group_by(sex, age_group, alcohol_cat) |>
-  summarise(value = sum(weight05)/total_weight[1],
+  summarise(value = sum(weight05/744.0531)/total_weight[1],
+            N = total_weight[1],
             # total_weight_adj = total_weight_adj[1],
             # total = total[1]
             ) |>
@@ -134,7 +189,10 @@ ghs_data <- ghs_data |>
          year = 2005) |>
   rename(level = alcohol_cat)
 
-ghs_data
+# No IMD data so append "All" if needed
+if(user_options$imd_stratification){
+  ghs_data$imd <- "All"
+}
 
 # Add to data
 rf_df <- rbind(rf_df, ghs_data)
@@ -146,7 +204,7 @@ rf_df <- rbind(rf_df, ghs_data)
 ### NDNS
 ```{r}
 
-diet_df <- diet_data_gen(filepath = "../../../Data")
+diet_df <- diet_data_gen(filepath = "../../../Data", user_options)
 rf_df <- rbind(rf_df, diet_df)
 
 ```
@@ -154,7 +212,7 @@ rf_df <- rbind(rf_df, diet_df)
 ### NDNS - Averages
 ```{r}
 
-diet_df_cnt <- diet_data_gen_continuous(filepath = "../../../Data")
+diet_df_cnt <- diet_data_gen_continuous(filepath = "../../../Data", user_options)
 rf_df <- rbind(rf_df, diet_df_cnt)
 
 ```
@@ -162,7 +220,7 @@ rf_df <- rbind(rf_df, diet_df_cnt)
 ### NDNS - Category Means
 ```{r}
 
-diet_df_cat_mean <- diet_data_gen_cat_mean(filepath = "../../../Data")
+diet_df_cat_mean <- diet_data_gen_cat_mean(filepath = "../../../Data", user_options)
 rf_df <- rbind(rf_df, diet_df_cat_mean)
 
 ```
@@ -170,7 +228,7 @@ rf_df <- rbind(rf_df, diet_df_cat_mean)
 ### Output data
 ```{r}
 
-write.csv(rf_df, file = "../../../Data/Cleaned_Data/clean_rf_data.csv", row.names = F)
+write.csv(rf_df, file = paste0("../../../Data/Cleaned_Data/clean_rf_data", if_else(!user_options$age_groups_indicator, "_age_all", ""), if_else(user_options$imd_stratification, "_imd", ""), ".csv"), row.names = F)
 
 ```
 

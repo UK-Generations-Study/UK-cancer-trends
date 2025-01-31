@@ -1,0 +1,53 @@
+"age_group"	"sex"	"level"	"variable"	"Model"
+20-49	Men	Heavy Drinker	"alcohol_amt"	0
+50+	Men	Heavy Drinker	"alcohol_amt"	0
+20-49	Women	Heavy Drinker	"alcohol_amt"	0
+50+	Women	Heavy Drinker	"alcohol_amt"	1
+20-49	Men	Light Drinker	"alcohol_amt"	0
+50+	Men	Light Drinker	"alcohol_amt"	0
+20-49	Women	Light Drinker	"alcohol_amt"	0
+50+	Women	Light Drinker	"alcohol_amt"	1
+20-49	Men	Moderate Drinker	"alcohol_amt"	0
+50+	Men	Moderate Drinker	"alcohol_amt"	0
+20-49	Women	Moderate Drinker	"alcohol_amt"	0
+50+	Women	Moderate Drinker	"alcohol_amt"	1
+20-49	Men	Non-Drinker	"alcohol_amt"	0
+50+	Men	Non-Drinker	"alcohol_amt"	0
+20-49	Women	Non-Drinker	"alcohol_amt"	0
+50+	Women	Non-Drinker	"alcohol_amt"	0
+20-49	Men	Healthy Weight	"bmi"	1
+50+	Men	Healthy Weight	"bmi"	1
+20-49	Women	Healthy Weight	"bmi"	0
+50+	Women	Healthy Weight	"bmi"	2
+20-49	Men	Obese	"bmi"	1
+50+	Men	Obese	"bmi"	1
+20-49	Women	Obese	"bmi"	1
+50+	Women	Obese	"bmi"	1
+20-49	Men	Overweight	"bmi"	0
+50+	Men	Overweight	"bmi"	0
+20-49	Women	Overweight	"bmi"	0
+50+	Women	Overweight	"bmi"	0
+20-49	Men	Underweight	"bmi"	0
+50+	Men	Underweight	"bmi"	0
+20-49	Women	Underweight	"bmi"	0
+50+	Women	Underweight	"bmi"	0
+20-49	Men	Below Recommendations	"physical_activity_old"	0
+50+	Men	Below Recommendations	"physical_activity_old"	0
+20-49	Women	Below Recommendations	"physical_activity_old"	0
+50+	Women	Below Recommendations	"physical_activity_old"	0
+20-49	Men	Meets Recommendations	"physical_activity_old"	0
+50+	Men	Meets Recommendations	"physical_activity_old"	0
+20-49	Women	Meets Recommendations	"physical_activity_old"	0
+50+	Women	Meets Recommendations	"physical_activity_old"	0
+20-49	Men	Current	"smoking_status"	0
+50+	Men	Current	"smoking_status"	0
+20-49	Women	Current	"smoking_status"	1
+50+	Women	Current	"smoking_status"	0
+20-49	Men	Never	"smoking_status"	0
+50+	Men	Never	"smoking_status"	0
+20-49	Women	Never	"smoking_status"	0
+50+	Women	Never	"smoking_status"	0
+20-49	Men	Previously	"smoking_status"	2
+50+	Men	Previously	"smoking_status"	0
+20-49	Women	Previously	"smoking_status"	2
+50+	Women	Previously	"smoking_status"	0
