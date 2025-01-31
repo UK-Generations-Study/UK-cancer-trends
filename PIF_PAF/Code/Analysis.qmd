@@ -255,6 +255,8 @@ data_rf_imd <- read.csv("../../../Data/Cleaned_Data/clean_rf_data_age_all_imd.cs
 #Read in all cancer incidence data 
 data_ALLcancer <- read.csv("../Data/all_incidence_joinpoint.csv") |>
   filter(!(sex == "Men" & cancer_site == "Breast"))
+data_ALLcancer_age_group <- read.csv("../Data/all_incidence_age_group_joinpoint.csv") |>
+  filter(!(sex == "Men" & cancer_site == "Breast"))
 
 # Read in childhood BMI data 
 data_childhood_bmi <- suppressMessages(read_excel("../Data/HSE-2022-Overweight-and-obesity-tables.xlsx", sheet = "Table 16"))
@@ -270,6 +272,11 @@ data_childhood_bmi <- suppressMessages(read_excel("../Data/HSE-2022-Overweight-a
 data_joinpoint <- read.delim("../Data/Joinpoint_Results/Cancerrates_All/joinpoint_cancerrates_all.Export.APC.txt", sep = "\t") |>
   filter(!(sex == "Men" & cancer_site == "Breast"))
 data_joinpoint_AAPC <- read.delim("../Data/Joinpoint_Results/Cancerrates_All/joinpoint_cancerrates_all.Export.AAPC.txt", sep = "\t") |>
+  filter(!(sex == "Men" & cancer_site == "Breast"))
+#   Cancer Incidence - Age Group
+data_joinpoint_age_group <- read.delim("../Data/Joinpoint_Results/Cancerrates_All_Age_Group/jp_cancerrates_all_age_group.Export.APC.txt", sep = "\t") |>
+  filter(!(sex == "Men" & cancer_site == "Breast"))
+data_joinpoint_AAPC_age_group <- read.delim("../Data/Joinpoint_Results/Cancerrates_All_Age_Group/jp_cancerrates_all_age_group.Export.AAPC.txt", sep = "\t") |>
   filter(!(sex == "Men" & cancer_site == "Breast"))
 #   Risk Factors
 rfdata_joinpoint <- read.delim("../Data/Joinpoint_Results/Riskfactor/joinpoint_rf.Export.APC.txt", sep = "\t")
@@ -420,7 +427,7 @@ pif_plot
 data_cancer_plot <- merge(data_ALLcancer, data_joinpoint_AAPC, by = c("sex", "age_group", "cancer_site"), all.x = T) |>
   mutate(
     
-    last_segment = between(year, Start.Obs , End.Obs),
+    # last_segment = between(year, Start.Obs , End.Obs),
     
     AAPC_clean = paste0(round(AAPC, digits = 2), if_else(Statistically.Significant..0.No..1.Yes. == 1, "*", ""))
     
@@ -432,16 +439,16 @@ data_cancer_plot <- merge(data_ALLcancer, data_joinpoint_AAPC, by = c("sex", "ag
     
   )
 
-# Need to get rows at join and duplicate with alternate last_segment
-data_cancer_plot_new_rows <- data_cancer_plot |>
-  group_by(sex, age_group, cancer_site) |>
-  filter(last_segment) |>
-  filter(year == min(year)) |>
-  mutate(last_segment = F) |>
-  ungroup()
-
-# Now add back in
-data_cancer_plot <- rbind(data_cancer_plot, data_cancer_plot_new_rows)
+# # Need to get rows at join and duplicate with alternate last_segment
+# data_cancer_plot_new_rows <- data_cancer_plot |>
+#   group_by(sex, age_group, cancer_site) |>
+#   filter(last_segment) |>
+#   filter(year == min(year)) |>
+#   mutate(last_segment = F) |>
+#   ungroup()
+# 
+# # Now add back in
+# data_cancer_plot <- rbind(data_cancer_plot, data_cancer_plot_new_rows)
 
 # Now create labels
 data_cancer_plot_labels <- data_cancer_plot |>
@@ -450,7 +457,7 @@ data_cancer_plot_labels <- data_cancer_plot |>
     Rate_range = max(Rate) - min(Rate)
   ) |>
   group_by(sex, age_group, cancer_site) |>
-  filter(last_segment) |>
+  # filter(last_segment) |>
   filter(year == max(year)) |>
   reframe(
     
@@ -505,7 +512,7 @@ for (group in age_groups) {
     xlim(2001, 2021.5) +
     geom_point() +
     geom_point(data = data_invisible, alpha = 0) +
-    geom_line(aes(linetype = last_segment)) +
+    geom_line() +
     geom_label(data = data_label %>% filter(age_group == group),
                aes(label = AAPC_clean), fill = "white", size = 3, show.legend = F) +
     theme_minimal() +
@@ -522,7 +529,7 @@ for (group in age_groups) {
     xlab("Year") +
     labs(colour = "Sex", fill = "Sex") +
     ggtitle(paste("Trends in Cancer Incidence in England -", group)) +
-    labs(subtitle = "Labels show AAPC for most recent trend, * indicates a significant trend") +
+    labs(subtitle = "Labels show AAPC for total trend, * indicates a significant trend") +
     facet_wrap(~cancer_site, scales = "free_y", ncol = 2) 
   
   # Add the plot to the list
@@ -533,6 +540,222 @@ for (group in age_groups) {
 for (group in age_groups) {
   print(plots[[group]]) # Print each plot individually
 }
+```
+
+## All Cancer AAPC - Forest Plot
+```{r}
+
+# Loop through sexes
+for(s in unique(data_joinpoint_AAPC$sex)){
+  
+  # Get order of cancer sites
+  data_jp_aapc_order <- data_joinpoint_AAPC |>
+    mutate(
+      
+      cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site),
+
+    ) |>
+    filter(sex == s) |>
+    filter(age_group == "20-49") |>
+    arrange(desc(AAPC))
+  
+  # Create forest plot
+  plot <- data_joinpoint_AAPC |>
+    mutate(
+      
+      cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site),
+      P.Value = if_else(P.Value < 0.001, "<0.001", as.character(round(P.Value, digits = 3))),
+      cancer_site = factor(cancer_site, levels = data_jp_aapc_order$cancer_site),
+      age_group = factor(age_group, levels = c("20-49", "50+"))
+
+    ) |>
+    filter(sex == s) |>
+    group_by(cancer_site) |>
+    arrange(desc(age_group)) |>
+    mutate(`P Value <50` = P.Value[2],
+           `P Value >=50` = P.Value[1]) |>
+    ungroup() |>
+    group_by(age_group) |>
+    arrange(cancer_site) |>
+    mutate(cancer_site = as.character(cancer_site)) |>
+    select(
+      `Age Group` = age_group,
+      `Cancer Site` = cancer_site,
+      AAPC.C.I..Low,
+      AAPC.C.I..High,
+      AAPC,
+      `P Value <50`,
+      `P Value >=50`
+    ) |>
+    forestplot(
+      labeltext = c(`Cancer Site`, `P Value <50`, `P Value >=50`),
+      boxsize = 0.4,
+      mean = AAPC,
+      lower = AAPC.C.I..Low,
+      upper = AAPC.C.I..High,
+      xlab = "AAPC",
+      title = paste0("AAPC Values - ", s),
+      line.margin = 0.2
+    ) |>
+    fp_set_style(box = "black",
+                 line = "black") |>
+    fp_add_header(
+                  `Cancer Site` = c("", ""),
+                  `P Value <50` = c("P Value", "20-49"),
+                  `P Value >=50` = c("P Value", "50+")) |>
+    fp_decorate_graph(graph.pos = 2) |>
+    fp_set_zebra_style("#EFEFEF") |>
+    fp_set_style(box = c("red", "blue") |> lapply(function(x) gpar(fill = x, col = "#555555")),
+                 default = gpar(vertices = TRUE),
+                 line = "grey20",
+                 summary =  "black",
+                 # align = "lrrrrr",
+                 hrz_lines =  "#999999",
+                 txt_gp = fpTxtGp(label = gpar(cex = 0.8)))
+  
+  # Find appropriate height for plot based on number of rows
+  rows <- length(plot$labels$`Cancer Site`)
+  
+  # Print plot
+  print(plot)
+  
+  # Save plot
+  pdf(file=paste0("../Output/Plots/Figure_0-", s, ".pdf"), width = 15, height = (2/5)*(3 + rows))
+  print(plot)
+  dev.off()
+
+}
+
+
+
+```
+
+## All Cancer AAPC - Smaller Age Groups
+
+Splitting into smaller age groups. NOTE: a full line indicates JP analysis has not been produced as the data contains 0s.
+
+```{r, fig.height=6, fig.width=10, warning=F}
+
+data_cancer_plot <- merge(data_ALLcancer_age_group, data_joinpoint_AAPC_age_group, by = c("sex", "age_group", "cancer_site"), all.x = T) |>
+  mutate(
+    
+    last_segment = between(year, Start.Obs , End.Obs),
+    
+    AAPC_clean = paste0(round(AAPC, digits = 2), if_else(Statistically.Significant..0.No..1.Yes. == 1, "*", ""))
+    
+  ) |>
+  # Fix Multiple Myeloma
+  mutate(
+    
+    cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site)
+    
+  )
+
+# Need to get rows at join and duplicate with alternate last_segment
+data_cancer_plot_new_rows <- data_cancer_plot |>
+  group_by(sex, age_group, cancer_site) |>
+  filter(last_segment) |>
+  filter(year == min(year)) |>
+  mutate(last_segment = F) |>
+  ungroup()
+
+# Now add back in
+data_cancer_plot <- rbind(data_cancer_plot, data_cancer_plot_new_rows)
+
+# Now make FALSE for NA values - JP did not run when 0's were included
+data_cancer_plot <- data_cancer_plot |>
+  mutate(last_segment = if_else(is.na(last_segment), F, last_segment))
+
+# Now create labels
+data_cancer_plot_labels <- data_cancer_plot |>
+  group_by(age_group, cancer_site) |>
+  mutate(
+    Rate_range = max(Rate) - min(Rate)
+  ) |>
+  group_by(sex, age_group, cancer_site) |>
+  filter(last_segment) |>
+  filter(year == max(year)) |>
+  reframe(
+
+    year = max(year) + 1.8,
+    Rate = max(Rate),
+    Rate_range = Rate_range[1],
+    AAPC_clean = AAPC_clean[1]
+
+  ) |>
+  distinct() |>
+  # Now attempting to do manual repelling of plots away from each other
+  group_by(age_group, cancer_site) |>
+  mutate(
+    
+    Rate = case_when(
+      n() == 1 ~ Rate,
+      max(Rate) - min(Rate) < Rate_range/2 & Rate == min(Rate) & Rate == max(Rate) & sex == "Men" ~  Rate - (Rate_range/2 -  (max(Rate) - min(Rate)))/2,
+      max(Rate) - min(Rate) < Rate_range/2 & Rate == min(Rate) & Rate == max(Rate) & sex == "Women" ~  Rate + (Rate_range/2 -  (max(Rate) - min(Rate)))/2,
+      max(Rate) - min(Rate) < Rate_range/2 & Rate == min(Rate) ~ Rate - (Rate_range/2 -  (max(Rate) - min(Rate)))/2,
+      max(Rate) - min(Rate) < Rate_range/2 & Rate == max(Rate) ~ Rate + (Rate_range/2 -  (max(Rate) - min(Rate)))/2,
+      TRUE ~ Rate
+    )
+    
+  )
+
+# Create invisible points to expand y limits
+data_cancer_invisible_points <- data_cancer_plot |>
+  group_by(sex, age_group, cancer_site) |>
+  summarise(
+
+    year = 2001,
+    Rate = max(Rate) + (max(Rate) - min(Rate))/2
+
+  )
+
+# Create an empty list to store the plots
+plots <- list()
+
+# Loop through each age group and geneRate a plot
+for (site in unique(data_cancer_plot$cancer_site)) {
+  # Filter data for the current age group
+  data_subset <- data_cancer_plot %>% filter(cancer_site == site)
+  data_invisible <- data_cancer_invisible_points %>% filter(cancer_site == site)
+  data_label <- data_cancer_plot_labels %>% filter(cancer_site == site)
+  
+  # GeneRate the plot for the current subset
+  plot <- ggplot(data_subset, aes(x = year, y = Rate, fill = sex, colour = sex)) +
+    xlim(2001, 2021.5) +
+    geom_point() +
+    geom_point(data = data_invisible, alpha = 0) +
+    geom_line(aes(linetype = last_segment)) +
+    geom_label(data = data_label,
+               aes(label = AAPC_clean), fill = "white", size = 3, show.legend = F) +
+    theme_minimal() +
+    geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
+              colour = "black", fill = NA, inherit.aes = FALSE) +
+    theme(strip.text = element_text(face = "bold"), 
+          axis.text.x = element_text(angle = 45, hjust = 1),
+          panel.spacing = unit(2, "lines")) + 
+    scale_x_continuous(
+      breaks = seq(2000, 2019, by = 2),  # Define the x-axis breaks
+      limits = c(2000, 2021)
+    ) +
+    ylab("Age Standardized Rates") +
+    xlab("Year") +
+    labs(colour = "Sex", fill = "Sex", linetype = "JP Completed") +
+    ggtitle(paste("Trends in Cancer Incidence in England -", site)) +
+    labs(subtitle = "Labels show AAPC for total trend, * indicates a significant trend") +
+    facet_wrap(~age_group, scales = "free_y", ncol = 2) 
+  
+  # Add the plot to the list
+  plots[[site]] <- plot
+}
+
+# Display each plot sepaRately
+for (s in unique(data_cancer_plot$cancer_site)) {
+  print(plots[[s]]) # Print each plot individually
+  ggsave(plots[[s]], filename = paste0("../Output/Plots/Figure_1_age_group_", s,".png"), bg = "white", height = 16, width = 10)
+}
+
+
+
 ```
 
 ## Figure 1a - Trends in cancer incidence
@@ -861,7 +1084,7 @@ bmitrends <- ggplot(rf_trend_plot %>% filter(variable == "bmi"), aes(x = year, y
           axis.text.x = element_text(angle = 45, hjust = 1))
 
 #Smoking 
-smokingtrends <- ggplot(rf_trend_plot %>% filter(variable == "smoking_status"), aes(x = year, y = value, color = level)) +
+smokingtrends <- ggplot(rf_trend_plot %>% filter(variable == "smoking_status") |> mutate(level = if_else(level == "Previously", "Former", level)), aes(x = year, y = value, color = level)) +
   geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
   geom_line(aes(linetype = last_segment)) +
   geom_point(data = rf_trend_plot_invisible_points, alpha = 0) +
@@ -883,7 +1106,7 @@ smokingtrends <- ggplot(rf_trend_plot %>% filter(variable == "smoking_status"), 
   scale_color_manual( #fixing the colors 
     values = c(
       "Current" = "#2b9eb3",  
-      "Previously" = "#f8333c", 
+      "Former" = "#f8333c", 
       "Never" = "#fcab10"
     )
   ) +
@@ -1045,6 +1268,8 @@ rf_table <- rfdata_joinpoint_last %>%
     exposure = str_replace(exposure, "_women", ""), 
     exposure = str_replace(exposure, "_men", ""),
     
+    exposure = if_else(exposure == "Previously" & variable == "smoking_status", "Former", exposure),
+    
     variable = case_when(
       variable == "redmeat_consumption_median" ~ "Red Meat Consumption",
       variable == "smoking_status" ~ "Smoking Status",
@@ -1194,6 +1419,7 @@ rf_imd_trend_plot <- rf_imd_trend_plot |>
 for(var in unique(paste0(rf_imd_trend_plot$variable, "-", rf_imd_trend_plot$level))){
   
   variable_clean <- case_when(
+    var == "smoking_status-Previously" ~ "smoking_status-Former",
     var == "Meets physical_activity" ~ "Meets PA Guidelines (NEW)",
     var == "Meets PhysicalActivity" ~ "Meets PA Guidelines",
     var == "Below physical_activity" ~ "Below PA Guidelines (NEW)",
