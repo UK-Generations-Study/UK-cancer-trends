@@ -630,6 +630,40 @@ for(s in unique(data_joinpoint_AAPC$sex)){
 
 ```
 
+## All cancer AAPC for under 50 - Table
+```{r}
+
+data_joinpoint_AAPC_gt <- data_joinpoint_AAPC |>
+  filter(age_group == "20-49") |>
+  filter(AAPC > 0) |>
+  arrange(P.Value) |>
+  mutate(
+    
+    AAPC = paste0(round(AAPC, 2), " (", round(AAPC.C.I..Low, 2), ", ", round(AAPC.C.I..High, 2), ")"),
+    P.Value = if_else(P.Value < 0.001, "<0.001", as.character(round(P.Value, 3)))
+    
+  ) |>
+  select(
+    `Cancer Site` = cancer_site,
+    Sex = sex,
+    AAPC,
+    `P Value` = P.Value
+  ) |>
+  gt() |>
+  tab_header("AAPC Trends in England", subtitle = "Increasing trends in <50 age group from 2001-2019") |>
+  tab_style(
+    style = list(
+      cell_text(weight = "bold")
+    ),
+    locations = cells_column_labels()
+  )
+
+data_joinpoint_AAPC_gt
+
+gtsave(data_joinpoint_AAPC_gt, "../Output/Plots/Figure_1-Cancer_Selection.pdf")
+
+```
+
 ## All Cancer AAPC - Smaller Age Groups
 
 Splitting into smaller age groups. NOTE: a full line indicates JP analysis has not been produced as the data contains 0s.
@@ -751,7 +785,7 @@ for (site in unique(data_cancer_plot$cancer_site)) {
 # Display each plot sepaRately
 for (s in unique(data_cancer_plot$cancer_site)) {
   print(plots[[s]]) # Print each plot individually
-  ggsave(plots[[s]], filename = paste0("../Output/Plots/Figure_1_age_group_", s,".png"), bg = "white", height = 16, width = 10)
+  ggsave(plots[[s]], filename = paste0("../Output/Plots/Figure_1_age_group_", s,".png"), bg = "white", height = 6, width = 10)
 }
 
 
