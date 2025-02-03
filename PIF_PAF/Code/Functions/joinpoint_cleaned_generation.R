@@ -22,6 +22,21 @@ joinpoint_diet <- data_rf %>%
     variable, level, sex, age_group, year
   )
 
+# Diet data - Fibre Guidelines
+joinpoint_diet_fibre_guidelines <- data_rf %>%
+  filter(
+    variable %in% c("fibre_consumption")
+  ) %>%
+  filter(
+    level == "[30,Inf)"
+  ) |>
+  mutate(
+    level = "Meets Guidelines"
+  ) |>
+  arrange(
+    variable, level, sex, age_group, year
+  )
+
 # risk factor IMD data 
 joinpoint_imd <- data_rf_imd %>% 
   filter(
@@ -42,6 +57,7 @@ joinpoint_cancer <- data_ALLcancer %>%
 
 # Saving the cleaned datasets 
 write.csv(joinpoint_diet, "../../../Data/Joinpoint_Cleaned_Data/joinpoint_rfdiet.csv", row.names = F ) 
+write.csv(joinpoint_diet_fibre_guidelines, "../../../Data/Joinpoint_Cleaned_Data/joinpoint_rfdiet_fibre_guidelines.csv", row.names = F ) 
 write.csv(joinpoint, ("../../../Data/Joinpoint_Cleaned_Data/joinpoint_rf.csv"), row.names = F )
 write.csv(joinpoint_imd, ("../../../Data/Joinpoint_Cleaned_Data/joinpoint_rf_imd.csv"), row.names = F )
 write.csv(joinpoint_cancer, ("../../../Data/Joinpoint_Cleaned_Data/joinpoint_cancerrates.csv"), row.names = F )
