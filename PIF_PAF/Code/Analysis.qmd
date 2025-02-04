@@ -2685,6 +2685,96 @@ gtsave(data_pif_gt_future, "../Output/Plots/Figure_6-PIF_Future.html")
 
 ```
 
+## Figure 6d - PIF (BMI only)
+```{r}
+
+# Rederiving the PIFs so this code block can stand more independently
+data_pif_bmi <- PIF |>
+  mutate(
+    
+    variable = case_when(
+      variable == "ProcessedMeat" ~ "Processed Meat",
+      variable == "RedMeat" ~ "Red Meat",
+      variable == "physical_activity_old" ~ "Physical Activity",
+      TRUE ~ variable
+    )
+    
+  ) |>
+  filter(variable == "BMI") |>
+  pivot_longer(cols = c("PIF_past", "PIF_future")) |>
+  arrange(desc(name), sex, age_group) |>
+  mutate(
+    
+    value = case_when(
+      is.na(value) ~ "-",
+      value < 0 ~ "NA",
+      TRUE ~ as.character(round(100*value, 2))
+    ),
+    
+    group = paste0(name, "-", sex, "-", age_group)
+    
+  ) |>
+  pivot_wider(names_from = group, id_cols = cancer_site)
+
+data_pif_bmi_gt <- data_pif_bmi |>
+  filter(cancer_site != "Oral") |>
+  mutate(cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site)) |>
+  gt() |>
+  tab_spanner(
+    id = "Past Men",
+    label = md("*Men*"),
+    columns = starts_with("PIF_past-Men")
+  ) |>
+  tab_spanner(
+    id = "Future Men",
+    label = md("*Men*"),
+    columns = starts_with("PIF_future-Men")
+  ) |>
+  tab_spanner(
+    id = "Past Women",
+    label = md("*Women*"),
+    columns = starts_with("PIF_past-Women")
+  ) |>
+  tab_spanner(
+    id = "Future Women",
+    label = md("*Women*"),
+    columns = starts_with("PIF_future-Women")
+  ) |>
+  tab_spanner(
+    label = md("*2005 - 2019*"),
+    columns = starts_with("PIF_past")
+  ) |>
+  tab_spanner(
+    label = md("*2019 - 2029*"),
+    columns = starts_with("PIF_future")
+  ) |>
+  cols_label(
+    cancer_site ~ "Cancer Site",
+    ends_with("20-49") ~ "20-49",
+    ends_with("50+") ~ "50+"
+  ) |>
+  tab_style(
+    style = list(
+      cell_text(weight = "bold")
+    ),
+    locations = cells_column_labels()
+  ) |>
+  cols_width(
+    matches("PIF") ~ px(120)
+  ) |>
+  cols_align(
+    columns = matches("PIF"),
+    align =  "center"
+  ) |>
+  tab_header("PIF Values for BMI*")
+
+data_pif_bmi_gt
+
+gtsave(data_pif_gt_future, "../Output/Plots/Figure_6-PIF_BMI.html")
+
+
+```
+
 ## Historical Risk Factor Trends
 
 ### Childhood BMI
