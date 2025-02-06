@@ -72,7 +72,9 @@ pif_calculation <- function(dataframe) {
       
       PIF_past = if_else(PIF_component[1] == 1 | PIF_component[2] == 1, NA, (PIF_component[2] - PIF_component[1])/PIF_component[2]),
       
-      PIF_future = if_else(PIF_component[2] == 1 | PIF_component[3] == 1, NA, (PIF_component[3] - PIF_component[2])/PIF_component[3])
+      PIF_future = if_else(PIF_component[2] == 1 | PIF_component[3] == 1, NA, (PIF_component[3] - PIF_component[2])/PIF_component[3]),
+      
+      PIF_past_future = if_else(PIF_component[1] == 1 | PIF_component[3] == 1, NA, (PIF_component[3] - PIF_component[1])/PIF_component[3]),
       
     )
   
