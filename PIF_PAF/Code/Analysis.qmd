@@ -276,7 +276,7 @@ data_joinpoint_AAPC <- read.delim("../Data/Joinpoint_Results/Cancerrates_All/joi
 #   Cancer Incidence - Age Group
 data_joinpoint_age_group <- read.delim("../Data/Joinpoint_Results/Cancerrates_All_Age_Group/jp_cancerrates_all_age_group.Export.APC.txt", sep = "\t") |>
   filter(!(sex == "Men" & cancer_site == "Breast"))
-data_joinpoint_AAPC_age_group <- read.delim("../Data/Joinpoint_Results/Cancerrates_All_Age_Group/jp_cancerrates_all_age_group.Export.AAPC.txt", sep = "\t") |>
+data_joinpoint_APC_age_group <- read.delim("../Data/Joinpoint_Results/Cancerrates_All_Age_Group/jp_cancerrates_all_age_group.Export.APC.txt", sep = "\t") |>
   filter(!(sex == "Men" & cancer_site == "Breast"))
 #   Risk Factors
 rfdata_joinpoint <- read.delim("../Data/Joinpoint_Results/Riskfactor/joinpoint_rf.Export.APC.txt", sep = "\t")
@@ -671,12 +671,17 @@ Splitting into smaller age groups. NOTE: a full line indicates JP analysis has n
 
 ```{r, fig.height=6, fig.width=10, warning=F}
 
-data_cancer_plot <- merge(data_ALLcancer_age_group, data_joinpoint_AAPC_age_group, by = c("sex", "age_group", "cancer_site"), all.x = T) |>
+
+# Merge joinpoint data into cancer data
+data_joinpoint_age_group_last <- data_joinpoint_APC_age_group |>
+  filter(Model == Segment)
+
+data_cancer_plot_age_group <- merge(data_ALLcancer_age_group, data_joinpoint_age_group_last, by = c("sex", "age_group", "cancer_site"), all.x = T) |>
   mutate(
     
-    last_segment = between(year, Start.Obs , End.Obs),
+    last_segment = between(year, Segment.Start, Segment.End),
     
-    AAPC_clean = paste0(round(AAPC, digits = 2), if_else(Statistically.Significant..0.No..1.Yes. == 1, "*", ""))
+    APC_clean = paste0(round(APC, digits = 2), if_else(APC.Significant == 1, "*", ""))
     
   ) |>
   # Fix Multiple Myeloma
@@ -687,7 +692,7 @@ data_cancer_plot <- merge(data_ALLcancer_age_group, data_joinpoint_AAPC_age_grou
   )
 
 # Need to get rows at join and duplicate with alternate last_segment
-data_cancer_plot_new_rows <- data_cancer_plot |>
+data_cancer_plot_age_group_new_rows <- data_cancer_plot_age_group |>
   group_by(sex, age_group, cancer_site) |>
   filter(last_segment) |>
   filter(year == min(year)) |>
@@ -695,14 +700,14 @@ data_cancer_plot_new_rows <- data_cancer_plot |>
   ungroup()
 
 # Now add back in
-data_cancer_plot <- rbind(data_cancer_plot, data_cancer_plot_new_rows)
+data_cancer_plot_age_group <- rbind(data_cancer_plot_age_group, data_cancer_plot_age_group_new_rows)
 
 # Now make FALSE for NA values - JP did not run when 0's were included
-data_cancer_plot <- data_cancer_plot |>
+data_cancer_plot_age_group <- data_cancer_plot_age_group |>
   mutate(last_segment = if_else(is.na(last_segment), F, last_segment))
 
 # Now create labels
-data_cancer_plot_labels <- data_cancer_plot |>
+data_cancer_plot_age_group_labels <- data_cancer_plot_age_group |>
   group_by(age_group, cancer_site) |>
   mutate(
     Rate_range = max(Rate) - min(Rate)
@@ -711,12 +716,12 @@ data_cancer_plot_labels <- data_cancer_plot |>
   filter(last_segment) |>
   filter(year == max(year)) |>
   reframe(
-
+    
     year = max(year) + 1.8,
     Rate = max(Rate),
     Rate_range = Rate_range[1],
-    AAPC_clean = AAPC_clean[1]
-
+    APC_clean = APC_clean[1]
+    
   ) |>
   distinct() |>
   # Now attempting to do manual repelling of plots away from each other
@@ -735,7 +740,7 @@ data_cancer_plot_labels <- data_cancer_plot |>
   )
 
 # Create invisible points to expand y limits
-data_cancer_invisible_points <- data_cancer_plot |>
+data_cancer_age_group_invisible_points <- data_cancer_plot_age_group |>
   group_by(sex, age_group, cancer_site) |>
   summarise(
 
@@ -748,11 +753,11 @@ data_cancer_invisible_points <- data_cancer_plot |>
 plots <- list()
 
 # Loop through each age group and geneRate a plot
-for (site in unique(data_cancer_plot$cancer_site)) {
+for (site in unique(data_cancer_plot_age_group$cancer_site)) {
   # Filter data for the current age group
-  data_subset <- data_cancer_plot %>% filter(cancer_site == site)
-  data_invisible <- data_cancer_invisible_points %>% filter(cancer_site == site)
-  data_label <- data_cancer_plot_labels %>% filter(cancer_site == site)
+  data_subset <- data_cancer_plot_age_group %>% filter(cancer_site == site)
+  data_invisible <- data_cancer_age_group_invisible_points %>% filter(cancer_site == site)
+  data_label <- data_cancer_plot_age_group_labels %>% filter(cancer_site == site)
   
   # GeneRate the plot for the current subset
   plot <- ggplot(data_subset, aes(x = year, y = Rate, fill = sex, colour = sex)) +
@@ -761,7 +766,7 @@ for (site in unique(data_cancer_plot$cancer_site)) {
     geom_point(data = data_invisible, alpha = 0) +
     geom_line(aes(linetype = last_segment)) +
     geom_label(data = data_label,
-               aes(label = AAPC_clean), fill = "white", size = 3, show.legend = F) +
+               aes(label = APC_clean), fill = "white", size = 3, show.legend = F) +
     theme_minimal() +
     geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
               colour = "black", fill = NA, inherit.aes = FALSE) +
@@ -774,9 +779,9 @@ for (site in unique(data_cancer_plot$cancer_site)) {
     ) +
     ylab("Age Standardized Rates") +
     xlab("Year") +
-    labs(colour = "Sex", fill = "Sex", linetype = "JP Completed") +
+    labs(colour = "Sex", fill = "Sex", linetype = "Last Join") +
     ggtitle(paste("Trends in Cancer Incidence in England -", site)) +
-    labs(subtitle = "Labels show AAPC for total trend, * indicates a significant trend") +
+    labs(subtitle = "Labels show APC for most recent trend, * indicates a significant trend") +
     facet_wrap(~age_group, scales = "free_y", ncol = 2) 
   
   # Add the plot to the list
@@ -784,11 +789,10 @@ for (site in unique(data_cancer_plot$cancer_site)) {
 }
 
 # Display each plot sepaRately
-for (s in unique(data_cancer_plot$cancer_site)) {
+for (s in unique(data_cancer_plot_age_group$cancer_site)) {
   print(plots[[s]]) # Print each plot individually
   ggsave(plots[[s]], filename = paste0("../Output/Plots/Figure_1_age_group_", s,".png"), bg = "white", height = 6, width = 10)
 }
-
 
 
 ```
@@ -1585,12 +1589,14 @@ plot_year_summary <- data_years_all |>
   pivot_longer(cols = c("start", "end")) |>
   ggplot(aes(x = value, y = variable, alpha = name, fill = cancer_indicator)) +
   geom_col() +
+  geom_segment(x = 14, xend = 14, y = -Inf, yend = 7.5, linetype ="dashed") +
   scale_alpha_manual(values = c("start" = 0, "end" = 1)) +
   scale_x_continuous(breaks = seq(0, 25, 5), labels = seq(1995, 2020, 5)) +
   theme_minimal() +
   labs(
     
     title = "Year Ranges for Data",
+    subtitle = "Dashed line represents year used to calculate 2019 PAFs",
     x = "Year",
     y = "Variable"
 
@@ -2507,7 +2513,7 @@ data_pifallages_past <- PIF_allages |>
     )
     
   ) |>
-  select(-PIF_past, -PIF_future) |>
+  select(-PIF_past, -PIF_future, -PIF_past_future) |>
   pivot_wider(names_from = cancer_site, values_from = PIF) |>
   group_by(sex) |>
   gt() |>
@@ -2578,7 +2584,7 @@ data_pif_gt_past <- PIF |>
     )
     
   ) |>
-  select(-PIF_past, -PIF_future) |>
+  select(-PIF_past, -PIF_future, -PIF_past_future) |>
   pivot_wider(names_from = cancer_site, values_from = PIF) |>
   group_by(sex, age_group) |>
   gt() |>
@@ -2644,7 +2650,7 @@ data_pif_gt_future <- PIF |>
     )
     
   ) |>
-  select(-PIF_past, -PIF_future) |>
+  select(-PIF_past, -PIF_future, -PIF_past_future) |>
   pivot_wider(names_from = cancer_site, values_from = PIF) |>
   group_by(sex, age_group) |>
   gt() |>
@@ -2685,11 +2691,79 @@ gtsave(data_pif_gt_future, "../Output/Plots/Figure_6-PIF_Future.html")
 
 ```
 
-## Figure 6d - PIF (BMI only)
+## Figure 6d - PIF (Past - Future)
+
+```{r,warning=F}
+
+data_pif_gt_future <- PIF |>
+  mutate(
+    
+    variable = case_when(
+      variable == "ProcessedMeat" ~ "Processed Meat",
+      variable == "RedMeat" ~ "Red Meat",
+      variable == "physical_activity_old" ~ "Physical Activity",
+      TRUE ~ variable
+    ),
+    
+    
+    PIF = 100*round(PIF_past_future, digits = 3),
+    
+    # PIF = if_else(is.na(PIF), "-", as.character(PIF))
+    
+    PIF = case_when(
+      is.na(PIF) ~ "",
+      PIF<0 ~ "-",
+      TRUE ~ as.character(PIF)
+    )
+    
+  ) |>
+  select(-PIF_past, -PIF_future, -PIF_past_future) |>
+  pivot_wider(names_from = cancer_site, values_from = PIF) |>
+  group_by(sex, age_group) |>
+  gt() |>
+  cols_label(
+    variable = "",
+    MultipleMyeloma = "Multiple Myeloma"
+  ) |>
+  cols_align(
+    align = "center",
+    columns = -variable
+  ) |>
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = list(
+      cells_column_labels()
+    )
+  ) |>
+  tab_style(
+    style = list(
+      cell_text(weight = "bold"),
+      cell_fill(color = "lightgray"),
+      cell_borders(sides = "top"),
+      cell_borders(sides = "bottom")
+    ),
+    locations = cells_row_groups(groups = everything())
+  ) |>
+  cols_width(
+    variable ~ px(200)
+  ) |>
+  tab_header("PIF Values from Past to Future*") |>
+  tab_footnote("*Furthest back datapoint available up to furthest forward datapoint available")
+
+
+data_pif_gt_future
+
+gtsave(data_pif_gt_future, "../Output/Plots/Figure_6-PIF_Past_Future.html")
+  
+
+```
+
+## Figure 6e - PIF (BMI only)
 ```{r}
 
 # Rederiving the PIFs so this code block can stand more independently
 data_pif_bmi <- PIF |>
+  select(-PIF_past_future) |>
   mutate(
     
     variable = case_when(
@@ -3020,11 +3094,55 @@ According to the ONS page on [Adult smoking habits in the UK 2023](https://www.o
 
 ![](images/clipboard-2519776453.png)
 
+![](images/inc_asr_gb_smoking_prev_i19.png)
+
 ### Alcohol
 
-### Red and Processed Meat
+![](images/total-alcohol-consumption-per-capita-litres-of-pure-alcohol.png)
 
-Cannot find a good source.
+
+### Red and Processed Meat
+```{r}
+
+data_food_trends <- readODS::read_ods("../Data/UKHHcons_17Oct24.ods", sheet = "Household_quantity")
+
+colnames(data_food_trends) <- data_food_trends[4,]
+
+# Selecting only carcas meat section for simplicity
+data_food_trends <- data_food_trends[39,]
+
+# Get index of first year, last year and filter data to that
+first_year <- which(colnames(data_food_trends) == "1974")
+last_year <- which(colnames(data_food_trends) == "202223")
+
+data_food_trends <- data_food_trends[,first_year:last_year] |>
+  mutate(across(where(is.character), as.numeric)) |>
+  pivot_longer(cols = everything(), names_to = "Year")  |>
+  mutate(
+    
+    Year = case_when(
+      grepl("\\-", Year) ~ gsub("\\-.*", "", Year),
+      nchar(Year) == 6 ~ paste0(substr(Year, 1, 2), substr(Year, 5, 6)),
+      TRUE ~ Year
+    ),
+    
+    Year = as.numeric(Year)
+    
+  )
+
+plot <- ggplot(data_food_trends, aes(x = Year, y = value)) +
+  geom_point() +
+  geom_line() +
+  theme_minimal() +
+  labs(
+    title = "Carcass Meat Consumption UK",
+    y = "Carcass Meat Purchased (g/week)"
+  )
+
+plot
+
+```
+
 
 ## Risk Factors by Deprivation
 
@@ -3045,6 +3163,8 @@ According to the ONS 2021 report on[Deprivation and Smoking Prevalence](https://
 Additionally, the report claims that between 2017 and 2021, smoking prevalence decreased across all deprivation levels in England. In the most deprived neighborhoods,current smoking prevalence dropped statistically significantly from 26.2% in 2017 to 23.8% in 2021. In England's least deprived neighborhoods, current smoking prevalence dropped from 7.6% to 6.8% across the same time period.
 
 ![](images/clipboard-2503227074.png)
+
+
 
 ### Alcohol
 
@@ -3221,6 +3341,21 @@ This figure is from [Health Survey England](https://files.digital.nhs.uk/23/6B5D
 According to the HSE 2019 report on [Overweight and Obesity in adult and child](https://files.digital.nhs.uk/9D/4195D5/HSE19-Overweight-obesity-rep.pdf), the mean height in 2019 was 175.5cm in men and 161.7cm in women.
 
 Over the course of the survey from 1993-2019, the mean height increased by a bit more than 1cm in men and 0.5cm in women.
+
+# Screening Trends
+
+#### Breast
+![](images/trend-chart-breast-screening.png)
+
+#### Colorectal
+![](images/trend-chart-bowel-screening.png)
+
+
+#### Cervical
+![](images/trend-chart-cervical-25-49.png)
+
+![](images/trend-chart-cervical-50-64.png)
+
 
 ## RR Scenarios
 
