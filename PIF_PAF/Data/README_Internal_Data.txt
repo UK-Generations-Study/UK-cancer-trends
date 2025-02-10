@@ -8,11 +8,6 @@ paf_comparison.csv
 incidence_data_clean.csv 
 ***
 
-***
-UNREGISTERED DATASETS
-all_incidence_joinpoint.csv 
-***
-
 This README is designed to describe the internal data sources being used for this project.
 As many of them are UKDS-based, that data is stored externally from this GitHub repo.
 Each internal one is described here as read in from the code, including a URL, date of access and description.
