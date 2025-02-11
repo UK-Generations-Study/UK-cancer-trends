@@ -214,7 +214,7 @@ library(dplyr)
 library(readxl)
 library(ggrepel)
 library(patchwork)
-
+library(scales)
 
 ```
 
@@ -517,7 +517,7 @@ for (group in age_groups) {
     geom_label(data = data_label %>% filter(age_group == group),
                aes(label = AAPC_clean), fill = "white", size = 3, show.legend = F) +
     theme_minimal() +
-    geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
+    geom_rect(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
               colour = "black", fill = NA, inherit.aes = FALSE) +
     theme(strip.text = element_text(face = "bold"), 
           axis.text.x = element_text(angle = 45, hjust = 1),
@@ -597,7 +597,7 @@ for(s in unique(data_joinpoint_AAPC$sex)){
       xlab = "AAPC",
       title = paste0("AAPC Values - ", s),
       line.margin = 0.2,
-      legend = c("20-49", "50+")
+      legend = c("50+", "20-49")
     ) |>
     fp_set_style(box = "black",
                  line = "black") |>
@@ -607,7 +607,7 @@ for(s in unique(data_joinpoint_AAPC$sex)){
                   `P Value >=50` = c("P Value", "50+")) |>
     fp_decorate_graph(graph.pos = 2) |>
     fp_set_zebra_style("#EFEFEF") |>
-    fp_set_style(box = c("#ff9500", "#38b000") |> lapply(function(x) gpar(fill = x, col = "#555555")),
+    fp_set_style(box = c("#38b000", "#ff9500") |> lapply(function(x) gpar(fill = x, col = "#555555")),
                  default = gpar(vertices = TRUE),
                  line = "grey20",
                  summary =  "black",
@@ -769,7 +769,7 @@ for (site in unique(data_cancer_plot_age_group$cancer_site)) {
     geom_label(data = data_label,
                aes(label = APC_clean), fill = "white", size = 3, show.legend = F) +
     theme_minimal() +
-    geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
+    geom_rect(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
               colour = "black", fill = NA, inherit.aes = FALSE) +
     theme(strip.text = element_text(face = "bold"), 
           axis.text.x = element_text(angle = 45, hjust = 1),
@@ -894,7 +894,7 @@ ggplot(data_cancer_plot, aes(x = year, y = Rate, fill = sex, colour = sex)) +
   geom_label(data = data_cancer_plot_labels, aes(label = APC_clean),
              fill = "white", size = 3, show.legend = F) +
   theme_minimal() +
-  geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
+  geom_rect(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
             colour = "black", fill = NA, inherit.aes = FALSE) +
   theme(strip.text = element_text(face = "bold"), 
           axis.text.x = element_text(angle = 45, hjust = 1)) +
@@ -965,7 +965,7 @@ apc_table
 
 This risk factor APC were calculated in Joinpoint software. Overall takeaway is that only obesity and light alcohol consumption are increasing over time. All the other risk factors are decreasing.
 
-```{r}
+```{r, fig.height=6, fig.width=8, warning=F}
 
 # Make a complete risk factor dataset 
 rfdata_joinpoint_complete <- rbind(rfdata_joinpoint,dietrfdata_joinpoint) |>
@@ -1079,7 +1079,7 @@ alcoholtrends <- ggplot(rf_trend_plot %>% filter(variable == "alcohol_amt"), aes
   guides(
     linetype = "none"
   ) +
-  geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
+  geom_rect(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
               colour = "black", fill = NA, inherit.aes = FALSE) +
     theme(strip.text = element_text(face = "bold"), 
           axis.text.x = element_text(angle = 45, hjust = 1))
@@ -1125,7 +1125,7 @@ bmitrends <- ggplot(rf_trend_plot %>% filter(variable == "bmi") |> filter(level 
   guides(
     linetype = "none"
   ) +
-  geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
+  geom_rect(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
               colour = "black", fill = NA, inherit.aes = FALSE) +
     theme(strip.text = element_text(face = "bold"), 
           axis.text.x = element_text(angle = 45, hjust = 1))
@@ -1169,7 +1169,7 @@ smokingtrends <- ggplot(rf_trend_plot %>% filter(variable == "smoking_status") |
   guides(
     linetype = "none"
   ) +
-  geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
+  geom_rect(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
               colour = "black", fill = NA, inherit.aes = FALSE) +
     theme(strip.text = element_text(face = "bold"), 
           axis.text.x = element_text(angle = 45, hjust = 1))
@@ -1212,7 +1212,7 @@ PAtrends <- ggplot(rf_trend_plot %>% filter(variable %in% c("physical_activity",
   guides(
     linetype = "none"
   ) +
-  geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
+  geom_rect(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
               colour = "black", fill = NA, inherit.aes = FALSE) +
     theme(strip.text = element_text(face = "bold"), 
           axis.text.x = element_text(angle = 45, hjust = 1))
@@ -1257,7 +1257,7 @@ diettrends <- ggplot(rf_trend_plot %>% filter(variable %in% c("redmeat_consumpti
   guides(
     linetype = "none"
   ) +
-  geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
+  geom_rect(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
               colour = "black", fill = NA, inherit.aes = FALSE) +
     theme(strip.text = element_text(face = "bold"), 
           axis.text.x = element_text(angle = 45, hjust = 1))
@@ -1296,7 +1296,7 @@ diettrends_fibre <- ggplot(rf_trend_plot %>% filter(variable == "fibre_consumpti
   guides(
     linetype = "none"
   ) +
-  geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
+  geom_rect(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
               colour = "black", fill = NA, inherit.aes = FALSE) +
     theme(strip.text = element_text(face = "bold"), 
           axis.text.x = element_text(angle = 45, hjust = 1))
@@ -1312,33 +1312,33 @@ print(diettrends_fibre)
 ggsave(alcoholtrends, 
        filename = "../Output/Plots/Figure_2-Alcohol.png", 
        bg = "white", 
-       height = 16, 
-       width = 10)
+       height = 6, 
+       width = 8)
 ggsave(PAtrends, 
        filename = "../Output/Plots/Figure_2-PhysicalActivity.png", 
        bg = "white", 
-       height = 16, 
-       width = 10)
+       height = 6, 
+       width = 8)
 ggsave(bmitrends, 
        filename = "../Output/Plots/Figure_2-BMI.png", 
        bg = "white", 
-       height = 16, 
-       width = 10)
+       height = 6, 
+       width = 8)
 ggsave(smokingtrends, 
        filename = "../Output/Plots/Figure_2-Smoking.png", 
        bg = "white", 
-       height = 16, 
-       width = 10)
+       height = 6, 
+       width = 8)
 ggsave(diettrends, 
        filename = "../Output/Plots/Figure_2-Diet.png", 
        bg = "white", 
-       height = 16, 
-       width = 10)
+       height = 6, 
+       width = 8)
 ggsave(diettrends_fibre, 
        filename = "../Output/Plots/Figure_2-DietFibre.png", 
        bg = "white", 
-       height = 16, 
-       width = 10)
+       height = 6, 
+       width = 8)
 ```
 
 \*Fibre is daily fibre deficiency based on the UK recommendation of consuming 30g/day
@@ -1527,6 +1527,13 @@ rf_imd_trend_plot <- rf_imd_trend_plot |>
   filter(
     imd != "All",
     level != "Underweight"
+  ) |>
+  mutate(
+    imd = case_when(
+      imd == 1 ~  "1 (least deprived)",
+      imd == 5 ~ "5 (most deprived)",
+      TRUE ~ imd
+    )
   )
 
 # Create a list of unique variables
@@ -1579,7 +1586,7 @@ for(var in unique(paste0(rf_imd_trend_plot$variable, "-", rf_imd_trend_plot$leve
   
   print(plot) 
   
-  ggsave(filename = paste0("../Output/Plots/Figure2IMDplot_", var, ".png"), plot = plot, width = 8, height = 6)
+  ggsave(filename = paste0("../Output/Plots/Figure2IMDplot_", var, ".png"), plot = plot, width = 8, height = 6, bg = "white")
 }
 
 ```
@@ -1859,7 +1866,7 @@ for(site in unique(data_attr_cases$cancer_site)){
   plot <- ggplot(data_attr_cases |> filter(cancer_site == site) |> filter(year %in% c(2019)), aes(x = as.character(year), y = cases_count, fill = case_group)) +
     geom_bar(position="stack", stat="identity", colour = "black") +
     theme_minimal() +
-    geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
+    geom_rect(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
               colour = "black", fill = NA, inherit.aes = FALSE) +
     theme(strip.text = element_text(face = "bold")) +
     ylab("Cases") +
@@ -2008,7 +2015,7 @@ data_attr_bar_paf <- ggplot(data_attr_cases_bar_alt, aes(x = cancer_site, y = PA
     fill = "Age Group",
     x = "Cancer Site"
   )+
-  geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
+  geom_rect(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
             colour = "black", fill = NA, inherit.aes = FALSE) +
   theme(strip.text = element_text(face = "bold")) +
   facet_wrap(~sex)
@@ -2878,11 +2885,147 @@ data_pif_bmi_gt <- data_pif_bmi |>
     columns = matches("PIF"),
     align =  "center"
   ) |>
-  tab_header("PIF Values for BMI*")
+  tab_header("PIF Values for BMI")
 
 data_pif_bmi_gt
 
-gtsave(data_pif_gt_future, "../Output/Plots/Figure_6-PIF_BMI.html")
+gtsave(data_pif_bmi_gt, "../Output/Plots/Figure_6-PIF_BMI.html")
+
+
+```
+
+## Figure 6f - PIF (BMI only) HEATMAP
+```{r}
+
+# Rederiving the PIFs so this code block can stand more independently
+data_pif_bmi <- PIF |>
+  select(-PIF_past_future) |>
+  mutate(
+    
+    variable = case_when(
+      variable == "ProcessedMeat" ~ "Processed Meat",
+      variable == "RedMeat" ~ "Red Meat",
+      variable == "physical_activity_old" ~ "Physical Activity",
+      TRUE ~ variable
+    )
+    
+  ) |>
+  filter(variable == "BMI") |>
+  pivot_longer(cols = c("PIF_past", "PIF_future")) |>
+  arrange(desc(name), sex, age_group) |>
+  mutate(
+    
+    # value = case_when(
+    #   is.na(value) ~ "-",
+    #   value < 0 ~ "NA",
+    #   TRUE ~ as.character(round(100*value, 2))
+    # ),
+    
+    value = case_when(
+      is.na(value) ~ -999, # Special error code so we can handle it specially
+      value < 0 ~ NA,
+      TRUE ~ round(100*value, digits = 2)
+    ),
+    
+    group = paste0(name, "-", sex, "-", age_group)
+    
+  ) |>
+  pivot_wider(names_from = group, id_cols = cancer_site)
+
+data_pif_bmi_gt <- data_pif_bmi |>
+  filter(cancer_site != "Oral") |>
+  mutate(cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site)) |>
+  gt() |>
+  tab_spanner(
+    id = "Past Men",
+    label = md("*Men*"),
+    columns = starts_with("PIF_past-Men")
+  ) |>
+  tab_spanner(
+    id = "Future Men",
+    label = md("*Men*"),
+    columns = starts_with("PIF_future-Men")
+  ) |>
+  tab_spanner(
+    id = "Past Women",
+    label = md("*Women*"),
+    columns = starts_with("PIF_past-Women")
+  ) |>
+  tab_spanner(
+    id = "Future Women",
+    label = md("*Women*"),
+    columns = starts_with("PIF_future-Women")
+  ) |>
+  tab_spanner(
+    label = md("*Cancer Incidence: 2005 - 2019*"),
+    columns = starts_with("PIF_past")
+  ) |>
+  tab_spanner(
+    label = md("*Cancer Incidence: 2019 - 2029*"),
+    columns = starts_with("PIF_future")
+  ) |>
+  cols_label(
+    cancer_site ~ "Cancer Site",
+    ends_with("20-49") ~ "20-49",
+    ends_with("50+") ~ "50+"
+  ) |>
+  tab_style(
+    style = list(
+      cell_text(weight = "bold")
+    ),
+    locations = cells_column_labels()
+  ) |>
+  cols_width(
+    matches("PIF") ~ px(120)
+  ) |>
+  cols_align(
+    columns = matches("PIF"),
+    align =  "center"
+  ) |>
+  data_color(
+    columns = names(data_pif_bmi)[-1],
+    colors = scales::col_numeric(
+      palette = c("white", "red"),
+      domain = c(0, max(as.numeric(unlist(data_pif_bmi[,-1])), na.rm = TRUE))
+    ),
+    apply_to = "fill"  
+  ) |>
+  fmt(
+    columns = names(data_pif_bmi)[-1],
+    rows = cancer_site %in% c("Breast", "Endometrium"),
+    fns = function(x){if_else(x == -999, "-", as.character(x))}
+  ) |>
+  # tab_style(
+  #   style = cell_fill(color = "white"),  # Keep "-" cells white
+  #   locations = cells_body(
+  #     columns =  names(data_pif_bmi)[-1]
+  #   )
+  # ) |>
+  tab_header("PIF Values for BMI")
+
+
+# Loop through columns making sure that "-" gets a white background
+for(col in names(data_pif_bmi[-1])){
+  data_pif_bmi_gt <- data_pif_bmi_gt |>
+    tab_style(
+      style = cell_fill(color = "white"),
+      locations = cells_body(
+        columns = !!sym(col),  
+        rows = !!sym(col) == -999 
+      )
+    ) |>
+    tab_style(
+      style = cell_text(color = "black"),
+      locations = cells_body(
+        columns = !!sym(col),  
+        rows = !!sym(col) == -999 
+      )
+    )
+}
+
+data_pif_bmi_gt
+
+gtsave(data_pif_bmi_gt, "../Output/Plots/Figure_6-PIF_BMI_Heatmap.html")
 
 
 ```
@@ -2948,7 +3091,7 @@ ggplot(data_childhood_bmi |> filter(level != "Overweight including obese") |> fi
   geom_line() +
   geom_point() +
   theme_minimal() +
-  geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
+  geom_rect(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
             colour = "black", fill = NA, inherit.aes = FALSE) +
   theme(strip.text = element_text(face = "bold")) +
   ylab("Percentage (%)") +
@@ -3059,7 +3202,7 @@ ggplot(data_childhoodbmi_plot, aes(x = year, y = value, fill = level, colour = l
   ) +
   theme_minimal() +
   ylim(0,30)+
-  geom_rect(aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
+  geom_rect(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
             colour = "black", fill = NA, inherit.aes = FALSE) +
   theme(strip.text = element_text(face = "bold"), 
           axis.text.x = element_text(angle = 45, hjust = 1)) +
@@ -3388,7 +3531,7 @@ According to the HSE 2019 report on [Overweight and Obesity in adult and child](
 
 Over the course of the survey from 1993-2019, the mean height increased by a bit more than 1cm in men and 0.5cm in women.
 
-# Screening Trends
+## Screening Trends
 
 #### Breast
 ![](images/trend-chart-breast-screening.png)
