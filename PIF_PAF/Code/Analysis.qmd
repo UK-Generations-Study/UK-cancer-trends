@@ -3182,6 +3182,7 @@ data_pif_bmi <- PIF |>
 plot <- ggplot(data_pif_bmi, aes(x = cancer_site, y = value, fill = age_group)) +
   geom_bar(position = "dodge", stat = "identity", colour = "black") +
   coord_flip() +
+  scale_fill_manual(values = c("20-49" = "#ff9500", "50+" = "#38b000")) +
   theme_minimal() +
   theme(
     strip.text = element_text(face = "bold")
