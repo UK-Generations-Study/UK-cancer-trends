@@ -1491,6 +1491,13 @@ rf_imd_trend_plot_labels <- rf_imd_trend_plot |>
       TRUE ~ value
     )
 
+  ) |>
+  mutate(
+    imd = case_when(
+      imd == 1 ~  "1 (least deprived)",
+      imd == 5 ~ "5 (most deprived)",
+      TRUE ~ imd
+    )
   )
 
 #Create invisible points to expand y limits
@@ -1501,6 +1508,13 @@ rf_imd_trend_plot_invisible_points <- rf_imd_trend_plot |>
     year =  (2026),  
     value = (0.5)
 
+  ) |>
+  mutate(
+    imd = case_when(
+      imd == 1 ~  "1 (least deprived)",
+      imd == 5 ~ "5 (most deprived)",
+      TRUE ~ imd
+    )
   )
 
 
