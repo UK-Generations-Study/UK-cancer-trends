@@ -3293,6 +3293,91 @@ ggplot(data_childhood_bmi |> filter(level != "Overweight including obese") |> fi
 
 ```
 
+### Childhood BMI (+ Colorectal Cancer Trends + Obesity Trends)
+```{r}
+
+# Get childhood obesity data
+data_childhood_bmi_clean <- data_childhood_bmi |>
+  rename(year = name) |>
+  select (year, age_group, sex, level, value) |>
+  filter(
+    level %in% c("Obese"), 
+    age_group == "2-15 years", 
+    sex != "All children"
+  ) |>
+  mutate(value = value/100,
+         age_group = "2-15",
+         sex = if_else(sex == "Boys", "Men", "Women"))
+
+# Get adult obesity data for the same plot
+data_adult_bmi_clean <- rf_trend_plot |>
+  filter(level == "Obese") |>
+  filter(age_group == "20-49") |>
+  select(year, age_group, sex, level, value)
+
+# Extract the colorectal cancer rates
+rf_overlay_colorectal <- data_cancer |>
+  filter(cancer_site == "Colorectum") |>
+  filter(age_group == "20-49") |>
+  select(year, value = Rate, sex, age_group) |>
+  mutate(level = "Colorectal Cancer Rate",
+         variable = "Cancer Rate") |>
+  select(year, age_group, sex, level, value)
+
+# Combine into one dataset
+data_colorectal_bmi_plot <- rbind(data_childhood_bmi_clean, data_adult_bmi_clean) |>
+  mutate(level = paste0(level, " - ", age_group))
+
+# Need to conduct rescaling
+cancer_range <- range(rf_overlay_colorectal$value)
+
+data_colorectal_bmi_plot <- data_colorectal_bmi_plot |>
+  mutate(
+    value_scaled = (diff(cancer_range)/diff(range(value)))*(value - min(value)) + cancer_range[1]
+  )
+
+rf_overlay_colorectal <- rf_overlay_colorectal |>
+  mutate(
+    value_scaled = value
+  )
+
+rf_overlay_plot <- rbind(rf_overlay_colorectal, data_colorectal_bmi_plot) |>
+  mutate(level = factor(level, levels = unique(level)))
+
+# Make plot
+plot <- ggplot(data = rf_overlay_plot, aes(x = year, y = value_scaled, colour = level, fill = level)) +
+  geom_point() +
+  geom_line() +
+  scale_y_continuous(
+    sec.axis = sec_axis(~ (.-cancer_range[1])/(diff(cancer_range)/diff(range(rf_trend_plot_overlay_var$value))) + min(rf_trend_plot_overlay_var$value),
+                        name = "Prevelance (%)")
+  ) +
+  theme_minimal() +
+  theme(
+    strip.text = element_text(face = "bold"),
+    legend.position = "bottom"
+  ) +
+  geom_rect(
+    xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
+    colour = "black", fill = NA, inherit.aes = FALSE
+  ) +
+  labs(
+    title = paste0("Trends of Colorectal Cancer and Obesity"),
+    x = "Year",
+    y = "Cancer Rate",
+    colour = "",
+    fill = "",
+    linetype = ""
+  ) +
+  scale_x_continuous(breaks = seq(1995, 2020, 5), limits = c(1995, 2020)) +
+  facet_wrap(~sex, scales = "free_y")
+
+print(plot)
+
+ggsave(filename = paste0("../Output/Plots/Figure2e_childhood_obesity.png"), plot = plot, width = 12, height = 6, bg = "white")
+
+```
+
 ### Childhood BMI - APC trends
 
 ```{r}
