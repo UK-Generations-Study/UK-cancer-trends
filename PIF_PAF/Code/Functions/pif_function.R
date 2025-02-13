@@ -18,18 +18,18 @@ pif_calculation <- function(dataframe) {
     }
   )
   
-  ## Set working directory
-  # Setting up wd for relative file paths
-  # This sets wd to wherever the document is saved - this should be the github desktop folder
-  if(Sys.getenv("RSTUDIO") == '1' & !knitr::is_html_output()) { # If using Rstudio and not rendering
-    setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-  } else if(Sys.getenv("RSTUDIO") != '1'){ # If using Rscript
-    initial.options <- commandArgs(trailingOnly = FALSE)
-    file.arg.name <- "--file="
-    script.name <- sub(file.arg.name, "", initial.options[grep(file.arg.name, initial.options)])
-    script.basename <- dirname(script.name)
-    setwd(file.path(getwd(), script.basename))
-  }
+  # ## Set working directory
+  # # Setting up wd for relative file paths
+  # # This sets wd to wherever the document is saved - this should be the github desktop folder
+  # if(Sys.getenv("RSTUDIO") == '1' & !knitr::is_html_output()) { # If using Rstudio and not rendering
+  #   setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+  # } else if(Sys.getenv("RSTUDIO") != '1'){ # If using Rscript
+  #   initial.options <- commandArgs(trailingOnly = FALSE)
+  #   file.arg.name <- "--file="
+  #   script.name <- sub(file.arg.name, "", initial.options[grep(file.arg.name, initial.options)])
+  #   script.basename <- dirname(script.name)
+  #   setwd(file.path(getwd(), script.basename))
+  # }
   
   
   ## TEMPORARY - removing imputed data from alcohol
