@@ -47,16 +47,17 @@ data_rf <- data_rf |>
     dist_to_2009 = abs(year - 2009)
     
   ) |>
+  # Taking all closest to 2009 to calculated current PAFs but taking only BMI at specific time points for PIFs
   mutate(
     
-    youngest_indicator = year == max(year),
-    oldest_indicator = year == min(year),
+    # youngest_indicator = year == max(year),
+    # oldest_indicator = year == min(year),
     close_to_2009 = dist_to_2009 == min(dist_to_2009)
     
   ) |>
-  filter(youngest_indicator | close_to_2009 | oldest_indicator) |>
+  filter(close_to_2009 | (variable == "bmi" & year %in% c(1995, 2005, 2019))) |>
   ungroup() |>
-  select(-oldest_indicator, -youngest_indicator, -close_to_2009, -dist_to_2009)
+  select(-close_to_2009, -dist_to_2009)
 
 # Clean up RR estimates
 data_rr_u50 <- data_rr_u50 |>
@@ -92,6 +93,7 @@ data_rr <- rbind(data_rr_oe50, data_rr_u50) |>
       name == "Processed_Meat" ~ "processed_meat_consumption",
       name == "Red_Meat" ~ "redmeat_consumption",
       name == "Fibre" ~ "fibre_consumption",
+      name == "PhysicalActivity" ~ "physical_activity_old",
       TRUE ~ NA # More will need to be added as and when needed
     ),
     
@@ -103,6 +105,7 @@ data_rr <- rbind(data_rr_oe50, data_rr_u50) |>
       variable == "smoking_status" & grepl("^Current", name) ~ "Current",
       variable == "bmi" & grepl("\\_obese", name) ~ "Obese",
       variable == "bmi" & grepl("\\_overweight", name) ~ "Overweight",
+      variable == "physical_activity_old" ~ "Below Recommendations",
       grepl("\\_consumption$", variable) ~ "dose_response",
       TRUE ~ NA
     )
@@ -175,6 +178,7 @@ data_complete_paf <- data_complete |>
     
     
     ERR_calc = case_when(
+      variable == "physical_activity_old" ~ log(1/RR),
       variable == "fibre_consumption" ~ log(1/RR)/10,
       variable %in% c("redmeat_consumption", "processed_meat_consumption") ~ (RR-1)/100,
       TRUE ~ RR - 1
@@ -271,6 +275,7 @@ for(i in 1:500){
       
       
       ERR_calc = case_when(
+        variable == "physical_activity_old" ~ log(1/RR),
         variable == "fibre_consumption" ~ log(1/RR)/10,
         variable %in% c("redmeat_consumption", "processed_meat_consumption") ~ (RR-1)/100,
         TRUE ~ RR - 1
