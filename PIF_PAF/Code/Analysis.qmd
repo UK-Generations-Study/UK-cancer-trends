@@ -261,11 +261,11 @@ data_ALLcancer_age_group <- read.csv("../Data/all_incidence_age_group_joinpoint.
 # Read in childhood BMI data 
 data_childhood_bmi <- suppressMessages(read_excel("../Data/HSE-2022-Overweight-and-obesity-tables.xlsx", sheet = "Table 16"))
 
-# # Read in PAF samples
-# data_paf_comparison <- read.csv(r"(..\Data\paf_comparison.csv)") |>
-#   # TEMPORARY CODE
-#   mutate(Cancer_sites = if_else(Cancer_sites == "Breast ", "Breast", Cancer_sites)) |>
-#   filter(!(Cancer_sites == "Breast" & sex == "Men"))
+# Read in PAF samples
+data_paf_comparison <- read.csv(r"(..\Data\paf_comparison.csv)") |>
+  # TEMPORARY CODE
+  mutate(Cancer_sites = if_else(Cancer_sites == "Breast ", "Breast", Cancer_sites)) |>
+  filter(!(Cancer_sites == "Breast" & sex == "Men"))
 
 # Reading in JP Analysis
 #   Cancer Incidence
@@ -2109,7 +2109,44 @@ ggsave("../Output/Plots/Figure_3_Women.png", plot = data_attr_bar_WOMEN, bg = "w
 ```
 
 ## Figure 3c Alternate - PAF
+
+### Calculate CIs for Aggregate PAFs
 ```{r}
+
+# Calculating aggregate PAFs from the sampled PAFs
+data_paf_comparison_agg <- data_paf_comparison |>
+  filter(case_when(
+    variable == "bmi" ~ year == 2009,
+    TRUE ~ TRUE
+  )) |>
+  group_by(age_group, sex, variable, year, Cancer_sites) |>
+  mutate(iteration = row_number()) |>
+  ungroup() |>
+  group_by(age_group, sex, iteration, Cancer_sites) |>
+  mutate(
+    PAF_1 = 1 - PAF,
+    PAF_1 = cumprod(PAF_1),
+    PAF_1 = PAF*PAF_1/(1-PAF)
+  ) |>
+  summarise(
+    PAF = sum(PAF_1)
+  )
+
+# Now calculating confidence intervals for the aggregate PAFs
+data_paf_agg_ci <- data_paf_comparison_agg |>
+  group_by(sex, age_group, Cancer_sites) |>
+  summarise(
+    lower_CI = quantile(PAF, 0.025),
+    upper_CI = quantile(PAF, 0.975)
+  ) |>
+  mutate(
+    Cancer_sites = if_else(Cancer_sites == "Multiple Myeloma", "MultipleMyeloma", Cancer_sites)
+  )
+
+
+```
+
+```{r, fig.height = 6, fig.width = 14}
 
 # Ordering cancer site by PAF
 data_attr_cases_bar_alt <- data_attr_cases_bar |>
@@ -2117,7 +2154,7 @@ data_attr_cases_bar_alt <- data_attr_cases_bar |>
   mutate(PAF_order = mean(PAF)) |>
   ungroup() |>
   distinct() |>
-  arrange(desc(PAF_order)) |>
+  arrange(PAF_order) |>
   mutate(
     
     cancer_site = factor(cancer_site, levels = unique(cancer_site))
@@ -2126,9 +2163,15 @@ data_attr_cases_bar_alt <- data_attr_cases_bar |>
   select(-case_group, -cases_count) |>
   distinct()
 
+# Merge in confidence intervals
+data_attr_cases_bar_alt <- merge(data_attr_cases_bar_alt, data_paf_agg_ci, by.x = c("cancer_site", "age_group", "sex"), by.y = c("Cancer_sites", "age_group", "sex")) |>
+  mutate(age_group = factor(age_group, levels = c("50+", "20-49")))
+
 # PAF Plot
 data_attr_bar_paf <- ggplot(data_attr_cases_bar_alt, aes(x = cancer_site, y = PAF, fill = age_group)) +
   geom_bar(stat = "identity", position = "dodge", width = 0.75, colour ="black") +
+  geom_errorbar(aes(ymin = 100*lower_CI, ymax = 100*upper_CI), width=.2,
+                 position=position_dodge(.75)) +
   scale_fill_manual(values = c("20-49" = "#ff9500", "50+" = "#38b000")) +
   theme_minimal() +
   theme(
@@ -2139,36 +2182,18 @@ data_attr_bar_paf <- ggplot(data_attr_cases_bar_alt, aes(x = cancer_site, y = PA
   labs(
     title = "PAFs in England 2019",
     fill = "Age Group",
-    x = "Cancer Site"
+    x = "Cancer Site",
+    y = "PAF (%)"
   )+
   geom_rect(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
             colour = "black", fill = NA, inherit.aes = FALSE) +
   theme(strip.text = element_text(face = "bold")) +
+  coord_flip() +
   facet_wrap(~sex)
   
 data_attr_bar_paf
 
-ggsave("../Output/Plots/Figure_3_PAF.png", plot = data_attr_bar_paf, bg = "white", height = 6, width = 10)
-
-# Cases Plot
-data_attr_bar_cases <- ggplot(data_attr_cases_bar_alt, aes(x = cancer_site, y = count, fill = age_group)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  theme_minimal() +
-  theme(
-    axis.text.x = element_text(angle = 45, hjust = 1)
-  ) +
-  labs(
-    title = "Cases in England 2019",
-    fill = "Age Group",
-    x = "Cancer Site",
-    y = "Cases"
-  )+
-  facet_wrap(~sex)
-  
-data_attr_bar_cases
-
-ggsave("../Output/Plots/Figure_3_Cases.png", plot = data_attr_bar_cases, bg = "white", height = 6, width = 10)
-
+ggsave("../Output/Plots/Figure_3_PAF.png", plot = data_attr_bar_paf, bg = "white", height = 6, width = 14)
 
 ```
 
@@ -2657,69 +2682,69 @@ generate_plots(data_attr_cases_bar)
 These are PIFs from the oldest data point until current times (Later referred to as PIF (Past)). These are for all ages combined.
 
 ```{r}
-# Calculate the PIF data 
-PIF_allages <- pif_calculation(paf_byrf_allages)
-write.csv(PIF_allages, file = "../Data/PIF_allages.csv", row.names = F)
-
-# creating the table 
-data_pifallages_past <- PIF_allages |>
-  mutate(
-    
-    variable = case_when(
-      variable == "ProcessedMeat" ~ "Processed Meat",
-      variable == "RedMeat" ~ "Red Meat",
-      variable == "physical_activity_old" ~ "Physical Activity",
-      TRUE ~ variable
-    ),
-    
-    
-    PIF = 100*round(PIF_past, digits = 3),
-    
-    # PIF = if_else(is.na(PIF), "", as.character(PIF))
-    
-    PIF = case_when(
-      is.na(PIF) ~ "",
-      PIF<0 ~ "-",
-      TRUE ~ as.character(PIF)
-    )
-    
-  ) |>
-  select(-PIF_past, -PIF_future, -PIF_past_future) |>
-  pivot_wider(names_from = cancer_site, values_from = PIF) |>
-  group_by(sex) |>
-  gt() |>
-  cols_label(
-    variable = "",
-    MultipleMyeloma = "Multiple Myeloma"
-  ) |>
-  cols_align(
-    align = "center",
-    columns = -variable
-  ) |>
-  tab_style(
-    style = cell_text(weight = "bold"),
-    locations = list(
-      cells_column_labels()
-    )
-  ) |>
-  tab_style(
-    style = list(
-      cell_text(weight = "bold"),
-      cell_fill(color = "lightgray"),
-      cell_borders(sides = "top"),
-      cell_borders(sides = "bottom")
-    ),
-    locations = cells_row_groups(groups = everything())
-  ) |>
-  cols_width(
-    variable ~ px(200)
-  ) |>
-  tab_header("PIF Values from Past* to 2009 : All Ages") |>
-  tab_footnote("*Furthest back datapoint available")
-
-data_pifallages_past
-
-gtsave(data_pifallages_past, "../Output/Plots/Figure_6-PIFallages_Past.html")
+# # Calculate the PIF data 
+# PIF_allages <- pif_calculation(paf_byrf_allages)
+# write.csv(PIF_allages, file = "../Data/PIF_allages.csv", row.names = F)
+# 
+# # creating the table 
+# data_pifallages_past <- PIF_allages |>
+#   mutate(
+#     
+#     variable = case_when(
+#       variable == "ProcessedMeat" ~ "Processed Meat",
+#       variable == "RedMeat" ~ "Red Meat",
+#       variable == "physical_activity_old" ~ "Physical Activity",
+#       TRUE ~ variable
+#     ),
+#     
+#     
+#     PIF = 100*round(PIF_past, digits = 3),
+#     
+#     # PIF = if_else(is.na(PIF), "", as.character(PIF))
+#     
+#     PIF = case_when(
+#       is.na(PIF) ~ "",
+#       PIF<0 ~ "-",
+#       TRUE ~ as.character(PIF)
+#     )
+#     
+#   ) |>
+#   select(-PIF_past, -PIF_future, -PIF_past_future) |>
+#   pivot_wider(names_from = cancer_site, values_from = PIF) |>
+#   group_by(sex) |>
+#   gt() |>
+#   cols_label(
+#     variable = "",
+#     MultipleMyeloma = "Multiple Myeloma"
+#   ) |>
+#   cols_align(
+#     align = "center",
+#     columns = -variable
+#   ) |>
+#   tab_style(
+#     style = cell_text(weight = "bold"),
+#     locations = list(
+#       cells_column_labels()
+#     )
+#   ) |>
+#   tab_style(
+#     style = list(
+#       cell_text(weight = "bold"),
+#       cell_fill(color = "lightgray"),
+#       cell_borders(sides = "top"),
+#       cell_borders(sides = "bottom")
+#     ),
+#     locations = cells_row_groups(groups = everything())
+#   ) |>
+#   cols_width(
+#     variable ~ px(200)
+#   ) |>
+#   tab_header("PIF Values from Past* to 2009 : All Ages") |>
+#   tab_footnote("*Furthest back datapoint available")
+# 
+# data_pifallages_past
+# 
+# gtsave(data_pifallages_past, "../Output/Plots/Figure_6-PIFallages_Past.html")
 
 
 ```
@@ -2727,70 +2752,70 @@ gtsave(data_pifallages_past, "../Output/Plots/Figure_6-PIFallages_Past.html")
 ## Figure 6b - PIF (Past)
 
 ```{r,warning=F}
-# Calculating the PIFs
-PIF <- pif_calculation(data_paf_individual)
-write.csv(PIF, file = "../Data/Pif.csv", row.names = F)
-
-
-# Formatting the table 
-data_pif_gt_past <- PIF |>
-  mutate(
-    
-    variable = case_when(
-      variable == "ProcessedMeat" ~ "Processed Meat",
-      variable == "RedMeat" ~ "Red Meat",
-      variable == "physical_activity_old" ~ "Physical Activity",
-      TRUE ~ variable
-    ),
-    
-    
-    PIF = 100*round(PIF_past, digits = 3),
-    
-    # PIF = if_else(is.na(PIF), "", as.character(PIF))
-    
-    PIF = case_when(
-      is.na(PIF) ~ "",
-      PIF<0 ~ "-",
-      TRUE ~ as.character(PIF)
-    )
-    
-  ) |>
-  select(-PIF_past, -PIF_future, -PIF_past_future) |>
-  pivot_wider(names_from = cancer_site, values_from = PIF) |>
-  group_by(sex, age_group) |>
-  gt() |>
-  cols_label(
-    variable = "",
-    MultipleMyeloma = "Multiple Myeloma"
-  ) |>
-  cols_align(
-    align = "center",
-    columns = -variable
-  ) |>
-  tab_style(
-    style = cell_text(weight = "bold"),
-    locations = list(
-      cells_column_labels()
-    )
-  ) |>
-  tab_style(
-    style = list(
-      cell_text(weight = "bold"),
-      cell_fill(color = "lightgray"),
-      cell_borders(sides = "top"),
-      cell_borders(sides = "bottom")
-    ),
-    locations = cells_row_groups(groups = everything())
-  ) |>
-  cols_width(
-    variable ~ px(200)
-  ) |>
-  tab_header("PIF Values from Past* to 2009") |>
-  tab_footnote("*Furthest back datapoint available")
-
-data_pif_gt_past
-
-gtsave(data_pif_gt_past, "../Output/Plots/Figure_6-PIF_Past.html")
+# # Calculating the PIFs
+# PIF <- pif_calculation(data_paf_individual)
+# write.csv(PIF, file = "../Data/Pif.csv", row.names = F)
+# 
+# 
+# # Formatting the table 
+# data_pif_gt_past <- PIF |>
+#   mutate(
+#     
+#     variable = case_when(
+#       variable == "ProcessedMeat" ~ "Processed Meat",
+#       variable == "RedMeat" ~ "Red Meat",
+#       variable == "physical_activity_old" ~ "Physical Activity",
+#       TRUE ~ variable
+#     ),
+#     
+#     
+#     PIF = 100*round(PIF_past, digits = 3),
+#     
+#     # PIF = if_else(is.na(PIF), "", as.character(PIF))
+#     
+#     PIF = case_when(
+#       is.na(PIF) ~ "",
+#       PIF<0 ~ "-",
+#       TRUE ~ as.character(PIF)
+#     )
+#     
+#   ) |>
+#   select(-PIF_past, -PIF_future, -PIF_past_future) |>
+#   pivot_wider(names_from = cancer_site, values_from = PIF) |>
+#   group_by(sex, age_group) |>
+#   gt() |>
+#   cols_label(
+#     variable = "",
+#     MultipleMyeloma = "Multiple Myeloma"
+#   ) |>
+#   cols_align(
+#     align = "center",
+#     columns = -variable
+#   ) |>
+#   tab_style(
+#     style = cell_text(weight = "bold"),
+#     locations = list(
+#       cells_column_labels()
+#     )
+#   ) |>
+#   tab_style(
+#     style = list(
+#       cell_text(weight = "bold"),
+#       cell_fill(color = "lightgray"),
+#       cell_borders(sides = "top"),
+#       cell_borders(sides = "bottom")
+#     ),
+#     locations = cells_row_groups(groups = everything())
+#   ) |>
+#   cols_width(
+#     variable ~ px(200)
+#   ) |>
+#   tab_header("PIF Values from Past* to 2009") |>
+#   tab_footnote("*Furthest back datapoint available")
+# 
+# data_pif_gt_past
+# 
+# gtsave(data_pif_gt_past, "../Output/Plots/Figure_6-PIF_Past.html")
   
 
 ```
@@ -2799,65 +2824,65 @@ gtsave(data_pif_gt_past, "../Output/Plots/Figure_6-PIF_Past.html")
 
 ```{r,warning=F}
 
-data_pif_gt_future <- PIF |>
-  mutate(
-    
-    variable = case_when(
-      variable == "ProcessedMeat" ~ "Processed Meat",
-      variable == "RedMeat" ~ "Red Meat",
-      variable == "physical_activity_old" ~ "Physical Activity",
-      TRUE ~ variable
-    ),
-    
-    
-    PIF = 100*round(PIF_future, digits = 3),
-    
-    # PIF = if_else(is.na(PIF), "-", as.character(PIF))
-    
-    PIF = case_when(
-      is.na(PIF) ~ "",
-      PIF<0 ~ "-",
-      TRUE ~ as.character(PIF)
-    )
-    
-  ) |>
-  select(-PIF_past, -PIF_future, -PIF_past_future) |>
-  pivot_wider(names_from = cancer_site, values_from = PIF) |>
-  group_by(sex, age_group) |>
-  gt() |>
-  cols_label(
-    variable = "",
-    MultipleMyeloma = "Multiple Myeloma"
-  ) |>
-  cols_align(
-    align = "center",
-    columns = -variable
-  ) |>
-  tab_style(
-    style = cell_text(weight = "bold"),
-    locations = list(
-      cells_column_labels()
-    )
-  ) |>
-  tab_style(
-    style = list(
-      cell_text(weight = "bold"),
-      cell_fill(color = "lightgray"),
-      cell_borders(sides = "top"),
-      cell_borders(sides = "bottom")
-    ),
-    locations = cells_row_groups(groups = everything())
-  ) |>
-  cols_width(
-    variable ~ px(200)
-  ) |>
-  tab_header("PIF Values from 2009 to Future*") |>
-  tab_footnote("*Furthest forward datapoint available up to 2019")
-
-
-data_pif_gt_future
-
-gtsave(data_pif_gt_future, "../Output/Plots/Figure_6-PIF_Future.html")
+# data_pif_gt_future <- PIF |>
+#   mutate(
+#     
+#     variable = case_when(
+#       variable == "ProcessedMeat" ~ "Processed Meat",
+#       variable == "RedMeat" ~ "Red Meat",
+#       variable == "physical_activity_old" ~ "Physical Activity",
+#       TRUE ~ variable
+#     ),
+#     
+#     
+#     PIF = 100*round(PIF_future, digits = 3),
+#     
+#     # PIF = if_else(is.na(PIF), "-", as.character(PIF))
+#     
+#     PIF = case_when(
+#       is.na(PIF) ~ "",
+#       PIF<0 ~ "-",
+#       TRUE ~ as.character(PIF)
+#     )
+#     
+#   ) |>
+#   select(-PIF_past, -PIF_future, -PIF_past_future) |>
+#   pivot_wider(names_from = cancer_site, values_from = PIF) |>
+#   group_by(sex, age_group) |>
+#   gt() |>
+#   cols_label(
+#     variable = "",
+#     MultipleMyeloma = "Multiple Myeloma"
+#   ) |>
+#   cols_align(
+#     align = "center",
+#     columns = -variable
+#   ) |>
+#   tab_style(
+#     style = cell_text(weight = "bold"),
+#     locations = list(
+#       cells_column_labels()
+#     )
+#   ) |>
+#   tab_style(
+#     style = list(
+#       cell_text(weight = "bold"),
+#       cell_fill(color = "lightgray"),
+#       cell_borders(sides = "top"),
+#       cell_borders(sides = "bottom")
+#     ),
+#     locations = cells_row_groups(groups = everything())
+#   ) |>
+#   cols_width(
+#     variable ~ px(200)
+#   ) |>
+#   tab_header("PIF Values from 2009 to Future*") |>
+#   tab_footnote("*Furthest forward datapoint available up to 2019")
+# 
+# 
+# data_pif_gt_future
+# 
+# gtsave(data_pif_gt_future, "../Output/Plots/Figure_6-PIF_Future.html")
   
 
 ```
@@ -2866,65 +2891,65 @@ gtsave(data_pif_gt_future, "../Output/Plots/Figure_6-PIF_Future.html")
 
 ```{r,warning=F}
 
-data_pif_gt_future <- PIF |>
-  mutate(
-    
-    variable = case_when(
-      variable == "ProcessedMeat" ~ "Processed Meat",
-      variable == "RedMeat" ~ "Red Meat",
-      variable == "physical_activity_old" ~ "Physical Activity",
-      TRUE ~ variable
-    ),
-    
-    
-    PIF = 100*round(PIF_past_future, digits = 3),
-    
-    # PIF = if_else(is.na(PIF), "-", as.character(PIF))
-    
-    PIF = case_when(
-      is.na(PIF) ~ "",
-      PIF<0 ~ "-",
-      TRUE ~ as.character(PIF)
-    )
-    
-  ) |>
-  select(-PIF_past, -PIF_future, -PIF_past_future) |>
-  pivot_wider(names_from = cancer_site, values_from = PIF) |>
-  group_by(sex, age_group) |>
-  gt() |>
-  cols_label(
-    variable = "",
-    MultipleMyeloma = "Multiple Myeloma"
-  ) |>
-  cols_align(
-    align = "center",
-    columns = -variable
-  ) |>
-  tab_style(
-    style = cell_text(weight = "bold"),
-    locations = list(
-      cells_column_labels()
-    )
-  ) |>
-  tab_style(
-    style = list(
-      cell_text(weight = "bold"),
-      cell_fill(color = "lightgray"),
-      cell_borders(sides = "top"),
-      cell_borders(sides = "bottom")
-    ),
-    locations = cells_row_groups(groups = everything())
-  ) |>
-  cols_width(
-    variable ~ px(200)
-  ) |>
-  tab_header("PIF Values from Past to Future*") |>
-  tab_footnote("*Furthest back datapoint available up to furthest forward datapoint available")
-
-
-data_pif_gt_future
-
-gtsave(data_pif_gt_future, "../Output/Plots/Figure_6-PIF_Past_Future.html")
+# data_pif_gt_future <- PIF |>
+#   mutate(
+#     
+#     variable = case_when(
+#       variable == "ProcessedMeat" ~ "Processed Meat",
+#       variable == "RedMeat" ~ "Red Meat",
+#       variable == "physical_activity_old" ~ "Physical Activity",
+#       TRUE ~ variable
+#     ),
+#     
+#     
+#     PIF = 100*round(PIF_past_future, digits = 3),
+#     
+#     # PIF = if_else(is.na(PIF), "-", as.character(PIF))
+#     
+#     PIF = case_when(
+#       is.na(PIF) ~ "",
+#       PIF<0 ~ "-",
+#       TRUE ~ as.character(PIF)
+#     )
+#     
+#   ) |>
+#   select(-PIF_past, -PIF_future, -PIF_past_future) |>
+#   pivot_wider(names_from = cancer_site, values_from = PIF) |>
+#   group_by(sex, age_group) |>
+#   gt() |>
+#   cols_label(
+#     variable = "",
+#     MultipleMyeloma = "Multiple Myeloma"
+#   ) |>
+#   cols_align(
+#     align = "center",
+#     columns = -variable
+#   ) |>
+#   tab_style(
+#     style = cell_text(weight = "bold"),
+#     locations = list(
+#       cells_column_labels()
+#     )
+#   ) |>
+#   tab_style(
+#     style = list(
+#       cell_text(weight = "bold"),
+#       cell_fill(color = "lightgray"),
+#       cell_borders(sides = "top"),
+#       cell_borders(sides = "bottom")
+#     ),
+#     locations = cells_row_groups(groups = everything())
+#   ) |>
+#   cols_width(
+#     variable ~ px(200)
+#   ) |>
+#   tab_header("PIF Values from Past to Future*") |>
+#   tab_footnote("*Furthest back datapoint available up to furthest forward datapoint available")
+# 
+# 
+# data_pif_gt_future
+# 
+# gtsave(data_pif_gt_future, "../Output/Plots/Figure_6-PIF_Past_Future.html")
   
 
 ```
@@ -2932,9 +2957,11 @@ gtsave(data_pif_gt_future, "../Output/Plots/Figure_6-PIF_Past_Future.html")
 ## Figure 6e - PIF (BMI only)
 ```{r}
 
+# Calculating PIFs
+PIF <- pif_calculation_bmi(data_paf_individual)
+
 # Rederiving the PIFs so this code block can stand more independently
 data_pif_bmi <- PIF |>
-  select(-PIF_past_future) |>
   mutate(
     
     variable = case_when(
@@ -3025,7 +3052,6 @@ gtsave(data_pif_bmi_gt, "../Output/Plots/Figure_6-PIF_BMI.html")
 
 # Rederiving the PIFs so this code block can stand more independently
 data_pif_bmi <- PIF |>
-  select(-PIF_past_future) |>
   mutate(
     
     variable = case_when(
@@ -3157,11 +3183,45 @@ gtsave(data_pif_bmi_gt, "../Output/Plots/Figure_6-PIF_BMI_Heatmap.html")
 ```
 
 ## Figure 6f Barchart
+
+### Calculating CIs
+```{r}
+
+# Calculating aggregate PAFs from the sampled PAFs
+data_paf_comparison_pif <- data_paf_comparison |>
+  filter(variable == "bmi") |>
+  group_by(age_group, sex, year, Cancer_sites) |>
+  mutate(iteration = row_number()) |>
+  ungroup() |>
+  group_by(age_group, sex, iteration, Cancer_sites) |>
+  arrange(year) |>
+  mutate(
+    PIF_component = 1 + PAF/(1-PAF)
+  ) |>
+  summarise(
+    PIF_past = (PIF_component[3] - PIF_component[1])/PIF_component[3],
+    PIF_future = (PIF_component[4] - PIF_component[2])/PIF_component[4]
+  )
+
+# Now calculating confidence intervals for the aggregate PAFs
+data_paf_pif_ci <- data_paf_comparison_pif |>
+  pivot_longer(cols = c(PIF_past, PIF_future)) |>
+  group_by(sex, age_group, Cancer_sites, name) |>
+  summarise(
+    lower_CI = quantile(value, 0.025, na.rm = T),
+    upper_CI = quantile(value, 0.975, na.rm = T)
+  ) |>
+  # Need to cut off lower CI at 0
+  mutate(lower_CI = if_else(lower_CI < 0, 0, lower_CI))
+
+
+
+```
+
 ```{r, fig.width = 8, fig.height = 8}
 
 # Rederiving the PIFs so this code block can stand more independently
 data_pif_bmi <- PIF |>
-  select(-PIF_past_future) |>
   mutate(
     
     variable = case_when(
@@ -3192,9 +3252,38 @@ data_pif_bmi <- PIF |>
   mutate(sex = factor(sex, levels = c("Women", "Men"))) |>
   mutate(age_group = factor(age_group, levels = c("50+", "20-49")))
 
+data_pif_bmi <- merge(data_pif_bmi, data_paf_pif_ci, by.x = c("cancer_site", "age_group", "sex", "name"), by.y = c("Cancer_sites", "age_group", "sex", "name"))
+
 # Creating bar chart
 plot <- ggplot(data_pif_bmi, aes(x = cancer_site, y = value, fill = age_group)) +
   geom_bar(position = "dodge", stat = "identity", colour = "black") +
+  coord_flip() +
+  scale_fill_manual(values = c("20-49" = "#ff9500", "50+" = "#38b000")) +
+  theme_minimal() +
+  theme(
+    strip.text = element_text(face = "bold")
+  ) +
+  geom_rect(
+    xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
+    colour = "black", fill = NA, inherit.aes = FALSE
+  ) +
+  labs(
+    title = "PIF Values for BMI",
+    x = "Cancer Site",
+    y = "PIF",
+    fill = "Age Group"
+  ) +
+  facet_grid(name ~ sex)
+
+print(plot)
+
+ggsave("../Output/Plots/Figure_6-PIF_BMI_Barchart.png", plot = plot, bg = "white", height = 8, width = 8)
+
+# Creating bar chart - adding error bars
+plot <- ggplot(data_pif_bmi, aes(x = cancer_site, y = value, fill = age_group)) +
+  geom_bar(position = "dodge", stat = "identity", colour = "black") +
+  geom_errorbar(aes(ymin = lower_CI, ymax = upper_CI), width=.2,
+                 position=position_dodge(.9)) +
   coord_flip() +
   scale_fill_manual(values = c("20-49" = "#ff9500", "50+" = "#38b000")) +
   theme_minimal() +
@@ -3604,6 +3693,104 @@ plot <- ggplot(data_food_trends, aes(x = Year, y = value)) +
   )
 
 plot
+
+```
+
+## Historical Colorectal Risk Factor Trends
+
+### Function
+```{r}
+
+plot_with_colorectal <- function(data, data_colorectal, sec.axis.name = NULL){
+  
+  # Need to conduct rescaling
+  cancer_range <- range(data_colorectal$value)
+  
+  data <- data |>
+    mutate(
+      value_scaled = (diff(cancer_range)/diff(range(value)))*(value - min(value)) + cancer_range[1]
+    )
+  
+  data_colorectal <- data_colorectal |>
+    mutate(
+      value_scaled = value
+    )
+  
+  data_plot <- rbind(data_colorectal, data) |>
+    mutate(variable = factor(variable, levels = unique(variable)))
+  
+  # Make plot
+  plot <- ggplot(data = data_plot, aes(x = year, y = value_scaled, colour = variable, fill = variable)) +
+    geom_point() +
+    geom_line() +
+    scale_y_continuous(
+      sec.axis = sec_axis(~ (.-cancer_range[1])/(diff(cancer_range)/diff(range(data$value))) + min(data$value),
+                          name = sec.axis.name)
+    ) +
+    theme_minimal() +
+    theme(
+      strip.text = element_text(face = "bold"),
+      legend.position = "bottom"
+    ) +
+    geom_rect(
+      xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
+      colour = "black", fill = NA, inherit.aes = FALSE
+    ) +
+    labs(
+      x = "Year",
+      y = "Cancer Rate",
+      colour = "",
+      fill = "",
+      linetype = ""
+    )
+  
+  return(plot)
+  
+  
+}
+
+
+```
+
+### Long term colorectal cancer rate trends
+```{r}
+
+data_lt_colorectal <- read.csv("../Data/dataset-asr-inc-males-and-females-age-20-49-1943-2020-colorectum.csv") |>
+  mutate(
+    sex = if_else(Sex == 1, "Men", "Women"),
+    variable = paste0("Colorectal Cancer - ", sex)
+  ) |>
+  select(year = Year, variable, value = ASR..World.)
+
+
+```
+
+### Alcohol
+```{r}
+
+data_lt_alcohol <- read.csv("../Data/per-capita-alcohol-1890.csv") |>
+  filter(Year >= 1960) |>
+  select(year = Year, value = Alcohol.consumption.since.1890..Alexander...Holmes..2017.) |>
+  mutate(variable = "Alcohol Consumption")
+
+plot <- plot_with_colorectal(data_lt_alcohol, data_lt_colorectal, sec.axis.name = "Litres/Year")
+
+plot
+
+
+```
+
+### Red Meat
+```{r}
+
+data_food_trends_lt <- data_food_trends |>
+  select(year = Year, value) |>
+  mutate(variable = "Carcass Meat Consumption")
+
+plot <- plot_with_colorectal(data_food_trends_lt, data_lt_colorectal)
+
+plot
+
 
 ```
 
