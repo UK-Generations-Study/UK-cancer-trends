@@ -1068,13 +1068,13 @@ rf_trend_plot_invisible_points <- rf_trend_plot |>
 
 #plot
 #ALCOHOL
-alcoholtrends <- ggplot(rf_trend_plot %>% filter(variable == "alcohol_amt"), aes(x = year, y = value, color = level)) +
+alcoholtrends <- ggplot(rf_trend_plot %>% filter(variable == "alcohol_amt") |> filter(level != "Non-Drinker"), aes(x = year, y = value, color = level)) +
   geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
   geom_line(aes(linetype = last_segment)) +
-  geom_point(data = rf_trend_plot_invisible_points%>% filter(variable == "alcohol_amt"), alpha = 0) +
+  geom_point(data = rf_trend_plot_invisible_points%>% filter(variable == "alcohol_amt") |> filter(level != "Non-Drinker"), alpha = 0) +
   facet_grid(sex ~ age_group) +  # grid by both age_group and sex
   geom_label_repel(
-    data = rf_trend_plot_labels %>% filter(variable == "alcohol_amt"),
+    data = rf_trend_plot_labels %>% filter(variable == "alcohol_amt") |> filter(level != "Non-Drinker"),
     aes(label = APC_clean, group = level),
     nudge_x = 3,
     fill = "white", 
@@ -1089,10 +1089,10 @@ alcoholtrends <- ggplot(rf_trend_plot %>% filter(variable == "alcohol_amt"), aes
   theme(legend.position="bottom") +
   scale_color_manual( #fixing the colors
     values = c(
-      "Heavy Drinker" = "#2b9eb3",
-      "Moderate Drinker" = "#f8333c",
-      "Light Drinker" = "#44af69" ,
-      "Non-Drinker" = "#fcab10"
+      "Heavy Drinker" = "#f8333c",
+      "Moderate Drinker" = "#2b9eb3",
+      "Light Drinker" = "#fcab10" 
+      # "Non-Drinker" = "#fcab10"
     )
   ) +
   scale_x_continuous(
@@ -1114,14 +1114,14 @@ alcoholtrends <- ggplot(rf_trend_plot %>% filter(variable == "alcohol_amt"), aes
           axis.text.x = element_text(angle = 45, hjust = 1))
 
 #BMI
-bmitrends <- ggplot(rf_trend_plot %>% filter(variable == "bmi") |> filter(level != "Underweight"), aes(x = year, y = value, color = level)) +
+bmitrends <- ggplot(rf_trend_plot %>% filter(variable == "bmi")  |> filter(!level %in% c("Underweight", "Healthy Weight")), aes(x = year, y = value, color = level)) +
   geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
   geom_line(aes(linetype = last_segment)) +
-  geom_point(data = rf_trend_plot_invisible_points %>% filter(variable == "bmi") |> filter(level != "Underweight"), alpha = 0) +
+  geom_point(data = rf_trend_plot_invisible_points %>% filter(variable == "bmi") |> filter(!level %in% c("Underweight", "Healthy Weight")), alpha = 0) +
    
   facet_grid(sex ~ age_group) +  # grid by both age_group and sex
   geom_label_repel(
-    data = rf_trend_plot_labels %>% filter(variable == "bmi") |> filter(level != "Underweight"),
+    data = rf_trend_plot_labels %>% filter(variable == "bmi") |> filter(!level %in% c("Underweight", "Healthy Weight")),
     aes(label = APC_clean, group = level),
     nudge_x = 3,
     fill = "white", 
@@ -1136,9 +1136,9 @@ bmitrends <- ggplot(rf_trend_plot %>% filter(variable == "bmi") |> filter(level 
   theme(legend.position="bottom") +
   scale_color_manual( #fixing the colors 
     values = c(
-      "Obese" = "#2b9eb3",  
-      "Overweight" = "#f8333c", 
-      "Healthy Weight" = "#44af69"
+      "Obese" = "#f8333c",  
+      "Overweight" = "#2b9eb3"
+      # "Healthy Weight" = "#44af69"
       # "Underweight" = "#fcab10" 
     )
   ) +
@@ -1161,13 +1161,13 @@ bmitrends <- ggplot(rf_trend_plot %>% filter(variable == "bmi") |> filter(level 
           axis.text.x = element_text(angle = 45, hjust = 1))
 
 #Smoking 
-smokingtrends <- ggplot(rf_trend_plot %>% filter(variable == "smoking_status") |> mutate(level = if_else(level == "Previously", "Former", level)), aes(x = year, y = value, color = level)) +
+smokingtrends <- ggplot(rf_trend_plot %>% filter(variable == "smoking_status") |> mutate(level = if_else(level == "Previously", "Former", level)) |> filter(level != "Never"), aes(x = year, y = value, color = level)) +
   geom_point(alpha = 0.6, size = 2) +  # Scatter plot for the original data
   geom_line(aes(linetype = last_segment)) +
-  geom_point(data = rf_trend_plot_invisible_points %>% filter(variable == "smoking_status") |> mutate(level = if_else(level == "Previously", "Former", level)), alpha = 0) +
+  geom_point(data = rf_trend_plot_invisible_points %>% filter(variable == "smoking_status") |> mutate(level = if_else(level == "Previously", "Former", level)) |> filter(level != "Never"), alpha = 0) +
   facet_grid(sex ~ age_group) +  # grid by both age_group and sex
     geom_label_repel(
-    data = rf_trend_plot_labels %>% filter(variable == "smoking_status") |> mutate(level = if_else(level == "Previously", "Former", level)),
+    data = rf_trend_plot_labels %>% filter(variable == "smoking_status") |> mutate(level = if_else(level == "Previously", "Former", level)) |> filter(level != "Never"),
     aes(label = APC_clean, group = level),
     nudge_x = 3, 
     fill = "white", 
@@ -1182,9 +1182,8 @@ smokingtrends <- ggplot(rf_trend_plot %>% filter(variable == "smoking_status") |
   theme(legend.position="bottom") +
   scale_color_manual( #fixing the colors 
     values = c(
-      "Current" = "#2b9eb3",  
-      "Former" = "#f8333c", 
-      "Never" = "#fcab10"
+      "Current" = "#f8333c",
+      "Former" = "#2b9eb3"
     )
   ) +
     scale_x_continuous(
@@ -1227,7 +1226,7 @@ PAtrends <- ggplot(rf_trend_plot %>% filter(variable %in% c("physical_activity",
   theme(legend.position="bottom") +
   scale_color_manual( #fixing the colors 
     values = c(
-      "physical_activity" = "#2b9eb3",
+      "physical_activity" = "#fc9c9f",
       "physical_activity_old" = "#f8333c"
     )
   ) +
@@ -1273,7 +1272,7 @@ diettrends <- ggplot(rf_trend_plot %>% filter(variable %in% c("redmeat_consumpti
   theme(legend.position="bottom") +
   scale_color_manual( #fixing the colors 
     values = c(
-      "redmeat_consumption_median" = "#2b9eb3", 
+      "redmeat_consumption_median" = "#fc9c9f", 
       "processedmeat_consumption_median" = "#f8333c"
     )
   ) +
@@ -1822,7 +1821,22 @@ These PAFs are for the entire English population by sex. They use risk factor ex
 
 ```{r}
 # Calculate the PAFs by risk factor 
-paf_byrf_allages <- paf_calculation(data_rf_allages, "All")
+paf_byrf_allages <- paf_calculation(data_rf_allages, "All") |>
+  group_by(age_group, sex, variable) |>
+  # Filter to closest to 2009 - there are no ties to break - this does not happen in the data (17/02/2025)
+  mutate(
+    proximity_to_2009 = abs(year - 2009)
+  ) |>
+  arrange(proximity_to_2009) |>
+  filter(row_number() == 1) |>
+  ungroup() |>
+  select(-proximity_to_2009) |>
+  # Need to filter out the new physical_activity data that has been included
+  filter(variable != "physical_activity") |>
+  # Now give 2009 year as we are taking closest available
+  mutate(year = 2009)
+  
+  
 
 # Calculate aggregate PAFs
 aggregate_pafs_allages <- paf_byrf_allages %>%
@@ -1976,6 +1990,19 @@ data_paf_individual<-rbind(pafs_byrf_under50,pafs_byrf_over50)
 
 # Calculate aggregate PAFs
 data_paf <- data_paf_individual %>%
+  group_by(age_group, sex, variable) |>
+  # Filter to closest to 2009 - there are no ties to break - this does not happen in the data (17/02/2025)
+  mutate(
+    proximity_to_2009 = abs(year - 2009)
+  ) |>
+  arrange(proximity_to_2009) |>
+  filter(row_number() == 1) |>
+  ungroup() |>
+  select(-proximity_to_2009) |>
+  # Need to filter out the new physical_activity data that has been included
+  filter(variable != "physical_activity") |>
+  # Now give 2009 year as we are taking closest available
+  mutate(year = 2009) |>
   group_by(year, age_group, sex) %>% #grouping by year/age/sex
   summarise(
     Oral = calculate_cumulative_paf(OralPAF),
@@ -2298,6 +2325,16 @@ gtsave(data_attr_cases_gt, "../Output/Plots/Figure_3-Table.html")
 
 # Pivot PAFs longer so we can merge
 data_paf_long_individual <- data_paf_individual |>
+  group_by(age_group, sex, variable) |>
+  # Filter to closest to 2009 - there are no ties to break - this does not happen in the data (17/02/2025)
+  mutate(
+    proximity_to_2009 = abs(year - 2009)
+  ) |>
+  arrange(proximity_to_2009) |>
+  filter(row_number() == 1) |>
+  ungroup() |>
+  select(-proximity_to_2009) |>
+  mutate(year = 2009) |>
   pivot_longer(cols = colnames(data_paf_individual)[!colnames(data_paf_individual) %in% c("sex", "year", "age_group", "variable")], names_to = "cancer_site", values_to = "PAF") |>
   mutate(year = year + 10) |> # Broad assumption of 10 year lag period
   mutate(cancer_site = gsub("PAF$", "", cancer_site))
@@ -2332,7 +2369,7 @@ for(var in unique(data_attr_cases_individual$variable)[!grepl("\\_mean$|\\_media
     filter(variable == var) |>
     filter(PAF > 0) |>
     # filter(cases_count != 0 & !is.na(cases_count)) |>
-    filter(year == 2019) |>
+    # filter(year == 2019) |>
     select(-year) |>
     select(-variable) |>
     mutate(cases_count = paste0(round(cases_count), " (", round(100*cases_count/count), "%)")) |>
@@ -2399,6 +2436,16 @@ for(var in unique(data_attr_cases_individual$variable)[!grepl("\\_mean$|\\_media
 #reformat the table
 # Pivot PAFs longer so we can merge
 data_paf_long_individual <- data_paf_individual |>
+  group_by(age_group, sex, variable) |>
+  # Filter to closest to 2009 - there are no ties to break - this does not happen in the data (17/02/2025)
+  mutate(
+    proximity_to_2009 = abs(year - 2009)
+  ) |>
+  arrange(proximity_to_2009) |>
+  filter(row_number() == 1) |>
+  ungroup() |>
+  select(-proximity_to_2009) |>
+  mutate(year = 2009) |>
   pivot_longer(cols = colnames(data_paf_individual)[!colnames(data_paf_individual) %in% c("sex", "year", "age_group", "variable")], names_to = "cancer_site", values_to = "PAF") |>
   mutate(year = year + 10) |> # Broad assumption of 10 year lag period
   mutate(cancer_site = gsub("PAF$", "", cancer_site))
@@ -2992,6 +3039,11 @@ These are PIFs from the oldest data point until current times (Later referred to
 ```{r}
 
 # Calculating PIFs
+# Calculate the PAFs by cancer site 
+pafs_byrf_under50<- paf_calculation(data_rf, "20-49")
+pafs_byrf_over50<- paf_calculation(data_rf, "50+")
+data_paf_individual<-rbind(pafs_byrf_under50,pafs_byrf_over50)
+
 PIF <- pif_calculation_bmi(data_paf_individual)
 
 # Rederiving the PIFs so this code block can stand more independently
