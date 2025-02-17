@@ -44,64 +44,67 @@ paf_calculation <- function(dataframe, age_group_of_interest) {
   rr <-read.csv("../Data/relativerisk_over50.csv")
   }
   
-  # Fixing the alcohol gap 
-  #Data Gap1: Alcohol data from 2005 ( General Household Survey) and 2011(Household Survey England)
-  riskfactors_alcoholgap<- dataframe %>%
-    filter(
-      variable == "alcohol_amt"
-    )
+  # # Fixing the alcohol gap
+  # #Data Gap1: Alcohol data from 2005 ( General Household Survey) and 2011(Household Survey England)
+  # riskfactors_alcoholgap<- dataframe %>%
+  #   filter(
+  #     variable == "alcohol_amt"
+  #   )
+  # 
+  # # linear interpolation function
+  # gap_function <- function(data) {
+  #   all_years <- data.frame(year = seq(min(data$year), max(data$year)))
+  #   interpolated <- merge(all_years, data, by = "year", all.x = TRUE)
+  #   interpolated$value <- with(interpolated,
+  #                              ifelse(is.na(value),
+  #                                     approx(data$year, data$value, xout = year)$y,
+  #                                     value))
+  #   return(interpolated)
+  # }
+  # # Group by age_group, sex, and level, then interpolate
+  # riskfactors_alcoholgap <- riskfactors_alcoholgap %>%
+  #   group_by(age_group, sex, level) %>%
+  #   group_modify(~ gap_function(.x)) %>%
+  #   ungroup() %>%
+  #   mutate(
+  #     variable = "alcohol_amt"
+  #   )
+  # 
+  # 
+  # riskfactors <- dataframe %>%
+  #   filter(
+  #     !(variable == "alcohol_amt")
+  #   ) #taking out the old alcohol data
+  # 
+  # riskfactors <- rbind(riskfactors,riskfactors_alcoholgap) #adding in the new filled in data
+  # 
+  # #############################
+  # # Fixing the physical activity gap
+  # #Data Gap2: Physical activity only has 3 time points
+  # riskfactors_pagap<- dataframe %>%
+  #   filter(
+  #     variable == "physical_activity_old"
+  #   )
+  # 
+  # # Group by age_group, sex, and level, then interpolate
+  # riskfactors_pagap <- riskfactors_pagap %>%
+  #   group_by(age_group, sex, level) %>%
+  #   group_modify(~ gap_function(.x)) %>%
+  #   ungroup() %>%
+  #   mutate(
+  #     variable = "physical_activity_old"
+  #   )
+  # 
+  # riskfactors <- riskfactors %>%
+  #   filter(
+  #     !(variable == "physical_activity_old")
+  #   ) #taking out the old physical activity data
+  # 
+  # riskfactors <- rbind(riskfactors,riskfactors_pagap) #adding in the new filled in data
+  # #############################
   
-  # linear interpolation function
-  gap_function <- function(data) {
-    all_years <- data.frame(year = seq(min(data$year), max(data$year)))
-    interpolated <- merge(all_years, data, by = "year", all.x = TRUE)
-    interpolated$value <- with(interpolated, 
-                               ifelse(is.na(value), 
-                                      approx(data$year, data$value, xout = year)$y, 
-                                      value))
-    return(interpolated)
-  }
-  # Group by age_group, sex, and level, then interpolate
-  riskfactors_alcoholgap <- riskfactors_alcoholgap %>%
-    group_by(age_group, sex, level) %>%
-    group_modify(~ gap_function(.x)) %>%
-    ungroup() %>%
-    mutate(
-      variable = "alcohol_amt"
-    )
-  
-  
-  riskfactors <- dataframe %>%
-    filter(
-      !(variable == "alcohol_amt")
-    ) #taking out the old alcohol data 
-  
-  riskfactors <- rbind(riskfactors,riskfactors_alcoholgap) #adding in the new filled in data 
-  
-  #############################
-  # Fixing the physical activity gap 
-  #Data Gap2: Physical activity only has 3 time points 
-  riskfactors_pagap<- dataframe %>%
-    filter(
-      variable == "physical_activity_old"
-    )
-  
-  # Group by age_group, sex, and level, then interpolate
-  riskfactors_pagap <- riskfactors_pagap %>%
-    group_by(age_group, sex, level) %>%
-    group_modify(~ gap_function(.x)) %>%
-    ungroup() %>%
-    mutate(
-      variable = "physical_activity_old"
-    )
-  
-  riskfactors <- riskfactors %>%
-    filter(
-      !(variable == "physical_activity_old")
-    ) #taking out the old physical activity data 
-  
-  riskfactors <- rbind(riskfactors,riskfactors_pagap) #adding in the new filled in data 
-  #############################
+  # Renaming
+  riskfactors <- dataframe
   
   # Cleaning the RR
   rr[-1] <- lapply(rr[-1], function(column) {
