@@ -1,151 +1,275 @@
-"age_group"	"sex"	"level"	"imd"	"variable"	"Model"	"Segment"	"Segment Start"	"Segment End"	"APC"	"APC 95% LCL"	"APC 95% UCL"	"APC Significant"	"Test Statistic"	"P-Value"
-"All"	"Men"	"Heavy Drinker"	"1"	""alcohol_amt""	0	0	2011	2019	-2.3164	-7.6554	3.3313	0	-0.9860	0.356993
-"All"	"Men"	"Heavy Drinker"	"2"	""alcohol_amt""	1	0	2011	2017	-3.5831	-6.6898	-0.3729	1	-3.0931	0.036463
-"All"	"Men"	"Heavy Drinker"	"2"	""alcohol_amt""	1	1	2017	2019	12.3359	-7.4520	36.3548	0	1.6668	0.170886
-"All"	"Men"	"Heavy Drinker"	"3"	""alcohol_amt""	0	0	2011	2019	-2.0205	-6.1830	2.3267	0	-1.1118	0.302935
-"All"	"Men"	"Heavy Drinker"	"4"	""alcohol_amt""	0	0	2011	2019	-2.6221	-6.6694	1.6006	0	-1.4801	0.182388
-"All"	"Men"	"Heavy Drinker"	"5"	""alcohol_amt""	0	0	2011	2019	-0.8510	-6.3643	4.9870	0	-0.3532	0.734325
-"All"	"Women"	"Heavy Drinker"	"1"	""alcohol_amt""	1	0	2011	2013	-34.6516	-65.4886	23.7391	0	-1.8501	0.137968
-"All"	"Women"	"Heavy Drinker"	"1"	""alcohol_amt""	1	1	2013	2019	6.8005	-4.1249	18.9709	0	1.6927	0.165770
-"All"	"Women"	"Heavy Drinker"	"2"	""alcohol_amt""	0	0	2011	2019	1.1920	-7.8503	11.1215	0	0.2993	0.773378
-"All"	"Women"	"Heavy Drinker"	"3"	""alcohol_amt""	0	0	2011	2019	1.5089	-6.3833	10.0664	0	0.4375	0.674905
-"All"	"Women"	"Heavy Drinker"	"4"	""alcohol_amt""	0	0	2011	2019	0.2801	-7.8012	9.0699	0	0.0787	0.939453
-"All"	"Women"	"Heavy Drinker"	"5"	""alcohol_amt""	0	0	2011	2019	-5.6634	-13.1619	2.4825	0	-1.6645	0.139956
-"All"	"Men"	"Light Drinker"	"1"	""alcohol_amt""	1	0	2011	2017	2.2864	0.7689	3.8268	1	4.1991	0.013705
-"All"	"Men"	"Light Drinker"	"1"	""alcohol_amt""	1	1	2017	2019	-3.5241	-11.6891	5.3957	0	-1.1265	0.322979
-"All"	"Men"	"Light Drinker"	"2"	""alcohol_amt""	0	0	2011	2019	0.6497	-1.1897	2.5233	0	0.8303	0.433793
-"All"	"Men"	"Light Drinker"	"3"	""alcohol_amt""	0	0	2011	2019	0.4024	-0.4710	1.2835	0	1.0869	0.313090
-"All"	"Men"	"Light Drinker"	"4"	""alcohol_amt""	0	0	2011	2019	0.8438	-0.7424	2.4553	0	1.2532	0.250383
-"All"	"Men"	"Light Drinker"	"5"	""alcohol_amt""	0	0	2011	2019	1.7644	0.2608	3.2905	1	2.7784	0.027360
-"All"	"Women"	"Light Drinker"	"1"	""alcohol_amt""	0	0	2011	2019	-0.0664	-1.0445	0.9214	0	-0.1596	0.877709
-"All"	"Women"	"Light Drinker"	"2"	""alcohol_amt""	1	0	2011	2017	1.3052	-0.4887	3.1314	0	2.0151	0.114128
-"All"	"Women"	"Light Drinker"	"2"	""alcohol_amt""	1	1	2017	2019	-3.2024	-12.9118	7.5894	0	-0.8549	0.440764
-"All"	"Women"	"Light Drinker"	"3"	""alcohol_amt""	0	0	2011	2019	-0.1419	-0.9578	0.6807	0	-0.4093	0.694579
-"All"	"Women"	"Light Drinker"	"4"	""alcohol_amt""	0	0	2011	2019	0.3866	-0.5474	1.3293	0	0.9760	0.361565
-"All"	"Women"	"Light Drinker"	"5"	""alcohol_amt""	0	0	2011	2019	0.5693	-0.5546	1.7058	0	1.1944	0.271222
-"All"	"Men"	"Moderate Drinker"	"1"	""alcohol_amt""	1	0	2011	2017	-2.5992	-4.8820	-0.2617	1	-3.0832	0.036815
-"All"	"Men"	"Moderate Drinker"	"1"	""alcohol_amt""	1	1	2017	2019	3.4030	-10.1330	18.9778	0	0.6622	0.544042
-"All"	"Men"	"Moderate Drinker"	"2"	""alcohol_amt""	0	0	2011	2019	-0.6621	-2.7384	1.4585	0	-0.7437	0.481291
-"All"	"Men"	"Moderate Drinker"	"3"	""alcohol_amt""	0	0	2011	2019	-1.8148	-2.9726	-0.6431	1	-3.6507	0.008170
-"All"	"Men"	"Moderate Drinker"	"4"	""alcohol_amt""	0	0	2011	2019	-2.4651	-4.0872	-0.8156	1	-3.5193	0.009737
-"All"	"Men"	"Moderate Drinker"	"5"	""alcohol_amt""	0	0	2011	2019	-2.2755	-4.5876	0.0927	0	-2.2731	0.057216
-"All"	"Women"	"Moderate Drinker"	"1"	""alcohol_amt""	0	0	2011	2019	-1.3498	-3.1604	0.4947	0	-1.7347	0.126380
-"All"	"Women"	"Moderate Drinker"	"2"	""alcohol_amt""	1	0	2011	2017	-4.8278	-7.4994	-2.0791	1	-4.8252	0.008491
-"All"	"Women"	"Moderate Drinker"	"2"	""alcohol_amt""	1	1	2017	2019	15.2024	-2.6565	36.3377	0	2.3327	0.080018
-"All"	"Women"	"Moderate Drinker"	"3"	""alcohol_amt""	0	0	2011	2019	-1.4255	-3.1895	0.3706	0	-1.8802	0.102128
-"All"	"Women"	"Moderate Drinker"	"4"	""alcohol_amt""	0	0	2011	2019	-2.4371	-4.9619	0.1548	0	-2.2251	0.061412
-"All"	"Women"	"Moderate Drinker"	"5"	""alcohol_amt""	0	0	2011	2019	-0.7478	-3.4033	1.9808	0	-0.6544	0.533744
-"All"	"Men"	"Non-Drinker"	"1"	""alcohol_amt""	0	0	2011	2019	2.0397	-0.7481	4.9058	0	1.7236	0.128438
-"All"	"Men"	"Non-Drinker"	"2"	""alcohol_amt""	0	0	2011	2019	-0.0568	-2.9896	2.9647	0	-0.0451	0.965287
-"All"	"Men"	"Non-Drinker"	"3"	""alcohol_amt""	0	0	2011	2019	4.5394	2.7517	6.3581	1	6.0860	0.000498
-"All"	"Men"	"Non-Drinker"	"4"	""alcohol_amt""	0	0	2011	2019	2.9123	-0.4237	6.3601	0	2.0600	0.078369
-"All"	"Men"	"Non-Drinker"	"5"	""alcohol_amt""	0	0	2011	2019	-0.3471	-4.0449	3.4931	0	-0.2175	0.834052
-"All"	"Women"	"Non-Drinker"	"1"	""alcohol_amt""	0	0	2011	2019	2.8451	0.2914	5.4638	1	2.6383	0.033508
-"All"	"Women"	"Non-Drinker"	"2"	""alcohol_amt""	0	0	2011	2019	-0.2340	-3.7407	3.4005	0	-0.1548	0.881331
-"All"	"Women"	"Non-Drinker"	"3"	""alcohol_amt""	0	0	2011	2019	1.7823	-0.9194	4.5576	0	1.5528	0.164424
-"All"	"Women"	"Non-Drinker"	"4"	""alcohol_amt""	0	0	2011	2019	0.6019	-0.7615	1.9841	0	1.0400	0.332938
-"All"	"Women"	"Non-Drinker"	"5"	""alcohol_amt""	0	0	2011	2019	-0.3259	-1.7671	1.1365	0	-0.5299	0.612561
-"All"	"Men"	"Healthy Weight"	"1"	""bmi""	0	0	2001	2019	0.1346	-0.2825	0.5534	0	0.6797	0.505865
-"All"	"Men"	"Healthy Weight"	"2"	""bmi""	0	0	2001	2019	-0.1158	-0.7533	0.5257	0	-0.3820	0.707214
-"All"	"Men"	"Healthy Weight"	"3"	""bmi""	2	0	2001	2014	-0.9686	-1.6933	-0.2386	1	-2.9167	0.014020
-"All"	"Men"	"Healthy Weight"	"3"	""bmi""	2	1	2014	2017	6.5757	-7.3596	22.6072	0	1.0003	0.338670
-"All"	"Men"	"Healthy Weight"	"3"	""bmi""	2	2	2017	2019	-7.5897	-19.6728	6.3110	0	-1.2398	0.240863
-"All"	"Men"	"Healthy Weight"	"4"	""bmi""	1	0	2001	2009	1.8445	-0.2743	4.0083	0	1.8646	0.083339
-"All"	"Men"	"Healthy Weight"	"4"	""bmi""	1	1	2009	2019	-1.6350	-3.0995	-0.1484	1	-2.3571	0.033507
-"All"	"Men"	"Healthy Weight"	"5"	""bmi""	0	0	2001	2019	-0.8848	-1.7087	-0.0539	1	-2.2462	0.038272
-"All"	"Women"	"Healthy Weight"	"1"	""bmi""	0	0	2001	2019	-0.2314	-0.5779	0.1163	0	-1.4052	0.177977
-"All"	"Women"	"Healthy Weight"	"2"	""bmi""	2	0	2001	2004	-4.9831	-11.1012	1.5561	0	-1.6904	0.119064
-"All"	"Women"	"Healthy Weight"	"2"	""bmi""	2	1	2004	2007	6.1422	-7.0866	21.2546	0	0.9856	0.345497
-"All"	"Women"	"Healthy Weight"	"2"	""bmi""	2	2	2007	2019	-1.0415	-1.8174	-0.2595	1	-2.9277	0.013748
-"All"	"Women"	"Healthy Weight"	"3"	""bmi""	0	0	2001	2019	-1.0384	-1.4149	-0.6605	1	-5.7781	0.000022
-"All"	"Women"	"Healthy Weight"	"4"	""bmi""	0	0	2001	2019	-0.5353	-1.2297	0.1641	0	-1.6161	0.124477
-"All"	"Women"	"Healthy Weight"	"5"	""bmi""	0	0	2001	2019	-1.3343	-1.8727	-0.7929	1	-5.1795	0.000075
-"All"	"Men"	"Obese"	"1"	""bmi""	0	0	2001	2019	1.0607	0.4094	1.7163	1	3.4428	0.003106
-"All"	"Men"	"Obese"	"2"	""bmi""	0	0	2001	2019	0.6329	0.1167	1.1518	1	2.5881	0.019145
-"All"	"Men"	"Obese"	"3"	""bmi""	0	0	2001	2019	1.4981	0.8917	2.1082	1	5.2354	0.000067
-"All"	"Men"	"Obese"	"4"	""bmi""	0	0	2001	2019	0.9753	0.1746	1.7824	1	2.5723	0.019782
-"All"	"Men"	"Obese"	"5"	""bmi""	0	0	2001	2019	1.8900	1.2593	2.5247	1	6.3616	0.000007
-"All"	"Women"	"Obese"	"1"	""bmi""	0	0	2001	2019	0.8520	0.1007	1.6090	1	2.3938	0.028484
-"All"	"Women"	"Obese"	"2"	""bmi""	0	0	2001	2019	0.7893	0.1160	1.4671	1	2.4748	0.024159
-"All"	"Women"	"Obese"	"3"	""bmi""	0	0	2001	2019	1.8098	1.2482	2.3745	1	6.8416	0.000003
-"All"	"Women"	"Obese"	"4"	""bmi""	0	0	2001	2019	1.1334	0.5331	1.7374	1	3.9938	0.000940
-"All"	"Women"	"Obese"	"5"	""bmi""	0	0	2001	2019	1.9600	1.4967	2.4255	1	8.9910	0.000000
-"All"	"Men"	"Overweight"	"1"	""bmi""	0	0	2001	2019	-0.5857	-0.9410	-0.2291	1	-3.4612	0.002985
-"All"	"Men"	"Overweight"	"2"	""bmi""	0	0	2001	2019	-0.3478	-0.6837	-0.0108	1	-2.1772	0.043842
-"All"	"Men"	"Overweight"	"3"	""bmi""	0	0	2001	2019	-0.7330	-1.0509	-0.4141	1	-4.8394	0.000154
-"All"	"Men"	"Overweight"	"4"	""bmi""	2	0	2001	2003	-7.1886	-15.6478	2.1188	0	-1.7181	0.113759
-"All"	"Men"	"Overweight"	"4"	""bmi""	2	1	2003	2013	-0.8356	-1.6969	0.0334	0	-2.1168	0.057886
-"All"	"Men"	"Overweight"	"4"	""bmi""	2	2	2013	2019	1.4677	-0.1582	3.1201	0	1.9852	0.072618
-"All"	"Men"	"Overweight"	"5"	""bmi""	0	0	2001	2019	-0.5623	-1.1048	-0.0169	1	-2.1752	0.044021
-"All"	"Women"	"Overweight"	"1"	""bmi""	1	0	2001	2011	0.5582	-0.3118	1.4359	0	1.3740	0.191045
-"All"	"Women"	"Overweight"	"1"	""bmi""	1	1	2011	2019	-1.3875	-2.5812	-0.1791	1	-2.4605	0.027480
-"All"	"Women"	"Overweight"	"2"	""bmi""	0	0	2001	2019	-0.3950	-1.0176	0.2315	0	-1.3318	0.200516
-"All"	"Women"	"Overweight"	"3"	""bmi""	0	0	2001	2019	-0.2768	-0.5389	-0.0139	1	-2.2214	0.040196
-"All"	"Women"	"Overweight"	"4"	""bmi""	0	0	2001	2019	-0.5263	-1.0641	0.0144	0	-2.0536	0.055727
-"All"	"Women"	"Overweight"	"5"	""bmi""	0	0	2001	2019	-0.5282	-1.1239	0.0711	0	-1.8602	0.080243
-"All"	"Men"	"Underweight"	"1"	""bmi""	0	0	2001	2019	0.9462	-3.8378	5.9682	0	0.4093	0.687461
-"All"	"Men"	"Underweight"	"2"	""bmi""	0	0	2001	2019	4.4370	-0.7453	9.8899	0	1.8083	0.089392
-"All"	"Men"	"Underweight"	"3"	""bmi""	0	0	2001	2019	-2.8710	-8.1863	2.7519	0	-1.0921	0.290033
-"All"	"Men"	"Underweight"	"4"	""bmi""	0	0	2001	2019	3.1834	-0.5957	7.1062	0	1.7720	0.094318
-"All"	"Men"	"Underweight"	"5"	""bmi""	0	0	2001	2019	-0.8528	-3.9051	2.2964	0	-0.5779	0.570924
-"All"	"Women"	"Underweight"	"1"	""bmi""	0	0	2001	2019	0.2707	-3.6251	4.3240	0	0.1439	0.887243
-"All"	"Women"	"Underweight"	"2"	""bmi""	0	0	2001	2019	0.0829	-2.5915	2.8308	0	0.0645	0.949286
-"All"	"Women"	"Underweight"	"3"	""bmi""	0	0	2001	2019	0.5873	-1.8291	3.0633	0	0.5081	0.617916
-"All"	"Women"	"Underweight"	"4"	""bmi""	0	0	2001	2019	1.8880	-1.9789	5.9074	0	1.0199	0.322064
-"All"	"Women"	"Underweight"	"5"	""bmi""	0	0	2001	2019	-0.1762	-2.4458	2.1461	0	-0.1618	0.873366
-"All"	"Men"	"Below Recommendations"	"1"	""physical_activity_old""	0	0	2003	2012	-1.9990	-3.0382	-0.9488	1	-6.0284	0.009150
-"All"	"Men"	"Below Recommendations"	"2"	""physical_activity_old""	0	0	2003	2012	-1.3623	-2.3920	-0.3218	1	-4.1600	0.025264
-"All"	"Men"	"Below Recommendations"	"3"	""physical_activity_old""	0	0	2003	2012	-0.9593	-2.2019	0.2990	0	-2.4298	0.093347
-"All"	"Men"	"Below Recommendations"	"4"	""physical_activity_old""	0	0	2003	2012	-1.5737	-2.9986	-0.1279	1	-3.4618	0.040588
-"All"	"Men"	"Below Recommendations"	"5"	""physical_activity_old""	0	0	2003	2012	0.1428	-0.9655	1.2635	0	0.4080	0.710643
-"All"	"Women"	"Below Recommendations"	"1"	""physical_activity_old""	0	0	2003	2012	-2.0080	-2.7374	-1.2731	1	-8.6402	0.003261
-"All"	"Women"	"Below Recommendations"	"2"	""physical_activity_old""	0	0	2003	2012	-1.5865	-2.1345	-1.0354	1	-9.1138	0.002792
-"All"	"Women"	"Below Recommendations"	"3"	""physical_activity_old""	0	0	2003	2012	-0.8634	-1.2455	-0.4798	1	-7.1453	0.005644
-"All"	"Women"	"Below Recommendations"	"4"	""physical_activity_old""	0	0	2003	2012	-1.3137	-2.3742	-0.2416	1	-3.8951	0.030019
-"All"	"Women"	"Below Recommendations"	"5"	""physical_activity_old""	0	0	2003	2012	-0.7868	-1.6254	0.0589	0	-2.9616	0.059470
-"All"	"Men"	"Meets Recommendations"	"1"	""physical_activity_old""	0	0	2003	2012	3.6412	1.4855	5.8428	1	5.4150	0.012353
-"All"	"Men"	"Meets Recommendations"	"2"	""physical_activity_old""	0	0	2003	2012	2.1962	0.3752	4.0503	1	3.8453	0.031039
-"All"	"Men"	"Meets Recommendations"	"3"	""physical_activity_old""	0	0	2003	2012	1.4044	-0.5331	3.3796	0	2.3007	0.104920
-"All"	"Men"	"Meets Recommendations"	"4"	""physical_activity_old""	0	0	2003	2012	2.2543	0.0172	4.5415	1	3.2072	0.049062
-"All"	"Men"	"Meets Recommendations"	"5"	""physical_activity_old""	0	0	2003	2012	-0.2763	-2.2033	1.6886	0	-0.4513	0.682380
-"All"	"Women"	"Meets Recommendations"	"1"	""physical_activity_old""	0	0	2003	2012	4.9292	2.7243	7.1814	1	7.2103	0.005499
-"All"	"Women"	"Meets Recommendations"	"2"	""physical_activity_old""	0	0	2003	2012	4.0084	2.1479	5.9027	1	6.9295	0.006162
-"All"	"Women"	"Meets Recommendations"	"3"	""physical_activity_old""	0	0	2003	2012	2.1354	1.0381	3.2445	1	6.2252	0.008357
-"All"	"Women"	"Meets Recommendations"	"4"	""physical_activity_old""	0	0	2003	2012	3.4788	0.3127	6.7448	1	3.5022	0.039417
-"All"	"Women"	"Meets Recommendations"	"5"	""physical_activity_old""	0	0	2003	2012	2.3439	-0.2590	5.0148	0	2.8620	0.064469
-"All"	"Men"	"Current"	"1"	""smoking_status""	0	0	2001	2019	-3.0443	-3.7972	-2.2854	1	-8.3667	0.000000
-"All"	"Men"	"Current"	"2"	""smoking_status""	0	0	2001	2019	-2.2838	-3.1464	-1.4135	1	-5.4970	0.000039
-"All"	"Men"	"Current"	"3"	""smoking_status""	1	0	2001	2003	10.6455	-15.5504	44.9671	0	0.8031	0.435360
-"All"	"Men"	"Current"	"3"	""smoking_status""	1	1	2003	2019	-2.5921	-3.5961	-1.5776	1	-5.4366	0.000088
-"All"	"Men"	"Current"	"4"	""smoking_status""	1	0	2001	2009	0.1871	-1.6248	2.0323	0	0.2197	0.829313
-"All"	"Men"	"Current"	"4"	""smoking_status""	1	1	2009	2019	-3.5463	-4.7942	-2.2821	1	-5.9472	0.000036
-"All"	"Men"	"Current"	"5"	""smoking_status""	0	0	2001	2019	-1.1828	-2.0154	-0.3432	1	-2.9671	0.008639
-"All"	"Women"	"Current"	"1"	""smoking_status""	0	0	2001	2019	-4.6328	-5.3864	-3.8731	1	-12.6142	0.000000
-"All"	"Women"	"Current"	"2"	""smoking_status""	0	0	2001	2019	-3.4150	-4.1091	-2.7159	1	-10.1648	0.000000
-"All"	"Women"	"Current"	"3"	""smoking_status""	0	0	2001	2019	-3.4728	-4.1159	-2.8255	1	-11.1566	0.000000
-"All"	"Women"	"Current"	"4"	""smoking_status""	0	0	2001	2019	-2.7001	-3.2467	-2.1504	1	-10.2513	0.000000
-"All"	"Women"	"Current"	"5"	""smoking_status""	0	0	2001	2019	-1.7826	-2.3789	-1.1827	1	-6.2317	0.000009
-"All"	"Men"	"Never"	"1"	""smoking_status""	1	0	2001	2008	2.5229	1.4892	3.5672	1	5.2733	0.000118
-"All"	"Men"	"Never"	"1"	""smoking_status""	1	1	2008	2019	0.4393	-0.0729	0.9542	0	1.8389	0.087237
-"All"	"Men"	"Never"	"2"	""smoking_status""	0	0	2001	2019	1.2562	0.8935	1.6203	1	7.3388	0.000001
-"All"	"Men"	"Never"	"3"	""smoking_status""	0	0	2001	2019	1.1404	0.7381	1.5443	1	6.0024	0.000014
-"All"	"Men"	"Never"	"4"	""smoking_status""	0	0	2001	2019	1.4218	1.0437	1.8013	1	7.9749	0.000000
-"All"	"Men"	"Never"	"5"	""smoking_status""	0	0	2001	2019	1.0075	0.5211	1.4963	1	4.3817	0.000407
-"All"	"Women"	"Never"	"1"	""smoking_status""	0	0	2001	2019	0.8424	0.6576	1.0275	1	9.6481	0.000000
-"All"	"Women"	"Never"	"2"	""smoking_status""	0	0	2001	2019	0.8172	0.5548	1.0804	1	6.5872	0.000005
-"All"	"Women"	"Never"	"3"	""smoking_status""	0	0	2001	2019	0.7715	0.4474	1.0967	1	5.0330	0.000102
-"All"	"Women"	"Never"	"4"	""smoking_status""	0	0	2001	2019	0.9323	0.6007	1.2649	1	5.9499	0.000016
-"All"	"Women"	"Never"	"5"	""smoking_status""	0	0	2001	2019	0.9217	0.4903	1.3549	1	4.5192	0.000303
-"All"	"Men"	"Previously"	"1"	""smoking_status""	1	0	2001	2008	-2.2242	-3.9357	-0.4823	1	-2.7320	0.016209
-"All"	"Men"	"Previously"	"1"	""smoking_status""	1	1	2008	2019	0.3713	-0.5189	1.2696	0	0.8923	0.387309
-"All"	"Men"	"Previously"	"2"	""smoking_status""	0	0	2001	2019	-0.7701	-1.2205	-0.3176	1	-3.5853	0.002281
-"All"	"Men"	"Previously"	"3"	""smoking_status""	1	0	2001	2017	-0.0966	-0.5832	0.3925	0	-0.4243	0.677783
-"All"	"Men"	"Previously"	"3"	""smoking_status""	1	1	2017	2019	-5.7553	-17.0237	7.0434	0	-0.9984	0.335038
-"All"	"Men"	"Previously"	"4"	""smoking_status""	0	0	2001	2019	-0.4215	-1.0118	0.1723	0	-1.4989	0.152229
-"All"	"Men"	"Previously"	"5"	""smoking_status""	1	0	2001	2005	-7.1634	-12.0356	-2.0214	1	-2.9572	0.010396
-"All"	"Men"	"Previously"	"5"	""smoking_status""	1	1	2005	2019	1.2552	0.4492	2.0677	1	3.3477	0.004786
-"All"	"Women"	"Previously"	"1"	""smoking_status""	0	0	2001	2019	0.0001	-0.5463	0.5496	0	0.0005	0.999628
-"All"	"Women"	"Previously"	"2"	""smoking_status""	0	0	2001	2019	0.0889	-0.5237	0.7053	0	0.3055	0.763725
-"All"	"Women"	"Previously"	"3"	""smoking_status""	0	0	2001	2019	0.7289	0.0837	1.3782	1	2.3846	0.029016
-"All"	"Women"	"Previously"	"4"	""smoking_status""	0	0	2001	2019	0.5491	-0.3175	1.4232	0	1.3348	0.199543
-"All"	"Women"	"Previously"	"5"	""smoking_status""	0	0	2001	2019	0.3489	-0.3943	1.0976	0	0.9885	0.336768
+"age_group"	"sex"	"imd"	"level"	"variable"	"Model"	"Segment"	"Segment Start"	"Segment End"	"APC"	"APC 95% LCL"	"APC 95% UCL"	"APC Significant"	"Test Statistic"	"P-Value"
+All	Men	1	Heavy Drinker	"alcohol_amt"	1	0	2011	2015	-5.0335	-11.0056	1.3394	0	-2.2077	0.091862
+All	Men	1	Heavy Drinker	"alcohol_amt"	1	1	2015	2019	0.9925	-5.3586	7.7698	0	0.4222	0.694610
+All	Men	2	Heavy Drinker	"alcohol_amt"	1	0	2011	2017	-2.7201	-4.4012	-1.0094	1	-4.3924	0.011761
+All	Men	2	Heavy Drinker	"alcohol_amt"	1	1	2017	2019	6.8911	-3.5832	18.5032	0	1.7941	0.147250
+All	Men	3	Heavy Drinker	"alcohol_amt"	1	0	2011	2017	-0.6712	-1.7393	0.4085	0	-1.7296	0.158757
+All	Men	3	Heavy Drinker	"alcohol_amt"	1	1	2017	2019	-5.1684	-11.0439	1.0952	0	-2.3036	0.082610
+All	Men	4	Heavy Drinker	"alcohol_amt"	0	0	2011	2019	-2.1732	-3.5112	-0.8167	1	-3.7728	0.006958
+All	Men	5	Heavy Drinker	"alcohol_amt"	0	0	2011	2019	-0.6595	-2.8672	1.5983	0	-0.6962	0.508745
+All	Women	1	Heavy Drinker	"alcohol_amt"	1	0	2011	2015	-14.9259	-17.9459	-11.7949	1	-12.4175	0.000242
+All	Women	1	Heavy Drinker	"alcohol_amt"	1	1	2015	2019	12.3984	8.4085	16.5351	1	8.9785	0.000852
+All	Women	2	Heavy Drinker	"alcohol_amt"	1	0	2011	2016	-8.9338	-14.8776	-2.5749	1	-3.8495	0.018310
+All	Women	2	Heavy Drinker	"alcohol_amt"	1	1	2016	2019	19.0172	2.3442	38.4065	1	3.2027	0.032816
+All	Women	3	Heavy Drinker	"alcohol_amt"	0	0	2011	2019	0.7822	-3.2765	5.0112	0	0.4482	0.667526
+All	Women	4	Heavy Drinker	"alcohol_amt"	1	0	2011	2014	-8.1731	-25.3019	12.8833	0	-1.1467	0.315439
+All	Women	4	Heavy Drinker	"alcohol_amt"	1	1	2014	2019	5.9752	-3.3711	16.2255	0	1.7452	0.155887
+All	Women	5	Heavy Drinker	"alcohol_amt"	1	0	2011	2016	-0.9141	-7.9066	6.6093	0	-0.3484	0.745117
+All	Women	5	Heavy Drinker	"alcohol_amt"	1	1	2016	2019	-13.9858	-26.9701	1.3071	0	-2.5561	0.062896
+All	Men	1	Light Drinker	"alcohol_amt"	1	0	2011	2017	2.0012	1.4977	2.5072	1	11.1173	0.000372
+All	Men	1	Light Drinker	"alcohol_amt"	1	1	2017	2019	-2.0688	-4.8942	0.8406	0	-1.9826	0.118451
+All	Men	2	Light Drinker	"alcohol_amt"	1	0	2011	2016	1.9332	0.3974	3.4924	1	3.5017	0.024858
+All	Men	2	Light Drinker	"alcohol_amt"	1	1	2016	2019	-1.1140	-4.4145	2.3005	0	-0.9162	0.411378
+All	Men	3	Light Drinker	"alcohol_amt"	0	0	2011	2019	0.3865	-0.0089	0.7834	0	2.3114	0.054072
+All	Men	4	Light Drinker	"alcohol_amt"	0	0	2011	2019	0.9220	0.4895	1.3564	1	5.0535	0.001474
+All	Men	5	Light Drinker	"alcohol_amt"	1	0	2011	2017	2.4138	1.1258	3.7182	1	5.2323	0.006374
+All	Men	5	Light Drinker	"alcohol_amt"	1	1	2017	2019	-1.2802	-8.4019	6.3953	0	-0.4778	0.657758
+All	Women	1	Light Drinker	"alcohol_amt"	0	0	2011	2019	0.0647	-0.3031	0.4339	0	0.4156	0.690130
+All	Women	2	Light Drinker	"alcohol_amt"	1	0	2011	2016	1.2661	0.6747	1.8609	1	5.9641	0.003969
+All	Women	2	Light Drinker	"alcohol_amt"	1	1	2016	2019	-0.7642	-2.0554	0.5439	0	-1.6264	0.179190
+All	Women	3	Light Drinker	"alcohol_amt"	1	0	2011	2014	0.7030	-1.1122	2.5515	0	1.0692	0.345196
+All	Women	3	Light Drinker	"alcohol_amt"	1	1	2014	2019	-0.3769	-1.1840	0.4368	0	-1.2888	0.266962
+All	Women	4	Light Drinker	"alcohol_amt"	1	0	2011	2016	0.8498	-0.2519	1.9637	0	2.1390	0.099201
+All	Women	4	Light Drinker	"alcohol_amt"	1	1	2016	2019	-0.7565	-3.1644	1.7113	0	-0.8584	0.439080
+All	Women	5	Light Drinker	"alcohol_amt"	1	0	2011	2017	1.0211	0.2478	1.8003	1	3.6706	0.021379
+All	Women	5	Light Drinker	"alcohol_amt"	1	1	2017	2019	-1.2412	-5.6303	3.3520	0	-0.7628	0.488084
+All	Men	1	Moderate Drinker	"alcohol_amt"	1	0	2011	2017	-2.2608	-3.3387	-1.1709	1	-5.7252	0.004607
+All	Men	1	Moderate Drinker	"alcohol_amt"	1	1	2017	2019	1.7397	-4.7208	8.6383	0	0.7299	0.505891
+All	Men	2	Moderate Drinker	"alcohol_amt"	1	0	2011	2016	-2.0900	-3.5119	-0.6471	1	-4.0084	0.016017
+All	Men	2	Moderate Drinker	"alcohol_amt"	1	1	2016	2019	1.1588	-2.0968	4.5227	0	0.9779	0.383506
+All	Men	3	Moderate Drinker	"alcohol_amt"	0	0	2011	2019	-1.7569	-2.2946	-1.2162	1	-7.6369	0.000122
+All	Men	4	Moderate Drinker	"alcohol_amt"	0	0	2011	2019	-2.5337	-2.9237	-2.1422	1	-15.1363	0.000001
+All	Men	5	Moderate Drinker	"alcohol_amt"	0	0	2011	2019	-1.9355	-2.5405	-1.3268	1	-7.4685	0.000141
+All	Women	1	Moderate Drinker	"alcohol_amt"	1	0	2011	2015	0.7029	-1.4201	2.8716	0	0.9127	0.413035
+All	Women	1	Moderate Drinker	"alcohol_amt"	1	1	2015	2019	-3.4795	-5.5143	-1.4008	1	-4.6146	0.009921
+All	Women	2	Moderate Drinker	"alcohol_amt"	1	0	2011	2017	-3.9256	-5.2383	-2.5946	1	-8.0817	0.001274
+All	Women	2	Moderate Drinker	"alcohol_amt"	1	1	2017	2019	8.2982	-0.1674	17.4817	0	2.7193	0.053025
+All	Women	3	Moderate Drinker	"alcohol_amt"	0	0	2011	2019	-1.1821	-2.0658	-0.2903	1	-3.1298	0.016615
+All	Women	4	Moderate Drinker	"alcohol_amt"	0	0	2011	2019	-2.1221	-3.4260	-0.8007	1	-3.7820	0.006874
+All	Women	5	Moderate Drinker	"alcohol_amt"	0	0	2011	2019	-0.8403	-1.4960	-0.1803	1	-3.0079	0.019721
+All	Men	1	Non-Drinker	"alcohol_amt"	1	0	2011	2014	-1.3000	-7.2091	4.9855	0	-0.5885	0.587848
+All	Men	1	Non-Drinker	"alcohol_amt"	1	1	2014	2019	3.2917	0.4789	6.1833	1	3.2569	0.031173
+All	Men	2	Non-Drinker	"alcohol_amt"	0	0	2011	2019	0.2015	-0.8653	1.2798	0	0.4447	0.669952
+All	Men	3	Non-Drinker	"alcohol_amt"	1	0	2011	2015	5.8379	3.4924	8.2365	1	7.0294	0.002158
+All	Men	3	Non-Drinker	"alcohol_amt"	1	1	2015	2019	2.5085	0.2369	4.8317	1	3.0695	0.037310
+All	Men	4	Non-Drinker	"alcohol_amt"	0	0	2011	2019	2.7116	1.7652	3.6667	1	6.8347	0.000245
+All	Men	5	Non-Drinker	"alcohol_amt"	0	0	2011	2019	-0.7280	-1.9528	0.5121	0	-1.3916	0.206652
+All	Women	1	Non-Drinker	"alcohol_amt"	0	0	2011	2019	2.4174	1.6172	3.2238	1	7.2011	0.000177
+All	Women	2	Non-Drinker	"alcohol_amt"	1	0	2011	2017	1.9138	0.5049	3.3425	1	3.7809	0.019421
+All	Women	2	Non-Drinker	"alcohol_amt"	1	1	2017	2019	-7.3150	-14.6426	0.6416	0	-2.5608	0.062582
+All	Women	3	Non-Drinker	"alcohol_amt"	1	0	2011	2017	0.3056	-1.6224	2.2715	0	0.4365	0.684978
+All	Women	3	Non-Drinker	"alcohol_amt"	1	1	2017	2019	4.8854	-6.4922	17.6474	0	1.1533	0.312998
+All	Women	4	Non-Drinker	"alcohol_amt"	1	0	2011	2015	-0.9193	-2.4429	0.6281	0	-1.6547	0.173323
+All	Women	4	Non-Drinker	"alcohol_amt"	1	1	2015	2019	2.0129	0.4442	3.6060	1	3.5705	0.023366
+All	Women	5	Non-Drinker	"alcohol_amt"	1	0	2011	2016	-1.2087	-2.2833	-0.1223	1	-3.0870	0.036680
+All	Women	5	Non-Drinker	"alcohol_amt"	1	1	2016	2019	1.5555	-0.8980	4.0697	0	1.7523	0.154598
+All	Men	1	Healthy Weight	"bmi"	2	0	2001	2006	0.8695	0.0807	1.6644	1	2.4272	0.033573
+All	Men	1	Healthy Weight	"bmi"	2	1	2006	2009	-2.5734	-5.9344	0.9077	0	-1.6345	0.130424
+All	Men	1	Healthy Weight	"bmi"	2	2	2009	2019	0.8464	0.5712	1.1224	1	6.7876	0.000030
+All	Men	2	Healthy Weight	"bmi"	2	0	2001	2009	-1.4225	-2.0176	-0.8238	1	-5.2080	0.000291
+All	Men	2	Healthy Weight	"bmi"	2	1	2009	2017	1.1945	0.4469	1.9477	1	3.5243	0.004762
+All	Men	2	Healthy Weight	"bmi"	2	2	2017	2019	-2.4187	-7.6864	3.1496	0	-0.9711	0.352380
+All	Men	3	Healthy Weight	"bmi"	3	0	2001	2006	0.3827	-0.4439	1.2161	0	1.0653	0.317837
+All	Men	3	Healthy Weight	"bmi"	3	1	2006	2014	-1.5143	-1.9997	-1.0265	1	-7.1214	0.000100
+All	Men	3	Healthy Weight	"bmi"	3	2	2014	2017	5.9919	2.1444	9.9844	1	3.6293	0.006692
+All	Men	3	Healthy Weight	"bmi"	3	3	2017	2019	-3.9134	-7.4013	-0.2941	1	-2.4897	0.037541
+All	Men	4	Healthy Weight	"bmi"	1	0	2001	2010	1.3158	0.5926	2.0441	1	3.9141	0.001558
+All	Men	4	Healthy Weight	"bmi"	1	1	2010	2019	-1.6926	-2.3942	-0.9859	1	-5.1115	0.000158
+All	Men	5	Healthy Weight	"bmi"	1	0	2001	2013	-0.0734	-0.8352	0.6943	0	-0.2057	0.840016
+All	Men	5	Healthy Weight	"bmi"	1	1	2013	2019	-2.8890	-4.9905	-0.7410	1	-2.8740	0.012256
+All	Women	1	Healthy Weight	"bmi"	2	0	2001	2010	-1.0090	-1.2935	-0.7236	1	-7.7532	0.000009
+All	Women	1	Healthy Weight	"bmi"	2	1	2010	2013	2.3829	-0.7954	5.6630	0	1.6436	0.128499
+All	Women	1	Healthy Weight	"bmi"	2	2	2013	2019	-0.9288	-1.4555	-0.3993	1	-3.8532	0.002685
+All	Women	2	Healthy Weight	"bmi"	2	0	2001	2004	-3.3135	-5.3987	-1.1824	1	-3.4017	0.005911
+All	Women	2	Healthy Weight	"bmi"	2	1	2004	2008	3.8336	1.5942	6.1223	1	3.7977	0.002955
+All	Women	2	Healthy Weight	"bmi"	2	2	2008	2019	-1.1872	-1.4773	-0.8963	1	-8.9417	0.000002
+All	Women	3	Healthy Weight	"bmi"	2	0	2001	2005	-1.7941	-3.0086	-0.5645	1	-3.2022	0.008421
+All	Women	3	Healthy Weight	"bmi"	2	1	2005	2016	-0.5586	-0.8628	-0.2536	1	-4.0250	0.001999
+All	Women	3	Healthy Weight	"bmi"	2	2	2016	2019	-3.8055	-5.6796	-1.8941	1	-4.3402	0.001174
+All	Women	4	Healthy Weight	"bmi"	3	0	2001	2005	0.7992	-2.3100	4.0074	0	0.5859	0.574122
+All	Women	4	Healthy Weight	"bmi"	3	1	2005	2010	-3.6190	-6.5920	-0.5515	1	-2.7130	0.026534
+All	Women	4	Healthy Weight	"bmi"	3	2	2010	2013	4.7411	-5.1390	15.6502	0	1.0781	0.312421
+All	Women	4	Healthy Weight	"bmi"	3	3	2013	2019	-1.3464	-2.9848	0.3197	0	-1.8664	0.098948
+All	Women	5	Healthy Weight	"bmi"	2	0	2001	2006	0.8062	-0.4613	2.0899	0	1.3967	0.190035
+All	Women	5	Healthy Weight	"bmi"	2	1	2006	2013	-2.4333	-3.3620	-1.4955	1	-5.6683	0.000145
+All	Women	5	Healthy Weight	"bmi"	2	2	2013	2019	-0.5103	-1.4574	0.4459	0	-1.1772	0.263956
+All	Men	1	Obese	"bmi"	1	0	2001	2017	1.3408	1.0377	1.6449	1	9.5354	0.000000
+All	Men	1	Obese	"bmi"	1	1	2017	2019	-5.1492	-12.2773	2.5580	0	-1.4513	0.168721
+All	Men	2	Obese	"bmi"	3	0	2001	2004	-2.2550	-4.7734	0.3300	0	-2.0150	0.078670
+All	Men	2	Obese	"bmi"	3	1	2004	2009	3.3859	1.6931	5.1068	1	4.6512	0.001642
+All	Men	2	Obese	"bmi"	3	2	2009	2012	-3.8198	-8.7121	1.3347	0	-1.7203	0.123684
+All	Men	2	Obese	"bmi"	3	3	2012	2019	1.6612	0.9545	2.3729	1	5.4460	0.000612
+All	Men	3	Obese	"bmi"	1	0	2001	2014	2.0605	1.6845	2.4379	1	11.8519	0.000000
+All	Men	3	Obese	"bmi"	1	1	2014	2019	-0.9795	-2.5264	0.5920	0	-1.3408	0.201349
+All	Men	4	Obese	"bmi"	2	0	2001	2005	4.7619	2.2476	7.3380	1	4.2148	0.001449
+All	Men	4	Obese	"bmi"	2	1	2005	2008	-2.4892	-9.6996	5.2969	0	-0.7222	0.485238
+All	Men	4	Obese	"bmi"	2	2	2008	2019	1.2132	0.6903	1.7388	1	5.1245	0.000331
+All	Men	5	Obese	"bmi"	1	0	2001	2015	1.5307	1.2310	1.8314	1	11.0199	0.000000
+All	Men	5	Obese	"bmi"	1	1	2015	2019	4.0727	2.0176	6.1691	1	4.2930	0.000744
+All	Women	1	Obese	"bmi"	3	0	2001	2007	2.5507	1.4669	3.6461	1	5.4667	0.000597
+All	Women	1	Obese	"bmi"	3	1	2007	2012	-2.3062	-4.2289	-0.3449	1	-2.7068	0.026790
+All	Women	1	Obese	"bmi"	3	2	2012	2017	3.7618	1.7197	5.8449	1	4.2841	0.002673
+All	Women	1	Obese	"bmi"	3	3	2017	2019	-0.6225	-6.6768	5.8246	0	-0.2291	0.824559
+All	Women	2	Obese	"bmi"	1	0	2001	2009	-0.6049	-1.4690	0.2668	0	-1.4903	0.158316
+All	Women	2	Obese	"bmi"	1	1	2009	2019	1.8497	1.2171	2.4862	1	6.3096	0.000019
+All	Women	3	Obese	"bmi"	0	0	2001	2019	1.8165	1.5342	2.0995	1	13.6823	0.000000
+All	Women	4	Obese	"bmi"	3	0	2001	2009	2.6512	2.1596	3.1451	1	12.5696	0.000002
+All	Women	4	Obese	"bmi"	3	1	2009	2013	-1.8720	-4.0071	0.3106	0	-1.9810	0.082925
+All	Women	4	Obese	"bmi"	3	2	2013	2017	3.4436	1.1928	5.7444	1	3.5490	0.007521
+All	Women	4	Obese	"bmi"	3	3	2017	2019	-2.7148	-6.9022	1.6611	0	-1.4426	0.187130
+All	Women	5	Obese	"bmi"	3	0	2001	2005	-0.1291	-1.9193	1.6937	0	-0.1648	0.873225
+All	Women	5	Obese	"bmi"	3	1	2005	2009	3.7214	0.7970	6.7306	1	2.9461	0.018535
+All	Women	5	Obese	"bmi"	3	2	2009	2014	0.7743	-1.0321	2.6137	0	0.9834	0.354211
+All	Women	5	Obese	"bmi"	3	3	2014	2019	2.9448	1.6365	4.2699	1	5.2327	0.000790
+All	Men	1	Overweight	"bmi"	1	0	2001	2017	-0.6731	-0.8736	-0.4722	1	-7.1698	0.000005
+All	Men	1	Overweight	"bmi"	1	1	2017	2019	1.9140	-3.3162	7.4271	0	0.7718	0.453043
+All	Men	2	Overweight	"bmi"	2	0	2001	2013	0.0865	-0.1411	0.3145	0	0.8359	0.421022
+All	Men	2	Overweight	"bmi"	2	1	2013	2017	-1.9817	-3.8500	-0.0771	1	-2.2892	0.042838
+All	Men	2	Overweight	"bmi"	2	2	2017	2019	1.3840	-2.4441	5.3623	0	0.7860	0.448469
+All	Men	3	Overweight	"bmi"	3	0	2001	2006	-1.6540	-2.4089	-0.8933	1	-4.9912	0.001064
+All	Men	3	Overweight	"bmi"	3	1	2006	2012	0.4235	-0.3474	1.2003	0	1.2647	0.241576
+All	Men	3	Overweight	"bmi"	3	2	2012	2016	-2.5902	-4.2542	-0.8972	1	-3.5121	0.007937
+All	Men	3	Overweight	"bmi"	3	3	2016	2019	1.0971	-0.6300	2.8541	0	1.4602	0.182358
+All	Men	4	Overweight	"bmi"	2	0	2001	2003	-4.7692	-7.7652	-1.6758	1	-3.3646	0.006313
+All	Men	4	Overweight	"bmi"	2	1	2003	2012	-1.0829	-1.4273	-0.7373	1	-6.8707	0.000027
+All	Men	4	Overweight	"bmi"	2	2	2012	2019	1.1599	0.7287	1.5930	1	5.9420	0.000097
+All	Men	5	Overweight	"bmi"	1	0	2001	2006	-2.0858	-3.4343	-0.7183	1	-3.2597	0.005702
+All	Men	5	Overweight	"bmi"	1	1	2006	2019	-0.1926	-0.5165	0.1324	0	-1.2717	0.224195
+All	Women	1	Overweight	"bmi"	2	0	2001	2012	0.5002	0.2047	0.7967	1	3.7289	0.003330
+All	Women	1	Overweight	"bmi"	2	1	2012	2015	-3.0070	-7.1530	1.3243	0	-1.5382	0.152257
+All	Women	1	Overweight	"bmi"	2	2	2015	2019	0.1733	-1.2011	1.5668	0	0.2758	0.787786
+All	Women	2	Overweight	"bmi"	2	0	2001	2004	3.8538	0.1471	7.6978	1	2.2900	0.042780
+All	Women	2	Overweight	"bmi"	2	1	2004	2007	-4.5941	-11.2831	2.5992	0	-1.4240	0.182186
+All	Women	2	Overweight	"bmi"	2	2	2007	2019	0.1118	-0.3175	0.5431	0	0.5724	0.578553
+All	Women	3	Overweight	"bmi"	0	0	2001	2019	-0.2763	-0.4514	-0.1010	1	-3.3234	0.004021
+All	Women	4	Overweight	"bmi"	3	0	2001	2005	-3.1940	-4.6947	-1.6696	1	-4.7910	0.001371
+All	Women	4	Overweight	"bmi"	3	1	2005	2010	2.2948	0.7089	3.9056	1	3.3486	0.010101
+All	Women	4	Overweight	"bmi"	3	2	2010	2014	-2.9782	-5.3457	-0.5515	1	-2.8223	0.022416
+All	Women	4	Overweight	"bmi"	3	3	2014	2019	-0.0210	-1.1195	1.0897	0	-0.0439	0.966071
+All	Women	5	Overweight	"bmi"	3	0	2001	2009	-1.5366	-2.1638	-0.9055	1	-5.5890	0.000517
+All	Women	5	Overweight	"bmi"	3	1	2009	2014	2.2171	0.3417	4.1277	1	2.7308	0.025816
+All	Women	5	Overweight	"bmi"	3	2	2014	2017	-4.4817	-9.9146	1.2789	0	-1.8056	0.108622
+All	Women	5	Overweight	"bmi"	3	3	2017	2019	-0.0938	-5.7762	5.9314	0	-0.0369	0.971438
+All	Men	1	Underweight	"bmi"	2	0	2001	2011	-7.4963	-11.1155	-3.7297	1	-4.2972	0.001262
+All	Men	1	Underweight	"bmi"	2	1	2011	2014	43.5211	-14.0458	139.6428	0	1.5512	0.149135
+All	Men	1	Underweight	"bmi"	2	2	2014	2019	-13.2111	-22.6111	-2.6692	1	-2.7204	0.019916
+All	Men	2	Underweight	"bmi"	0	0	2001	2019	3.6324	0.7271	6.6215	1	2.6600	0.017115
+All	Men	3	Underweight	"bmi"	1	0	2001	2008	7.9425	-4.3107	21.7648	0	1.3604	0.195190
+All	Men	3	Underweight	"bmi"	1	1	2008	2019	-6.3983	-11.9190	-0.5316	1	-2.3328	0.035091
+All	Men	4	Underweight	"bmi"	3	0	2001	2003	9.0706	-24.9546	58.5225	0	0.5355	0.606875
+All	Men	4	Underweight	"bmi"	3	1	2003	2006	-23.6403	-47.4611	10.9808	0	-1.6634	0.134795
+All	Men	4	Underweight	"bmi"	3	2	2006	2009	47.4386	1.4444	114.2864	1	2.3944	0.043552
+All	Men	4	Underweight	"bmi"	3	3	2009	2019	-3.4516	-6.2214	-0.6000	1	-2.7827	0.023824
+All	Men	5	Underweight	"bmi"	2	0	2001	2005	-9.5890	-21.7975	4.5253	0	-1.5295	0.154384
+All	Men	5	Underweight	"bmi"	2	1	2005	2009	17.8974	-6.2671	48.2916	0	1.5799	0.142429
+All	Men	5	Underweight	"bmi"	2	2	2009	2019	-6.6475	-9.9225	-3.2535	1	-4.2395	0.001390
+All	Women	1	Underweight	"bmi"	3	0	2001	2009	5.9056	3.5549	8.3097	1	5.8947	0.000364
+All	Women	1	Underweight	"bmi"	3	1	2009	2012	-16.2037	-31.7850	2.9365	0	-1.9816	0.082846
+All	Women	1	Underweight	"bmi"	3	2	2012	2016	9.1442	-1.5245	20.9687	0	1.9616	0.085447
+All	Women	1	Underweight	"bmi"	3	3	2016	2019	-2.7815	-12.2845	7.7510	0	-0.6324	0.544765
+All	Women	2	Underweight	"bmi"	0	0	2001	2019	0.3577	-0.7514	1.4791	0	0.6779	0.506985
+All	Women	3	Underweight	"bmi"	2	0	2001	2006	-10.9917	-18.4264	-2.8795	1	-2.9383	0.013490
+All	Women	3	Underweight	"bmi"	2	1	2006	2009	16.6625	-21.0187	72.3210	0	0.8696	0.403100
+All	Women	3	Underweight	"bmi"	2	2	2009	2019	-1.1186	-4.0762	1.9303	0	-0.8153	0.432205
+All	Women	4	Underweight	"bmi"	0	0	2001	2019	2.1272	0.8832	3.3866	1	3.6236	0.002099
+All	Women	5	Underweight	"bmi"	1	0	2001	2003	23.4710	-9.0019	67.5318	0	1.4818	0.160548
+All	Women	5	Underweight	"bmi"	1	1	2003	2019	-1.2630	-2.4118	-0.1007	1	-2.3295	0.035315
+All	Men	1	Below Recommendations	"physical_activity_old"	0	0	2003	2012	-1.6914	-2.4703	-0.9062	1	-6.8241	0.006438
+All	Men	2	Below Recommendations	"physical_activity_old"	0	0	2003	2012	-1.1117	-1.9172	-0.2995	1	-4.3497	0.022442
+All	Men	3	Below Recommendations	"physical_activity_old"	0	0	2003	2012	-0.6299	-0.9385	-0.3204	1	-6.4663	0.007504
+All	Men	4	Below Recommendations	"physical_activity_old"	0	0	2003	2012	-1.3921	-2.2594	-0.5172	1	-5.0504	0.014975
+All	Men	5	Below Recommendations	"physical_activity_old"	0	0	2003	2012	-0.0683	-0.2528	0.1166	0	-1.1761	0.324394
+All	Women	1	Below Recommendations	"physical_activity_old"	0	0	2003	2012	-1.4619	-1.9661	-0.9551	1	-9.1366	0.002771
+All	Women	2	Below Recommendations	"physical_activity_old"	0	0	2003	2012	-1.2812	-1.9213	-0.6369	1	-6.3084	0.008049
+All	Women	3	Below Recommendations	"physical_activity_old"	0	0	2003	2012	-0.6989	-1.0843	-0.3121	1	-5.7411	0.010495
+All	Women	4	Below Recommendations	"physical_activity_old"	0	0	2003	2012	-1.0795	-1.8495	-0.3036	1	-4.4207	0.021492
+All	Women	5	Below Recommendations	"physical_activity_old"	0	0	2003	2012	-0.7292	-1.1550	-0.3015	1	-5.4182	0.012333
+All	Men	1	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	3.0782	1.4003	4.7839	1	5.8790	0.009819
+All	Men	2	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	1.7871	0.4011	3.1923	1	4.1115	0.026058
+All	Men	3	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	0.9093	0.4329	1.3881	1	6.0867	0.008905
+All	Men	4	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	1.9827	0.6355	3.3479	1	4.6985	0.018236
+All	Men	5	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	0.1222	-0.2089	0.4544	0	1.1732	0.325400
+All	Women	1	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	3.6794	2.1301	5.2523	1	7.6375	0.004661
+All	Women	2	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	3.2560	1.3839	5.1627	1	5.5730	0.011403
+All	Women	3	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	1.7292	0.7016	2.7672	1	5.3742	0.012615
+All	Women	4	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	2.8590	0.6427	5.1241	1	4.1185	0.025941
+All	Women	5	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	2.1539	0.7907	3.5355	1	5.0480	0.014994
+All	Men	1	Current	"smoking_status"	0	0	2001	2019	-2.9421	-3.2606	-2.6225	1	-19.1658	0.000000
+All	Men	2	Current	"smoking_status"	2	0	2001	2012	-1.1436	-1.5819	-0.7034	1	-5.6978	0.000139
+All	Men	2	Current	"smoking_status"	2	1	2012	2015	-6.5796	-12.5378	-0.2154	1	-2.2730	0.044074
+All	Men	2	Current	"smoking_status"	2	2	2015	2019	-1.4176	-3.4509	0.6584	0	-1.5079	0.159758
+All	Men	3	Current	"smoking_status"	1	0	2001	2003	6.7770	-7.1834	22.8372	0	1.0037	0.332547
+All	Men	3	Current	"smoking_status"	1	1	2003	2019	-2.4426	-2.9654	-1.9170	1	-9.8709	0.000000
+All	Men	4	Current	"smoking_status"	2	0	2001	2005	1.8178	0.2261	3.4349	1	2.5165	0.028654
+All	Men	4	Current	"smoking_status"	2	1	2005	2014	-1.8479	-2.3800	-1.3128	1	-7.5511	0.000011
+All	Men	4	Current	"smoking_status"	2	2	2014	2019	-4.7792	-5.8343	-3.7124	1	-9.6743	0.000001
+All	Men	5	Current	"smoking_status"	1	0	2001	2012	-0.0321	-0.4988	0.4368	0	-0.1471	0.885173
+All	Men	5	Current	"smoking_status"	1	1	2012	2019	-3.2321	-4.1255	-2.3303	1	-7.5968	0.000002
+All	Women	1	Current	"smoking_status"	2	0	2001	2004	-1.9448	-6.1079	2.4030	0	-0.9963	0.340497
+All	Women	1	Current	"smoking_status"	2	1	2004	2012	-6.1084	-7.1908	-5.0134	1	-11.9643	0.000000
+All	Women	1	Current	"smoking_status"	2	2	2012	2019	-2.6715	-3.7935	-1.5364	1	-5.1400	0.000323
+All	Women	2	Current	"smoking_status"	0	0	2001	2019	-3.4434	-3.6575	-3.2290	1	-33.3189	0.000000
+All	Women	3	Current	"smoking_status"	2	0	2001	2010	-2.2607	-3.0329	-1.4824	1	-6.3454	0.000055
+All	Women	3	Current	"smoking_status"	2	1	2010	2013	-6.8042	-14.5598	1.6555	0	-1.7850	0.101823
+All	Women	3	Current	"smoking_status"	2	2	2013	2019	-2.4117	-3.8345	-0.9679	1	-3.6586	0.003764
+All	Women	4	Current	"smoking_status"	0	0	2001	2019	-2.6947	-2.9481	-2.4407	1	-22.1059	0.000000
+All	Women	5	Current	"smoking_status"	3	0	2001	2004	3.3134	0.6595	6.0373	1	2.8885	0.020245
+All	Women	5	Current	"smoking_status"	3	1	2004	2009	-3.7996	-5.3700	-2.2032	1	-5.4274	0.000625
+All	Women	5	Current	"smoking_status"	3	2	2009	2012	0.2651	-4.8199	5.6217	0	0.1173	0.909523
+All	Women	5	Current	"smoking_status"	3	3	2012	2019	-2.3510	-3.0278	-1.6695	1	-7.8880	0.000048
+All	Men	1	Never	"smoking_status"	3	0	2001	2009	2.3359	2.0912	2.5812	1	22.2426	0.000000
+All	Men	1	Never	"smoking_status"	3	1	2009	2013	-0.4359	-1.5222	0.6623	0	-0.9184	0.385272
+All	Men	1	Never	"smoking_status"	3	2	2013	2016	1.5320	-0.6714	3.7843	0	1.5980	0.148718
+All	Men	1	Never	"smoking_status"	3	3	2016	2019	0.0164	-1.0748	1.1196	0	0.0345	0.973352
+All	Men	2	Never	"smoking_status"	3	0	2001	2007	1.5253	0.9451	2.1088	1	6.0908	0.000292
+All	Men	2	Never	"smoking_status"	3	1	2007	2010	-0.8458	-4.1513	2.5737	0	-0.5777	0.579363
+All	Men	2	Never	"smoking_status"	3	2	2010	2015	2.8058	1.7094	3.9140	1	5.9514	0.000341
+All	Men	2	Never	"smoking_status"	3	3	2015	2019	0.2204	-0.8484	1.3008	0	0.4736	0.648437
+All	Men	3	Never	"smoking_status"	3	0	2001	2004	-1.4959	-3.1023	0.1372	0	-2.1137	0.067480
+All	Men	3	Never	"smoking_status"	3	1	2004	2011	2.0187	1.4532	2.5873	1	8.2910	0.000034
+All	Men	3	Never	"smoking_status"	3	2	2011	2014	-1.3542	-4.5455	1.9438	0	-0.9561	0.367023
+All	Men	3	Never	"smoking_status"	3	3	2014	2019	2.8256	2.0722	3.5845	1	8.7379	0.000023
+All	Men	4	Never	"smoking_status"	1	0	2001	2010	0.6300	0.2046	1.0572	1	3.1795	0.006687
+All	Men	4	Never	"smoking_status"	1	1	2010	2019	2.0308	1.5994	2.4640	1	10.1781	0.000000
+All	Men	5	Never	"smoking_status"	2	0	2001	2005	3.4297	1.8485	5.0354	1	4.8178	0.000538
+All	Men	5	Never	"smoking_status"	2	1	2005	2009	-0.7215	-3.1106	1.7264	0	-0.6543	0.526345
+All	Men	5	Never	"smoking_status"	2	2	2009	2019	1.2292	0.8460	1.6139	1	7.0900	0.000020
+All	Women	1	Never	"smoking_status"	0	0	2001	2019	0.8222	0.7549	0.8895	1	25.8730	0.000000
+All	Women	2	Never	"smoking_status"	1	0	2001	2004	2.4925	1.3575	3.6403	1	4.7418	0.000315
+All	Women	2	Never	"smoking_status"	1	1	2004	2019	0.6444	0.5498	0.7392	1	14.6390	0.000000
+All	Women	3	Never	"smoking_status"	0	0	2001	2019	0.7375	0.5522	0.9232	1	8.4187	0.000000
+All	Women	4	Never	"smoking_status"	0	0	2001	2019	0.8767	0.7372	1.0165	1	13.3031	0.000000
+All	Women	5	Never	"smoking_status"	3	0	2001	2005	-0.8827	-1.8568	0.1010	0	-2.0703	0.072197
+All	Women	5	Never	"smoking_status"	3	1	2005	2009	3.6051	1.9998	5.2356	1	5.2301	0.000793
+All	Women	5	Never	"smoking_status"	3	2	2009	2012	-1.6417	-4.6660	1.4786	0	-1.2222	0.256403
+All	Women	5	Never	"smoking_status"	3	3	2012	2019	1.1927	0.7713	1.6159	1	6.5513	0.000178
+All	Men	1	Previously	"smoking_status"	3	0	2001	2004	-0.6155	-2.4266	1.2293	0	-0.7741	0.461144
+All	Men	1	Previously	"smoking_status"	3	1	2004	2008	-3.6000	-5.3567	-1.8107	1	-4.5971	0.001762
+All	Men	1	Previously	"smoking_status"	3	2	2008	2011	2.4894	-1.2119	6.3294	0	1.5416	0.161747
+All	Men	1	Previously	"smoking_status"	3	3	2011	2019	-0.2655	-0.6649	0.1356	0	-1.5274	0.165172
+All	Men	2	Previously	"smoking_status"	3	0	2001	2005	-2.5409	-4.0053	-1.0541	1	-3.9201	0.004418
+All	Men	2	Previously	"smoking_status"	3	1	2005	2009	1.3240	-1.0728	3.7788	0	1.2670	0.240785
+All	Men	2	Previously	"smoking_status"	3	2	2009	2015	-1.8052	-2.8508	-0.7483	1	-3.9240	0.004393
+All	Men	2	Previously	"smoking_status"	3	3	2015	2019	0.4566	-1.0528	1.9891	0	0.6939	0.507385
+All	Men	3	Previously	"smoking_status"	3	0	2001	2003	-2.0251	-4.5199	0.5350	0	-1.8290	0.104796
+All	Men	3	Previously	"smoking_status"	3	1	2003	2013	-0.0879	-0.3229	0.1476	0	-0.8616	0.414001
+All	Men	3	Previously	"smoking_status"	3	2	2013	2016	1.1199	-1.4551	3.7621	0	0.9956	0.348594
+All	Men	3	Previously	"smoking_status"	3	3	2016	2019	-4.1080	-5.3368	-2.8633	1	-7.5003	0.000069
+All	Men	4	Previously	"smoking_status"	3	0	2001	2008	-1.1556	-1.7144	-0.5937	1	-4.7285	0.001486
+All	Men	4	Previously	"smoking_status"	3	1	2008	2011	1.8739	-2.3572	6.2883	0	1.0092	0.342405
+All	Men	4	Previously	"smoking_status"	3	2	2011	2014	-2.6729	-6.7152	1.5445	0	-1.4728	0.179025
+All	Men	4	Previously	"smoking_status"	3	3	2014	2019	1.2401	0.2844	2.2050	1	2.9964	0.017166
+All	Men	5	Previously	"smoking_status"	2	0	2001	2004	-7.4385	-10.0214	-4.7814	1	-6.0112	0.000088
+All	Men	5	Previously	"smoking_status"	2	1	2004	2012	0.1077	-0.6467	0.8678	0	0.3132	0.760014
+All	Men	5	Previously	"smoking_status"	2	2	2012	2019	1.9075	1.1395	2.6812	1	5.4981	0.000187
+All	Women	1	Previously	"smoking_status"	2	0	2001	2004	-2.0781	-4.5620	0.4704	0	-1.7990	0.099486
+All	Women	1	Previously	"smoking_status"	2	1	2004	2007	3.6535	-1.5384	9.1191	0	1.5370	0.152556
+All	Women	1	Previously	"smoking_status"	2	2	2007	2019	-0.6163	-0.9179	-0.3139	1	-4.4782	0.000934
+All	Women	2	Previously	"smoking_status"	1	0	2001	2004	-1.8783	-5.2177	1.5786	0	-1.1746	0.259760
+All	Women	2	Previously	"smoking_status"	1	1	2004	2019	0.3176	0.0244	0.6116	1	2.3238	0.035701
+All	Women	3	Previously	"smoking_status"	1	0	2001	2017	1.0458	0.6591	1.4341	1	5.8187	0.000045
+All	Women	3	Previously	"smoking_status"	1	1	2017	2019	-5.1097	-14.1399	4.8702	0	-1.1249	0.279549
+All	Women	4	Previously	"smoking_status"	0	0	2001	2019	0.7316	0.3592	1.1054	1	4.1523	0.000667
+All	Women	5	Previously	"smoking_status"	2	0	2001	2009	-0.9340	-1.8243	-0.0357	1	-2.2879	0.042934
+All	Women	5	Previously	"smoking_status"	2	1	2009	2016	2.0997	0.6817	3.5376	1	3.2702	0.007462
+All	Women	5	Previously	"smoking_status"	2	2	2016	2019	-2.5610	-6.5097	1.5545	0	-1.3803	0.194899
