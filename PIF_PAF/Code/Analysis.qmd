@@ -322,46 +322,65 @@ library(gridExtra)
 #creating a sequence of prevalence 
 prevalencerange <- seq(0, 1, by = 0.01)
 # Define a constant Relative Risk (RR)
-RRconstantlow <- 1.2 # Example RR constant
-RRconstant4 <- 2
-RRconstantmed <- 5.0
-RRconstanthigh <- 10.0 
+RRconstantlow <- 1.25 # Example RR constant
+RRconstant4 <- 1.5
+RRconstantmed <- 2
+RRconstanthigh <- 5
 # Calculate the PAF for each prevalence value
 PAFlow <- (prevalencerange * (RRconstantlow-1)) / (1 + (prevalencerange * (RRconstantlow-1)))
 PAF4 <- (prevalencerange * (RRconstant4-1)) / (1 + (prevalencerange * (RRconstant4-1)))
 PAFmed <- (prevalencerange * (RRconstantmed-1)) / (1 + (prevalencerange * (RRconstantmed-1)))
 PAFhigh <- (prevalencerange * (RRconstanthigh-1)) / (1 + (prevalencerange * (RRconstanthigh-1)))
-# Plot the PAF against the prevalence
-pafplotlow <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFlow), aes(x = prevalence, y = PAF)) +
-  geom_line(color = "blue", size = 1) +
-  labs(title = "RR = 1.2",
+# # Plot the PAF against the prevalence
+# pafplotlow <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFlow), aes(x = prevalence, y = PAF)) +
+#   geom_line(color = "blue", size = 1) +
+#   labs(title = "RR = 1.25",
+#        x = "RF Prevalence",
+#        y = "PAF") +
+#   ylim(0, 1) +
+#   theme_minimal()
+# pafplot4 <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAF4), aes(x = prevalence, y = PAF)) +
+#   geom_line(color = "blue", size = 1) +
+#   labs(title = "RR = 1.5",
+#        x = "RF Prevalence",
+#        y = "PAF") +
+#   ylim(0, 1) +
+#   theme_minimal()
+# pafplotmed <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFmed), aes(x = prevalence, y = PAF)) +
+#   geom_line(color = "blue", size = 1) +
+#   labs(title = "RR = 2.0",
+#        x = "RF Prevalence",
+#        y = "PAF") +
+#   ylim(0, 1) +
+#   theme_minimal()
+# pafplothigh<- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFhigh), aes(x = prevalence, y = PAF)) +
+#   geom_line(color = "blue", size = 1) +
+#   labs(title = "RR = 5.0",
+#        x = "RF Prevalence",
+#        y = "PAF") +
+#   ylim(0, 1) +
+#   theme_minimal() 
+# # Showing the plot
+# changingpaf <- grid.arrange(pafplotlow, pafplot4, pafplotmed, pafplothigh, ncol=4)
+# 
+# changingpaf
+
+# Combining data into one so we can facet_wrap as below
+changingpaf_data <- rbind(data.frame(prev = prevalencerange, PAF = PAFlow, RR = "1.25"), data.frame(prev = prevalencerange, PAF = PAF4, RR = "1.5")) |>
+  rbind(data.frame(prev = prevalencerange, PAF = PAFmed, RR = "2.0")) |>
+  rbind(data.frame(prev = prevalencerange, PAF = PAFhigh, RR = "5.0"))
+
+pafplotall<- ggplot(changingpaf_data, aes(x = prev, y = PAF, colour = RR)) +
+  geom_line(size = 1) +
+  labs(title = "Change in PAF by RR and Prevalence",
        x = "RF Prevalence",
        y = "PAF") +
   ylim(0, 1) +
-  theme_minimal()
-pafplot4 <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAF4), aes(x = prevalence, y = PAF)) +
-  geom_line(color = "blue", size = 1) +
-  labs(title = "RR = 2",
-       x = "RF Prevalence",
-       y = "PAF") +
-  ylim(0, 1) +
-  theme_minimal()
-pafplotmed <- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFmed), aes(x = prevalence, y = PAF)) +
-  geom_line(color = "blue", size = 1) +
-  labs(title = "RR = 5.0",
-       x = "RF Prevalence",
-       y = "PAF") +
-  ylim(0, 1) +
-  theme_minimal()
-pafplothigh<- ggplot(data.frame(prevalence = prevalencerange, PAF = PAFhigh), aes(x = prevalence, y = PAF)) +
-  geom_line(color = "blue", size = 1) +
-  labs(title = "RR = 10.0",
-       x = "RF Prevalence",
-       y = "PAF") +
-  ylim(0, 1) +
-  theme_minimal() 
-# Showing the plot
-changingpaf <- grid.arrange(pafplotlow, pafplot4, pafplotmed, pafplothigh, ncol=4)
+  theme_minimal() +
+  facet_wrap(~RR, ncol = 4, labeller = as_labeller(function(x) paste("RR =", x)))
+
+pafplotall
+
 ```
 
 ## Generic PIF relationship
@@ -375,7 +394,7 @@ exposurerange2 <- seq(0.2, 0.4, by = 0.01)
 exposurerange3 <- seq(0.4, 0.6, by = 0.01)
 exposurerange4 <- seq(0.6, 0.8, by = 0.01)
 # Define a constant Relative Risk (RR)
-RR <- c(1.2, 2, 5.0, 10.0) 
+RR <- c(1.25, 1.5, 2.0, 5.0) 
 
 #calculating the PIFs 
 calculate_pif_data <- function(exposurerange, pif_label) {
@@ -812,7 +831,7 @@ Looking at cancer incidence from 2001 - 2019 by sex and age. APCs calculated usi
 
 These APC trends were calculated using all of the data available (2001, 2019), then the x-axis was cut off from (2009, 2019).
 
-```{r, fig.height=16, fig.width=6, warning=F}
+```{r, fig.height=10, fig.width=10, warning=F}
 
 # Filter data to only the cancer sites that are increasing 
 data_cancer <- data_ALLcancer %>%
@@ -916,9 +935,9 @@ ggplot(data_cancer_plot, aes(x = year, y = Rate, fill = sex, colour = sex)) +
   # scale_x_continuous(breaks = seq(min_year, max_year, by = 2)) +
   ggtitle("Trends in Cancer Incidence in England") +
   labs(subtitle = "Labels show APC for most recent trend, * indicates a significant trend") +
-  facet_wrap(~ paste0(cancer_site, " - ", age_group),  scales = "free_y", nrow = 10) 
+  facet_wrap(~ paste0(cancer_site, " - ", age_group),  scales = "free_y", ncol = 4) 
 
-ggsave(filename = paste0("../Output/Plots/Figure_1.png"), bg = "white", height = 16, width = 6)
+ggsave(filename = paste0("../Output/Plots/Figure_1.png"), bg = "white", height = 10, width =10)
 
 ```
 
@@ -985,7 +1004,8 @@ rfdata_joinpoint_last <- rfdata_joinpoint_complete |>
 
 
 #merging all of the data together 
-rf_trend_plot <- merge(data_rf |> mutate(level = if_else(level == "[30,Inf)" & variable == "fibre_consumption", "Meets Guidelines", level)), rfdata_joinpoint_last, by = c("sex", "age_group", "level", "variable"), all.x = T) |>
+rf_trend_plot <- merge(data_rf |> mutate(level = if_else(level == "[30,Inf)" & variable == "fibre_consumption", "Below Guidelines", level),
+                                         value = if_else(level == "Below Guidelines" & variable == "fibre_consumption", 1 - value, value)), rfdata_joinpoint_last, by = c("sex", "age_group", "level", "variable"), all.x = T) |>
   mutate(
     
     last_segment = between(year, Segment.Start, Segment.End),
@@ -1186,13 +1206,13 @@ smokingtrends <- ggplot(rf_trend_plot %>% filter(variable == "smoking_status") |
           axis.text.x = element_text(angle = 45, hjust = 1))
 
 #PHYSICAL ACTIVITY
-PAtrends <- ggplot(rf_trend_plot %>% filter(variable %in% c("physical_activity", "physical_activity_old")) |> filter(level == "Meets Recommendations") |> mutate(last_segment = if_else(variable == "physical_activity", FALSE, last_segment)), aes(x = year, y = value)) +
+PAtrends <- ggplot(rf_trend_plot %>% filter(variable %in% c("physical_activity", "physical_activity_old")) |> filter(level == "Below Recommendations") |> mutate(last_segment = if_else(variable == "physical_activity", FALSE, last_segment)), aes(x = year, y = value)) +
   geom_point(alpha = 0.6, size = 2, aes(colour = variable)) +  # Scatter plot for the original data
   geom_line(aes(linetype = last_segment, colour = variable)) +
-  geom_point(data = rf_trend_plot_invisible_points %>% filter(variable %in% c("physical_activity", "physical_activity_old")) |> filter(level == "Meets Recommendations"), alpha = 0) +
+  geom_point(data = rf_trend_plot_invisible_points %>% filter(variable %in% c("physical_activity", "physical_activity_old")) |> filter(level == "Below Recommendations"), alpha = 0) +
   facet_grid(sex ~ age_group) +  # grid by both age_group and sex
   geom_label_repel(
-    data = rf_trend_plot_labels %>% filter(variable %in% c("physical_activity", "physical_activity_old")) |> filter(level == "Meets Recommendations"),
+    data = rf_trend_plot_labels %>% filter(variable %in% c("physical_activity", "physical_activity_old")) |> filter(level == "Below Recommendations"),
     aes(label = APC_clean, group = variable, colour = variable),
     nudge_x = 3,
     fill = "white", 
@@ -1216,7 +1236,7 @@ PAtrends <- ggplot(rf_trend_plot %>% filter(variable %in% c("physical_activity",
     limits = c(1995, 2026)
  )+
   labs(
-    title = "Meets Physical Activity Guidelines",
+    title = "Inactivity in England",
     x = "Year",
     y = "Population Prevalence",
     color = "Exposure Category"
@@ -1276,13 +1296,13 @@ diettrends <- ggplot(rf_trend_plot %>% filter(variable %in% c("redmeat_consumpti
           axis.text.x = element_text(angle = 45, hjust = 1))
 
 #Diet - Fibre
-diettrends_fibre <- ggplot(rf_trend_plot %>% filter(variable == "fibre_consumption") |> filter(level == "Meets Guidelines"), aes(x = year, y = value)) +
+diettrends_fibre <- ggplot(rf_trend_plot %>% filter(variable == "fibre_consumption") |> filter(level == "Below Guidelines"), aes(x = year, y = value)) +
   geom_point(alpha = 0.6, size = 2, colour = "red") +  # Scatter plot for the original data
   geom_line(aes(linetype = last_segment), colour = "red") +
-  geom_point(data = rf_trend_plot_invisible_points %>% filter(variable == "fibre_consumption") |> filter(level == "Meets Guidelines"), alpha = 0) +
+  geom_point(data = rf_trend_plot_invisible_points %>% filter(variable == "fibre_consumption") |> filter(level == "Below Guidelines"), alpha = 0) +
   facet_grid(sex ~ age_group) +  # grid by both age_group and sex
    geom_label_repel(
-    data = rf_trend_plot_labels %>% filter(variable == "fibre_consumption") |> filter(level == "Meets Guidelines"),
+    data = rf_trend_plot_labels %>% filter(variable == "fibre_consumption") |> filter(level == "Below Guidelines"),
     aes(label = APC_clean, group = variable),
     colour = "red",
     nudge_x = 3,
@@ -1302,7 +1322,7 @@ diettrends_fibre <- ggplot(rf_trend_plot %>% filter(variable == "fibre_consumpti
     limits = c(1995, 2026)
   )+
   labs(
-    title = "Meeting Fibre Intake Gudielines in England",
+    title = "Fibre Deficiency in England",
     x = "Year",
     y = "Population Prevalence",
     color = "Exposure Category"
@@ -1436,7 +1456,7 @@ rf_apc_table <- rf_table %>%
     "Smoking Status - Never",
     "Processed Meat Consumption - median",
     "Red Meat Consumption - median",
-    "Fibre Consumption - Meets Guidelines",
+    "Fibre Consumption - Below Guidelines",
     "Physical Activity - Meets Recommendations",
     "Physical Activity - Below Recommendations"
   ))
@@ -1832,7 +1852,7 @@ write.csv(paf_byrf_allages, file = "../Data/PAFs_byriskfactor_AllAges.csv", row.
 write.csv(aggregate_pafs_allages, file = "../Data/AggregatePAFs_AllAges.csv", row.names = F)
 
 
-# Formatting the PAF all ages to help with join 
+# Formatting the PAF all ages to help with join
 PAFallages_long <- aggregate_pafs_allages |>
   pivot_longer(cols = colnames(aggregate_pafs_allages)[!colnames(aggregate_pafs_allages) %in% c("sex", "year", "age_group", "variable")], names_to = "cancer_site", values_to = "PAF") |>
   mutate(year = year + 10) |> # Broad assumption of 10 year lag period
@@ -3269,7 +3289,7 @@ data_pif_bmi <- PIF |>
 data_pif_bmi <- merge(data_pif_bmi, data_paf_pif_ci, by.x = c("cancer_site", "age_group", "sex", "name"), by.y = c("Cancer_sites", "age_group", "sex", "name"))
 
 # Creating bar chart
-plot <- ggplot(data_pif_bmi, aes(x = cancer_site, y = value, fill = age_group)) +
+plot <- ggplot(data_pif_bmi, aes(x = cancer_site, y = 100*value, fill = age_group)) +
   geom_bar(position = "dodge", stat = "identity", colour = "black") +
   coord_flip() +
   scale_fill_manual(values = c("20-49" = "#ff9500", "50+" = "#38b000")) +
@@ -3284,7 +3304,7 @@ plot <- ggplot(data_pif_bmi, aes(x = cancer_site, y = value, fill = age_group)) 
   labs(
     title = "PIF Values for BMI",
     x = "Cancer Site",
-    y = "PIF",
+    y = "PIF (%)",
     fill = "Age Group"
   ) +
   facet_grid(name ~ sex)
