@@ -1058,6 +1058,7 @@ alcoholtrends <- ggplot(rf_trend_plot %>% filter(variable == "alcohol_amt"), aes
   ) +
    
   theme_minimal() +
+  theme(legend.position="bottom") +
   scale_color_manual( #fixing the colors
     values = c(
       "Heavy Drinker" = "#2b9eb3",
@@ -1104,6 +1105,7 @@ bmitrends <- ggplot(rf_trend_plot %>% filter(variable == "bmi") |> filter(level 
   ) +
    
   theme_minimal() +
+  theme(legend.position="bottom") +
   scale_color_manual( #fixing the colors 
     values = c(
       "Obese" = "#2b9eb3",  
@@ -1149,6 +1151,7 @@ smokingtrends <- ggplot(rf_trend_plot %>% filter(variable == "smoking_status") |
   ) +
    
   theme_minimal() +
+  theme(legend.position="bottom") +
   scale_color_manual( #fixing the colors 
     values = c(
       "Current" = "#2b9eb3",  
@@ -1193,6 +1196,7 @@ PAtrends <- ggplot(rf_trend_plot %>% filter(variable %in% c("physical_activity",
   ) +
    
   theme_minimal() +
+  theme(legend.position="bottom") +
   scale_color_manual( #fixing the colors 
     values = c(
       "physical_activity" = "#2b9eb3",
@@ -1238,6 +1242,7 @@ diettrends <- ggplot(rf_trend_plot %>% filter(variable %in% c("redmeat_consumpti
   ) +
    
   theme_minimal() +
+  theme(legend.position="bottom") +
   scale_color_manual( #fixing the colors 
     values = c(
       "redmeat_consumption_median" = "#2b9eb3", 
@@ -1282,6 +1287,7 @@ diettrends_fibre <- ggplot(rf_trend_plot %>% filter(variable == "fibre_consumpti
   ) +
    
   theme_minimal() +
+  theme(legend.position="bottom") +
 
   scale_x_continuous(
     breaks = seq(1995, 2019, by = 3),  # Define the x-axis breaks
@@ -1312,33 +1318,33 @@ print(diettrends_fibre)
 ggsave(alcoholtrends, 
        filename = "../Output/Plots/Figure_2-Alcohol.png", 
        bg = "white", 
-       height = 6, 
-       width = 8)
+       height = 7, 
+       width = 7)
 ggsave(PAtrends, 
        filename = "../Output/Plots/Figure_2-PhysicalActivity.png", 
        bg = "white", 
-       height = 6, 
-       width = 8)
+       height = 7, 
+       width = 7)
 ggsave(bmitrends, 
        filename = "../Output/Plots/Figure_2-BMI.png", 
        bg = "white", 
-       height = 6, 
-       width = 8)
+       height = 7, 
+       width = 7)
 ggsave(smokingtrends, 
        filename = "../Output/Plots/Figure_2-Smoking.png", 
        bg = "white", 
-       height = 6, 
-       width = 8)
+       height = 7, 
+       width = 7)
 ggsave(diettrends, 
        filename = "../Output/Plots/Figure_2-Diet.png", 
        bg = "white", 
-       height = 6, 
-       width = 8)
+       height = 7, 
+       width = 7)
 ggsave(diettrends_fibre, 
        filename = "../Output/Plots/Figure_2-DietFibre.png", 
        bg = "white", 
-       height = 6, 
-       width = 8)
+       height = 7, 
+       width = 7)
 ```
 
 \*Fibre is daily fibre deficiency based on the UK recommendation of consuming 30g/day
