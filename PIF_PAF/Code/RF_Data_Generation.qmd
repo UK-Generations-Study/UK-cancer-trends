@@ -5,6 +5,13 @@ editor:
   mode: source
 ---
 
+#### Timer
+```{r}
+
+start.time = Sys.time()
+
+```
+
 ## Packages
 ```{r}
 
@@ -21,7 +28,7 @@ user_options <- list()
 # Whether to use age groups or just group as 'All'
 #   False - all age groups 
 #   True - Split the ages 20-49, 50+
-user_options$age_groups_indicator <- F
+user_options$age_groups_indicator <- T
 
 # Whether to further stratify by IMD
 #   False - not split by IMD 
@@ -175,13 +182,13 @@ if(user_options$age_groups_indicator){
 ghs_data <- ghs_data |>
   group_by(sex, age_group) |>
   mutate(total_weight = sum(weight05)/744.0531, 
-         # total_weight_adj = sum(weight05)/744.0531, 
-         # total = n()
+         # total_weight_adj = sum(weight05)/744.0531,
+         total = n()
          ) |>
   ungroup() |>
   group_by(sex, age_group, alcohol_cat) |>
   summarise(value = sum(weight05/744.0531)/total_weight[1],
-            N = total_weight[1],
+            N = total[1],
             # total_weight_adj = total_weight_adj[1],
             # total = total[1]
             ) |>
@@ -229,6 +236,16 @@ rf_df <- rbind(rf_df, diet_df_cat_mean)
 ```{r}
 
 write.csv(rf_df, file = paste0("../../../Data/Cleaned_Data/clean_rf_data", if_else(!user_options$age_groups_indicator, "_age_all", ""), if_else(user_options$imd_stratification, "_imd", ""), ".csv"), row.names = F)
+
+```
+
+
+#### Timer
+```{r}
+
+end.time = Sys.time()
+
+end.time - start.time
 
 ```
 
