@@ -46,6 +46,7 @@ data <- data |>
       ICD10_code == "C54" ~ "Endometrium",
       ICD10_code %in% c("C23", "C24") ~ "Gallbladder",
       ICD10_code == "C81" ~ "Hodgkin Lymphoma",
+      ICD10_code == "C46" ~ "Kaposi Sarcoma",
       ICD10_code == "C64" ~ "Kidney",
       ICD10_code == "C32" ~ "Larynx",
       ICD10_code == "C91-C95" ~ "Leukaemia",

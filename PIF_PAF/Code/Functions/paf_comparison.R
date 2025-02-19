@@ -33,77 +33,77 @@ if(Sys.getenv("RSTUDIO") == '1' & !knitr::is_html_output()) { # If using Rstudio
 ## Read in RF data
 data_rf <- read.csv("../../../../Data/Cleaned_Data/clean_rf_data.csv")
 
-# Need to fill in missing categories for the redmeat and processed meat consumption variables as well as fibre consumption
-processed_meat_categories <- data_rf |>
-  filter(variable == "processed_meat_consumption") |>
-  pull(level) |>
-  unique()
-
-data_rf_processed_meat <- data_rf |>
-  filter(variable == "processed_meat_consumption") |>
-  complete(age_group, sex, year, level = processed_meat_categories) |>
-  group_by(age_group, sex, year) |>
-  mutate(
-    
-    year = if_else(is.na(year), first(na.omit(year)), year),
-    age_group = if_else(is.na(age_group), first(na.omit(age_group)), age_group),
-    sex = if_else(is.na(sex), first(na.omit(sex)), sex),
-    value = replace_na(value, 0),
-    N = if_else(is.na(N), first(na.omit(N)), N),
-    variable = if_else(is.na(variable), first(na.omit(variable)), variable),
-    
-  ) |>
-  ungroup()
-  
-  
-redmeat_categories <- data_rf |>
-  filter(variable == "redmeat_consumption") |>
-  pull(level) |>
-  unique()
-
-data_rf_redmeat <- data_rf |>
-  filter(variable == "redmeat_consumption") |>
-  complete(age_group, sex, year, level = redmeat_categories) |>
-  group_by(age_group, sex, year) |>
-  mutate(
-    
-    year = if_else(is.na(year), first(na.omit(year)), year),
-    age_group = if_else(is.na(age_group), first(na.omit(age_group)), age_group),
-    sex = if_else(is.na(sex), first(na.omit(sex)), sex),
-    value = replace_na(value, 0),
-    N = if_else(is.na(N), first(na.omit(N)), N),
-    variable = if_else(is.na(variable), first(na.omit(variable)), variable),
-    
-  ) |>
-  ungroup()
-
-fibre_categories <- data_rf |>
-  filter(variable == "fibre_consumption") |>
-  pull(level) |>
-  unique()
-
-data_rf_fibre <- data_rf |>
-  filter(variable == "fibre_consumption") |>
-  complete(age_group, sex, year, level = fibre_categories) |>
-  group_by(age_group, sex, year) |>
-  mutate(
-    
-    year = if_else(is.na(year), first(na.omit(year)), year),
-    age_group = if_else(is.na(age_group), first(na.omit(age_group)), age_group),
-    sex = if_else(is.na(sex), first(na.omit(sex)), sex),
-    value = replace_na(value, 0),
-    N = if_else(is.na(N), first(na.omit(N)), N),
-    variable = if_else(is.na(variable), first(na.omit(variable)), variable),
-    
-  ) |>
-  ungroup()
-
-# Now add back in
-data_rf <- data_rf |>
-  filter(!variable %in% c("redmeat_consumption", "processed_meat_consumption", "fibre_consumption")) |>
-  rbind(data_rf_processed_meat) |>
-  rbind(data_rf_redmeat) |>
-  rbind(data_rf_fibre)
+# # Need to fill in missing categories for the redmeat and processed meat consumption variables as well as fibre consumption
+# processed_meat_categories <- data_rf |>
+#   filter(variable == "processed_meat_consumption") |>
+#   pull(level) |>
+#   unique()
+# 
+# data_rf_processed_meat <- data_rf |>
+#   filter(variable == "processed_meat_consumption") |>
+#   complete(age_group, sex, year, level = processed_meat_categories) |>
+#   group_by(age_group, sex, year) |>
+#   mutate(
+#     
+#     year = if_else(is.na(year), first(na.omit(year)), year),
+#     age_group = if_else(is.na(age_group), first(na.omit(age_group)), age_group),
+#     sex = if_else(is.na(sex), first(na.omit(sex)), sex),
+#     value = replace_na(value, 0),
+#     N = if_else(is.na(N), first(na.omit(N)), N),
+#     variable = if_else(is.na(variable), first(na.omit(variable)), variable),
+#     
+#   ) |>
+#   ungroup()
+#   
+#   
+# redmeat_categories <- data_rf |>
+#   filter(variable == "redmeat_consumption") |>
+#   pull(level) |>
+#   unique()
+# 
+# data_rf_redmeat <- data_rf |>
+#   filter(variable == "redmeat_consumption") |>
+#   complete(age_group, sex, year, level = redmeat_categories) |>
+#   group_by(age_group, sex, year) |>
+#   mutate(
+#     
+#     year = if_else(is.na(year), first(na.omit(year)), year),
+#     age_group = if_else(is.na(age_group), first(na.omit(age_group)), age_group),
+#     sex = if_else(is.na(sex), first(na.omit(sex)), sex),
+#     value = replace_na(value, 0),
+#     N = if_else(is.na(N), first(na.omit(N)), N),
+#     variable = if_else(is.na(variable), first(na.omit(variable)), variable),
+#     
+#   ) |>
+#   ungroup()
+# 
+# fibre_categories <- data_rf |>
+#   filter(variable == "fibre_consumption") |>
+#   pull(level) |>
+#   unique()
+# 
+# data_rf_fibre <- data_rf |>
+#   filter(variable == "fibre_consumption") |>
+#   complete(age_group, sex, year, level = fibre_categories) |>
+#   group_by(age_group, sex, year) |>
+#   mutate(
+#     
+#     year = if_else(is.na(year), first(na.omit(year)), year),
+#     age_group = if_else(is.na(age_group), first(na.omit(age_group)), age_group),
+#     sex = if_else(is.na(sex), first(na.omit(sex)), sex),
+#     value = replace_na(value, 0),
+#     N = if_else(is.na(N), first(na.omit(N)), N),
+#     variable = if_else(is.na(variable), first(na.omit(variable)), variable),
+#     
+#   ) |>
+#   ungroup()
+# 
+# # Now add back in
+# data_rf <- data_rf |>
+#   filter(!variable %in% c("redmeat_consumption", "processed_meat_consumption", "fibre_consumption")) |>
+#   rbind(data_rf_processed_meat) |>
+#   rbind(data_rf_redmeat) |>
+#   rbind(data_rf_fibre)
 
 
 ## Read in RR estimates

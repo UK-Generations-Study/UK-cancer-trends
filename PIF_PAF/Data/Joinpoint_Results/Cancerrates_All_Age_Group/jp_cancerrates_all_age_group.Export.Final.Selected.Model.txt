@@ -18,7 +18,6 @@ Men	20-34	Testis	1
 Men	20-34	Thyroid	0
 Men	35-49	Bladder	0
 Men	35-49	Brain and CNS	0
-Men	35-49	Breast	0
 Men	35-49	Colorectum	1
 Men	35-49	Gallbladder	0
 Men	35-49	Hodgkin Lymphoma	0
@@ -39,7 +38,6 @@ Men	35-49	Testis	0
 Men	35-49	Thyroid	1
 Men	50-64	Bladder	2
 Men	50-64	Brain and CNS	1
-Men	50-64	Breast	0
 Men	50-64	Colorectum	2
 Men	50-64	Gallbladder	2
 Men	50-64	Hodgkin Lymphoma	0
@@ -60,7 +58,6 @@ Men	50-64	Testis	0
 Men	50-64	Thyroid	1
 Men	65+	Bladder	3
 Men	65+	Brain and CNS	1
-Men	65+	Breast	0
 Men	65+	Colorectum	2
 Men	65+	Gallbladder	0
 Men	65+	Hodgkin Lymphoma	1

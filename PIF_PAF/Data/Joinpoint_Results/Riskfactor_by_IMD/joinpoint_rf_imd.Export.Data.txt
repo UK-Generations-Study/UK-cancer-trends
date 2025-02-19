@@ -948,24 +948,24 @@ All	Men	1	Underweight	"bmi"	2016	0.01	0.01	NA	-13.2111*	2	2
 All	Men	1	Underweight	"bmi"	2017	0.01	0.01	NA	-13.2111*	2	2
 All	Men	1	Underweight	"bmi"	2018	0.00	0.01	NA	-13.2111*	2	2
 All	Men	1	Underweight	"bmi"	2019	0.01	0.00	NA	-13.2111*	2	2
-All	Men	2	Underweight	"bmi"	2001	0.00	0.00	NA	3.6324*	0	0
-All	Men	2	Underweight	"bmi"	2003	0.01	0.00	NA	3.6324*	0	0
-All	Men	2	Underweight	"bmi"	2004	0.01	0.00	NA	3.6324*	0	0
-All	Men	2	Underweight	"bmi"	2005	0.01	0.00	NA	3.6324*	0	0
-All	Men	2	Underweight	"bmi"	2006	0.00	0.01	NA	3.6324*	0	0
-All	Men	2	Underweight	"bmi"	2007	0.00	0.01	NA	3.6324*	0	0
-All	Men	2	Underweight	"bmi"	2008	0.00	0.01	NA	3.6324*	0	0
-All	Men	2	Underweight	"bmi"	2009	0.01	0.01	NA	3.6324*	0	0
-All	Men	2	Underweight	"bmi"	2010	0.01	0.01	NA	3.6324*	0	0
-All	Men	2	Underweight	"bmi"	2011	0.00	0.01	NA	3.6324*	0	0
-All	Men	2	Underweight	"bmi"	2012	0.00	0.01	NA	3.6324*	0	0
-All	Men	2	Underweight	"bmi"	2013	0.01	0.01	NA	3.6324*	0	0
-All	Men	2	Underweight	"bmi"	2014	0.01	0.01	NA	3.6324*	0	0
-All	Men	2	Underweight	"bmi"	2015	0.01	0.01	NA	3.6324*	0	0
-All	Men	2	Underweight	"bmi"	2016	0.01	0.01	NA	3.6324*	0	0
-All	Men	2	Underweight	"bmi"	2017	0.00	0.01	NA	3.6324*	0	0
-All	Men	2	Underweight	"bmi"	2018	0.01	0.01	NA	3.6324*	0	0
-All	Men	2	Underweight	"bmi"	2019	0.01	0.01	NA	3.6324*	0	0
+All	Men	2	Underweight	"bmi"	2001	0.00	0.00	NA	4.2268*	0	0
+All	Men	2	Underweight	"bmi"	2003	0.01	0.00	NA	4.2268*	0	0
+All	Men	2	Underweight	"bmi"	2004	0.01	0.00	NA	4.2268*	0	0
+All	Men	2	Underweight	"bmi"	2005	0.01	0.00	NA	4.2268*	0	0
+All	Men	2	Underweight	"bmi"	2006	0.00	0.00	NA	4.2268*	0	0
+All	Men	2	Underweight	"bmi"	2007	0.00	0.01	NA	4.2268*	0	0
+All	Men	2	Underweight	"bmi"	2008	0.00	0.01	NA	4.2268*	0	0
+All	Men	2	Underweight	"bmi"	2009	0.01	0.01	NA	4.2268*	0	0
+All	Men	2	Underweight	"bmi"	2010	0.01	0.01	NA	4.2268*	0	0
+All	Men	2	Underweight	"bmi"	2011	0.00	0.01	NA	4.2268*	0	0
+All	Men	2	Underweight	"bmi"	2012	0.00	0.01	NA	4.2268*	0	0
+All	Men	2	Underweight	"bmi"	2013	0.01	0.01	NA	4.2268*	0	0
+All	Men	2	Underweight	"bmi"	2014	0.01	0.01	NA	4.2268*	0	0
+All	Men	2	Underweight	"bmi"	2015	0.01	0.01	NA	4.2268*	0	0
+All	Men	2	Underweight	"bmi"	2016	0.01	0.01	NA	4.2268*	0	0
+All	Men	2	Underweight	"bmi"	2017	0.00	0.01	NA	4.2268*	0	0
+All	Men	2	Underweight	"bmi"	2018	0.01	0.01	NA	4.2268*	0	0
+All	Men	2	Underweight	"bmi"	2019	0.01	0.01	NA	4.2268*	0	0
 All	Men	3	Underweight	"bmi"	2001	0.01	0.01	NA	7.9425	1	1
 All	Men	3	Underweight	"bmi"	2002	0.01	0.01	NA	7.9425	1	1
 All	Men	3	Underweight	"bmi"	2003	0.01	0.01	NA	7.9425	1	1
@@ -1118,106 +1118,106 @@ All	Women	5	Underweight	"bmi"	2016	0.02	0.02	NA	-1.2630*	1	1
 All	Women	5	Underweight	"bmi"	2017	0.02	0.02	NA	-1.2630*	1	1
 All	Women	5	Underweight	"bmi"	2018	0.02	0.02	NA	-1.2630*	1	1
 All	Women	5	Underweight	"bmi"	2019	0.02	0.02	NA	-1.2630*	1	1
-All	Men	1	Below Recommendations	"physical_activity_old"	2003	0.69	0.68	NA	-1.6914*	0	0
-All	Men	1	Below Recommendations	"physical_activity_old"	2004	0.67	0.67	NA	-1.6914*	0	0
-All	Men	1	Below Recommendations	"physical_activity_old"	2006	0.64	0.65	NA	-1.6914*	0	0
-All	Men	1	Below Recommendations	"physical_activity_old"	2008	0.61	0.63	NA	-1.6914*	0	0
-All	Men	1	Below Recommendations	"physical_activity_old"	2012	0.59	0.59	NA	-1.6914*	0	0
-All	Men	2	Below Recommendations	"physical_activity_old"	2003	0.65	0.64	NA	-1.1117*	0	0
-All	Men	2	Below Recommendations	"physical_activity_old"	2004	0.63	0.63	NA	-1.1117*	0	0
-All	Men	2	Below Recommendations	"physical_activity_old"	2006	0.61	0.62	NA	-1.1117*	0	0
-All	Men	2	Below Recommendations	"physical_activity_old"	2008	0.59	0.60	NA	-1.1117*	0	0
-All	Men	2	Below Recommendations	"physical_activity_old"	2012	0.59	0.58	NA	-1.1117*	0	0
-All	Men	3	Below Recommendations	"physical_activity_old"	2003	0.61	0.60	NA	-0.6299*	0	0
-All	Men	3	Below Recommendations	"physical_activity_old"	2004	0.60	0.60	NA	-0.6299*	0	0
-All	Men	3	Below Recommendations	"physical_activity_old"	2006	0.59	0.59	NA	-0.6299*	0	0
-All	Men	3	Below Recommendations	"physical_activity_old"	2008	0.58	0.58	NA	-0.6299*	0	0
-All	Men	3	Below Recommendations	"physical_activity_old"	2012	0.57	0.57	NA	-0.6299*	0	0
-All	Men	4	Below Recommendations	"physical_activity_old"	2003	0.62	0.61	NA	-1.3921*	0	0
-All	Men	4	Below Recommendations	"physical_activity_old"	2004	0.61	0.61	NA	-1.3921*	0	0
-All	Men	4	Below Recommendations	"physical_activity_old"	2006	0.59	0.59	NA	-1.3921*	0	0
-All	Men	4	Below Recommendations	"physical_activity_old"	2008	0.56	0.57	NA	-1.3921*	0	0
-All	Men	4	Below Recommendations	"physical_activity_old"	2012	0.55	0.54	NA	-1.3921*	0	0
-All	Men	5	Below Recommendations	"physical_activity_old"	2003	0.64	0.64	NA	-0.0683	0	0
-All	Men	5	Below Recommendations	"physical_activity_old"	2004	0.65	0.64	NA	-0.0683	0	0
-All	Men	5	Below Recommendations	"physical_activity_old"	2006	0.64	0.64	NA	-0.0683	0	0
-All	Men	5	Below Recommendations	"physical_activity_old"	2008	0.64	0.64	NA	-0.0683	0	0
-All	Men	5	Below Recommendations	"physical_activity_old"	2012	0.64	0.64	NA	-0.0683	0	0
-All	Women	1	Below Recommendations	"physical_activity_old"	2003	0.75	0.75	NA	-1.4619*	0	0
-All	Women	1	Below Recommendations	"physical_activity_old"	2004	0.75	0.74	NA	-1.4619*	0	0
-All	Women	1	Below Recommendations	"physical_activity_old"	2006	0.72	0.72	NA	-1.4619*	0	0
-All	Women	1	Below Recommendations	"physical_activity_old"	2008	0.69	0.70	NA	-1.4619*	0	0
-All	Women	1	Below Recommendations	"physical_activity_old"	2012	0.67	0.66	NA	-1.4619*	0	0
-All	Women	2	Below Recommendations	"physical_activity_old"	2003	0.75	0.75	NA	-1.2812*	0	0
-All	Women	2	Below Recommendations	"physical_activity_old"	2004	0.74	0.74	NA	-1.2812*	0	0
-All	Women	2	Below Recommendations	"physical_activity_old"	2006	0.72	0.72	NA	-1.2812*	0	0
-All	Women	2	Below Recommendations	"physical_activity_old"	2008	0.69	0.70	NA	-1.2812*	0	0
-All	Women	2	Below Recommendations	"physical_activity_old"	2012	0.67	0.67	NA	-1.2812*	0	0
-All	Women	3	Below Recommendations	"physical_activity_old"	2003	0.73	0.73	NA	-0.6989*	0	0
-All	Women	3	Below Recommendations	"physical_activity_old"	2004	0.72	0.72	NA	-0.6989*	0	0
-All	Women	3	Below Recommendations	"physical_activity_old"	2006	0.71	0.71	NA	-0.6989*	0	0
-All	Women	3	Below Recommendations	"physical_activity_old"	2008	0.70	0.70	NA	-0.6989*	0	0
-All	Women	3	Below Recommendations	"physical_activity_old"	2012	0.69	0.68	NA	-0.6989*	0	0
-All	Women	4	Below Recommendations	"physical_activity_old"	2003	0.76	0.75	NA	-1.0795*	0	0
-All	Women	4	Below Recommendations	"physical_activity_old"	2004	0.74	0.74	NA	-1.0795*	0	0
-All	Women	4	Below Recommendations	"physical_activity_old"	2006	0.72	0.73	NA	-1.0795*	0	0
-All	Women	4	Below Recommendations	"physical_activity_old"	2008	0.69	0.71	NA	-1.0795*	0	0
-All	Women	4	Below Recommendations	"physical_activity_old"	2012	0.69	0.68	NA	-1.0795*	0	0
-All	Women	5	Below Recommendations	"physical_activity_old"	2003	0.77	0.76	NA	-0.7292*	0	0
-All	Women	5	Below Recommendations	"physical_activity_old"	2004	0.76	0.76	NA	-0.7292*	0	0
-All	Women	5	Below Recommendations	"physical_activity_old"	2006	0.75	0.75	NA	-0.7292*	0	0
-All	Women	5	Below Recommendations	"physical_activity_old"	2008	0.73	0.74	NA	-0.7292*	0	0
-All	Women	5	Below Recommendations	"physical_activity_old"	2012	0.72	0.72	NA	-0.7292*	0	0
-All	Men	1	Meets Recommendations	"physical_activity_old"	2003	0.31	0.32	NA	3.0782*	0	0
-All	Men	1	Meets Recommendations	"physical_activity_old"	2004	0.33	0.33	NA	3.0782*	0	0
-All	Men	1	Meets Recommendations	"physical_activity_old"	2006	0.36	0.35	NA	3.0782*	0	0
-All	Men	1	Meets Recommendations	"physical_activity_old"	2008	0.39	0.37	NA	3.0782*	0	0
-All	Men	1	Meets Recommendations	"physical_activity_old"	2012	0.41	0.42	NA	3.0782*	0	0
-All	Men	2	Meets Recommendations	"physical_activity_old"	2003	0.35	0.36	NA	1.7871*	0	0
-All	Men	2	Meets Recommendations	"physical_activity_old"	2004	0.37	0.37	NA	1.7871*	0	0
-All	Men	2	Meets Recommendations	"physical_activity_old"	2006	0.39	0.38	NA	1.7871*	0	0
-All	Men	2	Meets Recommendations	"physical_activity_old"	2008	0.41	0.40	NA	1.7871*	0	0
-All	Men	2	Meets Recommendations	"physical_activity_old"	2012	0.41	0.43	NA	1.7871*	0	0
-All	Men	3	Meets Recommendations	"physical_activity_old"	2003	0.39	0.40	NA	0.9093*	0	0
-All	Men	3	Meets Recommendations	"physical_activity_old"	2004	0.40	0.40	NA	0.9093*	0	0
-All	Men	3	Meets Recommendations	"physical_activity_old"	2006	0.41	0.41	NA	0.9093*	0	0
-All	Men	3	Meets Recommendations	"physical_activity_old"	2008	0.42	0.42	NA	0.9093*	0	0
-All	Men	3	Meets Recommendations	"physical_activity_old"	2012	0.43	0.43	NA	0.9093*	0	0
-All	Men	4	Meets Recommendations	"physical_activity_old"	2003	0.38	0.39	NA	1.9827*	0	0
-All	Men	4	Meets Recommendations	"physical_activity_old"	2004	0.39	0.39	NA	1.9827*	0	0
-All	Men	4	Meets Recommendations	"physical_activity_old"	2006	0.41	0.41	NA	1.9827*	0	0
-All	Men	4	Meets Recommendations	"physical_activity_old"	2008	0.44	0.43	NA	1.9827*	0	0
-All	Men	4	Meets Recommendations	"physical_activity_old"	2012	0.45	0.46	NA	1.9827*	0	0
-All	Men	5	Meets Recommendations	"physical_activity_old"	2003	0.36	0.36	NA	0.1222	0	0
-All	Men	5	Meets Recommendations	"physical_activity_old"	2004	0.35	0.36	NA	0.1222	0	0
-All	Men	5	Meets Recommendations	"physical_activity_old"	2006	0.36	0.36	NA	0.1222	0	0
-All	Men	5	Meets Recommendations	"physical_activity_old"	2008	0.36	0.36	NA	0.1222	0	0
-All	Men	5	Meets Recommendations	"physical_activity_old"	2012	0.36	0.36	NA	0.1222	0	0
-All	Women	1	Meets Recommendations	"physical_activity_old"	2003	0.25	0.25	NA	3.6794*	0	0
-All	Women	1	Meets Recommendations	"physical_activity_old"	2004	0.25	0.26	NA	3.6794*	0	0
-All	Women	1	Meets Recommendations	"physical_activity_old"	2006	0.28	0.28	NA	3.6794*	0	0
-All	Women	1	Meets Recommendations	"physical_activity_old"	2008	0.31	0.30	NA	3.6794*	0	0
-All	Women	1	Meets Recommendations	"physical_activity_old"	2012	0.33	0.34	NA	3.6794*	0	0
-All	Women	2	Meets Recommendations	"physical_activity_old"	2003	0.25	0.25	NA	3.2560*	0	0
-All	Women	2	Meets Recommendations	"physical_activity_old"	2004	0.26	0.26	NA	3.2560*	0	0
-All	Women	2	Meets Recommendations	"physical_activity_old"	2006	0.28	0.28	NA	3.2560*	0	0
-All	Women	2	Meets Recommendations	"physical_activity_old"	2008	0.31	0.30	NA	3.2560*	0	0
-All	Women	2	Meets Recommendations	"physical_activity_old"	2012	0.33	0.34	NA	3.2560*	0	0
-All	Women	3	Meets Recommendations	"physical_activity_old"	2003	0.27	0.27	NA	1.7292*	0	0
-All	Women	3	Meets Recommendations	"physical_activity_old"	2004	0.28	0.28	NA	1.7292*	0	0
-All	Women	3	Meets Recommendations	"physical_activity_old"	2006	0.29	0.29	NA	1.7292*	0	0
-All	Women	3	Meets Recommendations	"physical_activity_old"	2008	0.30	0.30	NA	1.7292*	0	0
-All	Women	3	Meets Recommendations	"physical_activity_old"	2012	0.31	0.32	NA	1.7292*	0	0
-All	Women	4	Meets Recommendations	"physical_activity_old"	2003	0.24	0.25	NA	2.8590*	0	0
-All	Women	4	Meets Recommendations	"physical_activity_old"	2004	0.26	0.26	NA	2.8590*	0	0
-All	Women	4	Meets Recommendations	"physical_activity_old"	2006	0.28	0.27	NA	2.8590*	0	0
-All	Women	4	Meets Recommendations	"physical_activity_old"	2008	0.31	0.29	NA	2.8590*	0	0
-All	Women	4	Meets Recommendations	"physical_activity_old"	2012	0.31	0.32	NA	2.8590*	0	0
-All	Women	5	Meets Recommendations	"physical_activity_old"	2003	0.23	0.24	NA	2.1539*	0	0
-All	Women	5	Meets Recommendations	"physical_activity_old"	2004	0.24	0.24	NA	2.1539*	0	0
-All	Women	5	Meets Recommendations	"physical_activity_old"	2006	0.25	0.25	NA	2.1539*	0	0
-All	Women	5	Meets Recommendations	"physical_activity_old"	2008	0.27	0.26	NA	2.1539*	0	0
-All	Women	5	Meets Recommendations	"physical_activity_old"	2012	0.28	0.29	NA	2.1539*	0	0
+All	Men	1	Below Recommendations	"physical_activity_old"	2003	0.69	0.69	NA	-1.9990*	0	0
+All	Men	1	Below Recommendations	"physical_activity_old"	2004	0.68	0.68	NA	-1.9990*	0	0
+All	Men	1	Below Recommendations	"physical_activity_old"	2006	0.65	0.65	NA	-1.9990*	0	0
+All	Men	1	Below Recommendations	"physical_activity_old"	2008	0.60	0.62	NA	-1.9990*	0	0
+All	Men	1	Below Recommendations	"physical_activity_old"	2012	0.59	0.57	NA	-1.9990*	0	0
+All	Men	2	Below Recommendations	"physical_activity_old"	2003	0.65	0.64	NA	-1.3623*	0	0
+All	Men	2	Below Recommendations	"physical_activity_old"	2004	0.64	0.63	NA	-1.3623*	0	0
+All	Men	2	Below Recommendations	"physical_activity_old"	2006	0.60	0.62	NA	-1.3623*	0	0
+All	Men	2	Below Recommendations	"physical_activity_old"	2008	0.59	0.60	NA	-1.3623*	0	0
+All	Men	2	Below Recommendations	"physical_activity_old"	2012	0.58	0.57	NA	-1.3623*	0	0
+All	Men	3	Below Recommendations	"physical_activity_old"	2003	0.63	0.61	NA	-0.9593	0	0
+All	Men	3	Below Recommendations	"physical_activity_old"	2004	0.58	0.61	NA	-0.9593	0	0
+All	Men	3	Below Recommendations	"physical_activity_old"	2006	0.60	0.59	NA	-0.9593	0	0
+All	Men	3	Below Recommendations	"physical_activity_old"	2008	0.59	0.58	NA	-0.9593	0	0
+All	Men	3	Below Recommendations	"physical_activity_old"	2012	0.56	0.56	NA	-0.9593	0	0
+All	Men	4	Below Recommendations	"physical_activity_old"	2003	0.62	0.62	NA	-1.5737*	0	0
+All	Men	4	Below Recommendations	"physical_activity_old"	2004	0.63	0.61	NA	-1.5737*	0	0
+All	Men	4	Below Recommendations	"physical_activity_old"	2006	0.57	0.59	NA	-1.5737*	0	0
+All	Men	4	Below Recommendations	"physical_activity_old"	2008	0.55	0.57	NA	-1.5737*	0	0
+All	Men	4	Below Recommendations	"physical_activity_old"	2012	0.55	0.53	NA	-1.5737*	0	0
+All	Men	5	Below Recommendations	"physical_activity_old"	2003	0.64	0.64	NA	0.1428	0	0
+All	Men	5	Below Recommendations	"physical_activity_old"	2004	0.64	0.64	NA	0.1428	0	0
+All	Men	5	Below Recommendations	"physical_activity_old"	2006	0.65	0.64	NA	0.1428	0	0
+All	Men	5	Below Recommendations	"physical_activity_old"	2008	0.62	0.64	NA	0.1428	0	0
+All	Men	5	Below Recommendations	"physical_activity_old"	2012	0.66	0.65	NA	0.1428	0	0
+All	Women	1	Below Recommendations	"physical_activity_old"	2003	0.77	0.77	NA	-2.0080*	0	0
+All	Women	1	Below Recommendations	"physical_activity_old"	2004	0.74	0.75	NA	-2.0080*	0	0
+All	Women	1	Below Recommendations	"physical_activity_old"	2006	0.73	0.72	NA	-2.0080*	0	0
+All	Women	1	Below Recommendations	"physical_activity_old"	2008	0.69	0.69	NA	-2.0080*	0	0
+All	Women	1	Below Recommendations	"physical_activity_old"	2012	0.64	0.64	NA	-2.0080*	0	0
+All	Women	2	Below Recommendations	"physical_activity_old"	2003	0.76	0.76	NA	-1.5865*	0	0
+All	Women	2	Below Recommendations	"physical_activity_old"	2004	0.75	0.74	NA	-1.5865*	0	0
+All	Women	2	Below Recommendations	"physical_activity_old"	2006	0.71	0.72	NA	-1.5865*	0	0
+All	Women	2	Below Recommendations	"physical_activity_old"	2008	0.69	0.70	NA	-1.5865*	0	0
+All	Women	2	Below Recommendations	"physical_activity_old"	2012	0.66	0.65	NA	-1.5865*	0	0
+All	Women	3	Below Recommendations	"physical_activity_old"	2003	0.74	0.73	NA	-0.8634*	0	0
+All	Women	3	Below Recommendations	"physical_activity_old"	2004	0.73	0.73	NA	-0.8634*	0	0
+All	Women	3	Below Recommendations	"physical_activity_old"	2006	0.71	0.71	NA	-0.8634*	0	0
+All	Women	3	Below Recommendations	"physical_activity_old"	2008	0.70	0.70	NA	-0.8634*	0	0
+All	Women	3	Below Recommendations	"physical_activity_old"	2012	0.68	0.68	NA	-0.8634*	0	0
+All	Women	4	Below Recommendations	"physical_activity_old"	2003	0.76	0.75	NA	-1.3137*	0	0
+All	Women	4	Below Recommendations	"physical_activity_old"	2004	0.76	0.74	NA	-1.3137*	0	0
+All	Women	4	Below Recommendations	"physical_activity_old"	2006	0.70	0.73	NA	-1.3137*	0	0
+All	Women	4	Below Recommendations	"physical_activity_old"	2008	0.70	0.71	NA	-1.3137*	0	0
+All	Women	4	Below Recommendations	"physical_activity_old"	2012	0.68	0.67	NA	-1.3137*	0	0
+All	Women	5	Below Recommendations	"physical_activity_old"	2003	0.76	0.77	NA	-0.7868	0	0
+All	Women	5	Below Recommendations	"physical_activity_old"	2004	0.77	0.76	NA	-0.7868	0	0
+All	Women	5	Below Recommendations	"physical_activity_old"	2006	0.74	0.75	NA	-0.7868	0	0
+All	Women	5	Below Recommendations	"physical_activity_old"	2008	0.72	0.74	NA	-0.7868	0	0
+All	Women	5	Below Recommendations	"physical_activity_old"	2012	0.72	0.71	NA	-0.7868	0	0
+All	Men	1	Meets Recommendations	"physical_activity_old"	2003	0.31	0.31	NA	3.6412*	0	0
+All	Men	1	Meets Recommendations	"physical_activity_old"	2004	0.32	0.32	NA	3.6412*	0	0
+All	Men	1	Meets Recommendations	"physical_activity_old"	2006	0.35	0.35	NA	3.6412*	0	0
+All	Men	1	Meets Recommendations	"physical_activity_old"	2008	0.40	0.37	NA	3.6412*	0	0
+All	Men	1	Meets Recommendations	"physical_activity_old"	2012	0.41	0.43	NA	3.6412*	0	0
+All	Men	2	Meets Recommendations	"physical_activity_old"	2003	0.35	0.36	NA	2.1962*	0	0
+All	Men	2	Meets Recommendations	"physical_activity_old"	2004	0.36	0.37	NA	2.1962*	0	0
+All	Men	2	Meets Recommendations	"physical_activity_old"	2006	0.40	0.38	NA	2.1962*	0	0
+All	Men	2	Meets Recommendations	"physical_activity_old"	2008	0.41	0.40	NA	2.1962*	0	0
+All	Men	2	Meets Recommendations	"physical_activity_old"	2012	0.42	0.43	NA	2.1962*	0	0
+All	Men	3	Meets Recommendations	"physical_activity_old"	2003	0.37	0.39	NA	1.4044	0	0
+All	Men	3	Meets Recommendations	"physical_activity_old"	2004	0.42	0.39	NA	1.4044	0	0
+All	Men	3	Meets Recommendations	"physical_activity_old"	2006	0.40	0.41	NA	1.4044	0	0
+All	Men	3	Meets Recommendations	"physical_activity_old"	2008	0.41	0.42	NA	1.4044	0	0
+All	Men	3	Meets Recommendations	"physical_activity_old"	2012	0.44	0.44	NA	1.4044	0	0
+All	Men	4	Meets Recommendations	"physical_activity_old"	2003	0.38	0.38	NA	2.2543*	0	0
+All	Men	4	Meets Recommendations	"physical_activity_old"	2004	0.37	0.39	NA	2.2543*	0	0
+All	Men	4	Meets Recommendations	"physical_activity_old"	2006	0.43	0.41	NA	2.2543*	0	0
+All	Men	4	Meets Recommendations	"physical_activity_old"	2008	0.45	0.43	NA	2.2543*	0	0
+All	Men	4	Meets Recommendations	"physical_activity_old"	2012	0.45	0.47	NA	2.2543*	0	0
+All	Men	5	Meets Recommendations	"physical_activity_old"	2003	0.36	0.36	NA	-0.2763	0	0
+All	Men	5	Meets Recommendations	"physical_activity_old"	2004	0.36	0.36	NA	-0.2763	0	0
+All	Men	5	Meets Recommendations	"physical_activity_old"	2006	0.35	0.36	NA	-0.2763	0	0
+All	Men	5	Meets Recommendations	"physical_activity_old"	2008	0.38	0.36	NA	-0.2763	0	0
+All	Men	5	Meets Recommendations	"physical_activity_old"	2012	0.34	0.35	NA	-0.2763	0	0
+All	Women	1	Meets Recommendations	"physical_activity_old"	2003	0.23	0.24	NA	4.9292*	0	0
+All	Women	1	Meets Recommendations	"physical_activity_old"	2004	0.26	0.25	NA	4.9292*	0	0
+All	Women	1	Meets Recommendations	"physical_activity_old"	2006	0.27	0.27	NA	4.9292*	0	0
+All	Women	1	Meets Recommendations	"physical_activity_old"	2008	0.31	0.30	NA	4.9292*	0	0
+All	Women	1	Meets Recommendations	"physical_activity_old"	2012	0.36	0.37	NA	4.9292*	0	0
+All	Women	2	Meets Recommendations	"physical_activity_old"	2003	0.24	0.25	NA	4.0084*	0	0
+All	Women	2	Meets Recommendations	"physical_activity_old"	2004	0.25	0.26	NA	4.0084*	0	0
+All	Women	2	Meets Recommendations	"physical_activity_old"	2006	0.29	0.28	NA	4.0084*	0	0
+All	Women	2	Meets Recommendations	"physical_activity_old"	2008	0.31	0.30	NA	4.0084*	0	0
+All	Women	2	Meets Recommendations	"physical_activity_old"	2012	0.34	0.35	NA	4.0084*	0	0
+All	Women	3	Meets Recommendations	"physical_activity_old"	2003	0.26	0.27	NA	2.1354*	0	0
+All	Women	3	Meets Recommendations	"physical_activity_old"	2004	0.27	0.27	NA	2.1354*	0	0
+All	Women	3	Meets Recommendations	"physical_activity_old"	2006	0.29	0.29	NA	2.1354*	0	0
+All	Women	3	Meets Recommendations	"physical_activity_old"	2008	0.30	0.30	NA	2.1354*	0	0
+All	Women	3	Meets Recommendations	"physical_activity_old"	2012	0.32	0.32	NA	2.1354*	0	0
+All	Women	4	Meets Recommendations	"physical_activity_old"	2003	0.24	0.25	NA	3.4788*	0	0
+All	Women	4	Meets Recommendations	"physical_activity_old"	2004	0.24	0.25	NA	3.4788*	0	0
+All	Women	4	Meets Recommendations	"physical_activity_old"	2006	0.30	0.27	NA	3.4788*	0	0
+All	Women	4	Meets Recommendations	"physical_activity_old"	2008	0.30	0.29	NA	3.4788*	0	0
+All	Women	4	Meets Recommendations	"physical_activity_old"	2012	0.32	0.33	NA	3.4788*	0	0
+All	Women	5	Meets Recommendations	"physical_activity_old"	2003	0.24	0.23	NA	2.3439	0	0
+All	Women	5	Meets Recommendations	"physical_activity_old"	2004	0.23	0.24	NA	2.3439	0	0
+All	Women	5	Meets Recommendations	"physical_activity_old"	2006	0.26	0.25	NA	2.3439	0	0
+All	Women	5	Meets Recommendations	"physical_activity_old"	2008	0.28	0.26	NA	2.3439	0	0
+All	Women	5	Meets Recommendations	"physical_activity_old"	2012	0.28	0.29	NA	2.3439	0	0
 All	Men	1	Current	"smoking_status"	2001	0.18	0.18	NA	-2.9421*	0	0
 All	Men	1	Current	"smoking_status"	2002	0.18	0.17	NA	-2.9421*	0	0
 All	Men	1	Current	"smoking_status"	2003	0.17	0.17	NA	-2.9421*	0	0

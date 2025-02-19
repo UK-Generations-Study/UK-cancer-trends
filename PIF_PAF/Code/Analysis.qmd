@@ -273,6 +273,7 @@ data_rf_imd <- read.csv("../../../Data/Cleaned_Data/clean_rf_data_age_all_imd.cs
 #Read in all cancer incidence data 
 data_ALLcancer <- read.csv("../Data/all_incidence_joinpoint.csv") |>
   filter(!(sex == "Men" & cancer_site == "Breast"))
+
 data_ALLcancer_age_group <- read.csv("../Data/all_incidence_age_group_joinpoint.csv") |>
   filter(!(sex == "Men" & cancer_site == "Breast"))
 

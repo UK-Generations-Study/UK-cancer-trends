@@ -1,7 +1,6 @@
 "sex"	"age_group"	"cancer_site"	"Model"
 Men	20-49	Bladder	0
 Men	20-49	Brain and CNS	0
-Men	20-49	Breast	0
 Men	20-49	Colorectum	0
 Men	20-49	Gallbladder	0
 Men	20-49	Hodgkin Lymphoma	0
@@ -22,7 +21,6 @@ Men	20-49	Testis	0
 Men	20-49	Thyroid	1
 Men	50+	Bladder	2
 Men	50+	Brain and CNS	1
-Men	50+	Breast	0
 Men	50+	Colorectum	2
 Men	50+	Gallbladder	0
 Men	50+	Hodgkin Lymphoma	1
