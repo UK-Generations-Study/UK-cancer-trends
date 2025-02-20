@@ -23,6 +23,7 @@ joinpoint_diet <- data_rf %>%
   )
 
 # Diet data - Fibre Guidelines
+# Recoding to below guidelines as that is what is desired to be plotted
 joinpoint_diet_fibre_guidelines <- data_rf %>%
   filter(
     variable %in% c("fibre_consumption")
@@ -31,11 +32,34 @@ joinpoint_diet_fibre_guidelines <- data_rf %>%
     level == "[30,Inf)"
   ) |>
   mutate(
-    level = "Meets Guidelines"
+    level = "Below Guidelines"
   ) |>
   arrange(
     variable, level, sex, age_group, year
-  )
+  ) |>
+  mutate(value = 1 - value)
+
+# # Diet data - Fibre Guidelines - Dichotomous
+# joinpoint_diet_fibre_guidelines <- data_rf %>%
+#   filter(
+#     variable %in% c("fibre_consumption")
+#   ) %>%
+#   filter(
+#     level == "[30,Inf)"
+#   ) |>
+#   mutate(
+#     level = "Meets Guidelines"
+#   )
+# 
+# # Adding Below Guidelines category
+# joinpoint_diet_fibre_guidelines_below <- joinpoint_diet_fibre_guidelines |>
+#   mutate(level = "Below Guidelines",
+#          value = 1 - value)
+# 
+# joinpoint_diet_fibre_guidelines <- rbind(joinpoint_diet_fibre_guidelines, joinpoint_diet_fibre_guidelines_below) |>
+#   arrange(
+#     variable, level, sex, age_group, year
+#   )
 
 # risk factor IMD data 
 joinpoint_imd <- data_rf_imd %>% 
@@ -55,12 +79,19 @@ joinpoint_cancer <- data_ALLcancer %>%
     sex, age_group, cancer_site, year
   )
 
+
+joinpoint_cancer_age_group <- data_ALLcancer_age_group %>%
+  arrange(
+    sex, age_group, cancer_site, year
+  )
+
 # Saving the cleaned datasets 
 write.csv(joinpoint_diet, "../../../Data/Joinpoint_Cleaned_Data/joinpoint_rfdiet.csv", row.names = F ) 
 write.csv(joinpoint_diet_fibre_guidelines, "../../../Data/Joinpoint_Cleaned_Data/joinpoint_rfdiet_fibre_guidelines.csv", row.names = F ) 
 write.csv(joinpoint, ("../../../Data/Joinpoint_Cleaned_Data/joinpoint_rf.csv"), row.names = F )
 write.csv(joinpoint_imd, ("../../../Data/Joinpoint_Cleaned_Data/joinpoint_rf_imd.csv"), row.names = F )
 write.csv(joinpoint_cancer, ("../../../Data/Joinpoint_Cleaned_Data/joinpoint_cancerrates.csv"), row.names = F )
+write.csv(joinpoint_cancer_age_group, ("../../../Data/Joinpoint_Cleaned_Data/joinpoint_cancerrates_age_group.csv"), row.names = F )
 
 #NOW RUN THE JOINPOINT 
   #Parameters: 

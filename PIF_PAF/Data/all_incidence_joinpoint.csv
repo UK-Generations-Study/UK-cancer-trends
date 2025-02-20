@@ -113,6 +113,25 @@
 2017,"Men","20-49","Hodgkin Lymphoma",4.5,500
 2018,"Men","20-49","Hodgkin Lymphoma",4.2,468
 2019,"Men","20-49","Hodgkin Lymphoma",4.1,456
+2001,"Men","20-49","Kaposi Sarcoma",0.5,47
+2002,"Men","20-49","Kaposi Sarcoma",0.4,45
+2003,"Men","20-49","Kaposi Sarcoma",0.6,61
+2004,"Men","20-49","Kaposi Sarcoma",0.5,55
+2005,"Men","20-49","Kaposi Sarcoma",0.7,77
+2006,"Men","20-49","Kaposi Sarcoma",0.9,92
+2007,"Men","20-49","Kaposi Sarcoma",0.9,93
+2008,"Men","20-49","Kaposi Sarcoma",0.9,95
+2009,"Men","20-49","Kaposi Sarcoma",0.6,66
+2010,"Men","20-49","Kaposi Sarcoma",0.6,69
+2011,"Men","20-49","Kaposi Sarcoma",0.7,74
+2012,"Men","20-49","Kaposi Sarcoma",0.6,67
+2013,"Men","20-49","Kaposi Sarcoma",0.6,71
+2014,"Men","20-49","Kaposi Sarcoma",0.6,70
+2015,"Men","20-49","Kaposi Sarcoma",0.6,62
+2016,"Men","20-49","Kaposi Sarcoma",0.6,65
+2017,"Men","20-49","Kaposi Sarcoma",0.5,57
+2018,"Men","20-49","Kaposi Sarcoma",0.4,46
+2019,"Men","20-49","Kaposi Sarcoma",0.4,44
 2001,"Men","20-49","Kidney",2.7,283
 2002,"Men","20-49","Kidney",3.1,318
 2003,"Men","20-49","Kidney",3,315
@@ -512,6 +531,25 @@
 2017,"Men","50+","Hodgkin Lymphoma",4.7,457
 2018,"Men","50+","Hodgkin Lymphoma",4.8,470
 2019,"Men","50+","Hodgkin Lymphoma",4.6,461
+2001,"Men","50+","Kaposi Sarcoma",0.3,19
+2002,"Men","50+","Kaposi Sarcoma",0.2,14
+2003,"Men","50+","Kaposi Sarcoma",0.3,23
+2004,"Men","50+","Kaposi Sarcoma",0.4,29
+2005,"Men","50+","Kaposi Sarcoma",0.3,24
+2006,"Men","50+","Kaposi Sarcoma",0.3,21
+2007,"Men","50+","Kaposi Sarcoma",0.4,34
+2008,"Men","50+","Kaposi Sarcoma",0.6,50
+2009,"Men","50+","Kaposi Sarcoma",0.5,44
+2010,"Men","50+","Kaposi Sarcoma",0.5,42
+2011,"Men","50+","Kaposi Sarcoma",0.4,34
+2012,"Men","50+","Kaposi Sarcoma",0.5,44
+2013,"Men","50+","Kaposi Sarcoma",0.7,62
+2014,"Men","50+","Kaposi Sarcoma",0.7,60
+2015,"Men","50+","Kaposi Sarcoma",0.5,50
+2016,"Men","50+","Kaposi Sarcoma",0.6,61
+2017,"Men","50+","Kaposi Sarcoma",0.5,44
+2018,"Men","50+","Kaposi Sarcoma",0.6,61
+2019,"Men","50+","Kaposi Sarcoma",0.7,66
 2001,"Men","50+","Kidney",34.3,2586
 2002,"Men","50+","Kidney",35.7,2720
 2003,"Men","50+","Kidney",35,2697
@@ -949,6 +987,25 @@
 2017,"Women","20-49","Hodgkin Lymphoma",3.3,358
 2018,"Women","20-49","Hodgkin Lymphoma",3.1,338
 2019,"Women","20-49","Hodgkin Lymphoma",3.3,366
+2001,"Women","20-49","Kaposi Sarcoma",0.1,10
+2002,"Women","20-49","Kaposi Sarcoma",0.1,11
+2003,"Women","20-49","Kaposi Sarcoma",0.2,22
+2004,"Women","20-49","Kaposi Sarcoma",0.1,10
+2005,"Women","20-49","Kaposi Sarcoma",0.1,11
+2006,"Women","20-49","Kaposi Sarcoma",0.2,22
+2007,"Women","20-49","Kaposi Sarcoma",0.1,16
+2008,"Women","20-49","Kaposi Sarcoma",0.2,22
+2009,"Women","20-49","Kaposi Sarcoma",0.1,13
+2010,"Women","20-49","Kaposi Sarcoma",0.1,16
+2011,"Women","20-49","Kaposi Sarcoma",0.1,16
+2012,"Women","20-49","Kaposi Sarcoma",0.1,9
+2013,"Women","20-49","Kaposi Sarcoma",0.1,6
+2014,"Women","20-49","Kaposi Sarcoma",0,5
+2015,"Women","20-49","Kaposi Sarcoma",0.1,9
+2016,"Women","20-49","Kaposi Sarcoma",0.1,9
+2017,"Women","20-49","Kaposi Sarcoma",0.1,11
+2018,"Women","20-49","Kaposi Sarcoma",0,4
+2019,"Women","20-49","Kaposi Sarcoma",0,2
 2001,"Women","20-49","Kidney",1.4,145
 2002,"Women","20-49","Kidney",1.5,153
 2003,"Women","20-49","Kidney",1.7,181
@@ -1367,6 +1424,25 @@
 2017,"Women","50+","Hodgkin Lymphoma",2.8,297
 2018,"Women","50+","Hodgkin Lymphoma",3,327
 2019,"Women","50+","Hodgkin Lymphoma",3.2,354
+2001,"Women","50+","Kaposi Sarcoma",0.1,10
+2002,"Women","50+","Kaposi Sarcoma",0,4
+2003,"Women","50+","Kaposi Sarcoma",0.1,10
+2004,"Women","50+","Kaposi Sarcoma",0.1,6
+2005,"Women","50+","Kaposi Sarcoma",0.1,6
+2006,"Women","50+","Kaposi Sarcoma",0.1,5
+2007,"Women","50+","Kaposi Sarcoma",0.1,5
+2008,"Women","50+","Kaposi Sarcoma",0.1,5
+2009,"Women","50+","Kaposi Sarcoma",0.1,7
+2010,"Women","50+","Kaposi Sarcoma",0.2,15
+2011,"Women","50+","Kaposi Sarcoma",0.1,8
+2012,"Women","50+","Kaposi Sarcoma",0.1,6
+2013,"Women","50+","Kaposi Sarcoma",0.1,6
+2014,"Women","50+","Kaposi Sarcoma",0.1,11
+2015,"Women","50+","Kaposi Sarcoma",0.1,10
+2016,"Women","50+","Kaposi Sarcoma",0.1,6
+2017,"Women","50+","Kaposi Sarcoma",0.1,7
+2018,"Women","50+","Kaposi Sarcoma",0.1,15
+2019,"Women","50+","Kaposi Sarcoma",0.1,12
 2001,"Women","50+","Kidney",17.7,1571
 2002,"Women","50+","Kidney",18.3,1632
 2003,"Women","50+","Kidney",19.3,1736
