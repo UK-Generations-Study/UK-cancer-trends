@@ -572,6 +572,9 @@ for (group in age_groups) {
 ```
 
 ## All Cancer AAPC - Forest Plot
+
+NOTE: Kaposi Sarcoma is removed from the womens APC plot as neither 20-49 or 50+ generated an AAPC due to zeroes in the data
+
 ```{r}
 
 # Loop through sexes
@@ -1748,6 +1751,15 @@ rf_overlay_colorectal <- data_cancer |>
   mutate(level = "Colorectal Cancer Rate",
          variable = "Cancer Rate")
 
+# # NOw loop through variables
+# var <- "meat_consumption"
+# 
+# # Filter to specific rf_data
+# rf_trend_plot_overlay_var <- rf_trend_plot_overlay |>
+#   filter(variable == var)
+
+
+
 # Now loop through variables
 for(var in unique(rf_trend_plot_overlay$variable)){
   
@@ -1805,11 +1817,13 @@ for(var in unique(rf_trend_plot_overlay$variable)){
       linetype = ""
     ) +
     scale_x_continuous(breaks = seq(1995, 2020, 5), limits = c(1995, 2020)) +
-    facet_wrap(~sex, scales = "free_y")
+    facet_wrap(~sex, scales = "free")
   
   print(plot)
   
-   ggsave(filename = paste0("../Output/Plots/Figure2e_", var, ".png"), plot = plot, width = 12, height = 6, bg = "white")
+  
+  
+  ggsave(filename = paste0("../Output/Plots/Figure2e_", var, ".png"), plot = plot, width = 12, height = 6, bg = "white")
   
 }
 

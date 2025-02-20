@@ -5,6 +5,9 @@
 # The RR will be sampled from a log-normal distribution, assuming log(RR) is normally distributed. - THIS HAS NOT BEEN DONE. This is because they are using the same RR so would just add variance
 # The prevelances will be sampled using the prevelances and N values from the surveys.
 
+## Options
+N_iterations <- 1000
+
 ## Packages
 necessary_packages <- c("dplyr", "tidyr", "ggplot2")
 suppressMessages(
@@ -303,9 +306,14 @@ no_groups <- data_complete |>
   summarise() |>
   nrow()
 
+# Get start time for total time estimation
+start.time = Sys.time()
 
 # Loop for N times
-for(i in 1:5){
+for(i in 1:N_iterations){
+  
+  # Print counter
+  cat(paste0("Iteration ", i, "...\n"))
   
   # Get copy of data
   data_complete_sample <- data_complete
@@ -526,7 +534,9 @@ for(i in 1:5){
       
       PAF = sum(ERR_calc * level_midpoint * perc)/(1 + sum(ERR_calc * level_midpoint * perc))
       
-    )
+    ) |>
+    suppressMessages() |>
+    ungroup()
   
   
   # Now if i = 1 initialise dataframe, otherwise rbind to it
@@ -535,6 +545,15 @@ for(i in 1:5){
   } else {
     data_complete_paf_analysis <- rbind(data_complete_paf_analysis, data_complete_paf_sample)
   }
+  
+  # Estimate time remaining
+  end.time <- Sys.time()
+  elapsed.time <- difftime(end.time, start.time, units = "mins")
+  total.time.est <- N_iterations*(elapsed.time/i)
+  total.time.remaining <- total.time.est - elapsed.time
+  cat(paste0("Estimated time remaining: ", round(total.time.remaining, digits = 2), " minutes\n"))
+  
+  
   
 }
 

@@ -3,6 +3,7 @@ Men	20-34	Bladder	0
 Men	20-34	Brain and CNS	0
 Men	20-34	Colorectum	1
 Men	20-34	Hodgkin Lymphoma	0
+Men	20-34	Kaposi Sarcoma	1
 Men	20-34	Kidney	0
 Men	20-34	Leukaemia	0
 Men	20-34	Liver	0
@@ -21,6 +22,7 @@ Men	35-49	Brain and CNS	0
 Men	35-49	Colorectum	1
 Men	35-49	Gallbladder	0
 Men	35-49	Hodgkin Lymphoma	0
+Men	35-49	Kaposi Sarcoma	1
 Men	35-49	Kidney	2
 Men	35-49	Larynx	0
 Men	35-49	Leukaemia	0
@@ -41,6 +43,7 @@ Men	50-64	Brain and CNS	1
 Men	50-64	Colorectum	2
 Men	50-64	Gallbladder	2
 Men	50-64	Hodgkin Lymphoma	0
+Men	50-64	Kaposi Sarcoma	0
 Men	50-64	Kidney	1
 Men	50-64	Larynx	1
 Men	50-64	Leukaemia	1
@@ -61,6 +64,7 @@ Men	65+	Brain and CNS	1
 Men	65+	Colorectum	2
 Men	65+	Gallbladder	0
 Men	65+	Hodgkin Lymphoma	1
+Men	65+	Kaposi Sarcoma	1
 Men	65+	Kidney	1
 Men	65+	Larynx	1
 Men	65+	Leukaemia	1
