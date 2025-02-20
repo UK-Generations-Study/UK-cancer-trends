@@ -322,6 +322,7 @@ for(i in 1:N_iterations){
   norms <- rnorm(no_groups)
   
   data_complete_sample <- data_complete_sample |>
+    # THIS NEEDS TO BE CHANGED FOR PIFS
     group_by(variable, level, year, sex, age_group, Cancer_sites) |>
     mutate(
       
@@ -558,7 +559,7 @@ for(i in 1:N_iterations){
 }
 
 ## Output data
-# write.csv(data_complete_paf_analysis, file = "../../Data/paf_comparison.csv", row.names = F)
+write.csv(data_complete_paf_analysis, file = "../../Data/paf_comparison.csv", row.names = F)
 
 
 # # Now compare empirically between the years
