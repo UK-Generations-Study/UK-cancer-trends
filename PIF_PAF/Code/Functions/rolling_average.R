@@ -22,7 +22,7 @@ rolling_average <- function(data){
   
   # Group by other columns
   data <- data |>
-    group_by(across(any_of(c("age_group", "sex", "level", "variable", "chain", "imd")))) |>
+    group_by(across(any_of(c("age_group", "sex", "level", "variable", "imd")))) |>
     arrange(year) |>
     mutate(
       
@@ -30,10 +30,14 @@ rolling_average <- function(data){
       chain = cumsum(c(1,diff(year) != 1))
       
     ) |>
+    ungroup() |>
+    group_by(across(any_of(c("age_group", "sex", "level", "variable", "chain", "imd")))) |>
     mutate(
       
       # Apply length 3 mean window - at endpoints just take endpoint and the one before/after
-      value = slider::slide_mean(value, before = 1, after = 1)
+      value = case_when(
+        n() > 2 ~ slider::slide_mean(value, before = 1, after = 1),
+        TRUE ~ value)
       
     ) |>
     ungroup() |>

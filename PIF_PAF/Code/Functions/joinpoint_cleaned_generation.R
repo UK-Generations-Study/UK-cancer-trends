@@ -79,12 +79,19 @@ joinpoint_cancer <- data_ALLcancer %>%
     sex, age_group, cancer_site, year
   )
 
+
+joinpoint_cancer_age_group <- data_ALLcancer_age_group %>%
+  arrange(
+    sex, age_group, cancer_site, year
+  )
+
 # Saving the cleaned datasets 
 write.csv(joinpoint_diet, "../../../Data/Joinpoint_Cleaned_Data/joinpoint_rfdiet.csv", row.names = F ) 
 write.csv(joinpoint_diet_fibre_guidelines, "../../../Data/Joinpoint_Cleaned_Data/joinpoint_rfdiet_fibre_guidelines.csv", row.names = F ) 
 write.csv(joinpoint, ("../../../Data/Joinpoint_Cleaned_Data/joinpoint_rf.csv"), row.names = F )
 write.csv(joinpoint_imd, ("../../../Data/Joinpoint_Cleaned_Data/joinpoint_rf_imd.csv"), row.names = F )
 write.csv(joinpoint_cancer, ("../../../Data/Joinpoint_Cleaned_Data/joinpoint_cancerrates.csv"), row.names = F )
+write.csv(joinpoint_cancer_age_group, ("../../../Data/Joinpoint_Cleaned_Data/joinpoint_cancerrates_age_group.csv"), row.names = F )
 
 #NOW RUN THE JOINPOINT 
   #Parameters: 

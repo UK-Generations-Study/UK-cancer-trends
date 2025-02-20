@@ -5,11 +5,19 @@ editor:
   mode: source
 ---
 
+#### Timer
+```{r}
+
+start.time = Sys.time()
+
+```
+
 ## Packages
 ```{r}
 
 library(matrixStats)
 library(dplyr)
+library(tidyr)
 
 ```
 
@@ -21,7 +29,7 @@ user_options <- list()
 # Whether to use age groups or just group as 'All'
 #   False - all age groups 
 #   True - Split the ages 20-49, 50+
-user_options$age_groups_indicator <- F
+user_options$age_groups_indicator <- T
 
 # Whether to further stratify by IMD
 #   False - not split by IMD 
@@ -175,13 +183,13 @@ if(user_options$age_groups_indicator){
 ghs_data <- ghs_data |>
   group_by(sex, age_group) |>
   mutate(total_weight = sum(weight05)/744.0531, 
-         # total_weight_adj = sum(weight05)/744.0531, 
-         # total = n()
+         # total_weight_adj = sum(weight05)/744.0531,
+         total = n()
          ) |>
   ungroup() |>
   group_by(sex, age_group, alcohol_cat) |>
   summarise(value = sum(weight05/744.0531)/total_weight[1],
-            N = total_weight[1],
+            N = total[1],
             # total_weight_adj = total_weight_adj[1],
             # total = total[1]
             ) |>
@@ -204,7 +212,44 @@ rf_df <- rbind(rf_df, ghs_data)
 ### NDNS
 ```{r}
 
-diet_df <- diet_data_gen(filepath = "../../../Data", user_options)
+diet_df <- diet_data_gen(filepath = "../../../Data", user_options) |>
+  ungroup()
+
+# Go through variables and ensure that complete categories are provided
+# This code assumes that across all the strata, each category is represented at least once - if this is nto the case will change to a manual specification
+for(var in unique(diet_df$variable)){
+  
+  # Get categories
+  categories <- diet_df |>
+    filter(variable == var) |>
+    pull(level) |>
+    unique()
+  
+  # Complete categories for variable
+  diet_df_temp <- diet_df |>
+    filter(variable == var) |>
+    complete(age_group, sex, year, level = categories) |>
+    group_by(age_group, sex, year) |>
+    mutate(
+      
+      year = if_else(is.na(year), first(na.omit(year)), year),
+      age_group = if_else(is.na(age_group), first(na.omit(age_group)), age_group),
+      sex = if_else(is.na(sex), first(na.omit(sex)), sex),
+      value = replace_na(value, 0),
+      N = if_else(is.na(N), first(na.omit(N)), N),
+      variable = if_else(is.na(variable), first(na.omit(variable)), variable),
+      
+    ) |>
+    ungroup()
+  
+  # Remove prior data and add back in
+  diet_df <- diet_df |>
+    filter(variable != var) |>
+    rbind(diet_df_temp)
+  
+}
+
+
 rf_df <- rbind(rf_df, diet_df)
 
 ```
@@ -220,7 +265,44 @@ rf_df <- rbind(rf_df, diet_df_cnt)
 ### NDNS - Category Means
 ```{r}
 
-diet_df_cat_mean <- diet_data_gen_cat_mean(filepath = "../../../Data", user_options)
+diet_df_cat_mean <- diet_data_gen_cat_mean(filepath = "../../../Data", user_options) |>
+  ungroup()
+
+test <- diet_df_cat_mean
+
+# Go through variables and ensure that complete categories are provided
+# This code assumes that across all the strata, each category is represented at least once - if this is nto the case will change to a manual specification
+for(var in unique(diet_df_cat_mean$variable)){
+  
+  # Get categories
+  categories <- diet_df_cat_mean |>
+    filter(variable == var) |>
+    pull(level) |>
+    unique()
+  
+  # Complete categories for variable
+  diet_df_cat_mean_temp <- diet_df_cat_mean |>
+    filter(variable == var) |>
+    complete(age_group, sex, year, level = categories) |>
+    group_by(age_group, sex, year) |>
+    mutate(
+      
+      year = if_else(is.na(year), first(na.omit(year)), year),
+      age_group = if_else(is.na(age_group), first(na.omit(age_group)), age_group),
+      sex = if_else(is.na(sex), first(na.omit(sex)), sex),
+      N = if_else(is.na(N), first(na.omit(N)), N),
+      variable = if_else(is.na(variable), first(na.omit(variable)), variable),
+      
+    ) |>
+    ungroup()
+  
+  # Remove prior data and add back in
+  diet_df_cat_mean <- diet_df_cat_mean |>
+    filter(variable != var) |>
+    rbind(diet_df_cat_mean_temp)
+  
+}
+
 rf_df <- rbind(rf_df, diet_df_cat_mean)
 
 ```
@@ -229,6 +311,16 @@ rf_df <- rbind(rf_df, diet_df_cat_mean)
 ```{r}
 
 write.csv(rf_df, file = paste0("../../../Data/Cleaned_Data/clean_rf_data", if_else(!user_options$age_groups_indicator, "_age_all", ""), if_else(user_options$imd_stratification, "_imd", ""), ".csv"), row.names = F)
+
+```
+
+
+#### Timer
+```{r}
+
+end.time = Sys.time()
+
+end.time - start.time
 
 ```
 

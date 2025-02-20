@@ -203,10 +203,10 @@ All	Men	1	Underweight	"bmi"	1	0	19	2	17	       1.8694119	      -2.0088742	      
 All	Men	1	Underweight	"bmi"	2	1	19	4	15	       1.3869952	      -1.9974174	      -1.8424470	       0.2580580	      -1.9574261
 All	Men	1	Underweight	"bmi"	3	2	19	6	13	       0.3514399	      -3.0603328	      -2.7503919	       0.8210990	      -2.8058406
 All	Men	1	Underweight	"bmi"	4	3	19	8	11	       0.2606227	      -3.0493566	      -2.5844451	       0.7739978	      -2.6895162
-All	Men	2	Underweight	"bmi"	1	0	18	2	16	       1.4463828	      -2.2001536	      -2.2001536	       0.0000000	      -2.2001536
-All	Men	2	Underweight	"bmi"	2	1	18	4	14	       1.2251854	      -2.0449747	      -1.8843985	       0.1529314	      -2.0204176
-All	Men	2	Underweight	"bmi"	3	2	18	6	12	       0.8399195	      -2.1013638	      -1.7802113	       0.9243675	      -1.8045009
-All	Men	2	Underweight	"bmi"	4	3	18	8	10	       0.6221307	      -2.0803672	      -1.5986386	       0.9243675	      -1.6350730
+All	Men	2	Underweight	"bmi"	1	0	18	2	16	       1.9034244	      -1.9255648	      -1.9255648	       0.0000000	      -1.9255648
+All	Men	2	Underweight	"bmi"	2	1	18	4	14	       1.7625325	      -1.6813152	      -1.5207390	       0.0740202	      -1.6694293
+All	Men	2	Underweight	"bmi"	3	2	18	6	12	       0.9176789	      -2.0128222	      -1.6916698	       0.9310220	      -1.7138223
+All	Men	2	Underweight	"bmi"	4	3	18	8	10	       0.6715441	      -2.0039376	      -1.5222090	       0.9310220	      -1.5554377
 All	Men	3	Underweight	"bmi"	1	0	19	2	17	       2.0786108	      -1.9027982	      -1.9027982	       0.0000000	      -1.9027982
 All	Men	3	Underweight	"bmi"	2	1	19	4	15	       1.4417540	      -1.9586967	      -1.8037262	       0.3063858	      -1.9112159
 All	Men	3	Underweight	"bmi"	3	2	19	6	13	       0.8993115	      -2.1207420	      -1.8108010	       0.7107668	      -1.9004462
@@ -239,26 +239,26 @@ All	Women	5	Underweight	"bmi"	1	0	19	2	17	       0.3104543	      -3.8042165	    
 All	Women	5	Underweight	"bmi"	2	1	19	4	15	       0.1435268	      -4.2657904	      -4.1108199	       0.5376878	      -4.1824646
 All	Women	5	Underweight	"bmi"	3	2	19	6	13	       0.1075504	      -4.2444120	      -3.9344710	       0.4025134	      -4.1196566
 All	Women	5	Underweight	"bmi"	4	3	19	8	11	       0.0656520	      -4.4280620	      -3.9631506	       0.9780027	      -3.9733774
-All	Men	1	Below Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0009598	      -7.9144678	      -7.9144678	       0.0000000	      -7.9144678
-All	Men	2	Below Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0010146	      -7.8589598	      -7.8589598	       0.0000000	      -7.8589598
-All	Men	3	Below Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0001467	      -9.7929411	      -9.7929411	       0.0000000	      -9.7929411
-All	Men	4	Below Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0011836	      -7.7048913	      -7.7048913	       0.0000000	      -7.7048913
-All	Men	5	Below Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0000518	     -10.8334518	     -10.8334518	       0.0000000	     -10.8334518
-All	Women	1	Below Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0003991	      -8.7920559	      -8.7920559	       0.0000000	      -8.7920559
-All	Women	2	Below Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0006418	      -8.3169339	      -8.3169339	       0.0000000	      -8.3169339
-All	Women	3	Below Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0002293	      -9.3463472	      -9.3463472	       0.0000000	      -9.3463472
-All	Women	4	Below Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0009260	      -7.9503456	      -7.9503456	       0.0000000	      -7.9503456
-All	Women	5	Below Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0002802	      -9.1455733	      -9.1455733	       0.0000000	      -9.1455733
-All	Men	1	Meets Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0040849	      -6.4661092	      -6.4661092	       0.0000000	      -6.4661092
-All	Men	2	Meets Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0028509	      -6.8257689	      -6.8257689	       0.0000000	      -6.8257689
-All	Men	3	Meets Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0003397	      -8.9529994	      -8.9529994	       0.0000000	      -8.9529994
-All	Men	4	Meets Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0026819	      -6.8868988	      -6.8868988	       0.0000000	      -6.8868988
-All	Men	5	Meets Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0001664	      -9.6668071	      -9.6668071	       0.0000000	      -9.6668071
-All	Women	1	Meets Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0034381	      -6.6384977	      -6.6384977	       0.0000000	      -6.6384977
-All	Women	2	Meets Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0050773	      -6.2486435	      -6.2486435	       0.0000000	      -6.2486435
-All	Women	3	Meets Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0015631	      -7.4267352	      -7.4267352	       0.0000000	      -7.4267352
-All	Women	4	Meets Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0071959	      -5.8999070	      -5.8999070	       0.0000000	      -5.8999070
-All	Women	5	Meets Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0027373	      -6.8664491	      -6.8664491	       0.0000000	      -6.8664491
+All	Men	1	Below Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0017234	      -7.3291406	      -7.3291406	       0.0000000	      -7.3291406
+All	Men	2	Below Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0016701	      -7.3605487	      -7.3605487	       0.0000000	      -7.3605487
+All	Men	3	Below Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0024176	      -6.9906565	      -6.9906565	       0.0000000	      -6.9906565
+All	Men	4	Below Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0032251	      -6.7024679	      -6.7024679	       0.0000000	      -6.7024679
+All	Men	5	Below Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0018783	      -7.2430621	      -7.2430621	       0.0000000	      -7.2430621
+All	Women	1	Below Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0008465	      -8.0400071	      -8.0400071	       0.0000000	      -8.0400071
+All	Women	2	Below Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0004729	      -8.6222207	      -8.6222207	       0.0000000	      -8.6222207
+All	Women	3	Below Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0002262	      -9.3597583	      -9.3597583	       0.0000000	      -9.3597583
+All	Women	4	Below Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0017704	      -7.3022346	      -7.3022346	       0.0000000	      -7.3022346
+All	Women	5	Below Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0010928	      -7.7847199	      -7.7847199	       0.0000000	      -7.7847199
+All	Men	1	Meets Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0067007	      -5.9712076	      -5.9712076	       0.0000000	      -5.9712076
+All	Men	2	Meets Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0049028	      -6.2836199	      -6.2836199	       0.0000000	      -6.2836199
+All	Men	3	Meets Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0056441	      -6.1428147	      -6.1428147	       0.0000000	      -6.1428147
+All	Men	4	Meets Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0074213	      -5.8690653	      -5.8690653	       0.0000000	      -5.8690653
+All	Men	5	Meets Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0057741	      -6.1200376	      -6.1200376	       0.0000000	      -6.1200376
+All	Women	1	Meets Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0068399	      -5.9506488	      -5.9506488	       0.0000000	      -5.9506488
+All	Women	2	Meets Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0049408	      -6.2758967	      -6.2758967	       0.0000000	      -6.2758967
+All	Women	3	Meets Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0017694	      -7.3027702	      -7.3027702	       0.0000000	      -7.3027702
+All	Women	4	Meets Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0146442	      -5.1893715	      -5.1893715	       0.0000000	      -5.1893715
+All	Women	5	Meets Recommendations	"physical_activity_old"	1	0	5	2	3	       0.0100655	      -5.5643068	      -5.5643068	       0.0000000	      -5.5643068
 All	Men	1	Current	"smoking_status"	1	0	19	2	17	       0.0235241	      -6.3842275	      -6.3842275	       0.0000000	      -6.3842275
 All	Men	1	Current	"smoking_status"	2	1	19	4	15	       0.0211011	      -6.1829872	      -6.0280167	       0.1030011	      -6.1670251
 All	Men	1	Current	"smoking_status"	3	2	19	6	13	       0.0151022	      -6.2075330	      -5.8975920	       0.6738678	      -5.9986738
