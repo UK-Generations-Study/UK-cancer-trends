@@ -1,53 +1,53 @@
-"sex"	"age_group"	"level"	"variable"	"Joinpoint Model"	"AAPC Index"	"Start Obs"	"End Obs"	"AAPC"	"AAPC C.I. Low"	"AAPC C.I. High"	"Statistically Significant (0=No  1=Yes)"	"Test Statistic"	"P-Value"
-Men	20-49	Heavy Drinker	"alcohol_amt"	0	Full Range	2005	2019	-3.1486	-4.1994	-2.0863	1	-6.7629	0.000143
-Men	50+	Heavy Drinker	"alcohol_amt"	0	Full Range	2005	2019	0.1646	-0.2484	0.5793	0	0.9180	0.385460
-Women	20-49	Heavy Drinker	"alcohol_amt"	0	Full Range	2005	2019	-0.5544	-2.4554	1.3836	0	-0.6642	0.525222
-Women	50+	Heavy Drinker	"alcohol_amt"	1	Full Range	2005	2019	3.1977	1.2460	5.1869	1	3.2312	0.001233
-Men	20-49	Light Drinker	"alcohol_amt"	0	Full Range	2005	2019	1.1191	0.7904	1.4488	1	7.8827	0.000049
-Men	50+	Light Drinker	"alcohol_amt"	1	Full Range	2005	2019	-0.1627	-0.7834	0.4619	0	-0.5118	0.608789
-Women	20-49	Light Drinker	"alcohol_amt"	0	Full Range	2005	2019	-0.0354	-0.2905	0.2204	0	-0.3194	0.757579
-Women	50+	Light Drinker	"alcohol_amt"	1	Full Range	2005	2019	-0.2187	-0.4819	0.0452	0	-1.6246	0.104255
-Men	20-49	Moderate Drinker	"alcohol_amt"	1	Full Range	2005	2019	-1.8622	-2.2734	-1.4492	1	-8.7740	0.000000
-Men	50+	Moderate Drinker	"alcohol_amt"	1	Full Range	2005	2019	-0.3418	-1.0445	0.3659	0	-0.9483	0.342953
-Women	20-49	Moderate Drinker	"alcohol_amt"	1	Full Range	2005	2019	-2.2777	-3.0238	-1.5259	1	-5.8921	0.000000
-Women	50+	Moderate Drinker	"alcohol_amt"	1	Full Range	2005	2019	1.2072	0.4467	1.9736	1	3.1180	0.001821
-Men	20-49	Non-Drinker	"alcohol_amt"	0	Full Range	2005	2019	2.3094	1.6398	2.9835	1	8.0177	0.000043
-Men	50+	Non-Drinker	"alcohol_amt"	0	Full Range	2005	2019	1.4861	0.8641	2.1120	1	5.5330	0.000552
-Women	20-49	Non-Drinker	"alcohol_amt"	0	Full Range	2005	2019	2.6552	2.0994	3.2140	1	11.1318	0.000004
-Women	50+	Non-Drinker	"alcohol_amt"	1	Full Range	2005	2019	-0.5374	-0.8590	-0.2148	1	-3.2615	0.001108
-Men	20-49	Healthy Weight	"bmi"	1	Full Range	1995	2019	-0.6078	-0.7892	-0.4260	1	-6.5385	0.000000
-Men	50+	Healthy Weight	"bmi"	3	Full Range	1995	2019	-1.3634	-2.0975	-0.6238	1	-3.6016	0.000316
-Women	20-49	Healthy Weight	"bmi"	2	Full Range	1995	2019	-1.1694	-1.3341	-1.0044	1	-13.8230	0.000000
-Women	50+	Healthy Weight	"bmi"	3	Full Range	1995	2019	-0.3811	-0.7328	-0.0281	1	-2.1158	0.034364
-Men	20-49	Obese	"bmi"	1	Full Range	1995	2019	2.1916	1.8859	2.4983	1	14.1827	0.000000
-Men	50+	Obese	"bmi"	3	Full Range	1995	2019	2.1080	1.6916	2.5261	1	10.0059	0.000000
-Women	20-49	Obese	"bmi"	2	Full Range	1995	2019	2.6053	2.3263	2.8850	1	18.5148	0.000000
-Women	50+	Obese	"bmi"	3	Full Range	1995	2019	1.6099	1.0031	2.2202	1	5.2263	0.000000
-Men	20-49	Overweight	"bmi"	2	Full Range	1995	2019	-0.4050	-0.6681	-0.1412	1	-3.0074	0.002635
-Men	50+	Overweight	"bmi"	2	Full Range	1995	2019	-0.3856	-0.5685	-0.2024	1	-4.1207	0.000038
-Women	20-49	Overweight	"bmi"	4	Full Range	1995	2019	0.0106	-0.2350	0.2567	0	0.0842	0.932886
-Women	50+	Overweight	"bmi"	1	Full Range	1995	2019	-0.7171	-0.8700	-0.5639	1	-9.1519	0.000000
-Men	20-49	Underweight	"bmi"	1	Full Range	1995	2019	1.0908	-1.2864	3.5253	0	0.8936	0.371557
-Men	50+	Underweight	"bmi"	2	Full Range	1995	2019	-2.7696	-5.2749	-0.1981	1	-2.1088	0.034960
-Women	20-49	Underweight	"bmi"	4	Full Range	1995	2019	0.3454	-1.6146	2.3444	0	0.3426	0.731930
-Women	50+	Underweight	"bmi"	3	Full Range	1995	2019	-1.2587	-2.8198	0.3275	0	-1.5579	0.119267
-Men	20-49	Below Recommendations	"physical_activity_old"	0	Full Range	2003	2012	-1.6746	-2.6302	-0.7097	1	-5.5032	0.011810
-Men	50+	Below Recommendations	"physical_activity_old"	0	Full Range	2003	2012	-0.5282	-0.7937	-0.2620	1	-6.3063	0.008057
-Women	20-49	Below Recommendations	"physical_activity_old"	0	Full Range	2003	2012	-1.1745	-1.9163	-0.4271	1	-4.9903	0.015474
-Women	50+	Below Recommendations	"physical_activity_old"	0	Full Range	2003	2012	-0.9789	-1.4412	-0.5144	1	-6.6893	0.006815
-Men	20-49	Meets Recommendations	"physical_activity_old"	0	Full Range	2003	2012	1.8478	0.6620	3.0475	1	4.9757	0.015600
-Men	50+	Meets Recommendations	"physical_activity_old"	0	Full Range	2003	2012	1.4556	0.6908	2.2261	1	6.0781	0.008941
-Women	20-49	Meets Recommendations	"physical_activity_old"	0	Full Range	2003	2012	2.1994	0.6630	3.7592	1	4.5708	0.019647
-Women	50+	Meets Recommendations	"physical_activity_old"	0	Full Range	2003	2012	4.1185	1.9695	6.3127	1	6.1585	0.008616
-Men	20-49	Current	"smoking_status"	4	Full Range	1995	2019	-1.6339	-2.0418	-1.2243	1	-7.7706	0.000000
-Men	50+	Current	"smoking_status"	2	Full Range	1995	2019	-2.2498	-2.6157	-1.8826	1	-11.8943	0.000000
-Women	20-49	Current	"smoking_status"	2	Full Range	1995	2019	-2.3321	-2.5978	-2.0656	1	-16.9768	0.000000
-Women	50+	Current	"smoking_status"	4	Full Range	1995	2019	-2.2347	-2.6085	-1.8595	1	-11.5640	0.000000
-Men	20-49	Never	"smoking_status"	2	Full Range	1995	2019	0.9683	0.7895	1.1475	1	10.6528	0.000000
-Men	50+	Never	"smoking_status"	0	Full Range	1995	2019	2.2666	2.1543	2.3790	1	42.1959	0.000000
-Women	20-49	Never	"smoking_status"	3	Full Range	1995	2019	0.9834	0.7196	1.2479	1	7.3324	0.000000
-Women	50+	Never	"smoking_status"	0	Full Range	1995	2019	0.6183	0.5684	0.6682	1	25.7102	0.000000
-Men	20-49	Previously	"smoking_status"	4	Full Range	1995	2019	-0.0087	-0.3332	0.3167	0	-0.0527	0.957954
-Men	50+	Previously	"smoking_status"	2	Full Range	1995	2019	-1.0660	-1.3130	-0.8185	1	-8.4057	0.000000
-Women	20-49	Previously	"smoking_status"	4	Full Range	1995	2019	-0.0412	-0.6898	0.6116	0	-0.1241	0.901250
-Women	50+	Previously	"smoking_status"	1	Full Range	1995	2019	0.1251	-0.0660	0.3166	0	1.2824	0.199716
+"age_group"	"sex"	"level"	"variable"	"Joinpoint Model"	"AAPC Index"	"Start Obs"	"End Obs"	"AAPC"	"AAPC C.I. Low"	"AAPC C.I. High"	"Statistically Significant (0=No  1=Yes)"	"Test Statistic"	"P-Value"
+20-49	Men	Heavy Drinker	"alcohol_amt"	0	Full Range	2005	2019	-3.6889	-4.3455	-3.0277	1	-12.6690	0.000001
+50+	Men	Heavy Drinker	"alcohol_amt"	1	Full Range	2005	2019	1.1694	0.7541	1.5864	1	5.5400	0.000000
+20-49	Women	Heavy Drinker	"alcohol_amt"	0	Full Range	2005	2019	0.4343	-2.3966	3.3474	0	0.3495	0.735707
+50+	Women	Heavy Drinker	"alcohol_amt"	1	Full Range	2005	2019	7.2413	5.9396	8.5589	1	11.2203	0.000000
+20-49	Men	Light Drinker	"alcohol_amt"	0	Full Range	2005	2019	1.2810	1.0787	1.4837	1	14.6828	0.000000
+50+	Men	Light Drinker	"alcohol_amt"	1	Full Range	2005	2019	-0.4506	-1.0463	0.1487	0	-1.4748	0.140269
+20-49	Women	Light Drinker	"alcohol_amt"	0	Full Range	2005	2019	-0.1371	-0.4691	0.1959	0	-0.9503	0.369792
+50+	Women	Light Drinker	"alcohol_amt"	1	Full Range	2005	2019	-0.6131	-0.8414	-0.3843	1	-5.2416	0.000000
+20-49	Men	Moderate Drinker	"alcohol_amt"	0	Full Range	2005	2019	-2.2523	-2.4769	-2.0271	1	-22.8352	0.000000
+50+	Men	Moderate Drinker	"alcohol_amt"	1	Full Range	2005	2019	-0.3286	-1.0314	0.3791	0	-0.9118	0.361893
+20-49	Women	Moderate Drinker	"alcohol_amt"	1	Full Range	2005	2019	-2.3499	-3.0955	-1.5986	1	-6.0812	0.000000
+50+	Women	Moderate Drinker	"alcohol_amt"	1	Full Range	2005	2019	2.1687	1.8458	2.4927	1	13.2824	0.000000
+20-49	Men	Non-Drinker	"alcohol_amt"	1	Full Range	2005	2019	3.3072	2.7066	3.9114	1	10.9361	0.000000
+50+	Men	Non-Drinker	"alcohol_amt"	1	Full Range	2005	2019	2.0616	1.4988	2.6275	1	7.2332	0.000000
+20-49	Women	Non-Drinker	"alcohol_amt"	0	Full Range	2005	2019	3.0711	2.6735	3.4702	1	18.0479	0.000000
+50+	Women	Non-Drinker	"alcohol_amt"	1	Full Range	2005	2019	-0.2301	-0.6142	0.1555	0	-1.1704	0.241839
+20-49	Men	Healthy Weight	"bmi"	1	Full Range	1995	2019	-0.6078	-0.7892	-0.4260	1	-6.5385	0.000000
+50+	Men	Healthy Weight	"bmi"	3	Full Range	1995	2019	-1.3634	-2.0975	-0.6238	1	-3.6016	0.000316
+20-49	Women	Healthy Weight	"bmi"	2	Full Range	1995	2019	-1.1694	-1.3341	-1.0044	1	-13.8230	0.000000
+50+	Women	Healthy Weight	"bmi"	3	Full Range	1995	2019	-0.3811	-0.7328	-0.0281	1	-2.1158	0.034364
+20-49	Men	Obese	"bmi"	1	Full Range	1995	2019	2.1916	1.8859	2.4983	1	14.1827	0.000000
+50+	Men	Obese	"bmi"	3	Full Range	1995	2019	2.1080	1.6916	2.5261	1	10.0059	0.000000
+20-49	Women	Obese	"bmi"	2	Full Range	1995	2019	2.6053	2.3263	2.8850	1	18.5148	0.000000
+50+	Women	Obese	"bmi"	3	Full Range	1995	2019	1.6099	1.0031	2.2202	1	5.2263	0.000000
+20-49	Men	Overweight	"bmi"	2	Full Range	1995	2019	-0.4050	-0.6681	-0.1412	1	-3.0074	0.002635
+50+	Men	Overweight	"bmi"	2	Full Range	1995	2019	-0.3856	-0.5685	-0.2024	1	-4.1207	0.000038
+20-49	Women	Overweight	"bmi"	4	Full Range	1995	2019	0.0106	-0.2350	0.2567	0	0.0842	0.932886
+50+	Women	Overweight	"bmi"	1	Full Range	1995	2019	-0.7171	-0.8700	-0.5639	1	-9.1519	0.000000
+20-49	Men	Underweight	"bmi"	1	Full Range	1995	2019	1.0908	-1.2864	3.5253	0	0.8936	0.371557
+50+	Men	Underweight	"bmi"	2	Full Range	1995	2019	-2.7696	-5.2749	-0.1981	1	-2.1088	0.034960
+20-49	Women	Underweight	"bmi"	4	Full Range	1995	2019	0.3454	-1.6146	2.3444	0	0.3426	0.731930
+50+	Women	Underweight	"bmi"	3	Full Range	1995	2019	-1.2587	-2.8198	0.3275	0	-1.5579	0.119267
+20-49	Men	Below Recommendations	"physical_activity_old"	0	Full Range	2003	2012	-1.8635	-3.5140	-0.1847	1	-3.5293	0.038658
+50+	Men	Below Recommendations	"physical_activity_old"	0	Full Range	2003	2012	-0.7305	-0.9288	-0.5319	1	-11.6700	0.001352
+20-49	Women	Below Recommendations	"physical_activity_old"	0	Full Range	2003	2012	-1.4434	-2.4336	-0.4432	1	-4.5822	0.019515
+50+	Women	Below Recommendations	"physical_activity_old"	0	Full Range	2003	2012	-1.2478	-1.8795	-0.6120	1	-6.2265	0.008352
+20-49	Men	Meets Recommendations	"physical_activity_old"	0	Full Range	2003	2012	2.0840	0.1714	4.0331	1	3.4706	0.040328
+50+	Men	Meets Recommendations	"physical_activity_old"	0	Full Range	2003	2012	1.9742	1.4560	2.4949	1	12.2134	0.001182
+20-49	Women	Meets Recommendations	"physical_activity_old"	0	Full Range	2003	2012	2.7421	0.5176	5.0159	1	3.9330	0.029272
+50+	Women	Meets Recommendations	"physical_activity_old"	0	Full Range	2003	2012	5.0915	1.7723	8.5189	1	4.9245	0.016047
+20-49	Men	Current	"smoking_status"	4	Full Range	1995	2019	-1.6339	-2.0418	-1.2243	1	-7.7706	0.000000
+50+	Men	Current	"smoking_status"	2	Full Range	1995	2019	-2.2498	-2.6157	-1.8826	1	-11.8943	0.000000
+20-49	Women	Current	"smoking_status"	2	Full Range	1995	2019	-2.3321	-2.5978	-2.0656	1	-16.9768	0.000000
+50+	Women	Current	"smoking_status"	4	Full Range	1995	2019	-2.2347	-2.6085	-1.8595	1	-11.5640	0.000000
+20-49	Men	Never	"smoking_status"	2	Full Range	1995	2019	0.9683	0.7895	1.1475	1	10.6528	0.000000
+50+	Men	Never	"smoking_status"	0	Full Range	1995	2019	2.2666	2.1543	2.3790	1	42.1959	0.000000
+20-49	Women	Never	"smoking_status"	3	Full Range	1995	2019	0.9834	0.7196	1.2479	1	7.3324	0.000000
+50+	Women	Never	"smoking_status"	0	Full Range	1995	2019	0.6183	0.5684	0.6682	1	25.7102	0.000000
+20-49	Men	Previously	"smoking_status"	4	Full Range	1995	2019	-0.0087	-0.3332	0.3167	0	-0.0527	0.957954
+50+	Men	Previously	"smoking_status"	2	Full Range	1995	2019	-1.0660	-1.3130	-0.8185	1	-8.4057	0.000000
+20-49	Women	Previously	"smoking_status"	4	Full Range	1995	2019	-0.0412	-0.6898	0.6116	0	-0.1241	0.901250
+50+	Women	Previously	"smoking_status"	1	Full Range	1995	2019	0.1251	-0.0660	0.3166	0	1.2824	0.199716

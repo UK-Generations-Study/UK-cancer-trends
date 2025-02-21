@@ -125,21 +125,42 @@ alcohol_data_gen <- function(filepath, user_options){
       ## Tabulate - depending on if imd is a needed variable or not
       
       if(user_options$imd_stratification){
+        
+        # Tabulate alcohol_amt
         ukds_data_temp_table <- ukds_data_output_temp |>
           filter(imd>=1) |>
           count(age_group, sex, alcohol_amt, imd, wt = weight) |>
           group_by(age_group, sex, imd) |>
-          mutate(value = n/sum(n),
-                 N = sum(n)) |>
+          mutate(value = n/sum(n)) |>
           select(-n) |>
           mutate(imd = as.character(imd))
+        
+        # Count participants per strata
+        ukds_data_temp_table_n <- ukds_data_output_temp |>
+          filter(imd>=1) |>
+          count(age_group, sex, imd) |>
+          rename(N = n) |>
+          mutate(imd = as.character(imd))
+        
+        # Now merge together
+        ukds_data_temp_table <- merge(ukds_data_temp_table, ukds_data_temp_table_n, by = c("age_group", "sex", "imd"))
+        
       } else {
+        
+        # Tabulate alcohol_amt
         ukds_data_temp_table <- ukds_data_output_temp |>
           count(age_group, sex, alcohol_amt, wt = weight) |>
           group_by(age_group, sex) |>
-          mutate(value = n/sum(n),
-                 N = sum(n)) |>
+          mutate(value = n/sum(n)) |>
           select(-n)
+        
+        # Count participants per strata
+        ukds_data_temp_table_n <- ukds_data_output_temp |>
+          count(age_group, sex) |>
+          rename(N = n)
+        
+        # Now merge together
+        ukds_data_temp_table <- merge(ukds_data_temp_table, ukds_data_temp_table_n, by = c("age_group", "sex"))
       }
       
       

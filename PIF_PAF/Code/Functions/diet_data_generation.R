@@ -104,12 +104,12 @@ diet_data_gen <- function(filepath, user_options){
       
     ) |>
     group_by(sex, age_group, year) |>    
-    mutate(total_weight = sum(weight)) |>
-
+    mutate(total_weight = sum(weight),
+           total_participants = n()) |>
     ungroup() |>
     group_by(sex, age_group, year, fibre_cat) |>
     summarise(value = sum(weight)/total_weight[1],
-              N = total_weight[1]) |>
+              N = total_participants[1]) |>
     mutate(variable = "fibre_consumption") |>
     rename(level = fibre_cat)
   
@@ -124,11 +124,12 @@ diet_data_gen <- function(filepath, user_options){
       
     ) |>
     group_by(sex, age_group, year) |>
-    mutate(total_weight = sum(weight)) |>
+    mutate(total_weight = sum(weight),
+           total_participants = n()) |>
     ungroup() |>
     group_by(sex, age_group, year, redmeat_cat) |>
     summarise(value = sum(weight)/total_weight[1],
-              N = total_weight[1]) |>
+              N = total_participants[1]) |>
     mutate(variable = "redmeat_consumption") |>
     rename(level = redmeat_cat)
   
@@ -143,11 +144,12 @@ diet_data_gen <- function(filepath, user_options){
       
     ) |>
     group_by(sex, age_group, year) |>
-    mutate(total_weight = sum(weight)) |>
+    mutate(total_weight = sum(weight),
+           total_participants = n()) |>
     ungroup() |>
     group_by(sex, age_group, year, processed_cat) |>
     summarise(value = sum(weight)/total_weight[1],
-              N = total_weight[1]) |>
+              N = total_participants[1]) |>
     mutate(variable = "processed_meat_consumption") |>
     rename(level = processed_cat)
   

@@ -5,6 +5,9 @@
 # The RR will be sampled from a log-normal distribution, assuming log(RR) is normally distributed. - THIS HAS NOT BEEN DONE. This is because they are using the same RR so would just add variance
 # The prevelances will be sampled using the prevelances and N values from the surveys.
 
+## Options
+N_iterations <- 1000
+
 ## Packages
 necessary_packages <- c("dplyr", "tidyr", "ggplot2")
 suppressMessages(
@@ -33,31 +36,103 @@ if(Sys.getenv("RSTUDIO") == '1' & !knitr::is_html_output()) { # If using Rstudio
 ## Read in RF data
 data_rf <- read.csv("../../../../Data/Cleaned_Data/clean_rf_data.csv")
 
+# # Need to fill in missing categories for the redmeat and processed meat consumption variables as well as fibre consumption
+# processed_meat_categories <- data_rf |>
+#   filter(variable == "processed_meat_consumption") |>
+#   pull(level) |>
+#   unique()
+# 
+# data_rf_processed_meat <- data_rf |>
+#   filter(variable == "processed_meat_consumption") |>
+#   complete(age_group, sex, year, level = processed_meat_categories) |>
+#   group_by(age_group, sex, year) |>
+#   mutate(
+#     
+#     year = if_else(is.na(year), first(na.omit(year)), year),
+#     age_group = if_else(is.na(age_group), first(na.omit(age_group)), age_group),
+#     sex = if_else(is.na(sex), first(na.omit(sex)), sex),
+#     value = replace_na(value, 0),
+#     N = if_else(is.na(N), first(na.omit(N)), N),
+#     variable = if_else(is.na(variable), first(na.omit(variable)), variable),
+#     
+#   ) |>
+#   ungroup()
+#   
+#   
+# redmeat_categories <- data_rf |>
+#   filter(variable == "redmeat_consumption") |>
+#   pull(level) |>
+#   unique()
+# 
+# data_rf_redmeat <- data_rf |>
+#   filter(variable == "redmeat_consumption") |>
+#   complete(age_group, sex, year, level = redmeat_categories) |>
+#   group_by(age_group, sex, year) |>
+#   mutate(
+#     
+#     year = if_else(is.na(year), first(na.omit(year)), year),
+#     age_group = if_else(is.na(age_group), first(na.omit(age_group)), age_group),
+#     sex = if_else(is.na(sex), first(na.omit(sex)), sex),
+#     value = replace_na(value, 0),
+#     N = if_else(is.na(N), first(na.omit(N)), N),
+#     variable = if_else(is.na(variable), first(na.omit(variable)), variable),
+#     
+#   ) |>
+#   ungroup()
+# 
+# fibre_categories <- data_rf |>
+#   filter(variable == "fibre_consumption") |>
+#   pull(level) |>
+#   unique()
+# 
+# data_rf_fibre <- data_rf |>
+#   filter(variable == "fibre_consumption") |>
+#   complete(age_group, sex, year, level = fibre_categories) |>
+#   group_by(age_group, sex, year) |>
+#   mutate(
+#     
+#     year = if_else(is.na(year), first(na.omit(year)), year),
+#     age_group = if_else(is.na(age_group), first(na.omit(age_group)), age_group),
+#     sex = if_else(is.na(sex), first(na.omit(sex)), sex),
+#     value = replace_na(value, 0),
+#     N = if_else(is.na(N), first(na.omit(N)), N),
+#     variable = if_else(is.na(variable), first(na.omit(variable)), variable),
+#     
+#   ) |>
+#   ungroup()
+# 
+# # Now add back in
+# data_rf <- data_rf |>
+#   filter(!variable %in% c("redmeat_consumption", "processed_meat_consumption", "fibre_consumption")) |>
+#   rbind(data_rf_processed_meat) |>
+#   rbind(data_rf_redmeat) |>
+#   rbind(data_rf_fibre)
+
 
 ## Read in RR estimates
 data_rr_u50 <- read.csv("../../Data/relativerisk_under50.csv", na.strings = "")
 data_rr_oe50 <- read.csv("../../Data/relativerisk_over50.csv", na.strings = "")
 
-# Filter RF data to just oldest and 2009 (or closest) estimate
-data_rf <- data_rf |>
-  filter(year <= 2019) |>
-  group_by(variable, sex, age_group) |>
-  mutate(
-    
-    dist_to_2009 = abs(year - 2009)
-    
-  ) |>
-  # Taking all closest to 2009 to calculated current PAFs but taking only BMI at specific time points for PIFs
-  mutate(
-    
-    # youngest_indicator = year == max(year),
-    # oldest_indicator = year == min(year),
-    close_to_2009 = dist_to_2009 == min(dist_to_2009)
-    
-  ) |>
-  filter(close_to_2009 | (variable == "bmi" & year %in% c(1995, 2005, 2019))) |>
-  ungroup() |>
-  select(-close_to_2009, -dist_to_2009)
+# # Filter RF data to just oldest and 2009 (or closest) estimate
+# data_rf <- data_rf |>
+#   filter(year <= 2019) |>
+#   group_by(variable, sex, age_group) |>
+#   mutate(
+#     
+#     dist_to_2009 = abs(year - 2009)
+#     
+#   ) |>
+#   # Taking all closest to 2009 to calculated current PAFs but taking only BMI at specific time points for PIFs
+#   mutate(
+#     
+#     # youngest_indicator = year == max(year),
+#     # oldest_indicator = year == min(year),
+#     close_to_2009 = dist_to_2009 == min(dist_to_2009)
+#     
+#   ) |>
+#   filter(close_to_2009 | (variable == "bmi" & year %in% c(1995, 2005, 2019))) |>
+#   ungroup() |>
+#   select(-close_to_2009, -dist_to_2009)
 
 # Clean up RR estimates
 data_rr_u50 <- data_rr_u50 |>
@@ -158,6 +233,9 @@ data_rf <- data_rf |>
   ) |>
   mutate(
     
+    # Adding level_label
+    level_label = level,
+    
     # Recoding level variable so that we can merge with RR data
     level = case_when(
       grepl("\\_consumption$", variable) ~ "dose_response",
@@ -169,31 +247,58 @@ data_rf <- data_rf |>
 
 # Combine RR and RF data together
 data_complete <- merge(data_rr, data_rf, by = c("age_group", "sex", "level", "variable"), all.y = T) |>
-  filter(!is.na(RR))
+  filter(!is.na(RR)) |>
+  # Arrange so all arguments are in the right order when extracting p-values
+  arrange(Cancer_sites, age_group, sex, year, variable, level)
 
 
-# Calculate PAF
-data_complete_paf <- data_complete |>
-  mutate(
-    
-    
-    ERR_calc = case_when(
-      variable == "physical_activity_old" ~ log(1/RR),
-      variable == "fibre_consumption" ~ log(1/RR)/10,
-      variable %in% c("redmeat_consumption", "processed_meat_consumption") ~ (RR-1)/100,
-      TRUE ~ RR - 1
-    ),
-    
-    # Correct for preventative RF
-    ERR_calc = pmax(ERR_calc, 0)
-    
-  ) |>
-  group_by(age_group, sex, variable, year, Cancer_sites) |>
-  summarise(
-    
-    PAF = sum(ERR_calc * level_midpoint * perc)/(1 + sum(ERR_calc * level_midpoint * perc))
-    
-  )
+# # Calculate PAF
+# data_complete_paf <- data_complete |>
+#   mutate(
+#     
+#     
+#     ERR_calc = case_when(
+#       variable == "physical_activity_old" ~ log(1/RR),
+#       variable == "fibre_consumption" ~ log(1/RR)/10,
+#       variable %in% c("redmeat_consumption", "processed_meat_consumption") ~ (RR-1)/100,
+#       TRUE ~ RR - 1
+#     ),
+#     
+#     # Correct for preventative RF
+#     ERR_calc = pmax(ERR_calc, 0)
+#     
+#   ) |>
+#   group_by(age_group, sex, variable, year, Cancer_sites) |>
+#   summarise(
+#     
+#     PAF = sum(ERR_calc * level_midpoint * perc)/(1 + sum(ERR_calc * level_midpoint * perc))
+#     
+#   )
+
+# Filter to closest to 2009 - but keep copy with other years as we need to sample their prevalences
+data_complete_all <- data_complete
+
+data_complete <- data_complete |>
+    filter(year <= 2019) |>
+    group_by(variable, sex, age_group) |>
+    mutate(
+
+      dist_to_2009 = abs(year - 2009)
+
+    ) |>
+    # Taking all closest to 2009 to calculated current PAFs but taking only BMI at specific time points for PIFs
+    mutate(
+
+      # youngest_indicator = year == max(year),
+      # oldest_indicator = year == min(year),
+      close_to_2009 = dist_to_2009 == min(dist_to_2009)
+
+    ) |>
+    filter(close_to_2009 | (variable == "bmi" & year %in% c(1995, 2005, 2019))) |>
+    ungroup() |>
+    select(-close_to_2009, -dist_to_2009) |>
+    # Arrange so all arguments are in the right order when extracting p-values
+    arrange(Cancer_sites, age_group, sex, year, variable, level)
 
 # Set up for loop
 no_groups <- data_complete |>
@@ -201,9 +306,14 @@ no_groups <- data_complete |>
   summarise() |>
   nrow()
 
+# Get start time for total time estimation
+start.time = Sys.time()
 
 # Loop for N times
-for(i in 1:500){
+for(i in 1:N_iterations){
+  
+  # Print counter
+  cat(paste0("Iteration ", i, "...\n"))
   
   # Get copy of data
   data_complete_sample <- data_complete
@@ -212,6 +322,7 @@ for(i in 1:500){
   norms <- rnorm(no_groups)
   
   data_complete_sample <- data_complete_sample |>
+    # THIS NEEDS TO BE CHANGED FOR PIFS
     group_by(variable, level, year, sex, age_group, Cancer_sites) |>
     mutate(
       
@@ -224,9 +335,17 @@ for(i in 1:500){
     group_by(variable, year, sex, age_group, Cancer_sites) |>
     mutate(group_id = cur_group_id())
   
-  # Resample prevelances from a binomial
+  # Resample prevelances from a binomial - adjusting for rolling averages
   for(id in unique(data_complete_sample$group_id)){
     
+    # Extract year and variable of id
+    cur_year <- unique(data_complete_sample$year[data_complete_sample$group_id == id])
+    cur_variable <- unique(data_complete_sample$variable[data_complete_sample$group_id == id])
+    cur_sex <- unique(data_complete_sample$sex[data_complete_sample$group_id == id])
+    cur_age_group <- unique(data_complete_sample$age_group[data_complete_sample$group_id == id])
+    cur_Cancer_sites <- unique(data_complete_sample$Cancer_sites[data_complete_sample$group_id == id])
+    
+    # Resample for current year
     N <- data_complete_sample |>
       filter(group_id == id) |>
       pull(N) |>
@@ -237,6 +356,7 @@ for(i in 1:500){
       filter(group_id == id) |>
       pull(perc)
     
+    # If all categories are represented - simple sample, otherwise create 'other' category and remove afterwards
     if(sum(p_values)<1){
       
       resampled_p_values <- rmultinom(N, 1, c(p_values, 1-sum(p_values))) |>
@@ -244,9 +364,7 @@ for(i in 1:500){
         as.data.frame() |>
         colMeans()
       
-      data_complete_sample_new <- data_complete_sample |>
-        filter(group_id == id) |>
-        mutate(perc = resampled_p_values[-length(resampled_p_values)])
+      resampled_p_values <- resampled_p_values[-length(resampled_p_values)]
       
     } else {
       
@@ -255,17 +373,144 @@ for(i in 1:500){
         as.data.frame() |>
         colMeans()
       
-      data_complete_sample_new <- data_complete_sample |>
-        filter(group_id == id) |>
-        mutate(perc = resampled_p_values)
+    }
+    
+    # Check for a year before in the sample - if there is one then sample p-value from that, if not just output vector of NAs
+    if(nrow(data_complete_all |> filter(year == cur_year-1) |> filter(variable == cur_variable)) > 0){
+      
+      N_below <- data_complete_all |>
+        filter(year == cur_year - 1, variable == cur_variable, sex == cur_sex, age_group == cur_age_group, Cancer_sites == cur_Cancer_sites) |>
+        pull(N) |>
+        unique() |>
+        round()
+      
+      p_values_below <- data_complete_all |>
+        filter(year == cur_year - 1, variable == cur_variable, sex == cur_sex, age_group == cur_age_group, Cancer_sites == cur_Cancer_sites) |>
+        pull(perc)
+      
+      # If all categories are represented - simple sample, otherwise create 'other' category and remove afterwards
+      if(sum(p_values_below)<1){
+        
+        resampled_p_values_below <- rmultinom(N_below, 1, c(p_values_below, 1-sum(p_values_below))) |>
+          t() |>
+          as.data.frame() |>
+          colMeans()
+        
+        resampled_p_values_below <- resampled_p_values_below[-length(resampled_p_values_below)]
+        
+      } else {
+        
+        resampled_p_values_below <- rmultinom(N_below, 1, p_values_below) |>
+          t() |>
+          as.data.frame() |>
+          colMeans()
+        
+      }
+      
+      
+    } else {
+      
+      resampled_p_values_below <- rep(NA, length(resampled_p_values))
       
     }
     
+    # Check for a year after in the sample - if there is one then sample p-value from that, if not just output vector of NAs
+    if(nrow(data_complete_all |> filter(year == cur_year+1) |> filter(variable == cur_variable)) > 0){
+      
+      N_above <- data_complete_all |>
+        filter(year == cur_year + 1, variable == cur_variable, sex == cur_sex, age_group == cur_age_group, Cancer_sites == cur_Cancer_sites) |>
+        pull(N) |>
+        unique() |>
+        round()
+      
+      p_values_above <- data_complete_all |>
+        filter(year == cur_year + 1, variable == cur_variable, sex == cur_sex, age_group == cur_age_group, Cancer_sites == cur_Cancer_sites) |>
+        pull(perc)
+      
+      # If all categories are represented - simple sample, otherwise create 'other' category and remove afterwards
+      if(sum(p_values_above)<1){
+        
+        resampled_p_values_above <- rmultinom(N_above, 1, c(p_values_above, 1-sum(p_values_above))) |>
+          t() |>
+          as.data.frame() |>
+          colMeans()
+        
+        resampled_p_values_above <- resampled_p_values_above[-length(resampled_p_values_above)]
+        
+      } else {
+        
+        resampled_p_values_above <- rmultinom(N_above, 1, p_values_above) |>
+          t() |>
+          as.data.frame() |>
+          colMeans()
+        
+      }
+      
+      
+    } else {
+      
+      resampled_p_values_above <- rep(NA, length(resampled_p_values))
+      
+    }
+    
+    
+    # Now combine all estimates of p_values together and take the mean
+    resampled_perc <- colMeans(rbind(resampled_p_values, resampled_p_values_below, resampled_p_values_above), na.rm = T)
+    
+    # Combine into 
+    data_complete_sample_new <- data_complete_sample |>
+      filter(group_id == id) |>
+      mutate(perc = resampled_perc)
+      
+    # Now add into data_complete sample
     data_complete_sample <- data_complete_sample |>
       filter(group_id != id) |>
       rbind(data_complete_sample_new)
 
   }
+  
+  # # Resample prevelances from a binomial
+  # for(id in unique(data_complete_sample$group_id)){
+  #   
+  #   N <- data_complete_sample |>
+  #     filter(group_id == id) |>
+  #     pull(N) |>
+  #     unique() |>
+  #     round()
+  #   
+  #   p_values <- data_complete_sample |>
+  #     filter(group_id == id) |>
+  #     pull(perc)
+  #   
+  #   if(sum(p_values)<1){
+  #     
+  #     resampled_p_values <- rmultinom(N, 1, c(p_values, 1-sum(p_values))) |>
+  #       t() |>
+  #       as.data.frame() |>
+  #       colMeans()
+  #     
+  #     data_complete_sample_new <- data_complete_sample |>
+  #       filter(group_id == id) |>
+  #       mutate(perc = resampled_p_values[-length(resampled_p_values)])
+  #     
+  #   } else {
+  #     
+  #     resampled_p_values <- rmultinom(N, 1, p_values) |>
+  #       t() |>
+  #       as.data.frame() |>
+  #       colMeans()
+  #     
+  #     data_complete_sample_new <- data_complete_sample |>
+  #       filter(group_id == id) |>
+  #       mutate(perc = resampled_p_values)
+  #     
+  #   }
+  #   
+  #   data_complete_sample <- data_complete_sample |>
+  #     filter(group_id != id) |>
+  #     rbind(data_complete_sample_new)
+  #   
+  # }
   
   
   # Now calculate PAFs
@@ -290,7 +535,9 @@ for(i in 1:500){
       
       PAF = sum(ERR_calc * level_midpoint * perc)/(1 + sum(ERR_calc * level_midpoint * perc))
       
-    )
+    ) |>
+    suppressMessages() |>
+    ungroup()
   
   
   # Now if i = 1 initialise dataframe, otherwise rbind to it
@@ -299,6 +546,15 @@ for(i in 1:500){
   } else {
     data_complete_paf_analysis <- rbind(data_complete_paf_analysis, data_complete_paf_sample)
   }
+  
+  # Estimate time remaining
+  end.time <- Sys.time()
+  elapsed.time <- difftime(end.time, start.time, units = "mins")
+  total.time.est <- N_iterations*(elapsed.time/i)
+  total.time.remaining <- total.time.est - elapsed.time
+  cat(paste0("Estimated time remaining: ", round(total.time.remaining, digits = 2), " minutes\n"))
+  
+  
   
 }
 
