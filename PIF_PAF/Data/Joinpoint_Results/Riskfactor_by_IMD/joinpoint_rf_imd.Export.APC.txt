@@ -153,7 +153,7 @@ All	Women	5	Overweight	"bmi"	3	3	2017	2019	-0.0938	-5.7762	5.9314	0	-0.0369	0.97
 All	Men	1	Underweight	"bmi"	2	0	2001	2011	-7.4963	-11.1155	-3.7297	1	-4.2972	0.001262
 All	Men	1	Underweight	"bmi"	2	1	2011	2014	43.5211	-14.0458	139.6428	0	1.5512	0.149135
 All	Men	1	Underweight	"bmi"	2	2	2014	2019	-13.2111	-22.6111	-2.6692	1	-2.7204	0.019916
-All	Men	2	Underweight	"bmi"	0	0	2001	2019	3.6324	0.7271	6.6215	1	2.6600	0.017115
+All	Men	2	Underweight	"bmi"	0	0	2001	2019	4.2268	0.8818	7.6827	1	2.6905	0.016083
 All	Men	3	Underweight	"bmi"	1	0	2001	2008	7.9425	-4.3107	21.7648	0	1.3604	0.195190
 All	Men	3	Underweight	"bmi"	1	1	2008	2019	-6.3983	-11.9190	-0.5316	1	-2.3328	0.035091
 All	Men	4	Underweight	"bmi"	3	0	2001	2003	9.0706	-24.9546	58.5225	0	0.5355	0.606875
@@ -174,26 +174,26 @@ All	Women	3	Underweight	"bmi"	2	2	2009	2019	-1.1186	-4.0762	1.9303	0	-0.8153	0.4
 All	Women	4	Underweight	"bmi"	0	0	2001	2019	2.1272	0.8832	3.3866	1	3.6236	0.002099
 All	Women	5	Underweight	"bmi"	1	0	2001	2003	23.4710	-9.0019	67.5318	0	1.4818	0.160548
 All	Women	5	Underweight	"bmi"	1	1	2003	2019	-1.2630	-2.4118	-0.1007	1	-2.3295	0.035315
-All	Men	1	Below Recommendations	"physical_activity_old"	0	0	2003	2012	-1.6914	-2.4703	-0.9062	1	-6.8241	0.006438
-All	Men	2	Below Recommendations	"physical_activity_old"	0	0	2003	2012	-1.1117	-1.9172	-0.2995	1	-4.3497	0.022442
-All	Men	3	Below Recommendations	"physical_activity_old"	0	0	2003	2012	-0.6299	-0.9385	-0.3204	1	-6.4663	0.007504
-All	Men	4	Below Recommendations	"physical_activity_old"	0	0	2003	2012	-1.3921	-2.2594	-0.5172	1	-5.0504	0.014975
-All	Men	5	Below Recommendations	"physical_activity_old"	0	0	2003	2012	-0.0683	-0.2528	0.1166	0	-1.1761	0.324394
-All	Women	1	Below Recommendations	"physical_activity_old"	0	0	2003	2012	-1.4619	-1.9661	-0.9551	1	-9.1366	0.002771
-All	Women	2	Below Recommendations	"physical_activity_old"	0	0	2003	2012	-1.2812	-1.9213	-0.6369	1	-6.3084	0.008049
-All	Women	3	Below Recommendations	"physical_activity_old"	0	0	2003	2012	-0.6989	-1.0843	-0.3121	1	-5.7411	0.010495
-All	Women	4	Below Recommendations	"physical_activity_old"	0	0	2003	2012	-1.0795	-1.8495	-0.3036	1	-4.4207	0.021492
-All	Women	5	Below Recommendations	"physical_activity_old"	0	0	2003	2012	-0.7292	-1.1550	-0.3015	1	-5.4182	0.012333
-All	Men	1	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	3.0782	1.4003	4.7839	1	5.8790	0.009819
-All	Men	2	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	1.7871	0.4011	3.1923	1	4.1115	0.026058
-All	Men	3	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	0.9093	0.4329	1.3881	1	6.0867	0.008905
-All	Men	4	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	1.9827	0.6355	3.3479	1	4.6985	0.018236
-All	Men	5	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	0.1222	-0.2089	0.4544	0	1.1732	0.325400
-All	Women	1	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	3.6794	2.1301	5.2523	1	7.6375	0.004661
-All	Women	2	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	3.2560	1.3839	5.1627	1	5.5730	0.011403
-All	Women	3	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	1.7292	0.7016	2.7672	1	5.3742	0.012615
-All	Women	4	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	2.8590	0.6427	5.1241	1	4.1185	0.025941
-All	Women	5	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	2.1539	0.7907	3.5355	1	5.0480	0.014994
+All	Men	1	Below Recommendations	"physical_activity_old"	0	0	2003	2012	-1.9990	-3.0382	-0.9488	1	-6.0284	0.009150
+All	Men	2	Below Recommendations	"physical_activity_old"	0	0	2003	2012	-1.3623	-2.3920	-0.3218	1	-4.1600	0.025264
+All	Men	3	Below Recommendations	"physical_activity_old"	0	0	2003	2012	-0.9593	-2.2019	0.2990	0	-2.4298	0.093347
+All	Men	4	Below Recommendations	"physical_activity_old"	0	0	2003	2012	-1.5737	-2.9986	-0.1279	1	-3.4618	0.040588
+All	Men	5	Below Recommendations	"physical_activity_old"	0	0	2003	2012	0.1428	-0.9655	1.2635	0	0.4080	0.710643
+All	Women	1	Below Recommendations	"physical_activity_old"	0	0	2003	2012	-2.0080	-2.7374	-1.2731	1	-8.6402	0.003261
+All	Women	2	Below Recommendations	"physical_activity_old"	0	0	2003	2012	-1.5865	-2.1345	-1.0354	1	-9.1138	0.002792
+All	Women	3	Below Recommendations	"physical_activity_old"	0	0	2003	2012	-0.8634	-1.2455	-0.4798	1	-7.1453	0.005644
+All	Women	4	Below Recommendations	"physical_activity_old"	0	0	2003	2012	-1.3137	-2.3742	-0.2416	1	-3.8951	0.030019
+All	Women	5	Below Recommendations	"physical_activity_old"	0	0	2003	2012	-0.7868	-1.6254	0.0589	0	-2.9616	0.059470
+All	Men	1	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	3.6412	1.4855	5.8428	1	5.4150	0.012353
+All	Men	2	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	2.1962	0.3752	4.0503	1	3.8453	0.031039
+All	Men	3	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	1.4044	-0.5331	3.3796	0	2.3007	0.104920
+All	Men	4	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	2.2543	0.0172	4.5415	1	3.2072	0.049062
+All	Men	5	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	-0.2763	-2.2033	1.6886	0	-0.4513	0.682380
+All	Women	1	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	4.9292	2.7243	7.1814	1	7.2103	0.005499
+All	Women	2	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	4.0084	2.1479	5.9027	1	6.9295	0.006162
+All	Women	3	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	2.1354	1.0381	3.2445	1	6.2252	0.008357
+All	Women	4	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	3.4788	0.3127	6.7448	1	3.5022	0.039417
+All	Women	5	Meets Recommendations	"physical_activity_old"	0	0	2003	2012	2.3439	-0.2590	5.0148	0	2.8620	0.064469
 All	Men	1	Current	"smoking_status"	0	0	2001	2019	-2.9421	-3.2606	-2.6225	1	-19.1658	0.000000
 All	Men	2	Current	"smoking_status"	2	0	2001	2012	-1.1436	-1.5819	-0.7034	1	-5.6978	0.000139
 All	Men	2	Current	"smoking_status"	2	1	2012	2015	-6.5796	-12.5378	-0.2154	1	-2.2730	0.044074

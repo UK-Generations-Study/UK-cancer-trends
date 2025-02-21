@@ -102,7 +102,7 @@ diet_data_gen_continuous <- function(filepath, user_options){
     summarise(
       
       fibre = sum(aoac_fibre*weight)/sum(weight),
-      N = sum(weight)
+      N = n()
       
     ) |>
     mutate(variable = "fibre_consumption_mean",
@@ -121,20 +121,20 @@ diet_data_gen_continuous <- function(filepath, user_options){
 
     ) |>
     group_by(sex, age_group, year) |>
-    summarise(redmeat = sum(redmeat_total*weight)/sum(weight),,
-              N = sum(weight)) |>
+    summarise(redmeat = sum(redmeat_total*weight)/sum(weight),
+              N = n()) |>
     mutate(variable = "redmeat_consumption_mean",
            level = "mean") |>
     rename(value = redmeat)
 
   diet_df_redmeat <- diet_df |>
     mutate(
-      redmeat_total = beef + lamb + pork + entrails + other, 
-      N = sum(weight)
+      redmeat_total = beef + lamb + pork + entrails + other
     ) |>
     group_by(sex, age_group, year) |>
     summarise(
-      redmeat_median = weightedMedian(redmeat_total, weight, na.rm = TRUE)
+      redmeat_median = weightedMedian(redmeat_total, weight, na.rm = TRUE),
+      N = n()
     ) |>
     mutate(variable = "redmeat_consumption_median",
            level = "median") |>
@@ -152,7 +152,7 @@ diet_data_gen_continuous <- function(filepath, user_options){
     ) |>
     group_by(sex, age_group, year) |>
     summarise(processed_meat = sum(processed_meat_total*weight)/sum(weight),
-              N = sum(weight)) |>
+              N = n()) |>
     mutate(variable = "processed_meat_consumption_mean",
            level = "mean") |>
     rename(value = processed_meat)
@@ -163,7 +163,8 @@ diet_data_gen_continuous <- function(filepath, user_options){
     ) |>
     group_by(sex, age_group, year) |>
     summarise(
-      processedmeat_median = weightedMedian(processed_meat_total, weight, na.rm = TRUE)
+      processedmeat_median = weightedMedian(processed_meat_total, weight, na.rm = TRUE),
+      N = n()
     ) |>
     mutate(variable = "processedmeat_consumption_median",
            level = "median") |>

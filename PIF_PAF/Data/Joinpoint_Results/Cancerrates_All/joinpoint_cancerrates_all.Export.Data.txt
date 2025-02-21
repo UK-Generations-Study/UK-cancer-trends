@@ -37,25 +37,6 @@ Men	20-49	Brain and CNS	2016	5.20	5.06	NA	0.6678*	0	0
 Men	20-49	Brain and CNS	2017	5.10	5.09	NA	0.6678*	0	0
 Men	20-49	Brain and CNS	2018	5.10	5.13	NA	0.6678*	0	0
 Men	20-49	Brain and CNS	2019	5.00	5.16	NA	0.6678*	0	0
-Men	20-49	Breast	2001	0.20	0.16	NA	1.9975	0	0
-Men	20-49	Breast	2002	0.10	0.16	NA	1.9975	0	0
-Men	20-49	Breast	2003	0.20	0.17	NA	1.9975	0	0
-Men	20-49	Breast	2004	0.20	0.17	NA	1.9975	0	0
-Men	20-49	Breast	2005	0.20	0.17	NA	1.9975	0	0
-Men	20-49	Breast	2006	0.20	0.18	NA	1.9975	0	0
-Men	20-49	Breast	2007	0.10	0.18	NA	1.9975	0	0
-Men	20-49	Breast	2008	0.20	0.18	NA	1.9975	0	0
-Men	20-49	Breast	2009	0.20	0.19	NA	1.9975	0	0
-Men	20-49	Breast	2010	0.20	0.19	NA	1.9975	0	0
-Men	20-49	Breast	2011	0.20	0.19	NA	1.9975	0	0
-Men	20-49	Breast	2012	0.20	0.20	NA	1.9975	0	0
-Men	20-49	Breast	2013	0.20	0.20	NA	1.9975	0	0
-Men	20-49	Breast	2014	0.20	0.21	NA	1.9975	0	0
-Men	20-49	Breast	2015	0.20	0.21	NA	1.9975	0	0
-Men	20-49	Breast	2016	0.20	0.21	NA	1.9975	0	0
-Men	20-49	Breast	2017	0.20	0.22	NA	1.9975	0	0
-Men	20-49	Breast	2018	0.20	0.22	NA	1.9975	0	0
-Men	20-49	Breast	2019	0.30	0.23	NA	1.9975	0	0
 Men	20-49	Colorectum	2001	6.70	7.00	NA	2.6783*	0	0
 Men	20-49	Colorectum	2002	7.10	7.18	NA	2.6783*	0	0
 Men	20-49	Colorectum	2003	7.20	7.38	NA	2.6783*	0	0
@@ -113,6 +94,25 @@ Men	20-49	Hodgkin Lymphoma	2016	4.00	4.14	NA	1.0803*	0	0
 Men	20-49	Hodgkin Lymphoma	2017	4.50	4.18	NA	1.0803*	0	0
 Men	20-49	Hodgkin Lymphoma	2018	4.20	4.23	NA	1.0803*	0	0
 Men	20-49	Hodgkin Lymphoma	2019	4.10	4.27	NA	1.0803*	0	0
+Men	20-49	Kaposi Sarcoma	2001	0.50	0.43	NA	11.8846*	1	1
+Men	20-49	Kaposi Sarcoma	2002	0.40	0.48	NA	11.8846*	1	1
+Men	20-49	Kaposi Sarcoma	2003	0.60	0.54	NA	11.8846*	1	1
+Men	20-49	Kaposi Sarcoma	2004	0.50	0.61	NA	11.8846*	1	1
+Men	20-49	Kaposi Sarcoma	2005	0.70	0.68	NA	11.8846*	1	1
+Men	20-49	Kaposi Sarcoma	2006	0.90	0.76	NA	11.8846*	1	1
+Men	20-49	Kaposi Sarcoma	2007	0.90	0.85	Joinpoint 1	NA	1	1
+Men	20-49	Kaposi Sarcoma	2008	0.90	0.80	NA	-5.5493*	1	1
+Men	20-49	Kaposi Sarcoma	2009	0.60	0.76	NA	-5.5493*	1	1
+Men	20-49	Kaposi Sarcoma	2010	0.60	0.71	NA	-5.5493*	1	1
+Men	20-49	Kaposi Sarcoma	2011	0.70	0.67	NA	-5.5493*	1	1
+Men	20-49	Kaposi Sarcoma	2012	0.60	0.64	NA	-5.5493*	1	1
+Men	20-49	Kaposi Sarcoma	2013	0.60	0.60	NA	-5.5493*	1	1
+Men	20-49	Kaposi Sarcoma	2014	0.60	0.57	NA	-5.5493*	1	1
+Men	20-49	Kaposi Sarcoma	2015	0.60	0.54	NA	-5.5493*	1	1
+Men	20-49	Kaposi Sarcoma	2016	0.60	0.51	NA	-5.5493*	1	1
+Men	20-49	Kaposi Sarcoma	2017	0.50	0.48	NA	-5.5493*	1	1
+Men	20-49	Kaposi Sarcoma	2018	0.40	0.45	NA	-5.5493*	1	1
+Men	20-49	Kaposi Sarcoma	2019	0.40	0.43	NA	-5.5493*	1	1
 Men	20-49	Kidney	2001	2.70	2.87	NA	0.5769	2	2
 Men	20-49	Kidney	2002	3.10	2.88	NA	0.5769	2	2
 Men	20-49	Kidney	2003	3.00	2.90	NA	0.5769	2	2
@@ -436,25 +436,6 @@ Men	50+	Brain and CNS	2016	21.40	20.96	NA	-0.7973	1	1
 Men	50+	Brain and CNS	2017	21.40	20.79	NA	-0.7973	1	1
 Men	50+	Brain and CNS	2018	20.10	20.63	NA	-0.7973	1	1
 Men	50+	Brain and CNS	2019	20.50	20.46	NA	-0.7973	1	1
-Men	50+	Breast	2001	2.90	3.03	NA	0.2218	0	0
-Men	50+	Breast	2002	3.10	3.03	NA	0.2218	0	0
-Men	50+	Breast	2003	3.50	3.04	NA	0.2218	0	0
-Men	50+	Breast	2004	3.10	3.05	NA	0.2218	0	0
-Men	50+	Breast	2005	2.60	3.05	NA	0.2218	0	0
-Men	50+	Breast	2006	3.10	3.06	NA	0.2218	0	0
-Men	50+	Breast	2007	2.80	3.07	NA	0.2218	0	0
-Men	50+	Breast	2008	3.10	3.07	NA	0.2218	0	0
-Men	50+	Breast	2009	3.00	3.08	NA	0.2218	0	0
-Men	50+	Breast	2010	3.50	3.09	NA	0.2218	0	0
-Men	50+	Breast	2011	3.20	3.09	NA	0.2218	0	0
-Men	50+	Breast	2012	3.00	3.10	NA	0.2218	0	0
-Men	50+	Breast	2013	3.00	3.11	NA	0.2218	0	0
-Men	50+	Breast	2014	3.40	3.11	NA	0.2218	0	0
-Men	50+	Breast	2015	3.10	3.12	NA	0.2218	0	0
-Men	50+	Breast	2016	3.00	3.13	NA	0.2218	0	0
-Men	50+	Breast	2017	3.10	3.14	NA	0.2218	0	0
-Men	50+	Breast	2018	3.20	3.14	NA	0.2218	0	0
-Men	50+	Breast	2019	3.10	3.15	NA	0.2218	0	0
 Men	50+	Colorectum	2001	195.70	193.13	NA	1.3279*	2	2
 Men	50+	Colorectum	2002	194.20	195.69	NA	1.3279*	2	2
 Men	50+	Colorectum	2003	196.80	198.29	NA	1.3279*	2	2
@@ -512,6 +493,25 @@ Men	50+	Hodgkin Lymphoma	2016	4.50	4.74	NA	-0.7196	1	1
 Men	50+	Hodgkin Lymphoma	2017	4.70	4.70	NA	-0.7196	1	1
 Men	50+	Hodgkin Lymphoma	2018	4.80	4.67	NA	-0.7196	1	1
 Men	50+	Hodgkin Lymphoma	2019	4.60	4.63	NA	-0.7196	1	1
+Men	50+	Kaposi Sarcoma	2001	0.30	0.28	NA	5.3039*	0	0
+Men	50+	Kaposi Sarcoma	2002	0.20	0.30	NA	5.3039*	0	0
+Men	50+	Kaposi Sarcoma	2003	0.30	0.31	NA	5.3039*	0	0
+Men	50+	Kaposi Sarcoma	2004	0.40	0.33	NA	5.3039*	0	0
+Men	50+	Kaposi Sarcoma	2005	0.30	0.35	NA	5.3039*	0	0
+Men	50+	Kaposi Sarcoma	2006	0.30	0.36	NA	5.3039*	0	0
+Men	50+	Kaposi Sarcoma	2007	0.40	0.38	NA	5.3039*	0	0
+Men	50+	Kaposi Sarcoma	2008	0.60	0.40	NA	5.3039*	0	0
+Men	50+	Kaposi Sarcoma	2009	0.50	0.43	NA	5.3039*	0	0
+Men	50+	Kaposi Sarcoma	2010	0.50	0.45	NA	5.3039*	0	0
+Men	50+	Kaposi Sarcoma	2011	0.40	0.47	NA	5.3039*	0	0
+Men	50+	Kaposi Sarcoma	2012	0.50	0.50	NA	5.3039*	0	0
+Men	50+	Kaposi Sarcoma	2013	0.70	0.52	NA	5.3039*	0	0
+Men	50+	Kaposi Sarcoma	2014	0.70	0.55	NA	5.3039*	0	0
+Men	50+	Kaposi Sarcoma	2015	0.50	0.58	NA	5.3039*	0	0
+Men	50+	Kaposi Sarcoma	2016	0.60	0.61	NA	5.3039*	0	0
+Men	50+	Kaposi Sarcoma	2017	0.50	0.64	NA	5.3039*	0	0
+Men	50+	Kaposi Sarcoma	2018	0.60	0.68	NA	5.3039*	0	0
+Men	50+	Kaposi Sarcoma	2019	0.70	0.71	NA	5.3039*	0	0
 Men	50+	Kidney	2001	34.30	33.49	NA	4.0653*	1	1
 Men	50+	Kidney	2002	35.70	34.85	NA	4.0653*	1	1
 Men	50+	Kidney	2003	35.00	36.27	NA	4.0653*	1	1
@@ -949,6 +949,25 @@ Women	20-49	Hodgkin Lymphoma	2016	3.10	3.18	NA	1.5691*	0	0
 Women	20-49	Hodgkin Lymphoma	2017	3.30	3.23	NA	1.5691*	0	0
 Women	20-49	Hodgkin Lymphoma	2018	3.10	3.28	NA	1.5691*	0	0
 Women	20-49	Hodgkin Lymphoma	2019	3.30	3.33	NA	1.5691*	0	0
+Women	20-49	Kaposi Sarcoma	2001	0.10	NA	NA	NA	NA	NA
+Women	20-49	Kaposi Sarcoma	2002	0.10	NA	NA	NA	NA	NA
+Women	20-49	Kaposi Sarcoma	2003	0.20	NA	NA	NA	NA	NA
+Women	20-49	Kaposi Sarcoma	2004	0.10	NA	NA	NA	NA	NA
+Women	20-49	Kaposi Sarcoma	2005	0.10	NA	NA	NA	NA	NA
+Women	20-49	Kaposi Sarcoma	2006	0.20	NA	NA	NA	NA	NA
+Women	20-49	Kaposi Sarcoma	2007	0.10	NA	NA	NA	NA	NA
+Women	20-49	Kaposi Sarcoma	2008	0.20	NA	NA	NA	NA	NA
+Women	20-49	Kaposi Sarcoma	2009	0.10	NA	NA	NA	NA	NA
+Women	20-49	Kaposi Sarcoma	2010	0.10	NA	NA	NA	NA	NA
+Women	20-49	Kaposi Sarcoma	2011	0.10	NA	NA	NA	NA	NA
+Women	20-49	Kaposi Sarcoma	2012	0.10	NA	NA	NA	NA	NA
+Women	20-49	Kaposi Sarcoma	2013	0.10	NA	NA	NA	NA	NA
+Women	20-49	Kaposi Sarcoma	2014	0.00	NA	NA	NA	NA	NA
+Women	20-49	Kaposi Sarcoma	2015	0.10	NA	NA	NA	NA	NA
+Women	20-49	Kaposi Sarcoma	2016	0.10	NA	NA	NA	NA	NA
+Women	20-49	Kaposi Sarcoma	2017	0.10	NA	NA	NA	NA	NA
+Women	20-49	Kaposi Sarcoma	2018	0.00	NA	NA	NA	NA	NA
+Women	20-49	Kaposi Sarcoma	2019	0.00	NA	NA	NA	NA	NA
 Women	20-49	Kidney	2001	1.40	1.48	NA	4.6272*	0	0
 Women	20-49	Kidney	2002	1.50	1.55	NA	4.6272*	0	0
 Women	20-49	Kidney	2003	1.70	1.62	NA	4.6272*	0	0
@@ -1367,6 +1386,25 @@ Women	50+	Hodgkin Lymphoma	2016	3.00	3.11	NA	-1.3576	1	1
 Women	50+	Hodgkin Lymphoma	2017	2.80	3.07	NA	-1.3576	1	1
 Women	50+	Hodgkin Lymphoma	2018	3.00	3.03	NA	-1.3576	1	1
 Women	50+	Hodgkin Lymphoma	2019	3.20	2.99	NA	-1.3576	1	1
+Women	50+	Kaposi Sarcoma	2001	0.10	NA	NA	NA	NA	NA
+Women	50+	Kaposi Sarcoma	2002	0.00	NA	NA	NA	NA	NA
+Women	50+	Kaposi Sarcoma	2003	0.10	NA	NA	NA	NA	NA
+Women	50+	Kaposi Sarcoma	2004	0.10	NA	NA	NA	NA	NA
+Women	50+	Kaposi Sarcoma	2005	0.10	NA	NA	NA	NA	NA
+Women	50+	Kaposi Sarcoma	2006	0.10	NA	NA	NA	NA	NA
+Women	50+	Kaposi Sarcoma	2007	0.10	NA	NA	NA	NA	NA
+Women	50+	Kaposi Sarcoma	2008	0.10	NA	NA	NA	NA	NA
+Women	50+	Kaposi Sarcoma	2009	0.10	NA	NA	NA	NA	NA
+Women	50+	Kaposi Sarcoma	2010	0.20	NA	NA	NA	NA	NA
+Women	50+	Kaposi Sarcoma	2011	0.10	NA	NA	NA	NA	NA
+Women	50+	Kaposi Sarcoma	2012	0.10	NA	NA	NA	NA	NA
+Women	50+	Kaposi Sarcoma	2013	0.10	NA	NA	NA	NA	NA
+Women	50+	Kaposi Sarcoma	2014	0.10	NA	NA	NA	NA	NA
+Women	50+	Kaposi Sarcoma	2015	0.10	NA	NA	NA	NA	NA
+Women	50+	Kaposi Sarcoma	2016	0.10	NA	NA	NA	NA	NA
+Women	50+	Kaposi Sarcoma	2017	0.10	NA	NA	NA	NA	NA
+Women	50+	Kaposi Sarcoma	2018	0.10	NA	NA	NA	NA	NA
+Women	50+	Kaposi Sarcoma	2019	0.10	NA	NA	NA	NA	NA
 Women	50+	Kidney	2001	17.70	17.41	NA	4.4816*	1	1
 Women	50+	Kidney	2002	18.30	18.19	NA	4.4816*	1	1
 Women	50+	Kidney	2003	19.30	19.01	NA	4.4816*	1	1
