@@ -1059,6 +1059,9 @@ apc_table <- data_joinpoint_last %>%
   )
 apc_table
 
+gtsave(apc_table, "../Output/Plots/Figure_1c-Selected_Cancer_APC.html")
+
+
 ```
 
 ## Figure 2a - Trends in risk factors
@@ -1539,6 +1542,9 @@ rf_apc_table <- rf_table %>%
   ))
 
 rf_apc_table
+
+gtsave(apc_table, "../Output/Plots/Figure_2b-RF_APC.html")
+
 ```
 
 ## Figure 2c - Trends in Risk Factors by IMD
