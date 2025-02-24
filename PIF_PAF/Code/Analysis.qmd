@@ -311,7 +311,6 @@ data_childhoodbmi_joinpoint <- read.delim("../Data/Joinpoint_Results/ChildhoodBM
 
 ```
 
-
 ### Ensuring the Joinpoint input is up to date
 
 ```{r}
@@ -386,6 +385,7 @@ pafplotall<- ggplot(changingpaf_data, aes(x = prev, y = PAF, colour = RR)) +
 
 pafplotall
 
+ggsave("../Output/Plots/TheoreticalPAF.png", plot = pafplotall, bg = "white", height = 6, width = 10)
 ```
 
 ## Generic PIF relationship
@@ -394,23 +394,22 @@ This is how the PIF changes as population exposure to a risk factor increases by
 
 ```{r}
 #creating a sequence of exposure 
-exposurerange1 <- seq(0, .2, by = 0.01)
-exposurerange2 <- seq(0.2, 0.4, by = 0.01)
-exposurerange3 <- seq(0.4, 0.6, by = 0.01)
-exposurerange4 <- seq(0.6, 0.8, by = 0.01)
+exposurerange <- seq(1, 1.5, by = 0.01)
+
 # Define a constant Relative Risk (RR)
 RR <- c(1.25, 1.5, 2.0, 5.0) 
 
 #calculating the PIFs 
-calculate_pif_data <- function(exposurerange, pif_label) {
+calculate_pif_data <- function(exposurerange, startingexposure, pif_label) {
+  remainingexposure = 1-startingexposure
   pif_data <- sapply(RR, function(rr) {
-    ((max(exposurerange) - exposurerange) * (rr - 1)) / (1 + (max(exposurerange) * (rr - 1)))
+    ((startingexposure*exposurerange)-(startingexposure)) * (rr-1) / (1 + ( startingexposure*exposurerange) * (rr-1))
   })
   colnames(pif_data) <- paste0("RR_", RR)
   
   # Reshape into a long format for ggplot
   pif_df <- as.data.frame(pif_data) %>%
-    mutate(exposure_diff = max(exposurerange) - exposurerange) %>%
+    mutate(exposure_diff = exposurerange - min(exposurerange)) %>%
     pivot_longer(
       cols = starts_with("RR_"),
       names_to = "RR",
@@ -422,10 +421,10 @@ calculate_pif_data <- function(exposurerange, pif_label) {
 }
 
 # Calculate PIF data for each range
-pif1_data <- calculate_pif_data(exposurerange1, ".20-0")
-pif2_data <- calculate_pif_data(exposurerange2, ".40-.20")
-pif3_data <- calculate_pif_data(exposurerange3, ".60-.40")
-pif4_data <- calculate_pif_data(exposurerange4, ".80-.60")
+pif1_data <- calculate_pif_data(exposurerange, 0.10, ".10")
+pif2_data <- calculate_pif_data(exposurerange, 0.20, ".20")
+pif3_data <- calculate_pif_data(exposurerange, 0.40, ".40")
+pif4_data <- calculate_pif_data(exposurerange, 0.60, ".60")
 
 # Combine all data into one dataframe
 combined_pif_data <- bind_rows(pif1_data, pif2_data, pif3_data, pif4_data) %>%
@@ -435,8 +434,8 @@ pif_plot <- ggplot(combined_pif_data, aes(x = exposure_diff, y = PIF, color = RR
   geom_line(size = 1) +
   facet_grid(PIF_Label ~ RR) +  # Facet by PIF (rows) and RR (columns)
   labs(
-    title = "Theoretical PIFs with different RR and Exposure Changes",
-    x = "Exposure Change",
+    title = "Theoretical PIFs with different RR and Starting Exposures",
+    x = "Relative Exposure Change (%)",
     y = "PIF",
     color = "Relative Risk"
   ) +
@@ -450,6 +449,7 @@ pif_plot <- ggplot(combined_pif_data, aes(x = exposure_diff, y = PIF, color = RR
 # Display the plot
 pif_plot
 
+ggsave("../Output/Plots/TheoreticalPIF.png", plot = pif_plot, bg = "white", height = 6, width = 10)
 
 ```
 
@@ -668,6 +668,7 @@ for(s in unique(data_joinpoint_AAPC$sex)){
 ```
 
 ## All cancer AAPC for under 50 - Table
+
 ```{r}
 
 data_joinpoint_AAPC_gt <- data_joinpoint_AAPC |>
@@ -1724,6 +1725,7 @@ for(var in unique(paste0(rf_imd_trend_plot$variable, "-", rf_imd_trend_plot$leve
 ```
 
 ## Figure 2d - Time we have data for
+
 ```{r}
 
 cancer_years <- data_ALLcancer |>
@@ -1789,6 +1791,7 @@ plot_year_summary
 ```
 
 ## Figure 2e - Trends in Risk Factors overlayed with Colorectal Cancer Rate
+
 ```{r, fig.height = 6, fig.width = 6}
 
 # Create and the clean the desired risk factor data
@@ -2354,6 +2357,7 @@ ggsave("../Output/Plots/Figure_3_Women.png", plot = data_attr_bar_WOMEN, bg = "w
 ## Figure 3c Alternate - PAF
 
 ### Calculate CIs for Aggregate PAFs
+
 ```{r}
 
 # Calculating aggregate PAFs from the sampled PAFs
@@ -2766,6 +2770,41 @@ generate_plots <- function(data) {
 
 generate_plots(data_attr_cases_bar)
 
+
+```
+
+## Figure 4c - Current PAFs (2019) - Side Bar chart
+
+```{r}
+
+# PAF Plot
+for (var in unique (data_attr_cases_bar$variable)) {
+
+#filter subset of data
+subset_data <- subset(data_attr_cases_bar, variable == var)
+data_attr_bar_paf <- ggplot(subset_data, aes(x = cancer_site, y = PAF, fill = age_group)) +
+  geom_bar(stat = "identity", position = "dodge", width = 0.75, colour ="black") +
+  scale_fill_manual(values = c("20-49" = "#ff9500", "50+" = "#38b000")) +
+  theme_minimal() +
+  theme(
+    
+    strip.text = element_text(face = "bold"),
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  ) +
+  labs(
+    title = paste(var, " - PAFs by Risk Factor in England 2019"),
+    fill = "Age Group",
+    x = "Cancer Site",
+    y = "PAF (%)"
+  )+
+  geom_rect(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
+            colour = "black", fill = NA, inherit.aes = FALSE) +
+  theme(strip.text = element_text(face = "bold")) +
+  coord_flip() +
+  facet_wrap(~sex)
+  
+print (data_attr_bar_paf)
+} 
 
 ```
 
@@ -3218,6 +3257,7 @@ These are PIFs from the oldest data point until current times (Later referred to
 ```
 
 ## Figure 6e - PIF (BMI only)
+
 ```{r}
 
 # Calculating PIFs
@@ -3316,6 +3356,7 @@ gtsave(data_pif_bmi_gt, "../Output/Plots/Figure_6-PIF_BMI.html")
 ```
 
 ## Figure 6f - PIF (BMI only) HEATMAP
+
 ```{r}
 
 # Rederiving the PIFs so this code block can stand more independently
@@ -3453,6 +3494,7 @@ gtsave(data_pif_bmi_gt, "../Output/Plots/Figure_6-PIF_BMI_Heatmap.html")
 ## Figure 6f Barchart
 
 ### Calculating CIs
+
 ```{r}
 
 # Calculating aggregate PAFs from the sampled PAFs
@@ -3651,6 +3693,7 @@ ggplot(data_childhood_bmi |> filter(level != "Overweight including obese") |> fi
 ```
 
 ### Childhood BMI (+ Colorectal Cancer Trends + Obesity Trends)
+
 ```{r}
 
 # Get childhood obesity data
@@ -3921,8 +3964,8 @@ According to the ONS page on [Adult smoking habits in the UK 2023](https://www.o
 
 ![](images/total-alcohol-consumption-per-capita-litres-of-pure-alcohol.png)
 
-
 ### Red and Processed Meat
+
 ```{r}
 
 data_food_trends <- readODS::read_ods("../Data/UKHHcons_17Oct24.ods", sheet = "Household_quantity")
@@ -3967,6 +4010,7 @@ plot
 ## Historical Colorectal Risk Factor Trends
 
 ### Function
+
 ```{r}
 
 plot_with_colorectal <- function(data, data_colorectal, sec.axis.name = NULL){
@@ -4021,6 +4065,7 @@ plot_with_colorectal <- function(data, data_colorectal, sec.axis.name = NULL){
 ```
 
 ### Long term colorectal cancer rate trends
+
 ```{r}
 
 data_lt_colorectal <- read.csv("../Data/dataset-asr-inc-males-and-females-age-20-49-1943-2020-colorectum.csv") |>
@@ -4034,6 +4079,7 @@ data_lt_colorectal <- read.csv("../Data/dataset-asr-inc-males-and-females-age-20
 ```
 
 ### Alcohol
+
 ```{r}
 
 data_lt_alcohol <- read.csv("../Data/per-capita-alcohol-1890.csv") |>
@@ -4049,6 +4095,7 @@ plot
 ```
 
 ### Red Meat
+
 ```{r}
 
 data_food_trends_lt <- data_food_trends |>
@@ -4061,7 +4108,6 @@ plot
 
 
 ```
-
 
 ## Risk Factors by Deprivation
 
@@ -4082,8 +4128,6 @@ According to the ONS 2021 report on[Deprivation and Smoking Prevalence](https://
 Additionally, the report claims that between 2017 and 2021, smoking prevalence decreased across all deprivation levels in England. In the most deprived neighborhoods,current smoking prevalence dropped statistically significantly from 26.2% in 2017 to 23.8% in 2021. In England's least deprived neighborhoods, current smoking prevalence dropped from 7.6% to 6.8% across the same time period.
 
 ![](images/clipboard-2503227074.png)
-
-
 
 ### Alcohol
 
@@ -4264,17 +4308,18 @@ Over the course of the survey from 1993-2019, the mean height increased by a bit
 ## Screening Trends
 
 #### Breast
+
 ![](images/trend-chart-breast-screening.png)
 
 #### Colorectal
+
 ![](images/trend-chart-bowel-screening.png)
 
-
 #### Cervical
+
 ![](images/trend-chart-cervical-25-49.png)
 
 ![](images/trend-chart-cervical-50-64.png)
-
 
 ## RR Scenarios
 
@@ -4303,10 +4348,10 @@ riskfactors <- data_rf %>%
 
 source("Functions/pifpaf_scenario_functions.R")
 
-youngmen_obesescenario <- pif_scenarioBMI(riskfactors %>% filter(sex == "Men", age_group == "20-49"), 1997, 2009)
-oldmen_obesescenario <- pif_scenarioBMI(riskfactors %>% filter(sex == "Men", age_group == "50+"),1997, 2009)
-youngwomen_obesescenario <- pif_scenarioBMI(riskfactors %>% filter(sex == "Women", age_group == "20-49"),1997, 2009)
-oldwomen_obesescenario <- pif_scenarioBMI(riskfactors %>% filter(sex == "Women", age_group == "50+"),1997, 2009)
+youngmen_obesescenario <- pif_scenarioBMI(riskfactors %>% filter(sex == "Men", age_group == "20-49"), 1995, 2009)
+oldmen_obesescenario <- pif_scenarioBMI(riskfactors %>% filter(sex == "Men", age_group == "50+"),1995, 2009)
+youngwomen_obesescenario <- pif_scenarioBMI(riskfactors %>% filter(sex == "Women", age_group == "20-49"),1995, 2009)
+oldwomen_obesescenario <- pif_scenarioBMI(riskfactors %>% filter(sex == "Women", age_group == "50+"),1995, 2009)
 obesescenario <- rbind(youngmen_obesescenario, oldmen_obesescenario, youngwomen_obesescenario, oldwomen_obesescenario) %>%
   select(-variable) %>%
   mutate(
@@ -4329,8 +4374,12 @@ pifobesescenario_table <- obesescenario %>%
    -level 
   )%>%
   rename(
-    `1997 prev` = p0, 
-    `2009 prev` = p1
+    `1995 prev` = p0, 
+    `2009 prev` = p1, 
+    `RR_1.46` = pifA,
+    `RR_2` = pifB, 
+    `RR_3` = pifC, 
+    `RR_4` = pifD, 
   ) %>%
   arrange(age_group) %>%
   gt(groupname_col = "sex") %>% # Specify group column
@@ -4351,7 +4400,7 @@ pifobesescenario_table <- obesescenario %>%
     everything() ~ px(100) 
   ) %>%
   tab_header(
-    title = md("Obesity PIF scarios with different RR")
+    title = md("BMI PIFs for Colorectal Cancer with scenario RR")
   )
 
 pifobesescenario_table
@@ -4429,7 +4478,7 @@ childhoodbmi_2019PAFscenario_table
 
 #### Ultra Processed Food and Colorectal Cancer alternate RR scenarios
 
-I DONT THINK THAT THIS IS VALID/CAN BE USED - it is looking at individual prevalence of UPF consumption instead of looking at population prevalence. I therefore do not believe that these calculations have the right input numbers. 
+I DONT THINK THAT THIS IS VALID/CAN BE USED - it is looking at individual prevalence of UPF consumption instead of looking at population prevalence. I therefore do not believe that these calculations have the right input numbers.
 
 [Ultra-processed food consumption and indicators of obesity in the United Kingdom population (2008-2016)](https://pmc.ncbi.nlm.nih.gov/articles/PMC7194406/#ad93) published in 2020 looked at Ultra Processed Food (UPF) intake in the UK. From their calculated data, we can run the RR scenarios.
 
