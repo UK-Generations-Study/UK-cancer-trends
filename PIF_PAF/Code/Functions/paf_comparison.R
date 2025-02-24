@@ -294,7 +294,8 @@ data_complete <- data_complete |>
       close_to_2009 = dist_to_2009 == min(dist_to_2009)
 
     ) |>
-    filter(close_to_2009 | (variable == "bmi" & year %in% c(1995, 2005, 2019))) |>
+    # filter(close_to_2009 | (variable == "bmi" & year %in% c(1995, 2005, 2019))) |>
+    filter(close_to_2009) |>
     ungroup() |>
     select(-close_to_2009, -dist_to_2009) |>
     # Arrange so all arguments are in the right order when extracting p-values
