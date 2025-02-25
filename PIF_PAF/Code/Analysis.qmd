@@ -1136,10 +1136,10 @@ figure_1c <- full_joinpoint_table(data_joinpoint |> filter(cancer_site %in% c("O
                                   , group_var = "cancer_site", table_var = "sex", stratification_vars = "age_group")
 
 # Now edit, print and save
-for(sex in names(figure_1b)){
+for(sex in names(figure_1c)){
   
   # Final changes
-  figure_1c[[sex]] <- figure_1b[[sex]] |>
+  figure_1c[[sex]] <- figure_1c[[sex]] |>
     cols_label(age_group = "Age Group") |>
     tab_header(paste0("Cancer Incidence Trends in ", sex))
   
