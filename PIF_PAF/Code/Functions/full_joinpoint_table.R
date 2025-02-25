@@ -25,12 +25,13 @@ full_joinpoint_table <- function(data_apc, data_aapc, group_var, table_var, stra
   data_aapc <- data_aapc |>
     mutate(
       
+      time.period.AAPC = paste0("(", Start.Obs, ", ", End.Obs, ")"),
       AAPC = round(AAPC, digits = 2),
       CI.AAPC = paste0("(", round(AAPC.C.I..Low, digits = 2), ", ", round(AAPC.C.I..High, digits = 2), ")"),
       P.Value.AAPC = if_else(P.Value < 0.01, "<0.01", as.character(round(P.Value, digits = 2)))
       
     ) |>
-    select(all_of(c(full_grouping_vars, "AAPC", "CI.AAPC", "P.Value.AAPC")))
+    select(all_of(c(full_grouping_vars, "time.period.AAPC", "AAPC", "CI.AAPC", "P.Value.AAPC")))
   
   # Combine together
   data_complete <- merge(data_aapc, data_apc, by = full_grouping_vars)
@@ -62,7 +63,7 @@ full_joinpoint_table <- function(data_apc, data_aapc, group_var, table_var, stra
       tab_spanner(
         id = "AAPC_spanner",
         label = "AAPC",
-        columns = ends_with("AAPC")
+        columns = c("AAPC", ends_with("AAPC"))
       ) |>
       tab_spanner(
         id = "APC_spanner",
@@ -70,6 +71,7 @@ full_joinpoint_table <- function(data_apc, data_aapc, group_var, table_var, stra
         columns = c("APC", ends_with(".APC"))
       ) |>
       cols_label(
+        time.period.AAPC = "Time Period",
         CI.AAPC = "CI 95%",
         P.Value.AAPC = "P Value",
         time.period.APC = "Time Period",

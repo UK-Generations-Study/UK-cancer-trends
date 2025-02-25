@@ -156,7 +156,7 @@ data_rf <- data_rf |>
 data_complete <- merge(data_rr, data_rf, by = c("age_group", "sex", "level", "variable"), all.y = T) |>
   filter(!is.na(RR)) |>
   # Arrange so all arguments are in the right order when extracting p-values
-  arrange(Cancer_sites, age_group, sex, year, variable, level)
+  arrange(Cancer_sites, age_group, sex, year, variable, level_label)
 
 
 # Filter to closest to 2009 - but keep copy with other years as we need to sample their prevalences
@@ -174,7 +174,7 @@ data_complete <- data_complete |>
     )
   ) |>
   # Arrange so all arguments are in the right order when extracting p-values
-  arrange(Cancer_sites, age_group, sex, year, variable, level)
+  arrange(Cancer_sites, age_group, sex, year, variable, level_label)
 
 # Set up for loop
 no_groups <- data_complete |>
@@ -202,9 +202,9 @@ for(i in 1:N_iterations){
     group_by(variable, level, year_group, sex, age_group, Cancer_sites) |>
     mutate(
       
-      variance = (log(CI_higher) - log(RR))/qnorm(0.975),
+      sd = (log(CI_higher) - log(RR))/qnorm(0.975),
       
-      RR = exp(log(RR) + variance*norms[cur_group_id()])
+      RR = exp(log(RR) + sd*norms[cur_group_id()])
       
     ) |>
     ungroup() |>
