@@ -1,0 +1,5 @@
+"age_group"	"sex"	"level"	"variable"	"Joinpoint Model"	"AAPC Index"	"Start Obs"	"End Obs"	"AAPC"	"AAPC C.I. Low"	"AAPC C.I. High"	"Statistically Significant (0=No  1=Yes)"	"Test Statistic"	"P-Value"
+20-49	Men	Below Guidelines	"fibre_consumption"	1	Full Range	2008	2018	-0.3846	-1.3425	0.5825	0	-0.7817	0.434394
+50+	Men	Below Guidelines	"fibre_consumption"	0	Full Range	2008	2018	-0.3036	-0.5021	-0.1048	1	-3.4527	0.007243
+20-49	Women	Below Guidelines	"fibre_consumption"	1	Full Range	2008	2018	-0.1976	-0.4516	0.0571	0	-1.5212	0.128216
+50+	Women	Below Guidelines	"fibre_consumption"	1	Full Range	2008	2018	-0.4341	-0.6843	-0.1831	1	-3.3874	0.000706

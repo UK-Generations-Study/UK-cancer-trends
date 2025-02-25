@@ -1,0 +1,13 @@
+"age_group"	"sex"	"level"	"variable"	"Joinpoint Model"	"AAPC Index"	"Start Obs"	"End Obs"	"AAPC"	"AAPC C.I. Low"	"AAPC C.I. High"	"Statistically Significant (0=No  1=Yes)"	"Test Statistic"	"P-Value"
+20-49	Men	mean	"fibre_consumption_mean"	0	Full Range	2008	2018	0.9436	0.3040	1.5874	1	3.3423	0.008628
+50+	Men	mean	"fibre_consumption_mean"	0	Full Range	2008	2018	0.4035	0.1806	0.6269	1	4.0989	0.002681
+20-49	Women	mean	"fibre_consumption_mean"	1	Full Range	2008	2018	0.6903	0.2625	1.1198	1	3.1670	0.001540
+50+	Women	mean	"fibre_consumption_mean"	0	Full Range	2008	2018	0.2264	-0.0114	0.4648	0	2.1537	0.059673
+20-49	Men	median	"processedmeat_consumption_median"	1	Full Range	2008	2018	-4.8847	-7.3824	-2.3196	1	-3.6885	0.000226
+50+	Men	median	"processedmeat_consumption_median"	1	Full Range	2008	2018	-2.0303	-5.3280	1.3824	0	-1.1741	0.240350
+20-49	Women	median	"processedmeat_consumption_median"	1	Full Range	2008	2018	-5.3638	-7.8843	-2.7744	1	-4.0028	0.000063
+50+	Women	median	"processedmeat_consumption_median"	0	Full Range	2008	2018	-5.5500	-7.3686	-3.6957	1	-6.6437	0.000094
+20-49	Men	median	"redmeat_consumption_median"	1	Full Range	2008	2018	-7.4070	-8.9167	-5.8724	1	-9.1756	0.000000
+50+	Men	median	"redmeat_consumption_median"	1	Full Range	2008	2018	-4.3964	-8.1010	-0.5425	1	-2.2297	0.025764
+20-49	Women	median	"redmeat_consumption_median"	1	Full Range	2008	2018	-7.0645	-12.0373	-1.8107	1	-2.6112	0.009022
+50+	Women	median	"redmeat_consumption_median"	0	Full Range	2008	2018	-7.3931	-8.6410	-6.1282	1	-12.8072	0.000000
