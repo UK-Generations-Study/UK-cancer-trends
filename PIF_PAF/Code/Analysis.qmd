@@ -3049,7 +3049,7 @@ data_paf_spec_ci <- data_paf_comparison_spec |>
         variable == "alcohol_amt" ~ "Alcohol",
         variable == "bmi" ~ "BMI",
         variable == "fibre_consumption" ~ "Fibre",
-        variable == "physical_activity" ~ "Physical Activity",
+        variable == "physical_activity_old" ~ "Physical Activity",
         variable == "processed_meat_consumption" ~ "Processed Meat",
         variable == "redmeat_consumption" ~ "Red Meat",
         variable == "smoking_status" ~ "Smoking",
