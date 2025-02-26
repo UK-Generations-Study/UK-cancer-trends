@@ -343,7 +343,7 @@ library(gridExtra)
 #creating a sequence of prevalence 
 prevalencerange <- seq(0, 1, by = 0.01)
 # Define a constant Relative Risk (RR)
-RRconstantlow <- 1.25 # Example RR constant
+RRconstantlow <- 1.2 # Example RR constant
 RRconstant4 <- 1.5
 RRconstantmed <- 2
 RRconstanthigh <- 5
@@ -387,7 +387,7 @@ PAFhigh <- (prevalencerange * (RRconstanthigh-1)) / (1 + (prevalencerange * (RRc
 # changingpaf
 
 # Combining data into one so we can facet_wrap as below
-changingpaf_data <- rbind(data.frame(prev = prevalencerange, PAF = PAFlow, RR = "1.25"), data.frame(prev = prevalencerange, PAF = PAF4, RR = "1.5")) |>
+changingpaf_data <- rbind(data.frame(prev = prevalencerange, PAF = PAFlow, RR = "1.2"), data.frame(prev = prevalencerange, PAF = PAF4, RR = "1.5")) |>
   rbind(data.frame(prev = prevalencerange, PAF = PAFmed, RR = "2.0")) |>
   rbind(data.frame(prev = prevalencerange, PAF = PAFhigh, RR = "5.0"))
 
@@ -403,7 +403,9 @@ pafplotall<- ggplot(changingpaf_data, aes(x = prev, y = PAF)) +
         strip.text = element_text(size = 10, face = "bold"),
         legend.position = "none", 
         panel.border = element_rect(color = "black", fill = NA, size = 1), 
-         plot.title = element_text(hjust = 0.5))
+         plot.title = element_text(hjust = 0.5)) +
+  scale_x_continuous(labels = scales::number_format(accuracy = 0.1)) +
+  scale_y_continuous(labels = scales::number_format(accuracy = 0.1))
 
 pafplotall
 
@@ -419,7 +421,7 @@ This is how the PIF changes as population exposure to a risk factor increases by
 exposurerange <- seq(1, 1.5, by = 0.01)
 
 # Define a constant Relative Risk (RR)
-RR <- c(1.25, 1.5, 2.0, 5.0) 
+RR <- c(1.2, 1.5, 2.0, 5.0) 
 
 #calculating the PIFs 
 calculate_pif_data <- function(exposurerange, startingexposure, pif_label) {
@@ -444,10 +446,10 @@ calculate_pif_data <- function(exposurerange, startingexposure, pif_label) {
 }
 
 # Calculate PIF data for each range
-pif1_data <- calculate_pif_data(exposurerange, 0.10, ".10")
-pif2_data <- calculate_pif_data(exposurerange, 0.20, ".20")
-pif3_data <- calculate_pif_data(exposurerange, 0.40, ".40")
-pif4_data <- calculate_pif_data(exposurerange, 0.60, ".60")
+pif1_data <- calculate_pif_data(exposurerange, 0.10, ".1")
+pif2_data <- calculate_pif_data(exposurerange, 0.20, ".2")
+pif3_data <- calculate_pif_data(exposurerange, 0.40, ".4")
+pif4_data <- calculate_pif_data(exposurerange, 0.60, ".6")
 
 # Combine all data into one dataframe
 combined_pif_data <- bind_rows(pif1_data, pif2_data, pif3_data, pif4_data) %>%
