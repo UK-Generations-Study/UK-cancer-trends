@@ -316,13 +316,21 @@ jp_plots[["smoking"]] <- plot_joinpoint(
   facet.x = "age_group", facet.y = "sex", colour = "level") +
   labs(
     y = "Prevalence",
-    colour = "Exposure Category",
-    title = "Smoking"
+    colour = "Risk Factor",
+    title = "Cigarette Smoking"
+  ) +
+   theme(
+    strip.text = element_text(face = "bold"),
+    plot.title = element_text(hjust = 0.5)  
   ) +
   scale_color_manual( #fixing the colors 
     values = c(
       "Current" = "#f8333c",
       "Former" = "#2b9eb3"
+    ), 
+    labels = c(
+      "Current" = "Current Smoking",
+      "Former" = "Former Smoking"
     )
   )
 
@@ -333,8 +341,12 @@ jp_plots[["alcohol"]] <- plot_joinpoint(
   facet.x = "age_group", facet.y = "sex", colour = "level") +
   labs(
     y = "Prevalence",
-    colour = "Exposure Category",
-    title = "Alcohol"
+    colour = "Risk Factor",
+    title = "Alcohol Consumption"
+  ) +
+   theme(
+    strip.text = element_text(face = "bold"),
+    plot.title = element_text(hjust = 0.5)  
   ) +
   scale_color_manual( #fixing the colors
     values = c(
@@ -342,6 +354,11 @@ jp_plots[["alcohol"]] <- plot_joinpoint(
       "Moderate Drinker" = "#2b9eb3",
       "Light Drinker" = "#fcab10" 
       # "Non-Drinker" = "#fcab10"
+    ), 
+    labels = c(
+      "Heavy Drinker" = "Heavy (>50units/week)",
+      "Moderate Drinker" = "Moderate (14-50units/week)",
+      "Light Drinker" = "Light (<14units/week)" 
     )
   )
 
@@ -352,8 +369,12 @@ jp_plots[["bmi"]] <- plot_joinpoint(
   facet.x = "age_group", facet.y = "sex", colour = "level") +
   labs(
     y = "Prevalence",
-    colour = "Exposure Category",
-    title = "BMI"
+    colour = "Risk Factor",
+    title = "Body Mass Index (BMI)"
+  ) +
+   theme(
+    strip.text = element_text(face = "bold"),
+    plot.title = element_text(hjust = 0.5)  
   ) +
   scale_color_manual( #fixing the colors 
     values = c(
@@ -361,6 +382,10 @@ jp_plots[["bmi"]] <- plot_joinpoint(
       "Overweight" = "#2b9eb3"
       # "Healthy Weight" = "#44af69"
       # "Underweight" = "#fcab10" 
+    ), 
+    labels = c(
+      "Obese" = "Obese (>30 kg/m2)",  
+      "Overweight" = "Overweight (25-30 kg/m2)"
     )
   )
 
@@ -371,14 +396,21 @@ jp_plots[["physical_activity"]] <- plot_joinpoint(
   facet.x = "age_group", facet.y = "sex", colour = "variable") +
   labs(
     y = "Prevalence",
-    colour = "Exposure Category",
-    title = "Inactivity"
+    colour = "Risk Factor",
+    title = "Physical Inactivity", 
+    caption = "*150 min/week of moderate or 75 min/week of vigorous activity. **150 min/week of activity"
+  ) +
+   theme(
+    strip.text = element_text(face = "bold"),
+    plot.title = element_text(hjust = 0.5)  
   ) +
   scale_color_manual( #fixing the colors 
     values = c(
       "physical_activity" = "#fc9c9f",
       "physical_activity_old" = "#f8333c"
-    )
+    ), 
+    labels = c("physical_activity" = "Physical Activity Below new UK Guidelines**", 
+               "physical_activity_old" = "Physical Activity Below old UK Guidelines*")
   )
 
 ## Fibre Consumption
@@ -388,8 +420,16 @@ jp_plots[["fibre_consumption"]] <- plot_joinpoint(
   facet.x = "age_group", facet.y = "sex", colour = "level") +
   labs(
     y = "Prevalence",
-    colour = "Exposure Category",
-    title = "Fibre Consumption"
+    colour = "Risk Factor",
+    title = "Low Fibre Intake"
+  ) +
+   theme(
+    strip.text = element_text(face = "bold"),
+    plot.title = element_text(hjust = 0.5)  
+  ) +
+  scale_color_manual(
+          values = c("Below Guidelines" = "#fc9c9f"),  
+    labels = c("Below Guidelines" = "Fibre Consumption Below UK Guidelines (30g/day)")
   )
 
 ## Meat Consumption
@@ -399,13 +439,20 @@ jp_plots[["meat_consumption"]] <- plot_joinpoint(
   facet.x = "age_group", facet.y = "sex", colour = "variable") +
   labs(
     y = "Daily Consumption (g)",
-    colour = "Exposure Category",
-    title = "Meat Consumption"
+    colour = "Risk Factor",
+    title = "Red and Processed Meat Consumption"
+  ) + theme(
+    strip.text = element_text(face = "bold"),
+    plot.title = element_text(hjust = 0.5)  
   ) +
-  scale_color_manual( #fixing the colors 
+  scale_color_manual(  
     values = c(
       "redmeat_consumption_median" = "#fc9c9f", 
       "processedmeat_consumption_median" = "#f8333c"
+    ),
+    labels = c(
+      "redmeat_consumption_median" = "Median Red Meat Consumption", 
+      "processedmeat_consumption_median" = "Median Processed Meat Consumption"
     )
   )
 
@@ -538,14 +585,15 @@ data_attr_bar_paf <- ggplot(data_attr_cases_bar_alt, aes(x = cancer_site, y = PA
     axis.text.x = element_text(angle = 45, hjust = 1)
   ) +
   labs(
-    title = "PAFs in England 2019",
+    title = "PAFs in England 2019: by Age Group and Sex",
     fill = "Age Group",
     x = "Cancer Site",
     y = "PAF (%)"
   )+
   geom_rect(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
             colour = "black", fill = NA, inherit.aes = FALSE) +
-  theme(strip.text = element_text(face = "bold")) +
+  theme(strip.text = element_text(face = "bold"),
+    plot.title = element_text(hjust = 0.5) ) +
   coord_flip() +
   facet_wrap(~sex)
   
@@ -619,6 +667,10 @@ data_pif_bmi <- PIF |>
 
 data_pif_bmi <- merge(data_pif_bmi, data_paf_pif_ci, by.x = c("cancer_site", "age_group", "sex", "name"), by.y = c("Cancer_sites", "age_group", "sex", "name"))
 
+data_pif_bmi <- data_pif_bmi %>%
+  mutate(
+    name = ifelse(name =="PIF_future", "2029 PIF","2019 PIF" )
+  )
 # Creating bar chart - adding error bars
 plot <- ggplot(data_pif_bmi, aes(x = cancer_site, y = 100*value, fill = age_group)) +
   geom_bar(position = "dodge", stat = "identity", colour = "black") +
@@ -628,14 +680,15 @@ plot <- ggplot(data_pif_bmi, aes(x = cancer_site, y = 100*value, fill = age_grou
   scale_fill_manual(values = c("20-49" = "#ff9500", "50+" = "#38b000")) +
   theme_minimal() +
   theme(
-    strip.text = element_text(face = "bold")
+    strip.text = element_text(face = "bold"),
+    plot.title = element_text(hjust = 0.5) 
   ) +
   geom_rect(
     xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
     colour = "black", fill = NA, inherit.aes = FALSE
   ) +
   labs(
-    title = "PIF Values for BMI",
+    title = "2019 and 2029 PIFs for BMI",
     x = "Cancer Site",
     y = "PIF (%)",
     fill = "Age Group"
@@ -663,7 +716,6 @@ This table is generated in excel
 ### Supplemenrary Table 4 - AAPC/APC by cancer site
 ```{r, results = "asis"}
 
-# Create Figure 1b
 supp_table_4 <- full_joinpoint_table(data_joinpoint |> filter(cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid")),
                                   data_joinpoint_AAPC |> filter(cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid")),
                                   group_var = "cancer_site", table_var = "sex", stratification_vars = "age_group")
@@ -674,7 +726,7 @@ for(sex in names(supp_table_4)){
   # Final changes
   supp_table_4[[sex]] <- supp_table_4[[sex]] |>
     cols_label(age_group = "Age Group") |>
-    tab_header(paste0("Cancer Incidence Trends in ", sex))
+    tab_header(paste0("Cancer Incidence Trends in ", sex)) 
   
   # Print
   print(supp_table_4[[sex]])
