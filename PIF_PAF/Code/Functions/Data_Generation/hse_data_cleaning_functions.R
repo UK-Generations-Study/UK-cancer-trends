@@ -16,18 +16,18 @@ check_year_spec <- function(year, year_spec){
   
 }
 
-### 2004 HSE WEIGHTING FIX FUNCTION
-fix_hse_2004_weighting <- function(data){
-  
-  data <- data |>
-    mutate(N = case_when(
-      year == 2004 ~ N/14.15683,
-      TRUE ~ N
-    ))
-  
-  return(data)
-  
-}
+# ### 2004 HSE WEIGHTING FIX FUNCTION
+# fix_hse_2004_weighting <- function(data){
+#   
+#   data <- data |>
+#     mutate(N = case_when(
+#       year == 2004 ~ N/14.15683,
+#       TRUE ~ N
+#     ))
+#   
+#   return(data)
+#   
+# }
 
 
 ### AGE/SEX/WEIGHT VARIABLE GENERATION

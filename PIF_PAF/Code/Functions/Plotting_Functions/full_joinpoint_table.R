@@ -1,5 +1,23 @@
+### FULL JOINPOINT TABLE FUNCTION ###
 
+# This function is designed to produce a joinpoint summary table
 
+## INPUTS
+#
+# data_apc - APC output from joinpoint
+#
+# data_aapc - AAPC output from joinpoint
+#
+# group_var - variable to group by within tables
+#
+# table_var - variable to plot tables by, with a seperate table made for each level of the variable
+#
+# straification_vars - remaining variables that the trends are stratified for
+
+## OUTPUT
+# gt table object to optionally edit manually/print
+
+## FUNCTION
 full_joinpoint_table <- function(data_apc, data_aapc, group_var, table_var, stratification_vars){
   
   # Combine all variables to group by when creating summary statistics
@@ -88,16 +106,3 @@ full_joinpoint_table <- function(data_apc, data_aapc, group_var, table_var, stra
   
   
 }
-
-# test <- full_joinpoint_table(data_apc, data_aapc, group_var, table_var, stratification_vars)
-# 
-# for(i in names(test)){
-#   
-#   test[[i]] <- test[[i]] |>
-#     cols_label(
-#       age_group = "Age Group"
-#     )
-#   
-#   print(test[[i]])
-#     
-# }

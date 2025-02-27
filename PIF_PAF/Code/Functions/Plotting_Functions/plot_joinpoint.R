@@ -17,7 +17,7 @@
 ## OUTPUT
 # ggplot object to optionally edit manually/print
 
-## MODEL
+## FUNCTION
 plot_joinpoint <- function(data, data.model, facet.x = character(0), facet.y = character(0), colour_var = NA){
   
   # Getting variable list to group by when formatting data
