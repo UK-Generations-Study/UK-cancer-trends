@@ -343,7 +343,7 @@ library(gridExtra)
 #creating a sequence of prevalence 
 prevalencerange <- seq(0, 1, by = 0.01)
 # Define a constant Relative Risk (RR)
-RRconstantlow <- 1.25 # Example RR constant
+RRconstantlow <- 1.2 # Example RR constant
 RRconstant4 <- 1.5
 RRconstantmed <- 2
 RRconstanthigh <- 5
@@ -387,18 +387,25 @@ PAFhigh <- (prevalencerange * (RRconstanthigh-1)) / (1 + (prevalencerange * (RRc
 # changingpaf
 
 # Combining data into one so we can facet_wrap as below
-changingpaf_data <- rbind(data.frame(prev = prevalencerange, PAF = PAFlow, RR = "1.25"), data.frame(prev = prevalencerange, PAF = PAF4, RR = "1.5")) |>
+changingpaf_data <- rbind(data.frame(prev = prevalencerange, PAF = PAFlow, RR = "1.2"), data.frame(prev = prevalencerange, PAF = PAF4, RR = "1.5")) |>
   rbind(data.frame(prev = prevalencerange, PAF = PAFmed, RR = "2.0")) |>
   rbind(data.frame(prev = prevalencerange, PAF = PAFhigh, RR = "5.0"))
 
-pafplotall<- ggplot(changingpaf_data, aes(x = prev, y = PAF, colour = RR)) +
+pafplotall<- ggplot(changingpaf_data, aes(x = prev, y = PAF)) +
   geom_line(size = 1) +
-  labs(title = "Change in PAF by RR and Prevalence",
-       x = "RF Prevalence",
+  labs(title = "Variation in PAF by RR and Risk Factor Prevalence",
+       x = "Risk Factor Population Prevalence",
        y = "PAF") +
   ylim(0, 1) +
   theme_minimal() +
-  facet_wrap(~RR, ncol = 4, labeller = as_labeller(function(x) paste("RR =", x)))
+  facet_wrap(~RR, ncol = 4, labeller = as_labeller(function(x) paste("RR =", x)))+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1), 
+        strip.text = element_text(size = 10, face = "bold"),
+        legend.position = "none", 
+        panel.border = element_rect(color = "black", fill = NA, size = 1), 
+         plot.title = element_text(hjust = 0.5)) +
+  scale_x_continuous(labels = scales::number_format(accuracy = 0.1)) +
+  scale_y_continuous(labels = scales::number_format(accuracy = 0.1))
 
 pafplotall
 
@@ -414,7 +421,7 @@ This is how the PIF changes as population exposure to a risk factor increases by
 exposurerange <- seq(1, 1.5, by = 0.01)
 
 # Define a constant Relative Risk (RR)
-RR <- c(1.25, 1.5, 2.0, 5.0) 
+RR <- c(1.2, 1.5, 2.0, 5.0) 
 
 #calculating the PIFs 
 calculate_pif_data <- function(exposurerange, startingexposure, pif_label) {
@@ -432,27 +439,28 @@ calculate_pif_data <- function(exposurerange, startingexposure, pif_label) {
       names_to = "RR",
       values_to = "PIF"
     ) %>%
-    mutate(PIF_Label = pif_label)  # Add a label for PIF
+    mutate(PIF_Label = pif_label,  # Add a label for PIF
+           RR = gsub("RR_", "RR = ", RR)) # Clean up the RR column 
   
   return(pif_df)
 }
 
 # Calculate PIF data for each range
-pif1_data <- calculate_pif_data(exposurerange, 0.10, ".10")
-pif2_data <- calculate_pif_data(exposurerange, 0.20, ".20")
-pif3_data <- calculate_pif_data(exposurerange, 0.40, ".40")
-pif4_data <- calculate_pif_data(exposurerange, 0.60, ".60")
+pif1_data <- calculate_pif_data(exposurerange, 0.10, ".1")
+pif2_data <- calculate_pif_data(exposurerange, 0.20, ".2")
+pif3_data <- calculate_pif_data(exposurerange, 0.40, ".4")
+pif4_data <- calculate_pif_data(exposurerange, 0.60, ".6")
 
 # Combine all data into one dataframe
 combined_pif_data <- bind_rows(pif1_data, pif2_data, pif3_data, pif4_data) %>%
   mutate(RR = factor(RR, levels = unique(RR)))
 
-pif_plot <- ggplot(combined_pif_data, aes(x = exposure_diff, y = PIF, color = RR)) +
+pif_plot <- ggplot(combined_pif_data, aes(x = exposure_diff, y = PIF)) +
   geom_line(size = 1) +
   facet_grid(PIF_Label ~ RR) +  # Facet by PIF (rows) and RR (columns)
   labs(
-    title = "Theoretical PIFs with different RR and Starting Exposures",
-    x = "Relative Exposure Change (%)",
+    title = "Variation in PIFs by RR and Starting Risk Factor Prevalence",
+    x = "Relative Risk Factor Population Prevalence Change",
     y = "PIF",
     color = "Relative Risk"
   ) +
@@ -460,8 +468,12 @@ pif_plot <- ggplot(combined_pif_data, aes(x = exposure_diff, y = PIF, color = RR
   theme(
     strip.text = element_text(size = 10, face = "bold"),
     axis.text.x = element_text(angle = 45, hjust = 1),
-    legend.position = "top"
-  )
+    legend.position = "none", 
+     panel.border = element_rect(color = "black", fill = NA, size = 1), 
+      plot.title = element_text(hjust = 0.5)
+  ) +
+  scale_y_continuous(sec.axis = sec_axis(~ ., name = "Starting Risk Factor Population Prevalence", 
+                                          labels = NULL))
 
 # Display the plot
 pif_plot
@@ -983,6 +995,7 @@ ggsave(filename = paste0("../Output/Plots/Figure_1.png"), bg = "white", height =
 ```
 
 ## Figure 1a - Trends in cancer incidence - ALTERNATIVE
+
 ```{r, fig.height=10, fig.width=10, warning=F}
 
 # Filter to correct cancer sites in joinpoint model data
@@ -1683,6 +1696,7 @@ for(p in names(jp_plots)){
 \*Fibre is daily fibre deficiency based on the UK recommendation of consuming 30g/day
 
 ## Figure 2b - Trends in Risk Factors Table
+
 ```{r, results = "asis"}
 
 # Combine data
@@ -2085,25 +2099,25 @@ rf_overlay_colorectal <- data_cancer |>
 
 # Now loop through variables
 for(var in unique(rf_trend_plot_overlay$variable)){
-  
+
   rf_trend_bounds <- rf_trend_plot_overlay |>
     filter(variable == var) |>
     pull(value) |>
     range()
-  
+
   cancer_trend_bounds <- rf_overlay_colorectal |>
     pull(value) |>
     range()
-    
-  
+
+
   # Also loop by sex
   for(s in unique(rf_trend_plot_overlay$sex)){
-  
+
     # Filter to specific rf_data
     rf_trend_plot_overlay_var <- rf_trend_plot_overlay |>
       filter(variable == var) |>
       filter(sex == s)
-  
+
     # Make plot
     plot_rf <- ggplot(data = rf_trend_plot_overlay_var, aes(x = year, y = value, colour = level, fill = level)) +
       geom_point() +
@@ -2128,9 +2142,9 @@ for(var in unique(rf_trend_plot_overlay$variable)){
         linetype = ""
       ) +
       scale_x_continuous(breaks = seq(1995, 2020, 5), limits = c(1995, 2020))
-  
+
     # print(plot_rf)
-  
+
     # Make plot
     plot_cancer <- ggplot(data = rf_overlay_colorectal |> filter(sex == s), aes(x = year, y = value, colour = level, fill = level)) +
       geom_point() +
@@ -2156,15 +2170,15 @@ for(var in unique(rf_trend_plot_overlay$variable)){
       ) +
       scale_x_continuous(breaks = seq(2005, 2030, 5), limits = c(2005, 2030), position= "top")
     # print(plot_cancer)
-  
+
     plot <- plot_grid(plot_cancer, plot_rf, nrow = 2)
-  
+
     print(plot)
-  
+
     ggsave(filename = paste0("../Output/Plots/Figure2e_", var, "_", s, ".png"), plot = plot, width = 6, height = 6, bg = "white")
-  
+
   }
-  
+
 }
 
 
@@ -2195,7 +2209,7 @@ plot_rf <- ggplot(data = rf_trend_plot_overlay_var, aes(x = year, y = value, col
   theme(
     axis.text.y = rotatedAxisElementText(90,'y'),
     strip.text = element_text(face = "bold"),
-    legend.position = "bottom"
+    # legend.position = "bottom"
   ) +
   geom_rect(
     xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
@@ -2212,6 +2226,14 @@ plot_rf <- ggplot(data = rf_trend_plot_overlay_var, aes(x = year, y = value, col
   scale_x_continuous(breaks = seq(1995, 2020, 5), limits = c(1995, 2020))
 
 # print(plot_rf)
+
+# Extract legend and remove
+plot_rf_legend <- get_legend(plot_rf)
+plot_rf <- plot_rf +
+  theme(legend.position = "none")
+
+# Add blank to plot_rf_legend
+plot_rf_legend <- plot_grid(get_legend(plot_rf), plot_rf_legend, ncol = 1)
 
 # Make plot
 plot_cancer <- ggplot(data = rf_overlay_endo |> filter(sex == s), aes(x = year, y = value, colour = level, fill = level)) +
@@ -2240,10 +2262,166 @@ plot_cancer <- ggplot(data = rf_overlay_endo |> filter(sex == s), aes(x = year, 
 # print(plot_cancer)
 
 plot <- plot_grid(plot_cancer, plot_rf, nrow = 2)
+plot <- plot_grid(plot, plot_rf_legend, nrow = 1, rel_widths = c(1, 0.3))
 
 print(plot)
 
 ggsave(filename = paste0("../Output/Plots/Figure2e_bmi_endomtrium.png"), plot = plot, width = 6, height = 6, bg = "white")
+
+```
+
+## Figure 2e - long
+```{r, fig.height= 14, fig.width = 8}
+
+
+# Create and the clean the desired risk factor data
+rf_trend_plot_overlay <- rf_trend_plot |>
+  filter(case_when(
+    variable == "alcohol_amt" ~ level %in% c("Moderate Drinker", "Heavy Drinker"),
+    variable == "bmi" ~ level %in% c("Overweight", "Obese"),
+    variable == "physical_activity_old" ~ level == "Below Recommendations",
+    variable == "fibre_consumption" ~ level == "Meets Guidelines",
+    TRUE ~ variable %in% c("processedmeat_consumption_median", "redmeat_consumption_median")
+  )) |>
+  filter(age_group != "50+") |>
+  mutate(
+    
+    level = case_when(
+      level == "Meets Guidelines" ~ "Below Guidelines",
+      variable == "redmeat_consumption_median" ~ "Red Meat",
+      variable == "processedmeat_consumption_median" ~ "Processed Meat",
+      TRUE ~ level
+    ),
+    
+    variable = case_when(
+      variable == "redmeat_consumption_median" ~ "meat_consumption",
+      variable == "processedmeat_consumption_median" ~ "meat_consumption",
+      TRUE ~ variable
+    ),
+    
+    value = case_when(
+      level == "Below Guidelines" ~ 1 - value,
+      TRUE ~ value
+    )
+    
+  ) |>
+  select(variable, level, year, value, sex)
+
+# Extract the colorectal cancer rates
+rf_overlay_colorectal <- data_cancer |>
+  filter(cancer_site == "Colorectum") |>
+  filter(age_group == "20-49") |>
+  select(year, value = Rate, sex) |>
+  mutate(level = "Colorectal Cancer Rate",
+         variable = "Cancer Rate")
+
+# Create plot for colorectal
+
+cancer_trend_bounds <- rf_overlay_colorectal |>
+    pull(value) |>
+    range()
+
+for(s in unique(rf_trend_plot_overlay$sex)){
+
+  plot_cancer <- ggplot(data = rf_overlay_colorectal |> filter(sex == s), aes(x = year, y = value, colour = level, fill = level)) +
+        geom_point() +
+        geom_line() +
+        scale_y_log10(breaks = scales::breaks_log(), limits = cancer_trend_bounds) +
+        theme_minimal() +
+        theme(
+          axis.text.y = rotatedAxisElementText(90,'y'),
+          strip.text = element_blank(),
+          legend.position = "none"
+        ) +
+        geom_rect(
+          xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
+          colour = "black", fill = NA, inherit.aes = FALSE
+        ) +
+        labs(
+          # title = paste0("Trends of Colorectal Cancer and ", var, " in 20-49 ", s),
+          x = "Year",
+          y = "Cancer Rate",
+          colour = "",
+          fill = "",
+          linetype = ""
+        ) +
+        scale_x_continuous(breaks = seq(2005, 2030, 5), limits = c(2005, 2030), position= "top") +
+        scale_y_continuous(sec.axis = sec_axis(~ ., name = "Colorectal Cancer Rate", 
+                                            labels = NULL))
+  
+  # Get blank legend
+  blank_legend <- get_legend(plot_cancer)
+
+  # Initialise plot list
+  plot_list <- list("Cancer" = plot_cancer)
+  legend_list <- list("Cancer" = blank_legend)
+  
+  # Now loop through variables
+  for(var in unique(rf_trend_plot_overlay$variable)){
+    
+    rf_trend_bounds <- rf_trend_plot_overlay |>
+      filter(variable == var) |>
+      pull(value) |>
+      range()
+  
+    # Filter to specific rf_data
+    rf_trend_plot_overlay_var <- rf_trend_plot_overlay |>
+      filter(variable == var) |>
+      filter(sex == s)
+  
+    # Make plot
+    plot_rf <- ggplot(data = rf_trend_plot_overlay_var, aes(x = year, y = value, colour = level, fill = level)) +
+      geom_point() +
+      geom_line() +
+      scale_y_log10(breaks = scales::breaks_log(), limits = rf_trend_bounds) +
+      theme_minimal() +
+      theme(
+        axis.text.y = rotatedAxisElementText(90,'y'),
+        strip.text = element_text(face = "bold"),
+        # legend.position = "none"
+      ) +
+      geom_rect(
+        xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
+        colour = "black", fill = NA, inherit.aes = FALSE
+      ) +
+      labs(
+        # title = paste0("Trends of Colorectal Cancer and ", var, " in 20-49"),
+        x = NULL,
+        y = if_else(var == "meat_consumption", "Daily Consumption (g)", "Prevalence"),
+        colour = "",
+        fill = "",
+        linetype = ""
+      ) +
+      scale_x_continuous(breaks = seq(1995, 2020, 5), limits = c(1995, 2020)) +
+      scale_y_continuous(sec.axis = sec_axis(~ ., name = var, 
+                                          labels = NULL))
+    
+    # Extract legend and remove
+    legend_list[[var]] <- get_legend(plot_rf)
+    plot_rf <- plot_rf +
+      theme(legend.position = "none")
+    
+    # If last plot in RF, add x axis label
+    if(which(unique(rf_trend_plot_overlay$variable) == var) == length(unique(rf_trend_plot_overlay$variable))){
+      plot_rf <- plot_rf +
+        labs(x = "Year")
+    }
+    
+    plot_list[[var]] <-plot_rf
+    
+  }
+  
+  plot <- plot_grid(plotlist = plot_list, ncol = 1, rel_heights = c(1.05, rep(1, length(plot_list)-2), 1.05))
+  plot_legend <- plot_grid(plotlist = legend_list, ncol = 1, rel_heights = c(1.05, rep(1, length(plot_list)-2), 1.05))
+  plot <- plot_grid(plot, plot_legend, nrow = 1, rel_widths = c(1, 0.35))
+  
+  print(plot)
+  
+  ggsave(filename = paste0("../Output/Plots/Figure2e_Alt_", s, ".png"), plot = plot, width = 8, height = 14, bg = "white")
+  
+
+}
+
 
 ```
 

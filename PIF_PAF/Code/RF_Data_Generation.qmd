@@ -59,15 +59,15 @@ if(Sys.getenv("RSTUDIO") == '1' & !knitr::is_html_output()) { # If using Rstudio
 ## Sourcing functions
 ```{r}
 
-source("Functions/hse_data_cleaning_functions.R")
-source("Functions/alcohol_data_generation.R")
-source("Functions/bmi_data_generation.R")
-source("Functions/physical_activity_old_data_generation.R")
-source("Functions/physical_activity_data_generation.R")
-source("Functions/diet_data_generation.R")
-source("Functions/diet_data_generation_continuous.R")
-source("Functions/diet_data_generation_cat_mean.R")
-source("Functions/smoking_data_generation.R")
+source("Functions/Data_Generation/hse_data_cleaning_functions.R")
+source("Functions/Data_Generation/alcohol_data_generation.R")
+source("Functions/Data_Generation/bmi_data_generation.R")
+source("Functions/Data_Generation/physical_activity_old_data_generation.R")
+source("Functions/Data_Generation/physical_activity_data_generation.R")
+source("Functions/Data_Generation/diet_data_generation.R")
+source("Functions/Data_Generation/diet_data_generation_continuous.R")
+source("Functions/Data_Generation/diet_data_generation_cat_mean.R")
+source("Functions/Data_Generation/smoking_data_generation.R")
 
 ```
 
@@ -88,8 +88,8 @@ if(user_options$imd_stratification){
 ### HSE - Alcohol
 ```{r}
 
-alcohol_df <- alcohol_data_gen(filepath = "../../../Data", user_options) |>
-  fix_hse_2004_weighting()
+alcohol_df <- alcohol_data_gen(filepath = "../../../Data", user_options)
+
 rf_df <- rbind(rf_df, alcohol_df)
 
 ```
@@ -97,8 +97,8 @@ rf_df <- rbind(rf_df, alcohol_df)
 ### HSE - BMI
 ```{r}
 
-bmi_df <- bmi_data_gen(filepath = "../../../Data", user_options) |>
-  fix_hse_2004_weighting()
+bmi_df <- bmi_data_gen(filepath = "../../../Data", user_options)
+
 rf_df <- rbind(rf_df, bmi_df)
 
 ```
@@ -106,16 +106,15 @@ rf_df <- rbind(rf_df, bmi_df)
 ### HSE - Smoking
 ```{r}
 
-smoking_df <- smoking_data_gen(filepath = "../../../Data", user_options) |>
-  fix_hse_2004_weighting()
+smoking_df <- smoking_data_gen(filepath = "../../../Data", user_options)
+
 rf_df <- rbind(rf_df, smoking_df)
 
 ```
 ### HSE - Physical Activity (Old)
 ```{r}
 
-activity_old_df <- physical_activity_old_data_gen(filepath = "../../../Data", user_options) |>
-  fix_hse_2004_weighting()
+activity_old_df <- physical_activity_old_data_gen(filepath = "../../../Data", user_options)
 
 rf_df <- rbind(rf_df, activity_old_df)
 
@@ -124,8 +123,7 @@ rf_df <- rbind(rf_df, activity_old_df)
 ### HSE - Physical Activity
 ```{r}
 
-activity_df <- physical_activity_data_gen(filepath = "../../../Data", user_options) |>
-  fix_hse_2004_weighting()
+activity_df <- physical_activity_data_gen(filepath = "../../../Data", user_options)
 
 rf_df <- rbind(rf_df, activity_df)
 
