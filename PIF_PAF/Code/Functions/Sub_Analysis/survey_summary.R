@@ -18,7 +18,7 @@ if(Sys.getenv("RSTUDIO") == '1' & !knitr::is_html_output()) { # If using Rstudio
 library(dplyr)
 
 # Read in dictionary of UKDS data
-dict <- read.csv("../../Documentation/UKDS_Dictionary.csv")
+dict <- read.csv("../../../Documentation/UKDS_Dictionary.csv")
 
 # Loop through HSE datasets
 hse_ukds <- dict |>
@@ -34,7 +34,7 @@ for(hse_number in hse_ukds){
   filename <- dict$Indiv_Dataset_Name[dict$UKDS_Number == hse_number]
   
   # Read in file
-  data <- read.delim(file = paste0("../../../../Data/UKDA-", hse_number, "-tab/tab/", filename))
+  data <- read.delim(file = paste0("../../../../../Data/UKDA-", hse_number, "-tab/tab/", filename))
   
   # Extract N
   N <- nrow(data)
@@ -63,7 +63,7 @@ for(year_range in hse_ndns){
   filename <- dict$Indiv_Dataset_Name[dict$Year == year_range]
   
   # Read in file
-  data <- read.delim(file = paste0("../../../../Data/UKDA-", ndns_number, "-tab/tab/", filename))
+  data <- read.delim(file = paste0("../../../../../Data/UKDA-", ndns_number, "-tab/tab/", filename))
   
   colnames(data) <- tolower(colnames(data))
   
@@ -82,3 +82,7 @@ for(year_range in hse_ndns){
   }
   
 }
+
+# Get N participants for the GHS dataset
+ghs_data <- read.delim(file = "../../../../../Data/UKDA-5640-tab/tab/ghs05client.tab", header = F)
+cat(paste0("GHS - 2005: N = ", nrow(ghs_data)-1, "\n"))
