@@ -222,7 +222,8 @@ data_childhood_bmi <- data_childhood_bmi |>
   mutate(sex = if_else(sex == "Boys", "Men", "Women")) |>
   mutate(variable = "bmi_children") |>
   mutate(age_group = gsub("\\syears", "", age_group)) |>
-  rename(year = name)
+  rename(year = name) |>
+  rolling_average()
 
 
 ```
@@ -1695,6 +1696,13 @@ for(s in unique(rf_trend_plot_overlay$sex)){
   plot <- plot_grid(plotlist = plot_list, ncol = 1, rel_heights = c(1.05, rep(1, length(plot_list)-2), 1.05))
   plot_legend <- plot_grid(plotlist = legend_list, ncol = 1, rel_heights = c(0.95, rep(1, length(plot_list)-2), 1.05))
   plot <- plot_grid(plot, plot_legend, nrow = 1, rel_widths = c(1, 0.35))
+  
+  plot <- ggdraw() +
+    draw_plot(plot, 0, 0, 1, 0.97, vjust = 0) +
+    draw_label(paste0("Trends in Colorectal Cancer and Risk Factors in 20-49 ", s), fontface = 'bold', 
+               x = 0, y = 0.99,  
+               hjust = -0.05, vjust = 1,  
+               size = 14)
   
   print(plot)
   
