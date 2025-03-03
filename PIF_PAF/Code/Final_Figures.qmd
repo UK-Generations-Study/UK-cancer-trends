@@ -514,7 +514,7 @@ jp_plots[["physical_activity"]] <- plot_joinpoint(
   ) +
   scale_color_manual( #fixing the colors
     values = c(
-      "physical_activity" = "#ff5e5b",
+      "physical_activity" = "#5fa8d3",
       "physical_activity_old" = "#4f518c"
     ),
     labels = c("physical_activity" = "Physical Activity Below new UK Guidelines**",
@@ -556,7 +556,7 @@ jp_plots[["meat_consumption"]] <- plot_joinpoint(
   scale_color_manual(
     values = c(
       "redmeat_consumption_median" = "#4f518c",
-      "processedmeat_consumption_median" = "#ff5e5b"
+      "processedmeat_consumption_median" = "#5fa8d3"
     ),
     labels = c(
       "redmeat_consumption_median" = "Median Red Meat Consumption",
@@ -1673,7 +1673,7 @@ for(s in unique(rf_trend_plot_overlay$sex)){
           fill = "",
           linetype = ""
         ) +
-        scale_colour_manual(values = c("Colorectal Cancer Rate" = "#ff9500"))
+        scale_colour_manual(values = c("Colorectal Cancer Rate" = "#ff9500")) +
         scale_x_continuous(breaks = seq(2005, 2030, 5), limits = c(2005, 2030), position= "top")
   
   # Get blank legend
@@ -1781,7 +1781,7 @@ for(s in unique(rf_trend_plot_overlay$sex)){
         scale_color_manual(
           values = c(
             "Red Meat" = "#4f518c",
-            "Processed Meat" = "#ff5e5b"
+            "Processed Meat" = "#5fa8d3"
           ),
           # labels = c(
           #   "Red Meat" = "Median Red Meat Consumption",
