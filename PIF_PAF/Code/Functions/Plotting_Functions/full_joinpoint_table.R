@@ -65,10 +65,12 @@ full_joinpoint_table <- function(data_apc, data_aapc, group_var, table_var, stra
       select(-sym(table_var)) |>
       arrange(across(all_of(stratification_vars))) |>
       gt(groupname_col = group_var) |>
+      # Make column header bold
       tab_style(
         style = cell_text(weight = "bold"),
         locations = cells_column_labels()
       ) |>
+      # Formatting group rows
       tab_style(
         style = list(
           cell_text(weight = "bold"),
@@ -78,6 +80,7 @@ full_joinpoint_table <- function(data_apc, data_aapc, group_var, table_var, stra
         ),
         locations = cells_row_groups(groups = everything())
       ) |>
+      # Adding spanners to differentiate between AAPC and APC analysis
       tab_spanner(
         id = "AAPC_spanner",
         label = "AAPC",
@@ -88,6 +91,7 @@ full_joinpoint_table <- function(data_apc, data_aapc, group_var, table_var, stra
         label = "Most Recent APC",
         columns = c("APC", ends_with(".APC"))
       ) |>
+      # Changing column labels to pretty labels
       cols_label(
         time.period.AAPC = "Time Period",
         CI.AAPC = "CI 95%",
@@ -95,8 +99,46 @@ full_joinpoint_table <- function(data_apc, data_aapc, group_var, table_var, stra
         time.period.APC = "Time Period",
         CI.APC = "CI 95%",
         P.Value.APC = "P Value",
+      ) |>
+      # Reodering columns
+      cols_move_to_start(columns = c(stratification_vars, "time.period.AAPC","AAPC", "CI.AAPC", "P.Value.AAPC" , "time.period.APC","APC",  "CI.APC", "P.Value.APC" )) |>
+      cols_align(
+        columns = everything(),
+        align = "right"
+      ) |>
+      cols_align(
+        columns = stratification_vars,
+        align = "center"
+      ) |>
+      # Manually assigning column widths
+      cols_width(
+        starts_with("time.period") ~ px(120),
+        starts_with("CI") ~ px(110),
+        "AAPC" ~ px(70),
+        "APC" ~ px(70),
+        starts_with("P.Value") ~ px(70),
+        everything() ~ px(100)
+      ) |>
+      # Adding border between stratification_vars and AAPC, and AAPC and APC
+      tab_style(
+        style = cell_borders(
+          sides = c("left"),
+          weight = px(2)
+        ),
+        locations = cells_body(
+          columns = starts_with("time.period")
+        )
+      ) |>
+      # Adding footnotes defining AAPC and APC
+      tab_footnote(
+        footnote = "Average Annual Percentage Change",
+        locations = cells_column_labels(columns = AAPC)
+      ) |>
+      tab_footnote(
+        footnote = "Annual Percentage Change",
+        locations = cells_column_labels(columns = APC)
       )
-
+    
     output[[table_value]] <- data_complete_table
 
   }
