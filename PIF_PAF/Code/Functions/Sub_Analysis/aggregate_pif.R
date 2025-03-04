@@ -19,6 +19,8 @@ setwd("../../")
 library(tidyr)
 library(dplyr)
 library(readxl)
+library(stringr)
+library(gt)
 
 # Read in functions
 source("Functions/PAF_Calculations/pif_function.R")
@@ -59,3 +61,5 @@ data_pif <- merge(PIF, data_cancer, by = c("cancer_site", "sex", "age_group"), a
 
 data_pif |>
   gt()
+
+write.csv(data_pif, r"(../Data/aggregate_pif.csv)")
