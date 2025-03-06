@@ -1851,8 +1851,11 @@ data_BMI_paf <-rbind(pafs_byrf_under50,pafs_byrf_over50) %>%
     values_to = "PAF"   
   ) %>%
   mutate(
-    cancer_site = gsub("PAF", "",cancer_site)
-  )
+    cancer_site = gsub("PAF", "",cancer_site),
+    year = year + 10 # Applying 10 year time lag
+  ) |>
+  # Now filter out PAF past 2019
+  filter(year <= 2019)
 
 BMI_paf_cases <- data_BMI_paf %>%
   left_join(
@@ -1860,7 +1863,9 @@ BMI_paf_cases <- data_BMI_paf %>%
   ) %>%
   mutate(
     attributable = PAF * count, 
-    attributable = ceiling(attributable)
+    attributable = ceiling(attributable),
+    attributable_rate = PAF * Rate,
+    non_attributable_rate = Rate - attributable_rate
   )
 
 
@@ -1868,44 +1873,91 @@ for (site in unique(BMI_paf_cases$cancer_site)) {
   
   # Filter data
   df_filtered <- BMI_paf_cases %>% 
+    filter(Rate > 0) |>
     filter(cancer_site == site) %>%
-    mutate(PAF = PAF * 100)  # Convert PAF to percentage
+    pivot_longer(cols = c("attributable_rate", "Rate", "non_attributable_rate"), names_to = "rate_type")
   
   # Create the plot
-  p <- ggplot(df_filtered, aes(x = factor(year))) +  
+  p <- ggplot(df_filtered, aes(x = year, y = value, colour = rate_type)) +
     # Bar chart for PAF
-    geom_col(aes(y = PAF), fill = "skyblue", alpha = 0.7) + 
-    
-    # Line and points for Attributable cases 
-    geom_line(aes(y = attributable / max(attributable, na.rm = TRUE) * max(PAF, na.rm = TRUE)), 
-              group = 1, color = "red", size = 1) + 
-    geom_point(aes(y = attributable / max(attributable, na.rm = TRUE) * max(PAF, na.rm = TRUE)), 
-               color = "red", size = 3) +
-    
+    # geom_col(aes(y = PAF), fill = "skyblue", alpha = 0.7) + 
+    geom_line() +
+    geom_point() +
     # Y-axis
-    scale_y_continuous(
-      name = "PAF (%)",
-      sec.axis = sec_axis(~ . * (max(df_filtered$attributable, na.rm = TRUE) / 
-                                 max(df_filtered$PAF, na.rm = TRUE)), 
-                          name = "Attributable Cases")
-    ) +
-    facet_grid(age_group ~ sex) +
+    facet_grid(age_group ~ sex, scales = "free_y") +
     theme(axis.text.x = element_text(angle = 45, hjust = 1)) + 
-    
+    scale_y_log10(breaks = scales::breaks_log(n = 8)) +
     # Labels and Theme
     labs(
       x = "Year",  # Corrected axis label
       title = paste("PAF vs Attributable Cases -", site)
     ) +
-    theme_minimal()
+    theme_minimal() +
+    geom_rect(
+      xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
+      colour = "black", fill = NA, inherit.aes = FALSE
+    ) +
+    theme(strip.text = element_text(face = "bold"))
 
   print(p)  
   
   # Save the plot as a PNG file
   # ggsave(paste0("PAF_Attributable_", site, ".png"), plot = p, width = 8, height = 6)
+  
+}
+
+
+# Output data as a .csv
+BMI_paf_cases_jp <- BMI_paf_cases |>
+  filter(!is.na(count)) |>
+  pivot_longer(cols = c("attributable_rate", "Rate", "non_attributable_rate"), names_to = "rate_type", values_to = "incidence_rate") |>
+  filter(cancer_site != "Oral") |>
+  filter(!(cancer_site == "Breast" & age_group == "20-49")) |>
+  arrange(age_group, sex, cancer_site, variable, rate_type, year)
+
+write.csv(BMI_paf_cases_jp, file = "../Data/attr_rate_bmi.csv")
+
+
+```
+
+## NOT IN PAPER: PAF AAPC
+```{r}
+bmi_paf_apc <- read.delim("../Data/Joinpoint_Results/BMI_Attributable/jp_bmi_attributable.Export.APC.txt") |>
+  mutate("sex-age_group" = paste0(sex, "-", age_group)) |>
+  mutate(rate_type = case_when(
+    rate_type == "Rate" ~ "Overall",
+    rate_type == "attributable_rate" ~ "Attributable",
+    rate_type == "non_attributable_rate" ~ "Non-Attributable"
+  ))
+
+bmi_paf_aapc <- read.delim("../Data/Joinpoint_Results/BMI_Attributable/jp_bmi_attributable.Export.AAPC.txt") |>
+  mutate("sex-age_group" = paste0(sex, "-", age_group)) |>
+  mutate(rate_type = case_when(
+    rate_type == "Rate" ~ "Overall",
+    rate_type == "attributable_rate" ~ "Attributable",
+    rate_type == "non_attributable_rate" ~ "Non-Attributable"
+  ))
+
+bmi_jp_table <- full_joinpoint_table(data_apc = bmi_paf_apc,
+                                     data_aapc = bmi_paf_aapc,
+                                     group_var = "cancer_site",
+                                     table_var = "sex-age_group",
+                                     stratification_vars = "rate_type")
+
+for(group in names(bmi_jp_table)){
+  
+  bmi_jp_table[[group]] <- bmi_jp_table[[group]] |>
+    cols_width(rate_type ~ px(145)) |>
+    tab_header(paste0("Trends in BMI-Attributable Cases in ", group))
+  
+  print(bmi_jp_table[[group]])
+  
+  # gtsave()
+  
 }
 
 
 ```
+
 
 
