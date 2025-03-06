@@ -1921,7 +1921,7 @@ write.csv(BMI_paf_cases_jp, file = "../Data/attr_rate_bmi.csv")
 ```
 
 ## NOT IN PAPER: PAF AAPC
-```{r}
+```{r, results = "asis"}
 bmi_paf_apc <- read.delim("../Data/Joinpoint_Results/BMI_Attributable/jp_bmi_attributable.Export.APC.txt") |>
   mutate("sex-age_group" = paste0(sex, "-", age_group)) |>
   mutate(rate_type = case_when(
@@ -1956,8 +1956,64 @@ for(group in names(bmi_jp_table)){
   
 }
 
+```
+
+## NOT IN PAPER: PAF ATTRIBUTABLE
+```{r, results = "asis"}
+
+bmi_paf_aapc <- read.delim("../Data/Joinpoint_Results/BMI_Attributable/jp_bmi_attributable.Export.AAPC.txt")
+
+bmi_paf_attr <- bmi_paf_aapc |>
+  pivot_wider(names_from = "rate_type", values_from = "AAPC", id_cols = c("age_group", "sex", "cancer_site", "variable")) |>
+  mutate(attr_trend = case_when(
+    non_attributable_rate > Rate ~ NA,
+    non_attributable_rate < 0 | Rate < 0 ~ NA,
+    TRUE ~ 1 - (non_attributable_rate/Rate)
+  ))
+
+for(s in c("Men", "Women")){
+  
+  bmi_paf_attr_s <- bmi_paf_attr |>
+    filter(sex == s) |>
+    mutate(attr_trend = round(100*attr_trend, digits = 2)) |>
+    group_by(cancer_site) |>
+    gt() |>
+    # Make column header bold
+    tab_style(
+      style = cell_text(weight = "bold"),
+      locations = cells_column_labels()
+    ) |>
+    # Formatting group rows
+    tab_style(
+      style = list(
+        cell_text(weight = "bold"),
+        cell_fill(color = "lightgray"),
+        cell_borders(sides = "top"),
+        cell_borders(sides = "bottom")
+      ),
+      locations = cells_row_groups(groups = everything())
+    ) |>
+    tab_spanner(
+      label = "AAPC",
+      columns = c("Rate", "attributable_rate", "non_attributable_rate")
+    ) |>
+    cols_label(
+      age_group ~ "Age Group",
+      sex ~ "Sex",
+      variable ~ "Variable",
+      attributable_rate ~ "Attributable Rate",
+      non_attributable_rate ~ "Non-Attributable Rate",
+      attr_trend ~ "Trend Attributable (%)"
+    ) |>
+    tab_header(paste0("% of Trend Attributable to BMI in ", s))
+  
+  print(bmi_paf_attr_s)
+  
+}
+
 
 ```
+
 
 
 
