@@ -1835,3 +1835,77 @@ for(s in unique(rf_trend_plot_overlay$sex)){
 
 
 ```
+
+## NOT IN PAPER: PAF trends
+```{r}
+#Calculating the PAFs
+pafs_byrf_under50<- paf_calculation(data_rf, "20-49")
+pafs_byrf_over50<- paf_calculation(data_rf, "50+")
+data_BMI_paf <-rbind(pafs_byrf_under50,pafs_byrf_over50) %>%
+  filter(
+    variable == "BMI"
+  )%>%
+  pivot_longer(
+    cols = ends_with("PAF"),   
+    names_to = "cancer_site",  
+    values_to = "PAF"   
+  ) %>%
+  mutate(
+    cancer_site = gsub("PAF", "",cancer_site)
+  )
+
+BMI_paf_cases <- data_BMI_paf %>%
+  left_join(
+    data_ALLcancer, by = c("year", "sex", "age_group", "cancer_site")
+  ) %>%
+  mutate(
+    attributable = PAF * count, 
+    attributable = ceiling(attributable)
+  )
+
+
+for (site in unique(BMI_paf_cases$cancer_site)) {
+  
+  # Filter data
+  df_filtered <- BMI_paf_cases %>% 
+    filter(cancer_site == site) %>%
+    mutate(PAF = PAF * 100)  # Convert PAF to percentage
+  
+  # Create the plot
+  p <- ggplot(df_filtered, aes(x = factor(year))) +  
+    # Bar chart for PAF
+    geom_col(aes(y = PAF), fill = "skyblue", alpha = 0.7) + 
+    
+    # Line and points for Attributable cases 
+    geom_line(aes(y = attributable / max(attributable, na.rm = TRUE) * max(PAF, na.rm = TRUE)), 
+              group = 1, color = "red", size = 1) + 
+    geom_point(aes(y = attributable / max(attributable, na.rm = TRUE) * max(PAF, na.rm = TRUE)), 
+               color = "red", size = 3) +
+    
+    # Y-axis
+    scale_y_continuous(
+      name = "PAF (%)",
+      sec.axis = sec_axis(~ . * (max(df_filtered$attributable, na.rm = TRUE) / 
+                                 max(df_filtered$PAF, na.rm = TRUE)), 
+                          name = "Attributable Cases")
+    ) +
+    facet_grid(age_group ~ sex) +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1)) + 
+    
+    # Labels and Theme
+    labs(
+      x = "Year",  # Corrected axis label
+      title = paste("PAF vs Attributable Cases -", site)
+    ) +
+    theme_minimal()
+
+  print(p)  
+  
+  # Save the plot as a PNG file
+  # ggsave(paste0("PAF_Attributable_", site, ".png"), plot = p, width = 8, height = 6)
+}
+
+
+```
+
+
