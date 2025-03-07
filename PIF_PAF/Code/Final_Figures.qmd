@@ -679,7 +679,9 @@ data_attr_cases_bar_alt <- data_attr_cases_bar |>
 # Merge in confidence intervals
 data_attr_cases_bar_alt <- merge(data_attr_cases_bar_alt, data_paf_agg_ci, by.x = c("cancer_site", "age_group", "sex"), by.y = c("Cancer_sites", "age_group", "sex")) |>
   mutate(age_group = factor(age_group, levels = c("50+", "20-49")),
-         sex = factor(sex, levels = c("Women", "Men")))
+         sex = factor(sex, levels = c("Women", "Men"))) |>
+  # TEMPORARY CODE
+  filter(!(cancer_site == "Endometrium" & sex == "Men"))
 
 # PAF Plot
 data_attr_bar_paf <- ggplot(data_attr_cases_bar_alt, aes(x = cancer_site, y = PAF, fill = age_group)) +
@@ -1421,7 +1423,9 @@ data_attr_cases_bar <- data_attr_cases_bar |>
     variable = ifelse(variable == "Fibre", "Fibre Intake Deficiency", variable),
     variable = ifelse(variable == "Processed Meat", "Processed Meat Consumption", variable),
     variable = ifelse(variable == "Red Meat", "Red Meat Consumption", variable)
-  )
+  ) |>
+  # TEMPORARY CODE
+  filter(!(cancer_site == "Endometrium" & sex == "Men"))
 
 for (var in unique (data_attr_cases_bar$variable)) {
 
