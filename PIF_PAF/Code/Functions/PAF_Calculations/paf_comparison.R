@@ -34,11 +34,11 @@ if(Sys.getenv("RSTUDIO") == '1' & !knitr::is_html_output()) { # If using Rstudio
 
 
 ## Read in RF data
-data_rf <- read.csv("../../../../Data/Cleaned_Data/clean_rf_data.csv")
+data_rf <- read.csv("../../../../../Data/Cleaned_Data/clean_rf_data.csv")
 
 ## Read in RR estimates
-data_rr_u50 <- read.csv("../../Data/relativerisk_under50.csv", na.strings = "")
-data_rr_oe50 <- read.csv("../../Data/relativerisk_over50.csv", na.strings = "")
+data_rr_u50 <- read.csv("../../../Data/relativerisk_under50.csv", na.strings = "")
+data_rr_oe50 <- read.csv("../../../Data/relativerisk_over50.csv", na.strings = "")
 
 
 # Clean up RR estimates
@@ -400,4 +400,4 @@ for(i in 1:N_iterations){
 }
 
 ## Output data
-write.csv(data_complete_paf_analysis, file = "../../Data/paf_comparison.csv", row.names = F)
+write.csv(data_complete_paf_analysis, file = "../../../Data/paf_comparison.csv", row.names = F)
