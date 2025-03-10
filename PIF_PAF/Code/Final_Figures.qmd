@@ -1357,7 +1357,7 @@ data_attr_cases_bar <- data_paf_long_individual %>%
   ) |>
   mutate(
     PAF = PAF *100, 
-    PAF = ifelse(cancer_site == "Breast" & sex == "Men", 0, PAF)
+    PAF = ifelse(cancer_site %in% c("Breast", "Endometrium") & sex == "Men", 0, PAF)
   ) %>% 
   filter(
     year == 2019 
@@ -1407,6 +1407,7 @@ data_attr_cases_bar_ordering  <- data_attr_cases_bar |>
 # Now apply orering to data_attr_cases_bar
 data_attr_cases_bar <- data_attr_cases_bar |>
   merge(data_paf_spec_ci, by = c("cancer_site", "variable", "sex", "age_group"), all.x = T) |>
+  # merge(data_paf_spec_ci, by = c("cancer_site", "variable", "sex", "age_group")) |>
   mutate(
     
     cancer_site = factor(cancer_site, levels = data_attr_cases_bar_ordering),
@@ -1453,7 +1454,7 @@ for (var in unique (data_attr_cases_bar$variable)) {
   # Add x axis scale depending on variable
   if(max(subset_data$PAF) > 20){
     data_attr_bar_paf <- data_attr_bar_paf +
-      ylim(0, 50)
+      ylim(0, 60)
   } else {
     data_attr_bar_paf <- data_attr_bar_paf +
       ylim(0, 20)
