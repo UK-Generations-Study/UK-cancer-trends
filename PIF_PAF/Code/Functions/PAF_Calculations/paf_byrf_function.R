@@ -134,9 +134,9 @@ paf_calculation <- function(dataframe, age_group_of_interest) {
   err <- rr %>%
     mutate(
       Fibre = log(1/Fibre)/10,
-      Processed_Meat = (Processed_Meat-1) /100, 
+      Processed_Meat = (Processed_Meat-1) /50, 
       Red_Meat= (Red_Meat-1) /100, 
-      Red_Processed._Meat = (Red_Processed._Meat-1) /100,
+      #Red_Processed._Meat = (Red_Processed._Meat-1) /100,
       Light_alcohol = (Light_alcohol-1), 
       Medium_alcohol = (Medium_alcohol-1),
       Heavy_alcohol = (Heavy_alcohol-1),
