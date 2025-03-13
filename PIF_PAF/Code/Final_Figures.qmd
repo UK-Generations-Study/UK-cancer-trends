@@ -1457,7 +1457,7 @@ for (var in unique (data_attr_cases_bar$variable)) {
       ylim(0, 60)
   } else {
     data_attr_bar_paf <- data_attr_bar_paf +
-      ylim(0, 20)
+      ylim(0, 25)
   }
     
   print(data_attr_bar_paf)
