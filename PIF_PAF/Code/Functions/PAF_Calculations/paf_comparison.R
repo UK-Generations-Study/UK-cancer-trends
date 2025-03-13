@@ -363,7 +363,8 @@ for(i in 1:N_iterations){
       ERR_calc = case_when(
         variable == "physical_activity_old" ~ log(1/RR),
         variable == "fibre_consumption" ~ log(1/RR)/10,
-        variable %in% c("redmeat_consumption", "processed_meat_consumption") ~ (RR-1)/100,
+        variable %in% c("redmeat_consumption") ~ (RR-1)/100,
+        variable %in% c("processed_meat_consumption") ~ (RR-1)/50,
         TRUE ~ RR - 1
       ),
       
