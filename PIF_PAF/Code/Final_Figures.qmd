@@ -1921,6 +1921,56 @@ write.csv(BMI_paf_cases_jp, file = "../Data/attr_rate_bmi.csv")
 
 ```
 
+## NOT IN PAPER: PAF trends first and last datapoint
+```{r, results = "asis"}
+
+for(s in unique(BMI_paf_cases$sex)){
+  
+  for(age in unique(BMI_paf_cases$age_group)){
+    
+    BMI_paf_cases_first_last <- BMI_paf_cases |> 
+      filter(age_group == age) |>
+      filter(sex == s) |>
+      filter(!is.na(count)) |>
+      pivot_longer(cols = c("attributable_rate", "Rate", "non_attributable_rate"), names_to = "rate_type", values_to = "incidence_rate") |>
+      arrange(year) |>
+      group_by(cancer_site, rate_type) |>
+      summarise(
+        
+        first_rate = round(incidence_rate[1], digits = 2),
+        
+        last_rate = round(incidence_rate[n()], digits = 2)
+        
+      ) |>
+      ungroup() |>
+      group_by(cancer_site) |>
+      # arrange(age_group, sex, rate_type) |>
+      gt() |>
+      # Make column header bold
+      tab_style(
+        style = cell_text(weight = "bold"),
+        locations = cells_column_labels()
+      ) |>
+      # Formatting group rows
+      tab_style(
+        style = list(
+          cell_text(weight = "bold"),
+          cell_fill(color = "lightgray"),
+          cell_borders(sides = "top"),
+          cell_borders(sides = "bottom")
+        ),
+        locations = cells_row_groups(groups = everything())
+      ) |>
+      tab_header(paste0("Cancer Trend Attribution Start/Stop for ", age, " ", s))
+
+    print(BMI_paf_cases_first_last)
+    
+  }
+  
+}
+
+```
+
 ## NOT IN PAPER: PAF AAPC
 ```{r, results = "asis"}
 bmi_paf_apc <- read.delim("../Data/Joinpoint_Results/BMI_Attributable/jp_bmi_attributable.Export.APC.txt") |>
