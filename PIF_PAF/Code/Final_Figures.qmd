@@ -830,7 +830,7 @@ p <- ggplot(BMI_paf_cases_u50, aes(x = year, y = value, colour = rate_type)) +
 print(p)
 
 # Save the plot as a PNG file
-ggsave(paste0("Figure_4_BMI_Attr.png"), plot = p, width = 8, height = 23)
+ggsave(paste0("../Output/Final_Plots/Figure_4_BMI_Attr.png"), plot = p, width = 8, height = 23)
 
 ```
 
@@ -1606,7 +1606,7 @@ for (var in unique (data_attr_cases_bar$variable)) {
   
   ggsave(filename = paste0("../Output/Final_Plots/Supplementary_Figure_4_", var, ".png"), plot = data_attr_bar_paf, width = 8, height = 6, bg = "white")
   
-  if(var == "bmi"){
+  if(var == "Body Mass Intake (BMI)"){
     ggsave(filename = paste0("../Output/Final_Plots/Supplementary_Figure_4_", var, "_alt.png"), plot = data_attr_bar_paf, height = 6, width = 14, bg = "white")
   }
   
