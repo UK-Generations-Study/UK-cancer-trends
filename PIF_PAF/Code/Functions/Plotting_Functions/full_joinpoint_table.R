@@ -32,9 +32,9 @@ full_joinpoint_table <- function(data_apc, data_aapc, group_var, table_var, stra
     mutate(
       
       time.period.APC = paste0("(", Segment.Start, ", ", Segment.End, ")"),
-      APC = round(APC, digits = 2),
-      CI.APC = paste0("(", round(APC.95..LCL, digits = 2), ", ", round(APC.95..UCL, digits = 2), ")"),
-      P.Value.APC = if_else(P.Value < 0.01, "<0.01", as.character(round(P.Value, digits = 2)))
+      APC = format(round(APC, digits = 2), nsmall = 2, trim = T),
+      CI.APC = paste0("(", format(round(APC.95..LCL, digits = 2), nsmall = 2, trim = T), ", ", format(round(APC.95..UCL, digits = 2), nsmall = 2, trim = T), ")"),
+      P.Value.APC = if_else(P.Value < 0.01, "<0.01", as.character(format(round(P.Value, digits = 2), nsmall = 2, trim = T)))
       
     ) |>
     select(all_of(c(full_grouping_vars, "time.period.APC", "APC", "CI.APC", "P.Value.APC")))
@@ -44,9 +44,9 @@ full_joinpoint_table <- function(data_apc, data_aapc, group_var, table_var, stra
     mutate(
       
       time.period.AAPC = paste0("(", Start.Obs, ", ", End.Obs, ")"),
-      AAPC = round(AAPC, digits = 2),
-      CI.AAPC = paste0("(", round(AAPC.C.I..Low, digits = 2), ", ", round(AAPC.C.I..High, digits = 2), ")"),
-      P.Value.AAPC = if_else(P.Value < 0.01, "<0.01", as.character(round(P.Value, digits = 2)))
+      AAPC = format(round(AAPC, digits = 2), nsmall = 2, trim = T),
+      CI.AAPC = paste0("(", format(round(AAPC.C.I..Low, digits = 2), nsmall = 2, trim = T), ", ", format(round(AAPC.C.I..High, digits = 2), nsmall = 2, trim = T), ")"),
+      P.Value.AAPC = if_else(P.Value < 0.01, "<0.01", as.character(format(round(P.Value, digits = 2), nsmall = 2, trim = T)))
       
     ) |>
     select(all_of(c(full_grouping_vars, "time.period.AAPC", "AAPC", "CI.AAPC", "P.Value.AAPC")))
