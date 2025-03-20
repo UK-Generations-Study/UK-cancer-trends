@@ -137,12 +137,6 @@ data_joinpoint_AAPC <- read.delim("../Data/Joinpoint_Results/Cancerrates_All/joi
 data_joinpoint_model <- read.delim("../Data/Joinpoint_Results/Cancerrates_All/joinpoint_cancerrates_all.Export.Model.Estimates.txt", sep = "\t") |>
   filter(!(sex == "Men" & cancer_site == "Breast"))
 
-# Cancer Incidence by finer age groups
-data_joinpoint_age_group <- read.delim("../Data/Joinpoint_Results/Cancerrates_All_Age_Group/jp_cancerrates_all_age_group.Export.APC.txt", sep = "\t") |>
-  filter(!(sex == "Men" & cancer_site == "Breast"))
-data_joinpoint_APC_age_group <- read.delim("../Data/Joinpoint_Results/Cancerrates_All_Age_Group/jp_cancerrates_all_age_group.Export.APC.txt", sep = "\t") |>
-  filter(!(sex == "Men" & cancer_site == "Breast"))
-
 # Risk Factors
 # General Risk Factors
 rfdata_joinpoint <- read.delim("../Data/Joinpoint_Results/Riskfactor/joinpoint_rf.Export.APC.txt", sep = "\t")
@@ -720,7 +714,7 @@ ggsave("../Output/Final_Plots/Figure_3_Agg_PAF.png", plot = data_attr_bar_paf, b
 ```
 
 ### Figure 4 - BMI Attributable Trends
-```{r, fig.height=23, fig.width=8}
+```{r, fig.height=16, fig.width=6}
 
 #Calculating the PAFs
 pafs_byrf_under50<- paf_calculation(data_rf, "20-49")
@@ -813,6 +807,13 @@ p <- ggplot(BMI_paf_cases_u50, aes(x = year, y = value, colour = rate_type)) +
     theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
     scale_y_log10(breaks = scales::breaks_log(n = 8),
                   labels = scales::label_number(accuracy = 0.01)) +
+    scale_colour_manual(
+      values = c(
+        "Overall" = "#495057",
+        "Attributable" = "#ef6f69",
+        "Non-Attributable" = "#54b55a"
+      )
+    ) +
     # Labels and Theme
     labs(
       x = "Year",  # Corrected axis label

@@ -34,7 +34,7 @@ user_options$age_groups_indicator <- F
 # Whether to further stratify by IMD
 #   False - not split by IMD 
 #   True - Split by IMD
-user_options$imd_stratification  <- T
+user_options$imd_stratification  <- F
 
 
 ```
