@@ -1,16 +1,16 @@
 "age_group"	"sex"	"level"	"variable"	"Joinpoint Model"	"AAPC Index"	"Start Obs"	"End Obs"	"AAPC"	"AAPC C.I. Low"	"AAPC C.I. High"	"Statistically Significant (0=No  1=Yes)"	"Test Statistic"	"P-Value"
-20-49	Men	Heavy Drinker	"alcohol_amt"	0	Full Range	2005	2019	-3.6889	-4.3455	-3.0277	1	-12.6690	0.000001
-50+	Men	Heavy Drinker	"alcohol_amt"	1	Full Range	2005	2019	1.1694	0.7541	1.5864	1	5.5400	0.000000
-20-49	Women	Heavy Drinker	"alcohol_amt"	0	Full Range	2005	2019	0.4343	-2.3966	3.3474	0	0.3495	0.735707
-50+	Women	Heavy Drinker	"alcohol_amt"	1	Full Range	2005	2019	7.2413	5.9396	8.5589	1	11.2203	0.000000
-20-49	Men	Light Drinker	"alcohol_amt"	0	Full Range	2005	2019	1.2810	1.0787	1.4837	1	14.6828	0.000000
-50+	Men	Light Drinker	"alcohol_amt"	1	Full Range	2005	2019	-0.4506	-1.0463	0.1487	0	-1.4748	0.140269
-20-49	Women	Light Drinker	"alcohol_amt"	0	Full Range	2005	2019	-0.1371	-0.4691	0.1959	0	-0.9503	0.369792
-50+	Women	Light Drinker	"alcohol_amt"	1	Full Range	2005	2019	-0.6131	-0.8414	-0.3843	1	-5.2416	0.000000
-20-49	Men	Moderate Drinker	"alcohol_amt"	0	Full Range	2005	2019	-2.2523	-2.4769	-2.0271	1	-22.8352	0.000000
-50+	Men	Moderate Drinker	"alcohol_amt"	1	Full Range	2005	2019	-0.3286	-1.0314	0.3791	0	-0.9118	0.361893
-20-49	Women	Moderate Drinker	"alcohol_amt"	1	Full Range	2005	2019	-2.3499	-3.0955	-1.5986	1	-6.0812	0.000000
-50+	Women	Moderate Drinker	"alcohol_amt"	1	Full Range	2005	2019	2.1687	1.8458	2.4927	1	13.2824	0.000000
+20-49	Men	Heavy Drinker	"alcohol_amt"	0	Full Range	2005	2019	-3.7382	-4.3555	-3.1169	1	-13.6560	0.000001
+50+	Men	Heavy Drinker	"alcohol_amt"	1	Full Range	2005	2019	1.2266	0.8487	1.6060	1	6.3881	0.000000
+20-49	Women	Heavy Drinker	"alcohol_amt"	0	Full Range	2005	2019	0.5577	-2.1511	3.3416	0	0.4697	0.651123
+50+	Women	Heavy Drinker	"alcohol_amt"	1	Full Range	2005	2019	7.5143	6.1600	8.8859	1	11.2023	0.000000
+20-49	Men	Light Drinker	"alcohol_amt"	0	Full Range	2005	2019	1.3497	1.1201	1.5799	1	13.6315	0.000001
+50+	Men	Light Drinker	"alcohol_amt"	1	Full Range	2005	2019	-0.4259	-0.9440	0.0949	0	-1.6037	0.108775
+20-49	Women	Light Drinker	"alcohol_amt"	0	Full Range	2005	2019	-0.0386	-0.3697	0.2936	0	-0.2683	0.795270
+50+	Women	Light Drinker	"alcohol_amt"	1	Full Range	2005	2019	-0.6498	-0.8496	-0.4497	1	-6.3482	0.000000
+20-49	Men	Moderate Drinker	"alcohol_amt"	0	Full Range	2005	2019	-2.1838	-2.4176	-1.9495	1	-21.2764	0.000000
+50+	Men	Moderate Drinker	"alcohol_amt"	1	Full Range	2005	2019	-0.3822	-0.9353	0.1740	0	-1.3479	0.177687
+20-49	Women	Moderate Drinker	"alcohol_amt"	1	Full Range	2005	2019	-2.4824	-3.1856	-1.7741	1	-6.8076	0.000000
+50+	Women	Moderate Drinker	"alcohol_amt"	1	Full Range	2005	2019	2.0273	1.6248	2.4313	1	9.9527	0.000000
 20-49	Men	Non-Drinker	"alcohol_amt"	1	Full Range	2005	2019	3.3072	2.7066	3.9114	1	10.9361	0.000000
 50+	Men	Non-Drinker	"alcohol_amt"	1	Full Range	2005	2019	2.0616	1.4988	2.6275	1	7.2332	0.000000
 20-49	Women	Non-Drinker	"alcohol_amt"	0	Full Range	2005	2019	3.0711	2.6735	3.4702	1	18.0479	0.000000

@@ -453,9 +453,9 @@ jp_plots[["alcohol"]] <- plot_joinpoint(
       # "Non-Drinker" = "#fcab10"
     ),
     labels = c(
-      "Heavy Drinker" = "Heavy (>50units/week)",
-      "Moderate Drinker" = "Moderate (14-50units/week)",
-      "Light Drinker" = "Light (<14units/week)"
+      "Heavy Drinker" = "Heavy (>50 g/day)",
+      "Moderate Drinker" = "Moderate (12-50 g/day)",
+      "Light Drinker" = "Light (<12 g/day)"
     ),
     breaks = c(
       "Heavy Drinker",
@@ -1096,7 +1096,47 @@ for(sex in names(supp_table_5)){
 
 ```
 
-### Supplementary Table 6 - RR scenarios for colorectal cancer and BMI
+### Supplementary Table 6 - AAPC and APC Trends in BMI Attributable Rates
+```{r, results = "asis"}
+
+bmi_paf_apc <- read.delim("../Data/Joinpoint_Results/BMI_Attributable/jp_bmi_attributable.Export.APC.txt") |>
+  mutate("sex-age_group" = paste0(sex, "-", age_group)) |>
+  mutate(rate_type = case_when(
+    rate_type == "Rate" ~ "Overall",
+    rate_type == "attributable_rate" ~ "Attributable",
+    rate_type == "non_attributable_rate" ~ "Non-Attributable"
+  ))
+
+bmi_paf_aapc <- read.delim("../Data/Joinpoint_Results/BMI_Attributable/jp_bmi_attributable.Export.AAPC.txt") |>
+  mutate("sex-age_group" = paste0(sex, "-", age_group)) |>
+  mutate(rate_type = case_when(
+    rate_type == "Rate" ~ "Overall",
+    rate_type == "attributable_rate" ~ "Attributable",
+    rate_type == "non_attributable_rate" ~ "Non-Attributable"
+  ))
+
+bmi_jp_table <- full_joinpoint_table(data_apc = bmi_paf_apc,
+                                     data_aapc = bmi_paf_aapc,
+                                     group_var = "cancer_site",
+                                     table_var = "sex-age_group",
+                                     stratification_vars = "rate_type")
+
+for(group in names(bmi_jp_table)){
+  
+  bmi_jp_table[[group]] <- bmi_jp_table[[group]] |>
+    cols_width(rate_type ~ px(145)) |>
+    cols_label("rate_type" ~ "Rate") |>
+    tab_header(paste0("Trends in BMI-Attributable Cases in ", group))
+  
+  print(bmi_jp_table[[group]])
+  
+  gtsave(bmi_jp_table[[group]], paste0("../Output/Final_Plots/Supplementary_Table_6-", group, ".html"))
+  
+}
+
+```
+
+### Supplementary Table 6 - RR scenarios for colorectal cancer and BMI (REMOVED?)
 
 ```{r, results = "asis"}
 
@@ -1166,12 +1206,12 @@ pifobesescenario_table <- obesescenario %>%
 pifobesescenario_table
 
 # Save table
-gtsave(pifobesescenario_table,"../Output/Final_Plots/Supplementary_Table_6.html")
+# gtsave(pifobesescenario_table,"../Output/Final_Plots/Supplementary_Table_6.html")
 
 
 ```
 
-### Supplementary Table 7 - Trends in suspected risk factors
+### Supplementary Table 7 - Trends in suspected risk factors (REMOVED?)
 
 This table has been created externally
 
