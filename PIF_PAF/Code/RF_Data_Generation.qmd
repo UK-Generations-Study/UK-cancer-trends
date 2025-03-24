@@ -34,7 +34,7 @@ user_options$age_groups_indicator <- F
 # Whether to further stratify by IMD
 #   False - not split by IMD 
 #   True - Split by IMD
-user_options$imd_stratification  <- F
+user_options$imd_stratification  <- T
 
 
 ```
@@ -160,8 +160,8 @@ ghs_data <- ghs_data |>
 
     alcohol_cat = case_when(
       drating == 0 ~ "Non-Drinker",
-      drating < 11 ~ "Light Drinker",
-      drating < 44 ~ "Moderate Drinker",
+      drating < 10.5 ~ "Light Drinker",
+      drating < 43.75 ~ "Moderate Drinker",
       TRUE ~ "Heavy Drinker")
     
     # alcohol_cat = case_when(

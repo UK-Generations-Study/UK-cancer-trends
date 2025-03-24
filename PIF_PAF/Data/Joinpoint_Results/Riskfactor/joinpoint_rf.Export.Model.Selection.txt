@@ -1,28 +1,28 @@
 "age_group"	"sex"	"level"	"variable"	"Model"	"# Joinpoints"	"# Observations"	"# Parameters"	"D.F."	"SSE"	"BIC"	"BIC3"	"Weight"	"WBIC"
-20-49	Men	Heavy Drinker	"alcohol_amt"	1	0	10	2	8	       0.0105623	      -6.3925315	      -6.3925315	       0.0000000	      -6.3925315
-20-49	Men	Heavy Drinker	"alcohol_amt"	2	1	10	4	6	       0.0073519	      -6.2943476	      -6.0640891	       0.3039495	      -6.2243606
-50+	Men	Heavy Drinker	"alcohol_amt"	1	0	10	2	8	       0.0103319	      -6.4145876	      -6.4145876	       0.0000000	      -6.4145876
-50+	Men	Heavy Drinker	"alcohol_amt"	2	1	10	4	6	       0.0027404	      -7.2812096	      -7.0509511	       0.7347649	      -7.1120237
-20-49	Women	Heavy Drinker	"alcohol_amt"	1	0	10	2	8	       0.1844826	      -3.5322684	      -3.5322684	       0.0000000	      -3.5322684
-20-49	Women	Heavy Drinker	"alcohol_amt"	2	1	10	4	6	       0.1320083	      -3.4064418	      -3.1761833	       0.2844405	      -3.3409470
-50+	Women	Heavy Drinker	"alcohol_amt"	1	0	10	2	8	       0.3187243	      -2.9854967	      -2.9854967	       0.0000000	      -2.9854967
-50+	Women	Heavy Drinker	"alcohol_amt"	2	1	10	4	6	       0.0462861	      -4.4544647	      -4.2242062	       0.8547770	      -4.2576450
-20-49	Men	Light Drinker	"alcohol_amt"	1	0	10	2	8	       0.0009018	      -8.8531342	      -8.8531342	       0.0000000	      -8.8531342
-20-49	Men	Light Drinker	"alcohol_amt"	2	1	10	4	6	       0.0005756	      -8.8416889	      -8.6114304	       0.3617797	      -8.7583861
-50+	Men	Light Drinker	"alcohol_amt"	1	0	10	2	8	       0.0124324	      -6.2295211	      -6.2295211	       0.0000000	      -6.2295211
-50+	Men	Light Drinker	"alcohol_amt"	2	1	10	4	6	       0.0023368	      -7.4405328	      -7.2102743	       0.8120405	      -7.2535536
-20-49	Women	Light Drinker	"alcohol_amt"	1	0	10	2	8	       0.0025017	      -7.8328456	      -7.8328456	       0.0000000	      -7.8328456
-20-49	Women	Light Drinker	"alcohol_amt"	2	1	10	4	6	       0.0014978	      -7.8852756	      -7.6550171	       0.4012715	      -7.7928794
-50+	Women	Light Drinker	"alcohol_amt"	1	0	10	2	8	       0.0070227	      -6.8006764	      -6.8006764	       0.0000000	      -6.8006764
-50+	Women	Light Drinker	"alcohol_amt"	2	1	10	4	6	       0.0009718	      -8.3179173	      -8.0876588	       0.8616208	      -8.1195218
-20-49	Men	Moderate Drinker	"alcohol_amt"	1	0	10	2	8	       0.0011942	      -8.5723337	      -8.5723337	       0.0000000	      -8.5723337
-20-49	Men	Moderate Drinker	"alcohol_amt"	2	1	10	4	6	       0.0008947	      -8.4006127	      -8.1703542	       0.2508349	      -8.3428558
-50+	Men	Moderate Drinker	"alcohol_amt"	1	0	10	2	8	       0.0094960	      -6.4989568	      -6.4989568	       0.0000000	      -6.4989568
-50+	Men	Moderate Drinker	"alcohol_amt"	2	1	10	4	6	       0.0030506	      -7.1739558	      -6.9436973	       0.6787437	      -7.0176693
-20-49	Women	Moderate Drinker	"alcohol_amt"	1	0	10	2	8	       0.0104534	      -6.4028935	      -6.4028935	       0.0000000	      -6.4028935
-20-49	Women	Moderate Drinker	"alcohol_amt"	2	1	10	4	6	       0.0036465	      -6.9955433	      -6.7652847	       0.6511686	      -6.8456061
-50+	Women	Moderate Drinker	"alcohol_amt"	1	0	10	2	8	       0.0337176	      -5.2318028	      -5.2318028	       0.0000000	      -5.2318028
-50+	Women	Moderate Drinker	"alcohol_amt"	2	1	10	4	6	       0.0020395	      -7.5765937	      -7.3463352	       0.9395118	      -7.3602631
+20-49	Men	Heavy Drinker	"alcohol_amt"	1	0	10	2	8	       0.0093401	      -6.5155110	      -6.5155110	       0.0000000	      -6.5155110
+20-49	Men	Heavy Drinker	"alcohol_amt"	2	1	10	4	6	       0.0061077	      -6.4797504	      -6.2494918	       0.3460709	      -6.4000646
+50+	Men	Heavy Drinker	"alcohol_amt"	1	0	10	2	8	       0.0091184	      -6.5395245	      -6.5395245	       0.0000000	      -6.5395245
+50+	Men	Heavy Drinker	"alcohol_amt"	2	1	10	4	6	       0.0026626	      -7.3100096	      -7.0797511	       0.7080001	      -7.1469866
+20-49	Women	Heavy Drinker	"alcohol_amt"	1	0	10	2	8	       0.1682835	      -3.6241732	      -3.6241732	       0.0000000	      -3.6241732
+20-49	Women	Heavy Drinker	"alcohol_amt"	2	1	10	4	6	       0.1130151	      -3.5617845	      -3.3315260	       0.3284242	      -3.4861621
+50+	Women	Heavy Drinker	"alcohol_amt"	1	0	10	2	8	       0.3289509	      -2.9539148	      -2.9539148	       0.0000000	      -2.9539148
+50+	Women	Heavy Drinker	"alcohol_amt"	2	1	10	4	6	       0.0455574	      -4.4703339	      -4.2400754	       0.8615071	      -4.2719645
+20-49	Men	Light Drinker	"alcohol_amt"	1	0	10	2	8	       0.0011608	      -8.6007092	      -8.6007092	       0.0000000	      -8.6007092
+20-49	Men	Light Drinker	"alcohol_amt"	2	1	10	4	6	       0.0007725	      -8.5473855	      -8.3171270	       0.3344845	      -8.4703676
+50+	Men	Light Drinker	"alcohol_amt"	1	0	10	2	8	       0.0125381	      -6.2210537	      -6.2210537	       0.0000000	      -6.2210537
+50+	Men	Light Drinker	"alcohol_amt"	2	1	10	4	6	       0.0020869	      -7.5536111	      -7.3233526	       0.8335523	      -7.3616786
+20-49	Women	Light Drinker	"alcohol_amt"	1	0	10	2	8	       0.0024844	      -7.8397993	      -7.8397993	       0.0000000	      -7.8397993
+20-49	Women	Light Drinker	"alcohol_amt"	2	1	10	4	6	       0.0016343	      -7.7980975	      -7.5678390	       0.3421743	      -7.7193090
+50+	Women	Light Drinker	"alcohol_amt"	1	0	10	2	8	       0.0093188	      -6.5177900	      -6.5177900	       0.0000000	      -6.5177900
+50+	Women	Light Drinker	"alcohol_amt"	2	1	10	4	6	       0.0009638	      -8.3262207	      -8.0959622	       0.8965790	      -8.1197757
+20-49	Men	Moderate Drinker	"alcohol_amt"	1	0	10	2	8	       0.0012924	      -8.4933193	      -8.4933193	       0.0000000	      -8.4933193
+20-49	Men	Moderate Drinker	"alcohol_amt"	2	1	10	4	6	       0.0010197	      -8.2698304	      -8.0395719	       0.2110309	      -8.2212387
+50+	Men	Moderate Drinker	"alcohol_amt"	1	0	10	2	8	       0.0076967	      -6.7090329	      -6.7090329	       0.0000000	      -6.7090329
+50+	Men	Moderate Drinker	"alcohol_amt"	2	1	10	4	6	       0.0021513	      -7.5232479	      -7.2929894	       0.7204941	      -7.3573480
+20-49	Women	Moderate Drinker	"alcohol_amt"	1	0	10	2	8	       0.0081804	      -6.6480806	      -6.6480806	       0.0000000	      -6.6480806
+20-49	Women	Moderate Drinker	"alcohol_amt"	2	1	10	4	6	       0.0034786	      -7.0426899	      -6.8124314	       0.5747705	      -6.9103441
+50+	Women	Moderate Drinker	"alcohol_amt"	1	0	10	2	8	       0.0399563	      -5.0620381	      -5.0620381	       0.0000000	      -5.0620381
+50+	Women	Moderate Drinker	"alcohol_amt"	2	1	10	4	6	       0.0021967	      -7.5023361	      -7.2720776	       0.9450216	      -7.2847368
 20-49	Men	Non-Drinker	"alcohol_amt"	1	0	10	2	8	       0.0073640	      -6.7532177	      -6.7532177	       0.0000000	      -6.7532177
 20-49	Men	Non-Drinker	"alcohol_amt"	2	1	10	4	6	       0.0026473	      -7.3157514	      -7.0854929	       0.6405034	      -7.1682700
 50+	Men	Non-Drinker	"alcohol_amt"	1	0	10	2	8	       0.0167319	      -5.9325054	      -5.9325054	       0.0000000	      -5.9325054

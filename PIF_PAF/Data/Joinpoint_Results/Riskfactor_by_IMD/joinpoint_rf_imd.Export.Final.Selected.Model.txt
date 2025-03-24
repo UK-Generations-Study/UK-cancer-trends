@@ -1,7 +1,7 @@
 "age_group"	"sex"	"imd"	"level"	"variable"	"Model"
 All	Men	1	Heavy Drinker	"alcohol_amt"	1
 All	Men	2	Heavy Drinker	"alcohol_amt"	1
-All	Men	3	Heavy Drinker	"alcohol_amt"	1
+All	Men	3	Heavy Drinker	"alcohol_amt"	0
 All	Men	4	Heavy Drinker	"alcohol_amt"	0
 All	Men	5	Heavy Drinker	"alcohol_amt"	0
 All	Women	1	Heavy Drinker	"alcohol_amt"	1
@@ -16,7 +16,7 @@ All	Men	4	Light Drinker	"alcohol_amt"	0
 All	Men	5	Light Drinker	"alcohol_amt"	1
 All	Women	1	Light Drinker	"alcohol_amt"	0
 All	Women	2	Light Drinker	"alcohol_amt"	1
-All	Women	3	Light Drinker	"alcohol_amt"	1
+All	Women	3	Light Drinker	"alcohol_amt"	0
 All	Women	4	Light Drinker	"alcohol_amt"	1
 All	Women	5	Light Drinker	"alcohol_amt"	1
 All	Men	1	Moderate Drinker	"alcohol_amt"	1
@@ -27,8 +27,8 @@ All	Men	5	Moderate Drinker	"alcohol_amt"	0
 All	Women	1	Moderate Drinker	"alcohol_amt"	1
 All	Women	2	Moderate Drinker	"alcohol_amt"	1
 All	Women	3	Moderate Drinker	"alcohol_amt"	0
-All	Women	4	Moderate Drinker	"alcohol_amt"	0
-All	Women	5	Moderate Drinker	"alcohol_amt"	0
+All	Women	4	Moderate Drinker	"alcohol_amt"	1
+All	Women	5	Moderate Drinker	"alcohol_amt"	1
 All	Men	1	Non-Drinker	"alcohol_amt"	1
 All	Men	2	Non-Drinker	"alcohol_amt"	0
 All	Men	3	Non-Drinker	"alcohol_amt"	1

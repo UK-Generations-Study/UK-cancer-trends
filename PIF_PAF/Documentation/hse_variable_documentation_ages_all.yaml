@@ -118,17 +118,17 @@ alcohol_amt:
   2011-2018:
     varname: totalwu
     dict:
-      "0-11": "Light Drinker"
-      "11-44": "Moderate Drinker"
-      "44-9999": "Heavy Drinker" # Applied 9999 as this should be 44+
+      "0-10.5": "Light Drinker"
+      "10.5-43.75": "Moderate Drinker"
+      "43.75-9999": "Heavy Drinker" # Applied 9999 as this should be 44+
       0: "Non-Drinker" # Slightly messy - this condition is applied last so instead of 0 going to light drinker it goes to non drinker
   
   2019:
     varname: totalwu_19
     dict:
-      "0-11": "Light Drinker"
-      "11-44": "Moderate Drinker"
-      "44-9999": "Heavy Drinker"
+      "0-10.5": "Light Drinker"
+      "10.5-43.75": "Moderate Drinker"
+      "43.75-9999": "Heavy Drinker"
       0: "Non-Drinker"
       
 ### BMI

@@ -113,7 +113,7 @@ full_joinpoint_table <- function(data_apc, data_aapc, group_var, table_var, stra
       # Manually assigning column widths
       cols_width(
         starts_with("time.period") ~ px(120),
-        starts_with("CI") ~ px(110),
+        starts_with("CI") ~ px(120),
         "AAPC" ~ px(70),
         "APC" ~ px(70),
         starts_with("P.Value") ~ px(70),
