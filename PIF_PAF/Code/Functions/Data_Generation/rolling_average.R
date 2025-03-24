@@ -35,7 +35,7 @@ rolling_average <- function(data){
     mutate(
       
       # Apply length 3 mean window - at endpoints just take endpoint and the one before/after
-      value_2 = case_when(
+      value = case_when(
         n() > 2 ~ slider::slide_mean(value, before = 1, after = 1),
         TRUE ~ value)
       

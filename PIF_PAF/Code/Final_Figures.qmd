@@ -453,9 +453,9 @@ jp_plots[["alcohol"]] <- plot_joinpoint(
       # "Non-Drinker" = "#fcab10"
     ),
     labels = c(
-      "Heavy Drinker" = "Heavy (>50units/week)",
-      "Moderate Drinker" = "Moderate (14-50units/week)",
-      "Light Drinker" = "Light (<14units/week)"
+      "Heavy Drinker" = "Heavy (>50 g/day)",
+      "Moderate Drinker" = "Moderate (12-50 g/day)",
+      "Light Drinker" = "Light (<12 g/day)"
     ),
     breaks = c(
       "Heavy Drinker",
