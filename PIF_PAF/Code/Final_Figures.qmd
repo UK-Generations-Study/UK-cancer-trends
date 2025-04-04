@@ -433,9 +433,11 @@ jp_plots[["smoking"]] <- plot_joinpoint(
 
 ## Alcohol
 jp_plots[["alcohol"]] <- plot_joinpoint(
-  data = rf_trend_plot |> filter(variable == "alcohol_amt") |> filter(level != "Non-Drinker"),
+  data = rf_trend_plot |> filter(variable == "alcohol_amt") |> filter(level != "Non-Drinker") |> filter(year != 2005),
   data.model = rf_model_estimates |> filter(variable == "alcohol_amt") |> filter(level != "Non-Drinker"),
   facet.x = "age_group", facet.y = "sex", colour = "level") +
+  geom_point(data = rf_trend_plot |> filter(variable == "alcohol_amt") |> filter(level != "Non-Drinker") |> filter(year == 2005),
+             aes(x = year, y = value, colour = level)) +
   labs(
     y = "Prevalence",
     colour = "Risk Factor",

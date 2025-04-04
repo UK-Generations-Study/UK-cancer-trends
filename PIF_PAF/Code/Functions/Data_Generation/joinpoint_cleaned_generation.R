@@ -9,6 +9,7 @@ joinpoint <- data_rf %>%
   filter(
     variable %in% c("alcohol_amt", "physical_activity_old", "bmi", "smoking_status")
   )%>%
+  filter(!(variable == "alcohol_amt" & year == 2005)) |>
   arrange(
     variable, level, sex, age_group, year
   ) 
@@ -45,6 +46,7 @@ joinpoint_imd <- data_rf_imd %>%
     variable %in% c("alcohol_amt", "physical_activity_old", "bmi", "smoking_status"), 
     imd != "All"
   )%>%
+  filter(!(variable == "alcohol_amt" & year == 2005)) |>
   arrange(
     variable, level, sex, age_group, imd, year
   ) 
