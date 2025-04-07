@@ -18,8 +18,8 @@ if(Sys.getenv("RSTUDIO") == '1' & !knitr::is_html_output()) { # If using Rstudio
 
 # Read in data
 # Assumed working directory is same relationship as is set up in the Github
-data_u50 <- read.csv(r"(..\..\Data\Incidence_data_for_England_2024-10-30.csv)")
-data_oe50 <- read.csv(r"(..\..\Data\Incidence_data_for_England_2024-10-30 (1).csv)")
+data_u50 <- read.csv(r"(..\..\..\Data\Incidence_data_for_England_2025-04-07.csv)")
+data_oe50 <- read.csv(r"(..\..\..\Data\Incidence_data_for_England_2025-04-07 (1).csv)")
 
 # Format data
 data <- rbind(data_u50 |>
@@ -62,7 +62,7 @@ data <- data |>
     
     Year = as.numeric(Year),
     
-    Rate = if_else(is.na(Rate), 0, Rate)
+    Rate = if_else(is.na(Rate) | Rate == "[u]", 0, as.numeric(Rate))
     
   ) |>
   filter(!is.na(cancer_site)) |>
@@ -83,4 +83,4 @@ data <- data |>
 
 
 # Output
-write.csv(data, r"(..\..\Data\all_incidence_joinpoint.csv)", row.names = F)
+write.csv(data, r"(..\..\..\Data\all_incidence_joinpoint.csv)", row.names = F)
