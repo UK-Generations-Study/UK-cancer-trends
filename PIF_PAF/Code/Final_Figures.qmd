@@ -111,6 +111,13 @@ data_childhood_bmi <- suppressMessages(read_excel("../Data/HSE-2022-Overweight-a
 data_ALLcancer <- read.csv("../Data/all_incidence_joinpoint.csv") |>
   filter(!(sex == "Men" & cancer_site == "Breast"))
 
+# Filter data to only the cancer sites that are increasing 
+data_cancer <- data_ALLcancer %>%
+  filter(
+    cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid")
+  ) |>
+  mutate(cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site))
+
 
 ## PAF SAMPLES
 
