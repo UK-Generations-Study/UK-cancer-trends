@@ -243,7 +243,7 @@ source("Functions/Data_Generation/joinpoint_cleaned_generation.R")
 ```{r, fig.height=10, fig.width=10, warning=F}
 
 # Filter to correct cancer sites in joinpoint model data
-data_joinpoint_model <- data_joinpoint_model |>
+data_joinpoint_model_fig1 <- data_joinpoint_model |>
   filter(cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid")) |>
   mutate(cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site))
   
@@ -263,7 +263,7 @@ start_end_years <- data_cancer |>
   ungroup()
 
 # Formatting joinpoint data to get start and end points
-data_joinpoint_model <- data_joinpoint_model |>
+data_joinpoint_model_fig1 <- data_joinpoint_model_fig1 |>
   merge(start_end_years, by = c("sex", "age_group", "cancer_site")) |>
   group_by(age_group, sex, cancer_site) |>
   arrange(Segment) |>
@@ -278,7 +278,7 @@ data_joinpoint_model <- data_joinpoint_model |>
   )
 
 # Creating start/end points for plotting
-data_joinpoint_plot <- data_joinpoint_model |>
+data_joinpoint_plot <- data_joinpoint_model_fig1 |>
   group_by(age_group, sex, cancer_site) |>
   arrange(Segment) |>
   mutate(
@@ -314,7 +314,7 @@ facet_vars <- data_cancer |>
 data_cancer_facet <- data_cancer |>
   mutate(
 
-    facet_var = factor(paste0(cancer_site, " - ", sex), levels = facet_vars),
+    facet_var = factor(paste0(cancer_site, " - ", sex), levels = facet_vars)
     # facet_var = paste0(cancer_site, " - ", sex),
     
 
@@ -365,7 +365,8 @@ plot <- ggplot(data_cancer_facet, aes(x = year, y = Rate, colour = age_group)) +
   geom_line(data = data_joinpoint_plot, aes(x = year, y = y)) +
   geom_point(data = invisible_points, aes(x = year, y = y), alpha = 0) +
   theme_minimal() +
-  scale_colour_manual(values = c("20-49" = "#ff9500", "50+" = "#38b000")) +
+  scale_colour_manual(values = c("20-49" = "#ff9500", "50+" = "#38b000"),
+                      labels = c("20-49 years", "50+ years")) +
   geom_rect(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
             colour = "black", fill = NA, inherit.aes = FALSE) +
   theme(strip.text = element_text(face = "bold"), 
@@ -379,15 +380,14 @@ plot <- ggplot(data_cancer_facet, aes(x = year, y = Rate, colour = age_group)) +
     limits = c(2001, 2019)
   )+
   ggtitle("Cancer Incidence Rates for Selected Cancers") +
-  ylab("Age Specific Incidence Rates") +
+  ylab("Age Specific Incidence Rates per 100,000 (log scale)") +
   xlab("Year") +
   labs(colour = "Age Group") +
-  facet_manual(~ facet_var, facet_design, respect = T, scales = "free_y") +
-  labs(caption = "(Refer to Supplementary Table 4)")
+  facet_manual(~ facet_var, facet_design, respect = T, scales = "free_y")
 
 print(plot)
 
-ggsave(filename = paste0("../Output/Final_Plots/Figure_1.png"), bg = "white", height = 10, width =10)
+ggsave(filename = paste0("../Output/Final_Plots/Figure_1.png"), bg = "white", height = 12, width =12)
   
 
 ```
@@ -400,13 +400,15 @@ ggsave(filename = paste0("../Output/Final_Plots/Figure_1.png"), bg = "white", he
 rf_trend_plot <- data_rf |> 
   mutate(level = if_else(level == "[30,Inf)" & variable == "fibre_consumption", "Below Guidelines", level),
          value = if_else(level == "Below Guidelines" & variable == "fibre_consumption", 1 - value, value),
-         sex = factor(sex, levels = c("Women", "Men")))
+         sex = factor(sex, levels = c("Women", "Men"))) |>
+  mutate(age_group = if_else(age_group == "20-49", "20-49 years", "50+ years"))
   
 
 # Importing model estimates
 rf_model_estimates <- rbind(rfdata_joinpoint_model, dietrfdata_joinpoint_model) |>
   rbind(dietrfdata_fibre_joinpoint_model) |>
-  mutate(sex = factor(sex, level = c("Women", "Men")))
+  mutate(sex = factor(sex, level = c("Women", "Men"))) |>
+  mutate(age_group = if_else(age_group == "20-49", "20-49 years", "50+ years"))
 
 # Initialise list of plots and make edits based on risk factor
 jp_plots <- list()
@@ -417,7 +419,7 @@ jp_plots[["smoking"]] <- plot_joinpoint(
   data.model = rf_model_estimates |> filter(variable == "smoking_status") |> mutate(level = if_else(level == "Previously", "Former", level)) |> filter(level != "Never"),
   facet.x = "age_group", facet.y = "sex", colour = "level") +
   labs(
-    y = "Prevalence",
+    y = "Prevalence (log scale)",
     colour = "Risk Factor",
     title = "Cigarette Smoking"
   ) +
@@ -444,7 +446,7 @@ jp_plots[["alcohol"]] <- plot_joinpoint(
   geom_point(data = rf_trend_plot |> filter(variable == "alcohol_amt") |> filter(level != "Non-Drinker") |> filter(year == 2005),
              aes(x = year, y = value, colour = level)) +
   labs(
-    y = "Prevalence",
+    y = "Prevalence (log scale)",
     colour = "Risk Factor",
     title = "Alcohol Consumption"
   ) +
@@ -478,7 +480,7 @@ jp_plots[["bmi"]] <- plot_joinpoint(
   data.model = rf_model_estimates |> filter(variable == "bmi") |> filter(level %in% c("Overweight", "Obese")),
   facet.x = "age_group", facet.y = "sex", colour = "level") +
   labs(
-    y = "Prevalence",
+    y = "Prevalence (log scale)",
     colour = "Risk Factor",
     title = "Body Mass Index (BMI)"
   ) +
@@ -505,10 +507,10 @@ jp_plots[["physical_activity"]] <- plot_joinpoint(
   data.model = rf_model_estimates |>  filter(variable %in% c("physical_activity", "physical_activity_old")) |> filter(level == "Below Recommendations"),
   facet.x = "age_group", facet.y = "sex", colour = "variable") +
   labs(
-    y = "Prevalence",
+    y = "Prevalence (log scale)",
     colour = "Risk Factor",
     title = "Physical Inactivity",
-    caption = "*150 min/week of moderate or 75 min/week of vigorous activity. **150 min/week of activity"
+    caption = md("*150 min/week of moderate or 75 min/week of vigorous activity.\n**150 min/week of activity")
   ) +
    theme(
     strip.text = element_text(face = "bold"),
@@ -516,11 +518,12 @@ jp_plots[["physical_activity"]] <- plot_joinpoint(
   ) +
   scale_color_manual( #fixing the colors
     values = c(
-      "physical_activity" = "#5fa8d3",
-      "physical_activity_old" = "#4f518c"
+      "physical_activity_old" = "#4f518c",
+      "physical_activity" = "#5fa8d3"
     ),
-    labels = c("physical_activity" = "Physical Activity Below new UK Guidelines**",
-               "physical_activity_old" = "Physical Activity Below old UK Guidelines*")
+    labels = c("physical_activity_old" = "Physical Activity Below old UK Guidelines*",
+               "physical_activity" = "Physical Activity Below new UK Guidelines**"),
+    breaks = c("physical_activity_old","physical_activity")
   )
 
 ## Fibre Consumption
@@ -529,7 +532,7 @@ jp_plots[["fibre_consumption"]] <- plot_joinpoint(
   data.model = rf_model_estimates |> filter(variable == "fibre_consumption") |> filter(level == "Below Guidelines"),
   facet.x = "age_group", facet.y = "sex", colour = "level") +
   labs(
-    y = "Prevalence",
+    y = "Prevalence (log scale)",
     colour = "Risk Factor",
     title = "Fibre Intake Deficiency"
   ) +
@@ -548,7 +551,7 @@ jp_plots[["meat_consumption"]] <- plot_joinpoint(
   data.model = rf_model_estimates |> filter(variable %in% c("redmeat_consumption_median", "processedmeat_consumption_median")),
   facet.x = "age_group", facet.y = "sex", colour = "variable") +
   labs(
-    y = "Daily Consumption (g)",
+    y = "Daily Consumption (g) (log scale)",
     colour = "Risk Factor",
     title = "Red and Processed Meat Consumption"
   ) + theme(
@@ -569,23 +572,18 @@ jp_plots[["meat_consumption"]] <- plot_joinpoint(
 # Loop through plots, print and save them
 for(p in names(jp_plots)){
   
-  current_caption <- jp_plots[[p]]$labels$caption
-  
-  if(is.null(current_caption)){
-    jp_plots[[p]] <- jp_plots[[p]] +
-      labs(caption = "(Refer to Supplementary Table 5)")
-  } else {
-    jp_plots[[p]] <- jp_plots[[p]] +
-      labs(caption = md(paste0(current_caption, "\n(Refer to Supplementary Table 5)")))
-  }
+  # Make legend vertically stack
+  jp_plots[[p]] <- jp_plots[[p]] +
+    guides(colour = guide_legend(direction = "vertical")) +
+    theme(plot.caption = element_text(hjust = 0))
   
   print(jp_plots[[p]])
 
   ggsave(jp_plots[[p]],
        filename = paste0("../Output/Final_Plots/Figure_2", letters[which(names(jp_plots) == p)], ".png"),
        bg = "white",
-       height = 7,
-       width = 7)
+       height = 6,
+       width = 5)
 
 }
   
@@ -704,7 +702,8 @@ data_attr_bar_paf <- ggplot(data_attr_cases_bar_alt, aes(x = cancer_site, y = PA
   geom_bar(stat = "identity", position = "dodge", width = 0.75, colour ="black") +
   geom_errorbar(aes(ymin = 100*lower_CI, ymax = 100*upper_CI), width=.2,
                  position=position_dodge(.75)) +
-  scale_fill_manual(values = c("20-49" = "#ff9500", "50+" = "#38b000")) +
+  scale_fill_manual(values = c("20-49" = "#ff9500", "50+" = "#38b000"),
+                    labels = c("20-49 years", "50+ years")) +
   theme_minimal() +
   theme(
     
@@ -712,21 +711,20 @@ data_attr_bar_paf <- ggplot(data_attr_cases_bar_alt, aes(x = cancer_site, y = PA
     axis.text.x = element_text(angle = 45, hjust = 1)
   ) +
   labs(
-    title = "Population Attributable Fractions: 2019",
+    title = "Population Attributable Fractions 2019: Aggregate",
     fill = "Age Group",
     x = "Cancer Site",
     y = "PAF (%)"
   )+
   geom_rect(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
             colour = "black", fill = NA, inherit.aes = FALSE) +
-  theme(strip.text = element_text(face = "bold"),
-    plot.title = element_text(hjust = 0.5) ) +
+  theme(strip.text = element_text(face = "bold")) +
   coord_flip() +
   facet_wrap(~sex)
   
 data_attr_bar_paf
 
-ggsave("../Output/Final_Plots/Figure_3.png", plot = data_attr_bar_paf, bg = "white", height = 6, width = 14)
+ggsave("../Output/Final_Plots/Figure_3.png", plot = data_attr_bar_paf, bg = "white", height = 4, width = 9)
 
 ```
 
@@ -859,10 +857,140 @@ p <- ggplot(BMI_paf_cases_u50, aes(x = year, y = value, colour = rate_type)) +
     geom_line() +
     geom_point() +
     geom_point(data = BMI_paf_cases_u50_invisible, alpha = 0) +
+    facet_manual(~ facet_var, facet_design, respect = T, scales = "free_y") +
+    scale_y_log10(breaks = scales::breaks_log(n = 8),
+                  labels = scales::label_number(accuracy = 0.01)) +
+    scale_x_continuous(
+      breaks = seq(2005, 2019, by = 2), 
+      limits = c(2005, 2019)
+    )+
+    scale_colour_manual(
+      values = c(
+        "Attributable" = "#ef6f69",
+        "Non-Attributable" = "#54b55a",
+        "Overall" = "#495057"
+      )
+    ) +
+    labs(
+      x = "Year",
+      y = "Age Specific Incidence Rates per 100,000 (log scale)",
+      title = "",
+      colour = "Incidence Rates"
+    ) +
+    theme_minimal() +
+    geom_rect(
+      xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
+      colour = "black", fill = NA, inherit.aes = FALSE
+    ) +
+    theme(strip.text = element_text(face = "bold"), 
+        axis.text.x = element_text(angle = 45, hjust = 1))
+
+print(p)
+
+# Save the plot as a PNG file
+ggsave(paste0("../Output/Final_Plots/Figure_4_20_49.png"), plot = p, width = 12, height = 12)
+
+
+## Older than 50
+BMI_paf_cases_oe50 <- BMI_paf_cases |>
+  filter(age_group == "50+") |>
+  filter(Rate > 0) |>
+  pivot_longer(cols = c("attributable_rate", "Rate", "non_attributable_rate"), names_to = "rate_type") |>
+  mutate(sex = factor(sex, levels = c("Women", "Men")),
+         cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site)) 
+
+# Calculating invisible points so y-axis identical for same cancer site
+BMI_paf_cases_oe50_invisible <- BMI_paf_cases_oe50 |>
+  group_by(cancer_site) |>
+  mutate(min_value = min(value),
+         max_value = max(value)) |>
+  ungroup() |>
+  filter(year == 2019, rate_type == "Rate") |>
+  select(year, rate_type, cancer_site, sex, max_value, min_value) |>
+  pivot_longer(cols = c(min_value, max_value)) |>
+  # Manually gicving minimum values to Ora as it has no attributable cases
+  mutate(
+    
+    value = case_when(
+      cancer_site == "Oral" & name == "min_value" ~ 4,
+      TRUE ~ value
+      
+    ),
+    
+    # Need to switch to other naming system
+    rate_type = "Overall",
+    
+  )
+
+# Creating factor with new order for facetting
+facet_vars <- data_cancer |>
+  group_by(cancer_site) |>
+  mutate(facet_var = paste0(cancer_site, " - ", sex),
+            n = n()) |>
+  arrange(desc(n), cancer_site, desc(sex)) |>
+  select(facet_var) |>
+  unique() |>
+  pull(facet_var)
+
+# Add this facet to all dataframes
+BMI_paf_cases_oe50 <- BMI_paf_cases_oe50 |>
+  mutate(
+
+    facet_var = factor(paste0(cancer_site, " - ", sex), levels = facet_vars),
+
+  )
+
+# Add this facet to all dataframes
+BMI_paf_cases_oe50_invisible <- BMI_paf_cases_oe50_invisible |>
+  mutate(
+
+    facet_var = factor(paste0(cancer_site, " - ", sex), levels = facet_vars),
+
+  )
+
+# Need to manual construct structure for facet
+facet_design <- data_cancer |>
+  group_by(cancer_site) |>
+  mutate(facet_var = paste0(cancer_site, " - ", sex),
+            n = n()) |>
+  filter(n == 76) |>
+  arrange(cancer_site, desc(sex)) |>
+  select(facet_var) |>
+  unique() |>
+  pull(facet_var)
+
+facet_design_extra <- data_cancer |>
+  group_by(cancer_site) |>
+  mutate(facet_var = paste0(cancer_site, " - ", sex),
+            n = n()) |>
+  filter(n == 38) |>
+  arrange(cancer_site, desc(sex)) |>
+  select(facet_var) |>
+  unique() |>
+  pull(facet_var)
+
+facet_design <- matrix(c(1:length(facet_design), as.vector(rbind(length(facet_design) + (1:length(facet_design_extra)), NA))), ncol = 4, byrow = T)
+
+
+BMI_paf_cases_oe50 <- BMI_paf_cases_oe50 |>
+  # mutate(cancer_site = factor(cancer_site, levels = figure_4_cancer_order)) |>
+  mutate(rate_type = case_when(
+    rate_type == "Rate" ~ "Overall",
+    rate_type == "attributable_rate" ~ "Attributable",
+    rate_type == "non_attributable_rate" ~ "Non-Attributable",
+    TRUE ~ NA
+  )) |>
+  # Manually filtering out Oral Non-Attributable cases as they overlap with the Overall and we want to only see overall
+  filter(!(cancer_site %in% c("Oral") & rate_type == "Non-Attributable"))
+
+p <- ggplot(BMI_paf_cases_oe50, aes(x = year, y = value, colour = rate_type)) +
+    geom_line() +
+    geom_point() +
+    geom_point(data = BMI_paf_cases_oe50_invisible, alpha = 0) +
     # Y-axis
      facet_manual(~ facet_var, facet_design, respect = T, scales = "free_y") +
     scale_y_log10(breaks = scales::breaks_log(n = 8),
-                  labels = scales::label_number(accuracy = 0.01)) +
+                  labels = scales::label_number(accuracy = 0.1)) +
     scale_x_continuous(
       breaks = seq(2005, 2019, by = 2),  # Define the x-axis breaks
       limits = c(2005, 2019)
@@ -877,9 +1005,9 @@ p <- ggplot(BMI_paf_cases_u50, aes(x = year, y = value, colour = rate_type)) +
     # Labels and Theme
     labs(
       x = "Year",  # Corrected axis label
-      y = "Rate",
-      title = paste("BMI Attributable Rates in Young Adults"),
-      colour = "Rate Type"
+      y = "Age Specific Incidence Rates per 100,000 (log scale)",
+      title = paste(""),
+      colour = "Incidence Rates"
     ) +
     theme_minimal() +
     geom_rect(
@@ -887,13 +1015,12 @@ p <- ggplot(BMI_paf_cases_u50, aes(x = year, y = value, colour = rate_type)) +
       colour = "black", fill = NA, inherit.aes = FALSE
     ) +
     theme(strip.text = element_text(face = "bold"), 
-        axis.text.x = element_text(angle = 45, hjust = 1)) +
-    labs(caption = "(Refer to Supplementary Table 6)")
+        axis.text.x = element_text(angle = 45, hjust = 1))
 
 print(p)
 
 # Save the plot as a PNG file
-ggsave(paste0("../Output/Final_Plots/Figure_4.png"), plot = p, width = 10, height = 10)
+ggsave(paste0("../Output/Final_Plots/Figure_4_50_plus.png"), plot = p, width = 12, height = 12)
 
 ```
 
@@ -1172,11 +1299,7 @@ for(group in names(bmi_jp_table)){
 
 This figure has been created externally
 
-### Supplementary Figure 1 - Flowchart
-
-This figure has been created externally
-
-### Supplementary Figure 2 - AAPC for all cancers
+### Supplementary Figure 1 - AAPC for all cancers
 
 NOTE: Kaposi Sarcoma is removed from the womens APC plot as neither 20-49 or 50+ generated an AAPC due to zeroes in the data
 
@@ -1215,7 +1338,7 @@ for(s in unique(data_joinpoint_AAPC$sex)){
       cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site),
       P.Value = if_else(P.Value < 0.001, "<0.001", as.character(round(P.Value, digits = 3))),
       cancer_site = factor(cancer_site, levels = data_jp_aapc_order$cancer_site),
-      age_group = factor(age_group, levels = c("50+", "20-49")),
+      age_group = factor(age_group, levels = c("50+", "20-49"), labels = c("50+ years", "20-49 years")),
 
     ) |>
     # filter(sex == s) |>
@@ -1244,9 +1367,9 @@ for(s in unique(data_joinpoint_AAPC$sex)){
       lower = AAPC.C.I..Low,
       upper = AAPC.C.I..High,
       xlab = "AAPC",
-      title = paste0("AAPC Values - ", s),
+      title = paste0("Cancer Incidence AAPC Values - ", s),
       line.margin = 0.2,
-      legend = c("20-49", "50+")
+      legend = c("20-49 years", "50+ years")
     ) |>
     fp_set_style(box = "black",
                  line = "black") |>
@@ -1272,18 +1395,22 @@ for(s in unique(data_joinpoint_AAPC$sex)){
   
   # Add footnote
   grid.text("* - AAPC for 20-49 is significantly greater than 0", x = 0.095, y = 0.02, gp = gpar(fontsize = 8))
-  grid.text("^ - AAPC for 20-49 is significantly greater than 0 the AAPC for 50+ is not significantly greater than 0 or does not overlap with the confidence interval of the AAPC for 25-49", x = 0.3605, y = 0.008, gp = gpar(fontsize = 8))
+  grid.text("^ - AAPC for 20-49 is significantly greater than 0 the AAPC for 50+ is not significantly greater than 0 or does not overlap with the confidence interval of the AAPC for 20-49", x = 0.3605, y = 0.008, gp = gpar(fontsize = 8))
   
   # Save plot
-  pdf(file=paste0("../Output/Final_Plots/Supplementary_Figure_2", letters[which(unique(data_joinpoint_AAPC$sex == s))], ".pdf"), width = 10, height = (4/15)*(3 + rows))
+  pdf(file=paste0("../Output/Final_Plots/Supplementary_Figure_1", letters[which(unique(data_joinpoint_AAPC$sex == s))], ".pdf"), width = 10, height = (4/15)*(3 + rows))
   print(plot)
   grid.text("* - AAPC for 20-49 is significantly greater than 0", x = 0.125, y = 0.03, gp = gpar(fontsize = 8))
-  grid.text("^ - AAPC for 20-49 is significantly greater than 0 and the AAPC for 50+ is not significantly greater than 0 or does not overlap with the confidence interval of the AAPC for 25-49", x = 0.436, y = 0.01, gp = gpar(fontsize = 8))
+  grid.text("^ - AAPC for 20-49 is significantly greater than 0 and the AAPC for 50+ is not significantly greater than 0 or does not overlap with the confidence interval of the AAPC for 20-49", x = 0.436, y = 0.01, gp = gpar(fontsize = 8))
   dev.off()
 
 }
 
 ```
+
+### Supplementary Figure 2 - Flowchart
+
+This figure has been created externally
 
 ### Supplementary Figure 3 - Trends in risk factors by IMD
 
@@ -1408,9 +1535,9 @@ for(var in unique(paste0(rf_imd_trend_plot$variable, "-", rf_imd_trend_plot$leve
   plot <- ggplot(rf_imd_trend_plot |> mutate(complete = paste0(variable, "-", level)) |> filter(complete == var), aes(x = year, y = value, color = as.factor(imd), group = imd)) +
     geom_line(size = 1) +
     labs(
-      title = paste("Risk Factor Prevalence by IMD:", variable_clean),
+      title = md(paste0("Risk Factor Prevalence by IMD:\n", variable_clean)),
       x = "Year",
-      y = "Value",
+      y = "Value (log scale)",
       color = "IMD Status"
     ) +
     geom_label_repel(
@@ -1452,7 +1579,7 @@ for(var in unique(paste0(rf_imd_trend_plot$variable, "-", rf_imd_trend_plot$leve
   
   print(plot) 
   
-  ggsave(filename = paste0("../Output/Final_Plots/Supplementary_Figure_3", letters[which(unique(paste0(rf_imd_trend_plot$variable, "-", rf_imd_trend_plot$level)) == var)], ".png"), plot = plot, width = 8, height = 6, bg = "white")
+  ggsave(filename = paste0("../Output/Final_Plots/Supplementary_Figure_3", letters[which(unique(paste0(rf_imd_trend_plot$variable, "-", rf_imd_trend_plot$level)) == var)], ".png"), plot = plot, width = 7, height = 4.5, bg = "white")
 }
 
 ```
@@ -1575,7 +1702,8 @@ for (var in unique (data_attr_cases_bar$variable)) {
     geom_bar(stat = "identity", position = "dodge", width = 0.75, colour ="black") +
     geom_errorbar(aes(ymin = 100*lower_CI, ymax = 100*upper_CI), width=.2,
                  position=position_dodge(.75)) +
-    scale_fill_manual(values = c("20-49" = "#ff9500", "50+" = "#38b000")) +
+    scale_fill_manual(values = c("20-49" = "#ff9500", "50+" = "#38b000"),
+                      labels = c("20-49 years", "50+ years")) +
     theme_minimal() +
     theme(
       
@@ -1583,7 +1711,7 @@ for (var in unique (data_attr_cases_bar$variable)) {
       # axis.text.x = element_text(angle = 45, hjust = 1)
     ) +
     labs(
-      title = paste(var, "Population Attributable Fractions: 2019"),
+      title = md(paste0("Population Attributable Fractions 2019:\n", var)),
       fill = "Age Group",
       x = "Cancer Site",
       y = "PAF (%)"
@@ -1605,10 +1733,16 @@ for (var in unique (data_attr_cases_bar$variable)) {
     
   print(data_attr_bar_paf)
   
-  ggsave(filename = paste0("../Output/Final_Plots/Supplementary_Figure_4", letters[which(unique (data_attr_cases_bar$variable) == var)], ".png"), plot = data_attr_bar_paf, width = 8, height = 6, bg = "white")
+  ggsave(filename = paste0("../Output/Final_Plots/Supplementary_Figure_4", letters[which(unique (data_attr_cases_bar$variable) == var)], ".png"), plot = data_attr_bar_paf, width = 6, height = 4, bg = "white")
   
   if(var == "Body Mass Intake (BMI)"){
-    ggsave(filename = paste0("../Output/Final_Plots/Supplementary_Figure_4", letters[which(unique (data_attr_cases_bar$variable) == var)], "_alt.png"), plot = data_attr_bar_paf, height = 6, width = 14, bg = "white")
+    
+    data_attr_bar_paf <- data_attr_bar_paf +
+    labs(
+      title = paste0("Population Attributable Fractions 2019: ", var),
+    )
+    
+    ggsave(filename = paste0("../Output/Final_Plots/Supplementary_Figure_4", letters[which(unique (data_attr_cases_bar$variable) == var)], "_alt.png"), plot = data_attr_bar_paf, height = 4, width = 9, bg = "white")
   }
   
 } 
@@ -1745,7 +1879,7 @@ p <- ggplot(BMI_paf_cases_oe50, aes(x = year, y = value, colour = rate_type)) +
     # Y-axis
      facet_manual(~ facet_var, facet_design, respect = T, scales = "free_y") +
     scale_y_log10(breaks = scales::breaks_log(n = 8),
-                  labels = scales::label_number(accuracy = 0.01)) +
+                  labels = scales::label_number(accuracy = 0.1)) +
     scale_x_continuous(
       breaks = seq(2005, 2019, by = 2),  # Define the x-axis breaks
       limits = c(2005, 2019)
@@ -1760,9 +1894,9 @@ p <- ggplot(BMI_paf_cases_oe50, aes(x = year, y = value, colour = rate_type)) +
     # Labels and Theme
     labs(
       x = "Year",  # Corrected axis label
-      y = "Rate",
-      title = paste("BMI Attributable Rates for Older Adults"),
-      colour = "Rate Type"
+      y = "Age Specific Incidence Rates per 100,000 (log scale)",
+      title = paste(""),
+      colour = "Incidence Rates"
     ) +
     theme_minimal() +
     geom_rect(
@@ -1770,13 +1904,12 @@ p <- ggplot(BMI_paf_cases_oe50, aes(x = year, y = value, colour = rate_type)) +
       colour = "black", fill = NA, inherit.aes = FALSE
     ) +
     theme(strip.text = element_text(face = "bold"), 
-        axis.text.x = element_text(angle = 45, hjust = 1)) +
-    labs(caption = "Refer to Supplementary Table 6 for detailed JoinPoint results")
+        axis.text.x = element_text(angle = 45, hjust = 1))
 
 print(p)
 
 # Save the plot as a PNG file
-ggsave(paste0("../Output/Final_Plots/Supplementary_Figure_5.png"), plot = p, width = 10, height = 10)
+ggsave(paste0("../Output/Final_Plots/Supplementary_Figure_5.png"), plot = p, width = 12, height = 12)
 
 ```
 
@@ -1820,7 +1953,7 @@ pafplotall<- ggplot(changingpaf_data, aes(x = prev, y = PAF)) +
 
 pafplotall
 
-ggsave("../Output/Final_Plots/Supplementary_Figure_6.png", plot = pafplotall, bg = "white", height = 6, width = 10)
+ggsave("../Output/Final_Plots/Supplementary_Figure_6.png", plot = pafplotall, bg = "white", height = 4, width = 6)
 
 ```
 
