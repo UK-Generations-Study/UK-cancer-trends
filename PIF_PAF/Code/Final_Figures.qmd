@@ -1545,7 +1545,7 @@ for(var in unique(paste0(rf_imd_trend_plot$variable, "-", rf_imd_trend_plot$leve
       aes(label = AAPC_clean, group = imd),
       nudge_x = 3,
       fill = "white", 
-      size = 3,
+      size = 2.5,
       show.legend = FALSE,
       max.overlaps = Inf,          # Ensure all labels are plotted
       box.padding = 0.1,          # Add padding around labels
@@ -1579,7 +1579,7 @@ for(var in unique(paste0(rf_imd_trend_plot$variable, "-", rf_imd_trend_plot$leve
   
   print(plot) 
   
-  ggsave(filename = paste0("../Output/Final_Plots/Supplementary_Figure_3", letters[which(unique(paste0(rf_imd_trend_plot$variable, "-", rf_imd_trend_plot$level)) == var)], ".png"), plot = plot, width = 7, height = 4.5, bg = "white")
+  ggsave(filename = paste0("../Output/Final_Plots/Supplementary_Figure_3", letters[which(unique(paste0(rf_imd_trend_plot$variable, "-", rf_imd_trend_plot$level)) == var)], ".png"), plot = plot, width = 6, height = 4, bg = "white")
 }
 
 ```

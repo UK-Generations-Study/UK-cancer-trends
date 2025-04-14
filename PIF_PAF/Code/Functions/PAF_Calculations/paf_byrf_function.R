@@ -137,9 +137,12 @@ paf_calculation <- function(dataframe, age_group_of_interest) {
       Processed_Meat = (Processed_Meat-1) /50, 
       Red_Meat= (Red_Meat-1) /100, 
       #Red_Processed._Meat = (Red_Processed._Meat-1) /100,
-      Light_alcohol = (Light_alcohol-1), 
-      Medium_alcohol = (Medium_alcohol-1),
-      Heavy_alcohol = (Heavy_alcohol-1),
+      Light_alcohol_men = (Light_alcohol_men-1), 
+      Medium_alcohol_men = (Medium_alcohol_men-1),
+      Heavy_alcohol_men = (Heavy_alcohol_men-1),
+      Light_alcohol_women = (Light_alcohol_women-1), 
+      Medium_alcohol_women = (Medium_alcohol_women-1),
+      Heavy_alcohol_women = (Heavy_alcohol_women-1),
       Current_Smoking_men = (Current_Smoking_men-1),
       Former_Smoking_men = (Former_Smoking_men-1),
       Current_Smoking_women = (Current_Smoking_women-1),
@@ -169,9 +172,16 @@ paf_calculation <- function(dataframe, age_group_of_interest) {
     mutate(
       level = str_trim(level), 
       variable = str_trim(variable),
-      exposure = ifelse(level == "Light Drinker", "Light_alcohol", level), #renaming the risk factor data so that it matches the RR exposure levels 
-      exposure = ifelse(level == "Moderate Drinker", "Medium_alcohol", exposure), 
-      exposure = ifelse(level == "Heavy Drinker", "Heavy_alcohol", exposure), 
+      exposure = level,
+      # exposure = ifelse(level == "Light Drinker", "Light_alcohol", level), #renaming the risk factor data so that it matches the RR exposure levels 
+      # exposure = ifelse(level == "Moderate Drinker", "Medium_alcohol", exposure), 
+      # exposure = ifelse(level == "Heavy Drinker", "Heavy_alcohol", exposure), 
+      exposure = ifelse(level == "Light Drinker" & sex == "Men", "Light_alcohol_men", exposure), #renaming the risk factor data so that it matches the RR exposure levels 
+      exposure = ifelse(level == "Moderate Drinker" & sex == "Men", "Medium_alcohol_men", exposure), 
+      exposure = ifelse(level == "Heavy Drinker" & sex == "Men", "Heavy_alcohol_men", exposure), 
+      exposure = ifelse(level == "Light Drinker" & sex == "Women", "Light_alcohol_women", exposure), #renaming the risk factor data so that it matches the RR exposure levels 
+      exposure = ifelse(level == "Moderate Drinker" & sex == "Women", "Medium_alcohol_women", exposure), 
+      exposure = ifelse(level == "Heavy Drinker" & sex == "Women", "Heavy_alcohol_women", exposure), 
       exposure = ifelse(level == "Obese"& sex == "Men", "BMI_obese_men", exposure), 
       exposure = ifelse(level == "Obese"& sex == "Women", "BMI_obese_women", exposure), 
       exposure = ifelse(level == "Overweight"& sex == "Men", "BMI_overweight_men", exposure), 
