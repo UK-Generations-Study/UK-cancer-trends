@@ -51,8 +51,8 @@
 <polyline points='205.43,256.50 205.43,54.35 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
 <rect x='97.22' y='224.79' width='0.00' height='7.43' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9500;' />
 <rect x='97.22' y='217.36' width='0.00' height='7.43' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #38B000;' />
-<rect x='97.22' y='125.70' width='31.94' height='7.43' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9500;' />
-<rect x='97.22' y='118.27' width='31.31' height='7.43' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #38B000;' />
+<rect x='97.22' y='125.70' width='37.36' height='7.43' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9500;' />
+<rect x='97.22' y='118.27' width='36.23' height='7.43' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #38B000;' />
 <rect x='97.22' y='66.24' width='0.00' height='7.43' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9500;' />
 <rect x='97.22' y='58.81' width='0.00' height='7.43' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #38B000;' />
 <rect x='97.22' y='145.52' width='0.00' height='7.43' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9500;' />
@@ -69,12 +69,12 @@
 <rect x='97.22' y='157.90' width='0.00' height='7.43' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #38B000;' />
 <rect x='97.22' y='185.16' width='0.00' height='7.43' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9500;' />
 <rect x='97.22' y='177.72' width='0.00' height='7.43' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #38B000;' />
-<polyline points='148.57,130.41 148.57,128.42 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<polyline points='148.57,129.41 109.14,129.41 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<polyline points='109.14,130.41 109.14,128.42 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<polyline points='149.12,122.97 149.12,120.99 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<polyline points='149.12,121.98 108.55,121.98 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<polyline points='108.55,122.97 108.55,120.99 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='168.22,130.41 168.22,128.42 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='168.22,129.41 97.22,129.41 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='97.22,130.41 97.22,128.42 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='165.86,122.97 165.86,120.99 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='165.86,121.98 99.36,121.98 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='99.36,122.97 99.36,120.99 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
 <rect x='91.81' y='54.35' width='119.03' height='202.15' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter;' />
 <rect x='91.81' y='54.35' width='119.03' height='202.15' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter;' />
 <rect x='91.81' y='54.35' width='119.03' height='202.15' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter;' />
@@ -127,8 +127,8 @@
 <polyline points='329.95,256.50 329.95,54.35 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
 <rect x='221.74' y='224.79' width='0.00' height='7.43' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9500;' />
 <rect x='221.74' y='217.36' width='0.00' height='7.43' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #38B000;' />
-<rect x='221.74' y='125.70' width='53.60' height='7.43' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9500;' />
-<rect x='221.74' y='118.27' width='42.50' height='7.43' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #38B000;' />
+<rect x='221.74' y='125.70' width='31.42' height='7.43' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9500;' />
+<rect x='221.74' y='118.27' width='30.46' height='7.43' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #38B000;' />
 <rect x='221.74' y='66.24' width='0.00' height='7.43' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9500;' />
 <rect x='221.74' y='58.81' width='0.00' height='7.43' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #38B000;' />
 <rect x='221.74' y='145.52' width='0.00' height='7.43' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9500;' />
@@ -145,12 +145,12 @@
 <rect x='221.74' y='157.90' width='0.00' height='7.43' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #38B000;' />
 <rect x='221.74' y='185.16' width='0.00' height='7.43' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9500;' />
 <rect x='221.74' y='177.72' width='0.00' height='7.43' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #38B000;' />
-<polyline points='312.84,130.41 312.84,128.42 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<polyline points='312.84,129.41 238.77,129.41 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<polyline points='238.77,130.41 238.77,128.42 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<polyline points='296.20,122.97 296.20,120.99 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<polyline points='296.20,121.98 234.55,121.98 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<polyline points='234.55,122.97 234.55,120.99 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='278.04,130.41 278.04,128.42 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='278.04,129.41 222.73,129.41 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='222.73,130.41 222.73,128.42 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='279.13,122.97 279.13,120.99 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='279.13,121.98 222.30,121.98 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='222.30,122.97 222.30,120.99 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
 <rect x='216.33' y='54.35' width='119.03' height='202.15' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter;' />
 <rect x='216.33' y='54.35' width='119.03' height='202.15' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter;' />
 <rect x='216.33' y='54.35' width='119.03' height='202.15' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter;' />
@@ -223,6 +223,6 @@
 <text x='374.56' y='157.77' style='font-size: 8.80px; font-family: "Arial";' textLength='46.48px' lengthAdjust='spacingAndGlyphs'>20-49 years</text>
 <text x='374.56' y='175.05' style='font-size: 8.80px; font-family: "Arial";' textLength='38.90px' lengthAdjust='spacingAndGlyphs'>50+ years</text>
 <text x='91.81' y='14.93' style='font-size: 13.20px; font-family: "Arial";' textLength='226.60px' lengthAdjust='spacingAndGlyphs'>Population Attributable Fractions 2019:</text>
-<text x='91.81' y='29.18' style='font-size: 13.20px; font-family: "Arial";' textLength='176.70px' lengthAdjust='spacingAndGlyphs'>Processed Meat Consumption</text>
+<text x='91.81' y='29.18' style='font-size: 13.20px; font-family: "Arial";' textLength='134.16px' lengthAdjust='spacingAndGlyphs'>Fibre Intake Deficiency</text>
 </g>
 </svg>
