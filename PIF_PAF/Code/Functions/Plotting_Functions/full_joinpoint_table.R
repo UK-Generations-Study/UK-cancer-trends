@@ -34,7 +34,7 @@ full_joinpoint_table <- function(data_apc, data_aapc, group_var, table_var, stra
       time.period.APC = paste0("(", Segment.Start, ", ", Segment.End, ")"),
       APC = format(round(APC, digits = 2), nsmall = 2, trim = T),
       CI.APC = paste0("(", format(round(APC.95..LCL, digits = 2), nsmall = 2, trim = T), ", ", format(round(APC.95..UCL, digits = 2), nsmall = 2, trim = T), ")"),
-      P.Value.APC = if_else(P.Value < 0.01, "<0.01", as.character(format(round(P.Value, digits = 2), nsmall = 2, trim = T)))
+      P.Value.APC = if_else(P.Value < 0.0001, "<0.0001", as.character(sub("\\.?0+$", "", format(signif(P.Value, digits = 2), scientific = FALSE))))
       
     ) |>
     select(all_of(c(full_grouping_vars, "time.period.APC", "APC", "CI.APC", "P.Value.APC")))
@@ -46,7 +46,7 @@ full_joinpoint_table <- function(data_apc, data_aapc, group_var, table_var, stra
       time.period.AAPC = paste0("(", Start.Obs, ", ", End.Obs, ")"),
       AAPC = format(round(AAPC, digits = 2), nsmall = 2, trim = T),
       CI.AAPC = paste0("(", format(round(AAPC.C.I..Low, digits = 2), nsmall = 2, trim = T), ", ", format(round(AAPC.C.I..High, digits = 2), nsmall = 2, trim = T), ")"),
-      P.Value.AAPC = if_else(P.Value < 0.01, "<0.01", as.character(format(round(P.Value, digits = 2), nsmall = 2, trim = T)))
+      P.Value.AAPC = if_else(P.Value < 0.0001, "<0.0001", as.character(sub("\\.?0+$", "", format(signif(P.Value, digits = 2), scientific = FALSE))))
       
     ) |>
     select(all_of(c(full_grouping_vars, "time.period.AAPC", "AAPC", "CI.AAPC", "P.Value.AAPC")))
@@ -112,18 +112,18 @@ full_joinpoint_table <- function(data_apc, data_aapc, group_var, table_var, stra
       ) |>
       # Manually assigning column widths
       cols_width(
-        starts_with("time.period") ~ px(120),
-        starts_with("CI") ~ px(120),
-        "AAPC" ~ px(70),
-        "APC" ~ px(70),
-        starts_with("P.Value") ~ px(70),
-        everything() ~ px(100)
+        starts_with("time.period") ~ px(70),
+        starts_with("CI") ~ px(80),
+        "AAPC" ~ px(40),
+        "APC" ~ px(40),
+        starts_with("P.Value") ~ px(55),
+        everything() ~ px(65)
       ) |>
       # Adding border between stratification_vars and AAPC, and AAPC and APC
       tab_style(
         style = cell_borders(
           sides = c("left"),
-          weight = px(2)
+          weight = px(1)
         ),
         locations = cells_body(
           columns = starts_with("time.period")
@@ -137,6 +137,31 @@ full_joinpoint_table <- function(data_apc, data_aapc, group_var, table_var, stra
       tab_footnote(
         footnote = "Annual Percentage Change",
         locations = cells_column_labels(columns = APC)
+      ) |>
+      # LANCET FORMATTING
+      tab_style(
+        style = cell_text(font = "Times New Roman", size = px(8*1.333)),
+        locations = cells_footnotes()
+      ) |>
+      tab_style(
+        style = cell_text(font = "Times New Roman", size = px(8*1.333)),
+        locations = cells_body(columns = everything())
+      ) |>
+      tab_style(
+        style = cell_text(font = "Times New Roman", size = px(8*1.333), weight = "bold"),
+        locations = cells_column_labels()
+      ) |>
+      tab_style(
+        style = cell_text(font = "Times New Roman", size = px(10*1.333), weight = "bold"),
+        locations = cells_title()
+      ) |>
+      tab_style(
+        style = cell_text(font = "Times New Roman", size = px(8*1.333), weight = "bold"),
+        locations = cells_column_spanners()
+      ) |>
+      tab_style(
+        style = cell_text(font = "Times New Roman", size = px(8*1.333), weight = "bold"),
+        locations = cells_row_groups(groups = everything())
       )
     
     output[[table_value]] <- data_complete_table
