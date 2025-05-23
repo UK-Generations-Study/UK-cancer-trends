@@ -15,9 +15,13 @@ execute:
   echo: false
 ---
 
+
+
 ## Setting up
 
 ### Packages
+
+
 
 ```{r}
 
@@ -44,7 +48,11 @@ library(Cairo)
 
 ```
 
+
+
 ### Setting working directory
+
+
 
 ```{r}
 
@@ -62,7 +70,11 @@ if(Sys.getenv("RSTUDIO") == '1' & !knitr::is_html_output()) { # If using Rstudio
 
 ```
 
+
+
 ### Read in Functions
+
+
 
 ```{r}
 # Load in the PAF calculation functions
@@ -89,7 +101,11 @@ source("Functions/Plotting_Functions/plot_lancet.R")
 
 ```
 
+
+
 ### Read in Data
+
+
 
 ```{r}
 
@@ -168,7 +184,11 @@ dietrfdata_fibre_joinpoint_model <- read.delim("../Data/Joinpoint_Results/Diet_F
 
 ```
 
+
+
 ### Cleaning childhood BMI data
+
+
 
 ```{r}
 
@@ -233,7 +253,11 @@ data_childhood_bmi <- data_childhood_bmi |>
 
 ```
 
+
+
 ### Ensuring the Joinpoint input is up to date
+
+
 
 ```{r}
 
@@ -242,9 +266,13 @@ source("Functions/Data_Generation/joinpoint_cleaned_generation.R")
 
 ```
 
+
+
 ## Main Figures
 
 ### Figure 1 - Joinpoint trends of selected cancer sites
+
+
 
 ```{r, fig.height=10, fig.width=10, warning=F}
 
@@ -399,7 +427,11 @@ ggsave(filename = paste0("../Output/Final_Plots_SVG/Figure_1.svg"), bg = "white"
 
 ```
 
+
+
 ### Figure 2 - Joinpoint trends in risk factors
+
+
 
 ```{r, fig.height=5, fig.width=5, warning=F}
 
@@ -599,7 +631,11 @@ for(p in names(jp_plots)){
 
 ```
 
+
+
 ### Figure 3 - Aggregated PAFs by cancer site
+
+
 
 ```{r, fig.height = 6, fig.width = 14}
 
@@ -738,7 +774,11 @@ ggsave("../Output/Final_Plots_SVG/Figure_3a.svg", plot = data_attr_bar_paf, bg =
 
 ```
 
+
+
 ### Figure 4 - BMI Attributable Trends
+
+
 ```{r, fig.height=10, fig.width=10, warning=F}
 
 #Calculating the PAFs
@@ -904,6 +944,8 @@ ggsave(paste0("../Output/Final_Plots_SVG/Figure_4.svg"), plot = p, width = 12, h
 
 ```
 
+
+
 ## Supplementary Figures
 
 ### Supplementary Table 1 - Data availability and sourcing information
@@ -919,6 +961,8 @@ This table is generated in excel
 This table is generated in excel
 
 ### Supplementary Table 4 - AAPC/APC by cancer site
+
+
 
 ```{r, results = "asis", fig.width=200}
 
@@ -947,7 +991,11 @@ for(sex in c("Women", "Men")){
 
 ```
 
+
+
 ### Supplementary Table 5 - AAPC/APC by risk factor
+
+
 
 ```{r, results = "asis", fig.width = 300}
 
@@ -1062,7 +1110,11 @@ for(sex in c("Women", "Men")){
 
 ```
 
+
+
 ### Supplementary Table 6 - AAPC and APC Trends in BMI Attributable Rates
+
+
 ```{r, results = "asis"}
 
 bmi_paf_apc <- read.delim("../Data/Joinpoint_Results/BMI_Attributable/jp_bmi_attributable.Export.APC.txt") |>
@@ -1105,7 +1157,11 @@ for(group in plot_order){
 
 ```
 
+
+
 ### Supplementary Table 6 - RR scenarios for colorectal cancer and BMI (REMOVED?)
+
+
 
 ```{r, results = "asis"}
 
@@ -1180,6 +1236,8 @@ for(group in plot_order){
 
 ```
 
+
+
 ### Supplementary Table 7 - PubMed search terms
 
 This figure has been created externally
@@ -1187,6 +1245,8 @@ This figure has been created externally
 ### Supplementary Figure 1 - AAPC for all cancers
 
 NOTE: Kaposi Sarcoma is removed from the womens APC plot as neither 20-49 or 50+ generated an AAPC due to zeroes in the data
+
+
 
 ```{r, fig.width=15, fig.height =10}
 
@@ -1308,11 +1368,15 @@ for(s in unique(data_joinpoint_AAPC$sex)){
 
 ```
 
+
+
 ### Supplementary Figure 2 - Flowchart
 
 This figure has been created externally
 
 ### Supplementary Figure 3 - Trends in risk factors by IMD
+
+
 
 ```{r}
 
@@ -1514,7 +1578,11 @@ for(var in plot_order){
 
 ```
 
+
+
 ### Supplementary Figure 4 - PAFs by risk factor
+
+
 
 ```{r}
 
@@ -1683,7 +1751,11 @@ for (var in plot_order) {
 
 ```
 
+
+
 ### Supplementary Figure 5 - Attributable Graphs for 50+
+
+
 ```{r, fig.height=10, fig.width = 10}
 
 #Calculating the PAFs
@@ -1849,7 +1921,11 @@ ggsave(paste0("../Output/Final_Plots_SVG/Supplementary_Figure_5.svg"), plot = p,
 
 ```
 
+
+
 ### Supplementary Figure 6 - PAF
+
+
 
 ```{r}
 
@@ -1893,7 +1969,11 @@ ggsave("../Output/Final_Plots_SVG/Supplementary_Figure_6.svg", plot = pafplotall
 
 ```
 
+
+
 ### Supplementary Figure 5b - PIF - REMOVED?
+
+
 
 ```{r}
 
@@ -1963,9 +2043,13 @@ ggsave("../Output/Final_Plots_SVG/Supplementary_Figure_6.svg", plot = pafplotall
 
 ```
 
+
+
 ### Supplementary Figure 7 - Colorectal cancer and risk factor plotting
 
 NOTE: Need to add childhood BMI
+
+
 
 ```{r, fig.height= 14, fig.width = 8}
 
@@ -2224,7 +2308,11 @@ for(s in c("Women", "Men")){
 
 ```
 
+
+
 ### TEMPORARY SF7
+
+
 ```{r, fig.height= 14, fig.width = 8}
 
 # Getting data to plot trend points
@@ -2374,11 +2462,13 @@ for(s in c("Women", "Men")){
             "Obese" = "#4f518c",
             "Overweight" = "#e4afff"
           )
-        ) +
-        scale_y_log10(breaks = scales::breaks_log(), limits = rf_trend_plot_overlay |>
+        ) |>
+        ylim(
+          rf_trend_plot_overlay |>
       filter(variable %in% c("BMI (2-15 years)", "BMI (20-49 years)")) |>
       pull(value) |>
-      range(), sec.axis = sec_axis(~ ., name = var, labels = NULL))
+      range()
+        )
       
     } else if(var == "Alcohol Consumption"){
       
@@ -2477,11 +2567,12 @@ for(s in c("Women", "Men")){
   
   print(plot)
   
-  ggsave(filename = paste0("../Output/Final_Plots/Supplementary_Figure_7", letters[which(c("Women", "Men") == s)], "_temp.png"), plot = plot, width = 9, height = 14, bg = "white")
-  # ggsave(filename = paste0("../Output/Final_Plots_SVG/Supplementary_Figure_7_TEMP", letters[which(c("Women", "Men") == s)], "_temp.svg"), plot = plot, width = 9, height = 14, bg = "white")
+  ggsave(filename = paste0("../Output/Final_Plots/Supplementary_Figure_7_TEMP", letters[which(c("Women", "Men") == s)], ".png"), plot = plot, width = 9, height = 14, bg = "white")
+  ggsave(filename = paste0("../Output/Final_Plots_SVG/Supplementary_Figure_7", letters[which(c("Women", "Men") == s)], ".svg"), plot = plot, width = 9, height = 14, bg = "white")
   
 
 }
 
 
 ```
+
