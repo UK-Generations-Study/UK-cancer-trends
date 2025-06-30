@@ -39,6 +39,8 @@ library(gridExtra)
 library(ggh4x)
 library(grid)
 library(svglite)
+library(extrafont)
+library(Cairo)
 
 ```
 
@@ -81,6 +83,9 @@ source("Functions/Plotting_Functions/full_joinpoint_table.R")
 
 # Load in function to plot joinpoint output for RF
 source("Functions/Plotting_Functions/plot_joinpoint.R")
+
+# Load in function for Lancet theme for ggplot2 objects
+source("Functions/Plotting_Functions/plot_lancet.R")
 
 ```
 
@@ -365,7 +370,7 @@ plot <- ggplot(data_cancer_facet, aes(x = year, y = Rate, colour = age_group)) +
   geom_point() +
   geom_line(data = data_joinpoint_plot, aes(x = year, y = y)) +
   geom_point(data = invisible_points, aes(x = year, y = y), alpha = 0) +
-  theme_minimal() +
+  theme_minimal_lancet() +
   scale_colour_manual(values = c("20-49" = "#ff9500", "50+" = "#38b000"),
                       labels = c("20-49 years", "50+ years")) +
   geom_rect(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
@@ -425,10 +430,9 @@ jp_plots[["smoking"]] <- plot_joinpoint(
     colour = "Risk Factor",
     title = "Cigarette Smoking"
   ) +
-   theme(
-    strip.text = element_text(face = "bold"),
-    plot.title = element_text(hjust = 0.5)
-  ) +
+  theme_minimal_lancet() +
+  theme(legend.position = "bottom",
+        axis.text.x = element_text(angle = 45, hjust = 1)) +
   scale_color_manual( #fixing the colors
     values = c(
       "Current" = "#4f518c",
@@ -452,10 +456,9 @@ jp_plots[["alcohol"]] <- plot_joinpoint(
     colour = "Risk Factor",
     title = "Alcohol Consumption"
   ) +
-   theme(
-    strip.text = element_text(face = "bold"),
-    plot.title = element_text(hjust = 0.5)
-  ) +
+  theme_minimal_lancet() +
+  theme(legend.position = "bottom",
+        axis.text.x = element_text(angle = 45, hjust = 1)) +
   scale_color_manual( #fixing the colors
     values = c(
       "Heavy Drinker" = "#4f518c",
@@ -486,10 +489,9 @@ jp_plots[["bmi"]] <- plot_joinpoint(
     colour = "Risk Factor",
     title = "Body Mass Index (BMI)"
   ) +
-   theme(
-    strip.text = element_text(face = "bold"),
-    plot.title = element_text(hjust = 0.5)
-  ) +
+  theme_minimal_lancet() +
+  theme(legend.position = "bottom",
+        axis.text.x = element_text(angle = 45, hjust = 1)) +
   scale_color_manual( #fixing the colors
     values = c(
       "Obese" = "#4f518c",
@@ -498,8 +500,8 @@ jp_plots[["bmi"]] <- plot_joinpoint(
       # "Underweight" = "#fcab10"
     ),
     labels = c(
-      "Obese" = "Obese (>30 kg/m2)",
-      "Overweight" = "Overweight (25-30 kg/m2)"
+      "Obese" = expression("Obese (">30~"kg/m"^2~")"),
+      "Overweight" = expression("Overweight ("~25-30~"kg/m"^2~")")
     )
   )
 
@@ -514,10 +516,9 @@ jp_plots[["physical_activity"]] <- plot_joinpoint(
     title = "Physical Inactivity",
     caption = md("*150 min/week of moderate or 75 min/week of vigorous activity.\n**150 min/week of activity")
   ) +
-   theme(
-    strip.text = element_text(face = "bold"),
-    plot.title = element_text(hjust = 0.5)
-  ) +
+  theme_minimal_lancet() +
+  theme(legend.position = "bottom",
+        axis.text.x = element_text(angle = 45, hjust = 1)) +
   scale_color_manual( #fixing the colors
     values = c(
       "physical_activity_old" = "#4f518c",
@@ -538,10 +539,9 @@ jp_plots[["fibre_consumption"]] <- plot_joinpoint(
     colour = "Risk Factor",
     title = "Fibre Intake Deficiency"
   ) +
-   theme(
-    strip.text = element_text(face = "bold"),
-    plot.title = element_text(hjust = 0.5)
-  ) +
+  theme_minimal_lancet() +
+  theme(legend.position = "bottom",
+        axis.text.x = element_text(angle = 45, hjust = 1)) +
   scale_color_manual(
           values = c("Below Guidelines" = "#4f518c"),
     labels = c("Below Guidelines" = "Fibre Consumption Below UK Guidelines (30g/day)")
@@ -556,10 +556,10 @@ jp_plots[["meat_consumption"]] <- plot_joinpoint(
     y = "Daily Consumption (g) (log scale)",
     colour = "Risk Factor",
     title = "Red and Processed Meat Consumption"
-  ) + theme(
-    strip.text = element_text(face = "bold"),
-    plot.title = element_text(hjust = 0.5)
-  ) +
+  ) + 
+  theme_minimal_lancet() +
+  theme(legend.position = "bottom",
+        axis.text.x = element_text(angle = 45, hjust = 1)) +
   scale_color_manual(
     values = c(
       "redmeat_consumption_median" = "#4f518c",
@@ -713,7 +713,7 @@ data_attr_bar_paf <- ggplot(data_attr_cases_bar_alt, aes(x = cancer_site, y = PA
                  position=position_dodge(.75)) +
   scale_fill_manual(values = c("20-49" = "#ff9500", "50+" = "#38b000"),
                     labels = c("20-49 years", "50+ years")) +
-  theme_minimal() +
+  theme_minimal_lancet() +
   theme(
     
     strip.text = element_text(face = "bold"),
@@ -887,7 +887,7 @@ p <- ggplot(BMI_paf_cases_u50, aes(x = year, y = value, colour = rate_type)) +
       title = "",
       colour = "Incidence Rates"
     ) +
-    theme_minimal() +
+    theme_minimal_lancet() +
     geom_rect(
       xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
       colour = "black", fill = NA, inherit.aes = FALSE
@@ -941,6 +941,7 @@ for(sex in c("Women", "Men")){
   
   # Save
   gtsave(supp_table_4[[sex]], paste0("../Output/Final_Plots/Supplementary_Table_4", letters[which(c("Women", "Men") == sex)], ".png"))
+  gtsave(supp_table_4[[sex]], paste0("../Output/Final_Plots_PDF/Supplementary_Table_4", letters[which(c("Women", "Men") == sex)], ".pdf"))
   
 }
 
@@ -1055,6 +1056,7 @@ for(sex in c("Women", "Men")){
   
   # Save
   gtsave(supp_table_5[[sex]], paste0("../Output/Final_Plots/Supplementary_Table_5", letters[which(c("Women", "Men") == sex)], ".png"))
+  gtsave(supp_table_5[[sex]], paste0("../Output/Final_Plots_PDF/Supplementary_Table_5", letters[which(c("Women", "Men") == sex)], ".pdf"))
   
 }
 
@@ -1097,6 +1099,7 @@ for(group in plot_order){
   print(bmi_jp_table[[group]])
   
   gtsave(bmi_jp_table[[group]], paste0("../Output/Final_Plots/Supplementary_Table_6", letters[which(plot_order == group)], ".png"))
+  gtsave(bmi_jp_table[[group]], paste0("../Output/Final_Plots_PDF/Supplementary_Table_6", letters[which(plot_order == group)], ".pdf"))
   
 }
 
@@ -1251,7 +1254,15 @@ for(s in unique(data_joinpoint_AAPC$sex)){
       xlab = "AAPC",
       title = paste0("Cancer Incidence AAPC Values - ", s),
       line.margin = 0.2,
-      legend = c("20-49 years", "50+ years")
+      legend = c("20-49 years", "50+ years"),
+      txt_gp = fpTxtGp(
+        title = gpar(fontsize = 10, fontfamily = "Times New Roman", fontface = "bold"),
+        xlab = gpar(fontsize = 16, fontfamily = "Times New Roman", fontface = "bold"),
+        label = gpar(fontsize = 9, fontfamily = "Times New Roman", fontface = "plain"),
+        legend = gpar(fontsize = 14, fontfamily = "Times New Roman", fontface = "plain"),
+        ticks = gpar(fontsize = 16, fontfamily = "Times New Roman", fontface = "plain")
+        
+      )
     ) |>
     fp_set_style(box = "black",
                  line = "black") |>
@@ -1266,8 +1277,8 @@ for(s in unique(data_joinpoint_AAPC$sex)){
                  line = "grey20",
                  summary =  "black",
                  # align = "lrrrrr",
-                 hrz_lines =  "#999999",
-                 txt_gp = fpTxtGp(label = gpar(cex = 0.8)))
+                 hrz_lines =  "#999999")
+                 # txt_gp = fpTxtGp(label = gpar(cex = 0.8)))
   
   # Find appropriate height for plot based on number of rows
   rows <- length(plot$labels$`Cancer Site`)
@@ -1280,17 +1291,17 @@ for(s in unique(data_joinpoint_AAPC$sex)){
   grid.text("^ - AAPC for 20-49 is significantly greater than 0 the AAPC for 50+ is not significantly greater than 0 or does not overlap with the confidence interval of the AAPC for 20-49", x = 0.3605, y = 0.008, gp = gpar(fontsize = 8))
   
   # Save plot
-  pdf(file=paste0("../Output/Final_Plots/Supplementary_Figure_1", letters[which(unique(data_joinpoint_AAPC$sex == s))], ".pdf"), width = 10, height = (4/15)*(3 + rows))
+  
+  CairoPNG(file=paste0("../Output/Final_Plots/Supplementary_Figure_1", letters[which(unique(data_joinpoint_AAPC$sex == s))], ".png"), width = 10, height = (4/15)*(3 + rows), units = "in", res = 300)
   print(plot)
-  grid.text("* - AAPC for 20-49 is significantly greater than 0", x = 0.125, y = 0.03, gp = gpar(fontsize = 8))
-  grid.text("^ - AAPC for 20-49 is significantly greater than 0 and the AAPC for 50+ is not significantly greater than 0 or does not overlap with the confidence interval of the AAPC for 20-49", x = 0.436, y = 0.01, gp = gpar(fontsize = 8))
+  grid.text("* - AAPC for 20-49 is significantly greater than 0", x = 0.135, y = 0.03, gp = gpar(fontsize = 9, fontfamily = "Times New Roman", fontface = "plain"))
+  grid.text("^ - AAPC for 20-49 is significantly greater than 0 and the AAPC for 50+ is not significantly greater than 0 or does not overlap with the confidence interval of the AAPC for 20-49", x = 0.462, y = 0.01, gp = gpar(fontsize = 9, fontfamily = "Times New Roman", fontface = "plain"))
   dev.off()
   
-  # Save plot
   svglite(file=paste0("../Output/Final_Plots_SVG/Supplementary_Figure_1", letters[which(unique(data_joinpoint_AAPC$sex == s))], ".svg"), width = 10, height = (4/15)*(3 + rows))
   print(plot)
-  grid.text("* - AAPC for 20-49 is significantly greater than 0", x = 0.125, y = 0.03, gp = gpar(fontsize = 8))
-  grid.text("^ - AAPC for 20-49 is significantly greater than 0 and the AAPC for 50+ is not significantly greater than 0 or does not overlap with the confidence interval of the AAPC for 20-49", x = 0.436, y = 0.01, gp = gpar(fontsize = 8))
+  grid.text("* - AAPC for 20-49 is significantly greater than 0", x = 0.13, y = 0.03, gp = gpar(fontsize = 9, fontfamily = "Times New Roman", fontface = "plain"))
+  grid.text("^ - AAPC for 20-49 is significantly greater than 0 and the AAPC for 50+ is not significantly greater than 0 or does not overlap with the confidence interval of the AAPC for 20-49", x = 0.452, y = 0.01, gp = gpar(fontsize = 9, fontfamily = "Times New Roman", fontface = "plain"))
   dev.off()
 
 }
@@ -1415,7 +1426,7 @@ rf_imd_trend_plot <- rf_imd_trend_plot |>
 
 # Loop through each variable and create a plot
 
-plot_order <- c("Cigarette Smoking-Previously", "Cigarette Smoking-Current", "Alcohol Consumption-Light Drinker", "Alcohol Consumption-Moderate Drinker", "Alcohol Consumption-Heavy Drinker", "BMI-Overweight", "BMI-Obese", "Physical Inactivity-Below Old Recommendations")
+plot_order <- c("Cigarette Smoking - Previously", "Cigarette Smoking - Current", "Alcohol Consumption - Light Drinker", "Alcohol Consumption - Moderate Drinker", "Alcohol Consumption - Heavy Drinker", "BMI - Overweight", "BMI - Obese", "Physical Inactivity - Below Old Recommendations")
 
 for(var in plot_order){
   
@@ -1424,7 +1435,7 @@ for(var in plot_order){
     TRUE ~ var
   )
   
-  plot <- ggplot(rf_imd_trend_plot |> mutate(complete = paste0(variable, "-", level)) |> filter(complete == var), aes(x = year, y = value, color = as.factor(imd), group = imd)) +
+  plot <- ggplot(rf_imd_trend_plot |> mutate(complete = paste0(variable, " - ", level)) |> filter(complete == var), aes(x = year, y = value, color = as.factor(imd), group = imd)) +
     geom_line(size = 1) +
     labs(
       title = md(paste0("Risk Factor Prevalence by IMD:\n", variable_clean)),
@@ -1433,10 +1444,11 @@ for(var in plot_order){
       color = "IMD Status"
     ) +
     geom_label_repel(
-      data = rf_imd_trend_plot_labels |> mutate(complete = paste0(variable, "-", level)) |> filter(complete == var),
+      data = rf_imd_trend_plot_labels |> mutate(complete = paste0(variable, " - ", level)) |> filter(complete == var),
       aes(label = AAPC_clean, group = imd),
       nudge_x = 3,
       fill = "white", 
+      family = "Times New Roman",
       size = 2.5,
       show.legend = FALSE,
       max.overlaps = Inf,         
@@ -1456,10 +1468,10 @@ for(var in plot_order){
         "5 (most deprived)" = "#38617a"
       )
     ) +
-    theme_minimal() +
+    theme_minimal_lancet() +
     scale_x_continuous(
     breaks = seq(2000, 2019, by = 3), 
-    limits = c(2000, NA)
+    limits = c(2000, 2024)
     )+
     theme(
       # strip.text = element_text(size = 10),
@@ -1624,7 +1636,7 @@ for (var in plot_order) {
                  position=position_dodge(.75)) +
     scale_fill_manual(values = c("20-49" = "#ff9500", "50+" = "#38b000"),
                       labels = c("20-49 years", "50+ years")) +
-    theme_minimal() +
+    theme_minimal_lancet() +
     theme(
       
       strip.text = element_text(face = "bold"),
@@ -1821,7 +1833,7 @@ p <- ggplot(BMI_paf_cases_oe50, aes(x = year, y = value, colour = rate_type)) +
       title = paste(""),
       colour = "Incidence Rates"
     ) +
-    theme_minimal() +
+    theme_minimal_lancet() +
     geom_rect(
       xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
       colour = "black", fill = NA, inherit.aes = FALSE
@@ -1865,13 +1877,12 @@ pafplotall<- ggplot(changingpaf_data, aes(x = prev, y = PAF)) +
        x = "Risk Factor Population Prevalence",
        y = "PAF") +
   ylim(0, 1) +
-  theme_minimal() +
+  theme_minimal_lancet() +
   facet_wrap(~RR, ncol = 4, labeller = as_labeller(function(x) paste("RR =", x)))+
   theme(axis.text.x = element_text(angle = 45, hjust = 1), 
-        strip.text = element_text(size = 10, face = "bold"),
         legend.position = "none", 
         panel.border = element_rect(color = "black", fill = NA, size = 1), 
-         plot.title = element_text(hjust = 0.5)) +
+  ) +
   scale_x_continuous(labels = scales::number_format(accuracy = 0.1)) +
   scale_y_continuous(labels = scales::number_format(accuracy = 0.1))
 
@@ -1933,7 +1944,7 @@ ggsave("../Output/Final_Plots_SVG/Supplementary_Figure_6.svg", plot = pafplotall
 #     y = "PIF",
 #     color = "Relative Risk"
 #   ) +
-#   theme_minimal() +
+#   theme_minimal_lancet() +
 #   theme(
 #     strip.text = element_text(size = 10, face = "bold"),
 #     axis.text.x = element_text(angle = 45, hjust = 1),
@@ -2029,9 +2040,10 @@ for(s in c("Women", "Men")){
         geom_point() +
         geom_line() +
         scale_y_log10(breaks = scales::breaks_log(), limits = cancer_trend_bounds, sec.axis = sec_axis(~ ., name = "Colorectal Cancer Rate", labels = NULL)) +
-        theme_minimal() +
+        theme_minimal_lancet() +
         theme(
           axis.text.y = rotatedAxisElementText(90,'y'),
+          axis.text.x = element_text(angle = 45, hjust = 0),
           strip.text = element_blank(),
           legend.position = "none"
         ) +
@@ -2075,9 +2087,10 @@ for(s in c("Women", "Men")){
       geom_point() +
       geom_line() +
       scale_y_log10(breaks = scales::breaks_log(), limits = rf_trend_bounds, sec.axis = sec_axis(~ ., name = var, labels = NULL)) +
-      theme_minimal() +
+      theme_minimal_lancet() +
       theme(
         axis.text.y = rotatedAxisElementText(90,'y'),
+        axis.text.x = element_text(angle = 45, hjust = 1),
         strip.text = element_text(face = "bold"),
         # legend.position = "none"
       ) +
@@ -2195,15 +2208,277 @@ for(s in c("Women", "Men")){
   
   plot <- ggdraw() +
     draw_plot(plot, 0, 0, 1, 0.97, vjust = 0) +
-    draw_label(paste0("Trends in Colorectal Cancer and Risk Factors in Young ", s), fontface = 'bold', 
+    draw_label(paste0("Trends in Colorectal Cancer and Risk Factors in Younger ", s, " aged 20-49"), fontface = 'bold', fontfamily = "Times New Roman", 
                x = 0, y = 0.99,  
                hjust = -0.05, vjust = 1,  
-               size = 14)
+               size = 10)
   
   print(plot)
   
-  ggsave(filename = paste0("../Output/Final_Plots/Supplementary_Figure_7", letters[which(c("Women", "Men") == s)], ".png"), plot = plot, width = 8, height = 14, bg = "white")
-  ggsave(filename = paste0("../Output/Final_Plots_SVG/Supplementary_Figure_7", letters[which(c("Women", "Men") == s)], ".svg"), plot = plot, width = 8, height = 14, bg = "white")
+  ggsave(filename = paste0("../Output/Final_Plots/Supplementary_Figure_7", letters[which(c("Women", "Men") == s)], ".png"), plot = plot, width = 9, height = 14, bg = "white")
+  ggsave(filename = paste0("../Output/Final_Plots_SVG/Supplementary_Figure_7", letters[which(c("Women", "Men") == s)], ".svg"), plot = plot, width = 9, height = 14, bg = "white")
+  
+
+}
+
+
+```
+
+### TEMPORARY SF7
+```{r, fig.height= 14, fig.width = 8}
+
+# Getting data to plot trend points
+rf_trend_plot <- data_rf |> mutate(level = if_else(level == "[30,Inf)" & variable == "fibre_consumption", "Below Guidelines", level),
+                                         value = if_else(level == "Below Guidelines" & variable == "fibre_consumption", 1 - value, value))
+
+# Create and the clean the desired risk factor data
+rf_trend_plot_overlay <- rf_trend_plot |>
+  select(-N) |>
+  rbind(data_childhood_bmi) |>
+  filter(case_when(
+    variable == "alcohol_amt" ~ level %in% c("Moderate Drinker", "Heavy Drinker", "Light Drinker"),
+    variable == "bmi" ~ level %in% c("Overweight", "Obese"),
+    variable == "physical_activity_old" ~ level == "Below Recommendations",
+    variable == "fibre_consumption" ~ level == "Below Guidelines",
+    variable == "bmi_children" ~ TRUE,
+    TRUE ~ variable %in% c("processedmeat_consumption_median", "redmeat_consumption_median")
+  )) |>
+  filter(age_group %in% c("20-49", "2-15")) |>
+  filter(!(variable == "alcohol_amt" & year == 2005)) |>
+  mutate(
+    
+    level = case_when(
+      variable == "redmeat_consumption_median" ~ "Red Meat",
+      variable == "processedmeat_consumption_median" ~ "Processed Meat",
+      TRUE ~ level
+    ),
+    
+    variable = case_when(
+      variable == "redmeat_consumption_median" ~ "meat_consumption",
+      variable == "processedmeat_consumption_median" ~ "meat_consumption",
+      TRUE ~ variable
+    )
+    
+  ) |>
+  select(variable, level, year, value, sex) |>
+  # Make clean variable names and order specifically for plot
+  mutate(
+    
+    variable = case_when(
+      variable == "bmi" ~ "BMI (20-49 years)",
+      variable == "bmi_children" ~ "BMI (2-15 years)",
+      variable == "alcohol_amt" ~ "Alcohol Consumption",
+      variable == "fibre_consumption" ~ "Fibre Intake Deficiency",
+      variable == "meat_consumption" ~ "Meat Consumption",
+      variable == "physical_activity_old" ~ "Physical Inactivity",
+      TRUE ~ NA
+    )
+    
+  )
+
+# Extract the colorectal cancer rates
+rf_overlay_colorectal <- data_cancer |>
+  filter(cancer_site == "Colorectum") |>
+  filter(age_group == "20-49") |>
+  select(year, value = Rate, sex) |>
+  mutate(level = "Colorectal Cancer Rate",
+         variable = "Cancer Rate")
+
+# Create plot for colorectal
+
+cancer_trend_bounds <- rf_overlay_colorectal |>
+    pull(value) |>
+    range()
+
+
+
+for(s in c("Women", "Men")){
+
+  plot_cancer <- ggplot(data = rf_overlay_colorectal |> filter(sex == s), aes(x = year, y = value, colour = level)) +
+        geom_point() +
+        geom_line() +
+        scale_y_log10(breaks = scales::breaks_log(), limits = cancer_trend_bounds, sec.axis = sec_axis(~ ., name = "Colorectal Cancer Rate", labels = NULL)) +
+        theme_minimal_lancet() +
+        theme(
+          axis.text.y = rotatedAxisElementText(90,'y'),
+          axis.text.x = element_text(angle = 45, hjust = 0),
+          strip.text = element_blank(),
+          legend.position = "none"
+        ) +
+        geom_rect(
+          xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
+          colour = "black", fill = NA, inherit.aes = FALSE
+        ) +
+        labs(
+          # title = paste0("Trends of Colorectal Cancer and ", var, " in 20-49 ", s),
+          x = "Year",
+          y = "Age Specific Incidence Rates",
+          colour = "",
+          fill = "",
+          linetype = ""
+        ) +
+        scale_colour_manual(values = c("Colorectal Cancer Rate" = "#ff9500")) +
+        scale_x_continuous(breaks = seq(2005, 2030, 5), limits = c(2005, 2030), position= "top")
+  
+  # Get blank legend
+  blank_legend <- get_legend(plot_cancer)
+
+  # Initialise plot list
+  plot_list <- list("Cancer" = plot_cancer)
+  legend_list <- list("Cancer" = blank_legend)
+  
+  # Now loop through variables
+  for(var in c("BMI (2-15 years)", "BMI (20-49 years)", "Alcohol Consumption", "Physical Inactivity", "Fibre Intake Deficiency", "Meat Consumption")){
+    
+    rf_trend_bounds <- rf_trend_plot_overlay |>
+      filter(variable == var) |>
+      pull(value) |>
+      range()
+  
+    # Filter to specific rf_data
+    rf_trend_plot_overlay_var <- rf_trend_plot_overlay |>
+      filter(variable == var) |>
+      filter(sex == s)
+  
+    # Make plot
+    plot_rf <- ggplot(data = rf_trend_plot_overlay_var, aes(x = year, y = value, colour = level)) +
+      geom_point() +
+      geom_line() +
+      scale_y_log10(breaks = scales::breaks_log(), limits = rf_trend_bounds, sec.axis = sec_axis(~ ., name = var, labels = NULL)) +
+      theme_minimal_lancet() +
+      theme(
+        axis.text.y = rotatedAxisElementText(90,'y'),
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        strip.text = element_text(face = "bold"),
+        # legend.position = "none"
+      ) +
+      geom_rect(
+        xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
+        colour = "black", fill = NA, inherit.aes = FALSE
+      ) +
+      labs(
+        # title = paste0("Trends of Colorectal Cancer and ", var, " in 20-49"),
+        x = NULL,
+        y = "Prevalence",
+        colour = "",
+        fill = "",
+        linetype = ""
+      )
+    
+    # Change colours based on what is being plotted
+    if(var %in% c("BMI (20-49 years)", "BMI (2-15 years)")){
+      
+      plot_rf <- plot_rf +
+        scale_colour_manual(
+          values = c(
+            "Obese" = "#4f518c",
+            "Overweight" = "#e4afff"
+          )
+        ) +
+        scale_y_log10(breaks = scales::breaks_log(), limits = rf_trend_plot_overlay |>
+      filter(variable %in% c("BMI (2-15 years)", "BMI (20-49 years)")) |>
+      pull(value) |>
+      range(), sec.axis = sec_axis(~ ., name = var, labels = NULL))
+      
+    } else if(var == "Alcohol Consumption"){
+      
+      plot_rf <- plot_rf +
+        scale_color_manual( #fixing the colors
+          values = c(
+            "Heavy Drinker" = "#4f518c",
+            "Moderate Drinker" = "#907ad6",
+            "Light Drinker" = "#e4afff"
+            # "Non-Drinker" = "#fcab10"
+          ),
+          # labels = c(
+          #   "Heavy Drinker" = "Heavy (>50units/week)",
+          #   "Moderate Drinker" = "Moderate (14-50units/week)",
+          #   "Light Drinker" = "Light (<14units/week)"
+          # ),
+          breaks = c(
+            "Heavy Drinker",
+            "Moderate Drinker",
+            "Light Drinker"
+          )
+        )
+      
+    } else if(var == "Physical Inactivity"){
+      
+      plot_rf <- plot_rf +
+        scale_color_manual( #fixing the colors
+          values = c(
+            # "physical_activity" = "#ff5e5b",
+            "Below Recommendations" = "#4f518c"
+          ),
+          # labels = c(
+          #   # "physical_activity" = "Physical Activity Below new UK Guidelines**",
+          #   "Below Recommendations" = "Physical Activity Below old UK Guidelines*"
+          # )
+        )
+      
+    } else if(var == "Fibre Intake Deficiency"){
+      
+      plot_rf <- plot_rf +
+        scale_color_manual(
+          values = c("Below Guidelines" = "#4f518c"),
+          # labels = c("Below Guidelines" = "Fibre Consumption Below UK Guidelines (30g/day)")
+        )
+      
+    } else if(var == "Meat Consumption"){
+      
+      plot_rf <- plot_rf +
+        scale_color_manual(
+          values = c(
+            "Red Meat" = "#4f518c",
+            "Processed Meat" = "#5fa8d3"
+          ),
+          # labels = c(
+          #   "Red Meat" = "Median Red Meat Consumption",
+          #   "Processed Meat" = "Median Processed Meat Consumption"
+          # )
+        )
+      
+    }
+    
+    # Change x axis limits - childhood bmi we assume a 20 year time lag
+    if(var == "BMI (2-15 years)"){
+      plot_rf <- plot_rf +
+        scale_x_continuous(breaks = seq(1985, 2010, 5), limits = c(1985, 2010))
+    } else {
+      plot_rf <- plot_rf +
+        scale_x_continuous(breaks = seq(1995, 2020, 5), limits = c(1995, 2020))
+    }
+    
+    # Extract legend and remove
+    legend_list[[var]] <- get_legend(plot_rf)
+    plot_rf <- plot_rf +
+      theme(legend.position = "none")
+    
+    # If last plot in RF, add x axis label
+    if(var == "Meat Consumption"){
+      plot_rf <- plot_rf +
+        labs(x = "Year", y = "Median Daily Consumption (g)")
+    }
+    
+    plot_list[[var]] <-plot_rf
+    
+  }
+  
+  plot <- plot_grid(plotlist = plot_list, ncol = 1, rel_heights = c(1.05, rep(1, length(plot_list)-2), 1.05))
+  plot_legend <- plot_grid(plotlist = legend_list, ncol = 1, rel_heights = c(0.9, rep(1, length(plot_list)-2), 1.2))
+  plot <- plot_grid(plot, plot_legend, nrow = 1, rel_widths = c(1, 0.45))
+  
+  plot <- ggdraw() +
+    draw_plot(plot, 0, 0, 1, 0.97, vjust = 0) +
+    draw_label(paste0("Trends in Colorectal Cancer and Risk Factors in Younger ", s, " aged 20-49"), fontface = 'bold', fontfamily = "Times New Roman", 
+               x = 0, y = 0.99,  
+               hjust = -0.05, vjust = 1,  
+               size = 10)
+  
+  print(plot)
+  
+  ggsave(filename = paste0("../Output/Final_Plots/Supplementary_Figure_7", letters[which(c("Women", "Men") == s)], "_temp.png"), plot = plot, width = 9, height = 14, bg = "white")
+  # ggsave(filename = paste0("../Output/Final_Plots_SVG/Supplementary_Figure_7_TEMP", letters[which(c("Women", "Men") == s)], "_temp.svg"), plot = plot, width = 9, height = 14, bg = "white")
   
 
 }
