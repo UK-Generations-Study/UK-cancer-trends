@@ -72,6 +72,9 @@ source("Functions/PAF_Calculations/paf_aggregate_function.R")
 # Load in PIF calculation functions
 source("Functions/PAF_Calculations/pif_function.R")
 
+# Load in function for comparing AAPCs
+source("Functions/Sub_Analysis/aapc_comparison_functions.R")
+
 # Load in the rolling average calculation function
 source("Functions/Data_Generation/rolling_average.R")
 
@@ -110,6 +113,10 @@ data_rf_imd <- read.csv("../../../Data/Cleaned_Data/clean_rf_data_age_all_imd.cs
 # Read in childhood BMI data 
 data_childhood_bmi <- suppressMessages(read_excel("../Data/HSE-2022-Overweight-and-obesity-tables.xlsx", sheet = "Table 16"))
 
+# Read in ESP weighted BMI data
+data_bmi_esp <- read.csv("../../../Data/Cleaned_Data/clean_bmi_data_esp.csv") |>
+  rolling_average()
+
 
 ## CANCER INCIDENCE DATA
 
@@ -120,7 +127,7 @@ data_ALLcancer <- read.csv("../Data/all_incidence_joinpoint.csv") |>
 # Filter data to only the cancer sites that are increasing 
 data_cancer <- data_ALLcancer %>%
   filter(
-    cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid")
+    cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid", "Ovary")
   ) |>
   mutate(cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site))
 
@@ -132,8 +139,8 @@ data_paf_comparison <- read.csv(r"(..\Data\paf_comparison.csv)") |>
   filter(!(Cancer_sites %in% c("Breast", "Endometrium") & sex == "Men"))
 
 # Read in PAF samples - for PIF calculations
-data_pif_comparison <- read.csv(r"(..\Data\pif_comparison.csv)") |>
-  filter(!(Cancer_sites %in% c("Breast", "Endometrium") & sex == "Men"))
+# data_pif_comparison <- read.csv(r"(..\Data\pif_comparison.csv)") |>
+#   filter(!(Cancer_sites %in% c("Breast", "Endometrium") & sex == "Men"))
 
 
 ## JOINPOINT ANALYSIS
@@ -145,6 +152,41 @@ data_joinpoint_AAPC <- read.delim("../Data/Joinpoint_Results/Cancerrates_All/joi
   filter(!(sex == "Men" & cancer_site == "Breast"))
 data_joinpoint_model <- read.delim("../Data/Joinpoint_Results/Cancerrates_All/joinpoint_cancerrates_all.Export.Model.Estimates.txt", sep = "\t") |>
   filter(!(sex == "Men" & cancer_site == "Breast"))
+
+# Calculate significant differences between younger and older
+data_joinpoint_AAPC_diff <- data_joinpoint_AAPC |>
+  # filter(cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid")) |>
+  # mutate(cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site)) |>
+  dplyr::mutate(cancer = cancer_site,
+                agegrp = age_group,
+                JPmodel = Joinpoint.Model,
+                aapc_index = AAPC.Index,
+                start_obs = Start.Obs,
+                end_obs = End.Obs,
+                aapc = AAPC,
+                CIlow = AAPC.C.I..Low,
+                CIhigh = AAPC.C.I..High
+                ) %>%
+  dplyr::mutate(agegrp = case_when(agegrp == "20-49" ~ "u50",
+                                             agegrp == "50+" ~ "o50",
+                                             T ~ agegrp),
+                degfreedom = case_when( # This part is new - based on joinpoint definition of degrees of freedom
+                  JPmodel != 0 ~ NA,
+                  TRUE ~ end_obs - start_obs + 1 - 2
+                )
+  ) %>% 
+  dplyr::select(cancer, sex, agegrp, JPmodel, aapc_index, start_obs, end_obs, aapc, CIlow, CIhigh, degfreedom) |>
+  process_data_new() |>
+  compute_pvalues_N(N = 10000) |>
+  mutate(
+    
+    p_value_one_sided = case_when(
+      aapc_u50 > aapc_o50 ~ p_value/2,
+      TRUE ~ 1-p_value/2
+    )
+    
+  ) |>
+  rename(cancer_site = cancer)
 
 # Risk Factors
 # General Risk Factors
@@ -250,13 +292,13 @@ source("Functions/Data_Generation/joinpoint_cleaned_generation.R")
 
 # Filter to correct cancer sites in joinpoint model data
 data_joinpoint_model_fig1 <- data_joinpoint_model |>
-  filter(cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid")) |>
+  filter(cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid", "Ovary")) |>
   mutate(cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site))
   
 # Filter data to only the cancer sites that are increasing 
 data_cancer <- data_ALLcancer %>%
   filter(
-    cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid")
+    cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid", "Ovary")
   ) |>
   mutate(cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site))
 
@@ -363,7 +405,7 @@ facet_design_extra <- data_cancer |>
   unique() |>
   pull(facet_var)
 
-facet_design <- matrix(c(1:length(facet_design), as.vector(rbind(length(facet_design) + (1:length(facet_design_extra)), NA))), ncol = 4, byrow = T)
+facet_design <- matrix(c(1:length(facet_design), as.vector(rbind(length(facet_design) + (1:length(facet_design_extra)), NA)), NA, NA), ncol = 4, byrow = T)
 
 # Now start constructing plot
 plot <- ggplot(data_cancer_facet, aes(x = year, y = Rate, colour = age_group)) +
@@ -389,6 +431,7 @@ plot <- ggplot(data_cancer_facet, aes(x = year, y = Rate, colour = age_group)) +
   ylab("Age Specific Incidence Rates per 100,000 (log scale)") +
   xlab("Year") +
   labs(colour = "Age Group") +
+  # facet_wrap(~ facet_var, scales = "free_y", ncol = 4)
   facet_manual(~ facet_var, facet_design, respect = T, scales = "free_y")
 
 print(plot)
@@ -634,7 +677,8 @@ data_paf <- data_paf_individual %>%
     Kidney = calculate_cumulative_paf(KidneyPAF),
     Thyroid = calculate_cumulative_paf(ThyroidPAF),
     MultipleMyeloma = calculate_cumulative_paf(MultipleMyelomaPAF),
-    Breast = calculate_cumulative_paf(BreastPAF)
+    Breast = calculate_cumulative_paf(BreastPAF),
+    Ovary = calculate_cumulative_paf(OvaryPAF)
   ) %>% #applying the function
   ungroup()
   
@@ -702,7 +746,7 @@ data_attr_cases_bar_alt <- data_attr_cases_bar |>
   distinct()
 
 # Merge in confidence intervals
-data_attr_cases_bar_alt <- merge(data_attr_cases_bar_alt, data_paf_agg_ci, by.x = c("cancer_site", "age_group", "sex"), by.y = c("Cancer_sites", "age_group", "sex")) |>
+data_attr_cases_bar_alt <- merge(data_attr_cases_bar_alt, data_paf_agg_ci, by.x = c("cancer_site", "age_group", "sex"), by.y = c("Cancer_sites", "age_group", "sex"), all.x = T) |>
   mutate(age_group = factor(age_group, levels = c("20-49", "50+")),
          sex = factor(sex, levels = c("Women", "Men")))
 
@@ -739,11 +783,11 @@ ggsave("../Output/Final_Plots_SVG/Figure_3a.svg", plot = data_attr_bar_paf, bg =
 ```
 
 ### Figure 4 - BMI Attributable Trends
-```{r, fig.height=10, fig.width=10, warning=F}
+```{r, fig.height=14, fig.width=12, warning=F}
 
 #Calculating the PAFs
-pafs_byrf_under50<- paf_calculation(data_rf, "20-49")
-pafs_byrf_over50<- paf_calculation(data_rf, "50+")
+pafs_byrf_under50<- paf_calculation(data_bmi_esp, "20-49")
+pafs_byrf_over50<- paf_calculation(data_bmi_esp, "50+")
 data_BMI_paf <-rbind(pafs_byrf_under50,pafs_byrf_over50) %>%
   filter(
     variable == "BMI"
@@ -849,7 +893,7 @@ facet_design_extra <- data_cancer |>
   unique() |>
   pull(facet_var)
 
-facet_design <- matrix(c(1:length(facet_design), as.vector(rbind(length(facet_design) + (1:length(facet_design_extra)), NA))), ncol = 4, byrow = T)
+facet_design <- matrix(c(1:length(facet_design), as.vector(rbind(length(facet_design) + (1:length(facet_design_extra)), NA)), NA, NA), ncol = 4, byrow = T)
 
 
 BMI_paf_cases_u50 <- BMI_paf_cases_u50 |>
@@ -898,8 +942,8 @@ p <- ggplot(BMI_paf_cases_u50, aes(x = year, y = value, colour = rate_type)) +
 print(p)
 
 # Save the plot as a PNG file
-ggsave(paste0("../Output/Final_Plots/Figure_4.png"), plot = p, width = 12, height = 12)
-ggsave(paste0("../Output/Final_Plots_SVG/Figure_4.svg"), plot = p, width = 12, height = 12)
+ggsave(paste0("../Output/Final_Plots/Figure_4.png"), plot = p, width = 12, height = 14)
+ggsave(paste0("../Output/Final_Plots_SVG/Figure_4.svg"), plot = p, width = 12, height = 14)
 
 
 ```
@@ -922,11 +966,11 @@ This table is generated in excel
 
 ```{r, results = "asis", fig.width=200}
 
-supp_table_4 <- full_joinpoint_table(data_joinpoint |> filter(cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid")) |>
+supp_table_4 <- full_joinpoint_table(data_joinpoint |> filter(cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid", "Ovarian")) |>
                                        mutate(cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site)),
-                                  data_joinpoint_AAPC |> filter(cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid")) |>
+                                  data_joinpoint_AAPC |> filter(cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid", "Ovarian")) |>
                                        mutate(cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site)),
-                                  group_var = "cancer_site", table_var = "sex", stratification_vars = "age_group")
+                                  group_var = "cancer_site", table_var = "sex", stratification_vars = "age_group", test_difference = T)
 
 # Now edit, print and save
 for(sex in c("Women", "Men")){
@@ -940,8 +984,9 @@ for(sex in c("Women", "Men")){
   print(supp_table_4[[sex]])
   
   # Save
-  gtsave(supp_table_4[[sex]], paste0("../Output/Final_Plots/Supplementary_Table_4", letters[which(c("Women", "Men") == sex)], ".png"))
-  gtsave(supp_table_4[[sex]], paste0("../Output/Final_Plots_PDF/Supplementary_Table_4", letters[which(c("Women", "Men") == sex)], ".pdf"))
+  gtsave(supp_table_4[[sex]], paste0("../Output/Final_Plots_HTML/Supplementary_Table_4", letters[which(c("Women", "Men") == sex)], ".html"))
+  # gtsave(supp_table_4[[sex]], paste0("../Output/Final_Plots/Supplementary_Table_4", letters[which(c("Women", "Men") == sex)], ".png"))
+  # gtsave(supp_table_4[[sex]], paste0("../Output/Final_Plots_PDF/Supplementary_Table_4", letters[which(c("Women", "Men") == sex)], ".pdf"))
   
 }
 
@@ -1055,8 +1100,9 @@ for(sex in c("Women", "Men")){
   print(supp_table_5[[sex]])
   
   # Save
-  gtsave(supp_table_5[[sex]], paste0("../Output/Final_Plots/Supplementary_Table_5", letters[which(c("Women", "Men") == sex)], ".png"))
-  gtsave(supp_table_5[[sex]], paste0("../Output/Final_Plots_PDF/Supplementary_Table_5", letters[which(c("Women", "Men") == sex)], ".pdf"))
+  gtsave(supp_table_5[[sex]], paste0("../Output/Final_Plots_HTML/Supplementary_Table_5", letters[which(c("Women", "Men") == sex)], ".html"))
+  # gtsave(supp_table_5[[sex]], paste0("../Output/Final_Plots/Supplementary_Table_5", letters[which(c("Women", "Men") == sex)], ".png"))
+  # gtsave(supp_table_5[[sex]], paste0("../Output/Final_Plots_PDF/Supplementary_Table_5", letters[which(c("Women", "Men") == sex)], ".pdf"))
   
 }
 
@@ -1065,18 +1111,18 @@ for(sex in c("Women", "Men")){
 ### Supplementary Table 6 - AAPC and APC Trends in BMI Attributable Rates
 ```{r, results = "asis"}
 
-bmi_paf_apc <- read.delim("../Data/Joinpoint_Results/BMI_Attributable/jp_bmi_attributable.Export.APC.txt") |>
+bmi_paf_apc <- read.delim("../Data/Joinpoint_Results/BMI_Attributable_new/jp_bmi_attributable.Export.APC.txt") |>
   mutate("sex-age_group" = paste0(sex, ", ", age_group)) |>
   mutate(rate_type = case_when(
-    rate_type == "Rate" ~ "Overall",
+    rate_type == "rate" ~ "Overall",
     rate_type == "attributable_rate" ~ "Attributable",
     rate_type == "non_attributable_rate" ~ "Non-Attributable"
   ))
 
-bmi_paf_aapc <- read.delim("../Data/Joinpoint_Results/BMI_Attributable/jp_bmi_attributable.Export.AAPC.txt") |>
+bmi_paf_aapc <- read.delim("../Data/Joinpoint_Results/BMI_Attributable_new/jp_bmi_attributable.Export.AAPC.txt") |>
   mutate("sex-age_group" = paste0(sex, ", ", age_group)) |>
   mutate(rate_type = case_when(
-    rate_type == "Rate" ~ "Overall",
+    rate_type == "rate" ~ "Overall",
     rate_type == "attributable_rate" ~ "Attributable",
     rate_type == "non_attributable_rate" ~ "Non-Attributable"
   ))
@@ -1098,85 +1144,11 @@ for(group in plot_order){
   
   print(bmi_jp_table[[group]])
   
-  gtsave(bmi_jp_table[[group]], paste0("../Output/Final_Plots/Supplementary_Table_6", letters[which(plot_order == group)], ".png"))
-  gtsave(bmi_jp_table[[group]], paste0("../Output/Final_Plots_PDF/Supplementary_Table_6", letters[which(plot_order == group)], ".pdf"))
+  gtsave(bmi_jp_table[[group]], paste0("../Output/Final_Plots_HTML/Supplementary_Table_6", letters[which(plot_order == group)], ".html"))
+  # gtsave(bmi_jp_table[[group]], paste0("../Output/Final_Plots/Supplementary_Table_6", letters[which(plot_order == group)], ".png"))
+  # gtsave(bmi_jp_table[[group]], paste0("../Output/Final_Plots_PDF/Supplementary_Table_6", letters[which(plot_order == group)], ".pdf"))
   
 }
-
-```
-
-### Supplementary Table 6 - RR scenarios for colorectal cancer and BMI (REMOVED?)
-
-```{r, results = "asis"}
-
-# riskfactors <- data_rf %>%
-#   filter(
-#     level == "Obese"
-#   )
-# 
-# source("Functions/PAF_Calculations/pifpaf_scenario_functions.R")
-# 
-# youngmen_obesescenario <- pif_scenarioBMI(riskfactors %>% filter(sex == "Men", age_group == "20-49"), 1995, 2009)
-# oldmen_obesescenario <- pif_scenarioBMI(riskfactors %>% filter(sex == "Men", age_group == "50+"),1995, 2009)
-# youngwomen_obesescenario <- pif_scenarioBMI(riskfactors %>% filter(sex == "Women", age_group == "20-49"),1995, 2009)
-# oldwomen_obesescenario <- pif_scenarioBMI(riskfactors %>% filter(sex == "Women", age_group == "50+"),1995, 2009)
-# obesescenario <- rbind(youngmen_obesescenario, oldmen_obesescenario, youngwomen_obesescenario, oldwomen_obesescenario) %>%
-#   select(-variable) %>%
-#   mutate(
-#     p0 = p0*100, 
-#     p1 = p1*100, 
-#     pifA = pifA *100, 
-#     pifB = pifB *100,
-#     pifC = pifC *100,
-#     pifD = pifD *100,
-#     p0 = round(p0, 2), 
-#     p1 = round(p1, 2), 
-#     pifA = round(pifA, 2), 
-#     pifB = round(pifB, 2),
-#     pifC = round(pifC, 2),
-#     pifD =round(pifD, 2),
-#   )
-# 
-# pifobesescenario_table <- obesescenario %>%
-#   select(
-#    -level 
-#   )%>%
-#   rename(
-#     `1995 Prevalence` = p0, 
-#     `2009 Prevalence` = p1, 
-#     `RR=1.46` = pifA,
-#     `RR=2` = pifB, 
-#     `RR=3` = pifC, 
-#     `RR=4` = pifD,
-#     `Age Group` = age_group
-#   ) %>%
-#   arrange(`Age Group`) %>%
-#   gt(groupname_col = "sex") %>% # Specify group column
-#   tab_style(
-#     style = cell_text(weight = "bold"),
-#     locations = cells_column_labels()
-#   ) %>%
-#   tab_style(
-#     style = list(
-#       cell_text(weight = "bold"),
-#       cell_fill(color = "lightgray"),
-#       cell_borders(sides = "top"),
-#       cell_borders(sides = "bottom")
-#     ),
-#     locations = cells_row_groups(groups = everything())
-#   ) %>%
-#   cols_width(
-#     everything() ~ px(100) 
-#   ) %>%
-#   tab_header(
-#     title = md("Theoretical BMI PIFs for Colorectal Cancer in Younger Adults")
-#   )
-# 
-# pifobesescenario_table
-# 
-# # Save table
-# # gtsave(pifobesescenario_table,"../Output/Final_Plots/Supplementary_Table_6.html")
-
 
 ```
 
@@ -1195,6 +1167,7 @@ for(s in unique(data_joinpoint_AAPC$sex)){
   
   # Rename based on criteria to add footnote
   data_joinpoint_AAPC_sf2 <- data_joinpoint_AAPC |>
+      merge(data_joinpoint_AAPC_diff|> filter(sex == s) |> select(cancer_site, p_value_one_sided), by = "cancer_site") |>
     filter(sex == s) |>
     group_by(cancer_site) |>
     arrange(desc(age_group)) |>
@@ -1202,7 +1175,7 @@ for(s in unique(data_joinpoint_AAPC$sex)){
       cancer_site = if_else(AAPC.C.I..Low[2] > 0, paste0(cancer_site[2], "*"), cancer_site[2])
     ) |>
     mutate(
-      cancer_site = if_else(AAPC.C.I..Low[2] > 0 & ((AAPC[1]<0 | P.Value[1] > 0.05) | AAPC.C.I..Low[2] > AAPC.C.I..High[1]), paste0(cancer_site[2], "^"), cancer_site[2])
+      cancer_site = if_else(p_value_one_sided < 0.05, paste0(cancer_site[2], "^"), cancer_site[2])
     )
   
   # Get order of cancer sites
@@ -1243,7 +1216,7 @@ for(s in unique(data_joinpoint_AAPC$sex)){
       AAPC.C.I..High,
       AAPC,
       `P Value <50`,
-      `P Value >=50`
+      `P Value >=50`,
     ) |>
     forestplot(
       labeltext = c(`Cancer Site`, `P Value <50`, `P Value >=50`),
@@ -1288,20 +1261,20 @@ for(s in unique(data_joinpoint_AAPC$sex)){
   
   # Add footnote
   grid.text("* - AAPC for 20-49 is significantly greater than 0", x = 0.095, y = 0.02, gp = gpar(fontsize = 8))
-  grid.text("^ - AAPC for 20-49 is significantly greater than 0 the AAPC for 50+ is not significantly greater than 0 or does not overlap with the confidence interval of the AAPC for 20-49", x = 0.3605, y = 0.008, gp = gpar(fontsize = 8))
+  grid.text("^ - AAPC for 20-49 is significantly greater than 0 and the AAPC for 50+", x = 0.195, y = 0.008, gp = gpar(fontsize = 8))
   
   # Save plot
   
   CairoPNG(file=paste0("../Output/Final_Plots/Supplementary_Figure_1", letters[which(unique(data_joinpoint_AAPC$sex == s))], ".png"), width = 10, height = (4/15)*(3 + rows), units = "in", res = 300)
   print(plot)
   grid.text("* - AAPC for 20-49 is significantly greater than 0", x = 0.135, y = 0.03, gp = gpar(fontsize = 9, fontfamily = "Times New Roman", fontface = "plain"))
-  grid.text("^ - AAPC for 20-49 is significantly greater than 0 and the AAPC for 50+ is not significantly greater than 0 or does not overlap with the confidence interval of the AAPC for 20-49", x = 0.462, y = 0.01, gp = gpar(fontsize = 9, fontfamily = "Times New Roman", fontface = "plain"))
+  grid.text("^ - AAPC for 20-49 is significantly greater than 0 and the AAPC for 50+", x = 0.195, y = 0.01, gp = gpar(fontsize = 9, fontfamily = "Times New Roman", fontface = "plain"))
   dev.off()
   
   svglite(file=paste0("../Output/Final_Plots_SVG/Supplementary_Figure_1", letters[which(unique(data_joinpoint_AAPC$sex == s))], ".svg"), width = 10, height = (4/15)*(3 + rows))
   print(plot)
   grid.text("* - AAPC for 20-49 is significantly greater than 0", x = 0.13, y = 0.03, gp = gpar(fontsize = 9, fontfamily = "Times New Roman", fontface = "plain"))
-  grid.text("^ - AAPC for 20-49 is significantly greater than 0 and the AAPC for 50+ is not significantly greater than 0 or does not overlap with the confidence interval of the AAPC for 20-49", x = 0.452, y = 0.01, gp = gpar(fontsize = 9, fontfamily = "Times New Roman", fontface = "plain"))
+  grid.text("^ - AAPC for 20-49 is significantly greater than 0 and the AAPC for 50+", x = 0.195, y = 0.01, gp = gpar(fontsize = 9, fontfamily = "Times New Roman", fontface = "plain"))
   dev.off()
 
 }
@@ -1687,8 +1660,8 @@ for (var in plot_order) {
 ```{r, fig.height=10, fig.width = 10}
 
 #Calculating the PAFs
-pafs_byrf_under50<- paf_calculation(data_rf, "20-49")
-pafs_byrf_over50<- paf_calculation(data_rf, "50+")
+pafs_byrf_under50<- paf_calculation(data_bmi_esp, "20-49")
+pafs_byrf_over50<- paf_calculation(data_bmi_esp, "50+")
 data_BMI_paf <-rbind(pafs_byrf_under50,pafs_byrf_over50) %>%
   filter(
     variable == "BMI"
@@ -1793,7 +1766,7 @@ facet_design_extra <- data_cancer |>
   unique() |>
   pull(facet_var)
 
-facet_design <- matrix(c(1:length(facet_design), as.vector(rbind(length(facet_design) + (1:length(facet_design_extra)), NA))), ncol = 4, byrow = T)
+facet_design <- matrix(c(1:length(facet_design), as.vector(rbind(length(facet_design) + (1:length(facet_design_extra)), NA)), NA, NA), ncol = 4, byrow = T)
 
 
 BMI_paf_cases_oe50 <- BMI_paf_cases_oe50 |>
@@ -1893,81 +1866,12 @@ ggsave("../Output/Final_Plots_SVG/Supplementary_Figure_6.svg", plot = pafplotall
 
 ```
 
-### Supplementary Figure 5b - PIF - REMOVED?
-
-```{r}
-
-# #creating a sequence of exposure 
-# exposurerange <- seq(1, 1.5, by = 0.01)
-# 
-# # Define a constant Relative Risk (RR)
-# RR <- c(1.2, 1.5, 2.0, 5.0) 
-# 
-# #calculating the PIFs 
-# calculate_pif_data <- function(exposurerange, startingexposure, pif_label) {
-#   remainingexposure = 1-startingexposure
-#   pif_data <- sapply(RR, function(rr) {
-#     ((startingexposure*exposurerange)-(startingexposure)) * (rr-1) / (1 + ( startingexposure*exposurerange) * (rr-1))
-#   })
-#   colnames(pif_data) <- paste0("RR_", RR)
-#   
-#   # Reshape into a long format for ggplot
-#   pif_df <- as.data.frame(pif_data) %>%
-#     mutate(exposure_diff = exposurerange - min(exposurerange)) %>%
-#     pivot_longer(
-#       cols = starts_with("RR_"),
-#       names_to = "RR",
-#       values_to = "PIF"
-#     ) %>%
-#     mutate(PIF_Label = pif_label,  # Add a label for PIF
-#            RR = gsub("RR_", "RR = ", RR)) # Clean up the RR column 
-#   
-#   return(pif_df)
-# }
-# 
-# # Calculate PIF data for each range
-# pif1_data <- calculate_pif_data(exposurerange, 0.10, "0.1")
-# pif2_data <- calculate_pif_data(exposurerange, 0.20, "0.2")
-# pif3_data <- calculate_pif_data(exposurerange, 0.40, "0.4")
-# pif4_data <- calculate_pif_data(exposurerange, 0.60, "0.6")
-# 
-# # Combine all data into one dataframe
-# combined_pif_data <- bind_rows(pif1_data, pif2_data, pif3_data, pif4_data) %>%
-#   mutate(RR = factor(RR, levels = unique(RR)))
-# 
-# pif_plot <- ggplot(combined_pif_data, aes(x = exposure_diff, y = PIF)) +
-#   geom_line(size = 1) +
-#   facet_grid(PIF_Label ~ RR) +  # Facet by PIF (rows) and RR (columns)
-#   labs(
-#     title = "Variation in PIFs by RR and Starting Risk Factor Prevalence",
-#     x = "Relative Risk Factor Population Prevalence Change",
-#     y = "PIF",
-#     color = "Relative Risk"
-#   ) +
-#   theme_minimal_lancet() +
-#   theme(
-#     strip.text = element_text(size = 10, face = "bold"),
-#     axis.text.x = element_text(angle = 45, hjust = 1),
-#     legend.position = "none", 
-#      panel.border = element_rect(color = "black", fill = NA, size = 1), 
-#       plot.title = element_text(hjust = 0.5)
-#   ) +
-#   scale_y_continuous(sec.axis = sec_axis(~ ., name = "Starting Risk Factor Population Prevalence", 
-#                                           labels = NULL))
-# 
-# # Display the plot
-# pif_plot
-# 
-# ggsave("../Output/Final_Plots/Supplementary_Figure_6b.png", plot = pif_plot, bg = "white", height = 6, width = 10)
-
-
-```
 
 ### Supplementary Figure 7 - Colorectal cancer and risk factor plotting
 
 NOTE: Need to add childhood BMI
 
-```{r, fig.height= 14, fig.width = 8}
+```{r, fig.height= 14, fig.width = 8, warning = F}
 
 # Getting data to plot trend points
 rf_trend_plot <- data_rf |> mutate(level = if_else(level == "[30,Inf)" & variable == "fibre_consumption", "Below Guidelines", level),
@@ -2225,7 +2129,7 @@ for(s in c("Women", "Men")){
 ```
 
 ### TEMPORARY SF7
-```{r, fig.height= 14, fig.width = 8}
+```{r, fig.height= 14, fig.width = 8, warning = F}
 
 # Getting data to plot trend points
 rf_trend_plot <- data_rf |> mutate(level = if_else(level == "[30,Inf)" & variable == "fibre_consumption", "Below Guidelines", level),

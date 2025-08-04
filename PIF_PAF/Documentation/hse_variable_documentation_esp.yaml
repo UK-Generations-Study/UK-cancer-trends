@@ -1,0 +1,194 @@
+### HSE VARIABLE DOCUMENTATION ###
+
+# This document is designed to describe the structure of the variables in the HSE datasets from 1995-2019
+# This is so the same variables  can be extracted methodically from the data with minimal intervention
+# Each entry will be a variable of the survey subset by year groups with the following data:
+#   - varname: variable name in the dataset
+#   - dict: dictionary descibing what levels go to what output
+
+### AGE GROUP
+age_group:
+
+  1995-2010:
+    varname: age
+    dict:
+      "20-25": "20-25"
+      "25-30": "25-30"
+      "30-35": "30-35"
+      "35-40": "35-40"
+      "40-45": "40-45"
+      "45-50": "45-50"
+      "50-55": "50-55"
+      "55-60": "55-60"
+      "60-65": "60-65"
+      "65-70": "65-70"
+      "70-75": "70-75"
+      "75-80": "75-80"
+      "80-85": "80-85"
+      "85-90": "85-90"
+      "90-95": "90-95"
+      "95-120": "95+"
+    
+  2011-2013:
+    varname: Age
+    dict:
+      "20-25": "20-25"
+      "25-30": "25-30"
+      "30-35": "30-35"
+      "35-40": "35-40"
+      "40-45": "40-45"
+      "45-50": "45-50"
+      "50-55": "50-55"
+      "55-60": "55-60"
+      "60-65": "60-65"
+      "65-70": "65-70"
+      "70-75": "70-75"
+      "75-80": "75-80"
+      "80-85": "80-85"
+      "85-90": "85-90"
+      "90-95": "90-95"
+      "95-120": "95+"
+    
+  2014:
+    varname: Age90
+    dict:
+      "20-25": "20-25"
+      "25-30": "25-30"
+      "30-35": "30-35"
+      "35-40": "35-40"
+      "40-45": "40-45"
+      "45-50": "45-50"
+      "50-55": "50-55"
+      "55-60": "55-60"
+      "60-65": "60-65"
+      "65-70": "65-70"
+      "70-75": "70-75"
+      "75-80": "75-80"
+      "80-85": "80-85"
+      "85-90": "85-90"
+    
+  2015-2017:
+    varname: Age16g5
+    dict:
+      3: "20-25"
+      4: "25-30"
+      5: "30-35"
+      6: "35-40"
+      7: "40-45"
+      8: "45-50"
+      9: "50-55"
+      10: "55-60"
+      11: "60-65"
+      12: "65-70"
+      13: "70-75"
+      14: "75-80"
+      15: "80-85"
+      16: "85-90"
+      17: "90+"
+      
+  2018-2019:
+    varname: age16g5
+    dict:
+      3: "20-25"
+      4: "25-30"
+      5: "30-35"
+      6: "35-40"
+      7: "40-45"
+      8: "45-50"
+      9: "50-55"
+      10: "55-60"
+      11: "60-65"
+      12: "65-70"
+      13: "70-75"
+      14: "75-80"
+      15: "80-85"
+      16: "85-90"
+      17: "90+"
+    
+
+### SEX      
+sex:
+
+  1995-2010:
+    varname: sex
+    dict:
+      1: "Men"
+      2: "Women"
+      
+  2011-2019:
+    varname: Sex
+    dict:
+      1: "Men"
+      2: "Women"
+
+### WEIGHTING    
+weight:
+
+  # 2002:
+    # varname: tablewt
+    # dict:
+      # - NULL
+        
+  2003:
+    varname: int_wt
+    dict:
+      - NULL
+      
+  2004-2019:
+    varname: wt_int
+    dict:
+      - NULL
+
+
+### BMI
+bmi:
+
+  1995-1996:
+    varname: bmi
+    dict:
+      "0-18.5": "Underweight"
+      "18.5-25": "Healthy Weight"
+      "25-30": "Overweight"
+      "30-999": "Obese"
+      
+  1997-2011:
+    varname: bmival
+    dict:
+      "0-18.5": "Underweight"
+      "18.5-25": "Healthy Weight"
+      "25-30": "Overweight"
+      "30-999": "Obese"
+      
+  2012:
+    varname: bmival2
+    dict:
+      "0-18.5": "Underweight"
+      "18.5-25": "Healthy Weight"
+      "25-30": "Overweight"
+      "30-999": "Obese"
+
+  2013-2017:
+    varname: BMIval2
+    dict:
+      "0-18.5": "Underweight"
+      "18.5-25": "Healthy Weight"
+      "25-30": "Overweight"
+      "30-999": "Obese"
+      
+  2018-2019:
+    varname: BMIVal2
+    dict:
+      "0-18.5": "Underweight"
+      "18.5-25": "Healthy Weight"
+      "25-30": "Overweight"
+      "30-999": "Obese"
+      
+### BMI VALID
+# 1995 and 1996 don't have bmi variables checked for validity - so we manually do it
+bmi_valid:
+
+  1995-1996:
+    varname: bmiok
+    dict:
+      1: "Valid"
+     
