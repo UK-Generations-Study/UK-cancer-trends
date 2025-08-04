@@ -37,7 +37,7 @@
 
 paf_calculation <- function(dataframe, age_group_of_interest) {
   
-  # Read in RR data 
+  # Read in RR data if none provided
   if(age_group_of_interest == "20-49") {
   rr <-read.csv("../Data/relativerisk_under50.csv")
   } else {
@@ -216,7 +216,7 @@ paf_calculation <- function(dataframe, age_group_of_interest) {
   riskfactors <- upperlimits %>%
     filter(!grepl("^[\\(\\[0]", exposure)) %>% #remove most of the rows that arent being used to remove noise 
     left_join(err %>% 
-                select(exposure, Oral, Endometrium, Pancreas, Gallbladder, Colorectum, Liver, Kidney, Thyroid, `Multiple Myeloma`, `Breast`), by = c("exposure" = "exposure")) %>% #add the ERR to the dataframe
+                select(exposure, Oral, Endometrium, Pancreas, Gallbladder, Colorectum, Liver, Kidney, Thyroid, `Multiple Myeloma`, `Breast`, Ovary), by = c("exposure" = "exposure")) %>% #add the ERR to the dataframe
     rename(OralERR = Oral, 
            EndometriumERR = Endometrium, 
            PancreasERR = Pancreas, 
@@ -226,7 +226,8 @@ paf_calculation <- function(dataframe, age_group_of_interest) {
            KidneyERR = Kidney, 
            ThyroidERR = Thyroid, 
            MultipleMyelomaERR = `Multiple Myeloma`, 
-           BreastERR = `Breast`
+           BreastERR = `Breast`,
+           OvaryERR = Ovary
     ) %>% #cleaning and renaming the variables 
     mutate(
       Oral = value*exp_lvl*as.numeric(OralERR), 
@@ -238,14 +239,15 @@ paf_calculation <- function(dataframe, age_group_of_interest) {
       Kidney = value*exp_lvl*as.numeric(KidneyERR), 
       Thyroid = value*exp_lvl*as.numeric(ThyroidERR), 
       MultipleMyeloma = value*exp_lvl*as.numeric(MultipleMyelomaERR), 
-      Breast = value*exp_lvl*as.numeric(BreastERR)
+      Breast = value*exp_lvl*as.numeric(BreastERR),      
+      Ovary = value*exp_lvl*as.numeric(OvaryERR)
     ) #this is calculating the main unit of the PAF equation: (ERR*exposure prevalence) per each category
   
   columns_to_check <- c("Oral", "Endometrium", "Pancreas", "Gallbladder", 
                         "Colorectum", "Liver", "Kidney", "Thyroid", 
-                        "MultipleMyeloma", "Breast") #list of columns for later functions
+                        "MultipleMyeloma", "Breast", "Ovary") #list of columns for later functions
   subpaf <- riskfactors %>%
-    select (year, age_group, variable, exposure, sex, exp_lvl, Oral, Endometrium, Pancreas, Gallbladder, Colorectum, Liver, Kidney, Thyroid, MultipleMyeloma, Breast) %>%
+    select (year, age_group, variable, exposure, sex, exp_lvl, Oral, Endometrium, Pancreas, Gallbladder, Colorectum, Liver, Kidney, Thyroid, MultipleMyeloma, Breast, Ovary) %>%
     mutate(across(all_of(columns_to_check), ~ ifelse(. < 0, 0.00, .))) %>% #recode all of the negative numbers to 0 
     mutate(variable = if_else(variable == "alcohol_amt", "Alcohol", variable), 
            variable = if_else(variable == "bmi", "BMI", variable),
@@ -269,7 +271,8 @@ paf_calculation <- function(dataframe, age_group_of_interest) {
       Kidney_num = sum(Kidney, na.rm = TRUE),
       Thyroid_num = sum(Thyroid, na.rm = TRUE),
       MultipleMyeloma_num = sum(MultipleMyeloma, na.rm = TRUE),
-      Breast_num = sum(Breast, na.rm = TRUE)
+      Breast_num = sum(Breast, na.rm = TRUE),
+      Ovary_num = sum(Ovary, na.rm = TRUE)
     ) %>% #summing the PAF sub calculations by variable, year, and sex to create the numerator o
     mutate(
       Oral_denom = Oral_num + 1,
@@ -281,7 +284,8 @@ paf_calculation <- function(dataframe, age_group_of_interest) {
       Kidney_denom = Kidney_num + 1,
       Thyroid_denom = Thyroid_num + 1,
       MultipleMyeloma_denom = MultipleMyeloma_num + 1,
-      Breast_denom = Breast_num + 1, #calculating the PAF calculation denominator
+      Breast_denom = Breast_num + 1, 
+      Ovary_denom = Ovary_num + 1, #calculating the PAF calculation denominator
       
       OralPAF = Oral_num / Oral_denom,
       EndometriumPAF = Endometrium_num / Endometrium_denom,
@@ -292,10 +296,11 @@ paf_calculation <- function(dataframe, age_group_of_interest) {
       KidneyPAF = Kidney_num / Kidney_denom,
       ThyroidPAF = Thyroid_num / Thyroid_denom,
       MultipleMyelomaPAF = MultipleMyeloma_num / MultipleMyeloma_denom,
-      BreastPAF = Breast_num / Breast_denom, #calculating the PAFs by cancer site and risk factor
+      BreastPAF = Breast_num / Breast_denom, 
+      OvaryPAF = Ovary_num/Ovary_denom, #calculating the PAFs by cancer site and risk factor
       age_group = age_group_of_interest
     ) %>% 
-    select(year, age_group ,variable, sex, OralPAF, EndometriumPAF, PancreasPAF, GallbladderPAF, ColorectumPAF, LiverPAF, KidneyPAF, ThyroidPAF, MultipleMyelomaPAF, BreastPAF) #cleaning the dataset
+    select(year, age_group ,variable, sex, OralPAF, EndometriumPAF, PancreasPAF, GallbladderPAF, ColorectumPAF, LiverPAF, KidneyPAF, ThyroidPAF, MultipleMyelomaPAF, BreastPAF, OvaryPAF) #cleaning the dataset
   
   return(paf_cancersite)
 }  

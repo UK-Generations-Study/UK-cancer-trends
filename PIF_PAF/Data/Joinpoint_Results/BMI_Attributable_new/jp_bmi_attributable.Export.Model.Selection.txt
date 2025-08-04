@@ -1,0 +1,298 @@
+"variable"	"age_group"	"sex"	"cancer_site"	"rate_type"	"Model"	"# Joinpoints"	"# Observations"	"# Parameters"	"D.F."	"SSE"	"BIC"	"BIC3"	"Weight"	"WBIC"
+BMI	50+	Women	Breast	attributable_rate	1	0	15	2	13	       0.0044084	      -7.7712100	      -7.7712100	       0.0000000	      -7.7712100
+BMI	50+	Women	Breast	attributable_rate	2	1	15	4	11	       0.0024385	      -8.0022880	      -7.8217513	       0.4468646	      -7.9216126
+BMI	50+	Women	Breast	attributable_rate	3	2	15	6	9	       0.0018671	      -7.9081879	      -7.5471145	       0.7491454	      -7.6376914
+BMI	50+	Women	Breast	non_attributable_rate	1	0	15	2	13	       0.0038632	      -7.9032461	      -7.9032461	       0.0000000	      -7.9032461
+BMI	50+	Women	Breast	non_attributable_rate	2	1	15	4	11	       0.0035556	      -7.6251449	      -7.4446083	       0.0796236	      -7.6107700
+BMI	50+	Women	Breast	non_attributable_rate	3	2	15	6	9	       0.0021741	      -7.7559787	      -7.3949053	       0.7439080	      -7.4873733
+BMI	50+	Women	Breast	rate	1	0	15	2	13	       0.0037687	      -7.9280013	      -7.9280013	       0.0000000	      -7.9280013
+BMI	50+	Women	Breast	rate	2	1	15	4	11	       0.0033849	      -7.6743344	      -7.4937977	       0.1018400	      -7.6559485
+BMI	50+	Women	Breast	rate	3	2	15	6	9	       0.0021441	      -7.7698854	      -7.4088120	       0.7188037	      -7.5103445
+BMI	20-49	Men	Colorectum	attributable_rate	1	0	15	2	13	       0.0239678	      -6.0780220	      -6.0780220	       0.0000000	      -6.0780220
+BMI	20-49	Men	Colorectum	attributable_rate	2	1	15	4	11	       0.0187230	      -5.9639065	      -5.7833698	       0.2188264	      -5.9244003
+BMI	20-49	Men	Colorectum	attributable_rate	3	2	15	6	9	       0.0111053	      -6.1251617	      -5.7640883	       0.5356938	      -5.9317369
+BMI	50+	Men	Colorectum	attributable_rate	1	0	15	2	13	       0.0209134	      -6.2143428	      -6.2143428	       0.0000000	      -6.2143428
+BMI	50+	Men	Colorectum	attributable_rate	2	1	15	4	11	       0.0063813	      -7.0402831	      -6.8597464	       0.6948691	      -6.9148337
+BMI	50+	Men	Colorectum	attributable_rate	3	2	15	6	9	       0.0017815	      -7.9551200	      -7.5940466	       0.9063653	      -7.6278556
+BMI	20-49	Women	Colorectum	attributable_rate	1	0	15	2	13	       0.0387254	      -5.5982372	      -5.5982372	       0.0000000	      -5.5982372
+BMI	20-49	Women	Colorectum	attributable_rate	2	1	15	4	11	       0.0239565	      -5.7174194	      -5.5368827	       0.3813747	      -5.6485673
+BMI	20-49	Women	Colorectum	attributable_rate	3	2	15	6	9	       0.0130532	      -5.9635544	      -5.6024810	       0.7242793	      -5.7020364
+BMI	50+	Women	Colorectum	attributable_rate	1	0	15	2	13	       0.0138062	      -6.6296136	      -6.6296136	       0.0000000	      -6.6296136
+BMI	50+	Women	Colorectum	attributable_rate	2	1	15	4	11	       0.0034482	      -7.6558057	      -7.4752690	       0.7502430	      -7.5203593
+BMI	50+	Women	Colorectum	attributable_rate	3	2	15	6	9	       0.0021282	      -7.7773135	      -7.4162401	       0.8610861	      -7.4663982
+BMI	20-49	Men	Colorectum	non_attributable_rate	1	0	15	2	13	       0.0215882	      -6.1825841	      -6.1825841	       0.0000000	      -6.1825841
+BMI	20-49	Men	Colorectum	non_attributable_rate	2	1	15	4	11	       0.0152018	      -6.1722463	      -5.9917096	       0.2958301	      -6.1188381
+BMI	20-49	Men	Colorectum	non_attributable_rate	3	2	15	6	9	       0.0145413	      -5.8555948	      -5.4945215	       0.5044689	      -5.6734445
+BMI	50+	Men	Colorectum	non_attributable_rate	1	0	15	2	13	       0.0110624	      -6.8511771	      -6.8511771	       0.0000000	      -6.8511771
+BMI	50+	Men	Colorectum	non_attributable_rate	2	1	15	4	11	       0.0037942	      -7.5601905	      -7.3796538	       0.6570222	      -7.4415739
+BMI	50+	Men	Colorectum	non_attributable_rate	3	2	15	6	9	       0.0018672	      -7.9081384	      -7.5470650	       0.8481323	      -7.6019004
+BMI	20-49	Women	Colorectum	non_attributable_rate	1	0	15	2	13	       0.0242342	      -6.0669656	      -6.0669656	       0.0000000	      -6.0669656
+BMI	20-49	Women	Colorectum	non_attributable_rate	2	1	15	4	11	       0.0204147	      -5.8774051	      -5.6968684	       0.1576105	      -5.8489506
+BMI	20-49	Women	Colorectum	non_attributable_rate	3	2	15	6	9	       0.0112148	      -6.1153528	      -5.7542795	       0.5782620	      -5.9065578
+BMI	50+	Women	Colorectum	non_attributable_rate	1	0	15	2	13	       0.0062309	      -7.4252073	      -7.4252073	       0.0000000	      -7.4252073
+BMI	50+	Women	Colorectum	non_attributable_rate	2	1	15	4	11	       0.0028810	      -7.8355055	      -7.6549688	       0.5376227	      -7.7384448
+BMI	50+	Women	Colorectum	non_attributable_rate	3	2	15	6	9	       0.0010814	      -8.4543674	      -8.0932940	       0.8203878	      -8.1581472
+BMI	20-49	Men	Colorectum	rate	1	0	15	2	13	       0.0205360	      -6.2325549	      -6.2325549	       0.0000000	      -6.2325549
+BMI	20-49	Men	Colorectum	rate	2	1	15	4	11	       0.0152427	      -6.1695556	      -5.9890189	       0.2577536	      -6.1230216
+BMI	20-49	Men	Colorectum	rate	3	2	15	6	9	       0.0139381	      -5.8979602	      -5.5368869	       0.4036439	      -5.7522152
+BMI	50+	Men	Colorectum	rate	1	0	15	2	13	       0.0123297	      -6.7427237	      -6.7427237	       0.0000000	      -6.7427237
+BMI	50+	Men	Colorectum	rate	2	1	15	4	11	       0.0041329	      -7.4746790	      -7.2941423	       0.6648012	      -7.3546580
+BMI	50+	Men	Colorectum	rate	3	2	15	6	9	       0.0017623	      -7.9659755	      -7.6049021	       0.8650030	      -7.6536459
+BMI	20-49	Women	Colorectum	rate	1	0	15	2	13	       0.0254366	      -6.0185432	      -6.0185432	       0.0000000	      -6.0185432
+BMI	20-49	Women	Colorectum	rate	2	1	15	4	11	       0.0217873	      -5.8123332	      -5.6317966	       0.1434678	      -5.7864320
+BMI	20-49	Women	Colorectum	rate	3	2	15	6	9	       0.0115474	      -6.0861291	      -5.7250557	       0.5731400	      -5.8791835
+BMI	50+	Women	Colorectum	rate	1	0	15	2	13	       0.0071783	      -7.2836680	      -7.2836680	       0.0000000	      -7.2836680
+BMI	50+	Women	Colorectum	rate	2	1	15	4	11	       0.0029377	      -7.8160264	      -7.6354897	       0.5907523	      -7.7093739
+BMI	50+	Women	Colorectum	rate	3	2	15	6	9	       0.0012671	      -8.2958540	      -7.9347806	       0.8202708	      -7.9996760
+BMI	20-49	Women	Endometrium	attributable_rate	1	0	15	2	13	       0.0359765	      -5.6718656	      -5.6718656	       0.0000000	      -5.6718656
+BMI	20-49	Women	Endometrium	attributable_rate	2	1	15	4	11	       0.0289254	      -5.5289396	      -5.3484029	       0.1959930	      -5.4935556
+BMI	20-49	Women	Endometrium	attributable_rate	3	2	15	6	9	       0.0270994	      -5.2330751	      -4.8720017	       0.6197244	      -5.0093091
+BMI	50+	Women	Endometrium	attributable_rate	1	0	15	2	13	       0.0191498	      -6.3024398	      -6.3024398	       0.0000000	      -6.3024398
+BMI	50+	Women	Endometrium	attributable_rate	2	1	15	4	11	       0.0028130	      -7.8593954	      -7.6788588	       0.8531041	      -7.7053789
+BMI	50+	Women	Endometrium	attributable_rate	3	2	15	6	9	       0.0021578	      -7.7634833	      -7.4024099	       0.7161962	      -7.5048839
+BMI	20-49	Women	Endometrium	non_attributable_rate	1	0	15	2	13	       0.0354466	      -5.6867057	      -5.6867057	       0.0000000	      -5.6867057
+BMI	20-49	Women	Endometrium	non_attributable_rate	2	1	15	4	11	       0.0303902	      -5.4795398	      -5.2990031	       0.1426487	      -5.4537865
+BMI	20-49	Women	Endometrium	non_attributable_rate	3	2	15	6	9	       0.0215498	      -5.4622166	      -5.1011432	       0.8411674	      -5.1584934
+BMI	50+	Women	Endometrium	non_attributable_rate	1	0	15	2	13	       0.0098017	      -6.9721779	      -6.9721779	       0.0000000	      -6.9721779
+BMI	50+	Women	Endometrium	non_attributable_rate	2	1	15	4	11	       0.0030353	      -7.7833620	      -7.6028253	       0.6903335	      -7.6587315
+BMI	50+	Women	Endometrium	non_attributable_rate	3	2	15	6	9	       0.0029294	      -7.4577953	      -7.0967219	       0.2508511	      -7.3672196
+BMI	20-49	Women	Endometrium	rate	1	0	15	2	13	       0.0334469	      -5.7447743	      -5.7447743	       0.0000000	      -5.7447743
+BMI	20-49	Women	Endometrium	rate	2	1	15	4	11	       0.0308174	      -5.4655786	      -5.2850419	       0.0786154	      -5.4513856
+BMI	20-49	Women	Endometrium	rate	3	2	15	6	9	       0.0231108	      -5.3922852	      -5.0312119	       0.8129820	      -5.0987391
+BMI	50+	Women	Endometrium	rate	1	0	15	2	13	       0.0117997	      -6.7866552	      -6.7866552	       0.0000000	      -6.7866552
+BMI	50+	Women	Endometrium	rate	2	1	15	4	11	       0.0027360	      -7.8871799	      -7.7066432	       0.7681352	      -7.7485033
+BMI	50+	Women	Endometrium	rate	3	2	15	6	9	       0.0025815	      -7.5841969	      -7.2231235	       0.5041339	      -7.4021675
+BMI	20-49	Men	Gallbladder	attributable_rate	1	0	15	2	13	       0.4564074	      -3.1313464	      -3.1313464	       0.0000000	      -3.1313464
+BMI	20-49	Men	Gallbladder	attributable_rate	2	1	15	4	11	       0.4407246	      -2.8052385	      -2.6247019	       0.0343613	      -2.7990351
+BMI	20-49	Men	Gallbladder	attributable_rate	3	2	15	6	9	       0.3754255	      -2.6045254	      -2.2434520	       0.3108053	      -2.4923019
+BMI	50+	Men	Gallbladder	attributable_rate	1	0	15	2	13	       0.0680253	      -5.0348525	      -5.0348525	       0.0000000	      -5.0348525
+BMI	50+	Men	Gallbladder	attributable_rate	2	1	15	4	11	       0.0476538	      -5.0296972	      -4.8491605	       0.2994700	      -4.9756319
+BMI	50+	Men	Gallbladder	attributable_rate	3	2	15	6	9	       0.0359148	      -4.9514353	      -4.5903620	       0.4659626	      -4.7831887
+BMI	20-49	Women	Gallbladder	attributable_rate	1	0	15	2	13	       0.3036457	      -3.5388707	      -3.5388707	       0.0000000	      -3.5388707
+BMI	20-49	Women	Gallbladder	attributable_rate	2	1	15	4	11	       0.2390667	      -3.4169162	      -3.2363795	       0.2126788	      -3.3785199
+BMI	20-49	Women	Gallbladder	attributable_rate	3	2	15	6	9	       0.1864948	      -3.3041819	      -2.9431086	       0.5052439	      -3.1217518
+BMI	50+	Women	Gallbladder	attributable_rate	1	0	15	2	13	       0.0230616	      -6.1165623	      -6.1165623	       0.0000000	      -6.1165623
+BMI	50+	Women	Gallbladder	attributable_rate	2	1	15	4	11	       0.0126758	      -6.3539668	      -6.1734301	       0.4503523	      -6.2726616
+BMI	50+	Women	Gallbladder	attributable_rate	3	2	15	6	9	       0.0103649	      -6.1941580	      -5.8330846	       0.7082837	      -5.9384156
+BMI	20-49	Men	Gallbladder	non_attributable_rate	1	0	15	2	13	       0.4824402	      -3.0758752	      -3.0758752	       0.0000000	      -3.0758752
+BMI	20-49	Men	Gallbladder	non_attributable_rate	2	1	15	4	11	       0.4128182	      -2.8706514	      -2.6901147	       0.1443120	      -2.8445977
+BMI	20-49	Men	Gallbladder	non_attributable_rate	3	2	15	6	9	       0.3553507	      -2.6594801	      -2.2984067	       0.4262815	      -2.5055612
+BMI	50+	Men	Gallbladder	non_attributable_rate	1	0	15	2	13	       0.0518021	      -5.3073018	      -5.3073018	       0.0000000	      -5.3073018
+BMI	50+	Men	Gallbladder	non_attributable_rate	2	1	15	4	11	       0.0373765	      -5.2726168	      -5.0920801	       0.2784751	      -5.2223418
+BMI	50+	Men	Gallbladder	non_attributable_rate	3	2	15	6	9	       0.0363215	      -4.9401767	      -4.5791034	       0.3308044	      -4.8207321
+BMI	20-49	Women	Gallbladder	non_attributable_rate	1	0	15	2	13	       0.2738199	      -3.6422615	      -3.6422615	       0.0000000	      -3.6422615
+BMI	20-49	Women	Gallbladder	non_attributable_rate	2	1	15	4	11	       0.2444309	      -3.3947260	      -3.2141894	       0.1073297	      -3.3753491
+BMI	20-49	Women	Gallbladder	non_attributable_rate	3	2	15	6	9	       0.1782235	      -3.3495468	      -2.9884734	       0.4896334	      -3.1727532
+BMI	50+	Women	Gallbladder	non_attributable_rate	1	0	15	2	13	       0.0185711	      -6.3331267	      -6.3331267	       0.0000000	      -6.3331267
+BMI	50+	Women	Gallbladder	non_attributable_rate	2	1	15	4	11	       0.0160454	      -6.1182390	      -5.9377023	       0.1360027	      -6.0936855
+BMI	50+	Women	Gallbladder	non_attributable_rate	3	2	15	6	9	       0.0130016	      -5.9675162	      -5.6064428	       0.3996661	      -5.8232074
+BMI	20-49	Men	Gallbladder	rate	1	0	15	2	13	       0.4770818	      -3.0870442	      -3.0870442	       0.0000000	      -3.0870442
+BMI	20-49	Men	Gallbladder	rate	2	1	15	4	11	       0.4160406	      -2.8628760	      -2.6823393	       0.1279470	      -2.8397768
+BMI	20-49	Men	Gallbladder	rate	3	2	15	6	9	       0.3568501	      -2.6552697	      -2.2941964	       0.4186871	      -2.5040930
+BMI	50+	Men	Gallbladder	rate	1	0	15	2	13	       0.0525309	      -5.2933304	      -5.2933304	       0.0000000	      -5.2933304
+BMI	50+	Men	Gallbladder	rate	2	1	15	4	11	       0.0383202	      -5.2476821	      -5.0671454	       0.2705213	      -5.1988431
+BMI	50+	Men	Gallbladder	rate	3	2	15	6	9	       0.0372766	      -4.9142199	      -4.5531465	       0.2651739	      -4.8184727
+BMI	20-49	Women	Gallbladder	rate	1	0	15	2	13	       0.2771797	      -3.6300661	      -3.6300661	       0.0000000	      -3.6300661
+BMI	20-49	Women	Gallbladder	rate	2	1	15	4	11	       0.2432080	      -3.3997417	      -3.2192050	       0.1225620	      -3.3776148
+BMI	20-49	Women	Gallbladder	rate	3	2	15	6	9	       0.1795446	      -3.3421616	      -2.9810882	       0.4910646	      -3.1648512
+BMI	50+	Women	Gallbladder	rate	1	0	15	2	13	       0.0188220	      -6.3197064	      -6.3197064	       0.0000000	      -6.3197064
+BMI	50+	Women	Gallbladder	rate	2	1	15	4	11	       0.0150993	      -6.1790100	      -5.9984733	       0.1977836	      -6.1433028
+BMI	50+	Women	Gallbladder	rate	3	2	15	6	9	       0.0127515	      -5.9869372	      -5.6258638	       0.4173762	      -5.8362337
+BMI	20-49	Men	Kidney	attributable_rate	1	0	15	2	13	       0.0759210	      -4.9250390	      -4.9250390	       0.0000000	      -4.9250390
+BMI	20-49	Men	Kidney	attributable_rate	2	1	15	4	11	       0.0142350	      -6.2379549	      -6.0574183	       0.8125024	      -6.0912685
+BMI	20-49	Men	Kidney	attributable_rate	3	2	15	6	9	       0.0105989	      -6.1718355	      -5.8107622	       0.5626580	      -5.9686747
+BMI	50+	Men	Kidney	attributable_rate	1	0	15	2	13	       0.0411325	      -5.5379346	      -5.5379346	       0.0000000	      -5.5379346
+BMI	50+	Men	Kidney	attributable_rate	2	1	15	4	11	       0.0134478	      -6.2948465	      -6.1143098	       0.6730622	      -6.1733340
+BMI	50+	Men	Kidney	attributable_rate	3	2	15	6	9	       0.0085012	      -6.3923819	      -6.0313085	       0.6887197	      -6.1437036
+BMI	20-49	Women	Kidney	attributable_rate	1	0	15	2	13	       0.1102556	      -4.5519312	      -4.5519312	       0.0000000	      -4.5519312
+BMI	20-49	Women	Kidney	attributable_rate	2	1	15	4	11	       0.0720427	      -4.6164000	      -4.4358634	       0.3465846	      -4.5538288
+BMI	20-49	Women	Kidney	attributable_rate	3	2	15	6	9	       0.0538722	      -4.5459709	      -4.1848975	       0.7433478	      -4.2775678
+BMI	50+	Women	Kidney	attributable_rate	1	0	15	2	13	       0.0639162	      -5.0971594	      -5.0971594	       0.0000000	      -5.0971594
+BMI	50+	Women	Kidney	attributable_rate	2	1	15	4	11	       0.0156324	      -6.1443103	      -5.9637736	       0.7554228	      -6.0079287
+BMI	50+	Women	Kidney	attributable_rate	3	2	15	6	9	       0.0099322	      -6.2368036	      -5.8757303	       0.6662693	      -5.9962316
+BMI	20-49	Men	Kidney	non_attributable_rate	1	0	15	2	13	       0.0375589	      -5.6288217	      -5.6288217	       0.0000000	      -5.6288217
+BMI	20-49	Men	Kidney	non_attributable_rate	2	1	15	4	11	       0.0149073	      -6.1918055	      -6.0112688	       0.6030945	      -6.0829248
+BMI	20-49	Men	Kidney	non_attributable_rate	3	2	15	6	9	       0.0120667	      -6.0421320	      -5.6810586	       0.7431891	      -5.7737862
+BMI	50+	Men	Kidney	non_attributable_rate	1	0	15	2	13	       0.0373194	      -5.6352175	      -5.6352175	       0.0000000	      -5.6352175
+BMI	50+	Men	Kidney	non_attributable_rate	2	1	15	4	11	       0.0163331	      -6.1004676	      -5.9199309	       0.5623447	      -5.9989437
+BMI	50+	Men	Kidney	non_attributable_rate	3	2	15	6	9	       0.0107552	      -6.1571981	      -5.7961247	       0.6412942	      -5.9256438
+BMI	20-49	Women	Kidney	non_attributable_rate	1	0	15	2	13	       0.0835428	      -4.8293736	      -4.8293736	       0.0000000	      -4.8293736
+BMI	20-49	Women	Kidney	non_attributable_rate	2	1	15	4	11	       0.0687741	      -4.6628314	      -4.4822947	       0.1767795	      -4.6309162
+BMI	20-49	Women	Kidney	non_attributable_rate	3	2	15	6	9	       0.0534937	      -4.5530215	      -4.1919481	       0.6740282	      -4.3096478
+BMI	50+	Women	Kidney	non_attributable_rate	1	0	15	2	13	       0.0472670	      -5.3989196	      -5.3989196	       0.0000000	      -5.3989196
+BMI	50+	Women	Kidney	non_attributable_rate	2	1	15	4	11	       0.0110100	      -6.4948523	      -6.3143156	       0.7670675	      -6.3563685
+BMI	50+	Women	Kidney	non_attributable_rate	3	2	15	6	9	       0.0095642	      -6.2745569	      -5.9134835	       0.7026563	      -6.0208464
+BMI	20-49	Men	Kidney	rate	1	0	15	2	13	       0.0418955	      -5.5195534	      -5.5195534	       0.0000000	      -5.5195534
+BMI	20-49	Men	Kidney	rate	2	1	15	4	11	       0.0148437	      -6.1960858	      -6.0155491	       0.6456981	      -6.0795136
+BMI	20-49	Men	Kidney	rate	3	2	15	6	9	       0.0119274	      -6.0537460	      -5.6926727	       0.7548609	      -5.7811858
+BMI	50+	Men	Kidney	rate	1	0	15	2	13	       0.0372794	      -5.6362904	      -5.6362904	       0.0000000	      -5.6362904
+BMI	50+	Men	Kidney	rate	2	1	15	4	11	       0.0154418	      -6.1565791	      -5.9760424	       0.5857818	      -6.0508240
+BMI	50+	Men	Kidney	rate	3	2	15	6	9	       0.0102415	      -6.2061326	      -5.8450592	       0.7190283	      -5.9465106
+BMI	20-49	Women	Kidney	rate	1	0	15	2	13	       0.0882182	      -4.7749192	      -4.7749192	       0.0000000	      -4.7749192
+BMI	20-49	Women	Kidney	rate	2	1	15	4	11	       0.0693396	      -4.6546427	      -4.4741060	       0.2139987	      -4.6160081
+BMI	20-49	Women	Kidney	rate	3	2	15	6	9	       0.0534441	      -4.5539486	      -4.1928752	       0.6925464	      -4.3038886
+BMI	50+	Women	Kidney	rate	1	0	15	2	13	       0.0512640	      -5.3177435	      -5.3177435	       0.0000000	      -5.3177435
+BMI	50+	Women	Kidney	rate	2	1	15	4	11	       0.0119440	      -6.4134264	      -6.2328898	       0.7670093	      -6.2749531
+BMI	50+	Women	Kidney	rate	3	2	15	6	9	       0.0095941	      -6.2714367	      -5.9103633	       0.6934221	      -6.0210604
+BMI	20-49	Men	Liver	attributable_rate	1	0	15	2	13	       0.3041239	      -3.5372971	      -3.5372971	       0.0000000	      -3.5372971
+BMI	20-49	Men	Liver	attributable_rate	2	1	15	4	11	       0.1866863	      -3.6642288	      -3.4836922	       0.3861503	      -3.5945145
+BMI	20-49	Men	Liver	attributable_rate	3	2	15	6	9	       0.1623083	      -3.4430875	      -3.0820142	       0.3019348	      -3.3340669
+BMI	50+	Men	Liver	attributable_rate	1	0	15	2	13	       0.0412553	      -5.5349521	      -5.5349521	       0.0000000	      -5.5349521
+BMI	50+	Men	Liver	attributable_rate	2	1	15	4	11	       0.0064463	      -7.0301587	      -6.8496220	       0.8437472	      -6.8778314
+BMI	50+	Men	Liver	attributable_rate	3	2	15	6	9	       0.0052286	      -6.8784451	      -6.5173718	       0.8138237	      -6.5845951
+BMI	20-49	Women	Liver	attributable_rate	1	0	15	2	13	       0.1538251	      -4.2189157	      -4.2189157	       0.0000000	      -4.2189157
+BMI	20-49	Women	Liver	attributable_rate	2	1	15	4	11	       0.1161707	      -4.1385982	      -3.9580615	       0.2447872	      -4.0944051
+BMI	20-49	Women	Liver	attributable_rate	3	2	15	6	9	       0.0941738	      -3.9874432	      -3.6263698	       0.3672550	      -3.8548372
+BMI	50+	Women	Liver	attributable_rate	1	0	15	2	13	       0.0780580	      -4.8972806	      -4.8972806	       0.0000000	      -4.8972806
+BMI	50+	Women	Liver	attributable_rate	2	1	15	4	11	       0.0256407	      -5.6494792	      -5.4689426	       0.6715176	      -5.5282457
+BMI	50+	Women	Liver	attributable_rate	3	2	15	6	9	       0.0228716	      -5.4026890	      -5.0416156	       0.3066086	      -5.2919808
+BMI	20-49	Men	Liver	non_attributable_rate	1	0	15	2	13	       0.2262026	      -3.8333012	      -3.8333012	       0.0000000	      -3.8333012
+BMI	20-49	Men	Liver	non_attributable_rate	2	1	15	4	11	       0.1782903	      -3.7102457	      -3.5297090	       0.2118114	      -3.6720060
+BMI	20-49	Men	Liver	non_attributable_rate	3	2	15	6	9	       0.1679385	      -3.4089877	      -3.0479144	       0.2328622	      -3.3249074
+BMI	50+	Men	Liver	non_attributable_rate	1	0	15	2	13	       0.0309313	      -5.8229622	      -5.8229622	       0.0000000	      -5.8229622
+BMI	50+	Men	Liver	non_attributable_rate	2	1	15	4	11	       0.0074929	      -6.8796970	      -6.6991604	       0.7577557	      -6.7428943
+BMI	50+	Men	Liver	non_attributable_rate	3	2	15	6	9	       0.0058754	      -6.7618140	      -6.4007406	       0.8278736	      -6.4628909
+BMI	20-49	Women	Liver	non_attributable_rate	1	0	15	2	13	       0.1494931	      -4.2474820	      -4.2474820	       0.0000000	      -4.2474820
+BMI	20-49	Women	Liver	non_attributable_rate	2	1	15	4	11	       0.1281886	      -4.0401565	      -3.8596198	       0.1425118	      -4.0144279
+BMI	20-49	Women	Liver	non_attributable_rate	3	2	15	6	9	       0.0938563	      -3.9908201	      -3.6297468	       0.2932563	      -3.8849331
+BMI	50+	Women	Liver	non_attributable_rate	1	0	15	2	13	       0.0591712	      -5.1742979	      -5.1742979	       0.0000000	      -5.1742979
+BMI	50+	Women	Liver	non_attributable_rate	2	1	15	4	11	       0.0219525	      -5.8047778	      -5.6242412	       0.6290001	      -5.6912203
+BMI	50+	Women	Liver	non_attributable_rate	3	2	15	6	9	       0.0195142	      -5.5614436	      -5.2003703	       0.6865875	      -5.3135352
+BMI	20-49	Men	Liver	rate	1	0	15	2	13	       0.2366443	      -3.7881741	      -3.7881741	       0.0000000	      -3.7881741
+BMI	20-49	Men	Liver	rate	2	1	15	4	11	       0.1790358	      -3.7060730	      -3.5255363	       0.2434391	      -3.6621233
+BMI	20-49	Men	Liver	rate	3	2	15	6	9	       0.1662492	      -3.4190976	      -3.0580243	       0.2468354	      -3.3299719
+BMI	50+	Men	Liver	rate	1	0	15	2	13	       0.0319093	      -5.7918352	      -5.7918352	       0.0000000	      -5.7918352
+BMI	50+	Men	Liver	rate	2	1	15	4	11	       0.0074522	      -6.8851454	      -6.7046087	       0.7664559	      -6.7467720
+BMI	50+	Men	Liver	rate	3	2	15	6	9	       0.0053653	      -6.8526416	      -6.4915683	       0.8226623	      -6.5556002
+BMI	20-49	Women	Liver	rate	1	0	15	2	13	       0.1484763	      -4.2543071	      -4.2543071	       0.0000000	      -4.2543071
+BMI	20-49	Women	Liver	rate	2	1	15	4	11	       0.1251180	      -4.0644015	      -3.8838648	       0.1573198	      -4.0359995
+BMI	20-49	Women	Liver	rate	3	2	15	6	9	       0.0936833	      -3.9926650	      -3.6315917	       0.3035557	      -3.8830592
+BMI	50+	Women	Liver	rate	1	0	15	2	13	       0.0623261	      -5.1223526	      -5.1223526	       0.0000000	      -5.1223526
+BMI	50+	Women	Liver	rate	2	1	15	4	11	       0.0222412	      -5.7917121	      -5.6111754	       0.6431476	      -5.6756004
+BMI	50+	Women	Liver	rate	3	2	15	6	9	       0.0198958	      -5.5420774	      -5.1810041	       0.7015968	      -5.2887495
+BMI	20-49	Men	Multiple Myeloma	attributable_rate	1	0	15	2	13	       0.1896205	      -4.0097077	      -4.0097077	       0.0000000	      -4.0097077
+BMI	20-49	Men	Multiple Myeloma	attributable_rate	2	1	15	4	11	       0.1244997	      -4.0693554	      -3.8888187	       0.3434268	      -4.0073542
+BMI	20-49	Men	Multiple Myeloma	attributable_rate	3	2	15	6	9	       0.0697796	      -4.2872439	      -3.9261705	       0.5278409	      -4.0966546
+BMI	50+	Men	Multiple Myeloma	attributable_rate	1	0	15	2	13	       0.0363490	      -5.6615663	      -5.6615663	       0.0000000	      -5.6615663
+BMI	50+	Men	Multiple Myeloma	attributable_rate	2	1	15	4	11	       0.0274613	      -5.5808826	      -5.4003459	       0.2445107	      -5.5367395
+BMI	50+	Men	Multiple Myeloma	attributable_rate	3	2	15	6	9	       0.0237390	      -5.3654665	      -5.0043932	       0.6204511	      -5.1414382
+BMI	20-49	Women	Multiple Myeloma	attributable_rate	1	0	15	2	13	       0.1880861	      -4.0178321	      -4.0178321	       0.0000000	      -4.0178321
+BMI	20-49	Women	Multiple Myeloma	attributable_rate	2	1	15	4	11	       0.1165521	      -4.1353207	      -3.9547840	       0.3803262	      -4.0666579
+BMI	20-49	Women	Multiple Myeloma	attributable_rate	3	2	15	6	9	       0.0964424	      -3.9636392	      -3.6025658	       0.6156188	      -3.7413556
+BMI	50+	Women	Multiple Myeloma	attributable_rate	1	0	15	2	13	       0.0468009	      -5.4088287	      -5.4088287	       0.0000000	      -5.4088287
+BMI	50+	Women	Multiple Myeloma	attributable_rate	2	1	15	4	11	       0.0346701	      -5.3477824	      -5.1672457	       0.2592019	      -5.3009869
+BMI	50+	Women	Multiple Myeloma	attributable_rate	3	2	15	6	9	       0.0216643	      -5.4569193	      -5.0958459	       0.5217432	      -5.2685317
+BMI	20-49	Men	Multiple Myeloma	non_attributable_rate	1	0	15	2	13	       0.1640262	      -4.1547062	      -4.1547062	       0.0000000	      -4.1547062
+BMI	20-49	Men	Multiple Myeloma	non_attributable_rate	2	1	15	4	11	       0.1291868	      -4.0323995	      -3.8518628	       0.2124014	      -3.9940533
+BMI	20-49	Men	Multiple Myeloma	non_attributable_rate	3	2	15	6	9	       0.0788474	      -4.1650706	      -3.8039973	       0.7213998	      -3.9045924
+BMI	50+	Men	Multiple Myeloma	non_attributable_rate	1	0	15	2	13	       0.0355103	      -5.6849104	      -5.6849104	       0.0000000	      -5.6849104
+BMI	50+	Men	Multiple Myeloma	non_attributable_rate	2	1	15	4	11	       0.0301908	      -5.4861220	      -5.3055854	       0.1498012	      -5.4590774
+BMI	50+	Men	Multiple Myeloma	non_attributable_rate	3	2	15	6	9	       0.0224801	      -5.4199528	      -5.0588794	       0.3314409	      -5.3002783
+BMI	20-49	Women	Multiple Myeloma	non_attributable_rate	1	0	15	2	13	       0.1529300	      -4.2247515	      -4.2247515	       0.0000000	      -4.2247515
+BMI	20-49	Women	Multiple Myeloma	non_attributable_rate	2	1	15	4	11	       0.1153519	      -4.1456710	      -3.9651344	       0.2457209	      -4.1013094
+BMI	20-49	Women	Multiple Myeloma	non_attributable_rate	3	2	15	6	9	       0.0986769	      -3.9407346	      -3.5796613	       0.5653702	      -3.7365945
+BMI	50+	Women	Multiple Myeloma	non_attributable_rate	1	0	15	2	13	       0.0466856	      -5.4112968	      -5.4112968	       0.0000000	      -5.4112968
+BMI	50+	Women	Multiple Myeloma	non_attributable_rate	2	1	15	4	11	       0.0397159	      -5.2119072	      -5.0313705	       0.1492898	      -5.1849549
+BMI	50+	Women	Multiple Myeloma	non_attributable_rate	3	2	15	6	9	       0.0204707	      -5.5135907	      -5.1525173	       0.6378111	      -5.2832941
+BMI	20-49	Men	Multiple Myeloma	rate	1	0	15	2	13	       0.1654465	      -4.1460844	      -4.1460844	       0.0000000	      -4.1460844
+BMI	20-49	Men	Multiple Myeloma	rate	2	1	15	4	11	       0.1287728	      -4.0356090	      -3.8550724	       0.2216648	      -3.9955904
+BMI	20-49	Men	Multiple Myeloma	rate	3	2	15	6	9	       0.0784701	      -4.1698683	      -3.8087949	       0.7259292	      -3.9077546
+BMI	50+	Men	Multiple Myeloma	rate	1	0	15	2	13	       0.0353448	      -5.6895816	      -5.6895816	       0.0000000	      -5.6895816
+BMI	50+	Men	Multiple Myeloma	rate	2	1	15	4	11	       0.0298274	      -5.4982311	      -5.3176944	       0.1561014	      -5.4700491
+BMI	50+	Men	Multiple Myeloma	rate	3	2	15	6	9	       0.0227395	      -5.4084837	      -5.0474104	       0.3185470	      -5.2934649
+BMI	20-49	Women	Multiple Myeloma	rate	1	0	15	2	13	       0.1549257	      -4.2117868	      -4.2117868	       0.0000000	      -4.2117868
+BMI	20-49	Women	Multiple Myeloma	rate	2	1	15	4	11	       0.1154398	      -4.1449092	      -3.9643726	       0.2548694	      -4.0988960
+BMI	20-49	Women	Multiple Myeloma	rate	3	2	15	6	9	       0.0984746	      -3.9427865	      -3.5817131	       0.5692100	      -3.7372599
+BMI	50+	Women	Multiple Myeloma	rate	1	0	15	2	13	       0.0465401	      -5.4144182	      -5.4144182	       0.0000000	      -5.4144182
+BMI	50+	Women	Multiple Myeloma	rate	2	1	15	4	11	       0.0391672	      -5.2258182	      -5.0452815	       0.1584193	      -5.1972177
+BMI	50+	Women	Multiple Myeloma	rate	3	2	15	6	9	       0.0205337	      -5.5105195	      -5.1494462	       0.6287569	      -5.2834922
+BMI	20-49	Women	Ovary	attributable_rate	1	0	15	2	13	       0.0481296	      -5.3808337	      -5.3808337	       0.0000000	      -5.3808337
+BMI	20-49	Women	Ovary	attributable_rate	2	1	15	4	11	       0.0111752	      -6.4799591	      -6.2994225	       0.7678099	      -6.3413413
+BMI	20-49	Women	Ovary	attributable_rate	3	2	15	6	9	       0.0070850	      -6.5746029	      -6.2135296	       0.7740200	      -6.2951249
+BMI	50+	Women	Ovary	attributable_rate	1	0	15	2	13	       0.0129101	      -6.6967196	      -6.6967196	       0.0000000	      -6.6967196
+BMI	50+	Women	Ovary	attributable_rate	2	1	15	4	11	       0.0052635	      -7.2328560	      -7.0523193	       0.5922944	      -7.1259251
+BMI	50+	Women	Ovary	attributable_rate	3	2	15	6	9	       0.0048219	      -6.9594071	      -6.5983337	       0.5727968	      -6.7525854
+BMI	20-49	Women	Ovary	non_attributable_rate	1	0	15	2	13	       0.0209694	      -6.2116666	      -6.2116666	       0.0000000	      -6.2116666
+BMI	20-49	Women	Ovary	non_attributable_rate	2	1	15	4	11	       0.0077208	      -6.8497388	      -6.6692022	       0.6318062	      -6.7356746
+BMI	20-49	Women	Ovary	non_attributable_rate	3	2	15	6	9	       0.0055684	      -6.8154856	      -6.4544123	       0.6572517	      -6.5781696
+BMI	50+	Women	Ovary	non_attributable_rate	1	0	15	2	13	       0.0077954	      -7.2011942	      -7.2011942	       0.0000000	      -7.2011942
+BMI	50+	Women	Ovary	non_attributable_rate	2	1	15	4	11	       0.0053313	      -7.2200557	      -7.0395190	       0.3160944	      -7.1629891
+BMI	50+	Women	Ovary	non_attributable_rate	3	2	15	6	9	       0.0036595	      -7.2352588	      -6.8741855	       0.4909203	      -7.0580006
+BMI	20-49	Women	Ovary	rate	1	0	15	2	13	       0.0217058	      -6.1771512	      -6.1771512	       0.0000000	      -6.1771512
+BMI	20-49	Women	Ovary	rate	2	1	15	4	11	       0.0080940	      -6.8025364	      -6.6219998	       0.6271052	      -6.6893209
+BMI	20-49	Women	Ovary	rate	3	2	15	6	9	       0.0056243	      -6.8054856	      -6.4444122	       0.6519321	      -6.5700903
+BMI	50+	Women	Ovary	rate	1	0	15	2	13	       0.0078841	      -7.1898790	      -7.1898790	       0.0000000	      -7.1898790
+BMI	50+	Women	Ovary	rate	2	1	15	4	11	       0.0052338	      -7.2385270	      -7.0579903	       0.3361651	      -7.1778368
+BMI	50+	Women	Ovary	rate	3	2	15	6	9	       0.0035869	      -7.2552908	      -6.8942174	       0.5056477	      -7.0727149
+BMI	20-49	Men	Pancreas	attributable_rate	1	0	15	2	13	       0.0735856	      -4.9562825	      -4.9562825	       0.0000000	      -4.9562825
+BMI	20-49	Men	Pancreas	attributable_rate	2	1	15	4	11	       0.0432852	      -5.1258479	      -4.9453113	       0.4117709	      -5.0515082
+BMI	20-49	Men	Pancreas	attributable_rate	3	2	15	6	9	       0.0384994	      -4.8819430	      -4.5208697	       0.2270394	      -4.7999652
+BMI	50+	Men	Pancreas	attributable_rate	1	0	15	2	13	       0.0088751	      -7.0714792	      -7.0714792	       0.0000000	      -7.0714792
+BMI	50+	Men	Pancreas	attributable_rate	2	1	15	4	11	       0.0054463	      -7.1987256	      -7.0181889	       0.3863435	      -7.1289764
+BMI	50+	Men	Pancreas	attributable_rate	3	2	15	6	9	       0.0052408	      -6.8761023	      -6.5150290	       0.2731063	      -6.7774909
+BMI	20-49	Women	Pancreas	attributable_rate	1	0	15	2	13	       0.0591970	      -5.1738613	      -5.1738613	       0.0000000	      -5.1738613
+BMI	20-49	Women	Pancreas	attributable_rate	2	1	15	4	11	       0.0553858	      -4.8793358	      -4.6987992	       0.0643819	      -4.8677125
+BMI	20-49	Women	Pancreas	attributable_rate	3	2	15	6	9	       0.0426339	      -4.7799346	      -4.4188613	       0.4814197	      -4.6061068
+BMI	50+	Women	Pancreas	attributable_rate	1	0	15	2	13	       0.0081032	      -7.1624724	      -7.1624724	       0.0000000	      -7.1624724
+BMI	50+	Women	Pancreas	attributable_rate	2	1	15	4	11	       0.0024348	      -8.0037952	      -7.8232585	       0.6995268	      -7.8775049
+BMI	50+	Women	Pancreas	attributable_rate	3	2	15	6	9	       0.0019780	      -7.8505178	      -7.4894444	       0.5582186	      -7.6489599
+BMI	20-49	Men	Pancreas	non_attributable_rate	1	0	15	2	13	       0.0483063	      -5.3771698	      -5.3771698	       0.0000000	      -5.3771698
+BMI	20-49	Men	Pancreas	non_attributable_rate	2	1	15	4	11	       0.0461599	      -5.0615472	      -4.8810106	       0.0444334	      -5.0535254
+BMI	20-49	Men	Pancreas	non_attributable_rate	3	2	15	6	9	       0.0453843	      -4.7174196	      -4.3563462	       0.2822041	      -4.6155232
+BMI	50+	Men	Pancreas	non_attributable_rate	1	0	15	2	13	       0.0052686	      -7.5929654	      -7.5929654	       0.0000000	      -7.5929654
+BMI	50+	Men	Pancreas	non_attributable_rate	2	1	15	4	11	       0.0038915	      -7.5348584	      -7.3543217	       0.2613765	      -7.4876704
+BMI	50+	Men	Pancreas	non_attributable_rate	3	2	15	6	9	       0.0037215	      -7.2184588	      -6.8573855	       0.3883382	      -7.0782403
+BMI	20-49	Women	Pancreas	non_attributable_rate	1	0	15	2	13	       0.0537283	      -5.2707916	      -5.2707916	       0.0000000	      -5.2707916
+BMI	20-49	Women	Pancreas	non_attributable_rate	2	1	15	4	11	       0.0485665	      -5.0107244	      -4.8301877	       0.0960726	      -4.9933798
+BMI	20-49	Women	Pancreas	non_attributable_rate	3	2	15	6	9	       0.0434384	      -4.7612421	      -4.4001687	       0.3907292	      -4.6201602
+BMI	50+	Women	Pancreas	non_attributable_rate	1	0	15	2	13	       0.0040370	      -7.8592369	      -7.8592369	       0.0000000	      -7.8592369
+BMI	50+	Women	Pancreas	non_attributable_rate	2	1	15	4	11	       0.0018853	      -8.2595915	      -8.0790548	       0.5330018	      -8.1633651
+BMI	50+	Women	Pancreas	non_attributable_rate	3	2	15	6	9	       0.0015888	      -8.0696206	      -7.7085473	       0.4722825	      -7.8990920
+BMI	20-49	Men	Pancreas	rate	1	0	15	2	13	       0.0484826	      -5.3735266	      -5.3735266	       0.0000000	      -5.3735266
+BMI	20-49	Men	Pancreas	rate	2	1	15	4	11	       0.0450723	      -5.0853916	      -4.9048549	       0.0703419	      -5.0726923
+BMI	20-49	Men	Pancreas	rate	3	2	15	6	9	       0.0448741	      -4.7287241	      -4.3676507	       0.2349012	      -4.6439075
+BMI	50+	Men	Pancreas	rate	1	0	15	2	13	       0.0052610	      -7.5944069	      -7.5944069	       0.0000000	      -7.5944069
+BMI	50+	Men	Pancreas	rate	2	1	15	4	11	       0.0038739	      -7.5393977	      -7.3588610	       0.2636610	      -7.4917972
+BMI	50+	Men	Pancreas	rate	3	2	15	6	9	       0.0037930	      -7.1994160	      -6.8383427	       0.3989815	      -7.0553544
+BMI	20-49	Women	Pancreas	rate	1	0	15	2	13	       0.0537851	      -5.2697349	      -5.2697349	       0.0000000	      -5.2697349
+BMI	20-49	Women	Pancreas	rate	2	1	15	4	11	       0.0491388	      -4.9990107	      -4.8184740	       0.0863878	      -4.9834145
+BMI	20-49	Women	Pancreas	rate	3	2	15	6	9	       0.0433426	      -4.7634495	      -4.4023762	       0.4000018	      -4.6190195
+BMI	50+	Women	Pancreas	rate	1	0	15	2	13	       0.0042994	      -7.7962552	      -7.7962552	       0.0000000	      -7.7962552
+BMI	50+	Women	Pancreas	rate	2	1	15	4	11	       0.0018373	      -8.2853546	      -8.1048179	       0.5726599	      -8.1819685
+BMI	50+	Women	Pancreas	rate	3	2	15	6	9	       0.0016453	      -8.0346846	      -7.6736113	       0.4536496	      -7.8708838
+BMI	20-49	Men	Thyroid	attributable_rate	1	0	15	2	13	       0.1292656	      -4.3928633	      -4.3928633	       0.0000000	      -4.3928633
+BMI	20-49	Men	Thyroid	attributable_rate	2	1	15	4	11	       0.0272414	      -5.5889215	      -5.4083848	       0.7892603	      -5.4464311
+BMI	20-49	Men	Thyroid	attributable_rate	3	2	15	6	9	       0.0132367	      -5.9495917	      -5.5885183	       0.8917084	      -5.6276195
+BMI	50+	Men	Thyroid	attributable_rate	1	0	15	2	13	       0.0844859	      -4.8181480	      -4.8181480	       0.0000000	      -4.8181480
+BMI	50+	Men	Thyroid	attributable_rate	2	1	15	4	11	       0.0409300	      -5.1817960	      -5.0012593	       0.5155405	      -5.0887220
+BMI	50+	Men	Thyroid	attributable_rate	3	2	15	6	9	       0.0386529	      -4.8779645	      -4.5168911	       0.5505271	      -4.6791838
+BMI	20-49	Women	Thyroid	attributable_rate	1	0	15	2	13	       0.0650494	      -5.0795855	      -5.0795855	       0.0000000	      -5.0795855
+BMI	20-49	Women	Thyroid	attributable_rate	2	1	15	4	11	       0.0123189	      -6.3825242	      -6.2019875	       0.8106223	      -6.2361771
+BMI	20-49	Women	Thyroid	attributable_rate	3	2	15	6	9	       0.0117006	      -6.0729488	      -5.7118754	       0.7568822	      -5.7996588
+BMI	50+	Women	Thyroid	attributable_rate	1	0	15	2	13	       0.0394059	      -5.5808175	      -5.5808175	       0.0000000	      -5.5808175
+BMI	50+	Women	Thyroid	attributable_rate	2	1	15	4	11	       0.0128855	      -6.3375580	      -6.1570214	       0.6730061	      -6.2160557
+BMI	50+	Women	Thyroid	attributable_rate	3	2	15	6	9	       0.0115253	      -6.0880407	      -5.7269673	       0.6261227	      -5.8619645
+BMI	20-49	Men	Thyroid	non_attributable_rate	1	0	15	2	13	       0.0644775	      -5.0884162	      -5.0884162	       0.0000000	      -5.0884162
+BMI	20-49	Men	Thyroid	non_attributable_rate	2	1	15	4	11	       0.0217695	      -5.8131505	      -5.6326138	       0.6623710	      -5.6935682
+BMI	20-49	Men	Thyroid	non_attributable_rate	3	2	15	6	9	       0.0130555	      -5.9633743	      -5.6023009	       0.7804938	      -5.6815588
+BMI	50+	Men	Thyroid	non_attributable_rate	1	0	15	2	13	       0.0705870	      -4.9978860	      -4.9978860	       0.0000000	      -4.9978860
+BMI	50+	Men	Thyroid	non_attributable_rate	2	1	15	4	11	       0.0378623	      -5.2597041	      -5.0791675	       0.4636088	      -5.1760057
+BMI	50+	Men	Thyroid	non_attributable_rate	3	2	15	6	9	       0.0351047	      -4.9742495	      -4.6131761	       0.5293722	      -4.7831073
+BMI	20-49	Women	Thyroid	non_attributable_rate	1	0	15	2	13	       0.0325364	      -5.7723724	      -5.7723724	       0.0000000	      -5.7723724
+BMI	20-49	Women	Thyroid	non_attributable_rate	2	1	15	4	11	       0.0117068	      -6.4334914	      -6.2529547	       0.6401948	      -6.3179127
+BMI	20-49	Women	Thyroid	non_attributable_rate	3	2	15	6	9	       0.0111518	      -6.1209821	      -5.7599087	       0.7326190	      -5.8564529
+BMI	50+	Women	Thyroid	non_attributable_rate	1	0	15	2	13	       0.0332262	      -5.7513948	      -5.7513948	       0.0000000	      -5.7513948
+BMI	50+	Women	Thyroid	non_attributable_rate	2	1	15	4	11	       0.0154904	      -6.1534386	      -5.9729019	       0.5337891	      -6.0570701
+BMI	50+	Women	Thyroid	non_attributable_rate	3	2	15	6	9	       0.0110179	      -6.1330644	      -5.7719911	       0.6757936	      -5.8890534
+BMI	20-49	Men	Thyroid	rate	1	0	15	2	13	       0.0686139	      -5.0262372	      -5.0262372	       0.0000000	      -5.0262372
+BMI	20-49	Men	Thyroid	rate	2	1	15	4	11	       0.0220810	      -5.7989415	      -5.6184048	       0.6781848	      -5.6765042
+BMI	20-49	Men	Thyroid	rate	3	2	15	6	9	       0.0129284	      -5.9731556	      -5.6120822	       0.7974115	      -5.6852315
+BMI	50+	Men	Thyroid	rate	1	0	15	2	13	       0.0714625	      -4.9855596	      -4.9855596	       0.0000000	      -4.9855596
+BMI	50+	Men	Thyroid	rate	2	1	15	4	11	       0.0382484	      -5.2495562	      -5.0690195	       0.4647760	      -5.1656471
+BMI	50+	Men	Thyroid	rate	3	2	15	6	9	       0.0353897	      -4.9661642	      -4.6050909	       0.5242273	      -4.7768797
+BMI	20-49	Women	Thyroid	rate	1	0	15	2	13	       0.0342798	      -5.7201747	      -5.7201747	       0.0000000	      -5.7201747
+BMI	20-49	Women	Thyroid	rate	2	1	15	4	11	       0.0117050	      -6.4336464	      -6.2531097	       0.6585470	      -6.3147545
+BMI	20-49	Women	Thyroid	rate	3	2	15	6	9	       0.0111924	      -6.1173508	      -5.7562775	       0.7471024	      -5.8475921
+BMI	50+	Women	Thyroid	rate	1	0	15	2	13	       0.0335145	      -5.7427545	      -5.7427545	       0.0000000	      -5.7427545
+BMI	50+	Women	Thyroid	rate	2	1	15	4	11	       0.0150423	      -6.1827912	      -6.0022545	       0.5511696	      -6.0832849
+BMI	50+	Women	Thyroid	rate	3	2	15	6	9	       0.0110975	      -6.1258647	      -5.7647914	       0.6764130	      -5.8816300
