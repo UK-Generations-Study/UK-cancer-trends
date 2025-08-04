@@ -966,9 +966,9 @@ This table is generated in excel
 
 ```{r, results = "asis", fig.width=200}
 
-supp_table_4 <- full_joinpoint_table(data_joinpoint |> filter(cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid", "Ovarian")) |>
+supp_table_4 <- full_joinpoint_table(data_joinpoint |> filter(cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid", "Ovary")) |>
                                        mutate(cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site)),
-                                  data_joinpoint_AAPC |> filter(cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid", "Ovarian")) |>
+                                  data_joinpoint_AAPC |> filter(cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid", "Ovary")) |>
                                        mutate(cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site)),
                                   group_var = "cancer_site", table_var = "sex", stratification_vars = "age_group", test_difference = T)
 
