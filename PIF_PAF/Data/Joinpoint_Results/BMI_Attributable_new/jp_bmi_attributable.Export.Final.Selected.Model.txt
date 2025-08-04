@@ -1,0 +1,100 @@
+"variable"	"age_group"	"sex"	"cancer_site"	"rate_type"	"Model"
+BMI	50+	Women	Breast	attributable_rate	1
+BMI	50+	Women	Breast	non_attributable_rate	0
+BMI	50+	Women	Breast	rate	0
+BMI	20-49	Men	Colorectum	attributable_rate	0
+BMI	50+	Men	Colorectum	attributable_rate	2
+BMI	20-49	Women	Colorectum	attributable_rate	2
+BMI	50+	Women	Colorectum	attributable_rate	1
+BMI	20-49	Men	Colorectum	non_attributable_rate	0
+BMI	50+	Men	Colorectum	non_attributable_rate	2
+BMI	20-49	Women	Colorectum	non_attributable_rate	0
+BMI	50+	Women	Colorectum	non_attributable_rate	2
+BMI	20-49	Men	Colorectum	rate	0
+BMI	50+	Men	Colorectum	rate	2
+BMI	20-49	Women	Colorectum	rate	0
+BMI	50+	Women	Colorectum	rate	2
+BMI	20-49	Women	Endometrium	attributable_rate	0
+BMI	50+	Women	Endometrium	attributable_rate	1
+BMI	20-49	Women	Endometrium	non_attributable_rate	0
+BMI	50+	Women	Endometrium	non_attributable_rate	1
+BMI	20-49	Women	Endometrium	rate	0
+BMI	50+	Women	Endometrium	rate	1
+BMI	20-49	Men	Gallbladder	attributable_rate	0
+BMI	50+	Men	Gallbladder	attributable_rate	0
+BMI	20-49	Women	Gallbladder	attributable_rate	0
+BMI	50+	Women	Gallbladder	attributable_rate	1
+BMI	20-49	Men	Gallbladder	non_attributable_rate	0
+BMI	50+	Men	Gallbladder	non_attributable_rate	0
+BMI	20-49	Women	Gallbladder	non_attributable_rate	0
+BMI	50+	Women	Gallbladder	non_attributable_rate	0
+BMI	20-49	Men	Gallbladder	rate	0
+BMI	50+	Men	Gallbladder	rate	0
+BMI	20-49	Women	Gallbladder	rate	0
+BMI	50+	Women	Gallbladder	rate	0
+BMI	20-49	Men	Kidney	attributable_rate	1
+BMI	50+	Men	Kidney	attributable_rate	1
+BMI	20-49	Women	Kidney	attributable_rate	1
+BMI	50+	Women	Kidney	attributable_rate	1
+BMI	20-49	Men	Kidney	non_attributable_rate	1
+BMI	50+	Men	Kidney	non_attributable_rate	1
+BMI	20-49	Women	Kidney	non_attributable_rate	0
+BMI	50+	Women	Kidney	non_attributable_rate	1
+BMI	20-49	Men	Kidney	rate	1
+BMI	50+	Men	Kidney	rate	1
+BMI	20-49	Women	Kidney	rate	0
+BMI	50+	Women	Kidney	rate	1
+BMI	20-49	Men	Liver	attributable_rate	1
+BMI	50+	Men	Liver	attributable_rate	1
+BMI	20-49	Women	Liver	attributable_rate	0
+BMI	50+	Women	Liver	attributable_rate	1
+BMI	20-49	Men	Liver	non_attributable_rate	0
+BMI	50+	Men	Liver	non_attributable_rate	1
+BMI	20-49	Women	Liver	non_attributable_rate	0
+BMI	50+	Women	Liver	non_attributable_rate	1
+BMI	20-49	Men	Liver	rate	0
+BMI	50+	Men	Liver	rate	1
+BMI	20-49	Women	Liver	rate	0
+BMI	50+	Women	Liver	rate	1
+BMI	20-49	Men	Multiple Myeloma	attributable_rate	2
+BMI	50+	Men	Multiple Myeloma	attributable_rate	0
+BMI	20-49	Women	Multiple Myeloma	attributable_rate	1
+BMI	50+	Women	Multiple Myeloma	attributable_rate	0
+BMI	20-49	Men	Multiple Myeloma	non_attributable_rate	0
+BMI	50+	Men	Multiple Myeloma	non_attributable_rate	0
+BMI	20-49	Women	Multiple Myeloma	non_attributable_rate	0
+BMI	50+	Women	Multiple Myeloma	non_attributable_rate	0
+BMI	20-49	Men	Multiple Myeloma	rate	0
+BMI	50+	Men	Multiple Myeloma	rate	0
+BMI	20-49	Women	Multiple Myeloma	rate	0
+BMI	50+	Women	Multiple Myeloma	rate	0
+BMI	20-49	Women	Ovary	attributable_rate	1
+BMI	50+	Women	Ovary	attributable_rate	1
+BMI	20-49	Women	Ovary	non_attributable_rate	1
+BMI	50+	Women	Ovary	non_attributable_rate	0
+BMI	20-49	Women	Ovary	rate	1
+BMI	50+	Women	Ovary	rate	0
+BMI	20-49	Men	Pancreas	attributable_rate	1
+BMI	50+	Men	Pancreas	attributable_rate	1
+BMI	20-49	Women	Pancreas	attributable_rate	0
+BMI	50+	Women	Pancreas	attributable_rate	1
+BMI	20-49	Men	Pancreas	non_attributable_rate	0
+BMI	50+	Men	Pancreas	non_attributable_rate	0
+BMI	20-49	Women	Pancreas	non_attributable_rate	0
+BMI	50+	Women	Pancreas	non_attributable_rate	1
+BMI	20-49	Men	Pancreas	rate	0
+BMI	50+	Men	Pancreas	rate	0
+BMI	20-49	Women	Pancreas	rate	0
+BMI	50+	Women	Pancreas	rate	1
+BMI	20-49	Men	Thyroid	attributable_rate	2
+BMI	50+	Men	Thyroid	attributable_rate	1
+BMI	20-49	Women	Thyroid	attributable_rate	1
+BMI	50+	Women	Thyroid	attributable_rate	1
+BMI	20-49	Men	Thyroid	non_attributable_rate	1
+BMI	50+	Men	Thyroid	non_attributable_rate	1
+BMI	20-49	Women	Thyroid	non_attributable_rate	1
+BMI	50+	Women	Thyroid	non_attributable_rate	1
+BMI	20-49	Men	Thyroid	rate	2
+BMI	50+	Men	Thyroid	rate	1
+BMI	20-49	Women	Thyroid	rate	1
+BMI	50+	Women	Thyroid	rate	1

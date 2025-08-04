@@ -6,7 +6,7 @@
 # The prevelances will be sampled using the prevelances and N values from the surveys.
 
 ## Options
-N_iterations <- 1000
+N_iterations <- 10000
 
 ## Packages
 necessary_packages <- c("dplyr", "tidyr", "ggplot2")
