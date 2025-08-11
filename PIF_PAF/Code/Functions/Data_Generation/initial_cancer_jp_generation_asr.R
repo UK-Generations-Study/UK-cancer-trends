@@ -101,6 +101,7 @@ data <- data |>
       TRUE ~ NA
     )
     
+    
   ) |>
   group_by(year, sex, age_group, cancer_site) |>
   summarise(

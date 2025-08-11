@@ -290,154 +290,151 @@ source("Functions/Data_Generation/joinpoint_cleaned_generation.R")
 
 ```{r, fig.height=10, fig.width=10, warning=F}
 
-# Filter to correct cancer sites in joinpoint model data
-data_joinpoint_model_fig1 <- data_joinpoint_model |>
-  filter(cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid", "Ovary")) |>
-  mutate(cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site))
+# Loop through sexes
+for(s in unique(data_joinpoint_model$sex)){
   
-# Filter data to only the cancer sites that are increasing 
-data_cancer <- data_ALLcancer %>%
-  filter(
-    cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid", "Ovary")
-  ) |>
-  mutate(cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site))
-
-# Get start/end years by group
-start_end_years <- data_cancer |>
-  group_by(age_group, sex, cancer_site) |>
-  summarise(start.year.data = min(year),
-            end.year.data = max(year)) |>
-  suppressMessages() |>
-  ungroup()
-
-# Formatting joinpoint data to get start and end points
-data_joinpoint_model_fig1 <- data_joinpoint_model_fig1 |>
-  merge(start_end_years, by = c("sex", "age_group", "cancer_site")) |>
-  group_by(age_group, sex, cancer_site) |>
-  arrange(Segment) |>
-  mutate(
-
-    start.year = case_when(
-      Segment == 0 ~ start.year.data,
-      TRUE ~ Joinpoint),
-
-    end.year = ifelse(Segment == max(Segment), end.year.data, lead(start.year))
-
-  )
-
-# Creating start/end points for plotting
-data_joinpoint_plot <- data_joinpoint_model_fig1 |>
-  group_by(age_group, sex, cancer_site) |>
-  arrange(Segment) |>
-  mutate(
-
-    start.y = exp(Intercept.Estimate + start.year*Slope.Estimate),
-    end.y = ifelse(Segment == max(Segment), exp(Intercept.Estimate + end.year*Slope.Estimate), lead(start.y))
-
-  ) |>
-  ungroup() |>
-  select(all_of(c("age_group", "sex", "cancer_site", "start.year", "end.year", "start.y", "end.y"))) |>
-  pivot_longer(cols = c("start.year", "end.year", "start.y", "end.y"), names_sep = "\\.", names_to = c("name", "test")) |>
-  pivot_wider(names_from = "test", values_from = "value") |>
-  unnest(c(year, y))
-
-# Create invisible points so by sex has the same y bounds
-invisible_points <- data_cancer |>
-  group_by(cancer_site) |>
-  mutate(y = list(range(Rate))) |>
-  unnest(y) |>
-  mutate(year = 2019)
-
-# Creating factor with new order for facetting
-facet_vars <- data_cancer |>
-  group_by(cancer_site) |>
-  mutate(facet_var = paste0(cancer_site, " - ", sex),
-            n = n()) |>
-  arrange(desc(n), cancer_site, desc(sex)) |>
-  select(facet_var) |>
-  unique() |>
-  pull(facet_var)
-
-# Add this facet to all dataframes
-data_cancer_facet <- data_cancer |>
-  mutate(
-
-    facet_var = factor(paste0(cancer_site, " - ", sex), levels = facet_vars)
-    # facet_var = paste0(cancer_site, " - ", sex),
+  # Filter to correct cancer sites in joinpoint model data
+  data_joinpoint_model_fig1 <- data_joinpoint_model |>
+    filter(sex == s) |>
+    filter(cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid", "Ovary")) |>
+    mutate(cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site))
     
+  # Filter data to only the cancer sites that are increasing 
+  data_cancer <- data_ALLcancer %>%
+    filter(sex == s) |>
+    filter(
+      cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid", "Ovary")
+    ) |>
+    mutate(cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site))
+  
+  # Get start/end years by group
+  start_end_years <- data_cancer |>
+    group_by(age_group, sex, cancer_site) |>
+    summarise(start.year.data = min(year),
+              end.year.data = max(year)) |>
+    suppressMessages() |>
+    ungroup()
+  
+  # Formatting joinpoint data to get start and end points
+  data_joinpoint_model_fig1 <- data_joinpoint_model_fig1 |>
+    merge(start_end_years, by = c("sex", "age_group", "cancer_site")) |>
+    group_by(age_group, sex, cancer_site) |>
+    arrange(Segment) |>
+    mutate(
+  
+      start.year = case_when(
+        Segment == 0 ~ start.year.data,
+        TRUE ~ Joinpoint),
+  
+      end.year = ifelse(Segment == max(Segment), end.year.data, lead(start.year))
+  
+    )
+  
+  # Creating start/end points for plotting
+  data_joinpoint_plot <- data_joinpoint_model_fig1 |>
+    group_by(age_group, sex, cancer_site) |>
+    arrange(Segment) |>
+    mutate(
+  
+      start.y = exp(Intercept.Estimate + start.year*Slope.Estimate),
+      end.y = ifelse(Segment == max(Segment), exp(Intercept.Estimate + end.year*Slope.Estimate), lead(start.y))
+  
+    ) |>
+    ungroup() |>
+    select(all_of(c("age_group", "sex", "cancer_site", "start.year", "end.year", "start.y", "end.y"))) |>
+    pivot_longer(cols = c("start.year", "end.year", "start.y", "end.y"), names_sep = "\\.", names_to = c("name", "test")) |>
+    pivot_wider(names_from = "test", values_from = "value") |>
+    unnest(c(year, y))
+  
+  # Create invisible points so rows have the same y bounds
+  invisible_points <- data_cancer |>
+    mutate(n_sites = length(unique(cancer_site))) |>
+    group_by(cancer_site, sex) |>
+    summarise(max = max(Rate), min = min(Rate)) |>
+    ungroup() |>
+    arrange(desc(max)) |>
+    mutate(facet_row = ceiling(row_number()/4)) |>
+    group_by(facet_row) |>
+    mutate(y = list(range(c(max, min)))) |>
+    unnest(y) |>
+    mutate(year = 2019)
+  
+  facet_vars <- data_cancer |>
+    group_by(cancer_site) |>
+    mutate(max = max(Rate)) |>
+    ungroup() |>
+    distinct(cancer_site, sex, max) |>
+    arrange(desc(max)) |>
+    mutate(facet_var = paste0(cancer_site, " - ", sex),
+              n = n()) |>
+    select(facet_var) |>
+    unique() |>
+    pull(facet_var)
+    
+  
+  # Add this facet to all dataframes
+  data_cancer_facet <- data_cancer |>
+    mutate(
+  
+      facet_var = factor(paste0(cancer_site, " - ", sex), levels = facet_vars)
+      # facet_var = paste0(cancer_site, " - ", sex),
+      
+  
+    )
+  
+  data_joinpoint_plot <- data_joinpoint_plot |>
+    mutate(
+  
+      facet_var = factor(paste0(cancer_site, " - ", sex), levels = facet_vars),
+      # facet_var = paste0(cancer_site, " - ", sex),
+  
+    )
+  
+  invisible_points <- invisible_points |>
+    mutate(
 
-  )
+      facet_var = factor(paste0(cancer_site, " - ", sex), levels = facet_vars),
+      # facet_var = paste0(cancer_site, " - ", sex),
 
-data_joinpoint_plot <- data_joinpoint_plot |>
-  mutate(
+    )
+  
+  
+  # Now start constructing plot
+  plot <- ggplot(data_cancer_facet, aes(x = year, y = Rate, colour = age_group)) +
+    geom_point() +
+    geom_line(data = data_joinpoint_plot, aes(x = year, y = y)) +
+    geom_point(data = invisible_points, aes(x = year, y = y), alpha = 0, inherit.aes =F) +
+    theme_minimal_lancet() +
+    scale_colour_manual(values = c("20-49" = "#ff9500", "50+" = "#38b000"),
+                        labels = c("20-49 years", "50+ years")) +
+    geom_rect(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
+              colour = "black", fill = NA, inherit.aes = FALSE) +
+    theme(strip.text = element_text(face = "bold"), 
+          axis.text.x = element_text(angle = 45, hjust = 1),
+          aspect.ratio = 1) +
+    scale_y_log10(
+      breaks = scales::breaks_log(n = 8),
+      labels = scales::label_number(accuracy = 0.1)
+    ) +
+    scale_x_continuous(
+      breaks = seq(2001, 2019, by = 3),  # Define the x-axis breaks
+      limits = c(2001, 2019)
+    )+
+    ggtitle("Cancer Incidence Rates for Selected Cancers") +
+    ylab("Age Standardised Incidence Rates per 100,000 (log scale)") +
+    xlab("Year") +
+    labs(colour = "Age Group") +
+    facet_wrap(~ facet_var, ncol = 4, scales = "free_y")
+    # facet_manual(~ facet_var, facet_design, respect = T, scales = "free_y")
+  
+  print(plot)
+  
+  ggsave(filename = paste0("../Output/Final_Plots/Figure_1", letters[which(unique(data_joinpoint_model$sex == s)) %% 2 + 1], ".png"), bg = "white", height = if_else(s == "Women", 8.5, 6.5), width = 8)
+  ggsave(filename = paste0("../Output/Final_Plots_SVG/Figure_1",  letters[which(unique(data_joinpoint_model$sex == s)) %% 2 + 1], ".svg"), bg = "white", height = if_else(s == "Women", 8.5, 6.5), width = 8)
+  
+}
 
-    facet_var = factor(paste0(cancer_site, " - ", sex), levels = facet_vars),
-    # facet_var = paste0(cancer_site, " - ", sex),
 
-  )
-
-invisible_points <- invisible_points |>
-  mutate(
-
-    facet_var = factor(paste0(cancer_site, " - ", sex), levels = facet_vars),
-    # facet_var = paste0(cancer_site, " - ", sex),
-
-  )
-
-# Need to manual construct sturcture for facet
-facet_design <- data_cancer |>
-  group_by(cancer_site) |>
-  mutate(facet_var = paste0(cancer_site, " - ", sex),
-            n = n()) |>
-  filter(n == 76) |>
-  arrange(cancer_site, desc(sex)) |>
-  select(facet_var) |>
-  unique() |>
-  pull(facet_var)
-
-facet_design_extra <- data_cancer |>
-  group_by(cancer_site) |>
-  mutate(facet_var = paste0(cancer_site, " - ", sex),
-            n = n()) |>
-  filter(n == 38) |>
-  arrange(cancer_site, desc(sex)) |>
-  select(facet_var) |>
-  unique() |>
-  pull(facet_var)
-
-facet_design <- matrix(c(1:length(facet_design), as.vector(rbind(length(facet_design) + (1:length(facet_design_extra)), NA)), NA, NA), ncol = 4, byrow = T)
-
-# Now start constructing plot
-plot <- ggplot(data_cancer_facet, aes(x = year, y = Rate, colour = age_group)) +
-  geom_point() +
-  geom_line(data = data_joinpoint_plot, aes(x = year, y = y)) +
-  geom_point(data = invisible_points, aes(x = year, y = y), alpha = 0) +
-  theme_minimal_lancet() +
-  scale_colour_manual(values = c("20-49" = "#ff9500", "50+" = "#38b000"),
-                      labels = c("20-49 years", "50+ years")) +
-  geom_rect(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
-            colour = "black", fill = NA, inherit.aes = FALSE) +
-  theme(strip.text = element_text(face = "bold"), 
-        axis.text.x = element_text(angle = 45, hjust = 1)) +
-  scale_y_log10(
-    breaks = scales::breaks_log(n = 8),
-    labels = scales::label_number(accuracy = 0.1)
-  ) +
-  scale_x_continuous(
-    breaks = seq(2001, 2019, by = 3),  # Define the x-axis breaks
-    limits = c(2001, 2019)
-  )+
-  ggtitle("Cancer Incidence Rates for Selected Cancers") +
-  ylab("Age Specific Incidence Rates per 100,000 (log scale)") +
-  xlab("Year") +
-  labs(colour = "Age Group") +
-  # facet_wrap(~ facet_var, scales = "free_y", ncol = 4)
-  facet_manual(~ facet_var, facet_design, respect = T, scales = "free_y")
-
-print(plot)
-
-ggsave(filename = paste0("../Output/Final_Plots/Figure_1.png"), bg = "white", height = 12, width =12)
-ggsave(filename = paste0("../Output/Final_Plots_SVG/Figure_1.svg"), bg = "white", height = 12, width =12)
   
 
 ```
@@ -785,165 +782,168 @@ ggsave("../Output/Final_Plots_SVG/Figure_3a.svg", plot = data_attr_bar_paf, bg =
 ### Figure 4 - BMI Attributable Trends
 ```{r, fig.height=14, fig.width=12, warning=F}
 
-#Calculating the PAFs
-pafs_byrf_under50<- paf_calculation(data_bmi_esp, "20-49")
-pafs_byrf_over50<- paf_calculation(data_bmi_esp, "50+")
-data_BMI_paf <-rbind(pafs_byrf_under50,pafs_byrf_over50) %>%
-  filter(
-    variable == "BMI"
-  )%>%
-  pivot_longer(
-    cols = ends_with("PAF"),   
-    names_to = "cancer_site",  
-    values_to = "PAF"   
-  ) %>%
-  mutate(
-    cancer_site = gsub("PAF", "",cancer_site),
-    year = year + 10 # Applying 10 year time lag
-  ) |>
-  # Now filter out PAF past 2019
-  filter(year <= 2019)
+for(s in unique(data_bmi_esp$sex)){
+  
+  #Calculating the PAFs
+  pafs_byrf_under50<- paf_calculation(data_bmi_esp, "20-49")
+  pafs_byrf_over50<- paf_calculation(data_bmi_esp, "50+")
+  data_BMI_paf <-rbind(pafs_byrf_under50,pafs_byrf_over50) %>%
+    filter(
+      variable == "BMI"
+    )%>%
+    pivot_longer(
+      cols = ends_with("PAF"),   
+      names_to = "cancer_site",  
+      values_to = "PAF"   
+    ) %>%
+    mutate(
+      cancer_site = gsub("PAF", "",cancer_site),
+      year = year + 10 # Applying 10 year time lag
+    ) |>
+    # Now filter out PAF past 2019
+    filter(year <= 2019)
+  
+  BMI_paf_cases <- data_BMI_paf %>%
+    left_join(
+      data_ALLcancer, by = c("year", "sex", "age_group", "cancer_site")
+    ) %>%
+    mutate(
+      attributable = PAF * count, 
+      attributable = ceiling(attributable),
+      attributable_rate = PAF * Rate,
+      non_attributable_rate = Rate - attributable_rate
+    ) |>
+    group_by(sex, age_group, cancer_site) |>
+    filter(min(attributable_rate) > 0) |>
+    ungroup()
+  
+  BMI_paf_cases_u50 <- BMI_paf_cases |>
+    filter(sex == s) |>
+    filter(age_group == "20-49") |>
+    filter(Rate > 0) |>
+    pivot_longer(cols = c("attributable_rate", "Rate", "non_attributable_rate"), names_to = "rate_type") |>
+    mutate(sex = factor(sex, levels = c("Women", "Men")),
+           cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site)) 
+  
+  # # Calculating invisible points so y-axis identical for same cancer site
+  # BMI_paf_cases_u50_invisible <- BMI_paf_cases_u50 |>
+  #   group_by(cancer_site) |>
+  #   mutate(min_value = min(value),
+  #          max_value = max(value)) |>
+  #   ungroup() |>
+  #   filter(year == 2019, rate_type == "Rate") |>
+  #   select(year, rate_type, cancer_site, sex, max_value, min_value) |>
+  #   pivot_longer(cols = c(min_value, max_value)) |>
+  #   # Manually gicving minimum values to Oral and Breast as they have no attributable cases
+  #   mutate(
+  #     
+  #     value = case_when(
+  #       cancer_site == "Oral" & name == "min_value" ~ 0.3,
+  #       cancer_site == "Breast" & name == "min_value" ~ 8,
+  #       TRUE ~ value
+  #       
+  #     ),
+  #     
+  #     # Need to switch to other naming system
+  #     rate_type = "Overall",
+  #     
+  #   )
+  
+  # Create invisible points so rows have the same y bounds
+  BMI_paf_cases_u50_invisible <- BMI_paf_cases_u50 |>
+    mutate(n_sites = length(unique(cancer_site))) |>
+    group_by(cancer_site, sex) |>
+    summarise(max = max(value), min = min(value)) |>
+    ungroup() |>
+    arrange(desc(max)) |>
+    mutate(facet_row = ceiling(row_number()/3)) |>
+    group_by(facet_row) |>
+    mutate(y = list(range(c(max, min)))) |>
+    unnest(y) |>
+    mutate(year = 2019)
+  
+  facet_vars <- BMI_paf_cases_u50 |>
+    group_by(cancer_site) |>
+    filter(rate_type == "Rate") |>
+    mutate(max = max(value)) |>
+    ungroup() |>
+    distinct(cancer_site, sex, max) |>
+    arrange(desc(max), (sex)) |>
+    mutate(facet_var = paste0(cancer_site, " - ", sex),
+              n = n()) |>
+    select(facet_var) |>
+    unique() |>
+    pull(facet_var)
+  
+  # Add this facet to all dataframes
+  BMI_paf_cases_u50 <- BMI_paf_cases_u50 |>
+    mutate(
+  
+      facet_var = factor(paste0(cancer_site, " - ", sex), levels = facet_vars),
+  
+    )
+  
+  # Add this facet to all dataframes
+  BMI_paf_cases_u50_invisible <- BMI_paf_cases_u50_invisible |>
+    mutate(
+  
+      facet_var = factor(paste0(cancer_site, " - ", sex), levels = facet_vars),
+  
+    )
+  
+  BMI_paf_cases_u50 <- BMI_paf_cases_u50 |>
+    # mutate(cancer_site = factor(cancer_site, levels = figure_4_cancer_order)) |>
+    mutate(rate_type = case_when(
+      rate_type == "Rate" ~ "Overall",
+      rate_type == "attributable_rate" ~ "Attributable",
+      rate_type == "non_attributable_rate" ~ "Non-Attributable",
+      TRUE ~ NA
+    )) |>
+    # Manually filtering out Oral and Breast Non-Attributable cases as they overlap with the Overall and we want to only see overall
+    filter(!(cancer_site %in% c("Oral", "Breast") & rate_type == "Non-Attributable"))
+  
+  p <- ggplot(BMI_paf_cases_u50, aes(x = year, y = value, colour = rate_type)) +
+      geom_line() +
+      geom_point() +
+      geom_point(data = BMI_paf_cases_u50_invisible, aes(x = year, y = y), inherit.aes = F, alpha = 0) +
+      # facet_manual(~ facet_var, facet_design, respect = T, scales = "free_y") +
+      facet_wrap(~ facet_var, scales = "free_y", ncol = 3) +
+      scale_y_log10(breaks = scales::breaks_log(n = 8),
+                    labels = scales::label_number(accuracy = 0.01)) +
+      scale_x_continuous(
+        breaks = seq(2005, 2019, by = 2), 
+        limits = c(2005, 2019)
+      )+
+      scale_colour_manual(
+        values = c(
+          "Attributable" = "#ef6f69",
+          "Non-Attributable" = "#54b55a",
+          "Overall" = "#495057"
+        )
+      ) +
+      labs(
+        x = "Year",
+        y = "Age Standardised Incidence Rates per 100,000 (log scale)",
+        title = "",
+        colour = "Incidence Rates"
+      ) +
+      theme_minimal_lancet() +
+      geom_rect(
+        xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
+        colour = "black", fill = NA, inherit.aes = FALSE
+      ) +
+      theme(strip.text = element_text(face = "bold"), 
+          axis.text.x = element_text(angle = 45, hjust = 1),
+          aspect.ratio = 1)
+  print(p)
+  
+  # Save the plot as a PNG file
+  ggsave(filename = paste0("../Output/Final_Plots/Figure_4", letters[which(unique(data_joinpoint_model$sex == s)) %% 2 + 1], ".png"), bg = "white", height = if_else(s == "Women", 8.5, 6.5), width = 8)
+  ggsave(filename = paste0("../Output/Final_Plots_SVG/Figure_4",  letters[which(unique(data_joinpoint_model$sex == s)) %% 2 + 1], ".svg"), bg = "white", height = if_else(s == "Women", 8.5, 6.5), width = 8)
 
-BMI_paf_cases <- data_BMI_paf %>%
-  left_join(
-    data_ALLcancer, by = c("year", "sex", "age_group", "cancer_site")
-  ) %>%
-  mutate(
-    attributable = PAF * count, 
-    attributable = ceiling(attributable),
-    attributable_rate = PAF * Rate,
-    non_attributable_rate = Rate - attributable_rate
-  )
+  
+}
 
-BMI_paf_cases_u50 <- BMI_paf_cases |>
-  filter(age_group == "20-49") |>
-  filter(Rate > 0) |>
-  pivot_longer(cols = c("attributable_rate", "Rate", "non_attributable_rate"), names_to = "rate_type") |>
-  mutate(sex = factor(sex, levels = c("Women", "Men")),
-         cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site)) 
-
-# Calculating invisible points so y-axis identical for same cancer site
-BMI_paf_cases_u50_invisible <- BMI_paf_cases_u50 |>
-  group_by(cancer_site) |>
-  mutate(min_value = min(value),
-         max_value = max(value)) |>
-  ungroup() |>
-  filter(year == 2019, rate_type == "Rate") |>
-  select(year, rate_type, cancer_site, sex, max_value, min_value) |>
-  pivot_longer(cols = c(min_value, max_value)) |>
-  # Manually gicving minimum values to Oral and Breast as they have no attributable cases
-  mutate(
-    
-    value = case_when(
-      cancer_site == "Oral" & name == "min_value" ~ 0.3,
-      cancer_site == "Breast" & name == "min_value" ~ 8,
-      TRUE ~ value
-      
-    ),
-    
-    # Need to switch to other naming system
-    rate_type = "Overall",
-    
-  )
-
-# Creating factor with new order for facetting
-facet_vars <- data_cancer |>
-  group_by(cancer_site) |>
-  mutate(facet_var = paste0(cancer_site, " - ", sex),
-            n = n()) |>
-  arrange(desc(n), cancer_site, desc(sex)) |>
-  select(facet_var) |>
-  unique() |>
-  pull(facet_var)
-
-# Add this facet to all dataframes
-BMI_paf_cases_u50 <- BMI_paf_cases_u50 |>
-  mutate(
-
-    facet_var = factor(paste0(cancer_site, " - ", sex), levels = facet_vars),
-
-  )
-
-# Add this facet to all dataframes
-BMI_paf_cases_u50_invisible <- BMI_paf_cases_u50_invisible |>
-  mutate(
-
-    facet_var = factor(paste0(cancer_site, " - ", sex), levels = facet_vars),
-
-  )
-
-# Need to manual construct structure for facet
-facet_design <- data_cancer |>
-  group_by(cancer_site) |>
-  mutate(facet_var = paste0(cancer_site, " - ", sex),
-            n = n()) |>
-  filter(n == 76) |>
-  arrange(cancer_site, desc(sex)) |>
-  select(facet_var) |>
-  unique() |>
-  pull(facet_var)
-
-facet_design_extra <- data_cancer |>
-  group_by(cancer_site) |>
-  mutate(facet_var = paste0(cancer_site, " - ", sex),
-            n = n()) |>
-  filter(n == 38) |>
-  arrange(cancer_site, desc(sex)) |>
-  select(facet_var) |>
-  unique() |>
-  pull(facet_var)
-
-facet_design <- matrix(c(1:length(facet_design), as.vector(rbind(length(facet_design) + (1:length(facet_design_extra)), NA)), NA, NA), ncol = 4, byrow = T)
-
-
-BMI_paf_cases_u50 <- BMI_paf_cases_u50 |>
-  # mutate(cancer_site = factor(cancer_site, levels = figure_4_cancer_order)) |>
-  mutate(rate_type = case_when(
-    rate_type == "Rate" ~ "Overall",
-    rate_type == "attributable_rate" ~ "Attributable",
-    rate_type == "non_attributable_rate" ~ "Non-Attributable",
-    TRUE ~ NA
-  )) |>
-  # Manually filtering out Oral and Breast Non-Attributable cases as they overlap with the Overall and we want to only see overall
-  filter(!(cancer_site %in% c("Oral", "Breast") & rate_type == "Non-Attributable"))
-
-p <- ggplot(BMI_paf_cases_u50, aes(x = year, y = value, colour = rate_type)) +
-    geom_line() +
-    geom_point() +
-    geom_point(data = BMI_paf_cases_u50_invisible, alpha = 0) +
-    facet_manual(~ facet_var, facet_design, respect = T, scales = "free_y") +
-    scale_y_log10(breaks = scales::breaks_log(n = 8),
-                  labels = scales::label_number(accuracy = 0.01)) +
-    scale_x_continuous(
-      breaks = seq(2005, 2019, by = 2), 
-      limits = c(2005, 2019)
-    )+
-    scale_colour_manual(
-      values = c(
-        "Attributable" = "#ef6f69",
-        "Non-Attributable" = "#54b55a",
-        "Overall" = "#495057"
-      )
-    ) +
-    labs(
-      x = "Year",
-      y = "Age Specific Incidence Rates per 100,000 (log scale)",
-      title = "",
-      colour = "Incidence Rates"
-    ) +
-    theme_minimal_lancet() +
-    geom_rect(
-      xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
-      colour = "black", fill = NA, inherit.aes = FALSE
-    ) +
-    theme(strip.text = element_text(face = "bold"), 
-        axis.text.x = element_text(angle = 45, hjust = 1))
-
-print(p)
-
-# Save the plot as a PNG file
-ggsave(paste0("../Output/Final_Plots/Figure_4.png"), plot = p, width = 12, height = 14)
-ggsave(paste0("../Output/Final_Plots_SVG/Figure_4.svg"), plot = p, width = 12, height = 14)
 
 
 ```
@@ -1265,13 +1265,13 @@ for(s in unique(data_joinpoint_AAPC$sex)){
   
   # Save plot
   
-  CairoPNG(file=paste0("../Output/Final_Plots/Supplementary_Figure_1", letters[which(unique(data_joinpoint_AAPC$sex == s))], ".png"), width = 10, height = (4/15)*(3 + rows), units = "in", res = 300)
+  CairoPNG(file=paste0("../Output/Final_Plots/Supplementary_Figure_1", letters[which(unique(data_joinpoint_AAPC$sex == s)) %% 2 + 1], ".png"), width = 10, height = (4/15)*(3 + rows), units = "in", res = 300)
   print(plot)
   grid.text("* - AAPC for 20-49 is significantly greater than 0", x = 0.135, y = 0.03, gp = gpar(fontsize = 9, fontfamily = "Times New Roman", fontface = "plain"))
   grid.text("^ - AAPC for 20-49 is significantly greater than 0 and the AAPC for 50+", x = 0.195, y = 0.01, gp = gpar(fontsize = 9, fontfamily = "Times New Roman", fontface = "plain"))
   dev.off()
   
-  svglite(file=paste0("../Output/Final_Plots_SVG/Supplementary_Figure_1", letters[which(unique(data_joinpoint_AAPC$sex == s))], ".svg"), width = 10, height = (4/15)*(3 + rows))
+  svglite(file=paste0("../Output/Final_Plots_SVG/Supplementary_Figure_1", letters[which(unique(data_joinpoint_AAPC$sex == s)) %% 2 + 1], ".svg"), width = 10, height = (4/15)*(3 + rows))
   print(plot)
   grid.text("* - AAPC for 20-49 is significantly greater than 0", x = 0.13, y = 0.03, gp = gpar(fontsize = 9, fontfamily = "Times New Roman", fontface = "plain"))
   grid.text("^ - AAPC for 20-49 is significantly greater than 0 and the AAPC for 50+", x = 0.195, y = 0.01, gp = gpar(fontsize = 9, fontfamily = "Times New Roman", fontface = "plain"))
@@ -1659,166 +1659,152 @@ for (var in plot_order) {
 ### Supplementary Figure 5 - Attributable Graphs for 50+
 ```{r, fig.height=10, fig.width = 10}
 
-#Calculating the PAFs
-pafs_byrf_under50<- paf_calculation(data_bmi_esp, "20-49")
-pafs_byrf_over50<- paf_calculation(data_bmi_esp, "50+")
-data_BMI_paf <-rbind(pafs_byrf_under50,pafs_byrf_over50) %>%
-  filter(
-    variable == "BMI"
-  )%>%
-  pivot_longer(
-    cols = ends_with("PAF"),   
-    names_to = "cancer_site",  
-    values_to = "PAF"   
-  ) %>%
-  mutate(
-    cancer_site = gsub("PAF", "",cancer_site),
-    year = year + 10 # Applying 10 year time lag
-  ) |>
-  # Now filter out PAF past 2019
-  filter(year <= 2019)
-
-BMI_paf_cases <- data_BMI_paf %>%
-  left_join(
-    data_ALLcancer, by = c("year", "sex", "age_group", "cancer_site")
-  ) %>%
-  mutate(
-    attributable = PAF * count, 
-    attributable = ceiling(attributable),
-    attributable_rate = PAF * Rate,
-    non_attributable_rate = Rate - attributable_rate
-  )
-
-BMI_paf_cases_oe50 <- BMI_paf_cases |>
-  filter(age_group == "50+") |>
-  filter(Rate > 0) |>
-  pivot_longer(cols = c("attributable_rate", "Rate", "non_attributable_rate"), names_to = "rate_type") |>
-  mutate(sex = factor(sex, levels = c("Women", "Men")),
-         cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site)) 
-
-# Calculating invisible points so y-axis identical for same cancer site
-BMI_paf_cases_oe50_invisible <- BMI_paf_cases_oe50 |>
-  group_by(cancer_site) |>
-  mutate(min_value = min(value),
-         max_value = max(value)) |>
-  ungroup() |>
-  filter(year == 2019, rate_type == "Rate") |>
-  select(year, rate_type, cancer_site, sex, max_value, min_value) |>
-  pivot_longer(cols = c(min_value, max_value)) |>
-  # Manually gicving minimum values to Ora as it has no attributable cases
-  mutate(
-    
-    value = case_when(
-      cancer_site == "Oral" & name == "min_value" ~ 4,
-      TRUE ~ value
+for(s in unique(data_bmi_esp$sex)){
+  
+  #Calculating the PAFs
+  pafs_byrf_under50<- paf_calculation(data_bmi_esp, "20-49")
+  pafs_byrf_over50<- paf_calculation(data_bmi_esp, "50+")
+  data_BMI_paf <-rbind(pafs_byrf_under50,pafs_byrf_over50) %>%
+    filter(
+      variable == "BMI"
+    )%>%
+    pivot_longer(
+      cols = ends_with("PAF"),   
+      names_to = "cancer_site",  
+      values_to = "PAF"   
+    ) %>%
+    mutate(
+      cancer_site = gsub("PAF", "",cancer_site),
+      year = year + 10 # Applying 10 year time lag
+    ) |>
+    # Now filter out PAF past 2019
+    filter(year <= 2019)
+  
+  BMI_paf_cases <- data_BMI_paf %>%
+    left_join(
+      data_ALLcancer, by = c("year", "sex", "age_group", "cancer_site")
+    ) %>%
+    mutate(
+      attributable = PAF * count, 
+      attributable = ceiling(attributable),
+      attributable_rate = PAF * Rate,
+      non_attributable_rate = Rate - attributable_rate
+    )
+  
+  BMI_paf_cases_oe50 <- BMI_paf_cases |>
+    filter(sex == s) |>
+    filter(age_group == "50+") |>
+    filter(Rate > 0) |>
+    pivot_longer(cols = c("attributable_rate", "Rate", "non_attributable_rate"), names_to = "rate_type") |>
+    mutate(sex = factor(sex, levels = c("Women", "Men")),
+           cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site)) 
+  
+  # Calculating invisible points so y-axis identical for same cancer site
+  BMI_paf_cases_oe50_invisible <- BMI_paf_cases_oe50 |>
+    group_by(cancer_site) |>
+    mutate(min_value = min(value),
+           max_value = max(value)) |>
+    ungroup() |>
+    filter(year == 2019, rate_type == "Rate") |>
+    select(year, rate_type, cancer_site, sex, max_value, min_value) |>
+    pivot_longer(cols = c(min_value, max_value)) |>
+    # Manually gicving minimum values to Oral and Breast as they have no attributable cases
+    mutate(
       
-    ),
-    
-    # Need to switch to other naming system
-    rate_type = "Overall",
-    
-  )
+      value = case_when(
+        cancer_site == "Oral" & name == "min_value" ~ 5,
+        # cancer_site == "Breast" & name == "min_value" ~ 25,
+        TRUE ~ value
+        
+      ),
+      
+      # Need to switch to other naming system
+      rate_type = "Overall",
+      
+    )
+  
+  facet_vars <- BMI_paf_cases_oe50 |>
+    group_by(cancer_site) |>
+    filter(rate_type == "Rate") |>
+    mutate(max = max(value)) |>
+    ungroup() |>
+    distinct(cancer_site, sex, max) |>
+    arrange(desc(max), (sex)) |>
+    mutate(facet_var = paste0(cancer_site, " - ", sex),
+              n = n()) |>
+    select(facet_var) |>
+    unique() |>
+    pull(facet_var)
+  
+  # Add this facet to all dataframes
+  BMI_paf_cases_oe50 <- BMI_paf_cases_oe50 |>
+    mutate(
+  
+      facet_var = factor(paste0(cancer_site, " - ", sex), levels = facet_vars),
+  
+    )
+  
+  # Add this facet to all dataframes
+  BMI_paf_cases_oe50_invisible <- BMI_paf_cases_oe50_invisible |>
+    mutate(
+  
+      facet_var = factor(paste0(cancer_site, " - ", sex), levels = facet_vars),
+  
+    )
+  
+  BMI_paf_cases_oe50 <- BMI_paf_cases_oe50 |>
+    # mutate(cancer_site = factor(cancer_site, levels = figure_4_cancer_order)) |>
+    mutate(rate_type = case_when(
+      rate_type == "Rate" ~ "Overall",
+      rate_type == "attributable_rate" ~ "Attributable",
+      rate_type == "non_attributable_rate" ~ "Non-Attributable",
+      TRUE ~ NA
+    )) |>
+    # Manually filtering out Oral and Breast Non-Attributable cases as they overlap with the Overall and we want to only see overall
+    filter(!(cancer_site %in% c("Oral", "Breast") & rate_type == "Non-Attributable"))
+  
+  p <- ggplot(BMI_paf_cases_oe50, aes(x = year, y = value, colour = rate_type)) +
+      geom_line() +
+      geom_point() +
+      geom_point(data = BMI_paf_cases_oe50_invisible, alpha = 0) +
+      # facet_manual(~ facet_var, facet_design, respect = T, scales = "free_y") +
+      facet_wrap(~ facet_var, scales = "free_y", ncol = 3) +
+      scale_y_log10(breaks = scales::breaks_log(n = 8),
+                    labels = scales::label_number(accuracy = 0.01)) +
+      scale_x_continuous(
+        breaks = seq(2005, 2019, by = 2), 
+        limits = c(2005, 2019)
+      )+
+      scale_colour_manual(
+        values = c(
+          "Attributable" = "#ef6f69",
+          "Non-Attributable" = "#54b55a",
+          "Overall" = "#495057"
+        )
+      ) +
+      labs(
+        x = "Year",
+        y = "Age Standardised Incidence Rates per 100,000 (log scale)",
+        title = "",
+        colour = "Incidence Rates"
+      ) +
+      theme_minimal_lancet() +
+      geom_rect(
+        xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
+        colour = "black", fill = NA, inherit.aes = FALSE
+      ) +
+      theme(strip.text = element_text(face = "bold"), 
+          axis.text.x = element_text(angle = 45, hjust = 1),
+          aspect.ratio = 1)
+  print(p)
+  
+  # Save the plot as a PNG file
+  ggsave(filename = paste0("../Output/Final_Plots/Supplementary_Figure_5", letters[which(unique(data_joinpoint_model$sex == s)) %% 2 + 1], ".png"), bg = "white", height = if_else(s == "Women", 8.5, 6.5), width = 8)
+  ggsave(filename = paste0("../Output/Final_Plots_SVG/Supplementary_Figure_5",  letters[which(unique(data_joinpoint_model$sex == s)) %% 2 + 1], ".svg"), bg = "white", height = if_else(s == "Women", 8.5, 6.5), width = 8)
 
-# Creating factor with new order for facetting
-facet_vars <- data_cancer |>
-  group_by(cancer_site) |>
-  mutate(facet_var = paste0(cancer_site, " - ", sex),
-            n = n()) |>
-  arrange(desc(n), cancer_site, desc(sex)) |>
-  select(facet_var) |>
-  unique() |>
-  pull(facet_var)
+  
+}
 
-# Add this facet to all dataframes
-BMI_paf_cases_oe50 <- BMI_paf_cases_oe50 |>
-  mutate(
-
-    facet_var = factor(paste0(cancer_site, " - ", sex), levels = facet_vars),
-
-  )
-
-# Add this facet to all dataframes
-BMI_paf_cases_oe50_invisible <- BMI_paf_cases_oe50_invisible |>
-  mutate(
-
-    facet_var = factor(paste0(cancer_site, " - ", sex), levels = facet_vars),
-
-  )
-
-# Need to manual construct structure for facet
-facet_design <- data_cancer |>
-  group_by(cancer_site) |>
-  mutate(facet_var = paste0(cancer_site, " - ", sex),
-            n = n()) |>
-  filter(n == 76) |>
-  arrange(cancer_site, desc(sex)) |>
-  select(facet_var) |>
-  unique() |>
-  pull(facet_var)
-
-facet_design_extra <- data_cancer |>
-  group_by(cancer_site) |>
-  mutate(facet_var = paste0(cancer_site, " - ", sex),
-            n = n()) |>
-  filter(n == 38) |>
-  arrange(cancer_site, desc(sex)) |>
-  select(facet_var) |>
-  unique() |>
-  pull(facet_var)
-
-facet_design <- matrix(c(1:length(facet_design), as.vector(rbind(length(facet_design) + (1:length(facet_design_extra)), NA)), NA, NA), ncol = 4, byrow = T)
-
-
-BMI_paf_cases_oe50 <- BMI_paf_cases_oe50 |>
-  # mutate(cancer_site = factor(cancer_site, levels = figure_4_cancer_order)) |>
-  mutate(rate_type = case_when(
-    rate_type == "Rate" ~ "Overall",
-    rate_type == "attributable_rate" ~ "Attributable",
-    rate_type == "non_attributable_rate" ~ "Non-Attributable",
-    TRUE ~ NA
-  )) |>
-  # Manually filtering out Oral Non-Attributable cases as they overlap with the Overall and we want to only see overall
-  filter(!(cancer_site %in% c("Oral") & rate_type == "Non-Attributable"))
-
-p <- ggplot(BMI_paf_cases_oe50, aes(x = year, y = value, colour = rate_type)) +
-    geom_line() +
-    geom_point() +
-    geom_point(data = BMI_paf_cases_oe50_invisible, alpha = 0) +
-    # Y-axis
-     facet_manual(~ facet_var, facet_design, respect = T, scales = "free_y") +
-    scale_y_log10(breaks = scales::breaks_log(n = 8),
-                  labels = scales::label_number(accuracy = 0.1)) +
-    scale_x_continuous(
-      breaks = seq(2005, 2019, by = 2),  # Define the x-axis breaks
-      limits = c(2005, 2019)
-    )+
-    scale_colour_manual(
-      values = c(
-        "Attributable" = "#ef6f69",
-        "Non-Attributable" = "#54b55a",
-        "Overall" = "#495057"
-      )
-    ) +
-    # Labels and Theme
-    labs(
-      x = "Year",  # Corrected axis label
-      y = "Age Specific Incidence Rates per 100,000 (log scale)",
-      title = paste(""),
-      colour = "Incidence Rates"
-    ) +
-    theme_minimal_lancet() +
-    geom_rect(
-      xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
-      colour = "black", fill = NA, inherit.aes = FALSE
-    ) +
-    theme(strip.text = element_text(face = "bold"), 
-        axis.text.x = element_text(angle = 45, hjust = 1))
-
-print(p)
-
-# Save the plot as a PNG file
-ggsave(paste0("../Output/Final_Plots/Supplementary_Figure_5.png"), plot = p, width = 12, height = 12)
-ggsave(paste0("../Output/Final_Plots_SVG/Supplementary_Figure_5.svg"), plot = p, width = 12, height = 12)
 
 ```
 
@@ -1958,7 +1944,7 @@ for(s in c("Women", "Men")){
         labs(
           # title = paste0("Trends of Colorectal Cancer and ", var, " in 20-49 ", s),
           x = "Year",
-          y = "Age Specific Incidence Rates",
+          y = "Age Standardised Incidence Rates",
           colour = "",
           fill = "",
           linetype = ""
@@ -2216,7 +2202,7 @@ for(s in c("Women", "Men")){
         labs(
           # title = paste0("Trends of Colorectal Cancer and ", var, " in 20-49 ", s),
           x = "Year",
-          y = "Age Specific Incidence Rates",
+          y = "Age Standardised Incidence Rates",
           colour = "",
           fill = "",
           linetype = ""
