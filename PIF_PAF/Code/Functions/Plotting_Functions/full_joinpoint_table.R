@@ -36,7 +36,12 @@ full_joinpoint_table <- function(data_apc, data_aapc, group_var, table_var, stra
       time.period.APC = paste0("(", Segment.Start, ", ", Segment.End, ")"),
       APC = format(round(APC, digits = 2), nsmall = 2, trim = T),
       CI.APC = paste0("(", format(round(APC.95..LCL, digits = 2), nsmall = 2, trim = T), ", ", format(round(APC.95..UCL, digits = 2), nsmall = 2, trim = T), ")"),
-      P.Value.APC = if_else(P.Value < 0.0001, "<0.0001", as.character(sub("\\.?0+$", "", format(signif(P.Value, digits = 2), scientific = FALSE))))
+      P.Value.APC = case_when(
+        is.na(P.Value) ~ NA_character_,
+        P.Value < 0.001 ~ "<0.001",
+        P.Value > 0.999 ~ ">0.999",
+        TRUE ~ formatC(P.Value, format = "f", digits = 3)
+      )
       
     ) |>
     select(all_of(c(full_grouping_vars, "time.period.APC", "APC", "CI.APC", "P.Value.APC")))
@@ -48,7 +53,12 @@ full_joinpoint_table <- function(data_apc, data_aapc, group_var, table_var, stra
       time.period.AAPC = paste0("(", Start.Obs, ", ", End.Obs, ")"),
       AAPC = format(round(AAPC, digits = 2), nsmall = 2, trim = T),
       CI.AAPC = paste0("(", format(round(AAPC.C.I..Low, digits = 2), nsmall = 2, trim = T), ", ", format(round(AAPC.C.I..High, digits = 2), nsmall = 2, trim = T), ")"),
-      P.Value.AAPC = if_else(P.Value < 0.0001, "<0.0001", as.character(sub("\\.?0+$", "", format(signif(P.Value, digits = 2), scientific = FALSE))))
+      P.Value.AAPC = case_when(
+        is.na(P.Value) ~ NA_character_,
+        P.Value < 0.001 ~ "<0.001",
+        P.Value > 0.999 ~ ">0.999",
+        TRUE ~ formatC(P.Value, format = "f", digits = 3)
+      )
       
     ) |>
     select(all_of(c(full_grouping_vars, "time.period.AAPC", "AAPC", "CI.AAPC", "P.Value.AAPC")))
@@ -84,7 +94,12 @@ full_joinpoint_table <- function(data_apc, data_aapc, group_var, table_var, stra
           TRUE ~ 1-p_value/2
         ),
         
-        p_value_one_sided = if_else(p_value_one_sided < 0.0001, "<0.0001", as.character(sub("\\.?0+$", "", format(signif(p_value_one_sided, digits = 2), scientific = FALSE))))
+        p_value_one_sided = case_when(
+          is.na(p_value_one_sided) ~ NA_character_,
+          p_value_one_sided < 0.001 ~ "<0.001",
+          p_value_one_sided > 0.999 ~ ">0.999",
+          TRUE ~ formatC(p_value_one_sided, format = "f", digits = 3)
+        )
         
       ) |>
       select(cancer_site = cancer, sex, P.Value_one_sided_AAPC = p_value_one_sided)

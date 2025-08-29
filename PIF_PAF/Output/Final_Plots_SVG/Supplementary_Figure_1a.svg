@@ -55,7 +55,7 @@
 <text x='14.17' y='325.22' style='font-size: 9.00px; font-family: "Times New Roman";' textLength='48.71px' lengthAdjust='spacingAndGlyphs'>Leukaemia*^</text>
 <text x='14.17' y='342.51' style='font-size: 9.00px; font-family: "Times New Roman";' textLength='27.49px' lengthAdjust='spacingAndGlyphs'>Breast*</text>
 <text x='14.17' y='359.80' style='font-size: 9.00px; font-family: "Times New Roman";' textLength='31.22px' lengthAdjust='spacingAndGlyphs'>Ovary*^</text>
-<text x='14.17' y='377.09' style='font-size: 9.00px; font-family: "Times New Roman";' textLength='35.72px' lengthAdjust='spacingAndGlyphs'>Stomach^</text>
+<text x='14.17' y='377.09' style='font-size: 9.00px; font-family: "Times New Roman";' textLength='31.49px' lengthAdjust='spacingAndGlyphs'>Stomach</text>
 <text x='14.17' y='394.37' style='font-size: 9.00px; font-family: "Times New Roman";' textLength='93.25px' lengthAdjust='spacingAndGlyphs'>Non-Hodgkin Lymphoma</text>
 <text x='14.17' y='411.66' style='font-size: 9.00px; font-family: "Times New Roman";' textLength='25.99px' lengthAdjust='spacingAndGlyphs'>Larynx</text>
 <text x='14.17' y='428.95' style='font-size: 9.00px; font-family: "Times New Roman";' textLength='19.00px' lengthAdjust='spacingAndGlyphs'>Lung</text>
@@ -229,6 +229,6 @@
 <polyline points='191.75,458.81 256.58,458.81 ' style='stroke-width: 0.75; stroke: #333333;' />
 <rect x='220.52' y='455.36' width='6.92' height='6.92' style='stroke-width: 0.75; stroke: #555555; fill: #FF9500;' />
 <text x='93.60' y='505.83' text-anchor='middle' style='font-size: 9.00px; font-family: "Times New Roman";' textLength='178.73px' lengthAdjust='spacingAndGlyphs'>* - AAPC for 20-49 is significantly greater than 0</text>
-<text x='140.40' y='516.20' text-anchor='middle' style='font-size: 9.00px; font-family: "Times New Roman";' textLength='261.79px' lengthAdjust='spacingAndGlyphs'>^ - AAPC for 20-49 is significantly greater than 0 and the AAPC for 50+</text>
+<text x='149.76' y='516.20' text-anchor='middle' style='font-size: 9.00px; font-family: "Times New Roman";' textLength='280.04px' lengthAdjust='spacingAndGlyphs'>^ - AAPC for 20-49 is significantly greater than both 0 and the AAPC for 50+</text>
 </g>
 </svg>

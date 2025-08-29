@@ -288,7 +288,7 @@ source("Functions/Data_Generation/joinpoint_cleaned_generation.R")
 
 ### Figure 1 - Joinpoint trends of selected cancer sites
 
-```{r, fig.height=10, fig.width=10, warning=F}
+```{r, fig.height=8.5, fig.width=10.5, warning=F}
 
 # Loop through sexes
 for(s in unique(data_joinpoint_model$sex)){
@@ -350,9 +350,9 @@ for(s in unique(data_joinpoint_model$sex)){
   invisible_points <- data_cancer |>
     mutate(n_sites = length(unique(cancer_site))) |>
     group_by(cancer_site, sex) |>
-    summarise(max = max(Rate), min = min(Rate)) |>
+    summarise(max = max(Rate), min = min(Rate), max_20_49 = max(Rate*(age_group == "20-49"))) |>
     ungroup() |>
-    arrange(desc(max)) |>
+    arrange(desc(max_20_49)) |>
     mutate(facet_row = ceiling(row_number()/4)) |>
     group_by(facet_row) |>
     mutate(y = list(range(c(max, min)))) |>
@@ -361,6 +361,7 @@ for(s in unique(data_joinpoint_model$sex)){
   
   facet_vars <- data_cancer |>
     group_by(cancer_site) |>
+    filter(age_group == "20-49") |>
     mutate(max = max(Rate)) |>
     ungroup() |>
     distinct(cancer_site, sex, max) |>
@@ -420,7 +421,7 @@ for(s in unique(data_joinpoint_model$sex)){
       breaks = seq(2001, 2019, by = 3),  # Define the x-axis breaks
       limits = c(2001, 2019)
     )+
-    ggtitle("Cancer Incidence Rates for Selected Cancers") +
+    # ggtitle("Cancer Incidence Rates for Selected Cancers") +
     ylab("Age Standardised Incidence Rates per 100,000 (log scale)") +
     xlab("Year") +
     labs(colour = "Age Group") +
@@ -429,8 +430,8 @@ for(s in unique(data_joinpoint_model$sex)){
   
   print(plot)
   
-  ggsave(filename = paste0("../Output/Final_Plots/Figure_1", letters[which(unique(data_joinpoint_model$sex == s)) %% 2 + 1], ".png"), bg = "white", height = if_else(s == "Women", 8.5, 6.5), width = 8)
-  ggsave(filename = paste0("../Output/Final_Plots_SVG/Figure_1",  letters[which(unique(data_joinpoint_model$sex == s)) %% 2 + 1], ".svg"), bg = "white", height = if_else(s == "Women", 8.5, 6.5), width = 8)
+  ggsave(filename = paste0("../Output/Final_Plots/Figure_1", letters[which(unique(data_joinpoint_model$sex == s)) %% 2 + 1], ".png"), bg = "white", height = if_else(s == "Women", 8.5, 6.5), width = 10.5)
+  ggsave(filename = paste0("../Output/Final_Plots_SVG/Figure_1",  letters[which(unique(data_joinpoint_model$sex == s)) %% 2 + 1], ".svg"), bg = "white", height = if_else(s == "Women", 8.5, 6.5), width = 10.5)
   
 }
 
@@ -441,7 +442,7 @@ for(s in unique(data_joinpoint_model$sex)){
 
 ### Figure 2 - Joinpoint trends in risk factors
 
-```{r, fig.height=5, fig.width=5, warning=F}
+```{r, fig.height=6, fig.width=4, warning=F}
 
 # Getting data to plot trend points
 rf_trend_plot <- data_rf |> 
@@ -554,11 +555,12 @@ jp_plots[["physical_activity"]] <- plot_joinpoint(
     y = "Prevalence (log scale)",
     colour = "Risk Factor",
     title = "Physical Inactivity",
-    caption = md("*150 min/week of moderate or 75 min/week of vigorous activity.\n**150 min/week of activity")
+    caption = md("*150 min/week of moderate or 75 min/week of vigorous activity\n**150 min/week of activity")
   ) +
   theme_minimal_lancet() +
   theme(legend.position = "bottom",
-        axis.text.x = element_text(angle = 45, hjust = 1)) +
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.caption = element_text(hjust = 0)) +
   scale_color_manual( #fixing the colors
     values = c(
       "physical_activity_old" = "#4f518c",
@@ -618,7 +620,8 @@ for(p in names(jp_plots)){
   # Make legend vertically stack
   jp_plots[[p]] <- jp_plots[[p]] +
     guides(colour = guide_legend(direction = "vertical")) +
-    theme(plot.caption = element_text(hjust = 0))
+    theme(plot.caption = element_text(hjust = 0),
+          aspect.ratio = 1)
   
   print(jp_plots[[p]])
 
@@ -626,22 +629,31 @@ for(p in names(jp_plots)){
        filename = paste0("../Output/Final_Plots/Figure_2", letters[which(names(jp_plots) == p)], ".png"),
        bg = "white",
        height = 6,
-       width = 5)
+       width = 4)
   
    ggsave(jp_plots[[p]],
        filename = paste0("../Output/Final_Plots_SVG/Figure_2", letters[which(names(jp_plots) == p)], ".svg"),
        bg = "white",
        height = 6,
-       width = 5)
+       width = 4)
 
 }
-  
+
+
+# plot <- (jp_plots$smoking + jp_plots$alcohol)/(jp_plots$bmi + jp_plots$physical_activity)/(jp_plots$fibre_consumption + jp_plots$meat_consumption)
+# 
+# ggsave(plot,
+#        filename = paste0("../Output/Final_Plots/Figure_2.png"),
+#        bg = "white",
+#        height = 14,
+#        width = 8)
+
 
 ```
 
 ### Figure 3 - Aggregated PAFs by cancer site
 
-```{r, fig.height = 6, fig.width = 14}
+```{r, fig.height = 4, fig.width = 6}
 
 # Calculate the PAFs by cancer site 
 pafs_byrf_under50<- paf_calculation(data_rf, "20-49")
@@ -761,7 +773,7 @@ data_attr_bar_paf <- ggplot(data_attr_cases_bar_alt, aes(x = cancer_site, y = PA
     axis.text.x = element_text(angle = 45, hjust = 1)
   ) +
   labs(
-    title = "Population Attributable Fractions 2019: Aggregate",
+    # title = "Population Attributable Fractions 2019: Aggregate",
     fill = "Age Group",
     x = "Cancer Site",
     y = "PAF (%)"
@@ -770,17 +782,20 @@ data_attr_bar_paf <- ggplot(data_attr_cases_bar_alt, aes(x = cancer_site, y = PA
             colour = "black", fill = NA, inherit.aes = FALSE) +
   theme(strip.text = element_text(face = "bold")) +
   coord_flip() +
+  scale_y_continuous(
+    limits = c(0, 80)
+  ) +
   facet_wrap(~sex)
   
 data_attr_bar_paf
 
-ggsave("../Output/Final_Plots/Figure_3a.png", plot = data_attr_bar_paf, bg = "white", height = 4, width = 9)
-ggsave("../Output/Final_Plots_SVG/Figure_3a.svg", plot = data_attr_bar_paf, bg = "white", height = 4, width = 9)
+ggsave("../Output/Final_Plots/Figure_3a.png", plot = data_attr_bar_paf, bg = "white", height = 4, width = 6)
+ggsave("../Output/Final_Plots_SVG/Figure_3a.svg", plot = data_attr_bar_paf, bg = "white", height = 4, width = 6)
 
 ```
 
 ### Figure 4 - BMI Attributable Trends
-```{r, fig.height=14, fig.width=12, warning=F}
+```{r, fig.height=8.5, fig.width=8, warning=F}
 
 for(s in unique(data_bmi_esp$sex)){
   
@@ -985,7 +1000,7 @@ for(sex in c("Women", "Men")){
   
   # Save
   gtsave(supp_table_4[[sex]], paste0("../Output/Final_Plots_HTML/Supplementary_Table_4", letters[which(c("Women", "Men") == sex)], ".html"))
-  # gtsave(supp_table_4[[sex]], paste0("../Output/Final_Plots/Supplementary_Table_4", letters[which(c("Women", "Men") == sex)], ".png"))
+  gtsave(supp_table_4[[sex]], paste0("../Output/Final_Plots/Supplementary_Table_4", letters[which(c("Women", "Men") == sex)], ".docx"))
   # gtsave(supp_table_4[[sex]], paste0("../Output/Final_Plots_PDF/Supplementary_Table_4", letters[which(c("Women", "Men") == sex)], ".pdf"))
   
 }
@@ -1094,14 +1109,38 @@ for(sex in c("Women", "Men")){
       "Fibre Intake Deficiency - Below UK Recommendations",
       "Red Meat Consumption - Median",
       "Processed Meat Consumption - Median"
-    ))
+    )) |>
+  tab_footnote(
+    footnote = "Heavy (>50g/day), moderate (12-50 g/day), light (<12 g/day)",
+    locations = cells_row_groups(
+      groups = c("Alcohol Consumption - Light Drinker", "Alcohol Consumption - Moderate Drinker", "Alcohol Consumption - Heavy Drinker")
+    )
+  ) |>
+  tab_footnote(
+    footnote = "Overweight (>30 kg/m²), obese (25-30 kg/m²)",
+    locations = cells_row_groups(
+      groups = c("Body Mass Index (BMI) - Obese", "Body Mass Index (BMI) - Overweight")
+    )
+  ) |>
+  tab_footnote(
+    footnote = "Recommendations are 150 min/week of moderate or 75 min/week or vigorous activity",
+    locations = cells_row_groups(
+      groups = c("Physical Inactivity - Below UK Recommendations")
+    )
+  ) |>
+  tab_footnote(
+    footnote = "Guidelines are 30g of fibre per day",
+    locations = cells_row_groups(
+      groups = c("Fibre Intake Deficiency - Below UK Recommendations")
+    )
+  )
   
   # Print
   print(supp_table_5[[sex]])
   
   # Save
   gtsave(supp_table_5[[sex]], paste0("../Output/Final_Plots_HTML/Supplementary_Table_5", letters[which(c("Women", "Men") == sex)], ".html"))
-  # gtsave(supp_table_5[[sex]], paste0("../Output/Final_Plots/Supplementary_Table_5", letters[which(c("Women", "Men") == sex)], ".png"))
+  gtsave(supp_table_5[[sex]], paste0("../Output/Final_Plots/Supplementary_Table_5", letters[which(c("Women", "Men") == sex)], ".docx"))
   # gtsave(supp_table_5[[sex]], paste0("../Output/Final_Plots_PDF/Supplementary_Table_5", letters[which(c("Women", "Men") == sex)], ".pdf"))
   
 }
@@ -1145,7 +1184,7 @@ for(group in plot_order){
   print(bmi_jp_table[[group]])
   
   gtsave(bmi_jp_table[[group]], paste0("../Output/Final_Plots_HTML/Supplementary_Table_6", letters[which(plot_order == group)], ".html"))
-  # gtsave(bmi_jp_table[[group]], paste0("../Output/Final_Plots/Supplementary_Table_6", letters[which(plot_order == group)], ".png"))
+  gtsave(bmi_jp_table[[group]], paste0("../Output/Final_Plots/Supplementary_Table_6", letters[which(plot_order == group)], ".docx"))
   # gtsave(bmi_jp_table[[group]], paste0("../Output/Final_Plots_PDF/Supplementary_Table_6", letters[which(plot_order == group)], ".pdf"))
   
 }
@@ -1175,7 +1214,7 @@ for(s in unique(data_joinpoint_AAPC$sex)){
       cancer_site = if_else(AAPC.C.I..Low[2] > 0, paste0(cancer_site[2], "*"), cancer_site[2])
     ) |>
     mutate(
-      cancer_site = if_else(p_value_one_sided < 0.05, paste0(cancer_site[2], "^"), cancer_site[2])
+      cancer_site = if_else(p_value_one_sided < 0.05 & AAPC.C.I..Low[2] > 0, paste0(cancer_site[2], "^"), cancer_site[2])
     )
   
   # Get order of cancer sites
@@ -1261,20 +1300,20 @@ for(s in unique(data_joinpoint_AAPC$sex)){
   
   # Add footnote
   grid.text("* - AAPC for 20-49 is significantly greater than 0", x = 0.095, y = 0.02, gp = gpar(fontsize = 8))
-  grid.text("^ - AAPC for 20-49 is significantly greater than 0 and the AAPC for 50+", x = 0.195, y = 0.008, gp = gpar(fontsize = 8))
+  grid.text("^ - AAPC for 20-49 is significantly greater than both 0 and the AAPC for 50+", x = 0.195, y = 0.008, gp = gpar(fontsize = 8))
   
   # Save plot
   
   CairoPNG(file=paste0("../Output/Final_Plots/Supplementary_Figure_1", letters[which(unique(data_joinpoint_AAPC$sex == s)) %% 2 + 1], ".png"), width = 10, height = (4/15)*(3 + rows), units = "in", res = 300)
   print(plot)
   grid.text("* - AAPC for 20-49 is significantly greater than 0", x = 0.135, y = 0.03, gp = gpar(fontsize = 9, fontfamily = "Times New Roman", fontface = "plain"))
-  grid.text("^ - AAPC for 20-49 is significantly greater than 0 and the AAPC for 50+", x = 0.195, y = 0.01, gp = gpar(fontsize = 9, fontfamily = "Times New Roman", fontface = "plain"))
+  grid.text("^ - AAPC for 20-49 is significantly greater than both 0 and the AAPC for 50+", x = 0.208, y = 0.01, gp = gpar(fontsize = 9, fontfamily = "Times New Roman", fontface = "plain"))
   dev.off()
   
   svglite(file=paste0("../Output/Final_Plots_SVG/Supplementary_Figure_1", letters[which(unique(data_joinpoint_AAPC$sex == s)) %% 2 + 1], ".svg"), width = 10, height = (4/15)*(3 + rows))
   print(plot)
   grid.text("* - AAPC for 20-49 is significantly greater than 0", x = 0.13, y = 0.03, gp = gpar(fontsize = 9, fontfamily = "Times New Roman", fontface = "plain"))
-  grid.text("^ - AAPC for 20-49 is significantly greater than 0 and the AAPC for 50+", x = 0.195, y = 0.01, gp = gpar(fontsize = 9, fontfamily = "Times New Roman", fontface = "plain"))
+  grid.text("^ - AAPC for 20-49 is significantly greater than both 0 and the AAPC for 50+", x = 0.208, y = 0.01, gp = gpar(fontsize = 9, fontfamily = "Times New Roman", fontface = "plain"))
   dev.off()
 
 }
@@ -1590,14 +1629,14 @@ data_attr_cases_bar <- data_attr_cases_bar |>
   ) |> mutate (
     variable = ifelse(variable == "Alcohol", "Alcohol Consumption", variable),
     variable = ifelse(variable == "Smoking", "Cigarette Smoking", variable),
-    variable = ifelse(variable == "BMI", "Body Mass Intake (BMI)", variable),
+    variable = ifelse(variable == "BMI", "Body Mass Index (BMI)", variable),
     variable = ifelse(variable == "Physical Activty", "Physical Inactivity", variable),
     variable = ifelse(variable == "Fibre", "Fibre Intake Deficiency", variable),
     variable = ifelse(variable == "Processed Meat", "Processed Meat Consumption", variable),
     variable = ifelse(variable == "Red Meat", "Red Meat Consumption", variable)
   )
 
-plot_order <- c("Cigarette Smoking", "Alcohol Consumption", "Body Mass Intake (BMI)", "Physical Inactivity", "Fibre Intake Deficiency", "Red Meat Consumption", "Processed Meat Consumption")
+plot_order <- c("Cigarette Smoking", "Alcohol Consumption", "Body Mass Index (BMI)", "Physical Inactivity", "Fibre Intake Deficiency", "Red Meat Consumption", "Processed Meat Consumption")
 
 for (var in plot_order) {
 
@@ -1623,7 +1662,9 @@ for (var in plot_order) {
     )+
     geom_rect(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
               colour = "black", fill = NA, inherit.aes = FALSE) +
-    theme(strip.text = element_text(face = "bold")) +
+    theme(strip.text = element_text(face = "bold"),
+          axis.text.x = element_text(angle = 45, hjust = 1)
+    ) +
     coord_flip() +
     facet_wrap(~sex)
   
@@ -1641,15 +1682,18 @@ for (var in plot_order) {
   ggsave(filename = paste0("../Output/Final_Plots/Supplementary_Figure_4", letters[which(plot_order == var)], ".png"), plot = data_attr_bar_paf, width = 6, height = 4, bg = "white")
   ggsave(filename = paste0("../Output/Final_Plots_SVG/Supplementary_Figure_4", letters[which(plot_order == var)], ".svg"), plot = data_attr_bar_paf, width = 6, height = 4, bg = "white")
   
-  if(var == "Body Mass Intake (BMI)"){
+  if(var == "Body Mass Index (BMI)"){
     
     data_attr_bar_paf <- data_attr_bar_paf +
-    labs(
-      title = paste0("Population Attributable Fractions 2019: ", var),
-    )
+      labs(
+        title = NULL
+      ) +
+      scale_y_continuous(
+        limits = c(0, 80)
+      )
     
-    ggsave(filename = paste0("../Output/Final_Plots/Figure_3b.png"), plot = data_attr_bar_paf, height = 4, width = 9, bg = "white")
-    ggsave(filename = paste0("../Output/Final_Plots_SVG/Figure_3b.svg"), plot = data_attr_bar_paf, height = 4, width = 9, bg = "white")
+    ggsave(filename = paste0("../Output/Final_Plots/Figure_3b.png"), plot = data_attr_bar_paf, width = 6, height = 4, bg = "white")
+    ggsave(filename = paste0("../Output/Final_Plots_SVG/Figure_3b.svg"), plot = data_attr_bar_paf, width = 6, height = 4, bg = "white")
   }
   
 } 
@@ -1689,7 +1733,10 @@ for(s in unique(data_bmi_esp$sex)){
       attributable = ceiling(attributable),
       attributable_rate = PAF * Rate,
       non_attributable_rate = Rate - attributable_rate
-    )
+    ) |>
+    group_by(sex, age_group, cancer_site) |>
+    filter(min(attributable_rate) > 0) |>
+    ungroup()
   
   BMI_paf_cases_oe50 <- BMI_paf_cases |>
     filter(sex == s) |>
@@ -1699,29 +1746,42 @@ for(s in unique(data_bmi_esp$sex)){
     mutate(sex = factor(sex, levels = c("Women", "Men")),
            cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site)) 
   
-  # Calculating invisible points so y-axis identical for same cancer site
+  # # Calculating invisible points so y-axis identical for same cancer site
+  # BMI_paf_cases_oe50_invisible <- BMI_paf_cases_oe50 |>
+  #   group_by(cancer_site) |>
+  #   mutate(min_value = min(value),
+  #          max_value = max(value)) |>
+  #   ungroup() |>
+  #   filter(year == 2019, rate_type == "Rate") |>
+  #   select(year, rate_type, cancer_site, sex, max_value, min_value) |>
+  #   pivot_longer(cols = c(min_value, max_value)) |>
+  #   # Manually gicving minimum values to Oral and Breast as they have no attributable cases
+  #   mutate(
+  #     
+  #     value = case_when(
+  #       cancer_site == "Oral" & name == "min_value" ~ 0.3,
+  #       cancer_site == "Breast" & name == "min_value" ~ 8,
+  #       TRUE ~ value
+  #       
+  #     ),
+  #     
+  #     # Need to switch to other naming system
+  #     rate_type = "Overall",
+  #     
+  #   )
+  
+  # Create invisible points so rows have the same y bounds
   BMI_paf_cases_oe50_invisible <- BMI_paf_cases_oe50 |>
-    group_by(cancer_site) |>
-    mutate(min_value = min(value),
-           max_value = max(value)) |>
+    mutate(n_sites = length(unique(cancer_site))) |>
+    group_by(cancer_site, sex) |>
+    summarise(max = max(value), min = min(value)) |>
     ungroup() |>
-    filter(year == 2019, rate_type == "Rate") |>
-    select(year, rate_type, cancer_site, sex, max_value, min_value) |>
-    pivot_longer(cols = c(min_value, max_value)) |>
-    # Manually gicving minimum values to Oral and Breast as they have no attributable cases
-    mutate(
-      
-      value = case_when(
-        cancer_site == "Oral" & name == "min_value" ~ 5,
-        # cancer_site == "Breast" & name == "min_value" ~ 25,
-        TRUE ~ value
-        
-      ),
-      
-      # Need to switch to other naming system
-      rate_type = "Overall",
-      
-    )
+    arrange(desc(max)) |>
+    mutate(facet_row = ceiling(row_number()/3)) |>
+    group_by(facet_row) |>
+    mutate(y = list(range(c(max, min)))) |>
+    unnest(y) |>
+    mutate(year = 2019)
   
   facet_vars <- BMI_paf_cases_oe50 |>
     group_by(cancer_site) |>
@@ -1759,14 +1819,12 @@ for(s in unique(data_bmi_esp$sex)){
       rate_type == "attributable_rate" ~ "Attributable",
       rate_type == "non_attributable_rate" ~ "Non-Attributable",
       TRUE ~ NA
-    )) |>
-    # Manually filtering out Oral and Breast Non-Attributable cases as they overlap with the Overall and we want to only see overall
-    filter(!(cancer_site %in% c("Oral", "Breast") & rate_type == "Non-Attributable"))
+    ))
   
   p <- ggplot(BMI_paf_cases_oe50, aes(x = year, y = value, colour = rate_type)) +
       geom_line() +
       geom_point() +
-      geom_point(data = BMI_paf_cases_oe50_invisible, alpha = 0) +
+      geom_point(data = BMI_paf_cases_oe50_invisible, aes(x = year, y = y), inherit.aes = F, alpha = 0) +
       # facet_manual(~ facet_var, facet_design, respect = T, scales = "free_y") +
       facet_wrap(~ facet_var, scales = "free_y", ncol = 3) +
       scale_y_log10(breaks = scales::breaks_log(n = 8),
@@ -1797,6 +1855,7 @@ for(s in unique(data_bmi_esp$sex)){
           axis.text.x = element_text(angle = 45, hjust = 1),
           aspect.ratio = 1)
   print(p)
+  
   
   # Save the plot as a PNG file
   ggsave(filename = paste0("../Output/Final_Plots/Supplementary_Figure_5", letters[which(unique(data_joinpoint_model$sex == s)) %% 2 + 1], ".png"), bg = "white", height = if_else(s == "Women", 8.5, 6.5), width = 8)
@@ -1852,10 +1911,63 @@ ggsave("../Output/Final_Plots_SVG/Supplementary_Figure_6.svg", plot = pafplotall
 
 ```
 
+### Supplementary Figure 7 - Burden of cancer rates by age group
+```{r}
 
-### Supplementary Figure 7 - Colorectal cancer and risk factor plotting
+data_cancer <- data_ALLcancer %>%
+  filter(
+    cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid", "Ovary")
+  ) |>
+  mutate(cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site)) |>
+  filter(year == 2019) |>
+  group_by(cancer_site, sex) |>
+  mutate(Rate = 100*Rate/sum(Rate)) |>
+  ungroup() |>
+  mutate(age_group = factor(age_group, levels = c("50+", "20-49"))) |>
+  mutate(sex = factor(sex, levels = c("Women", "Men"))) |>
+  mutate(Rate_order = if_else(age_group == "20-49" & sex == "Women", 0, Rate)) |>
+  arrange(desc(Rate_order)) |>
+  mutate(cancer_site = factor(cancer_site, levels = unique(cancer_site)))
 
-NOTE: Need to add childhood BMI
+
+plot <- ggplot(data_cancer, aes(x = cancer_site, y = Rate, fill = age_group)) +
+  geom_bar(position = "stack", stat = "identity", colour = "black") +
+  coord_flip() +
+  facet_wrap(~ sex) +
+  scale_fill_manual(breaks = c("20-49", "50+"),
+                    values = c("20-49" = "#ff9500", "50+" = "#38b000"),
+                      labels = c("20-49" ="20-49 years", "50+" ="50+ years")) +
+    theme_minimal_lancet() +
+    theme(
+      
+      strip.text = element_text(face = "bold"),
+      # axis.text.x = element_text(angle = 45, hjust = 1)
+    ) +
+    labs(
+      # title = "Proportion of Cancer Burden by Age Group, 2019",
+      fill = "Age Group",
+      x = "Cancer Site",
+      y = "Proportion of Cancer Incidence by Age Group (%)"
+    )+
+    geom_rect(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
+              colour = "black", fill = NA, inherit.aes = FALSE) +
+    theme(strip.text = element_text(face = "bold"),
+          axis.text.x = element_text(angle = 45, hjust = 1)
+    ) +
+    scale_y_continuous(
+          breaks = seq(0, 100, by = 20), 
+      )
+
+print(plot)
+
+ggsave(filename = paste0("../Output/Final_Plots/Supplementary_Figure_7.png"), plot = plot, height = 4, width = 6, bg = "white")
+ggsave(filename = paste0("../Output/Final_Plots_SVG/Supplementary_Figure_7.svg"), plot = plot, height = 4, width = 6, bg = "white")
+  
+
+```
+
+
+### Supplementary Figure 8 - Colorectal cancer and risk factor plotting
 
 ```{r, fig.height= 14, fig.width = 8, warning = F}
 
@@ -1908,6 +2020,13 @@ rf_trend_plot_overlay <- rf_trend_plot |>
     
   )
 
+# Filter data to only the cancer sites that are increasing 
+data_cancer <- data_ALLcancer %>%
+  filter(
+    cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid", "Ovary")
+  ) |>
+  mutate(cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site))
+
 # Extract the colorectal cancer rates
 rf_overlay_colorectal <- data_cancer |>
   filter(cancer_site == "Colorectum") |>
@@ -1944,7 +2063,7 @@ for(s in c("Women", "Men")){
         labs(
           # title = paste0("Trends of Colorectal Cancer and ", var, " in 20-49 ", s),
           x = "Year",
-          y = "Age Standardised Incidence Rates",
+          y = md("Age Standardised\nIncidence Rates"),
           colour = "",
           fill = "",
           linetype = ""
@@ -2005,6 +2124,10 @@ for(s in c("Women", "Men")){
           values = c(
             "Obese" = "#4f518c",
             "Overweight" = "#e4afff"
+          ),
+          labels = c(
+            "Obese" = expression("Obese"^"a"),
+            "Overweight" = expression("Overweight"^"a")
           )
         )
       
@@ -2018,11 +2141,11 @@ for(s in c("Women", "Men")){
             "Light Drinker" = "#e4afff"
             # "Non-Drinker" = "#fcab10"
           ),
-          # labels = c(
-          #   "Heavy Drinker" = "Heavy (>50units/week)",
-          #   "Moderate Drinker" = "Moderate (14-50units/week)",
-          #   "Light Drinker" = "Light (<14units/week)"
-          # ),
+          labels = c(
+            "Heavy Drinker" = expression("Heavy Drinker"^"c"),
+            "Moderate Drinker" =  expression("Moderate Drinker"^"c"),
+            "Light Drinker" =  expression("Light Drinker"^"c")
+          ),
           breaks = c(
             "Heavy Drinker",
             "Moderate Drinker",
@@ -2038,6 +2161,9 @@ for(s in c("Women", "Men")){
             # "physical_activity" = "#ff5e5b",
             "Below Recommendations" = "#4f518c"
           ),
+          labels = c(
+            "Below Recommendations" = expression("Below Recommendations"^"d")
+          )
           # labels = c(
           #   # "physical_activity" = "Physical Activity Below new UK Guidelines**",
           #   "Below Recommendations" = "Physical Activity Below old UK Guidelines*"
@@ -2049,6 +2175,7 @@ for(s in c("Women", "Men")){
       plot_rf <- plot_rf +
         scale_color_manual(
           values = c("Below Guidelines" = "#4f518c"),
+          labels  = c("Below Guidelines" = expression("Below Guidelines"^"e"))
           # labels = c("Below Guidelines" = "Fibre Consumption Below UK Guidelines (30g/day)")
         )
       
@@ -2071,307 +2198,73 @@ for(s in c("Women", "Men")){
     # Change x axis limits - childhood bmi we assume a 20 year time lag
     if(var == "BMI (2-15 years)"){
       plot_rf <- plot_rf +
-        scale_x_continuous(breaks = seq(1985, 2010, 5), limits = c(1985, 2010))
-    } else {
-      plot_rf <- plot_rf +
-        scale_x_continuous(breaks = seq(1995, 2020, 5), limits = c(1995, 2020))
-    }
-    
-    # Extract legend and remove
-    legend_list[[var]] <- get_legend(plot_rf)
-    plot_rf <- plot_rf +
-      theme(legend.position = "none")
-    
-    # If last plot in RF, add x axis label
-    if(var == "Meat Consumption"){
-      plot_rf <- plot_rf +
-        labs(x = "Year", y = "Median Daily Consumption (g)")
-    }
-    
-    plot_list[[var]] <-plot_rf
-    
-  }
-  
-  plot <- plot_grid(plotlist = plot_list, ncol = 1, rel_heights = c(1.05, rep(1, length(plot_list)-2), 1.05))
-  plot_legend <- plot_grid(plotlist = legend_list, ncol = 1, rel_heights = c(0.9, rep(1, length(plot_list)-2), 1.2))
-  plot <- plot_grid(plot, plot_legend, nrow = 1, rel_widths = c(1, 0.45))
-  
-  plot <- ggdraw() +
-    draw_plot(plot, 0, 0, 1, 0.97, vjust = 0) +
-    draw_label(paste0("Trends in Colorectal Cancer and Risk Factors in Younger ", s, " aged 20-49"), fontface = 'bold', fontfamily = "Times New Roman", 
-               x = 0, y = 0.99,  
-               hjust = -0.05, vjust = 1,  
-               size = 10)
-  
-  print(plot)
-  
-  ggsave(filename = paste0("../Output/Final_Plots/Supplementary_Figure_7", letters[which(c("Women", "Men") == s)], ".png"), plot = plot, width = 9, height = 14, bg = "white")
-  ggsave(filename = paste0("../Output/Final_Plots_SVG/Supplementary_Figure_7", letters[which(c("Women", "Men") == s)], ".svg"), plot = plot, width = 9, height = 14, bg = "white")
-  
-
-}
-
-
-```
-
-### TEMPORARY SF7
-```{r, fig.height= 14, fig.width = 8, warning = F}
-
-# Getting data to plot trend points
-rf_trend_plot <- data_rf |> mutate(level = if_else(level == "[30,Inf)" & variable == "fibre_consumption", "Below Guidelines", level),
-                                         value = if_else(level == "Below Guidelines" & variable == "fibre_consumption", 1 - value, value))
-
-# Create and the clean the desired risk factor data
-rf_trend_plot_overlay <- rf_trend_plot |>
-  select(-N) |>
-  rbind(data_childhood_bmi) |>
-  filter(case_when(
-    variable == "alcohol_amt" ~ level %in% c("Moderate Drinker", "Heavy Drinker", "Light Drinker"),
-    variable == "bmi" ~ level %in% c("Overweight", "Obese"),
-    variable == "physical_activity_old" ~ level == "Below Recommendations",
-    variable == "fibre_consumption" ~ level == "Below Guidelines",
-    variable == "bmi_children" ~ TRUE,
-    TRUE ~ variable %in% c("processedmeat_consumption_median", "redmeat_consumption_median")
-  )) |>
-  filter(age_group %in% c("20-49", "2-15")) |>
-  filter(!(variable == "alcohol_amt" & year == 2005)) |>
-  mutate(
-    
-    level = case_when(
-      variable == "redmeat_consumption_median" ~ "Red Meat",
-      variable == "processedmeat_consumption_median" ~ "Processed Meat",
-      TRUE ~ level
-    ),
-    
-    variable = case_when(
-      variable == "redmeat_consumption_median" ~ "meat_consumption",
-      variable == "processedmeat_consumption_median" ~ "meat_consumption",
-      TRUE ~ variable
-    )
-    
-  ) |>
-  select(variable, level, year, value, sex) |>
-  # Make clean variable names and order specifically for plot
-  mutate(
-    
-    variable = case_when(
-      variable == "bmi" ~ "BMI (20-49 years)",
-      variable == "bmi_children" ~ "BMI (2-15 years)",
-      variable == "alcohol_amt" ~ "Alcohol Consumption",
-      variable == "fibre_consumption" ~ "Fibre Intake Deficiency",
-      variable == "meat_consumption" ~ "Meat Consumption",
-      variable == "physical_activity_old" ~ "Physical Inactivity",
-      TRUE ~ NA
-    )
-    
-  )
-
-# Extract the colorectal cancer rates
-rf_overlay_colorectal <- data_cancer |>
-  filter(cancer_site == "Colorectum") |>
-  filter(age_group == "20-49") |>
-  select(year, value = Rate, sex) |>
-  mutate(level = "Colorectal Cancer Rate",
-         variable = "Cancer Rate")
-
-# Create plot for colorectal
-
-cancer_trend_bounds <- rf_overlay_colorectal |>
-    pull(value) |>
-    range()
-
-
-
-for(s in c("Women", "Men")){
-
-  plot_cancer <- ggplot(data = rf_overlay_colorectal |> filter(sex == s), aes(x = year, y = value, colour = level)) +
-        geom_point() +
-        geom_line() +
-        scale_y_log10(breaks = scales::breaks_log(), limits = cancer_trend_bounds, sec.axis = sec_axis(~ ., name = "Colorectal Cancer Rate", labels = NULL)) +
-        theme_minimal_lancet() +
-        theme(
-          axis.text.y = rotatedAxisElementText(90,'y'),
-          axis.text.x = element_text(angle = 45, hjust = 0),
-          strip.text = element_blank(),
-          legend.position = "none"
-        ) +
-        geom_rect(
-          xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
-          colour = "black", fill = NA, inherit.aes = FALSE
-        ) +
-        labs(
-          # title = paste0("Trends of Colorectal Cancer and ", var, " in 20-49 ", s),
-          x = "Year",
-          y = "Age Standardised Incidence Rates",
-          colour = "",
-          fill = "",
-          linetype = ""
-        ) +
-        scale_colour_manual(values = c("Colorectal Cancer Rate" = "#ff9500")) +
-        scale_x_continuous(breaks = seq(2005, 2030, 5), limits = c(2005, 2030), position= "top")
-  
-  # Get blank legend
-  blank_legend <- get_legend(plot_cancer)
-
-  # Initialise plot list
-  plot_list <- list("Cancer" = plot_cancer)
-  legend_list <- list("Cancer" = blank_legend)
-  
-  # Now loop through variables
-  for(var in c("BMI (2-15 years)", "BMI (20-49 years)", "Alcohol Consumption", "Physical Inactivity", "Fibre Intake Deficiency", "Meat Consumption")){
-    
-    rf_trend_bounds <- rf_trend_plot_overlay |>
-      filter(variable == var) |>
-      pull(value) |>
-      range()
-  
-    # Filter to specific rf_data
-    rf_trend_plot_overlay_var <- rf_trend_plot_overlay |>
-      filter(variable == var) |>
-      filter(sex == s)
-  
-    # Make plot
-    plot_rf <- ggplot(data = rf_trend_plot_overlay_var, aes(x = year, y = value, colour = level)) +
-      geom_point() +
-      geom_line() +
-      scale_y_log10(breaks = scales::breaks_log(), limits = rf_trend_bounds, sec.axis = sec_axis(~ ., name = var, labels = NULL)) +
-      theme_minimal_lancet() +
-      theme(
-        axis.text.y = rotatedAxisElementText(90,'y'),
-        axis.text.x = element_text(angle = 45, hjust = 1),
-        strip.text = element_text(face = "bold"),
-        # legend.position = "none"
-      ) +
-      geom_rect(
-        xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
-        colour = "black", fill = NA, inherit.aes = FALSE
-      ) +
-      labs(
-        # title = paste0("Trends of Colorectal Cancer and ", var, " in 20-49"),
-        x = NULL,
-        y = "Prevalence",
-        colour = "",
-        fill = "",
-        linetype = ""
-      )
-    
-    # Change colours based on what is being plotted
-    if(var %in% c("BMI (20-49 years)", "BMI (2-15 years)")){
-      
-      plot_rf <- plot_rf +
+        scale_x_continuous(breaks = seq(1985, 2010, 5), limits = c(1985, 2010)) +
         scale_colour_manual(
           values = c(
             "Obese" = "#4f518c",
             "Overweight" = "#e4afff"
-          )
-        ) +
-        scale_y_log10(breaks = scales::breaks_log(), limits = rf_trend_plot_overlay |>
-      filter(variable %in% c("BMI (2-15 years)", "BMI (20-49 years)")) |>
-      pull(value) |>
-      range(), sec.axis = sec_axis(~ ., name = var, labels = NULL))
-      
-    } else if(var == "Alcohol Consumption"){
-      
-      plot_rf <- plot_rf +
-        scale_color_manual( #fixing the colors
-          values = c(
-            "Heavy Drinker" = "#4f518c",
-            "Moderate Drinker" = "#907ad6",
-            "Light Drinker" = "#e4afff"
-            # "Non-Drinker" = "#fcab10"
           ),
-          # labels = c(
-          #   "Heavy Drinker" = "Heavy (>50units/week)",
-          #   "Moderate Drinker" = "Moderate (14-50units/week)",
-          #   "Light Drinker" = "Light (<14units/week)"
-          # ),
-          breaks = c(
-            "Heavy Drinker",
-            "Moderate Drinker",
-            "Light Drinker"
+          labels = c(
+            "Obese" = expression("Obese"^"b"),
+            "Overweight" = expression("Overweight"^"b")
           )
         )
-      
-    } else if(var == "Physical Inactivity"){
-      
-      plot_rf <- plot_rf +
-        scale_color_manual( #fixing the colors
-          values = c(
-            # "physical_activity" = "#ff5e5b",
-            "Below Recommendations" = "#4f518c"
-          ),
-          # labels = c(
-          #   # "physical_activity" = "Physical Activity Below new UK Guidelines**",
-          #   "Below Recommendations" = "Physical Activity Below old UK Guidelines*"
-          # )
-        )
-      
-    } else if(var == "Fibre Intake Deficiency"){
-      
-      plot_rf <- plot_rf +
-        scale_color_manual(
-          values = c("Below Guidelines" = "#4f518c"),
-          # labels = c("Below Guidelines" = "Fibre Consumption Below UK Guidelines (30g/day)")
-        )
-      
-    } else if(var == "Meat Consumption"){
-      
-      plot_rf <- plot_rf +
-        scale_color_manual(
-          values = c(
-            "Red Meat" = "#4f518c",
-            "Processed Meat" = "#5fa8d3"
-          ),
-          # labels = c(
-          #   "Red Meat" = "Median Red Meat Consumption",
-          #   "Processed Meat" = "Median Processed Meat Consumption"
-          # )
-        )
-      
-    }
-    
-    # Change x axis limits - childhood bmi we assume a 20 year time lag
-    if(var == "BMI (2-15 years)"){
-      plot_rf <- plot_rf +
-        scale_x_continuous(breaks = seq(1985, 2010, 5), limits = c(1985, 2010))
     } else {
       plot_rf <- plot_rf +
         scale_x_continuous(breaks = seq(1995, 2020, 5), limits = c(1995, 2020))
     }
     
-    # Extract legend and remove
-    legend_list[[var]] <- get_legend(plot_rf)
-    plot_rf <- plot_rf +
-      theme(legend.position = "none")
+    # # Extract legend and remove
+    # legend_list[[var]] <- get_legend(plot_rf +
+    #   theme(
+    #     legend.margin = margin(r = 0, l = 0)
+    #   ))
+    # 
+    # plot_rf <- plot_rf +
+    #   theme(legend.position = "none")
     
     # If last plot in RF, add x axis label
     if(var == "Meat Consumption"){
       plot_rf <- plot_rf +
-        labs(x = "Year", y = "Median Daily Consumption (g)")
+        labs(x = "Year", y = md("Median Daily\nConsumption (g)"),
+             caption = "             ᵃ Overweight (>30 kg/m²), obese (25-30 kg/m²)\n
+             ᵇ Overweight , obese\n
+             ᶜ Heavy (>50g/day), moderate (12-50 g/day), light (<12 g/day)\n
+             ᵈ Recommendations are 150 min/week of moderate or 75 min/week or vigorous activity\n
+             ᵉ Guidelines are 30g of fibre per day"
+             ) +
+        theme(plot.caption = element_text(hjust = 0, lineheight = 0.5),
+              plot.caption.position = "plot")
+        
     }
     
-    plot_list[[var]] <-plot_rf
+    plot_list[[var]] <- plot_rf
     
   }
   
-  plot <- plot_grid(plotlist = plot_list, ncol = 1, rel_heights = c(1.05, rep(1, length(plot_list)-2), 1.05))
-  plot_legend <- plot_grid(plotlist = legend_list, ncol = 1, rel_heights = c(0.9, rep(1, length(plot_list)-2), 1.2))
-  plot <- plot_grid(plot, plot_legend, nrow = 1, rel_widths = c(1, 0.45))
+  plot <- reduce(plot_list, `/`)
   
-  plot <- ggdraw() +
-    draw_plot(plot, 0, 0, 1, 0.97, vjust = 0) +
-    draw_label(paste0("Trends in Colorectal Cancer and Risk Factors in Younger ", s, " aged 20-49"), fontface = 'bold', fontfamily = "Times New Roman", 
-               x = 0, y = 0.99,  
-               hjust = -0.05, vjust = 1,  
-               size = 10)
+  # plot <- plot_grid(plotlist = plot_list, ncol = 1, rel_heights = c(1.05, rep(1, length(plot_list)-2), 1.05))
+  # plot_legend <- plot_grid(plotlist = legend_list, ncol = 1, rel_heights = c(0.9, rep(1, length(plot_list)-2), 1.2))
+  # plot <- plot_grid(plot, plot_legend, nrow = 1, rel_widths = c(1, 0.45))
+  # 
+  # plot <- ggdraw() +
+  #   draw_plot(plot, 0, 0, 1, 0.97, vjust = 0) +
+  #   draw_label(paste0("Trends in Colorectal Cancer and Risk Factors in Younger ", s, " aged 20-49"), fontface = 'bold', fontfamily = "Times New Roman", 
+  #              x = 0, y = 0.99,  
+  #              hjust = -0.05, vjust = 1,  
+  #              size = 10)
   
   print(plot)
   
-  ggsave(filename = paste0("../Output/Final_Plots/Supplementary_Figure_7", letters[which(c("Women", "Men") == s)], "_temp.png"), plot = plot, width = 9, height = 14, bg = "white")
-  # ggsave(filename = paste0("../Output/Final_Plots_SVG/Supplementary_Figure_7_TEMP", letters[which(c("Women", "Men") == s)], "_temp.svg"), plot = plot, width = 9, height = 14, bg = "white")
+  ggsave(filename = paste0("../Output/Final_Plots/Supplementary_Figure_8", letters[which(c("Women", "Men") == s)], ".png"), plot = plot, width = 9, height = 14, bg = "white")
+  ggsave(filename = paste0("../Output/Final_Plots_SVG/Supplementary_Figure_8", letters[which(c("Women", "Men") == s)], ".svg"), plot = plot, width = 9, height = 14, bg = "white")
   
 
 }
 
 
 ```
+
+
+
