@@ -74,7 +74,7 @@ plot_joinpoint <- function(data, data.model, facet.x = character(0), facet.y = c
   
   # Now start constructing plot
   plot <- ggplot(data, aes(x = year, y = value, colour = !!sym(colour_var))) +
-    geom_point() +
+    geom_point(size = 1) +
     geom_line(data = data_joinpoint_plot, aes(x = year, y = y)) +
     theme_minimal() +
     theme(legend.position="bottom") +
