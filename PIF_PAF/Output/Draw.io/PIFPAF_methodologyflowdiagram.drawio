@@ -1,0 +1,152 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36" version="27.1.4">
+  <diagram name="Página-1" id="wehLLhJk2ROUlLkGlWbG">
+    <mxGraphModel dx="7267" dy="-66" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="VUFPWGfpANqgqkqeQTV1-30" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-870" y="290" />
+            </Array>
+            <mxPoint x="-920" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-4" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#D5E8D4,var(--ge-dark-color, #121212));" parent="1" vertex="1">
+          <mxGeometry x="-4260" y="1684.75" width="1030" height="525.25" as="geometry" />
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-5" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#D4E1F5,#000000);" parent="1" vertex="1">
+          <mxGeometry x="-4260" y="1220" width="1030" height="464.62" as="geometry" />
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="DGWTjfy15jcwRzvpQEkv-7" target="DGWTjfy15jcwRzvpQEkv-9" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-7" value="&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 16px;&quot;&gt;&lt;b&gt;25 Cancer Sites*&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#FF9933,#000000);" parent="1" vertex="1">
+          <mxGeometry x="-3815" y="1252.62" width="250" height="67.38" as="geometry" />
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="DGWTjfy15jcwRzvpQEkv-9" target="DGWTjfy15jcwRzvpQEkv-11" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-9" value="&lt;div&gt;&lt;font face=&quot;Times New Roman&quot;&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;19 Cancer Sites &lt;/font&gt;&lt;span style=&quot;font-size: 16px; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#FF9933,var(--ge-dark-color, #121212));fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="-3815" y="1410" width="250" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="DGWTjfy15jcwRzvpQEkv-11" target="DGWTjfy15jcwRzvpQEkv-23" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-3690" y="1739" />
+              <mxPoint x="-3690" y="1739" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-11" value="&lt;div&gt;&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 16px;&quot;&gt;&lt;b&gt;11 Cancer Sites&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#FF9933,#000000);" parent="1" vertex="1">
+          <mxGeometry x="-3815" y="1567.87" width="250" height="76.13" as="geometry" />
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-12" value="&lt;div&gt;&lt;span style=&quot;font-size: 16px; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;&lt;b&gt;2019 Aggregate PAFs&lt;/b&gt;&amp;nbsp;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 16px; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;per cancer site&amp;nbsp;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 16px; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;for all risk factors&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#FFD966,#000000);" parent="1" vertex="1">
+          <mxGeometry x="-3632.44" y="2080" width="250" height="100.63" as="geometry" />
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="DGWTjfy15jcwRzvpQEkv-13" target="DGWTjfy15jcwRzvpQEkv-12" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-13" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;&lt;b&gt;&lt;font face=&quot;Times New Roman&quot;&gt;2019 PAFs&amp;nbsp;&lt;/font&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;per cancer site&amp;nbsp;&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;for individual risk factors&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#FFD966,#000000);" parent="1" vertex="1">
+          <mxGeometry x="-3633.38" y="1919.5" width="250" height="100.63" as="geometry" />
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-3354" y="2157" as="sourcePoint" />
+            <mxPoint x="-3354" y="2157" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-3339" y="1687" as="sourcePoint" />
+            <mxPoint x="-3339" y="1687" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-16" value="&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 24px;&quot;&gt;Magnitude of Impact&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;direction=north;rotation=0;fillColor=light-dark(#97D077,#000000);" parent="1" vertex="1">
+          <mxGeometry x="-4260" y="1684.62" width="230" height="75.38" as="geometry" />
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-17" value="&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 14px;&quot;&gt;Oral, Endometrium, Pancreas, Gallbladder, Colorectum, Ovary, Liver, Kidney, Thyroid, Multiple Myeloma, Breast, Leukemia, Prostate, Hodgkin Lymphoma, Testicular, Brain and CNS, Melanoma of skin, Cervix, Kaposi Sarcoma&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;direction=south;rotation=0;fillColor=light-dark(#FFCC99,#000000);" parent="1" vertex="1">
+          <mxGeometry x="-3550" y="1386.62" width="310" height="116.75" as="geometry" />
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-18" value="&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 14px;&quot;&gt;Oral, Endometrium, Pancreas, Gallbladder, Colorectum, Liver, Kidney,&amp;nbsp;&lt;/font&gt;&lt;div&gt;&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 14px;&quot;&gt;Thyroid, Multiple Myeloma, Ovary, Breast **&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;direction=north;rotation=0;fillColor=light-dark(#FFCC99,#000000);" parent="1" vertex="1">
+          <mxGeometry x="-3550" y="1546.56" width="310" height="118.75" as="geometry" />
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-19" value="&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 14px;&quot;&gt;Causally associated with behavioral risk&amp;nbsp;&lt;/font&gt;&lt;div&gt;&lt;font face=&quot;Times New Roman&quot;&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;factors&lt;/font&gt;&lt;span style=&quot;font-size: 14px; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;according to IARC (group 1) or WCRF&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 14px; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;&amp;nbsp;(strong evidence)&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;direction=east;fillColor=light-dark(#FFE6CC,#000000);" parent="1" vertex="1">
+          <mxGeometry x="-4182" y="1480" width="360" height="95.12" as="geometry" />
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="DGWTjfy15jcwRzvpQEkv-23" target="DGWTjfy15jcwRzvpQEkv-32" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-3688" y="1820" />
+              <mxPoint x="-3840" y="1820" />
+              <mxPoint x="-3840" y="1900" />
+              <mxPoint x="-3905" y="1900" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="DGWTjfy15jcwRzvpQEkv-23" target="DGWTjfy15jcwRzvpQEkv-13" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-3688" y="1820" />
+              <mxPoint x="-3508" y="1820" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-23" value="&lt;div&gt;&lt;b style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Population Attributable Fractions&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 0, 0); font-size: 0px; text-align: start; text-wrap-mode: nowrap; background-color: transparent;&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22%26lt%3Bdiv%26gt%3B%26lt%3Bspan%20style%3D%26quot%3Bbackground-color%3A%20transparent%3B%20color%3A%20light-dark(rgb(0%2C%200%2C%200)%2C%20rgb(255%2C%20255%2C%20255))%3B%26quot%3B%26gt%3B%26lt%3Bspan%20style%3D%26quot%3Bfont-size%3A%2016px%3B%26quot%3B%26gt%3B%26lt%3Bbr%26gt%3B%26lt%3B%2Fspan%26gt%3B%26lt%3B%2Fspan%26gt%3B%26lt%3B%2Fdiv%26gt%3B%26lt%3Bdiv%26gt%3B%26lt%3Bspan%20style%3D%26quot%3Bbackground-color%3A%20transparent%3B%20color%3A%20light-dark(rgb(0%2C%200%2C%200)%2C%20rgb(255%2C%20255%2C%20255))%3B%26quot%3B%26gt%3B%26lt%3Bspan%20style%3D%26quot%3Bfont-size%3A%2016px%3B%26quot%3B%26gt%3B2019%20Population%20Attributable%20Fractions%26lt%3B%2Fspan%26gt%3B%26lt%3B%2Fspan%26gt%3B%26lt%3B%2Fdiv%26gt%3B%26lt%3Bdiv%26gt%3B%26lt%3Bspan%20style%3D%26quot%3Bbackground-color%3A%20transparent%3B%20color%3A%20light-dark(rgb(0%2C%200%2C%200)%2C%20rgb(255%2C%20255%2C%20255))%3B%26quot%3B%26gt%3B%26lt%3Bfont%20style%3D%26quot%3Bfont-size%3A%2012px%3B%26quot%3B%26gt%3B%26amp%3Bnbsp%3BCalculated%20for%20each%20cancer%20site%20and%20individual%20risk%20factor%26lt%3B%2Ffont%26gt%3B%26lt%3Bfont%20style%3D%26quot%3Bfont-size%3A%2012px%3B%26quot%3B%26gt%3B%26amp%3Bnbsp%3Busing%20a%2010%20year%20tag%20from%20time%20of%20exposure%20to%20resulting%20cancer%20incidence%26lt%3B%2Ffont%26gt%3B%26lt%3B%2Fspan%26gt%3B%26lt%3B%2Fdiv%26gt%3B%26lt%3Bdiv%26gt%3B%26lt%3Bbr%26gt%3B%26lt%3B%2Fdiv%26gt%3B%22%20style%3D%22rounded%3D0%3BwhiteSpace%3Dwrap%3Bhtml%3D1%3BfillColor%3Dlight-dark(%23FF9933%2C%23000000)%3B%22%20vertex%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20x%3D%22-1618.75%22%20y%3D%22680.31%22%20width%3D%22250%22%20height%3D%22140%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;&lt;span style=&quot;font-size: 16px; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;(PAF)&lt;/span&gt;&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#FFD966,#000000);" parent="1" vertex="1">
+          <mxGeometry x="-3788" y="1706" width="200" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-24" value="&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 14px;&quot;&gt;Cancer Sites with statistically significant AAPCs in&amp;nbsp;&lt;/font&gt;&lt;div&gt;&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 14px;&quot;&gt;Men or Women age group 20-49&lt;/font&gt;&lt;/div&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;direction=east;fillColor=light-dark(#FFE6CC,#000000);" parent="1" vertex="1">
+          <mxGeometry x="-4182" y="1320" width="360" height="95.12" as="geometry" />
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-25" value="&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 24px;&quot;&gt;Cancer Site Selection&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;direction=north;rotation=0;fillColor=light-dark(#A9C4EB,#000000);" parent="1" vertex="1">
+          <mxGeometry x="-4260" y="1220" width="230" height="75.25" as="geometry" />
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-26" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="DGWTjfy15jcwRzvpQEkv-11" target="DGWTjfy15jcwRzvpQEkv-18" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-3225" y="1617" as="sourcePoint" />
+            <mxPoint x="-3605" y="1600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-27" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="DGWTjfy15jcwRzvpQEkv-9" target="DGWTjfy15jcwRzvpQEkv-17" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-3615" y="1620" as="sourcePoint" />
+            <mxPoint x="-3575" y="1620" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-28" value="&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 14px;&quot;&gt;* National Disease Registration Service (NDNS) for England 2001-2019, stratified by ages (20-49, 50+) and sex (Men,Women)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;align=left;" parent="1" vertex="1">
+          <mxGeometry x="-4260" y="2210" width="1030" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-29" value="&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 14px;&quot;&gt;** Leukaemia, prostate, hodgkin lymphoma, brain/CNS, melanoma, testicular cancer excluded because they do not have established behavioural risk factors.&amp;nbsp;&lt;/font&gt;&lt;div&gt;&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 14px;&quot;&gt;Cervical cancer and Kaposi sarcoma were excluded due to the strong association with infections that drive their aetiology.&amp;nbsp;&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;align=left;" parent="1" vertex="1">
+          <mxGeometry x="-4260" y="2239" width="1030" height="41" as="geometry" />
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-31" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;&amp;nbsp;Behavioral Risk Factors:&lt;b&gt;&amp;nbsp;&lt;/b&gt;Smoking, Alcohol, BMI,&lt;/font&gt;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;&amp;nbsp;Physical Activity, Red Meat, Processed Meat,&amp;nbsp;&lt;/font&gt;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;Fibre ***&lt;/font&gt;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;Relative Risks&amp;nbsp;****&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;direction=west;fillColor=light-dark(#FFF4C3,#000000);" parent="1" vertex="1">
+          <mxGeometry x="-3580" y="1706" width="340" height="95.12" as="geometry" />
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="DGWTjfy15jcwRzvpQEkv-32" target="DGWTjfy15jcwRzvpQEkv-40" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="DGWTjfy15jcwRzvpQEkv-32" target="DGWTjfy15jcwRzvpQEkv-39" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-32" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;&lt;b&gt;&lt;font face=&quot;Times New Roman&quot;&gt;Time Series PAFs&amp;nbsp;&lt;/font&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;per cancer site&amp;nbsp;&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;for risk factors with an increasing trend&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#FFD966,#000000);" parent="1" vertex="1">
+          <mxGeometry x="-4030" y="1919.5" width="250" height="100.63" as="geometry" />
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-33" value="&lt;div&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;Risk factors with statistically significant AAPCs in&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Times New Roman&quot;&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;&amp;nbsp;Men&lt;/span&gt;&lt;span style=&quot;font-size: 14px; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;or Women in any age group (Highest category AAPC&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Times New Roman&quot;&gt;&lt;span style=&quot;font-size: 14px; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;if categorical risk factor variable)&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;Time period dependent on risk factor data availability&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;direction=east;fillColor=light-dark(#FFF4C3,#000000);" parent="1" vertex="1">
+          <mxGeometry x="-4218" y="1790" width="360" height="94.5" as="geometry" />
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-39" value="&lt;div&gt;&lt;b style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 16px;&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 16px;&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;Time Series Non-Attributable Cancer Incidence&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 16px; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;per cancer site&amp;nbsp;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#FFD966,#000000);" parent="1" vertex="1">
+          <mxGeometry x="-3903.56" y="2080" width="248" height="100.63" as="geometry" />
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-40" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 16px; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;b&gt;&lt;font face=&quot;Times New Roman&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 16px; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;b&gt;&lt;font face=&quot;Times New Roman&quot;&gt;Time Series Attributable Cancer Incidence&lt;/font&gt;&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 16px; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;per cancer site&amp;nbsp;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Times New Roman&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#FFD966,#000000);" parent="1" vertex="1">
+          <mxGeometry x="-4167.56" y="2080" width="249" height="100.63" as="geometry" />
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-52" value="&lt;font face=&quot;Times New Roman&quot;&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;***&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;font-size: 14px; text-align: center;&quot;&gt;Supplementary Table 1&lt;/span&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;align=left;" parent="1" vertex="1">
+          <mxGeometry x="-4260" y="2280" width="1030" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="DGWTjfy15jcwRzvpQEkv-53" value="&lt;font face=&quot;Times New Roman&quot;&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;****&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;font-size: 14px; text-align: center;&quot;&gt;Supplementary Table 3&lt;/span&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;align=left;" parent="1" vertex="1">
+          <mxGeometry x="-4260" y="2309" width="1030" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
