@@ -1,8 +1,8 @@
-# Trends Paper
+# Temporal trends in behavioural risk factors for cancers with rising incidence in younger adults: an analysis of population-based data in England
 
-## Overview
-Goal is to combine public sources of information to get an effective view of the trends of cancer incidence/mortality and risk factors in the UK. These will then be plotted in graphs.
+This repository provides the code and (where possible) the publicly available data used in the descriptive analysis of behavioural risk factors for younger adults in England.
 
-# PIFPAF paper 
-## [PIFPAF paper](https://uk-generations-study.github.io/UK-cancer-trends/PIF_PAF/Code/Final_Figures.html)
-This is the final figures for the PIFPAF paper
+## Key Resources 
+### [Final_Figures.html](https://uk-generations-study.github.io/UK-cancer-trends/PIF_PAF/Code/Final_Figures.html)
+This code produces the figures and tables used in the paper.
+
