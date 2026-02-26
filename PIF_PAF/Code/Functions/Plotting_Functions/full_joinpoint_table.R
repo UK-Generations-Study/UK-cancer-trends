@@ -40,6 +40,7 @@ full_joinpoint_table <- function(data_apc, data_aapc, group_var, table_var, stra
         is.na(P.Value) ~ NA_character_,
         P.Value < 0.001 ~ "<0.001",
         P.Value > 0.999 ~ ">0.999",
+        P.Value > 0.01 ~ formatC(P.Value, format = "f", digits = 2),
         TRUE ~ formatC(P.Value, format = "f", digits = 3)
       )
       
@@ -57,6 +58,7 @@ full_joinpoint_table <- function(data_apc, data_aapc, group_var, table_var, stra
         is.na(P.Value) ~ NA_character_,
         P.Value < 0.001 ~ "<0.001",
         P.Value > 0.999 ~ ">0.999",
+        P.Value > 0.01 ~ formatC(P.Value, format = "f", digits = 2),
         TRUE ~ formatC(P.Value, format = "f", digits = 3)
       )
       
@@ -98,6 +100,7 @@ full_joinpoint_table <- function(data_apc, data_aapc, group_var, table_var, stra
           is.na(p_value_one_sided) ~ NA_character_,
           p_value_one_sided < 0.001 ~ "<0.001",
           p_value_one_sided > 0.999 ~ ">0.999",
+          p_value_one_sided > 0.01 ~ formatC(p_value_one_sided, format = "f", digits = 2),
           TRUE ~ formatC(p_value_one_sided, format = "f", digits = 3)
         )
         

@@ -1,5 +1,5 @@
 ---
-title: "PIF/PAF Analysis"
+title: "PAF Analysis"
 format: 
   html:
     toc: true
@@ -16,6 +16,13 @@ execute:
 ---
 
 ## Setting up
+
+### Set seed
+```{r}
+
+set.seed(123)
+
+```
 
 ### Packages
 
@@ -68,9 +75,6 @@ if(Sys.getenv("RSTUDIO") == '1' & !knitr::is_html_output()) { # If using Rstudio
 # Load in the PAF calculation functions
 source("Functions/PAF_Calculations/paf_byrf_function.R")
 source("Functions/PAF_Calculations/paf_aggregate_function.R")
-
-# Load in PIF calculation functions
-source("Functions/PAF_Calculations/pif_function.R")
 
 # Load in function for comparing AAPCs
 source("Functions/Sub_Analysis/aapc_comparison_functions.R")
@@ -137,11 +141,6 @@ data_cancer <- data_ALLcancer %>%
 # Read in PAF samples - for 2019 PAFs
 data_paf_comparison <- read.csv(r"(..\Data\paf_comparison.csv)") |>
   filter(!(Cancer_sites %in% c("Breast", "Endometrium") & sex == "Men"))
-
-# Read in PAF samples - for PIF calculations
-# data_pif_comparison <- read.csv(r"(..\Data\pif_comparison.csv)") |>
-#   filter(!(Cancer_sites %in% c("Breast", "Endometrium") & sex == "Men"))
-
 
 ## JOINPOINT ANALYSIS
 
@@ -977,11 +976,15 @@ This table is generated in excel
 
 This table is generated in excel
 
-### Supplementary Table 4 - AAPC/APC by cancer site
+### Supplementary Table 4 - PubMed search terms
+
+This figure has been created externally
+
+### Supplementary Table 5 - AAPC/APC by cancer site
 
 ```{r, results = "asis", fig.width=200}
 
-supp_table_4 <- full_joinpoint_table(data_joinpoint |> filter(cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid", "Ovary")) |>
+supp_table_5 <- full_joinpoint_table(data_joinpoint |> filter(cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid", "Ovary")) |>
                                        mutate(cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site)),
                                   data_joinpoint_AAPC |> filter(cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid", "Ovary")) |>
                                        mutate(cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site)),
@@ -991,23 +994,22 @@ supp_table_4 <- full_joinpoint_table(data_joinpoint |> filter(cancer_site %in% c
 for(sex in c("Women", "Men")){
   
   # Final changes
-  supp_table_4[[sex]] <- supp_table_4[[sex]] |>
+  supp_table_5[[sex]] <- supp_table_5[[sex]] |>
     cols_label(age_group = "Age Group") |>
     tab_header(paste0("Joinpoint Cancer Incidence Trends in ", sex))
 
   # Print
-  print(supp_table_4[[sex]])
+  print(supp_table_5[[sex]])
   
   # Save
-  gtsave(supp_table_4[[sex]], paste0("../Output/Final_Plots_HTML/Supplementary_Table_4", letters[which(c("Women", "Men") == sex)], ".html"))
-  gtsave(supp_table_4[[sex]], paste0("../Output/Final_Plots/Supplementary_Table_4", letters[which(c("Women", "Men") == sex)], ".docx"))
-  # gtsave(supp_table_4[[sex]], paste0("../Output/Final_Plots_PDF/Supplementary_Table_4", letters[which(c("Women", "Men") == sex)], ".pdf"))
-  
+  gtsave(supp_table_5[[sex]], paste0("../Output/Final_Plots_HTML/Supplementary_Table_5", letters[which(c("Women", "Men") == sex)], ".html"))
+  gtsave(supp_table_5[[sex]],  paste0("../Output/Final_Plots/Supplementary_Table_5", letters[which(c("Women", "Men") == sex)], ".docx"))
+
 }
 
 ```
 
-### Supplementary Table 5 - AAPC/APC by risk factor
+### Supplementary Table 6 - AAPC/APC by risk factor
 
 ```{r, results = "asis", fig.width = 300}
 
@@ -1082,14 +1084,14 @@ rfdata_joinpoint_complete_AAPC <- rbind(rfdata_joinpoint_AAPC,dietrfdata_joinpoi
   filter(!exposure %in% c("Never", "Non-Drinker", "Healthy Weight", "Underweight", "Meets Recommendations"))
   
 # Create table
-supp_table_5 <- full_joinpoint_table(rfdata_joinpoint_complete, rfdata_joinpoint_complete_AAPC, group_var = "group_var", table_var = "sex", stratification_vars = "age_group")
+supp_table_6 <- full_joinpoint_table(rfdata_joinpoint_complete, rfdata_joinpoint_complete_AAPC, group_var = "group_var", table_var = "sex", stratification_vars = "age_group")
 
 
 # Now edit, print and save
 for(sex in c("Women", "Men")){
   
   # Final changes
-  supp_table_5[[sex]] <- supp_table_5[[sex]] |>
+  supp_table_6[[sex]] <- supp_table_6[[sex]] |>
     cols_label(age_group = "Age Group") |>
     tab_header(paste0("Joinpoint Trends in Risk Factors ", sex)) |>
     row_group_order(groups = c(
@@ -1136,18 +1138,17 @@ for(sex in c("Women", "Men")){
   )
   
   # Print
-  print(supp_table_5[[sex]])
+  print(supp_table_6[[sex]])
   
   # Save
-  gtsave(supp_table_5[[sex]], paste0("../Output/Final_Plots_HTML/Supplementary_Table_5", letters[which(c("Women", "Men") == sex)], ".html"))
-  gtsave(supp_table_5[[sex]], paste0("../Output/Final_Plots/Supplementary_Table_5", letters[which(c("Women", "Men") == sex)], ".docx"))
-  # gtsave(supp_table_5[[sex]], paste0("../Output/Final_Plots_PDF/Supplementary_Table_5", letters[which(c("Women", "Men") == sex)], ".pdf"))
-  
+  gtsave(supp_table_6[[sex]], paste0("../Output/Final_Plots_HTML/Supplementary_Table_6", letters[which(c("Women", "Men") == sex)], ".html"))
+  gtsave(supp_table_6[[sex]], paste0("../Output/Final_Plots/Supplementary_Table_6", letters[which(c("Women", "Men") == sex)], ".docx"))
+
 }
 
 ```
 
-### Supplementary Table 6 - AAPC and APC Trends in BMI Attributable Rates
+### Supplementary Table 7 - AAPC and APC Trends in BMI Attributable Rates
 ```{r, results = "asis"}
 
 bmi_paf_apc <- read.delim("../Data/Joinpoint_Results/BMI_Attributable_new/jp_bmi_attributable.Export.APC.txt") |>
@@ -1183,17 +1184,12 @@ for(group in plot_order){
   
   print(bmi_jp_table[[group]])
   
-  gtsave(bmi_jp_table[[group]], paste0("../Output/Final_Plots_HTML/Supplementary_Table_6", letters[which(plot_order == group)], ".html"))
-  gtsave(bmi_jp_table[[group]], paste0("../Output/Final_Plots/Supplementary_Table_6", letters[which(plot_order == group)], ".docx"))
-  # gtsave(bmi_jp_table[[group]], paste0("../Output/Final_Plots_PDF/Supplementary_Table_6", letters[which(plot_order == group)], ".pdf"))
-  
+  gtsave(bmi_jp_table[[group]], paste0("../Output/Final_Plots_HTML/Supplementary_Table_7", letters[which(plot_order == group)], ".html"))
+  gtsave(bmi_jp_table[[group]], paste0("../Output/Final_Plots/Supplementary_Table_7", letters[which(plot_order == group)], ".docx"))
+
 }
 
 ```
-
-### Supplementary Table 7 - PubMed search terms
-
-This figure has been created externally
 
 ### Supplementary Figure 1 - AAPC for all cancers
 
@@ -1233,7 +1229,7 @@ for(s in unique(data_joinpoint_AAPC$sex)){
     mutate(
       
       cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site),
-      P.Value = if_else(P.Value < 0.0001, "<0.0001", as.character(sub("\\.?0+$", "", format(signif(P.Value, digits = 2), scientific = FALSE)))),
+      P.Value = if_else(P.Value < 0.001, "<0.001", as.character(sub("\\.?0+$", "", format(signif(P.Value, digits = 2), scientific = FALSE)))),
       cancer_site = factor(cancer_site, levels = data_jp_aapc_order$cancer_site),
       age_group = factor(age_group, levels = c("50+", "20-49"), labels = c("50+ years", "20-49 years")),
 
