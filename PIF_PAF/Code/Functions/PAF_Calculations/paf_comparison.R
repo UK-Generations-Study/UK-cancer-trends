@@ -5,6 +5,9 @@
 # The RR will be sampled from a log-normal distribution, assuming log(RR) is normally distributed. - THIS HAS NOT BEEN DONE. This is because they are using the same RR so would just add variance
 # The prevelances will be sampled using the prevelances and N values from the surveys.
 
+## Set seed
+set.seed(123)
+
 ## Options
 N_iterations <- 1000
 
