@@ -2263,4 +2263,169 @@ for(s in c("Women", "Men")){
 ```
 
 
+## Alternative Figures
+
+### Figure 1 - Joinpoint trends of selected cancer sites (Linear y-axis)
+
+```{r, fig.height=8.5, fig.width=10.5, warning=F}
+
+# Loop through sexes
+for(s in unique(data_joinpoint_model$sex)){
+  
+  # Filter to correct cancer sites in joinpoint model data
+  data_joinpoint_model_fig1 <- data_joinpoint_model |>
+    filter(sex == s) |>
+    filter(cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid", "Ovary")) |>
+    mutate(cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site))
+    
+  # Filter data to only the cancer sites that are increasing 
+  data_cancer <- data_ALLcancer %>%
+    filter(sex == s) |>
+    filter(
+      cancer_site %in% c("Oral", "Endometrium", "Pancreas", "Gallbladder", "Colorectum", "Liver", "Kidney", "MultipleMyeloma", "Breast", "Thyroid", "Ovary")
+    ) |>
+    mutate(cancer_site = if_else(cancer_site == "MultipleMyeloma", "Multiple Myeloma", cancer_site))
+  
+  # Get start/end years by group
+  start_end_years <- data_cancer |>
+    group_by(age_group, sex, cancer_site) |>
+    summarise(start.year.data = min(year),
+              end.year.data = max(year)) |>
+    suppressMessages() |>
+    ungroup()
+  
+  # Formatting joinpoint data to get start and end points
+  data_joinpoint_model_fig1 <- data_joinpoint_model_fig1 |>
+    merge(start_end_years, by = c("sex", "age_group", "cancer_site")) |>
+    group_by(age_group, sex, cancer_site) |>
+    arrange(Segment) |>
+    mutate(
+  
+      start.year = case_when(
+        Segment == 0 ~ start.year.data,
+        TRUE ~ Joinpoint),
+  
+      end.year = ifelse(Segment == max(Segment), end.year.data, lead(start.year))
+  
+    )
+  
+  # Creating start/end points for plotting
+  data_joinpoint_plot <- data_joinpoint_model_fig1 |>
+    group_by(age_group, sex, cancer_site) |>
+    arrange(Segment) |>
+    mutate(
+      
+      start.y = exp(Intercept.Estimate + start.year * Slope.Estimate),
+      end.y = ifelse(Segment == max(Segment), 
+                     exp(Intercept.Estimate + end.year * Slope.Estimate), 
+                     lead(start.y))
+    ) |>
+    ungroup() |>
+    select(all_of(c("age_group", "sex", "cancer_site", "start.year", "end.year", 
+                    "start.y", "end.y", "Intercept.Estimate", "Slope.Estimate"))) |>
+    rowwise() |>
+    mutate(
+      n_points = (end.year - start.year) * 100,
+      year = list(seq(start.year, end.year, length.out = n_points)),
+      y    = list(exp(Intercept.Estimate + seq(start.year, end.year, length.out = n_points) * Slope.Estimate))
+    ) |>
+    ungroup() |>
+    select(-c(start.year, end.year, start.y, end.y, Intercept.Estimate, Slope.Estimate, n_points)) |>
+    unnest(c(year, y))
+  
+  # Create invisible points so rows have the same y bounds
+  invisible_points <- data_cancer |>
+    mutate(n_sites = length(unique(cancer_site))) |>
+    group_by(cancer_site, sex) |>
+    summarise(max = max(Rate), min = min(Rate), max_20_49 = max(Rate*(age_group == "20-49"))) |>
+    ungroup() |>
+    arrange(desc(max_20_49)) |>
+    mutate(facet_row = ceiling(row_number()/4)) |>
+    group_by(facet_row) |>
+    mutate(y = list(range(c(max, min)))) |>
+    unnest(y) |>
+    mutate(year = 2019)
+  
+  facet_vars <- data_cancer |>
+    group_by(cancer_site) |>
+    filter(age_group == "20-49") |>
+    mutate(max = max(Rate)) |>
+    ungroup() |>
+    distinct(cancer_site, sex, max) |>
+    arrange(desc(max)) |>
+    mutate(facet_var = paste0(cancer_site, " - ", sex),
+              n = n()) |>
+    select(facet_var) |>
+    unique() |>
+    pull(facet_var)
+    
+  
+  # Add this facet to all dataframes
+  data_cancer_facet <- data_cancer |>
+    mutate(
+  
+      facet_var = factor(paste0(cancer_site, " - ", sex), levels = facet_vars)
+      # facet_var = paste0(cancer_site, " - ", sex),
+      
+  
+    )
+  
+  data_joinpoint_plot <- data_joinpoint_plot |>
+    mutate(
+  
+      facet_var = factor(paste0(cancer_site, " - ", sex), levels = facet_vars),
+      # facet_var = paste0(cancer_site, " - ", sex),
+  
+    )
+  
+  invisible_points <- invisible_points |>
+    mutate(
+
+      facet_var = factor(paste0(cancer_site, " - ", sex), levels = facet_vars),
+      # facet_var = paste0(cancer_site, " - ", sex),
+
+    )
+  
+  
+  # Now start constructing plot
+  plot <- ggplot(data_cancer_facet, aes(x = year, y = Rate, colour = age_group)) +
+    geom_point() +
+    geom_line(data = data_joinpoint_plot, aes(x = year, y = y)) +
+    geom_point(data = invisible_points, aes(x = year, y = y), alpha = 0, inherit.aes =F) +
+    theme_minimal_lancet() +
+    scale_colour_manual(values = c("20-49" = "#ff9500", "50+" = "#38b000"),
+                        labels = c("20-49 years", "50+ years")) +
+    geom_rect(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
+              colour = "black", fill = NA, inherit.aes = FALSE) +
+    theme(strip.text = element_text(face = "bold"), 
+          axis.text.x = element_text(angle = 45, hjust = 1),
+          aspect.ratio = 1) +
+    scale_y_continuous(
+      n.breaks = 8,
+      labels = scales::label_number(accuracy = 0.1)
+    ) +
+    scale_x_continuous(
+      breaks = seq(2001, 2019, by = 3),  # Define the x-axis breaks
+      limits = c(2001, 2019)
+    )+
+    # ggtitle("Cancer Incidence Rates for Selected Cancers") +
+    ylab("Age Standardised Incidence Rates per 100,000 (log scale)") +
+    xlab("Year") +
+    labs(colour = "Age Group") +
+    facet_wrap(~ facet_var, ncol = 4, scales = "free_y")
+    # facet_manual(~ facet_var, facet_design, respect = T, scales = "free_y")
+  
+  print(plot)
+  
+  ggsave(filename = paste0("../Output/Additional_Plots/Figure_1", letters[which(unique(data_joinpoint_model$sex == s)) %% 2 + 1], ".png"), bg = "white", height = if_else(s == "Women", 8.5, 6.5), width = 10.5)
+  ggsave(filename = paste0("../Output/Additional_Plots_SVG/Figure_1",  letters[which(unique(data_joinpoint_model$sex == s)) %% 2 + 1], ".svg"), bg = "white", height = if_else(s == "Women", 8.5, 6.5), width = 10.5)
+  
+}
+
+
+  
+
+```
+
+
 
