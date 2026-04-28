@@ -2427,5 +2427,65 @@ for(s in unique(data_joinpoint_model$sex)){
 
 ```
 
+### Table of relative changes in BMI PAF in young people
+```{r}
+
+# Calculate the PAFs by cancer site 
+pafs_byrf_under50<- paf_calculation(data_rf, "20-49")
+
+additional_table <- pafs_byrf_under50 |>
+  pivot_longer(cols = all_of(ends_with("PAF")), names_to = "cancer_site", values_to = "PAF") |>
+  mutate(cancer_site = gsub("PAF*", "", cancer_site)) |>
+  group_by(sex, cancer_site) |>
+  filter(year %in% c(2001, 2019)) |>
+  filter(variable == "BMI") |>
+  arrange(desc(year)) |>
+  summarise(PAF_relative_change = first(PAF)/last(PAF)) |>
+  mutate(PAF_relative_change = 100*(PAF_relative_change - 1)) |>
+  filter(!is.na(PAF_relative_change))
+
+additional_table
+
+write.csv(additional_table, "../Output/Additional_Plots/Table.csv", row.names = T)
+
+```
+
+
+### Table of changes in BMI from 2001 to 2019
+```{r}
+
+data_rf_temp <- read.csv("../../../Data/Cleaned_Data/clean_rf_data.csv")
+
+table <- data_rf_temp |>
+  filter(year %in% c(2001, 2019) & age_group == "20-49" & variable == "bmi") |>
+  select(-N) |>
+  mutate(percentage = value*100) |>
+  select(-value)
+
+table
+
+write.csv(additional_table, "../Output/Additional_Plots/Table_2.csv", row.names = T)
+
+```
+
+### Table of BMI PAF values 2001 and 2019
+```{r}
+
+# Calculate the PAFs by cancer site 
+pafs_byrf_under50<- paf_calculation(data_rf, "20-49")
+
+additional_table <- pafs_byrf_under50 |>
+  pivot_longer(cols = all_of(ends_with("PAF")), names_to = "cancer_site", values_to = "PAF") |>
+  mutate(cancer_site = gsub("PAF*", "", cancer_site)) |>
+  filter(year %in% c(2001, 2019)) |>
+  filter(variable == "BMI") |>
+  mutate(PAF = 100*PAF)
+
+additional_table
+
+write.csv(additional_table, "../Output/Additional_Plots/Table_3.csv", row.names = T)
+
+```
+
 
 
