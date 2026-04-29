@@ -2487,5 +2487,19 @@ write.csv(additional_table, "../Output/Additional_Plots/Table_3.csv", row.names 
 
 ```
 
+### Number of bowel cancer cases in men and women under 50 from 2001-2019
+```{r}
+
+additional_table <- read.csv("../Data/Incidence_data_National_ICD10_2026-04-29.csv") |>
+  mutate(age_group = "20-49") |>
+  mutate(cancer_site = "Colorectum") |>
+  select(year = Year, gender = Gender, age_group, cancer_site, count = Count) |>
+  group_by(year, gender, age_group, cancer_site) |>
+  summarise(count = sum(count))
+
+write.csv(additional_table, "../Output/Additional_Plots/Table_4.csv")
+
+```
+
 
 
